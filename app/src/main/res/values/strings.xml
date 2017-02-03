@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name" translatable="false">Screenshot Tile</string>
+    <string name="tile_label">Screenshot</string>
+</resources>
