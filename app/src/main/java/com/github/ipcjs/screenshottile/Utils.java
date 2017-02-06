@@ -30,24 +30,29 @@ public class Utils {
         p(String.format(format, args));
     }
 
-    public static void runCmd(String cmd, boolean isRoot) {
+    public static int runCmd(String cmd, boolean isRoot) {
         Process process = null;
+        int returnCode = -1;
         try {
             process = Runtime.getRuntime().exec(isRoot ? "su" : "sh");
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
             bw.write(cmd);
             bw.write("\nexit\n");
             bw.flush();
-            p("%s: %d, %s, %s", cmd,
-                    process.waitFor(),
-                    is2String(process.getInputStream()),
-                    is2String(process.getErrorStream())
-            );
+            returnCode = process.waitFor();
+            if (BuildConfig.DEBUG) {
+                p("runCmd: %s => %d, %s, %s", cmd, returnCode, is2String(process.getInputStream()), is2String(process.getErrorStream()));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            if (process != null) {
+                process.destroy();
+            }
         }
+        return returnCode;
     }
 
     public static String is2String(InputStream is) throws IOException {
