@@ -10,7 +10,8 @@ public class NoDisplayActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         p("NoDisplayActivity.onCreate");
-        Utils.runCmd("input keyevent 120", true);
+//        Utils.runCmd("input keyevent 120", true);
+        Utils.runOneCmdByRootNoWait("input keyevent 120");
         finish();
     }
 

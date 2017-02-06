@@ -30,7 +30,16 @@ public class Utils {
         p(String.format(format, args));
     }
 
-    public static int runCmd(String cmd, boolean isRoot) {
+    public static void runOneCmdByRootNoWait(String cmd) {
+        try {
+            Process process = Runtime.getRuntime().exec(new String[]{"su", "-c", cmd});
+            p("rumCmd: %s", cmd);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int runCmd(String cmd, boolean isRoot, boolean isWait) {
         Process process = null;
         int returnCode = -1;
         try {
@@ -39,16 +48,20 @@ public class Utils {
             bw.write(cmd);
             bw.write("\nexit\n");
             bw.flush();
-            returnCode = process.waitFor();
-            if (BuildConfig.DEBUG) {
-                p("runCmd: %s => %d, %s, %s", cmd, returnCode, is2String(process.getInputStream()), is2String(process.getErrorStream()));
+            if (isWait) {
+                returnCode = process.waitFor();
+                if (BuildConfig.DEBUG) {
+                    p("runCmd: %s => %d, %s, %s", cmd, returnCode, is2String(process.getInputStream()), is2String(process.getErrorStream()));
+                }
+            } else {
+                p("runCmd: %s", cmd);
             }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            if (process != null) {
+            if (process != null && isWait) {
                 process.destroy();
             }
         }
