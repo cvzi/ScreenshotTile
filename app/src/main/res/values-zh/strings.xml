@@ -2,4 +2,9 @@
 <resources>
     <string name="app_name">截屏瓷贴</string>
     <string name="tile_label">截屏</string>
+    <string name="dialog_obtain_root">获取Root权限失败</string>
+    <string name="dialog_obtain_root_message">%s 需要Root权限用来发送截屏的模拟按键</string>
+    <string name="dialog_reacquire">重新获取</string>
+    <string name="dialog_i_know">我知道了</string>
+    <string name="dialog_uninstall">卸载</string>
 </resources>

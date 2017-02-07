@@ -30,13 +30,24 @@ public class Utils {
         p(String.format(format, args));
     }
 
-    public static void runOneCmdByRootNoWait(String cmd) {
+    public static int runOneCmdByRoot(String cmd, boolean isWait) {
+        int returnCode = -1;
         try {
             Process process = Runtime.getRuntime().exec(new String[]{"su", "-c", cmd});
+            if (isWait) {
+                returnCode = process.waitFor();
+            }
             p("rumCmd: %s", cmd);
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+        return returnCode;
+    }
+
+    public static boolean hasRoot() {
+        return runOneCmdByRoot("echo", true) == 0;
     }
 
     public static int runCmd(String cmd, boolean isRoot, boolean isWait) {

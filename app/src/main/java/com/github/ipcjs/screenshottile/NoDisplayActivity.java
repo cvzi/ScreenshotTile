@@ -11,7 +11,7 @@ public class NoDisplayActivity extends Activity {
         super.onCreate(savedInstanceState);
         p("NoDisplayActivity.onCreate");
 //        Utils.runCmd("input keyevent 120", true);
-        Utils.runOneCmdByRootNoWait("input keyevent 120");
+        Utils.runOneCmdByRoot("input keyevent 120", false);
         finish();
     }
 

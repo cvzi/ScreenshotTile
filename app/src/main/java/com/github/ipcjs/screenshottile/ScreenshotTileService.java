@@ -12,6 +12,9 @@ public class ScreenshotTileService extends TileService {
     public void onTileAdded() {
         super.onTileAdded();
         p("onTileAdded");
+//        if (!hasRoot()) {
+            startActivityAndCollapse(new Intent(this, RootDialogActivity.class));
+//        }
     }
 
     @Override
