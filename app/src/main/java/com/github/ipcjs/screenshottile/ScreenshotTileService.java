@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.service.quicksettings.TileService;
 
+import static com.github.ipcjs.screenshottile.Utils.hasRoot;
 import static com.github.ipcjs.screenshottile.Utils.p;
 
 public class ScreenshotTileService extends TileService {
@@ -12,9 +13,9 @@ public class ScreenshotTileService extends TileService {
     public void onTileAdded() {
         super.onTileAdded();
         p("onTileAdded");
-//        if (!hasRoot()) {
+        if (!hasRoot()) {
             startActivityAndCollapse(new Intent(this, RootDialogActivity.class));
-//        }
+        }
     }
 
     @Override
