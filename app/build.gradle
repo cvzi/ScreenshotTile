@@ -1,25 +1,26 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     signingConfigs {
         release {
-            if (System.getenv("KEYSTORE") != null) {
-                def args = System.getenv("KEYSTORE").split(";")
-                storeFile file(args[0])
-                storePassword args[1]
-                keyAlias args[2]
-                keyPassword args[3]
+            if (project.properties['keyStore.release.storeFile'] != null) {
+                storeFile file(project.properties['keyStore.release.storeFile'])
+                storePassword project.properties['keyStore.release.storePassword']
+                keyAlias project.properties['keyStore.release.keyAlias']
+                keyPassword project.properties['keyStore.release.keyPassword']
             }
         }
     }
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.github.ipcjs.screenshottile"
         minSdkVersion 24
         targetSdkVersion 25
-        versionCode 5
-        versionName "1.0.5"
+        versionCode 6
+        versionName "1.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -34,6 +35,7 @@ android {
             versionNameSuffix '.debug'
         }
     }
+    // 2017-08-15 15:40:13 该方法在新版gradle中已失效...
     // 自动在debug版的app_name后加".debug"（兼容各种版本的as）
     applicationVariants.all { variant ->// 遍历所有的variant
         if (variant.buildType.name.equals("debug")) {// 该variant的buildType是debug
@@ -62,6 +64,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

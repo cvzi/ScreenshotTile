@@ -7,4 +7,11 @@
     <string name="dialog_reacquire">重新获取</string>
     <string name="dialog_i_know">我知道了</string>
     <string name="dialog_uninstall">卸载</string>
+    <string name="title_delay">延时</string>
+    <array name="setting_delays">
+        <item>立即</item>
+        <item>1秒</item>
+        <item>2秒</item>
+        <item>5秒</item>
+    </array>
 </resources>

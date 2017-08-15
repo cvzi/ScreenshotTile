@@ -6,4 +6,11 @@
     <string name="dialog_reacquire">Reacquire</string>
     <string name="dialog_i_know">I Know</string>
     <string name="dialog_uninstall">Uninstall</string>
+    <string name="title_delay">Delay</string>
+    <array name="setting_delays">
+        <item>Instant</item>
+        <item>1s</item>
+        <item>2s</item>
+        <item>5s</item>
+    </array>
 </resources>

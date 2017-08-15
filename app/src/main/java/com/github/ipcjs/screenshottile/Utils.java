@@ -14,19 +14,16 @@ public class Utils {
 
     public static void p(Object... args) {
         if (!BuildConfig.DEBUG) return;
-//        System.out.println("Object... args");
         p(TextUtils.join(", ", args));
     }
 
     public static void p(String msg) {
         if (!BuildConfig.DEBUG) return;
-//        System.out.println("String msg");
         Log.i("Screenshot", msg);
     }
 
     public static void p(String format, Object... args) {
         if (!BuildConfig.DEBUG) return;
-//        System.out.println("String format, Object... args");
         p(String.format(format, args));
     }
 
@@ -44,6 +41,10 @@ public class Utils {
             e.printStackTrace();
         }
         return returnCode;
+    }
+
+    public static int screenshot() {
+        return runOneCmdByRoot("input keyevent 120", false);
     }
 
     public static boolean hasRoot() {
