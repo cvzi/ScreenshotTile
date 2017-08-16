@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Transparent">
         <activity
-            android:name=".ScreenshotActivity"
+            android:name=".NoDisplayActivity"
             android:theme="@android:style/Theme.NoDisplay"/>
         <activity
             android:name=".DelayScreenshotActivity"
