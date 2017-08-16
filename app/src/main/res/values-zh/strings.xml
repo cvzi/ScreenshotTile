@@ -14,4 +14,5 @@
         <item>2秒</item>
         <item>5秒</item>
     </array>
+    <string name="more_setting">更多设置</string>
 </resources>

@@ -37,7 +37,7 @@ public class RootPermissionDialogFragment extends DialogFragment implements Dial
         switch (which) {
             case Dialog.BUTTON_POSITIVE:
                 if (!hasRoot()) {
-                    ContainerDialogActivity.Companion.start(getActivity(), RootPermissionDialogFragment.class, null);
+                    TransparentContainerActivity.Companion.start(getActivity(), RootPermissionDialogFragment.class, null);
                 }
                 break;
             case Dialog.BUTTON_NEUTRAL:

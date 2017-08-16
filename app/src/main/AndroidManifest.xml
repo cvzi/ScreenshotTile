@@ -3,6 +3,7 @@
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,9 +16,16 @@
             android:name=".DelayScreenshotActivity"
             android:excludeFromRecents="true"/>
         <activity
-            android:name=".dialog.ContainerDialogActivity"
+            android:name=".dialog.TransparentContainerActivity"
             android:excludeFromRecents="true"/>
-        <activity android:name=".SettingDialogActivity">
+        <activity
+            android:name=".dialog.ContainerActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="${applicationId}.task"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".SettingDialogActivity"
+            android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
             </intent-filter>

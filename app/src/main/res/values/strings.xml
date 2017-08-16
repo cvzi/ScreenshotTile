@@ -7,10 +7,21 @@
     <string name="dialog_i_know">I Know</string>
     <string name="dialog_uninstall">Uninstall</string>
     <string name="title_delay">Delay</string>
-    <array name="setting_delays">
-        <item>Instant</item>
+    <string name="more_setting">More Settings</string>
+    <string-array name="setting_delay_entries">
+        <item>@string/setting_delay_default_entry</item>
         <item>1s</item>
         <item>2s</item>
         <item>5s</item>
-    </array>
+    </string-array>
+    <string name="setting_delay_default_entry">Instant</string>
+    <string name="setting_delay_default_value">0</string>
+    <string-array name="setting_delay_values">
+        <item>@string/setting_delay_default_value</item>
+        <item>1</item>
+        <item>2</item>
+        <item>5</item>
+    </string-array>
+    <string name="pref_key_delay" translatable="false">delays_string</string>
+    <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
 </resources>
