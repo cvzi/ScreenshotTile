@@ -2,13 +2,13 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <SwitchPreference
         android:defaultValue="true"
-        android:key="show_count_down"
-        android:title="显示倒计时"/>
+        android:key="@string/pref_key_show_count_down"
+        android:title="@string/show_count_down"/>
     <ListPreference
-        android:defaultValue="@string/setting_delay_default_value"
+        android:defaultValue="@string/setting_delay_value_default"
         android:entries="@array/setting_delay_entries"
         android:entryValues="@array/setting_delay_values"
         android:key="@string/pref_key_delay"
-        android:summary="@string/setting_delay_default_entry"
-        android:title="延时"/>
+        android:summary="@string/setting_delay_entry_default"
+        android:title="@string/title_delay"/>
 </PreferenceScreen>

@@ -8,20 +8,28 @@
     <string name="dialog_uninstall">Uninstall</string>
     <string name="title_delay">Delay</string>
     <string name="more_setting">More Settings</string>
-    <string-array name="setting_delay_entries">
-        <item>@string/setting_delay_default_entry</item>
-        <item>1s</item>
-        <item>2s</item>
-        <item>5s</item>
+    <string name="setting_delay_entry_default">Instant</string>
+    <string name="setting_delay_entry_1s">1s</string>
+    <string name="setting_delay_entry_2s">2s</string>
+    <string name="setting_delay_entry_5s">5s</string>
+    <string name="show_count_down">Show count down</string>
+
+    <!-- translatable="false" -->
+    <string name="setting_delay_value_default" translatable="false">0</string>
+    <string-array name="setting_delay_entries" translatable="false">
+        <item>@string/setting_delay_entry_default</item>
+        <item>@string/setting_delay_entry_1s</item>
+        <item>@string/setting_delay_entry_2s</item>
+        <item>@string/setting_delay_entry_5s</item>
     </string-array>
-    <string name="setting_delay_default_entry">Instant</string>
-    <string name="setting_delay_default_value">0</string>
-    <string-array name="setting_delay_values">
-        <item>@string/setting_delay_default_value</item>
+    <string-array name="setting_delay_values" translatable="false">
+        <item>@string/setting_delay_value_default</item>
         <item>1</item>
         <item>2</item>
         <item>5</item>
     </string-array>
     <string name="pref_key_delay" translatable="false">delays_string</string>
     <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
+
+
 </resources>

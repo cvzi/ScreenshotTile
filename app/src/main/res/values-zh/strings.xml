@@ -8,11 +8,10 @@
     <string name="dialog_i_know">我知道了</string>
     <string name="dialog_uninstall">卸载</string>
     <string name="title_delay">延时</string>
-    <array name="setting_delays">
-        <item>立即</item>
-        <item>1秒</item>
-        <item>2秒</item>
-        <item>5秒</item>
-    </array>
     <string name="more_setting">更多设置</string>
+    <string name="setting_delay_entry_default">立即</string>
+    <string name="setting_delay_entry_1s">1秒</string>
+    <string name="setting_delay_entry_2s">2秒</string>
+    <string name="setting_delay_entry_5s">5秒</string>
+    <string name="show_count_down">显示倒计时</string>
 </resources>
