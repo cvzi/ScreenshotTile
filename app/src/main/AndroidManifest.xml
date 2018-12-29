@@ -32,7 +32,12 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
             </intent-filter>
         </activity>
-
+        <activity android:name=".AcquireScreenshotPermission"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true"/>
+        <activity android:name=".TakeScreenshotActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true" />
         <service
             android:name=".ScreenshotTileService"
             android:icon="@drawable/ic_stat_name"

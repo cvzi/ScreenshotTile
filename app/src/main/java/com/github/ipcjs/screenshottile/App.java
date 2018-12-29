@@ -1,20 +1,28 @@
 package com.github.ipcjs.screenshottile;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.media.projection.MediaProjection;
+import android.media.projection.MediaProjectionManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.service.quicksettings.TileService;
+import android.util.Log;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 /**
  * Created by ipcjs on 2017/8/17.
+ * Changes by cuzi (cuzi@openmail.cc)
  */
 
 public class App extends Application {
     private static App sInstance;
     private PrefManager mPrefManager;
+    private static Intent screenshotPermission = null;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -43,6 +51,7 @@ public class App extends Application {
                 intent = NoDisplayActivity.newIntent(context, true);
             }
             if (context instanceof TileService) {
+                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 ((TileService) context).startActivityAndCollapse(intent);
             } else {
                 context.startActivity(intent);
@@ -50,10 +59,10 @@ public class App extends Application {
         } else {
             if (delay > 0) {
                 mHandler.removeCallbacks(mScreenshotRunnable);
-                mScreenshotRunnable = new CountDownRunnable(delay);
+                mScreenshotRunnable = new CountDownRunnable(this, delay);
                 mHandler.post(mScreenshotRunnable);
             } else {
-                Utils.screenshot();
+                screenshot(this);
             }
             if (context instanceof TileService) {
                 // open a activity to collapse notification bar
@@ -67,19 +76,82 @@ public class App extends Application {
 
     private class CountDownRunnable implements Runnable {
         private int mCount;
+        private Context mContext;
 
-        public CountDownRunnable(int count) {
+        public CountDownRunnable(Context context, int count) {
             mCount = count;
+            mContext = context;
         }
 
         @Override
         public void run() {
             mCount--;
             if (mCount < 0) {
-                Utils.screenshot();
+                screenshot(mContext);
             } else {
                 mHandler.postDelayed(this, 1000);
             }
         }
     }
+
+
+    private static MediaProjection mediaProjection = null;
+    public static MediaProjectionManager mediaProjectionManager = null;
+
+    public static MediaProjection getMediaProjection() {
+        if(mediaProjection == null) {
+
+            if(screenshotPermission == null && ScreenshotTileService.Companion.getInstance() != null) {
+                screenshotPermission  =ScreenshotTileService.Companion.getInstance().getScreenshotPermission();
+            }
+
+            if(screenshotPermission == null) {
+                return null;
+            }
+
+            mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
+        }
+        return mediaProjection;
+    }
+
+    protected static void aquireScreenshotPermission(Context context) {
+
+        if(screenshotPermission == null && ScreenshotTileService.Companion.getInstance() != null) {
+            screenshotPermission = ScreenshotTileService.Companion.getInstance().getScreenshotPermission();
+        }
+
+
+
+        Log.v("aquireScreenshotPermission", "screenshotPermission="+screenshotPermission);
+        if (screenshotPermission != null) {
+            if(null != mediaProjection) {
+                mediaProjection.stop();
+                mediaProjection = null;
+            }
+            mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
+            Log.v("aquireScreenshotPermission", "mediaProjection="+mediaProjection);
+        } else {
+            Log.v("aquireScreenshotPermission", "openScreenshotPermissionRequester(context)");
+            openScreenshotPermissionRequester(context);
+        }
+    }
+
+    protected static void openScreenshotPermissionRequester(Context context){
+        final Intent intent = new Intent(context, AcquireScreenshotPermission.class);
+        intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(AcquireScreenshotPermission.EXTRA_REQUEST_PERMISSION, true);
+        context.startActivity(intent);
+    }
+
+
+    protected static void setScreenshotPermission(final Intent permissionIntent) {
+        screenshotPermission = permissionIntent;
+        if(ScreenshotTileService.Companion.getInstance() != null) {
+            ScreenshotTileService.Companion.getInstance().setScreenshotPermission(screenshotPermission);
+        }
+
+    }
+
+
+
 }

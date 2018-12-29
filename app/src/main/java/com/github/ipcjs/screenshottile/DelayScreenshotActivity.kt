@@ -51,7 +51,7 @@ class DelayScreenshotActivity : Activity() {
     }
 
     private fun screenshotAndFinish() {
-        Utils.screenshot()
+        screenshot(this)
         view.removeCallbacks(countDownRunnable)
         finish()
     }

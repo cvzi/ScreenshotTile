@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.service.quicksettings.TileService;
 
 import static com.github.ipcjs.screenshottile.Utils.p;
+import static com.github.ipcjs.screenshottile.UtilsKt.screenshot;
 
 public class NoDisplayActivity extends Activity {
 
@@ -31,7 +32,7 @@ public class NoDisplayActivity extends Activity {
         super.onCreate(savedInstanceState);
         p("NoDisplayActivity.onCreate");
         if (getIntent().getBooleanExtra(EXTRA_SCREENSHOT, false)) {
-            Utils.screenshot();
+            screenshot(this);
         }
         finish();
     }

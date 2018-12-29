@@ -14,6 +14,10 @@
     <string name="setting_delay_entry_5s">5s</string>
     <string name="show_count_down">Show count down</string>
 
+    <string name="file_tile">Screenshot</string>
+    <string name="file_description">Screenshot taken on %1$s</string>
+    <string name="file_description_simpledateformat">yyyy/MM/dd HH:mm:ss</string>
+
     <!-- translatable="false" -->
     <string name="setting_delay_value_default" translatable="false">0</string>
     <string-array name="setting_delay_entries" translatable="false">
