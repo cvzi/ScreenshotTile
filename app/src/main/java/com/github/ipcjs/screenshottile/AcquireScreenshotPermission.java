@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.media.projection.MediaProjectionManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
 import static com.github.ipcjs.screenshottile.App.setScreenshotPermission;
 
 
@@ -28,9 +30,13 @@ public class AcquireScreenshotPermission extends Activity {
             startActivityForResult(App.mediaProjectionManager.createScreenCaptureIntent(), 1);
         }
 
-        // Request WRITE_EXTERNAL_STORAGE permission:
-        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        requestPermissions(permissions, WRITE_REQUEST_CODE);
+        PackageManager pm = getPackageManager();
+        if (pm.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, getPackageName()) != PackageManager.PERMISSION_GRANTED) {
+            // Request WRITE_EXTERNAL_STORAGE permission:
+            String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            requestPermissions(permissions, WRITE_REQUEST_CODE);
+        }
+
     }
 
     @Override
@@ -65,6 +71,7 @@ public class AcquireScreenshotPermission extends Activity {
                 }
                 break;
         }
+        finish();
     }
 
 }

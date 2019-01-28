@@ -24,16 +24,14 @@
             android:name=".dialog.ContainerActivity"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
-            android:name=".SettingDialogActivity"
-            android:excludeFromRecents="true">
+            android:name=".SettingDialogActivity" android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES"/>
             </intent-filter>
         </activity>
         <activity android:name=".AcquireScreenshotPermission"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:excludeFromRecents="true"/>
         <activity android:name=".TakeScreenshotActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"

@@ -14,4 +14,5 @@
     <string name="setting_delay_entry_2s">2秒</string>
     <string name="setting_delay_entry_5s">5秒</string>
     <string name="show_count_down">显示倒计时</string>
+    <string name="file_title">截屏</string>
 </resources>
