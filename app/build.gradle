@@ -15,7 +15,7 @@ android {
     }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.github.ipcjs.screenshottile"
+        applicationId "com.github.cvzi.screenshottile"
         minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
@@ -58,7 +58,9 @@ android {
             }
         }
     }
-
+    buildToolsVersion '28.0.3'
+    productFlavors {
+    }
 }
 
 dependencies {
