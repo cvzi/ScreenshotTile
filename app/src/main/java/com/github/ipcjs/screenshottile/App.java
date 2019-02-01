@@ -10,9 +10,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.service.quicksettings.TileService;
-import android.util.Log;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static com.github.ipcjs.screenshottile.Utils.p;
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -126,20 +126,20 @@ public class App extends Application {
             screenshotPermission = ScreenshotTileService.Companion.getInstance().getScreenshotPermission();
         }
 
-        Log.v("App.aquireScreenshotPermission", "screenshotPermission="+screenshotPermission);
+        p("App.aquireScreenshotPermission screenshotPermission="+screenshotPermission);
         if (screenshotPermission != null) {
             if(null != mediaProjection) {
                 mediaProjection.stop();
                 mediaProjection = null;
             }
             mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
-            Log.v("App.aquireScreenshotPermission", "mediaProjection="+mediaProjection);
+            p("App.aquireScreenshotPermission mediaProjection="+mediaProjection);
             if(onAcquireScreenshotPermissionListener != null) {
                 onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission();
             }
 
         } else {
-            Log.v("App.aquireScreenshotPermission", "openScreenshotPermissionRequester(context)");
+            p( "App.aquireScreenshotPermission openScreenshotPermissionRequester(context)");
             openScreenshotPermissionRequester(context);
         }
     }

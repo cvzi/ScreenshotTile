@@ -7,9 +7,9 @@ import android.content.pm.PackageManager;
 import android.media.projection.MediaProjectionManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import static com.github.ipcjs.screenshottile.App.setScreenshotPermission;
+import static com.github.ipcjs.screenshottile.Utils.p;
 
 
 /**
@@ -23,7 +23,7 @@ public class AcquireScreenshotPermission extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.v("AcquireScreenshotPermission", "onCreate()");
+        p("AcquireScreenshotPermission onCreate()");
 
         if (getIntent().getBooleanExtra(EXTRA_REQUEST_PERMISSION, false)) {
             App.mediaProjectionManager = (MediaProjectionManager) getSystemService(MEDIA_PROJECTION_SERVICE);
@@ -42,15 +42,15 @@ public class AcquireScreenshotPermission extends Activity {
     @Override
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.v("onActivityResult", "called " + (Activity.RESULT_OK == resultCode));
+        p("onActivityResult called " + (Activity.RESULT_OK == resultCode));
         if (1 == requestCode) {
             if (Activity.RESULT_OK == resultCode) {
-                Log.v("AcquireScreenshotPermission", "RESULT_OK");
+                p("AcquireScreenshotPermission RESULT_OK");
                 setScreenshotPermission((Intent) data.clone());
             }
         } else if (Activity.RESULT_CANCELED == resultCode) {
             setScreenshotPermission(null);
-            Log.e("AcquireScreenshotPermission", "no access");
+            Log.e("AcquireScreenshotPermission","resultCode==RESULT_CANCELED");
         }
         finish();
     }
@@ -63,7 +63,7 @@ public class AcquireScreenshotPermission extends Activity {
             case WRITE_REQUEST_CODE:
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     //Granted.
-                    Log.v("AcquireScreenshotPermission", "WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED");
+                    p("AcquireScreenshotPermission WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED");
 
                 }
                 else{

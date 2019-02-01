@@ -15,12 +15,11 @@ import android.media.projection.MediaProjection
 import android.net.Uri
 import android.os.Build
 import android.util.DisplayMetrics
-import android.util.Log
 import android.view.Surface
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.App.getMediaProjection
 import android.os.StrictMode
-
+import com.github.ipcjs.screenshottile.Utils.p
 
 
 /**
@@ -34,7 +33,6 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     companion object {
         val NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN = "notification_channel_screenshot_taken";
         val SCREENSHOT_DIRECTORY = "Screenshots";
-        private val TAG = "ScreenshotTest"
 
         fun start(context: Context) {
             context.startActivity(newIntent(context))
@@ -79,7 +77,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
         if(!askedForPermission) {
             askedForPermission = true
-            Log.v(TAG, "TakeScreenshotActivity.onCreate() App.aquireScreenshotPermission()")
+            p("TakeScreenshotActivity.onCreate() App.aquireScreenshotPermission()")
             App.aquireScreenshotPermission(this, this@TakeScreenshotActivity)
         }
     }
@@ -104,12 +102,12 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
 
         if (mSurface == null) {
-            Log.v(TAG, "shareScreen() mSurface == null")
+            p("shareScreen() mSurface == null")
             finish()
             return
         }
         if (mMediaProjection == null) {
-            Log.v(TAG, "shareScreen() mMediaProjection == null")
+            p("shareScreen() mMediaProjection == null")
 
             Toast.makeText(
                     this,
@@ -117,24 +115,24 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             ).show()
             if(!askedForPermission) {
                 askedForPermission = true
-                Log.v(TAG, "shareScreen() App.aquireScreenshotPermission()")
+                p("shareScreen() App.aquireScreenshotPermission()")
                 App.aquireScreenshotPermission(this)
             }
             mMediaProjection = getMediaProjection()
 
             if (mMediaProjection == null) {
-                Log.v(TAG, "shareScreen() still: mMediaProjection == null")
+                p("shareScreen() still: mMediaProjection == null")
                 finish()
                 return
             }
         }
 
-        Log.v(TAG, "shareScreen() -> createVirtualDisplay()")
+        p("shareScreen() -> createVirtualDisplay()")
 
 
         mVirtualDisplay = createVirtualDisplay()
         mImageReader!!.setOnImageAvailableListener({
-            Log.v(TAG, "onImageAvailable()")
+            p("onImageAvailable()")
             // Remove listener, after first image
             it.setOnImageAvailableListener(null, null)
             // Read and save image
@@ -144,14 +142,14 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
     private fun saveImage() {
         if (mImageReader == null) {
-            Log.v(TAG, "saveImage() mImageReader is null")
+            p("saveImage() mImageReader is null")
             stopScreenSharing()
             finish()
             return
         }
         val image = mImageReader!!.acquireLatestImage()
         if(image == null) {
-            Log.v(TAG, "saveImage() image is null")
+            p("saveImage() image is null")
             Toast.makeText(
                     this,
                     getString(R.string.screenshot_forbidden), Toast.LENGTH_LONG
@@ -160,14 +158,14 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             finish()
             return
         }
-        Log.v(TAG, "saveImage() retrieved image")
+        p("saveImage() retrieved image")
 
 
         val pair = saveImageToFile(applicationContext, image, "Screenshot_")
         val imageFile = pair.first
         val bitmap = pair.second
 
-        Log.v(TAG, "saveImage() ${imageFile.absolutePath}")
+        p("saveImage() ${imageFile.absolutePath}")
 
         Toast.makeText(
             this,
