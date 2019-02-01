@@ -21,6 +21,9 @@
     <string name="notification_body">Click to see the image</string>
     <string name="notification_channel_description">Shows a notification when you have taken a screenshot</string>
     <string name="notitifaciton_app_chooser">Open file with...</string>
+    <string name="screenshot_forbidden">Screenshots are not allowed in this app</string>
+    <string name="screenshot_failed">Failed to take screenshot, please try again</string>
+    <string name="screenshot_file_saved">Screenshot saved %1$s</string>
 
     <!-- translatable="false" -->
     <string name="setting_delay_value_default" translatable="false">0</string>

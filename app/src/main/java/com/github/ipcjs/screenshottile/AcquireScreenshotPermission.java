@@ -45,12 +45,12 @@ public class AcquireScreenshotPermission extends Activity {
         Log.v("onActivityResult", "called " + (Activity.RESULT_OK == resultCode));
         if (1 == requestCode) {
             if (Activity.RESULT_OK == resultCode) {
+                Log.v("AcquireScreenshotPermission", "RESULT_OK");
                 setScreenshotPermission((Intent) data.clone());
             }
         } else if (Activity.RESULT_CANCELED == resultCode) {
             setScreenshotPermission(null);
             Log.e("AcquireScreenshotPermission", "no access");
-
         }
         finish();
     }

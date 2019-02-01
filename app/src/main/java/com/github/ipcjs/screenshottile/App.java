@@ -19,10 +19,12 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
  * Changes by cuzi (cuzi@openmail.cc)
  */
 
+
 public class App extends Application {
     private static App sInstance;
     private PrefManager mPrefManager;
     private static Intent screenshotPermission = null;
+    private static OnAcquireScreenshotPermissionListener onAcquireScreenshotPermissionListener = null;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -115,23 +117,29 @@ public class App extends Application {
     }
 
     protected static void aquireScreenshotPermission(Context context) {
+        aquireScreenshotPermission(context, null);
+    }
+    protected static void aquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener myOnAcquireScreenshotPermissionListener) {
+        onAcquireScreenshotPermissionListener = myOnAcquireScreenshotPermissionListener;
 
         if(screenshotPermission == null && ScreenshotTileService.Companion.getInstance() != null) {
             screenshotPermission = ScreenshotTileService.Companion.getInstance().getScreenshotPermission();
         }
 
-
-
-        Log.v("aquireScreenshotPermission", "screenshotPermission="+screenshotPermission);
+        Log.v("App.aquireScreenshotPermission", "screenshotPermission="+screenshotPermission);
         if (screenshotPermission != null) {
             if(null != mediaProjection) {
                 mediaProjection.stop();
                 mediaProjection = null;
             }
             mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
-            Log.v("aquireScreenshotPermission", "mediaProjection="+mediaProjection);
+            Log.v("App.aquireScreenshotPermission", "mediaProjection="+mediaProjection);
+            if(onAcquireScreenshotPermissionListener != null) {
+                onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission();
+            }
+
         } else {
-            Log.v("aquireScreenshotPermission", "openScreenshotPermissionRequester(context)");
+            Log.v("App.aquireScreenshotPermission", "openScreenshotPermissionRequester(context)");
             openScreenshotPermissionRequester(context);
         }
     }
@@ -148,8 +156,11 @@ public class App extends Application {
         screenshotPermission = permissionIntent;
         if(ScreenshotTileService.Companion.getInstance() != null) {
             ScreenshotTileService.Companion.getInstance().setScreenshotPermission(screenshotPermission);
+            if(onAcquireScreenshotPermissionListener != null) {
+                onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission();
+                onAcquireScreenshotPermissionListener = null;
+            }
         }
-
     }
 
 

@@ -14,13 +14,11 @@ import android.media.ImageReader
 import android.media.projection.MediaProjection
 import android.net.Uri
 import android.os.Build
-import android.os.Handler
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Surface
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.App.getMediaProjection
-import java.util.*
 import android.os.StrictMode
 
 
@@ -30,13 +28,12 @@ import android.os.StrictMode
  */
 
 
-class TakeScreenshotActivity : Activity() {
+class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener {
 
 
     companion object {
         val NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN = "notification_channel_screenshot_taken";
         val SCREENSHOT_DIRECTORY = "Screenshots";
-        private val SCREENSHOT_DELAY_MILLIS = 50;
         private val TAG = "ScreenshotTest"
 
         fun start(context: Context) {
@@ -64,7 +61,6 @@ class TakeScreenshotActivity : Activity() {
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         // Avoid android.os.FileUriExposedException
         val builder = StrictMode.VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
@@ -72,25 +68,24 @@ class TakeScreenshotActivity : Activity() {
 
         val metrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(metrics)
-        mScreenDensity = metrics.densityDpi
-        mScreenWidth = metrics.widthPixels
-        mScreenHeight = metrics.heightPixels
+        with(metrics) {
+            mScreenDensity = densityDpi
+            mScreenWidth = widthPixels
+            mScreenHeight = heightPixels
+        }
 
         mImageReader = ImageReader.newInstance(mScreenWidth, mScreenHeight, PixelFormat.RGBA_8888, 1)
         mSurface = mImageReader!!.surface
 
         if(!askedForPermission) {
             askedForPermission = true
-            App.aquireScreenshotPermission(this)
+            Log.v(TAG, "TakeScreenshotActivity.onCreate() App.aquireScreenshotPermission()")
+            App.aquireScreenshotPermission(this, this@TakeScreenshotActivity)
         }
     }
 
-    public override fun onStart() {
-        super.onStart()
-
-        Handler().postDelayed({
-            shareScreen()
-        }, 500)
+    override fun onAcquireScreenshotPermission() {
+        shareScreen()
     }
 
 
@@ -110,34 +105,59 @@ class TakeScreenshotActivity : Activity() {
 
         if (mSurface == null) {
             Log.v(TAG, "shareScreen() mSurface == null")
+            finish()
             return
         }
         if (mMediaProjection == null) {
             Log.v(TAG, "shareScreen() mMediaProjection == null")
+
+            Toast.makeText(
+                    this,
+                    getString(R.string.screenshot_failed), Toast.LENGTH_LONG
+            ).show()
             if(!askedForPermission) {
                 askedForPermission = true
+                Log.v(TAG, "shareScreen() App.aquireScreenshotPermission()")
                 App.aquireScreenshotPermission(this)
             }
-            return
+            mMediaProjection = getMediaProjection()
+
+            if (mMediaProjection == null) {
+                Log.v(TAG, "shareScreen() still: mMediaProjection == null")
+                finish()
+                return
+            }
         }
 
         Log.v(TAG, "shareScreen() -> createVirtualDisplay()")
 
 
         mVirtualDisplay = createVirtualDisplay()
-        Handler().postDelayed({
+        mImageReader!!.setOnImageAvailableListener({
+            Log.v(TAG, "onImageAvailable()")
+            // Remove listener, after first image
+            it.setOnImageAvailableListener(null, null)
+            // Read and save image
             saveImage()
-        }, SCREENSHOT_DELAY_MILLIS.toLong())
+        }, null)
     }
 
     private fun saveImage() {
         if (mImageReader == null) {
             Log.v(TAG, "saveImage() mImageReader is null")
+            stopScreenSharing()
+            finish()
             return
         }
         val image = mImageReader!!.acquireLatestImage()
         if(image == null) {
             Log.v(TAG, "saveImage() image is null")
+            Toast.makeText(
+                    this,
+                    getString(R.string.screenshot_forbidden), Toast.LENGTH_LONG
+            ).show()
+            stopScreenSharing()
+            finish()
             return
         }
         Log.v(TAG, "saveImage() retrieved image")
@@ -151,17 +171,21 @@ class TakeScreenshotActivity : Activity() {
 
         Toast.makeText(
             this,
-            "Screenshot saved ${imageFile.canonicalFile}", Toast.LENGTH_LONG
+            getString(R.string.screenshot_file_saved, imageFile.canonicalFile), Toast.LENGTH_LONG
         ).show()
 
 
+        // Create intent for notification click
         val path = Uri.fromFile(imageFile)
-        val intent = Intent(Intent.ACTION_VIEW)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        intent.setDataAndType(path, "image/png")
-
+        val intent = Intent(Intent.ACTION_VIEW).apply{
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            setDataAndType(path, "image/png")
+        }
+        val uniqueId = (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
         val chooser = Intent.createChooser(intent, getString(R.string.notitifaciton_app_chooser))
+        val pendingIntent = PendingIntent.getActivity(this@TakeScreenshotActivity, uniqueId, chooser, 0)
 
+        // Create notification
         var builder: Notification.Builder? = null
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -174,15 +198,12 @@ class TakeScreenshotActivity : Activity() {
                 setContentText(getString(R.string.notification_body))
                 setSmallIcon(R.drawable.ic_stat_name)
                 setLargeIcon(bitmap)
-                        setContentIntent(PendingIntent.getActivity(this@TakeScreenshotActivity, 0, chooser, 0))
+                        setContentIntent(pendingIntent)
                         setAutoCancel(true)
         }
 
-        val notificationId = Random().nextInt()
-
         with(getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager) {
-            // notificationId is a unique int for each notification that you must define
-            notify(notificationId, builder.build())
+            notify(uniqueId, builder.build())
         }
 
 

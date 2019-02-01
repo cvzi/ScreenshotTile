@@ -12,14 +12,33 @@
         android:summary="@string/setting_delay_entry_default"
         android:title="@string/title_delay"/>
 
-    <!--
+
+<Preference
+        android:key="pref_static_field_key"
+        android:selectable="false"
+        android:persistent="false"
+        android:title="About:"
+        android:summary="This is a fork of\ngithub.com/ipcjs/ScreenshotTile" />
+
     <Preference
         android:key="pref_static_field_key"
         android:selectable="false"
         android:persistent="false"
         android:title=""
-        android:summary="Multi line description
-ncan go here.
-right?"/>
--->
+        android:summary="This app still has some problems and is under development.\nIf you have root access on your phone, please use ipcjs's version, it's faster and more reliant."/>
+
+    <Preference
+        android:key="pref_static_field_key"
+        android:selectable="false"
+        android:persistent="false"
+        android:title=""
+        android:summary="For more information and bug reports visit:\ngithub.com/cvzi/ScreenshotTile"/>
+
+    <Preference
+        android:key="pref_static_field_key"
+        android:selectable="false"
+        android:persistent="false"
+        android:title="License"
+        android:summary="GNU GENERAL PUBLIC LICENSE Version 3" />
+
 </PreferenceScreen>
