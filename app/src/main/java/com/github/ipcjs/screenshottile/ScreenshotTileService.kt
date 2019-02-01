@@ -3,6 +3,7 @@ package com.github.ipcjs.screenshottile
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
+import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import com.github.ipcjs.screenshottile.Utils.p
 
@@ -19,6 +20,7 @@ class ScreenshotTileService : TileService() {
     }
 
     var screenshotPermission: Intent? = null
+    var takeScreenshotOnStopListening = false
 
     private val pref by lazy { PrefManager(this) }
 
@@ -29,6 +31,10 @@ class ScreenshotTileService : TileService() {
 
     override fun onTileAdded() {
         super.onTileAdded()
+
+        // qsTile.state = Tile.STATE_INACTIVE // TODO tile state should resemble current permission situation
+
+        App.aquireScreenshotPermission(this)
         p("onTileAdded")
     }
 
@@ -45,6 +51,12 @@ class ScreenshotTileService : TileService() {
     override fun onStopListening() {
         super.onStopListening()
         p("onStopListening")
+
+        // Here we can be sure that the notification panel has fully collapsed
+        if (takeScreenshotOnStopListening) {
+            takeScreenshotOnStopListening = false
+            App.getInstance().takeScreenshotFromTileService(this)
+        }
     }
 
     override fun onClick() {

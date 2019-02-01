@@ -50,23 +50,21 @@ public class AcquireScreenshotPermission extends Activity {
             }
         } else if (Activity.RESULT_CANCELED == resultCode) {
             setScreenshotPermission(null);
-            Log.e("AcquireScreenshotPermission","resultCode==RESULT_CANCELED");
+            Log.e("AcquireScreenshotPermission", "resultCode==RESULT_CANCELED");
         }
         finish();
     }
-
 
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case WRITE_REQUEST_CODE:
-                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     //Granted.
                     p("AcquireScreenshotPermission WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED");
 
-                }
-                else{
+                } else {
                     throw new RuntimeException("Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE");
                 }
                 break;
