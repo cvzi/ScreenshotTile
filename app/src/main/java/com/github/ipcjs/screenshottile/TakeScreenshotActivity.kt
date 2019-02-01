@@ -7,13 +7,16 @@ import android.app.PendingIntent
 import android.content.Context
 import android.os.Bundle
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.PixelFormat
 import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
+import android.icu.util.Calendar
 import android.media.ImageReader
 import android.media.projection.MediaProjection
 import android.net.Uri
 import android.os.Build
+import android.os.Handler
 import android.util.DisplayMetrics
 import android.view.Surface
 import android.widget.Toast
@@ -31,9 +34,10 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
 
     companion object {
-        val NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN = "notification_channel_screenshot_taken";
-        val SCREENSHOT_DIRECTORY = "Screenshots";
-
+        const val NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN = "notification_channel_screenshot_taken"
+        const val SCREENSHOT_DIRECTORY = "Screenshots"
+        const val NOTIFICATION_PREWVIEW_MIN_SIZE = 50
+        const val NOTIFICATION_PREWVIEW_MAX_SIZE = 400
         fun start(context: Context) {
             context.startActivity(newIntent(context))
         }
@@ -75,7 +79,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         mImageReader = ImageReader.newInstance(mScreenWidth, mScreenHeight, PixelFormat.RGBA_8888, 1)
         mSurface = mImageReader!!.surface
 
-        if(!askedForPermission) {
+        if (!askedForPermission) {
             askedForPermission = true
             p("TakeScreenshotActivity.onCreate() App.aquireScreenshotPermission()")
             App.aquireScreenshotPermission(this, this@TakeScreenshotActivity)
@@ -83,6 +87,12 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     }
 
     override fun onAcquireScreenshotPermission() {
+        /*
+        Handler().postDelayed({
+            // Wait so the notification area is really collapsed
+            shareScreen()
+         }, 350)
+        */
         shareScreen()
     }
 
@@ -113,7 +123,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                     this,
                     getString(R.string.screenshot_failed), Toast.LENGTH_LONG
             ).show()
-            if(!askedForPermission) {
+            if (!askedForPermission) {
                 askedForPermission = true
                 p("shareScreen() App.aquireScreenshotPermission()")
                 App.aquireScreenshotPermission(this)
@@ -148,7 +158,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             return
         }
         val image = mImageReader!!.acquireLatestImage()
-        if(image == null) {
+        if (image == null) {
             p("saveImage() image is null")
             Toast.makeText(
                     this,
@@ -163,19 +173,22 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
         val pair = saveImageToFile(applicationContext, image, "Screenshot_")
         val imageFile = pair.first
-        val bitmap = pair.second
+
+        // Resize bitmap to notification size
+        val bitmap = resizeToNotificationIcon(pair.second, mScreenDensity)
+        pair.second.recycle()
 
         p("saveImage() ${imageFile.absolutePath}")
 
         Toast.makeText(
-            this,
-            getString(R.string.screenshot_file_saved, imageFile.canonicalFile), Toast.LENGTH_LONG
+                this,
+                getString(R.string.screenshot_file_saved, imageFile.canonicalFile), Toast.LENGTH_LONG
         ).show()
 
 
         // Create intent for notification click
         val path = Uri.fromFile(imageFile)
-        val intent = Intent(Intent.ACTION_VIEW).apply{
+        val intent = Intent(Intent.ACTION_VIEW).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             setDataAndType(path, "image/png")
         }
@@ -184,7 +197,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         val pendingIntent = PendingIntent.getActivity(this@TakeScreenshotActivity, uniqueId, chooser, 0)
 
         // Create notification
-        var builder: Notification.Builder? = null
+        var builder: Notification.Builder?
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             builder = Notification.Builder(this, createNotificationScreenshotTakenChannel(this))
@@ -192,12 +205,14 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             builder = Notification.Builder(this)
         }
         with(builder) {
+            setWhen(Calendar.getInstance().getTimeInMillis())
+            setShowWhen(true)
             setContentTitle(getString(R.string.notification_title))
-                setContentText(getString(R.string.notification_body))
-                setSmallIcon(R.drawable.ic_stat_name)
-                setLargeIcon(bitmap)
-                        setContentIntent(pendingIntent)
-                        setAutoCancel(true)
+            setContentText(getString(R.string.notification_body))
+            setSmallIcon(R.drawable.ic_stat_name)
+            setLargeIcon(bitmap)
+            setContentIntent(pendingIntent)
+            setAutoCancel(true)
         }
 
         with(getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager) {
@@ -221,10 +236,10 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
     private fun createVirtualDisplay(): VirtualDisplay {
         return mMediaProjection!!.createVirtualDisplay(
-            "ScreenshotTaker",
-            mScreenWidth, mScreenHeight, mScreenDensity,
-            DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
-            mSurface, null, null
+                "ScreenshotTaker",
+                mScreenWidth, mScreenHeight, mScreenDensity,
+                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
+                mSurface, null, null
         )
 
     }

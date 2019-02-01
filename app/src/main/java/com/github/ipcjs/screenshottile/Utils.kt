@@ -13,11 +13,16 @@ import android.os.Build
 import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
+import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREWVIEW_MAX_SIZE
+import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREWVIEW_MIN_SIZE
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.max
+import kotlin.math.min
+
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.
@@ -29,16 +34,16 @@ fun screenshot(context: Context) {
 }
 
 
-fun imageToBitmap(image: Image) : Bitmap {
+fun imageToBitmap(image: Image): Bitmap {
     // Copy image content to new bitmap
-    val w = image.width + (image.planes[0].rowStride - image.planes[0].pixelStride * image.width ) / image.planes[0].pixelStride
+    val w = image.width + (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
     val h = image.height
     val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
     bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
     return Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
 }
 
-fun addImageToGallery(context: Context, filepath: String, title: String, description: String, mimeType: String="image/jpeg"): Uri {
+fun addImageToGallery(context: Context, filepath: String, title: String, description: String, mimeType: String = "image/jpeg"): Uri {
     // Add image file and information to media store
     val values = ContentValues()
     values.put(Images.Media.TITLE, title)
@@ -68,7 +73,7 @@ fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, 
     // Save image
     val bitmap = imageToBitmap(image)
     image.close()
-    val bytes =  ByteArrayOutputStream()
+    val bytes = ByteArrayOutputStream()
     bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes)
 
     imageFile.createNewFile()
@@ -104,6 +109,19 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
             notificationManager.createNotificationChannel(mChannel)
         }
     }
-    return  NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
+    return NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 }
+
+fun resizeToNotificationIcon(bitmap: Bitmap, mScreenDensity: Int): Bitmap {
+    val maxSize = (min(max(mScreenDensity / 2, NOTIFICATION_PREWVIEW_MIN_SIZE), NOTIFICATION_PREWVIEW_MAX_SIZE)).toDouble()
+
+    val ratioX = maxSize / bitmap.width
+    val ratioY = maxSize / bitmap.height
+    val ratio = min(ratioX, ratioY)
+    val newWidth = (bitmap.width * ratio).toInt()
+    val newHeight = (bitmap.height * ratio).toInt()
+
+    return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, false)
+}
+
 
