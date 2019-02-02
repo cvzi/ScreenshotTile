@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.media.projection.MediaProjectionManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import static com.github.ipcjs.screenshottile.App.setScreenshotPermission;
 import static com.github.ipcjs.screenshottile.Utils.p;
@@ -50,7 +51,11 @@ public class AcquireScreenshotPermission extends Activity {
             }
         } else if (Activity.RESULT_CANCELED == resultCode) {
             setScreenshotPermission(null);
-            Log.e("AcquireScreenshotPermission", "resultCode==RESULT_CANCELED");
+            Log.w("onActivityResult", "No Screencapture permssion: resultCode==RESULT_CANCELED");
+            Toast.makeText(
+                    this,
+                    getString(R.string.permission_missing_screen_capture), Toast.LENGTH_LONG
+            ).show();
         }
         finish();
     }
@@ -65,7 +70,11 @@ public class AcquireScreenshotPermission extends Activity {
                     p("AcquireScreenshotPermission WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED");
 
                 } else {
-                    throw new RuntimeException("Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE");
+                    Log.w("onRequestPermissionsResult","Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE");
+                    Toast.makeText(
+                            this,
+                            getString(R.string.permission_missing_external_storage), Toast.LENGTH_LONG
+                    ).show();
                 }
                 break;
         }
