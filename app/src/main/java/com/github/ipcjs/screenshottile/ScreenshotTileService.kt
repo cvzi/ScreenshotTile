@@ -14,7 +14,7 @@ import com.github.ipcjs.screenshottile.Utils.p
  */
 
 
-class ScreenshotTileService : TileService() {
+class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListener {
     companion object {
         var instance: ScreenshotTileService? = null
     }
@@ -32,11 +32,18 @@ class ScreenshotTileService : TileService() {
     override fun onTileAdded() {
         super.onTileAdded()
 
-        // qsTile.state = Tile.STATE_INACTIVE // TODO tile state should resemble current permission situation
+        qsTile.state = Tile.STATE_INACTIVE
 
-        App.aquireScreenshotPermission(this)
+        App.aquireScreenshotPermission(this, this)
         p("onTileAdded")
+        qsTile.updateTile()
     }
+
+    override fun onAcquireScreenshotPermission() {
+        qsTile.state = Tile.STATE_ACTIVE
+        qsTile.updateTile()
+    }
+
 
     override fun onTileRemoved() {
         super.onTileRemoved()
