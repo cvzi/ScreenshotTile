@@ -16,5 +16,7 @@ public class SettingDialogActivity extends Activity {
         if (savedInstanceState == null) {
             SettingDialogFragment.Companion.newInstance().show(getFragmentManager(), SettingDialogFragment.class.getName());
         }
+
+        App.aquireScreenshotPermission(this);
     }
 }
