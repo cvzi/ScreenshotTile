@@ -7,7 +7,6 @@ import android.app.PendingIntent
 import android.content.Context
 import android.os.Bundle
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.PixelFormat
 import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
@@ -16,7 +15,6 @@ import android.media.ImageReader
 import android.media.projection.MediaProjection
 import android.net.Uri
 import android.os.Build
-import android.os.Handler
 import android.util.DisplayMetrics
 import android.view.Surface
 import android.widget.Toast
@@ -162,7 +160,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             p("saveImage() image is null")
             Toast.makeText(
                     this,
-                    getString(R.string.screenshot_forbidden), Toast.LENGTH_LONG
+                    getString(R.string.screenshot_failed), Toast.LENGTH_LONG
             ).show()
             stopScreenSharing()
             finish()
@@ -193,7 +191,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             setDataAndType(path, "image/png")
         }
         val uniqueId = (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
-        val chooser = Intent.createChooser(intent, getString(R.string.notitifaciton_app_chooser))
+        val chooser = Intent.createChooser(intent, getString(R.string.notification_app_chooser))
         val pendingIntent = PendingIntent.getActivity(this@TakeScreenshotActivity, uniqueId, chooser, 0)
 
         // Create notification
