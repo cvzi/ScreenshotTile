@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">截屏瓷贴</string>
+    <string name="app_name">截屏瓷贴(不root)</string>
     <string name="tile_label">截屏</string>
-    <string name="dialog_obtain_root">获取Root权限失败</string>
-    <string name="dialog_obtain_root_message">%s 需要Root权限用来发送截屏的模拟按键</string>
-    <string name="dialog_reacquire">重新获取</string>
-    <string name="dialog_i_know">我知道了</string>
-    <string name="dialog_uninstall">卸载</string>
     <string name="title_delay">延时</string>
     <string name="more_setting">更多设置</string>
     <string name="setting_delay_entry_default">立即</string>
@@ -15,4 +10,12 @@
     <string name="setting_delay_entry_5s">5秒</string>
     <string name="show_count_down">显示倒计时</string>
     <string name="file_title">截屏</string>
+    <string name="file_description_simpledateformat">yyyy/MM/dd HH:mm:ss</string>
+    <string name="screenshot_failed">截屏失败</string>
+    <string name="notification_title">截屏成功</string>
+    <string name="screenshot_file_saved">截屏件已保存至 %1$s</string>
+    <string name="file_description">截屏 %1$s</string>
+    <string name="notification_app_chooser">開啟</string>
+    <string name="notification_body">輕觸即可查看您的截屏</string>
+    <string name="notification_channel_description">截屏通知功</string>
 </resources>

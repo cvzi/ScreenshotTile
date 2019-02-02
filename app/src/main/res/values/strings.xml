@@ -1,11 +1,6 @@
 <resources>
-    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Screenshot</string>
-    <string name="dialog_obtain_root">Failed to get root permission</string>
-    <string name="dialog_obtain_root_message">%s requires root permission to send screenshots of the analog keys</string>
-    <string name="dialog_reacquire">Reacquire</string>
-    <string name="dialog_i_know">I Know</string>
-    <string name="dialog_uninstall">Uninstall</string>
     <string name="title_delay">Delay</string>
     <string name="more_setting">More Settings</string>
     <string name="setting_delay_entry_default">Instant</string>
@@ -20,8 +15,7 @@
     <string name="notification_title">Screenshot taken</string>
     <string name="notification_body">Click to see the image</string>
     <string name="notification_channel_description">Shows a notification when you have taken a screenshot</string>
-    <string name="notitifaciton_app_chooser">Open file with...</string>
-    <string name="screenshot_forbidden">Screenshots are not allowed in this app</string>
+    <string name="notification_app_chooser">Open file with...</string>
     <string name="screenshot_failed">Failed to take screenshot, please try again</string>
     <string name="screenshot_file_saved">Screenshot saved %1$s</string>
 
@@ -41,6 +35,8 @@
     </string-array>
     <string name="pref_key_delay" translatable="false">delays_string</string>
     <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
+    <string name="permission_missing_external_storage">Failed to acquire permission for storage</string>
+    <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
 
 
 </resources>
