@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="setting_delay_entry_1s">1s</string>
+    <string name="setting_delay_entry_2s">2s</string>
+    <string name="setting_delay_entry_5s">5s</string>
+    <string name="file_description_simpledateformat">dd.MM.yyyy HH:mm:ss</string>
+    <string name="tile_label">Screenshot</string>
+    <string name="file_title">Screenshot</string>
+    <string name="file_description">Skjermbilde fra %1$s</string>
+    <string name="notification_title">Skjermbilde tatt</string>
+    <string name="notification_body">Trykk for å åpne skjermbilde</string>
+    <string name="notification_channel_description">Viser varsling hvis en skjermbilde var tatt</string>
+    <string name="notification_app_chooser">Åpne med...</string>
+    <string name="screenshot_file_saved">Skjermbilde lagret i %1$s</string>
+    <string name="screenshot_failed">Kunne ikke ta skjermbilde, prøv igjen</string>
+    <string name="setting_delay_entry_default">Øyeblikkelig</string>
+    <string name="more_setting">Flere innstillinger</string>
+    <string name="title_delay">Forsinkelsestid</string>
+    <string name="show_count_down">Vis countdown</string>
+    <string name="permission_missing_external_storage">Mislyktes å skaffe tillatelse for Lagring</string>
+    <string name="permission_missing_screen_capture">Mislyktes å skaffe tillatelse for å lage skjermbilder</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">Screenshot</string>
+    <string name="title_delay">Verzögerung</string>
+    <string name="more_setting">Mehr Einstellungen</string>
+    <string name="setting_delay_entry_default">Sofort</string>
+    <string name="setting_delay_entry_1s">1s</string>
+    <string name="setting_delay_entry_2s">2s</string>
+    <string name="setting_delay_entry_5s">5s</string>
+    <string name="show_count_down">Countdown anzeigen</string>
+    <string name="file_title">Screenshot</string>
+    <string name="file_description">Screenshot vom %1$s</string>
+    <string name="file_description_simpledateformat">dd.MM.yyyy HH:mm:ss</string>
+    <string name="notification_title">Screenshot aufgenommen</string>
+    <string name="notification_body">Screenshot öffnen</string>
+    <string name="notification_channel_description">Zeigt eine Benachrichtigung für jeden aufgenommenen Screenshot</string>
+    <string name="notification_app_chooser">Öffnen mit...</string>
+    <string name="screenshot_failed">Screenshot konnte nicht aufgenommen werden, versuche es bitte nochmal</string>
+    <string name="screenshot_file_saved">Screenshot gespeichert unter %1$s</string>
+    <string name="permission_missing_external_storage">Fehler bei der Berechtigung für den Internen Speicher</string>
+    <string name="permission_missing_screen_capture">Fehler bei der Berechtigung zum Aufnehmen des Bildschirminhalts</string>
+</resources>

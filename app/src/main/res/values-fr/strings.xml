@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="setting_delay_entry_1s">1s</string>
+    <string name="setting_delay_entry_2s">2s</string>
+    <string name="setting_delay_entry_5s">5s</string>
+    <string name="file_description_simpledateformat">dd/MM/yyyy HH:mm:ss</string>
+    <string name="tile_label">Capture d\'écran</string>
+    <string name="title_delay">Temporisation</string>
+    <string name="more_setting">Paramètres</string>
+    <string name="setting_delay_entry_default">"Tout de suite "</string>
+    <string name="show_count_down">Afficher le décompte</string>
+    <string name="file_description">Capture d\'écran %1$s</string>
+    <string name="file_title">Capture d\'écran</string>
+    <string name="screenshot_file_saved">Capture d\'écran enregistré dans %1$s</string>
+    <string name="screenshot_failed">Échec d\'enregistrement de capture d\'écran</string>
+    <string name="notification_body">Touchez pour ourvir image</string>
+    <string name="notification_channel_description">Afficher une notification quand un capture d\'écran a été pris</string>
+    <string name="notification_app_chooser">Ouvrir</string>
+    <string name="notification_title">Capture d\'écran prise</string>
+    <string name="permission_missing_external_storage">"Échoué à obtenir l’autorisation Stockage "</string>
+    <string name="permission_missing_screen_capture">Échoué à obtenir l’autorisation pour capturer d\'écran</string>
+</resources>

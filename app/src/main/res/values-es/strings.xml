@@ -7,7 +7,7 @@
     <string name="screenshot_failed">No se puede capturar una captura</string>
     <string name="tile_label">Captura de pantalla</string>
     <string name="more_setting">Mas ajustes</string>
-    <string name="file_description_simpledateformat">yyyy/MM/dd HH:mm:ss</string>
+    <string name="file_description_simpledateformat">dd/MM/yyyy HH:mm:ss</string>
     <string name="notification_channel_description">Monstrar notificationes de capturas de pantalla</string>
     <string name="file_description">Captura de pantalla creado %1$s</string>
     <string name="screenshot_file_saved">Captura de pantalla guardada %1$s</string>
@@ -18,4 +18,6 @@
     <string name="setting_delay_entry_default">Instantáneo</string>
     <string name="title_delay">Retraso</string>
     <string name="show_count_down">Monstrar count down</string>
+    <string name="permission_missing_external_storage">Error al obtener permiso para almacenamiento</string>
+    <string name="permission_missing_screen_capture">Error al obtener permiso para capturar pantalla</string>
 </resources>

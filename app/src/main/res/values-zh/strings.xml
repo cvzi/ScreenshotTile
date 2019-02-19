@@ -18,4 +18,6 @@
     <string name="notification_app_chooser">開啟</string>
     <string name="notification_body">輕觸即可查看您的截屏</string>
     <string name="notification_channel_description">截屏通知功</string>
+    <string name="permission_missing_external_storage">获取存储空间权限失败</string>
+    <string name="permission_missing_screen_capture">获取录制屏幕截图权限失败</string>
 </resources>
