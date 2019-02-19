@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">屏幕截图磁贴 (NoRoot)</string>
+    <string name="tile_label">屏幕截图</string>
+    <string name="title_delay">延时</string>
+    <string name="more_setting">更多设置</string>
+    <string name="setting_delay_entry_default">立即</string>
+    <string name="setting_delay_entry_1s">1 秒</string>
+    <string name="setting_delay_entry_2s">2 秒</string>
+    <string name="setting_delay_entry_5s">5 秒</string>
+    <string name="show_count_down">显示倒计时</string>
+
+    <string name="file_title">Screenshot</string>
+    <string name="file_description">Screenshot taken on %1$s</string>
+    <string name="file_description_simpledateformat">yyyy/MM/dd HH:mm:ss</string>
+    <string name="notification_title">已保存屏幕截图</string>
+    <string name="notification_body">点按即可查看您的屏幕截图</string>
+    <string name="notification_channel_description">屏幕截图后显示通知</string>
+    <string name="notification_app_chooser">打开文件 ...</string>
+    <string name="screenshot_failed">屏幕截图失败，请重试</string>
+    <string name="screenshot_file_saved">屏幕截图已保存至 %1$s</string>
+
+    <string name="permission_missing_external_storage">获取存储空间权限失败</string>
+    <string name="permission_missing_screen_capture">获取录制屏幕截图权限失败</string>
+
+
+</resources>
