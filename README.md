@@ -9,7 +9,7 @@ ScreenshotTile (NoRoot)
        src="https://f-droid.org/badge/get-it-on.png" />
 </a>
 
-Download APK file: [Version 1.0.0](https://github.com/cvzi/ScreenshotTile/releases/download/v1.0.0/com.github.cvzi.screenshottile_1.apk)
+Download APK file: [Version 1.0.1](https://github.com/cvzi/ScreenshotTile/releases/download/v1.0.1/com.github.cvzi.screenshottile_2.apk)
 
 
 Screenshot Tile for Android 7.0+ without requiring root access
