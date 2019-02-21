@@ -20,7 +20,6 @@ android {
         targetSdkVersion 28
         versionCode 2
         versionName "1.0.1"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -36,6 +35,7 @@ android {
     }
     // 2017-08-15 15:40:13 该方法在新版gradle中已失效...
     // 自动在debug版的app_name后加".debug"（兼容各种版本的as）
+    /*
     applicationVariants.all { variant ->// 遍历所有的variant
         if (variant.buildType.name.equals("debug")) {// 该variant的buildType是debug
             variant.mergeResources.doLast {// 合并完res后执行：
@@ -58,6 +58,7 @@ android {
             }
         }
     }
+*/
     buildToolsVersion '28.0.3'
     productFlavors {
     }
@@ -66,11 +67,4 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.1', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:1.10.19'
-    testImplementation 'org.powermock:powermock-api-mockito:1.6.4'
-    testImplementation 'org.powermock:powermock-module-junit4:1.6.4'
 }
