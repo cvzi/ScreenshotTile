@@ -11,12 +11,12 @@
     <string name="notification_body">לחץ להציג קובץ התמונה</string>
     <string name="notification_title">הצילום מסך נשמרה</string>
     <string name="notification_channel_description">מציג התראות לאחר צילום מסך</string>
-    <string name="screenshot_file_saved">" הצילום מסך נשמרה בתו %1$s"</string>
+    <string name="screenshot_file_saved">הצילום מסך נשמרה בתו %1$s</string>
     <string name="permission_missing_external_storage">אירעה שגיאה הרשאה שטח האחסון</string>
     <string name="permission_missing_screen_capture">אירעה שגיאה בעת קבלת הרשאה לתפוס את המסך</string>
     <string name="screenshot_failed">צילום מסך נכשל, נסה שוב</string>
     <string name="show_count_down">מציג ספירה לאחור</string>
-    <string name="file_description">צילום מסך</string>
+    <string name="file_description">%1$s צילום מסך</string>
     <string name="notification_app_chooser">פתח</string>
     <string name="setting_delay_entry_2s">2 שניות</string>
     <string name="setting_delay_entry_5s">5 שניות</string>
