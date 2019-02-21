@@ -22,8 +22,6 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     var screenshotPermission: Intent? = null
     var takeScreenshotOnStopListening = false
 
-    private val pref by lazy { PrefManager(this) }
-
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         instance = this;
@@ -31,15 +29,15 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
 
     override fun onTileAdded() {
         super.onTileAdded()
+        p("onTileAdded")
 
         qsTile.state = Tile.STATE_INACTIVE
-
-        App.aquireScreenshotPermission(this, this)
-        p("onTileAdded")
+        App.acquireScreenshotPermission(this, this)
         qsTile.updateTile()
     }
 
     override fun onAcquireScreenshotPermission() {
+        p("onAcquireScreenshotPermission")
         qsTile.state = Tile.STATE_ACTIVE
         qsTile.updateTile()
     }

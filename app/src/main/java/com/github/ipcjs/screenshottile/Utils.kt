@@ -2,16 +2,16 @@ package com.github.ipcjs.screenshottile
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.graphics.Bitmap
-import android.media.Image
-import android.provider.MediaStore
-import android.provider.MediaStore.Images
 import android.content.ContentValues
 import android.content.Context
+import android.graphics.Bitmap
+import android.media.Image
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
+import android.provider.MediaStore
+import android.provider.MediaStore.Images
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREWVIEW_MAX_SIZE
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREWVIEW_MIN_SIZE
@@ -28,14 +28,17 @@ import kotlin.math.min
  * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.
  */
 
-
+/**
+ * Start screenshot activity and take a screenshot
+ */
 fun screenshot(context: Context) {
     TakeScreenshotActivity.start(context)
 }
 
-
+/**
+ * Copy image content to new bitmap
+ */
 fun imageToBitmap(image: Image): Bitmap {
-    // Copy image content to new bitmap
     val w = image.width + (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
     val h = image.height
     val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
@@ -43,8 +46,10 @@ fun imageToBitmap(image: Image): Bitmap {
     return Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
 }
 
+/**
+ * Add image file and information to media store
+ */
 fun addImageToGallery(context: Context, filepath: String, title: String, description: String, mimeType: String = "image/jpeg"): Uri {
-    // Add image file and information to media store
     val values = ContentValues()
     values.put(Images.Media.TITLE, title)
     values.put(Images.Media.DESCRIPTION, description)
@@ -54,17 +59,20 @@ fun addImageToGallery(context: Context, filepath: String, title: String, descrip
     return context.getContentResolver().insert(Images.Media.EXTERNAL_CONTENT_URI, values)!!
 }
 
+/**
+ * New image file in default "Picture" directory
+ */
 fun createImageFile(filename: String): File {
-    // New image file in default "Picture" directory
     val storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)!!
     val screenshotDir = File(storageDir, TakeScreenshotActivity.SCREENSHOT_DIRECTORY)
     screenshotDir.mkdirs()
     return File(screenshotDir, filename)
 }
 
+/**
+ * Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss"
+ */
 fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, Bitmap> {
-    // Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss"
-
     val date = Date()
     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(date)
     val filename = "$prefix$timeStamp"
@@ -87,7 +95,9 @@ fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, 
     return Pair(imageFile, bitmap)
 }
 
-
+/**
+ * Create notification channel (if it does not exists) and return its name
+ */
 fun createNotificationScreenshotTakenChannel(context: Context): String {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
@@ -96,24 +106,27 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
 
         val notificationManager = context.getSystemService(NotificationManager::class.java) as NotificationManager
 
-        var mChannel = notificationManager.getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN)
-        if (mChannel == null) {
-            mChannel =
+        var channel = notificationManager.getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN)
+        if (channel == null) {
+            channel =
                     NotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN, channelName, NotificationManager.IMPORTANCE_LOW)
-            with(mChannel) {
+            with(channel) {
                 setDescription(channelDescription)
                 enableVibration(false)
                 enableLights(false)
                 setSound(null, null);
             }
-            notificationManager.createNotificationChannel(mChannel)
+            notificationManager.createNotificationChannel(channel)
         }
     }
     return NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 }
 
-fun resizeToNotificationIcon(bitmap: Bitmap, mScreenDensity: Int): Bitmap {
-    val maxSize = (min(max(mScreenDensity / 2, NOTIFICATION_PREWVIEW_MIN_SIZE), NOTIFICATION_PREWVIEW_MAX_SIZE)).toDouble()
+/**
+ * Create notification preview icon with appropriate size according to the device screen
+ */
+fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
+    val maxSize = (min(max(screenDensity / 2, NOTIFICATION_PREWVIEW_MIN_SIZE), NOTIFICATION_PREWVIEW_MAX_SIZE)).toDouble()
 
     val ratioX = maxSize / bitmap.width
     val ratioY = maxSize / bitmap.height

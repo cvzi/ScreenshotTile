@@ -15,7 +15,7 @@ class SettingFragment : PreferenceFragment() {
     val pref: SharedPreferences by lazy { preferenceManager.sharedPreferences }
     val prefManager by lazy { PrefManager(context, pref) }
 
-    private val prefListener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences: SharedPreferences?, key: String? ->
+    private val prefListener = SharedPreferences.OnSharedPreferenceChangeListener { _: SharedPreferences?, key: String? ->
         when (key) {
             getString(R.string.pref_key_delay) -> updateDelaySummary(prefManager.delay.toString())
         }

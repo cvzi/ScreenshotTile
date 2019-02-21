@@ -62,21 +62,19 @@ public class AcquireScreenshotPermission extends Activity {
 
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case WRITE_REQUEST_CODE:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    //Granted.
-                    p("AcquireScreenshotPermission WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED");
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (WRITE_REQUEST_CODE == requestCode) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //Granted.
+                p("AcquireScreenshotPermission WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED");
 
-                } else {
-                    Log.w("onRequestPermissionsResult","Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE");
-                    Toast.makeText(
-                            this,
-                            getString(R.string.permission_missing_external_storage), Toast.LENGTH_LONG
-                    ).show();
-                }
-                break;
+            } else {
+                Log.w("onRequestPermissionsResult", "Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE");
+                Toast.makeText(
+                        this,
+                        getString(R.string.permission_missing_external_storage), Toast.LENGTH_LONG
+                ).show();
+            }
         }
         finish();
     }
