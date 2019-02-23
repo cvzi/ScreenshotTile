@@ -10,6 +10,11 @@ android {
                 storePassword project.properties['keyStore.release.storePassword']
                 keyAlias project.properties['keyStore.release.keyAlias']
                 keyPassword project.properties['keyStore.release.keyPassword']
+            } else {
+                storeFile rootProject.file('mykey.jks')
+                storePassword 'password'
+                keyAlias 'key0'
+                keyPassword 'password'
             }
         }
     }
