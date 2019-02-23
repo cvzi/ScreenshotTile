@@ -12,6 +12,8 @@ import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
 import android.provider.MediaStore
 import android.provider.MediaStore.Images
+import android.text.TextUtils
+import android.util.Log
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREWVIEW_MAX_SIZE
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREWVIEW_MIN_SIZE
@@ -56,7 +58,7 @@ fun addImageToGallery(context: Context, filepath: String, title: String, descrip
     values.put(Images.Media.DATE_TAKEN, System.currentTimeMillis())
     values.put(Images.Media.MIME_TYPE, mimeType)
     values.put(MediaStore.MediaColumns.DATA, filepath)
-    return context.getContentResolver().insert(Images.Media.EXTERNAL_CONTENT_URI, values)!!
+    return context.contentResolver.insert(Images.Media.EXTERNAL_CONTENT_URI, values)!!
 }
 
 /**
@@ -136,5 +138,3 @@ fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
 
     return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, false)
 }
-
-

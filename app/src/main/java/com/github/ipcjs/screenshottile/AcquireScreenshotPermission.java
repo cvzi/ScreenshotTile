@@ -65,9 +65,7 @@ public class AcquireScreenshotPermission extends Activity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (WRITE_REQUEST_CODE == requestCode) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //Granted.
                 p("AcquireScreenshotPermission WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED");
-
             } else {
                 Log.w("onRequestPermissionsResult", "Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE");
                 Toast.makeText(

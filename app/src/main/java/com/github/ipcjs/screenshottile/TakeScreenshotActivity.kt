@@ -36,6 +36,10 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         const val SCREENSHOT_DIRECTORY = "Screenshots"
         const val NOTIFICATION_PREWVIEW_MIN_SIZE = 50
         const val NOTIFICATION_PREWVIEW_MAX_SIZE = 400
+
+        /**
+         * Start activity
+         */
         fun start(context: Context) {
             context.startActivity(newIntent(context))
         }
@@ -73,7 +77,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         }
 
         imageReader = ImageReader.newInstance(screenWidth, screenHeight, PixelFormat.RGBA_8888, 1)
-        surface = imageReader!!.surface
+        surface = imageReader?.surface
 
         if (!askedForPermission) {
             askedForPermission = true
@@ -89,19 +93,19 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             shareScreen()
          }, 350)
         */
-        shareScreen()
+        prepareForScreensharing()
     }
 
 
     public override fun onDestroy() {
         super.onDestroy()
         if (mediaProjection != null) {
-            mediaProjection!!.stop()
+            mediaProjection?.stop()
             mediaProjection = null
         }
     }
 
-    private fun shareScreen() {
+    private fun prepareForScreensharing() {
         screenSharing = true
 
         mediaProjection = getMediaProjection()
@@ -132,9 +136,12 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                 return
             }
         }
+        startVirtualDisplay()
+    }
 
+    private fun startVirtualDisplay() {
         virtualDisplay = createVirtualDisplay()
-        imageReader!!.setOnImageAvailableListener({
+        imageReader?.setOnImageAvailableListener({
             p("onImageAvailable()")
             // Remove listener, after first image
             it.setOnImageAvailableListener(null, null)
@@ -150,7 +157,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             finish()
             return
         }
-        val image = imageReader!!.acquireLatestImage()
+        val image = imageReader?.acquireLatestImage()
         stopScreenSharing()
         if (image == null) {
             p("saveImage() image == null")
@@ -218,10 +225,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
     private fun stopScreenSharing() {
         screenSharing = false
-        if (virtualDisplay == null) {
-            return
-        }
-        virtualDisplay!!.release()
+        virtualDisplay?.release()
     }
 
     private fun createVirtualDisplay(): VirtualDisplay {

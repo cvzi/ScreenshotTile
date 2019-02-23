@@ -16,14 +16,10 @@ import kotlinx.android.synthetic.main.activity_delay.*
 class DelayScreenshotActivity : Activity() {
     companion object {
         const val EXTRA_DELAY = "delay"
-        fun start(ctx: Context, delay: Int) {
-            ctx.startActivity(newIntent(ctx, delay))
-        }
 
-        fun startAndCollapse(ts: TileService, delay: Int) {
-            ts.startActivityAndCollapse(newIntent(ts, delay))
-        }
-
+        /**
+         * Get intent
+         */
         fun newIntent(ctx: Context, delay: Int): Intent {
             val intent = Intent(ctx, DelayScreenshotActivity::class.java)
             intent.putExtra(EXTRA_DELAY, delay)

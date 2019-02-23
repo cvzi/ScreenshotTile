@@ -10,6 +10,9 @@ import android.os.Bundle
 
 class ContainerActivity : TransparentContainerActivity() {
     companion object {
+        /**
+         * Start activity
+         */
         fun start(ctx: Context, fclass: Class<out Fragment>, args: Bundle? = null) {
             ctx.startActivity(newIntent(ctx, ContainerActivity::class.java, fclass, args))
         }

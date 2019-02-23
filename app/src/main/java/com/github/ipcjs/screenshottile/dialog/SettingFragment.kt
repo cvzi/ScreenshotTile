@@ -11,9 +11,9 @@ import com.github.ipcjs.screenshottile.R
  * Created by ipcjs on 2017/8/17.
  */
 class SettingFragment : PreferenceFragment() {
-    val delayPref by lazy { findPreference(getString(R.string.pref_key_delay)) as ListPreference }
-    val pref: SharedPreferences by lazy { preferenceManager.sharedPreferences }
-    val prefManager by lazy { PrefManager(context, pref) }
+    private val delayPref by lazy { findPreference(getString(R.string.pref_key_delay)) as ListPreference }
+    private val pref: SharedPreferences by lazy { preferenceManager.sharedPreferences }
+    private val prefManager by lazy { PrefManager(context, pref) }
 
     private val prefListener = SharedPreferences.OnSharedPreferenceChangeListener { _: SharedPreferences?, key: String? ->
         when (key) {

@@ -13,18 +13,11 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
     private val pref by lazy { PrefManager(context) }
 
     companion object {
+        /**
+         * Return new instance
+         */
         fun newInstance(): SettingDialogFragment {
             return SettingDialogFragment()
-        }
-
-        fun which2delay(which: Int): Int {
-            return when (which) {
-                0 -> 0
-                1 -> 1
-                2 -> 2
-                3 -> 5
-                else -> 0
-            }
         }
     }
 

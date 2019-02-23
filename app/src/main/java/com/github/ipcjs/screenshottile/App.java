@@ -34,6 +34,10 @@ public class App extends Application {
         return instance;
     }
 
+    /**
+     * Create and return MediaProjection from stored permission
+     * @return
+     */
     public static MediaProjection getMediaProjection() {
         if (mediaProjection == null) {
 
@@ -50,10 +54,19 @@ public class App extends Application {
         return mediaProjection;
     }
 
+    /**
+     * Acquire screenshot permission
+     * @param context Context
+     */
     protected static void acquireScreenshotPermission(Context context) {
         acquireScreenshotPermission(context, null);
     }
 
+    /**
+     * Acquire screenshot permission, call listener on positive result
+     * @param context Context
+     * @param myOnAcquireScreenshotPermissionListener Callback object
+     */
     protected static void acquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener myOnAcquireScreenshotPermissionListener) {
         onAcquireScreenshotPermissionListener = myOnAcquireScreenshotPermissionListener;
 
@@ -79,6 +92,10 @@ public class App extends Application {
         }
     }
 
+    /**
+     * Open new activity that asks for the permission
+     * @param context Context
+     */
     protected static void openScreenshotPermissionRequester(Context context) {
         final Intent intent = new Intent(context, AcquireScreenshotPermission.class);
         intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
@@ -86,6 +103,10 @@ public class App extends Application {
         context.startActivity(intent);
     }
 
+    /**
+     * Store screenshot permission
+     * @param permissionIntent Permission
+     */
     protected static void setScreenshotPermission(final Intent permissionIntent) {
         screenshotPermission = permissionIntent;
         if (ScreenshotTileService.Companion.getInstance() != null) {
@@ -115,48 +136,57 @@ public class App extends Application {
      * If called from TileService: collapse the notification panel, the screenshot will then be
      * taken by TileService.onStopListening() when the panel is collapsed
      *
-     * @param context
+     * @param context Context
      */
     public void screenshot(Context context) {
-        int delay = prefManager.getDelay();
         if (prefManager.getShowCountDown()) {
-            Intent intent;
-            if (delay > 0) {
-                intent = DelayScreenshotActivity.Companion.newIntent(context, delay);
-            } else {
-                intent = NoDisplayActivity.newIntent(context, false);
-            }
+            screenshotShowCountdown(context);
+        } else {
+            screenshotHiddenCountdown(context);
+        }
+    }
+
+    private void screenshotShowCountdown(Context context) {
+        int delay = prefManager.getDelay();
+        Intent intent;
+        if (delay > 0) {
+            intent = DelayScreenshotActivity.Companion.newIntent(context, delay);
+        } else {
+            intent = NoDisplayActivity.newIntent(context, false);
+        }
+        if (context instanceof TileService) {
+            ((ScreenshotTileService) context).setTakeScreenshotOnStopListening(true);
+            intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+            ((TileService) context).startActivityAndCollapse(intent);
+        } else {
+            context.startActivity(intent);
+        }
+    }
+
+    private void screenshotHiddenCountdown(Context context) {
+        int delay = prefManager.getDelay();
+        if (delay > 0) {
+            handler.removeCallbacks(screenshotRunnable);
+            screenshotRunnable = new CountDownRunnable(this, delay);
+            handler.post(screenshotRunnable);
+        } else {
             if (context instanceof TileService) {
+                // open a activity to collapse notification bar
                 ((ScreenshotTileService) context).setTakeScreenshotOnStopListening(true);
+                Intent intent = NoDisplayActivity.newIntent(context, false);
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 ((TileService) context).startActivityAndCollapse(intent);
             } else {
-                context.startActivity(intent);
+                screenshot(this);
             }
-        } else {
-            if (delay > 0) {
-                handler.removeCallbacks(screenshotRunnable);
-                screenshotRunnable = new CountDownRunnable(this, delay);
-                handler.post(screenshotRunnable);
-            } else {
-                if (context instanceof TileService) {
-                    // open a activity to collapse notification bar
-                    ((ScreenshotTileService) context).setTakeScreenshotOnStopListening(true);
-                    Intent intent = NoDisplayActivity.newIntent(context, false);
-                    intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-                    ((TileService) context).startActivityAndCollapse(intent);
-                } else {
-                    screenshot(this);
-                }
 
-            }
         }
     }
 
     /**
-     * Start new activity from tile service
+     * Start new activity from tile service.
      *
-     * @param context
+     * @param context Context
      */
     public void takeScreenshotFromTileService(TileService context) {
         Intent intent = NoDisplayActivity.newIntent(context, true);
