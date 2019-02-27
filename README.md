@@ -9,4 +9,8 @@ ScreenshotTile (NoRoot)
 
 Screenshot Tile for Android 7.0+ without requiring root access
 
+Video:
+
+[![Video screenshot](/app/src/main/youtube.png)](https://www.youtube.com/watch?v=PX6pVvfYRH0)
+
 Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTile)
