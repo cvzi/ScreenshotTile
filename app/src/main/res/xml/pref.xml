@@ -3,42 +3,42 @@
     <SwitchPreference
         android:defaultValue="true"
         android:key="@string/pref_key_show_count_down"
-        android:title="@string/show_count_down"/>
+        android:title="@string/show_count_down" />
     <ListPreference
         android:defaultValue="@string/setting_delay_value_default"
         android:entries="@array/setting_delay_entries"
         android:entryValues="@array/setting_delay_values"
         android:key="@string/pref_key_delay"
         android:summary="@string/setting_delay_entry_default"
-        android:title="@string/title_delay"/>
+        android:title="@string/title_delay" />
 
-
-<Preference
-        android:key="pref_static_field_key"
-        android:selectable="false"
-        android:persistent="false"
-        android:title="About:"
-        android:summary="This is a fork of\ngithub.com/ipcjs/ScreenshotTile" />
 
     <Preference
         android:key="pref_static_field_key"
-        android:selectable="false"
         android:persistent="false"
-        android:title=""
-        android:summary="This app still has some problems and is under development.\nIf you have root access on your phone, please use ipcjs's version, it's faster and more reliant."/>
+        android:selectable="false"
+        android:summary="This is a fork of\ngithub.com/ipcjs/ScreenshotTile"
+        android:title="About:" />
 
     <Preference
         android:key="pref_static_field_key"
-        android:selectable="false"
         android:persistent="false"
-        android:title=""
-        android:summary="For more information and bug reports visit:\ngithub.com/cvzi/ScreenshotTile"/>
+        android:selectable="false"
+        android:summary="This app still has some problems and is under development.\nIf you have root access on your phone, please use ipcjs's version, it's faster and more reliant."
+        android:title="" />
 
     <Preference
         android:key="pref_static_field_key"
-        android:selectable="false"
         android:persistent="false"
-        android:title="License"
-        android:summary="GNU GENERAL PUBLIC LICENSE Version 3" />
+        android:selectable="false"
+        android:summary="For more information and bug reports visit:\ngithub.com/cvzi/ScreenshotTile"
+        android:title="" />
+
+    <Preference
+        android:key="pref_static_field_key"
+        android:persistent="false"
+        android:selectable="false"
+        android:summary="GNU GENERAL PUBLIC LICENSE Version 3"
+        android:title="License" />
 
 </PreferenceScreen>

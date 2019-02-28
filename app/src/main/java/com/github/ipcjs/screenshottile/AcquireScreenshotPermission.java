@@ -51,7 +51,7 @@ public class AcquireScreenshotPermission extends Activity {
             }
         } else if (Activity.RESULT_CANCELED == resultCode) {
             setScreenshotPermission(null);
-            Log.w("onActivityResult", "No Screencapture permssion: resultCode==RESULT_CANCELED");
+            Log.w("onActivityResult", "No screen capture permission: resultCode==RESULT_CANCELED");
             Toast.makeText(
                     this,
                     getString(R.string.permission_missing_screen_capture), Toast.LENGTH_LONG
@@ -60,9 +60,9 @@ public class AcquireScreenshotPermission extends Activity {
         finish();
     }
 
-
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @androidx.annotation.NonNull String[] permissions, @androidx.annotation.NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (WRITE_REQUEST_CODE == requestCode) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 p("AcquireScreenshotPermission WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED");
@@ -76,5 +76,4 @@ public class AcquireScreenshotPermission extends Activity {
         }
         finish();
     }
-
 }

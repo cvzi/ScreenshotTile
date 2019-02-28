@@ -24,7 +24,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
-        instance = this;
+        instance = this
     }
 
     override fun onTileAdded() {

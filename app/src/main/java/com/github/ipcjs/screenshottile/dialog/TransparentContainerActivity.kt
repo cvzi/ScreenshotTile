@@ -6,7 +6,6 @@ import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.service.quicksettings.TileService
 
 /**
  * Created by ipcjs on 2017/8/16.
