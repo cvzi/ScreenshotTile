@@ -59,9 +59,11 @@ public class App extends Application {
      * Acquire screenshot permission, call listener on positive result
      *
      * @param context Context
-     * @param onAcquireScreenshotPermissionListener Callback object
+     * @param myOnAcquireScreenshotPermissionListener Callback object
      */
-    protected static void acquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener onAcquireScreenshotPermissionListener) {
+    protected static void acquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener myOnAcquireScreenshotPermissionListener) {
+        onAcquireScreenshotPermissionListener = myOnAcquireScreenshotPermissionListener;
+
         if (screenshotPermission == null && ScreenshotTileService.Companion.getInstance() != null) {
             screenshotPermission = ScreenshotTileService.Companion.getInstance().getScreenshotPermission();
         }

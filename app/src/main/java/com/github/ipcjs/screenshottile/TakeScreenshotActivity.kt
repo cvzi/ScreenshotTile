@@ -93,9 +93,9 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             shareScreen()
          }, 350)
         */
+        ScreenshotTileService.instance?.onAcquireScreenshotPermission()
         prepareForScreenSharing()
     }
-
 
     public override fun onDestroy() {
         super.onDestroy()
