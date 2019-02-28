@@ -34,8 +34,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     companion object {
         const val NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN = "notification_channel_screenshot_taken"
         const val SCREENSHOT_DIRECTORY = "Screenshots"
-        const val NOTIFICATION_PREWVIEW_MIN_SIZE = 50
-        const val NOTIFICATION_PREWVIEW_MAX_SIZE = 400
+        const val NOTIFICATION_PREVIEW_MIN_SIZE = 50
+        const val NOTIFICATION_PREVIEW_MAX_SIZE = 400
 
         /**
          * Start activity
@@ -93,7 +93,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             shareScreen()
          }, 350)
         */
-        prepareForScreensharing()
+        prepareForScreenSharing()
     }
 
 
@@ -105,12 +105,9 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         }
     }
 
-    private fun prepareForScreensharing() {
+    private fun prepareForScreenSharing() {
         screenSharing = true
-
         mediaProjection = getMediaProjection()
-
-
         if (surface == null) {
             p("shareScreen() surface == null")
             finish()
@@ -118,18 +115,13 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         }
         if (mediaProjection == null) {
             p("shareScreen() mediaProjection == null")
-
-            Toast.makeText(
-                    this,
-                    getString(R.string.screenshot_failed), Toast.LENGTH_LONG
-            ).show()
+            screenShotFailedToast()
             if (!askedForPermission) {
                 askedForPermission = true
                 p("App.acquireScreenshotPermission() in shareScreen()")
-                App.acquireScreenshotPermission(this)
+                App.acquireScreenshotPermission(this, this)
             }
             mediaProjection = getMediaProjection()
-
             if (mediaProjection == null) {
                 p("shareScreen() mediaProjection == null")
                 finish()
@@ -161,27 +153,18 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         stopScreenSharing()
         if (image == null) {
             p("saveImage() image == null")
-            Toast.makeText(
-                    this,
-                    getString(R.string.screenshot_failed), Toast.LENGTH_LONG
-            ).show()
+            screenShotFailedToast()
             finish()
             return
         }
-
         val pair = saveImageToFile(applicationContext, image, "Screenshot_")
         val imageFile = pair.first
-
         p("saveImage() imageFile.absolutePath= ${imageFile.absolutePath}")
-
         Toast.makeText(
                 this,
                 getString(R.string.screenshot_file_saved, imageFile.canonicalFile), Toast.LENGTH_LONG
         ).show()
-
         createNotification(Uri.fromFile(imageFile), resizeToNotificationIcon(pair.second, screenDensity))
-
-        //onBackPressed()
         finish()
     }
 
@@ -189,24 +172,17 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
      * Show a notification that opens the image file on tap
      */
     private fun createNotification(path: Uri, bitmap: Bitmap) {
-        // Create intent for notification click
-        val intent = Intent(Intent.ACTION_VIEW).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-            setDataAndType(path, "image/png")
-        }
         val uniqueId = (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
-        val chooser = Intent.createChooser(intent, getString(R.string.notification_app_chooser))
-        val pendingIntent = PendingIntent.getActivity(this, uniqueId, chooser, 0)
-
+        val pendingIntent = openImageIntent(path, uniqueId)
         // Create notification
-        var builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             Notification.Builder(this, createNotificationScreenshotTakenChannel(this))
         } else {
+            @Suppress("DEPRECATION")
             Notification.Builder(this)
         }
-
         with(builder) {
-            setWhen(Calendar.getInstance().getTimeInMillis())
+            setWhen(Calendar.getInstance().timeInMillis)
             setShowWhen(true)
             setContentTitle(getString(R.string.notification_title))
             setContentText(getString(R.string.notification_body))
@@ -215,13 +191,11 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             setContentIntent(pendingIntent)
             setAutoCancel(true)
         }
-
         // Show notification
         with(getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager) {
             notify(uniqueId, builder.build())
         }
     }
-
 
     private fun stopScreenSharing() {
         screenSharing = false
@@ -236,6 +210,23 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                 surface, null, null
         )
 
+    }
+
+    private fun screenShotFailedToast() {
+        Toast.makeText(
+                this,
+                getString(R.string.screenshot_failed), Toast.LENGTH_LONG
+        ).show()
+    }
+
+    private fun openImageIntent(path: Uri, uniqueId: Int): PendingIntent {
+        // Create intent for notification click
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            setDataAndType(path, "image/png")
+        }
+        val chooser = Intent.createChooser(intent, getString(R.string.notification_app_chooser))
+        return PendingIntent.getActivity(this, uniqueId, chooser, 0)
     }
 }
 

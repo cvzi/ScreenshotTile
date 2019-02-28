@@ -26,8 +26,8 @@ public class App extends Application {
     private static Intent screenshotPermission = null;
     private static OnAcquireScreenshotPermissionListener onAcquireScreenshotPermissionListener = null;
     private static MediaProjection mediaProjection = null;
+    private final Handler handler = new Handler(Looper.getMainLooper());
     private PrefManager prefManager;
-    private Handler handler = new Handler(Looper.getMainLooper());
     private Runnable screenshotRunnable;
 
     public static App getInstance() {
@@ -36,7 +36,8 @@ public class App extends Application {
 
     /**
      * Create and return MediaProjection from stored permission
-     * @return
+     *
+     * @return MediaProjection if permission was granted or null
      */
     public static MediaProjection getMediaProjection() {
         if (mediaProjection == null) {
@@ -55,21 +56,12 @@ public class App extends Application {
     }
 
     /**
-     * Acquire screenshot permission
-     * @param context Context
-     */
-    protected static void acquireScreenshotPermission(Context context) {
-        acquireScreenshotPermission(context, null);
-    }
-
-    /**
      * Acquire screenshot permission, call listener on positive result
+     *
      * @param context Context
-     * @param myOnAcquireScreenshotPermissionListener Callback object
+     * @param onAcquireScreenshotPermissionListener Callback object
      */
-    protected static void acquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener myOnAcquireScreenshotPermissionListener) {
-        onAcquireScreenshotPermissionListener = myOnAcquireScreenshotPermissionListener;
-
+    protected static void acquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener onAcquireScreenshotPermissionListener) {
         if (screenshotPermission == null && ScreenshotTileService.Companion.getInstance() != null) {
             screenshotPermission = ScreenshotTileService.Companion.getInstance().getScreenshotPermission();
         }
@@ -94,9 +86,10 @@ public class App extends Application {
 
     /**
      * Open new activity that asks for the permission
+     *
      * @param context Context
      */
-    protected static void openScreenshotPermissionRequester(Context context) {
+    private static void openScreenshotPermissionRequester(Context context) {
         final Intent intent = new Intent(context, AcquireScreenshotPermission.class);
         intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(AcquireScreenshotPermission.EXTRA_REQUEST_PERMISSION, true);
@@ -105,9 +98,10 @@ public class App extends Application {
 
     /**
      * Store screenshot permission
+     *
      * @param permissionIntent Permission
      */
-    protected static void setScreenshotPermission(final Intent permissionIntent) {
+    static void setScreenshotPermission(final Intent permissionIntent) {
         screenshotPermission = permissionIntent;
         if (ScreenshotTileService.Companion.getInstance() != null) {
             ScreenshotTileService.Companion.getInstance().setScreenshotPermission(screenshotPermission);
@@ -195,10 +189,10 @@ public class App extends Application {
     }
 
     private class CountDownRunnable implements Runnable {
+        private final Context ctx;
         private int count;
-        private Context ctx;
 
-        public CountDownRunnable(Context context, int count) {
+        CountDownRunnable(Context context, int count) {
             this.count = count;
             ctx = context;
         }
