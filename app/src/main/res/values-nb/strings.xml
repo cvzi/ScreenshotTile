@@ -11,7 +11,7 @@
     <string name="notification_title">Skjermbilde tatt</string>
     <string name="notification_body">Trykk for å åpne skjermbilde</string>
     <string name="notification_channel_description">Viser varsling hvis en skjermbilde var tatt</string>
-    <string name="notification_app_chooser">Åpne med...</string>
+    <string name="notification_app_chooser">Åpne med…</string>
     <string name="screenshot_file_saved">Skjermbilde lagret i %1$s</string>
     <string name="screenshot_failed">Kunne ikke ta skjermbilde, prøv igjen</string>
     <string name="setting_delay_entry_default">Øyeblikkelig</string>

@@ -15,7 +15,7 @@
     <string name="notification_title">Screenshot aufgenommen</string>
     <string name="notification_body">Screenshot öffnen</string>
     <string name="notification_channel_description">Zeigt eine Benachrichtigung für jeden aufgenommenen Screenshot</string>
-    <string name="notification_app_chooser">Öffnen mit...</string>
+    <string name="notification_app_chooser">Öffnen mit…</string>
     <string name="screenshot_failed">Screenshot konnte nicht aufgenommen werden, versuche es bitte nochmal</string>
     <string name="screenshot_file_saved">Screenshot gespeichert unter %1$s</string>
     <string name="permission_missing_external_storage">Fehler bei der Berechtigung für den Internen Speicher</string>

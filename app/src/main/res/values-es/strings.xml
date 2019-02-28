@@ -11,7 +11,7 @@
     <string name="notification_channel_description">Monstrar notificationes de capturas de pantalla</string>
     <string name="file_description">Captura de pantalla creado %1$s</string>
     <string name="screenshot_file_saved">Captura de pantalla guardada %1$s</string>
-    <string name="notification_app_chooser">Abrir imágen con...</string>
+    <string name="notification_app_chooser">Abrir imagen con…</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
