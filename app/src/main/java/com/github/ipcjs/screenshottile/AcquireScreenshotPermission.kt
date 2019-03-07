@@ -2,6 +2,7 @@ package com.github.ipcjs.screenshottile
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.projection.MediaProjectionManager
@@ -14,53 +15,77 @@ import com.github.ipcjs.screenshottile.Utils.p
 
 
 /**
- * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.
+ * Created by cuzi (cuzi@openmail.cc) on 2019/03/05.
  */
 
 class AcquireScreenshotPermission : Activity() {
+    companion object {
+        const val EXTRA_REQUEST_PERMISSION_SCREENSHOT = "extra_request_permission_screenshot"
+        const val EXTRA_REQUEST_PERMISSION_STORAGE = "extra_request_permission_storage"
+        private const val SCREENSHOT_REQUEST_CODE = 4552
+        private const val WRITE_REQUEST_CODE = 12345
+    }
 
-    public override fun onCreate(savedInstanceState: Bundle?) {
+    private var askedForStoragePermission = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        p("AcquireScreenshotPermission onCreate()")
 
-        if (intent.getBooleanExtra(EXTRA_REQUEST_PERMISSION, false)) {
-            App.mediaProjectionManager = getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
-            startActivityForResult(App.mediaProjectionManager.createScreenCaptureIntent(), 1)
+        // If asked for storage permission, start taking a screenshot on success
+        if (intent.getBooleanExtra(EXTRA_REQUEST_PERMISSION_STORAGE, false)) {
+            askedForStoragePermission = true
         }
 
-        val pm = packageManager
-        if (pm.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, packageName) != PackageManager.PERMISSION_GRANTED) {
-            // Request WRITE_EXTERNAL_STORAGE permission:
+        // Request storage permission (if missing)
+        if (packageManager.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, packageName) != PackageManager.PERMISSION_GRANTED) {
             val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             requestPermissions(permissions, WRITE_REQUEST_CODE)
         }
 
+        // Request screenshot permission
+        if (intent.getBooleanExtra(EXTRA_REQUEST_PERMISSION_SCREENSHOT, false)) {
+            (getSystemService(Context.MEDIA_PROJECTION_SERVICE) as? MediaProjectionManager)?.apply {
+                App.setMediaProjectionManager(this)
+                startActivityForResult(createScreenCaptureIntent(), SCREENSHOT_REQUEST_CODE)
+            }
+        }
     }
 
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    /**
+     * Screenshot permission result
+     */
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         p("onActivityResult called " + (Activity.RESULT_OK == resultCode))
-        if (1 == requestCode) {
+        if (SCREENSHOT_REQUEST_CODE == requestCode) {
             if (Activity.RESULT_OK == resultCode) {
                 p("AcquireScreenshotPermission RESULT_OK")
-                setScreenshotPermission(data.clone() as Intent)
+                data?.run {
+                    setScreenshotPermission(data.clone() as Intent)
+                }
+            } else {
+                setScreenshotPermission(null)
+                Log.w("onActivityResult", "No screen capture permission: resultCode==$resultCode")
+                Toast.makeText(
+                        this,
+                        getString(R.string.permission_missing_screen_capture), Toast.LENGTH_LONG
+                ).show()
             }
-        } else if (Activity.RESULT_CANCELED == resultCode) {
-            setScreenshotPermission(null)
-            Log.w("onActivityResult", "No screen capture permission: resultCode==RESULT_CANCELED")
-            Toast.makeText(
-                    this,
-                    getString(R.string.permission_missing_screen_capture), Toast.LENGTH_LONG
-            ).show()
         }
         finish()
     }
 
+    /**
+     * Storage permission result
+     */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (WRITE_REQUEST_CODE == requestCode) {
-            if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 p("AcquireScreenshotPermission WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED")
+                if (askedForStoragePermission) {
+                    App.getInstance().screenshot(this)
+                }
             } else {
                 Log.w("onRequestPermissionsResult", "Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE")
                 Toast.makeText(
@@ -70,11 +95,5 @@ class AcquireScreenshotPermission : Activity() {
             }
         }
         finish()
-    }
-
-    companion object {
-
-        val EXTRA_REQUEST_PERMISSION = "extra_request_permission"
-        private val WRITE_REQUEST_CODE = 12345
     }
 }
