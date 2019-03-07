@@ -20,4 +20,9 @@
     <string name="show_count_down">Monstrar count down</string>
     <string name="permission_missing_external_storage">Error al obtener permiso para almacenamiento</string>
     <string name="permission_missing_screen_capture">Error al obtener permiso para capturar pantalla</string>
+    <string name="notification_share_screenshot">Compartir</string>
+    <string name="notification_delete_screenshot">Eliminar</string>
+    <string name="screenshot_delete_failed">No se pudo eliminar la imagen</string>
+    <string name="screenshot_deleted">Imagen borrada</string>
+    <string name="notification_app_chooser_share">Compartir imagen con…</string>
 </resources>

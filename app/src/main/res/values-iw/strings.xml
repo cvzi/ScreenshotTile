@@ -20,4 +20,9 @@
     <string name="notification_app_chooser">פתח</string>
     <string name="setting_delay_entry_2s">2 שניות</string>
     <string name="setting_delay_entry_5s">5 שניות</string>
+    <string name="notification_delete_screenshot">מחיקה</string>
+    <string name="notification_share_screenshot">שיתוף</string>
+    <string name="notification_app_chooser_share">שתף עם</string>
+    <string name="screenshot_deleted">צילום מסך נמחק</string>
+    <string name="screenshot_delete_failed">לא ניתן למחוק את הקובץ</string>
 </resources>

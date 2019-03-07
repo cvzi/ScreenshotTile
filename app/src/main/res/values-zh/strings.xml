@@ -20,4 +20,9 @@
     <string name="notification_channel_description">截屏通知功</string>
     <string name="permission_missing_external_storage">获取存储空间权限失败</string>
     <string name="permission_missing_screen_capture">获取录制屏幕截图权限失败</string>
+    <string name="screenshot_delete_failed">无法删除</string>
+    <string name="notification_share_screenshot">分享</string>
+    <string name="notification_delete_screenshot">删除</string>
+    <string name="screenshot_deleted">删除成功</string>
+    <string name="notification_app_chooser_share">分享</string>
 </resources>

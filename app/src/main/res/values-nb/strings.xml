@@ -20,4 +20,9 @@
     <string name="show_count_down">Vis countdown</string>
     <string name="permission_missing_external_storage">Mislyktes å skaffe tillatelse for Lagring</string>
     <string name="permission_missing_screen_capture">Mislyktes å skaffe tillatelse for å lage skjermbilder</string>
+    <string name="notification_delete_screenshot">Slett</string>
+    <string name="notification_share_screenshot">Del</string>
+    <string name="notification_app_chooser_share">Del med…</string>
+    <string name="screenshot_deleted">Skjermbildet slettet</string>
+    <string name="screenshot_delete_failed">Mislyktes å slette bildet</string>
 </resources>

@@ -1,10 +1,16 @@
 package com.github.ipcjs.screenshottile
 
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.drawable.Icon
+import android.icu.util.Calendar
 import android.media.Image
 import android.net.Uri
 import android.os.Build
@@ -12,6 +18,7 @@ import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
 import android.provider.MediaStore
 import android.provider.MediaStore.Images
+import android.util.Log
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MAX_SIZE
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MIN_SIZE
@@ -104,13 +111,11 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
         val channelName = context.getString(R.string.notification_title)
         val channelDescription = context.getString(R.string.notification_channel_description)
 
-        val notificationManager = context.getSystemService(NotificationManager::class.java) as NotificationManager
+        val notificationManager = context.applicationContext.getSystemService(NotificationManager::class.java) as NotificationManager
 
         var channel = notificationManager.getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN)
         if (channel == null) {
-            channel =
-                    NotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN, channelName, NotificationManager.IMPORTANCE_LOW)
-            with(channel) {
+            channel = NotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN, channelName, NotificationManager.IMPORTANCE_LOW).apply {
                 description = channelDescription
                 enableVibration(false)
                 enableLights(false)
@@ -135,4 +140,143 @@ fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
     val newHeight = (bitmap.height * ratio).toInt()
 
     return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, false)
+}
+
+/**
+ * Show a notification that opens the image file on tap
+ */
+fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
+    val appContext = context.applicationContext
+
+    val uniqueId = (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
+
+    val contentPendingIntent = PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent(appContext, path), 0)
+
+    // Create notification
+    val builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        Notification.Builder(appContext, createNotificationScreenshotTakenChannel(appContext))
+    } else {
+        @Suppress("DEPRECATION")
+        Notification.Builder(appContext)
+    }
+    with(builder) {
+        setWhen(Calendar.getInstance().timeInMillis)
+        setShowWhen(true)
+        setContentTitle(appContext.getString(R.string.notification_title))
+        setContentText(appContext.getString(R.string.notification_body))
+        setSmallIcon(R.drawable.ic_stat_name)
+        setLargeIcon(bitmap)
+        setContentIntent(contentPendingIntent)
+        setAutoCancel(true)
+    }
+
+    val icon = Icon.createWithResource(appContext, R.drawable.ic_stat_name) // This is not shown on Android 7+ anyways so let's just use the app icon
+
+    val deleteIntent = deleteImageIntent(path, uniqueId)
+    val pendingIntentDelete = PendingIntent.getBroadcast(appContext, uniqueId + 2, deleteIntent, 0)
+    val notificationActionDelete = Notification.Action.Builder(icon, appContext.getString(R.string.notification_delete_screenshot), pendingIntentDelete).build()
+    builder.addAction(notificationActionDelete)
+
+    val shareIntent = shareImageIntent(path, uniqueId)
+    val pendingIntentShare = PendingIntent.getBroadcast(appContext, uniqueId + 3, shareIntent, 0)
+    val notificationActionShare = Notification.Action.Builder(icon, appContext.getString(R.string.notification_share_screenshot), pendingIntentShare).build()
+    builder.addAction(notificationActionShare)
+    App.registerNotificationReceiver()
+
+    // Show notification
+    (appContext.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.apply {
+        notify(uniqueId, builder.build())
+    }
+}
+
+/**
+ * Intent to share image
+ */
+fun shareImageIntent(path: Uri, notificationId: Int): Intent {
+    val shareIntent = Intent()
+    shareIntent.action = NOTIFICATION_ACTION_SHARE
+    shareIntent.putExtra(NOTIFICATION_ACTION_DATA_URI, path.toString())
+    shareIntent.putExtra(NOTIFICATION_ACTION_ID, notificationId)
+    return shareIntent
+}
+
+/**
+ * Intent to delete image
+ */
+fun deleteImageIntent(path: Uri, notificationId: Int): Intent {
+    val deleteIntent = Intent()
+    deleteIntent.action = NOTIFICATION_ACTION_DELETE
+    deleteIntent.putExtra(NOTIFICATION_ACTION_DATA_URI, path.toString())
+    deleteIntent.putExtra(NOTIFICATION_ACTION_ID, notificationId)
+    return deleteIntent
+}
+
+/**
+ * Intent to open share chooser
+ */
+fun shareImageChooserIntent(context: Context, path: Uri): Intent {
+    Intent(Intent.ACTION_SEND).apply {
+        type = "image/png"
+        putExtra(Intent.EXTRA_STREAM, path)
+        return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_share))
+    }
+}
+
+/**
+ * Intent to open image file on notification tap
+ */
+fun openImageIntent(context: Context, path: Uri): Intent {
+    // Create intent for notification click
+    return Intent(Intent.ACTION_VIEW).apply {
+        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        setDataAndType(path, "image/png")
+    }
+}
+
+/**
+ * Cancel a notification
+ */
+fun hideNotification(context: Context, notificationId: Int) {
+    (context.applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.apply {
+        cancel(notificationId)
+    }
+}
+
+/**
+ * Delete image from file system and from MediaStore
+ * Returns false if the file could not be deleted from file system,
+ * otherwise true even if deleting from Media Store failed
+ */
+fun deleteImage(context: Context, file: File): Boolean {
+    if (!file.exists()) {
+        Log.w("Screenshot", "File does not exist: ${file.absoluteFile}")
+        return false
+    }
+
+    if (!file.canWrite()) {
+        Log.w("Screenshot", "File is not writable: ${file.absoluteFile}")
+        return false
+    }
+
+    if (file.delete()) {
+        Utils.p("File deleted from storage: ${file.absoluteFile}")
+        val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        val projection = arrayOf(MediaStore.Images.Media._ID)
+        val selection = MediaStore.Images.Media.DATA + " = ?"
+        val queryArgs = arrayOf(file.absolutePath)
+        context.contentResolver.query(uri, projection, selection, queryArgs, null)?.apply {
+            if (moveToFirst()) {
+                val id = getLong(getColumnIndexOrThrow(MediaStore.Images.Media._ID))
+                val contentUri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+                context.contentResolver.delete(contentUri, null, null)
+                Utils.p("File deleted from MediaStore: $contentUri")
+            }
+            close()
+        }
+    } else {
+        Log.w("Screenshot", "Could not delete file: ${file.absoluteFile}")
+        return false
+    }
+
+    return true
 }

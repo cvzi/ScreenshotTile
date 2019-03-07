@@ -8,7 +8,6 @@
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
     <string name="show_count_down">Show count down</string>
-
     <string name="file_title">Screenshot</string>
     <string name="file_description">Screenshot taken on %1$s</string>
     <string name="file_description_simpledateformat">yyyy/MM/dd HH:mm:ss</string>
@@ -16,8 +15,15 @@
     <string name="notification_body">Click to see the image</string>
     <string name="notification_channel_description">Shows a notification when you have taken a screenshot</string>
     <string name="notification_app_chooser">Open file with…</string>
+    <string name="notification_app_chooser_share">Share file with…</string>
     <string name="screenshot_failed">Failed to take screenshot, please try again</string>
     <string name="screenshot_file_saved">Screenshot saved %1$s</string>
+    <string name="notification_delete_screenshot">Delete</string>
+    <string name="notification_share_screenshot">Share</string>
+    <string name="screenshot_deleted">Screenshot deleted</string>
+    <string name="screenshot_delete_failed">Could not delete file</string>
+    <string name="permission_missing_external_storage">Failed to acquire permission for storage</string>
+    <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
 
     <!-- translatable="false" -->
     <string name="setting_delay_value_default" translatable="false">0</string>
@@ -35,8 +41,4 @@
     </string-array>
     <string name="pref_key_delay" translatable="false">delays_string</string>
     <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
-    <string name="permission_missing_external_storage">Failed to acquire permission for storage</string>
-    <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
-
-
 </resources>
