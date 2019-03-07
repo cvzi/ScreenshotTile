@@ -16,7 +16,7 @@ class DelayScreenshotActivity : Activity() {
         const val EXTRA_DELAY = "delay"
 
         /**
-         * Get intent
+         * Get intent.
          */
         fun newIntent(ctx: Context, delay: Int): Intent {
             val intent = Intent(ctx, DelayScreenshotActivity::class.java)

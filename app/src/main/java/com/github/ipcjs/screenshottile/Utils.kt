@@ -43,7 +43,7 @@ fun screenshot(context: Context) {
 }
 
 /**
- * Copy image content to new bitmap
+ * Copy image content to new bitmap.
  */
 fun imageToBitmap(image: Image): Bitmap {
     val w = image.width + (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
@@ -54,7 +54,7 @@ fun imageToBitmap(image: Image): Bitmap {
 }
 
 /**
- * Add image file and information to media store
+ * Add image file and information to media store.
  */
 fun addImageToGallery(context: Context, filepath: String, title: String, description: String, mimeType: String = "image/jpeg"): Uri {
     val values = ContentValues()
@@ -67,7 +67,7 @@ fun addImageToGallery(context: Context, filepath: String, title: String, descrip
 }
 
 /**
- * New image file in default "Picture" directory
+ * New image file in default "Picture" directory.
  */
 fun createImageFile(filename: String): File {
     val storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)!!
@@ -77,7 +77,7 @@ fun createImageFile(filename: String): File {
 }
 
 /**
- * Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss"
+ * Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss".
  */
 fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, Bitmap> {
     val date = Date()
@@ -103,7 +103,7 @@ fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, 
 }
 
 /**
- * Create notification channel (if it does not exists) and return its name
+ * Create notification channel (if it does not exists) and return its name.
  */
 fun createNotificationScreenshotTakenChannel(context: Context): String {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -128,7 +128,7 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
 }
 
 /**
- * Create notification preview icon with appropriate size according to the device screen
+ * Create notification preview icon with appropriate size according to the device screen.
  */
 fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
     val maxSize = (min(max(screenDensity / 2, NOTIFICATION_PREVIEW_MIN_SIZE), NOTIFICATION_PREVIEW_MAX_SIZE)).toDouble()
@@ -143,7 +143,7 @@ fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
 }
 
 /**
- * Show a notification that opens the image file on tap
+ * Show a notification that opens the image file on tap.
  */
 fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
     val appContext = context.applicationContext
@@ -172,15 +172,15 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
 
     val icon = Icon.createWithResource(appContext, R.drawable.ic_stat_name) // This is not shown on Android 7+ anyways so let's just use the app icon
 
-    val deleteIntent = deleteImageIntent(path, uniqueId)
+    val deleteIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_DELETE)
     val pendingIntentDelete = PendingIntent.getBroadcast(appContext, uniqueId + 2, deleteIntent, 0)
-    val notificationActionDelete = Notification.Action.Builder(icon, appContext.getString(R.string.notification_delete_screenshot), pendingIntentDelete).build()
-    builder.addAction(notificationActionDelete)
+    builder.addAction(Notification.Action.Builder(icon, appContext.getString(R.string.notification_delete_screenshot), pendingIntentDelete).build())
 
-    val shareIntent = shareImageIntent(path, uniqueId)
+    val shareIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_SHARE)
     val pendingIntentShare = PendingIntent.getBroadcast(appContext, uniqueId + 3, shareIntent, 0)
-    val notificationActionShare = Notification.Action.Builder(icon, appContext.getString(R.string.notification_share_screenshot), pendingIntentShare).build()
-    builder.addAction(notificationActionShare)
+    builder.addAction(Notification.Action.Builder(icon, appContext.getString(R.string.notification_share_screenshot), pendingIntentShare).build())
+
+    // Listen for action buttons clicks
     App.registerNotificationReceiver()
 
     // Show notification
@@ -190,29 +190,18 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
 }
 
 /**
- * Intent to share image
+ * Intent for notification action button.
  */
-fun shareImageIntent(path: Uri, notificationId: Int): Intent {
-    val shareIntent = Intent()
-    shareIntent.action = NOTIFICATION_ACTION_SHARE
-    shareIntent.putExtra(NOTIFICATION_ACTION_DATA_URI, path.toString())
-    shareIntent.putExtra(NOTIFICATION_ACTION_ID, notificationId)
-    return shareIntent
+fun actionButtonIntent(path: Uri, notificationId: Int, intentAction: String): Intent {
+    return Intent().apply {
+        action = intentAction
+        putExtra(NOTIFICATION_ACTION_DATA_URI, path.toString())
+        putExtra(NOTIFICATION_ACTION_ID, notificationId)
+    }
 }
 
 /**
- * Intent to delete image
- */
-fun deleteImageIntent(path: Uri, notificationId: Int): Intent {
-    val deleteIntent = Intent()
-    deleteIntent.action = NOTIFICATION_ACTION_DELETE
-    deleteIntent.putExtra(NOTIFICATION_ACTION_DATA_URI, path.toString())
-    deleteIntent.putExtra(NOTIFICATION_ACTION_ID, notificationId)
-    return deleteIntent
-}
-
-/**
- * Intent to open share chooser
+ * Intent to open share chooser.
  */
 fun shareImageChooserIntent(context: Context, path: Uri): Intent {
     Intent(Intent.ACTION_SEND).apply {
@@ -223,7 +212,7 @@ fun shareImageChooserIntent(context: Context, path: Uri): Intent {
 }
 
 /**
- * Intent to open image file on notification tap
+ * Intent to open image file on notification tap.
  */
 fun openImageIntent(context: Context, path: Uri): Intent {
     // Create intent for notification click
@@ -234,7 +223,7 @@ fun openImageIntent(context: Context, path: Uri): Intent {
 }
 
 /**
- * Cancel a notification
+ * Cancel a notification.
  */
 fun hideNotification(context: Context, notificationId: Int) {
     (context.applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.apply {
@@ -243,7 +232,7 @@ fun hideNotification(context: Context, notificationId: Int) {
 }
 
 /**
- * Delete image from file system and from MediaStore
+ * Delete image from file system and from MediaStore.
  * Returns false if the file could not be deleted from file system,
  * otherwise true even if deleting from Media Store failed
  */

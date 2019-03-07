@@ -33,7 +33,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         const val NOTIFICATION_PREVIEW_MAX_SIZE = 400
 
         /**
-         * Start activity
+         * Start activity.
          */
         fun start(context: Context) {
             context.startActivity(newIntent(context))

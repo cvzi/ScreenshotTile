@@ -15,6 +15,11 @@ const val NOTIFICATION_ACTION_DELETE = "NOTIFICATION_ACTION_DELETE"
 const val NOTIFICATION_ACTION_DATA_URI = "NOTIFICATION_ACTION_DATA_URI"
 const val NOTIFICATION_ACTION_ID = "NOTIFICATION_ACTION_ID"
 
+/**
+ * Handles notification action buttons.
+ *
+ * Created by cuzi (cuzi@openmail.cc) on 2019/03/07.
+ */
 class NotificationActionReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
@@ -30,7 +35,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     val shareIntent = shareImageChooserIntent(this, path)
                     shareIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
 
-                    if(ScreenshotTileService.instance != null) {
+                    if (ScreenshotTileService.instance != null) {
                         ScreenshotTileService.instance?.startActivityAndCollapse(shareIntent)
                     } else {
                         startActivity(shareIntent)

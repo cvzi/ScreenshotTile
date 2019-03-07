@@ -52,7 +52,7 @@ class AcquireScreenshotPermission : Activity() {
     }
 
     /**
-     * Screenshot permission result
+     * Screenshot permission result.
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -61,7 +61,9 @@ class AcquireScreenshotPermission : Activity() {
             if (Activity.RESULT_OK == resultCode) {
                 p("AcquireScreenshotPermission RESULT_OK")
                 data?.run {
-                    setScreenshotPermission(data.clone() as Intent)
+                    (data.clone() as? Intent)?.apply {
+                        setScreenshotPermission(this)
+                    }
                 }
             } else {
                 setScreenshotPermission(null)
@@ -76,7 +78,7 @@ class AcquireScreenshotPermission : Activity() {
     }
 
     /**
-     * Storage permission result
+     * Storage permission result.
      */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

@@ -67,7 +67,7 @@ public class App extends Application {
     }
 
     /**
-     * Create and return MediaProjection from stored permission
+     * Create and return MediaProjection from stored permission.
      *
      * @return MediaProjection if permission was granted or null
      */
@@ -85,7 +85,7 @@ public class App extends Application {
     }
 
     /**
-     * Acquire screenshot permission, call listener on positive result
+     * Acquire screenshot permission, call listener on positive result.
      *
      * @param context                                 Context
      * @param myOnAcquireScreenshotPermissionListener Callback object
@@ -116,7 +116,7 @@ public class App extends Application {
     }
 
     /**
-     * Open new activity that asks for the permission
+     * Open new activity that asks for the permission.
      *
      * @param context Context
      */
@@ -128,7 +128,7 @@ public class App extends Application {
     }
 
     /**
-     * Store screenshot permission
+     * Store screenshot permission.
      *
      * @param permissionIntent Permission
      */
@@ -144,7 +144,7 @@ public class App extends Application {
     }
 
     /**
-     * Open new activity that asks for the storage permission
+     * Open new activity that asks for the storage permission.
      *
      * @param context Context
      */
@@ -170,9 +170,10 @@ public class App extends Application {
     }
 
     /**
+     * Take a screenshot.
      * If called from other activity: take a screenshot
      * If called from TileService: collapse the notification panel, the screenshot will then be
-     * taken by TileService.onStopListening() when the panel is collapsed
+     * taken by TileService.onStopListening() when the panel is collapsed.
      *
      * @param context Context
      */

@@ -8,7 +8,7 @@ import com.github.ipcjs.screenshottile.Utils.p
 
 
 /**
- * Created by ipcjs
+ * Created by ipcjs.
  * Changes by cuzi (cuzi@openmail.cc)
  */
 
