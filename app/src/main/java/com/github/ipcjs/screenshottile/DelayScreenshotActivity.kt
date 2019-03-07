@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.github.ipcjs.screenshottile.Utils.p
 import kotlinx.android.synthetic.main.activity_delay.*
 
 /**
@@ -53,17 +52,11 @@ class DelayScreenshotActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        p("DelayScreenshotActivity.onCreate")
         setContentView(R.layout.activity_delay)
         count = intent.getIntExtra(EXTRA_DELAY, count)
         view.setOnClickListener {
             postScreenshotAndFinish()
         }
         view.post(countDownRunnable)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        p("DelayScreenshotActivity.onDestroy")
     }
 }

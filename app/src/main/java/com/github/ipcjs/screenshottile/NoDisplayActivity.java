@@ -21,16 +21,12 @@ public class NoDisplayActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        p("NoDisplayActivity.onCreate");
         if (getIntent().getBooleanExtra(EXTRA_SCREENSHOT, false)) {
+            p("NoDisplayActivity.onCreate EXTRA_SCREENSHOT=true");
             screenshot(this);
+        } else {
+            p("NoDisplayActivity.onCreate EXTRA_SCREENSHOT=false");
         }
         finish();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        p("NoDisplayActivity.onDestroy");
     }
 }
