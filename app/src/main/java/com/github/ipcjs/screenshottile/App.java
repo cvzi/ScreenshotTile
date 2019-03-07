@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.os.Handler;
@@ -12,6 +13,8 @@ import android.preference.PreferenceManager;
 import android.service.quicksettings.TileService;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static com.github.ipcjs.screenshottile.NotificationActionReceiverKt.NOTIFICATION_ACTION_DELETE;
+import static com.github.ipcjs.screenshottile.NotificationActionReceiverKt.NOTIFICATION_ACTION_SHARE;
 import static com.github.ipcjs.screenshottile.Utils.p;
 
 /**
@@ -21,11 +24,12 @@ import static com.github.ipcjs.screenshottile.Utils.p;
 
 
 public class App extends Application {
-    public static MediaProjectionManager mediaProjectionManager = null;
+    private static MediaProjectionManager mediaProjectionManager = null;
     private static App instance;
     private static Intent screenshotPermission = null;
     private static OnAcquireScreenshotPermissionListener onAcquireScreenshotPermissionListener = null;
     private static MediaProjection mediaProjection = null;
+    private static volatile boolean receiverRegistered = false;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private PrefManager prefManager;
     private Runnable screenshotRunnable;
@@ -34,22 +38,47 @@ public class App extends Application {
         return instance;
     }
 
+    public static MediaProjectionManager getMediaProjectionManager() {
+        return mediaProjectionManager;
+    }
+
+    public static void setMediaProjectionManager(MediaProjectionManager mediaProjectionManager) {
+        App.mediaProjectionManager = mediaProjectionManager;
+    }
+
+    protected static void registerNotificationReceiver() {
+        if (receiverRegistered) {
+            return;
+        }
+
+        Context context = App.getInstance();
+        NotificationActionReceiver notificationActionReceiver = new NotificationActionReceiver();
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(NOTIFICATION_ACTION_SHARE);
+        context.registerReceiver(notificationActionReceiver, intentFilter);
+
+        intentFilter = new IntentFilter();
+        intentFilter.addAction(NOTIFICATION_ACTION_DELETE);
+        context.registerReceiver(notificationActionReceiver, intentFilter);
+
+
+        receiverRegistered = true;
+    }
+
     /**
      * Create and return MediaProjection from stored permission
      *
      * @return MediaProjection if permission was granted or null
      */
-    public static MediaProjection getMediaProjection() {
+    protected static MediaProjection createMediaProjection() {
         if (mediaProjection == null) {
-
             if (screenshotPermission == null && ScreenshotTileService.Companion.getInstance() != null) {
                 screenshotPermission = ScreenshotTileService.Companion.getInstance().getScreenshotPermission();
             }
-
             if (screenshotPermission == null) {
                 return null;
             }
-
             mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
         }
         return mediaProjection;
@@ -58,7 +87,7 @@ public class App extends Application {
     /**
      * Acquire screenshot permission, call listener on positive result
      *
-     * @param context Context
+     * @param context                                 Context
      * @param myOnAcquireScreenshotPermissionListener Callback object
      */
     protected static void acquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener myOnAcquireScreenshotPermissionListener) {
@@ -94,7 +123,7 @@ public class App extends Application {
     private static void openScreenshotPermissionRequester(Context context) {
         final Intent intent = new Intent(context, AcquireScreenshotPermission.class);
         intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(AcquireScreenshotPermission.EXTRA_REQUEST_PERMISSION, true);
+        intent.putExtra(AcquireScreenshotPermission.EXTRA_REQUEST_PERMISSION_SCREENSHOT, true);
         context.startActivity(intent);
     }
 
@@ -103,7 +132,7 @@ public class App extends Application {
      *
      * @param permissionIntent Permission
      */
-    static void setScreenshotPermission(final Intent permissionIntent) {
+    protected static void setScreenshotPermission(final Intent permissionIntent) {
         screenshotPermission = permissionIntent;
         if (ScreenshotTileService.Companion.getInstance() != null) {
             ScreenshotTileService.Companion.getInstance().setScreenshotPermission(screenshotPermission);
@@ -113,6 +142,19 @@ public class App extends Application {
             }
         }
     }
+
+    /**
+     * Open new activity that asks for the storage permission
+     *
+     * @param context Context
+     */
+    public static void requestStoragePermission(Context context) {
+        final Intent intent = new Intent(context, AcquireScreenshotPermission.class);
+        intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(AcquireScreenshotPermission.EXTRA_REQUEST_PERMISSION_STORAGE, true);
+        context.startActivity(intent);
+    }
+
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -138,44 +180,58 @@ public class App extends Application {
         if (prefManager.getShowCountDown()) {
             screenshotShowCountdown(context);
         } else {
-            screenshotHiddenCountdown(context);
+            screenshotHiddenCountdown(context, false);
         }
     }
 
     private void screenshotShowCountdown(Context context) {
         int delay = prefManager.getDelay();
         Intent intent;
-        if (delay > 0) {
-            intent = DelayScreenshotActivity.Companion.newIntent(context, delay);
-        } else {
-            intent = NoDisplayActivity.newIntent(context, false);
-        }
-        if (context instanceof TileService) {
-            ((ScreenshotTileService) context).setTakeScreenshotOnStopListening(true);
+        if (context instanceof ScreenshotTileService || ScreenshotTileService.Companion.getInstance() != null) {
+            ScreenshotTileService tileService = (context instanceof ScreenshotTileService) ? (ScreenshotTileService) context : ScreenshotTileService.Companion.getInstance();
+            if (delay > 0) {
+                intent = DelayScreenshotActivity.Companion.newIntent(context, delay);
+            } else {
+                intent = NoDisplayActivity.newIntent(context, false);
+                // Wait for notification panel closing:
+                tileService.setTakeScreenshotOnStopListening(true);
+            }
             intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-            ((TileService) context).startActivityAndCollapse(intent);
+            tileService.startActivityAndCollapse(intent);
         } else {
+            if (delay > 0) {
+                intent = DelayScreenshotActivity.Companion.newIntent(context, delay);
+            } else {
+                intent = NoDisplayActivity.newIntent(context, false);
+            }
             context.startActivity(intent);
         }
     }
 
-    private void screenshotHiddenCountdown(Context context) {
+    private void screenshotHiddenCountdown(Context context, Boolean now) { // TODO not working for delay > 0
         int delay = prefManager.getDelay();
+        if (now) {
+            delay = 0;
+        }
         if (delay > 0) {
             handler.removeCallbacks(screenshotRunnable);
             screenshotRunnable = new CountDownRunnable(this, delay);
             handler.post(screenshotRunnable);
         } else {
-            if (context instanceof TileService) {
-                // open a activity to collapse notification bar
-                ((ScreenshotTileService) context).setTakeScreenshotOnStopListening(true);
+            if (context instanceof ScreenshotTileService || ScreenshotTileService.Companion.getInstance() != null) {
+                ScreenshotTileService tileService = (context instanceof ScreenshotTileService) ? (ScreenshotTileService) context : ScreenshotTileService.Companion.getInstance();
+                // Open a activity to collapse notification bar, and wait for notification panel closing
+                tileService.setTakeScreenshotOnStopListening(true);
                 Intent intent = NoDisplayActivity.newIntent(context, false);
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-                ((TileService) context).startActivityAndCollapse(intent);
+                tileService.startActivityAndCollapse(intent);
             } else {
-                screenshot(this);
+                Intent intent = NoDisplayActivity.newIntent(context, true);
+                if (!(context instanceof Activity)) {
+                    intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+                }
+                context.startActivity(intent);
             }
-
         }
     }
 
@@ -184,7 +240,7 @@ public class App extends Application {
      *
      * @param context Context
      */
-    public void takeScreenshotFromTileService(TileService context) {
+    protected void takeScreenshotFromTileService(TileService context) {
         Intent intent = NoDisplayActivity.newIntent(context, true);
         intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
@@ -201,9 +257,10 @@ public class App extends Application {
 
         @Override
         public void run() {
+
             count--;
             if (count < 0) {
-                screenshot(ctx);
+                screenshotHiddenCountdown(ctx, true);
             } else {
                 handler.postDelayed(this, 1000);
             }
