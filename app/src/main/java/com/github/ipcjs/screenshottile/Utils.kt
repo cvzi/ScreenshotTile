@@ -150,7 +150,7 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
 
     val uniqueId = (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
 
-    val contentPendingIntent = PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent(appContext, path), 0)
+    val contentPendingIntent = PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent(path), 0)
 
     // Create notification
     val builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -214,7 +214,7 @@ fun shareImageChooserIntent(context: Context, path: Uri): Intent {
 /**
  * Intent to open image file on notification tap.
  */
-fun openImageIntent(context: Context, path: Uri): Intent {
+fun openImageIntent(path: Uri): Intent {
     // Create intent for notification click
     return Intent(Intent.ACTION_VIEW).apply {
         flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
