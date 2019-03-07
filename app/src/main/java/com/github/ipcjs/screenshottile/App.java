@@ -208,7 +208,7 @@ public class App extends Application {
         }
     }
 
-    private void screenshotHiddenCountdown(Context context, Boolean now) { // TODO not working for delay > 0
+    private void screenshotHiddenCountdown(Context context, Boolean now) {
         int delay = prefManager.getDelay();
         if (now) {
             delay = 0;
