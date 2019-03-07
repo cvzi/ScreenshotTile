@@ -1,6 +1,8 @@
-# 1.0.2
+# Changelog
+
+## 1.0.2
 *   Fixed Hebrew translation.
-# 1.0.1
+## 1.0.1
 *   Added Simplified Chinese translation. Thanks to [@linsui](https://github.com/linsui)
 *   Added Norwegian translation.
 *   Added Spanish translation.
