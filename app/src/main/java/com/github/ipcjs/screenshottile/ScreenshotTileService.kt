@@ -32,7 +32,6 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
 
         qsTile.state = Tile.STATE_INACTIVE
         App.acquireScreenshotPermission(this, this)
-        qsTile.updateTile()
     }
 
     override fun onAcquireScreenshotPermission() {
