@@ -2,7 +2,6 @@ package com.github.ipcjs.screenshottile
 
 import android.content.Context
 import android.content.Intent
-import android.os.IBinder
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import com.github.ipcjs.screenshottile.Utils.p
@@ -42,17 +41,6 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         qsTile.updateTile()
     }
 
-
-    override fun onTileRemoved() {
-        super.onTileRemoved()
-        p("onTileRemoved")
-    }
-
-    override fun onStartListening() {
-        super.onStartListening()
-        p("onStartListening")
-    }
-
     override fun onStopListening() {
         super.onStopListening()
         p("onStopListening")
@@ -67,12 +55,8 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     override fun onClick() {
         super.onClick()
         p("onClick")
-        App.getInstance().screenshot(this)
-    }
 
-    override fun onBind(intent: Intent): IBinder? {
-        p("onBind")
-        return super.onBind(intent)
+        App.getInstance().screenshot(this)
     }
 
 }
