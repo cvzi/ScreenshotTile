@@ -29,6 +29,14 @@
     <string name="tutorial">Tutorial</string>
     <string name="tap_for_next_step">Tap for next step</string>
 
+    <!-- About -->
+    <string name="about_app_title">About:</string>
+    <string name="about_app_1">This is a fork of\ngithub.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_2">This app still has some problems and is under development.\nIf you have root access on your phone, please use ipcjs\'s version, it\'s faster and more reliant.</string>
+    <string name="about_app_3">For more information and bug reports visit:\ngithub.com/cvzi/ScreenshotTile</string>
+    <string name="about_license_title">License</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+
     <!-- translatable="false" -->
     <string name="setting_delay_value_default" translatable="false">0</string>
     <string-array name="setting_delay_entries" translatable="false">

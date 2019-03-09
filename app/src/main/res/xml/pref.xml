@@ -23,28 +23,28 @@
         android:key="pref_static_field_key"
         android:persistent="false"
         android:selectable="false"
-        android:summary="This is a fork of\ngithub.com/ipcjs/ScreenshotTile"
-        android:title="About:" />
+        android:summary="@string/about_app_1"
+        android:title="@string/about_app_title" />
 
     <Preference
         android:key="pref_static_field_key"
         android:persistent="false"
         android:selectable="false"
-        android:summary="This app still has some problems and is under development.\nIf you have root access on your phone, please use ipcjs's version, it's faster and more reliant."
+        android:summary="@string/about_app_2"
         android:title="" />
 
     <Preference
         android:key="pref_static_field_key"
         android:persistent="false"
         android:selectable="false"
-        android:summary="For more information and bug reports visit:\ngithub.com/cvzi/ScreenshotTile"
+        android:summary="@string/about_app_3"
         android:title="" />
 
     <Preference
         android:key="pref_static_field_key"
         android:persistent="false"
         android:selectable="false"
-        android:summary="GNU GENERAL PUBLIC LICENSE Version 3"
-        android:title="License" />
+        android:summary="@string/about_license_1"
+        android:title="@string/about_license_title" />
 
 </PreferenceScreen>

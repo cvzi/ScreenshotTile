@@ -43,7 +43,7 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        actionBar?.title = getString(R.string.app_name) + getString(R.string.tutorial)
+        actionBar?.title = getString(R.string.app_name) + " " +  getString(R.string.tutorial)
         val textViewStep = findViewById<TextView>(R.id.textViewStep)
         findViewById<ImageView>(R.id.imageView).apply {
             setOnClickListener {
