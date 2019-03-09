@@ -8,7 +8,6 @@
     <string name="setting_delay_entry_2s">2 秒</string>
     <string name="setting_delay_entry_5s">5 秒</string>
     <string name="show_count_down">显示倒计时</string>
-
     <string name="file_title">Screenshot</string>
     <string name="file_description">Screenshot taken on %1$s</string>
     <string name="file_description_simpledateformat">yyyy/MM/dd HH:mm:ss</string>
@@ -16,16 +15,18 @@
     <string name="notification_body">点按即可查看您的屏幕截图</string>
     <string name="notification_channel_description">屏幕截图后显示通知</string>
     <string name="notification_app_chooser">打开文件…</string>
+    <string name="notification_app_chooser_share">分享文件…</string>
     <string name="screenshot_failed">屏幕截图失败，请重试</string>
     <string name="screenshot_file_saved">屏幕截图已保存至 %1$s</string>
-
+    <string name="notification_delete_screenshot">删除</string>
+    <string name="notification_share_screenshot">分享</string>
+    <string name="screenshot_deleted">删除成功</string>
+    <string name="screenshot_delete_failed">无法删除</string>
     <string name="permission_missing_external_storage">获取存储空间权限失败</string>
     <string name="permission_missing_screen_capture">获取录制屏幕截图权限失败</string>
-    <string name="screenshot_delete_failed">无法删除</string>
-    <string name="notification_share_screenshot">分享</string>
-    <string name="notification_delete_screenshot">删除</string>
-    <string name="screenshot_deleted">删除成功</string>
-    <string name="notification_app_chooser_share">分享文件…</string>
-
+    <string name="hide_app_from_launcher">从启动器隐藏应用图标</string>
+    <string name="toggle_app_icon_failed">显示/隐藏应用图标失败</string>
+    <string name="tutorial">教程</string>
+    <string name="tap_for_next_step">点按进入下一步</string>
 
 </resources>
