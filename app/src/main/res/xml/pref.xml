@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_key_hide_app"
+        android:title="@string/hide_app_from_launcher" />
+
     <SwitchPreference
         android:defaultValue="true"
         android:key="@string/pref_key_show_count_down"
         android:title="@string/show_count_down" />
+
     <ListPreference
         android:defaultValue="@string/setting_delay_value_default"
         android:entries="@array/setting_delay_entries"
@@ -11,7 +18,6 @@
         android:key="@string/pref_key_delay"
         android:summary="@string/setting_delay_entry_default"
         android:title="@string/title_delay" />
-
 
     <Preference
         android:key="pref_static_field_key"

@@ -24,6 +24,8 @@
     <string name="screenshot_delete_failed">Could not delete file</string>
     <string name="permission_missing_external_storage">Failed to acquire permission for storage</string>
     <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
+    <string name="hide_app_from_launcher">Hide app icon from launcher</string>
+    <string name="toggle_app_icon_failed">Failed to show/hide app icon</string>
 
     <!-- translatable="false" -->
     <string name="setting_delay_value_default" translatable="false">0</string>
@@ -41,4 +43,5 @@
     </string-array>
     <string name="pref_key_delay" translatable="false">delays_string</string>
     <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
+    <string name="pref_key_hide_app" translatable="false">hide_app</string>
 </resources>

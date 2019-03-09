@@ -74,7 +74,11 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         imageReader = ImageReader.newInstance(screenWidth, screenHeight, PixelFormat.RGBA_8888, 1)
         surface = imageReader?.surface
 
-        if (packageManager.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, packageName) != PackageManager.PERMISSION_GRANTED) {
+        if (packageManager.checkPermission(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                packageName
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
             p("TakeScreenshotActivity.onCreate(): missing WRITE_EXTERNAL_STORAGE permission")
             App.requestStoragePermission(this)
             return
@@ -153,7 +157,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             finish()
             return
         }
-        val image = imageReader?.acquireNextImage()  // acquireLatestImage produces warning for  maxImages = 1: "Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers"
+        val image =
+            imageReader?.acquireNextImage()  // acquireLatestImage produces warning for  maxImages = 1: "Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers"
         stopScreenSharing()
         if (image == null) {
             p("saveImage() image == null")
@@ -166,8 +171,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         val imageFile = pair.first
         p("saveImage() imageFile.absolutePath= ${imageFile.absolutePath}")
         Toast.makeText(
-                this,
-                getString(R.string.screenshot_file_saved, imageFile.canonicalFile), Toast.LENGTH_LONG
+            this,
+            getString(R.string.screenshot_file_saved, imageFile.canonicalFile), Toast.LENGTH_LONG
         ).show()
         createNotification(this, Uri.fromFile(imageFile), resizeToNotificationIcon(pair.second, screenDensity))
         pair.second.recycle()
@@ -181,17 +186,17 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
     private fun createVirtualDisplay(): VirtualDisplay? {
         return mediaProjection?.createVirtualDisplay(
-                "ScreenshotTaker",
-                screenWidth, screenHeight, screenDensity,
-                DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
-                surface, null, null
+            "ScreenshotTaker",
+            screenWidth, screenHeight, screenDensity,
+            DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
+            surface, null, null
         )
     }
 
     private fun screenShotFailedToast() {
         Toast.makeText(
-                this,
-                getString(R.string.screenshot_failed), Toast.LENGTH_LONG
+            this,
+            getString(R.string.screenshot_failed), Toast.LENGTH_LONG
         ).show()
     }
 

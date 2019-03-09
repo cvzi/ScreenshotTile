@@ -27,4 +27,9 @@ class PrefManager {
     var showCountDown: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_show_count_down), true)
         set(value) = pref.edit().putBoolean(context.getString(R.string.pref_key_show_count_down), value).apply()
+
+    var hideApp: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_hide_app), false)
+        set(value) = pref.edit().putBoolean(context.getString(R.string.pref_key_hide_app), value).apply()
+
 }
