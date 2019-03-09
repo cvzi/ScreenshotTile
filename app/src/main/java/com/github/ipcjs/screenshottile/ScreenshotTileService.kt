@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import android.util.Log
 import com.github.ipcjs.screenshottile.Utils.p
 
 
@@ -27,17 +28,26 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     }
 
     override fun onTileAdded() {
-        super.onTileAdded()
-        p("onTileAdded")
+        try {
+            super.onTileAdded()
+            p("onTileAdded")
 
-        qsTile.state = Tile.STATE_INACTIVE
-        App.acquireScreenshotPermission(this, this)
+            App.acquireScreenshotPermission(this, this)
+
+            qsTile.state = Tile.STATE_INACTIVE
+        } catch (e: IllegalStateException) {
+            Log.e("ScreenshotTileService", "onTileAdded: IllegalStateException", e)
+        }
     }
 
     override fun onAcquireScreenshotPermission() {
         p("onAcquireScreenshotPermission")
-        qsTile.state = Tile.STATE_ACTIVE
-        qsTile.updateTile()
+        try {
+            qsTile.state = Tile.STATE_INACTIVE
+            qsTile.updateTile()
+        } catch (e: IllegalStateException) {
+            Log.e("ScreenshotTileService", "onAcquireScreenshotPermission: IllegalStateException", e)
+        }
     }
 
     override fun onStopListening() {
@@ -49,12 +59,23 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
             takeScreenshotOnStopListening = false
             App.getInstance().takeScreenshotFromTileService(this)
         }
+        try {
+            qsTile.state = Tile.STATE_INACTIVE
+            qsTile.updateTile()
+        } catch (e: IllegalStateException) {
+            Log.e("ScreenshotTileService", "onStopListening: IllegalStateException", e)
+        }
     }
 
     override fun onClick() {
         super.onClick()
         p("onClick")
-
+        try {
+            qsTile.state = Tile.STATE_ACTIVE
+            qsTile.updateTile()
+        } catch (e: IllegalStateException) {
+            Log.e("ScreenshotTileService", "onClick: IllegalStateException", e)
+        }
         App.getInstance().screenshot(this)
     }
 
