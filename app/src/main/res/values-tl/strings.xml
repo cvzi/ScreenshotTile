@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">Screenshot</string>
+    <string name="more_setting">Higit pang mga opsyon</string>>
+    <string name="file_title">Screenshot</string>
+    <string name="file_description_simpledateformat">MM-dd-yyyy HH:mm:ss</string>
+    <string name="notification_body">Tingnan ang litrato</string>
+    <string name="notification_app_chooser">Buksan sa …</string>
+    <string name="screenshot_failed">Nabigo ang screenshot, pakisubukang muli</string>
+    <string name="notification_delete_screenshot">Tanggalin</string>
+    <string name="notification_share_screenshot">Ibahagi</string>
+    <string name="screenshot_deleted">Tinanggal na ang screenshot</string>
+    <string name="screenshot_delete_failed">Nabigong tanggalin ang screenshot</string>
+    <string name="notification_app_chooser_share">Ibahagi…</string>
+    <string name="title_delay">Pagkaantala bago</string>
+    <string name="setting_delay_entry_default">Kaagad</string>
+    <string name="setting_delay_entry_1s">1s</string>
+    <string name="setting_delay_entry_2s">2s</string>
+    <string name="setting_delay_entry_5s">5s</string>
+    <string name="notification_title">Screenshot</string>
+</resources>
