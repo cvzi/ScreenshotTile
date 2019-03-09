@@ -51,7 +51,8 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     if (deleteImage(this, File(path.path))) {
                         Toast.makeText(this, context.getString(R.string.screenshot_deleted), Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this, context.getString(R.string.screenshot_delete_failed), Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, context.getString(R.string.screenshot_delete_failed), Toast.LENGTH_LONG)
+                            .show()
                     }
                 }
             }

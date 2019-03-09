@@ -19,7 +19,12 @@ open class TransparentContainerActivity : Activity() {
         /**
          * Get intent
          */
-        fun newIntent(ctx: Context, activityClass: Class<out Activity>, fclass: Class<out Fragment>, args: Bundle?): Intent {
+        fun newIntent(
+            ctx: Context,
+            activityClass: Class<out Activity>,
+            fclass: Class<out Fragment>,
+            args: Bundle?
+        ): Intent {
             val intent = Intent(ctx, activityClass)
             intent.putExtra(EXTRA_FNAME, fclass.name)
             intent.putExtra(EXTRA_ARGS, args)
@@ -38,8 +43,8 @@ open class TransparentContainerActivity : Activity() {
                 fragment.show(fragmentManager, fname)
             } else {
                 fragmentManager.beginTransaction()
-                        .add(android.R.id.content, fragment, fname)
-                        .commit()
+                    .add(android.R.id.content, fragment, fname)
+                    .commit()
             }
         }
     }

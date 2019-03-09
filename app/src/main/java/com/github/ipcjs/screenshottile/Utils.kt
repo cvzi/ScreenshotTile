@@ -46,7 +46,8 @@ fun screenshot(context: Context) {
  * Copy image content to new bitmap.
  */
 fun imageToBitmap(image: Image): Bitmap {
-    val w = image.width + (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
+    val w =
+        image.width + (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
     val h = image.height
     val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
     bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
@@ -56,7 +57,13 @@ fun imageToBitmap(image: Image): Bitmap {
 /**
  * Add image file and information to media store.
  */
-fun addImageToGallery(context: Context, filepath: String, title: String, description: String, mimeType: String = "image/jpeg"): Uri {
+fun addImageToGallery(
+    context: Context,
+    filepath: String,
+    title: String,
+    description: String,
+    mimeType: String = "image/jpeg"
+): Uri {
     val values = ContentValues()
     values.put(Images.Media.TITLE, title)
     values.put(Images.Media.DESCRIPTION, description)
@@ -97,7 +104,17 @@ fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, 
     fileOutputStream.close()
 
     // Add to g
-    addImageToGallery(context, imageFile.absolutePath, context.getString(R.string.file_title), context.getString(R.string.file_description, SimpleDateFormat(context.getString(R.string.file_description_simpledateformat), Locale.getDefault()).format(date)))
+    addImageToGallery(
+        context,
+        imageFile.absolutePath,
+        context.getString(R.string.file_title),
+        context.getString(
+            R.string.file_description,
+            SimpleDateFormat(context.getString(R.string.file_description_simpledateformat), Locale.getDefault()).format(
+                date
+            )
+        )
+    )
 
     return Pair(imageFile, bitmap)
 }
@@ -111,11 +128,16 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
         val channelName = context.getString(R.string.notification_title)
         val channelDescription = context.getString(R.string.notification_channel_description)
 
-        val notificationManager = context.applicationContext.getSystemService(NotificationManager::class.java) as NotificationManager
+        val notificationManager =
+            context.applicationContext.getSystemService(NotificationManager::class.java) as NotificationManager
 
         var channel = notificationManager.getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN)
         if (channel == null) {
-            channel = NotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN, channelName, NotificationManager.IMPORTANCE_LOW).apply {
+            channel = NotificationChannel(
+                NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN,
+                channelName,
+                NotificationManager.IMPORTANCE_LOW
+            ).apply {
                 description = channelDescription
                 enableVibration(false)
                 enableLights(false)
@@ -148,7 +170,8 @@ fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
 fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
     val appContext = context.applicationContext
 
-    val uniqueId = (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
+    val uniqueId =
+        (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
 
     val contentPendingIntent = PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent(path), 0)
 
@@ -170,15 +193,30 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
         setAutoCancel(true)
     }
 
-    val icon = Icon.createWithResource(appContext, R.drawable.ic_stat_name) // This is not shown on Android 7+ anyways so let's just use the app icon
+    val icon = Icon.createWithResource(
+        appContext,
+        R.drawable.ic_stat_name
+    ) // This is not shown on Android 7+ anyways so let's just use the app icon
 
     val deleteIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_DELETE)
     val pendingIntentDelete = PendingIntent.getBroadcast(appContext, uniqueId + 2, deleteIntent, 0)
-    builder.addAction(Notification.Action.Builder(icon, appContext.getString(R.string.notification_delete_screenshot), pendingIntentDelete).build())
+    builder.addAction(
+        Notification.Action.Builder(
+            icon,
+            appContext.getString(R.string.notification_delete_screenshot),
+            pendingIntentDelete
+        ).build()
+    )
 
     val shareIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_SHARE)
     val pendingIntentShare = PendingIntent.getBroadcast(appContext, uniqueId + 3, shareIntent, 0)
-    builder.addAction(Notification.Action.Builder(icon, appContext.getString(R.string.notification_share_screenshot), pendingIntentShare).build())
+    builder.addAction(
+        Notification.Action.Builder(
+            icon,
+            appContext.getString(R.string.notification_share_screenshot),
+            pendingIntentShare
+        ).build()
+    )
 
     // Listen for action buttons clicks
     App.registerNotificationReceiver()

@@ -37,7 +37,11 @@ class AcquireScreenshotPermission : Activity() {
         }
 
         // Request storage permission (if missing)
-        if (packageManager.checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, packageName) != PackageManager.PERMISSION_GRANTED) {
+        if (packageManager.checkPermission(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                packageName
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
             val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             requestPermissions(permissions, WRITE_REQUEST_CODE)
         }
@@ -69,8 +73,8 @@ class AcquireScreenshotPermission : Activity() {
                 setScreenshotPermission(null)
                 Log.w("onActivityResult", "No screen capture permission: resultCode==$resultCode")
                 Toast.makeText(
-                        this,
-                        getString(R.string.permission_missing_screen_capture), Toast.LENGTH_LONG
+                    this,
+                    getString(R.string.permission_missing_screen_capture), Toast.LENGTH_LONG
                 ).show()
             }
         }
@@ -91,8 +95,8 @@ class AcquireScreenshotPermission : Activity() {
             } else {
                 Log.w("onRequestPermissionsResult", "Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE")
                 Toast.makeText(
-                        this,
-                        getString(R.string.permission_missing_external_storage), Toast.LENGTH_LONG
+                    this,
+                    getString(R.string.permission_missing_external_storage), Toast.LENGTH_LONG
                 ).show()
             }
         }
