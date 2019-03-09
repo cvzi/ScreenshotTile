@@ -26,6 +26,8 @@
     <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
     <string name="hide_app_from_launcher">Hide app icon from launcher</string>
     <string name="toggle_app_icon_failed">Failed to show/hide app icon</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="tap_for_next_step">Tap for next step</string>
 
     <!-- translatable="false" -->
     <string name="setting_delay_value_default" translatable="false">0</string>

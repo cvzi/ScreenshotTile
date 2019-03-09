@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Tap for next step" />
+                android:text="@string/tap_for_next_step" />
 
             <TextView
                 android:id="@+id/textViewStep"
