@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.0
+*   Added tutorial with icon on home screen (Option to hide icon in settings)
+*   Tile state is now always off
+*   Fixed crash (java.lang.IllegalStateException at ScreenshotTileService.onTileAdded)
+*   Added app icon shortcut to take a screenshot
+*   Fixed bug: countdown/wait before screenshot was creating two screenshots
+*   Disabled proguard
+*   Translated about section
+*   Added Tagalog/filipino translation
 ## 1.1.0
 *   Added "Share" and "Delete" button to the notification
 *   Fixed crash when permissions were initially denied or canceled
