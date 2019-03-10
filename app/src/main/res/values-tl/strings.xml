@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Screenshot</string>
-    <string name="more_setting">Higit pang mga opsyon</string>>
+    <string name="more_setting">Opsyon</string>>
     <string name="file_title">Screenshot</string>
     <string name="file_description_simpledateformat">MM-dd-yyyy HH:mm:ss</string>
     <string name="notification_body">Tingnan ang litrato</string>
@@ -25,7 +25,7 @@
     <string name="screenshot_file_saved">Kinuha ang screenshot: %1$s</string>
     <string name="permission_missing_external_storage">Failed to acquire permission for storage</string>
     <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
-    <string name="tap_for_next_step">Tapikin para sa susunod na hakbang</string>
+    <string name="tap_for_next_step">Tapikin para sa\nsusunod na hakbang</string>
     <string name="tutorial">Pagtuturo</string>
     <string name="toggle_app_icon_failed">Nabigong ipakita/itago ang application</string>
     <string name="hide_app_from_launcher">Itago ang icon ng app mula sa launcher.</string>
