@@ -50,6 +50,17 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         }
     }
 
+    override fun onStartListening() {
+        super.onStopListening()
+        p("onStartListening")
+        try {
+            qsTile.state = Tile.STATE_INACTIVE
+            qsTile.updateTile()
+        } catch (e: IllegalStateException) {
+            Log.e("ScreenshotTileService", "onStartListening: IllegalStateException", e)
+        }
+    }
+
     override fun onStopListening() {
         super.onStopListening()
         p("onStopListening")
