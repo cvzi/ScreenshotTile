@@ -1,16 +1,21 @@
 package com.github.ipcjs.screenshottile.dialog
 
 import android.content.ComponentName
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.preference.ListPreference
+import android.preference.Preference
+import android.preference.Preference.OnPreferenceClickListener
 import android.preference.PreferenceFragment
 import android.util.Log
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.MainActivity
 import com.github.ipcjs.screenshottile.PrefManager
 import com.github.ipcjs.screenshottile.R
+
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -34,6 +39,22 @@ class SettingFragment : PreferenceFragment() {
         addPreferencesFromResource(R.xml.pref)
         pref.registerOnSharedPreferenceChangeListener(prefListener)
         updateDelaySummary(delayPref.value)
+
+        makeLink(R.string.pref_static_field_key_about_app_1, R.string.pref_static_field_link_about_app_1)
+        makeLink(R.string.pref_static_field_key_about_app_3, R.string.pref_static_field_link_about_app_3)
+        makeLink(R.string.pref_static_field_key_about_license_1, R.string.pref_static_field_link_about_license_1)
+    }
+
+    private fun makeLink(name: Int, link: Int) {
+        val myPref = findPreference(getString(name)) as Preference
+        myPref.onPreferenceClickListener = OnPreferenceClickListener {
+            Intent(Intent.ACTION_VIEW, Uri.parse(getString(link))).apply {
+                if (resolveActivity(this@SettingFragment.context.packageManager) != null) {
+                    startActivity(this)
+                }
+            }
+            true
+        }
     }
 
     private fun updateDelaySummary(value: String) {
