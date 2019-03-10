@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.Utils.p
 import java.io.File
@@ -35,10 +36,14 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     val shareIntent = shareImageChooserIntent(this, path)
                     shareIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
 
-                    if (ScreenshotTileService.instance != null) {
-                        ScreenshotTileService.instance?.startActivityAndCollapse(shareIntent)
+                    if (shareIntent.resolveActivity(context.packageManager) != null) {
+                        if (ScreenshotTileService.instance != null) {
+                            ScreenshotTileService.instance?.startActivityAndCollapse(shareIntent)
+                        } else {
+                            startActivity(shareIntent)
+                        }
                     } else {
-                        startActivity(shareIntent)
+                        Log.e("NotificationActionReceiver", "resolveActivity(shareIntent) returned null")
                     }
                 }
                 NOTIFICATION_ACTION_DELETE -> {

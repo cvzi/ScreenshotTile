@@ -173,7 +173,8 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
     val uniqueId =
         (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
 
-    val contentPendingIntent = PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent(path), 0)
+    val openImageIntent = openImageIntent(path)
+    val contentPendingIntent = PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent, 0)
 
     // Create notification
     val builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -182,15 +183,19 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
         @Suppress("DEPRECATION")
         Notification.Builder(appContext)
     }
-    with(builder) {
+    builder.apply {
         setWhen(Calendar.getInstance().timeInMillis)
         setShowWhen(true)
         setContentTitle(appContext.getString(R.string.notification_title))
         setContentText(appContext.getString(R.string.notification_body))
         setSmallIcon(R.drawable.ic_stat_name)
         setLargeIcon(bitmap)
-        setContentIntent(contentPendingIntent)
         setAutoCancel(true)
+        if (openImageIntent.resolveActivity(context.applicationContext.packageManager) != null) {
+            setContentIntent(contentPendingIntent)
+        } else {
+            Log.e("Utils.kt:createNotification()", "resolveActivity(openImageIntent) returned null")
+        }
     }
 
     val icon = Icon.createWithResource(
