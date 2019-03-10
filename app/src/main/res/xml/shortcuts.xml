@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="takeScreenshot"
+        android:shortcutLongLabel="@string/take_screenshot"
+        android:shortcutShortLabel="@string/tile_label">
+        <intent
+            android:action="com.github.cvzi.screenshottile.NoDisplayActivity.EXTRA_SCREENSHOT"
+            android:targetClass="com.github.ipcjs.screenshottile.NoDisplayActivity"
+            android:targetPackage="com.github.cvzi.screenshottile" />
+    </shortcut>
+</shortcuts>

@@ -14,13 +14,16 @@
         android:theme="@style/AppTheme.Transparent">
         <activity
             android:name=".MainActivity"
-            android:theme="@android:style/Theme.Material"
             android:launchMode="singleTask"
-            android:taskAffinity="${applicationId}.task">
+            android:taskAffinity="${applicationId}.task"
+            android:theme="@android:style/Theme.Material">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
         <activity
             android:name=".NoDisplayActivity"

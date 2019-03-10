@@ -10,7 +10,7 @@ import static com.github.ipcjs.screenshottile.UtilsKt.screenshot;
 
 public class NoDisplayActivity extends Activity {
 
-    private static final String EXTRA_SCREENSHOT = "screenshot";
+    private static final String EXTRA_SCREENSHOT = "com.github.cvzi.screenshottile.NoDisplayActivity.EXTRA_SCREENSHOT";
 
     public static Intent newIntent(Context context, boolean screenshot) {
         Intent intent = new Intent(context, NoDisplayActivity.class);
@@ -21,11 +21,15 @@ public class NoDisplayActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getIntent().getBooleanExtra(EXTRA_SCREENSHOT, false)) {
-            p("NoDisplayActivity.onCreate EXTRA_SCREENSHOT=true");
-            screenshot(this);
-        } else {
-            p("NoDisplayActivity.onCreate EXTRA_SCREENSHOT=false");
+        Intent intent = getIntent();
+        if (intent != null) {
+            String action = intent.getAction();
+            if (intent.getBooleanExtra(EXTRA_SCREENSHOT, false) || (action != null && action.equals(EXTRA_SCREENSHOT))) {
+                p("NoDisplayActivity.onCreate EXTRA_SCREENSHOT=true");
+                screenshot(this);
+            } else {
+                p("NoDisplayActivity.onCreate EXTRA_SCREENSHOT=false");
+            }
         }
         finish();
     }
