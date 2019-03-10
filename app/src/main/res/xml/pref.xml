@@ -20,30 +20,30 @@
         android:title="@string/title_delay" />
 
     <Preference
-        android:key="pref_static_field_key"
+        android:key="@string/pref_static_field_key_about_app_1"
         android:persistent="false"
-        android:selectable="false"
+        android:selectable="true"
         android:summary="@string/about_app_1"
         android:title="@string/about_app_title" />
 
     <Preference
-        android:key="pref_static_field_key"
+        android:key="@string/pref_static_field_key_about_app_2"
         android:persistent="false"
         android:selectable="false"
         android:summary="@string/about_app_2"
         android:title="" />
 
     <Preference
-        android:key="pref_static_field_key"
+        android:key="@string/pref_static_field_key_about_app_3"
         android:persistent="false"
-        android:selectable="false"
+        android:selectable="true"
         android:summary="@string/about_app_3"
         android:title="" />
 
     <Preference
-        android:key="pref_static_field_key"
+        android:key="@string/pref_static_field_key_about_license_1"
         android:persistent="false"
-        android:selectable="false"
+        android:selectable="true"
         android:summary="@string/about_license_1"
         android:title="@string/about_license_title" />
 
