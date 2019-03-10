@@ -14,39 +14,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="3">
 
-            <TextView
-                android:id="@+id/textView"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:text="@string/tap_for_next_step" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tutorial"
+                    android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                <TextView
+                    android:id="@+id/textViewFooter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tap_for_next_step"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textViewStep"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="center_horizontal"
                 android:text="1"
                 android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
             <Button
                 android:id="@+id/buttonSettings"
+                style="@android:style/Widget.Holo.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
                 android:text="@string/more_setting"
                 tools:layout_editor_absoluteX="135dp"
                 tools:layout_editor_absoluteY="0dp" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView"
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/screenshot_01" />
+            android:layout_height="fill_parent" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
