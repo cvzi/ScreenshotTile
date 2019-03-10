@@ -28,30 +28,15 @@
     <string name="toggle_app_icon_failed">Failed to show/hide app icon</string>
     <string name="tutorial">Tutorial</string>
     <string name="tap_for_next_step">Tap for next step</string>
+    <string name="take_screenshot">Take a screenshot</string>
 
     <!-- About -->
-    <string name="about_app_title">About:</string>
-    <string name="about_app_1">This is a fork of\ngithub.com/ipcjs/ScreenshotTile</string>
-    <string name="about_app_2">This app still has some problems and is under development.\nIf you have root access on your phone, please use ipcjs\'s version, it\'s faster and more reliant.</string>
-    <string name="about_app_3">For more information and bug reports visit:\ngithub.com/cvzi/ScreenshotTile</string>
+    <string name="about_app_title">About</string>
+    <string name="about_app_1">This is a fork of github.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_3">For more information and bug reports visit: github.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">License</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="about_app_2">This app still has some problems and is under development. If you have root access on your phone, please use ipcjs\' version, it\'s faster and more reliant.</string>
 
-    <!-- translatable="false" -->
-    <string name="setting_delay_value_default" translatable="false">0</string>
-    <string-array name="setting_delay_entries" translatable="false">
-        <item>@string/setting_delay_entry_default</item>
-        <item>@string/setting_delay_entry_1s</item>
-        <item>@string/setting_delay_entry_2s</item>
-        <item>@string/setting_delay_entry_5s</item>
-    </string-array>
-    <string-array name="setting_delay_values" translatable="false">
-        <item>@string/setting_delay_value_default</item>
-        <item>1</item>
-        <item>2</item>
-        <item>5</item>
-    </string-array>
-    <string name="pref_key_delay" translatable="false">delays_string</string>
-    <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
-    <string name="pref_key_hide_app" translatable="false">hide_app</string>
+
 </resources>

@@ -30,11 +30,12 @@
     <string name="tap_for_next_step">点按进入下一步</string>
 
     <!-- About -->
-    <string name="about_app_title">关于：</string>
+    <string name="about_app_title">关于</string>
     <string name="about_app_1">这是\ngithub.com/ipcjs/ScreenshotTile 的一个分支</string>
     <string name="about_app_2">此应用仍然存在一些问题并且正在开发中。\n如果你的设备拥有 root 权限，请使用 ipcjs 的版本，更快速可靠。</string>
     <string name="about_app_3">获取更多信息及错误报告请访问：\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">许可证</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="take_screenshot">屏幕截图</string>
 
 </resources>

@@ -25,4 +25,15 @@
     <string name="notification_app_chooser_share">Partager</string>
     <string name="notification_share_screenshot">Partager</string>
     <string name="notification_delete_screenshot">Supprimer</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="about_app_title">À propos</string>
+    <string name="tutorial">L\'instruction</string>
+    <string name="toggle_app_icon_failed">Échoué à afficher/masquer l\'icône de l\'application</string>
+    <string name="hide_app_from_launcher">Masquer l\'icône de l\'app</string>
+    <string name="take_screenshot">Capture d\'écran</string>
+    <string name="about_app_1">Ceci est un fork de github.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_2">Cette app a encore quelques problèmes et est en cours de développement. Si vous avez l\'accès root, veuillez utiliser la version de ipcjs, sa version est plus rapide et plus fiable.</string>
+    <string name="about_license_title">License</string>
+    <string name="about_app_3">Pour plus d\'informations et de rapports de bugs, visitez: github.com/cvzi/ScreenshotTile</string>
+    <string name="tap_for_next_step">Touchez pour avancer</string>
 </resources>

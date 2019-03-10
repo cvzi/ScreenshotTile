@@ -1,28 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">截屏瓷贴(不root)</string>
-    <string name="tile_label">截屏</string>
+    <string name="app_name">屏幕截图磁贴 (NoRoot)</string>
+    <string name="tile_label">屏幕截图</string>
     <string name="title_delay">延时</string>
     <string name="more_setting">更多设置</string>
     <string name="setting_delay_entry_default">立即</string>
-    <string name="setting_delay_entry_1s">1秒</string>
-    <string name="setting_delay_entry_2s">2秒</string>
-    <string name="setting_delay_entry_5s">5秒</string>
+    <string name="setting_delay_entry_1s">1 秒</string>
+    <string name="setting_delay_entry_2s">2 秒</string>
+    <string name="setting_delay_entry_5s">5 秒</string>
     <string name="show_count_down">显示倒计时</string>
-    <string name="file_title">截屏</string>
+    <string name="file_title">Screenshot</string>
+    <string name="file_description">Screenshot taken on %1$s</string>
     <string name="file_description_simpledateformat">yyyy/MM/dd HH:mm:ss</string>
-    <string name="screenshot_failed">截屏失败</string>
-    <string name="notification_title">截屏成功</string>
-    <string name="screenshot_file_saved">截屏件已保存至 %1$s</string>
-    <string name="file_description">截屏 %1$s</string>
-    <string name="notification_app_chooser">開啟</string>
-    <string name="notification_body">輕觸即可查看您的截屏</string>
-    <string name="notification_channel_description">截屏通知功</string>
+    <string name="notification_title">已保存屏幕截图</string>
+    <string name="notification_body">点按即可查看您的屏幕截图</string>
+    <string name="notification_channel_description">屏幕截图后显示通知</string>
+    <string name="notification_app_chooser">打开文件…</string>
+    <string name="notification_app_chooser_share">分享文件…</string>
+    <string name="screenshot_failed">屏幕截图失败，请重试</string>
+    <string name="screenshot_file_saved">屏幕截图已保存至 %1$s</string>
+    <string name="notification_delete_screenshot">删除</string>
+    <string name="notification_share_screenshot">分享</string>
+    <string name="screenshot_deleted">删除成功</string>
+    <string name="screenshot_delete_failed">无法删除</string>
     <string name="permission_missing_external_storage">获取存储空间权限失败</string>
     <string name="permission_missing_screen_capture">获取录制屏幕截图权限失败</string>
-    <string name="screenshot_delete_failed">无法删除</string>
-    <string name="notification_share_screenshot">分享</string>
-    <string name="notification_delete_screenshot">删除</string>
-    <string name="screenshot_deleted">删除成功</string>
-    <string name="notification_app_chooser_share">分享</string>
+    <string name="hide_app_from_launcher">从启动器隐藏应用图标</string>
+    <string name="toggle_app_icon_failed">显示/隐藏应用图标失败</string>
+    <string name="tutorial">教程</string>
+    <string name="tap_for_next_step">点按进入下一步</string>
+
+    <!-- About -->
+    <string name="about_app_title">关于</string>
+    <string name="about_app_1">这是\ngithub.com/ipcjs/ScreenshotTile 的一个分支</string>
+    <string name="about_app_2">此应用仍然存在一些问题并且正在开发中。\n如果你的设备拥有 root 权限，请使用 ipcjs 的版本，更快速可靠。</string>
+    <string name="about_app_3">获取更多信息及错误报告请访问：\ngithub.com/cvzi/ScreenshotTile</string>
+    <string name="about_license_title">许可证</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="take_screenshot">屏幕截图</string>
+
 </resources>

@@ -25,4 +25,15 @@
     <string name="screenshot_delete_failed">No se pudo eliminar la imagen</string>
     <string name="screenshot_deleted">Imagen borrada</string>
     <string name="notification_app_chooser_share">Compartir imagen con…</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="about_app_title">Info de la app</string>
+    <string name="about_license_title">Licencia</string>
+    <string name="about_app_3">Para obtener más información e informes de errores, visite: github.com/cvzi/ScreenshotTile</string>
+    <string name="about_app_2">Esta aplicación todavía tiene algunos problemas y está en desarrollo. Si tiene acceso de root, puedes usar la versión de ipcjs, es más rápido y más confiable.</string>
+    <string name="about_app_1">Esta es un fork de github.com/ipcjs/ScreenshotTile</string>
+    <string name="tap_for_next_step">Toque para el siguiente paso</string>
+    <string name="tutorial">Instrucciones</string>
+    <string name="toggle_app_icon_failed">Error al mostrar/ocultar el icono de la aplicación</string>
+    <string name="hide_app_from_launcher">Ocultar el icono de la aplicación</string>
+    <string name="take_screenshot">Captura de pantalla</string>
 </resources>

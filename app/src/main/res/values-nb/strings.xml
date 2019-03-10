@@ -25,4 +25,15 @@
     <string name="notification_app_chooser_share">Del med…</string>
     <string name="screenshot_deleted">Skjermbildet slettet</string>
     <string name="screenshot_delete_failed">Mislyktes å slette bildet</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="hide_app_from_launcher">Skjul app ikonet</string>
+    <string name="toggle_app_icon_failed">Mislyktes å vise/skjule app ikonet</string>
+    <string name="tutorial">Undervisning</string>
+    <string name="tap_for_next_step">Trykk for neste trinnet</string>
+    <string name="take_screenshot">Ta et skjermbilde</string>
+    <string name="about_app_title">Om denne appen</string>
+    <string name="about_app_1">Denne er et fork av github.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_3">For more information and bug reports visit: github.com/cvzi/ScreenshotTile</string>
+    <string name="about_license_title">Lisens</string>
+    <string name="about_app_2">Denne app er fortsatt utviklet. Hvis du har root access, kan du bruke versjonen av ipcjs, den er raskere og mer pålitelig.</string>
 </resources>
