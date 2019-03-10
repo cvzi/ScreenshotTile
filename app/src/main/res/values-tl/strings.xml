@@ -19,21 +19,23 @@
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
     <string name="notification_title">Screenshot</string>
-    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\\n(Ang Pangkaraniwang Lisensyang Publiko ng GNU Bersyon 3)</string>
     <string name="show_count_down">Ipakita countdown</string>
     <string name="file_description">Screenshot na kinuha noong %1$s</string>
     <string name="notification_channel_description">Shows a notification when you have taken a screenshot</string>
     <string name="screenshot_file_saved">Kinuha ang screenshot: %1$s</string>
     <string name="permission_missing_external_storage">Failed to acquire permission for storage</string>
     <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
-    <string name="about_app_2">Ang app na ito ay pa rin sa pag-unlad.\\nTandaan na ang na app na ito ay hindi gaanong matatag kumpara sa orihinal.\\nSubukan ang orihinal na app kung mayroon kang root access.</string>
-    <string name="about_app_3">Upang magbigay ng feedback:\\ngithub.com/cvzi/ScreenshotTile</string>
-    <string name="about_app_1">This is a fork of github.com/ipcjs/ScreenshotTile</string>
-    <string name="about_license_title">Lisensyang</string>
-    <string name="about_app_title">Tungkol sa App</string>
     <string name="tap_for_next_step">Tapikin para sa susunod na hakbang</string>
     <string name="tutorial">Pagtuturo</string>
     <string name="toggle_app_icon_failed">Nabigong ipakita/itago ang application</string>
     <string name="hide_app_from_launcher">Itago ang icon ng app mula sa launcher.</string>
     <string name="take_screenshot">Kumuha ng screenshot</string>
+
+    <!-- About -->
+    <string name="about_app_title">Tungkol sa App</string>
+    <string name="about_app_1">This is a fork of\ngithub.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_2">Ang app na ito ay pa rin sa pag-unlad.\nTandaan na ang na app na ito ay hindi gaanong matatag kumpara sa orihinal.\nSubukan ang orihinal na app kung mayroon kang root access.</string>
+    <string name="about_app_3">Upang magbigay ng feedback:\ngithub.com/cvzi/ScreenshotTile</string>
+    <string name="about_license_title">Lisensyang</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\n(Ang Pangkaraniwang Lisensyang Publiko ng GNU Bersyon 3)</string>
 </resources>

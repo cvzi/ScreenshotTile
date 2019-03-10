@@ -32,11 +32,9 @@
 
     <!-- About -->
     <string name="about_app_title">About</string>
-    <string name="about_app_1">This is a fork of github.com/ipcjs/ScreenshotTile</string>
-    <string name="about_app_3">For more information and bug reports visit: github.com/cvzi/ScreenshotTile</string>
+    <string name="about_app_1">This is a fork of\ngithub.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_3">For more information and bug reports visit:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">License</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="about_app_2">This app still has some problems and is under development. If you have root access on your phone, please use ipcjs\' version, it\'s faster and more reliant.</string>
-
-
+    <string name="about_app_2">This app still has some problems and is under development.\nIf you have root access on your phone, please use ipcjs\' version, it\'s faster and more reliant.</string>
 </resources>

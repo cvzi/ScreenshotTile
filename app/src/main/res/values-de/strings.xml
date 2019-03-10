@@ -25,15 +25,17 @@
     <string name="screenshot_deleted">Screenshot gelöscht</string>
     <string name="screenshot_delete_failed">Screenshot konnte nicht gelöscht werden</string>
     <string name="notification_app_chooser_share">Teilen mit…</string>
-    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="about_app_title">Info</string>
-    <string name="about_app_1">Dies ist ein fork von github.com/ipcjs/ScreenshotTile</string>
-    <string name="about_app_2">Diese App hat noch einige kleine Fehler und wird noch entwickelt. Wenn du root Zugriff hast, kann du die originale Version von ipcjs benutzen. Sie ist schneller und stabiler.</string>
-    <string name="about_app_3">Für mehr informationen und Fehlerberichte, besuche bitte github.com/cvzi/ScreenshotTile</string>
-    <string name="about_license_title">Lizenz</string>
     <string name="tap_for_next_step">Berühren für nächsten Schritt</string>
     <string name="tutorial">Tutorial</string>
     <string name="toggle_app_icon_failed">Fehler beim Zeigen/Verstecken des App Icons</string>
     <string name="hide_app_from_launcher">Verstecke App icon vom App Drawer</string>
     <string name="take_screenshot">Screenshot aufnehmen</string>
+
+    <!-- About -->
+    <string name="about_app_title">Info</string>
+    <string name="about_app_1">Dies ist ein fork von\ngithub.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_2">Diese App hat noch einige kleine Fehler und wird noch entwickelt.\nWenn du root Zugriff hast, kann du die originale Version von ipcjs benutzen. Sie ist schneller und stabiler.</string>
+    <string name="about_app_3">Für mehr informationen und Fehlerberichte, besuche bitte\ngithub.com/cvzi/ScreenshotTile</string>
+    <string name="about_license_title">Lizenz</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
 </resources>
