@@ -62,7 +62,7 @@ class MainActivity : Activity() {
         })
 
         findViewById<Button>(R.id.buttonSettings)?.setOnClickListener {
-            ContainerActivity.start(this@MainActivity, SettingFragment::class.java)
+            ContainerActivity.start(this, SettingFragment::class.java)
         }
     }
 
@@ -86,7 +86,7 @@ class MainActivity : Activity() {
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             return ClickableImageView(this@MainActivity).apply {
                 setImageResource(images[position])
-                (container as ViewPager).addView(this, 0)
+                (container as? ViewPager)?.addView(this, 0)
             }
         }
 
