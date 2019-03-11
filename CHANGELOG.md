@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.2.1
+*   Fix crash (java.io.IOException) at java.io.File.createNewFile
 ## 1.2.0
 *   Added tutorial with icon on home screen (Option to hide icon in settings)
 *   Tile state is now always off
