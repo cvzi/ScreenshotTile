@@ -14,7 +14,8 @@ public class NoDisplayActivity extends Activity {
 
     /**
      * New Intent that takes a screenshot immediately if screenshot is true
-     * @param context Context
+     *
+     * @param context    Context
      * @param screenshot Immediately start taking a screenshot
      * @return The intent
      */

@@ -15,7 +15,6 @@ import android.widget.Toast
 import com.github.ipcjs.screenshottile.MainActivity
 import com.github.ipcjs.screenshottile.PrefManager
 import com.github.ipcjs.screenshottile.R
-import java.lang.Exception
 
 
 /**
@@ -65,11 +64,11 @@ class SettingFragment : PreferenceFragment() {
     private fun updateHideApp(hide: Boolean): Boolean {
         val componentName = ComponentName(context, MainActivity::class.java)
         return try {
-                context.packageManager.setComponentEnabledSetting(
-                    componentName,
-                    if(hide) PackageManager.COMPONENT_ENABLED_STATE_DISABLED else PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                    PackageManager.DONT_KILL_APP
-                )
+            context.packageManager.setComponentEnabledSetting(
+                componentName,
+                if (hide) PackageManager.COMPONENT_ENABLED_STATE_DISABLED else PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                PackageManager.DONT_KILL_APP
+            )
             true
         } catch (e: Exception) {
             Log.e("SettingFragment", "setComponentEnabledSetting", e)
