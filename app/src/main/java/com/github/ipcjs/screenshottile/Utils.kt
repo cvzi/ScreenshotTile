@@ -25,6 +25,7 @@ import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICA
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.max
@@ -76,8 +77,14 @@ fun addImageToGallery(
 /**
  * New image file in default "Picture" directory.
  */
-fun createImageFile(filename: String): File {
-    val storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)!!
+fun createImageFile(context: Context, filename: String): File {
+    var storageDir: File?
+    storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+    if (storageDir == null) {
+        // Fallback to "private" data/Package.Name/... directory
+        Log.e("Utils.kt:createImageFile()", "Fallback to getExternalFilesDir(Environment.DIRECTORY_PICTURES)")
+        storageDir = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    }
     val screenshotDir = File(storageDir, TakeScreenshotActivity.SCREENSHOT_DIRECTORY)
     screenshotDir.mkdirs()
     return File(screenshotDir, filename)
@@ -86,11 +93,11 @@ fun createImageFile(filename: String): File {
 /**
  * Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss".
  */
-fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, Bitmap> {
+fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, Bitmap>? {
     val date = Date()
     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.getDefault()).format(date)
     val filename = "$prefix$timeStamp"
-    val imageFile = createImageFile("$filename.png")
+    var imageFile = createImageFile(context, "$filename.png")
 
     // Save image
     val bitmap = imageToBitmap(image)
@@ -98,7 +105,20 @@ fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, 
     val bytes = ByteArrayOutputStream()
     bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes)
 
-    imageFile.createNewFile()
+    try {
+        imageFile.createNewFile()
+    } catch (e: IOException) {
+        // Fallback to "private" data/Package.Name/... directory
+        imageFile = File(context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES), imageFile.name)
+        Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() ${imageFile.absolutePath}")
+        try {
+            imageFile.createNewFile()
+        } catch (e: IOException) {
+            Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() Fallback file ${imageFile.absolutePath}")
+        }
+        return null
+    }
+
     val fileOutputStream = FileOutputStream(imageFile)
     fileOutputStream.write(bytes.toByteArray())
     fileOutputStream.close()

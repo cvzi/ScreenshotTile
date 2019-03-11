@@ -167,6 +167,12 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             return
         }
         val pair = saveImageToFile(applicationContext, image, "Screenshot_")
+        if (pair == null) {
+            screenShotFailedToast()
+            finish()
+            return
+        }
+
         image.close()
         val imageFile = pair.first
         p("saveImage() imageFile.absolutePath= ${imageFile.absolutePath}")
