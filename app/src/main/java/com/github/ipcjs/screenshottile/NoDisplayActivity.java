@@ -12,6 +12,12 @@ public class NoDisplayActivity extends Activity {
 
     private static final String EXTRA_SCREENSHOT = "com.github.cvzi.screenshottile.NoDisplayActivity.EXTRA_SCREENSHOT";
 
+    /**
+     * New Intent that takes a screenshot immediately if screenshot is true
+     * @param context Context
+     * @param screenshot Immediately start taking a screenshot
+     * @return The intent
+     */
     public static Intent newIntent(Context context, boolean screenshot) {
         Intent intent = new Intent(context, NoDisplayActivity.class);
         intent.putExtra(EXTRA_SCREENSHOT, screenshot);
