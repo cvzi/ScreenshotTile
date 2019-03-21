@@ -2,12 +2,15 @@ package com.github.ipcjs.screenshottile
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.collection.LruCache
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
@@ -39,12 +42,17 @@ class MainActivity : Activity() {
         R.drawable.screenshot_16
     )
 
+    private lateinit var bitmapCache: BitmapCache
+
     private lateinit var viewPager: ViewPager
     private lateinit var textViewStep: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val cacheSize = (Runtime.getRuntime().maxMemory() / 1024).toInt() / 4
+        bitmapCache = BitmapCache(cacheSize)
 
         textViewStep = findViewById(R.id.textViewStep)
 
@@ -85,7 +93,7 @@ class MainActivity : Activity() {
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             return ClickableImageView(this@MainActivity).apply {
-                setImageResource(images[position])
+                setImageBitmap(bitmapCache.get(images[position]))
                 (container as? ViewPager)?.addView(this, 0)
             }
         }
@@ -95,4 +103,13 @@ class MainActivity : Activity() {
         }
     }
 
+    private inner class BitmapCache(cacheSize: Int) : LruCache<Int, Bitmap>(cacheSize) {
+        override fun sizeOf(resId: Int, bitmap: Bitmap): Int {
+            return bitmap.byteCount / 1024
+        }
+
+        override fun create(resId: Int): Bitmap? {
+            return BitmapFactory.decodeResource(resources, resId)
+        }
+    }
 }

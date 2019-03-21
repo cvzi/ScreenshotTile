@@ -99,25 +99,30 @@ fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, 
     val filename = "$prefix$timeStamp"
     var imageFile = createImageFile(context, "$filename.png")
 
+    try {
+        imageFile.createNewFile()
+    } catch (e: IOException) {
+        // Tray again to fallback to "private" data/Package.Name/... directory
+        Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() ${imageFile.absolutePath}")
+        imageFile = File(context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES), imageFile.name)
+        try {
+            imageFile.createNewFile()
+        } catch (e: IOException) {
+            Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() for fallback file ${imageFile.absolutePath}")
+            return null
+        }
+    }
+
+    if (!imageFile.exists() || !imageFile.canWrite()) {
+        Log.e("Utils.kt:saveImageToFile()", "File ${imageFile.absolutePath} does not exist or is not writable")
+        return null
+    }
+
     // Save image
     val bitmap = imageToBitmap(image)
     image.close()
     val bytes = ByteArrayOutputStream()
     bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes)
-
-    try {
-        imageFile.createNewFile()
-    } catch (e: IOException) {
-        // Fallback to "private" data/Package.Name/... directory
-        imageFile = File(context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES), imageFile.name)
-        Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() ${imageFile.absolutePath}")
-        try {
-            imageFile.createNewFile()
-        } catch (e: IOException) {
-            Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() Fallback file ${imageFile.absolutePath}")
-        }
-        return null
-    }
 
     val fileOutputStream = FileOutputStream(imageFile)
     fileOutputStream.write(bytes.toByteArray())
