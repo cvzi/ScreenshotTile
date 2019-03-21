@@ -5,12 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import static com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID;
 import static com.github.ipcjs.screenshottile.Utils.p;
 import static com.github.ipcjs.screenshottile.UtilsKt.screenshot;
 
 public class NoDisplayActivity extends Activity {
 
-    private static final String EXTRA_SCREENSHOT = "com.github.cvzi.screenshottile.NoDisplayActivity.EXTRA_SCREENSHOT";
+    private static final String EXTRA_SCREENSHOT = APPLICATION_ID + ".NoDisplayActivity.EXTRA_SCREENSHOT";
 
     /**
      * New Intent that takes a screenshot immediately if screenshot is true
