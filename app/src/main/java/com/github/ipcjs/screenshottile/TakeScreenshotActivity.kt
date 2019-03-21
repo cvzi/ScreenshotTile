@@ -175,7 +175,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
         image.close()
         val imageFile = pair.first
-        p("saveImage() imageFile.absolutePath= ${imageFile.absolutePath}")
+        p("saveImage() imageFile.absolutePath=${imageFile.absolutePath}")
         Toast.makeText(
             this,
             getString(R.string.screenshot_file_saved, imageFile.canonicalFile), Toast.LENGTH_LONG
