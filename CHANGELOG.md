@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.3
+*   Fix crash (java.lang.OutOfMemoryError) in the tutorial
+## 1.2.2
+*   Update gradle
 ## 1.2.1
 *   Fix crash (java.io.IOException) at java.io.File.createNewFile
 ## 1.2.0
