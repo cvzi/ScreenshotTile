@@ -102,7 +102,7 @@ fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, 
     try {
         imageFile.createNewFile()
     } catch (e: IOException) {
-        // Tray again to fallback to "private" data/Package.Name/... directory
+        // Try again to fallback to "private" data/Package.Name/... directory
         Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() ${imageFile.absolutePath}")
         imageFile = File(context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES), imageFile.name)
         try {
