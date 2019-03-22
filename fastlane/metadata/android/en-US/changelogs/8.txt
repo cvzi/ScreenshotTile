@@ -1,0 +1,1 @@
+Fix crash (java.lang.OutOfMemoryError) in the tutorial
