@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.2.4
+*   Added [fastlane](https://docs.fastlane.tools/actions/supply/#images-and-screenshots) metadata
 ## 1.2.3
 *   Fix crash (java.lang.OutOfMemoryError) in the tutorial
 ## 1.2.2
