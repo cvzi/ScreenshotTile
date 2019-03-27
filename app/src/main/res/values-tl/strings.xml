@@ -30,6 +30,8 @@
     <string name="toggle_app_icon_failed">Nabigong ipakita/itago ang application</string>
     <string name="hide_app_from_launcher">Itago ang icon ng app mula sa launcher.</string>
     <string name="take_screenshot">Kumuha ng screenshot</string>
+    <string name="notification_edit_screenshot">I-edi</string>
+    <string name="notification_app_chooser_edit">Edit gamit ang…</string>
 
     <!-- About -->
     <string name="about_app_title">Tungkol sa App</string>

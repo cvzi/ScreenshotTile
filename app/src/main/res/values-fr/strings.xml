@@ -25,6 +25,8 @@
     <string name="notification_app_chooser_share">Partager</string>
     <string name="notification_share_screenshot">Partager</string>
     <string name="notification_delete_screenshot">Supprimer</string>
+    <string name="notification_app_chooser_edit">Éditer…</string>
+    <string name="notification_edit_screenshot">Éditer</string>
     <string name="tutorial">L\'instruction</string>
     <string name="toggle_app_icon_failed">Échoué à afficher/masquer l\'icône de l\'application</string>
     <string name="hide_app_from_launcher">Masquer l\'icône de l\'app</string>

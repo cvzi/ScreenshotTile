@@ -23,6 +23,8 @@
     <string name="notification_delete_screenshot">Slett</string>
     <string name="notification_share_screenshot">Del</string>
     <string name="notification_app_chooser_share">Del med…</string>
+    <string name="notification_edit_screenshot">Endre</string>
+    <string name="notification_app_chooser_edit">Endre med…</string>
     <string name="screenshot_deleted">Skjermbildet slettet</string>
     <string name="screenshot_delete_failed">Mislyktes å slette bildet</string>
     <string name="hide_app_from_launcher">Skjul app ikonet</string>

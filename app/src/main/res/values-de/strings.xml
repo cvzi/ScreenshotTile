@@ -22,6 +22,8 @@
     <string name="permission_missing_screen_capture">Fehler bei der Berechtigung zum Aufnehmen des Bildschirminhalts</string>
     <string name="notification_delete_screenshot">Löschen</string>
     <string name="notification_share_screenshot">Teilen</string>
+    <string name="notification_app_chooser_edit">Bearbeiten mit…</string>
+    <string name="notification_edit_screenshot">Bearbeiten</string>
     <string name="screenshot_deleted">Screenshot gelöscht</string>
     <string name="screenshot_delete_failed">Screenshot konnte nicht gelöscht werden</string>
     <string name="notification_app_chooser_share">Teilen mit…</string>

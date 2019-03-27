@@ -16,6 +16,8 @@
     <string name="notification_channel_description">屏幕截图后显示通知</string>
     <string name="notification_app_chooser">打开文件…</string>
     <string name="notification_app_chooser_share">分享文件…</string>
+    <string name="notification_edit_screenshot">编辑</string>
+    <string name="notification_app_chooser_edit">编辑文件…</string>
     <string name="screenshot_failed">屏幕截图失败，请重试</string>
     <string name="screenshot_file_saved">屏幕截图已保存至 %1$s</string>
     <string name="notification_delete_screenshot">删除</string>
@@ -37,5 +39,4 @@
     <string name="about_license_title">许可证</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="take_screenshot">屏幕截图</string>
-
 </resources>
