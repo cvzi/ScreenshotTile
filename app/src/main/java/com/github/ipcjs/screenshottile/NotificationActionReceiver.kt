@@ -13,6 +13,7 @@ import java.io.File
 
 const val NOTIFICATION_ACTION_SHARE = "NOTIFICATION_ACTION_SHARE"
 const val NOTIFICATION_ACTION_DELETE = "NOTIFICATION_ACTION_DELETE"
+const val NOTIFICATION_ACTION_EDIT = "NOTIFICATION_ACTION_EDIT"
 const val NOTIFICATION_ACTION_DATA_URI = "NOTIFICATION_ACTION_DATA_URI"
 const val NOTIFICATION_ACTION_ID = "NOTIFICATION_ACTION_ID"
 
@@ -58,6 +59,26 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     } else {
                         Toast.makeText(this, context.getString(R.string.screenshot_delete_failed), Toast.LENGTH_LONG)
                             .show()
+                    }
+                }
+                NOTIFICATION_ACTION_EDIT -> {
+                    p("NotificationActionReceiver: ${intent.action}")
+
+                    hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
+
+                    val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
+
+                    val shareIntent = editImageChooserIntent(this, path)
+                    shareIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
+
+                    if (shareIntent.resolveActivity(context.packageManager) != null) {
+                        if (ScreenshotTileService.instance != null) {
+                            ScreenshotTileService.instance?.startActivityAndCollapse(shareIntent)
+                        } else {
+                            startActivity(shareIntent)
+                        }
+                    } else {
+                        Log.e("NotificationActionReceiver", "resolveActivity(shareIntent) returned null")
                     }
                 }
             }

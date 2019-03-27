@@ -14,6 +14,7 @@ import android.service.quicksettings.TileService;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static com.github.ipcjs.screenshottile.NotificationActionReceiverKt.NOTIFICATION_ACTION_DELETE;
+import static com.github.ipcjs.screenshottile.NotificationActionReceiverKt.NOTIFICATION_ACTION_EDIT;
 import static com.github.ipcjs.screenshottile.NotificationActionReceiverKt.NOTIFICATION_ACTION_SHARE;
 import static com.github.ipcjs.screenshottile.Utils.p;
 
@@ -62,6 +63,9 @@ public class App extends Application {
         intentFilter.addAction(NOTIFICATION_ACTION_DELETE);
         context.registerReceiver(notificationActionReceiver, intentFilter);
 
+        intentFilter = new IntentFilter();
+        intentFilter.addAction(NOTIFICATION_ACTION_EDIT);
+        context.registerReceiver(notificationActionReceiver, intentFilter);
 
         receiverRegistered = true;
     }

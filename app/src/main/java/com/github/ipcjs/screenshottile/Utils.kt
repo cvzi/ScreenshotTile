@@ -248,6 +248,18 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
         ).build()
     )
 
+    if (editImageIntent(path).resolveActivity(context.applicationContext.packageManager) != null) {
+        val editIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_EDIT)
+        val pendingIntentEdit = PendingIntent.getBroadcast(appContext, uniqueId + 4, editIntent, 0)
+        builder.addAction(
+            Notification.Action.Builder(
+                icon,
+                appContext.getString(R.string.notification_edit_screenshot),
+                pendingIntentEdit
+            ).build()
+        )
+    }
+
     // Listen for action buttons clicks
     App.registerNotificationReceiver()
 
@@ -276,6 +288,25 @@ fun shareImageChooserIntent(context: Context, path: Uri): Intent {
         type = "image/png"
         putExtra(Intent.EXTRA_STREAM, path)
         return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_share))
+    }
+}
+
+/**
+ * Intent to edit image.
+ */
+fun editImageIntent(path: Uri): Intent {
+    return Intent(Intent.ACTION_EDIT).apply {
+        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        setDataAndType(path, "image/png")
+    }
+}
+
+/**
+ * Intent to open edit image chooser.
+ */
+fun editImageChooserIntent(context: Context, path: Uri): Intent {
+    editImageIntent(path).apply {
+        return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_edit))
     }
 }
 
