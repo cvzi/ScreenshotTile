@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.3.0
+*   Added "Edit" button
 ## 1.2.4
 *   Added [fastlane](https://docs.fastlane.tools/actions/supply/#images-and-screenshots) metadata
 ## 1.2.3
