@@ -17,3 +17,11 @@ Video:
 Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTile)
 
 [Changelog](CHANGELOG.md)
+
+<a name="icon">**Cast icon:**</a> ![cast icon](/app/src/main/casticon.png)
+
+If you don't want to see the cast icon in the status bar on every screenshot, you can turn
+it off on most phones. I do not recommend turning it off, as it is generally
+a good idea to know when an app is recording the screen.  
+Here's an explanation on how to turn it off:
+[PCTattletale.com - How to turn off Android's Pesky Chromecast Icon](https://www.pctattletale.com/blog/3050/how-to-turn-off-androids-pesky-chromecast-icon/)
