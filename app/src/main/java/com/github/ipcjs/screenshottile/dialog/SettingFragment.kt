@@ -23,6 +23,7 @@ import com.github.ipcjs.screenshottile.R
  */
 class SettingFragment : PreferenceFragment() {
     private val delayPref by lazy { findPreference(getString(R.string.pref_key_delay)) as ListPreference }
+    private val fileFormatPref by lazy { findPreference(getString(R.string.pref_key_file_format)) as ListPreference }
     private val pref: SharedPreferences by lazy { preferenceManager.sharedPreferences }
     private val prefManager by lazy { PrefManager(context, pref) }
 
@@ -31,6 +32,7 @@ class SettingFragment : PreferenceFragment() {
             when (key) {
                 getString(R.string.pref_key_delay) -> updateDelaySummary(prefManager.delay.toString())
                 getString(R.string.pref_key_hide_app) -> updateHideApp(prefManager.hideApp)
+                getString(R.string.pref_key_file_format) -> updateFileFormatSummary(prefManager.fileFormat)
             }
         }
 
@@ -39,6 +41,7 @@ class SettingFragment : PreferenceFragment() {
         addPreferencesFromResource(R.xml.pref)
         pref.registerOnSharedPreferenceChangeListener(prefListener)
         updateDelaySummary(delayPref.value)
+        updateFileFormatSummary(fileFormatPref.value)
 
         makeLink(R.string.pref_static_field_key_about_app_1, R.string.pref_static_field_link_about_app_1)
         makeLink(R.string.pref_static_field_key_about_app_3, R.string.pref_static_field_link_about_app_3)
@@ -59,6 +62,10 @@ class SettingFragment : PreferenceFragment() {
 
     private fun updateDelaySummary(value: String) {
         delayPref.summary = delayPref.entries[delayPref.findIndexOfValue(value)]
+    }
+
+    private fun updateFileFormatSummary(value: String) {
+        fileFormatPref.summary = fileFormatPref.entries[fileFormatPref.findIndexOfValue(value)]
     }
 
     private fun updateHideApp(hide: Boolean): Boolean {

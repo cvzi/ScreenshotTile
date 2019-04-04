@@ -19,9 +19,11 @@ class PrefManager {
         this.pref = pref
     }
 
-
     var delay: Int
-        get() = pref.getString(context.getString(R.string.pref_key_delay), "0").toIntOrNull() ?: 0
+        get() = pref.getString(
+            context.getString(R.string.pref_key_delay),
+            context.getString(R.string.setting_delay_value_default)
+        ).toIntOrNull() ?: 0
         set(value) = pref.edit().putString(context.getString(R.string.pref_key_delay), value.toString()).apply()
 
     var showCountDown: Boolean
@@ -31,5 +33,12 @@ class PrefManager {
     var hideApp: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_hide_app), false)
         set(value) = pref.edit().putBoolean(context.getString(R.string.pref_key_hide_app), value).apply()
+
+    var fileFormat: String
+        get() = pref.getString(
+            context.getString(R.string.pref_key_file_format),
+            context.getString(R.string.setting_file_format_value_default)
+        )
+        set(value) = pref.edit().putString(context.getString(R.string.pref_key_file_format), value).apply()
 
 }

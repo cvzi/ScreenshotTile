@@ -19,6 +19,14 @@
         android:summary="@string/setting_delay_entry_default"
         android:title="@string/title_delay" />
 
+    <ListPreference
+        android:defaultValue="@string/setting_file_format_value_default"
+        android:entries="@array/setting_file_format_entries"
+        android:entryValues="@array/setting_file_format_values"
+        android:key="@string/pref_key_file_format"
+        android:summary="@string/setting_file_format_entry_default"
+        android:title="File format" /> <!-- TODO translate this title-->
+
     <Preference
         android:key="@string/pref_static_field_key_about_app_1"
         android:persistent="false"

@@ -32,7 +32,7 @@ public class App extends Application {
     private static MediaProjection mediaProjection = null;
     private static volatile boolean receiverRegistered = false;
     private final Handler handler = new Handler(Looper.getMainLooper());
-    private PrefManager prefManager;
+    public PrefManager prefManager;
     private Runnable screenshotRunnable;
 
     public static App getInstance() {

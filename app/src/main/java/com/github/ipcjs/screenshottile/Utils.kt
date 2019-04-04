@@ -91,13 +91,46 @@ fun createImageFile(context: Context, filename: String): File {
 }
 
 /**
+ * Represents a file format and a quality setting for compression. See https://developer.android.com/reference/kotlin/android/graphics/Bitmap#compress
+ */
+class CompressionOptions(var fileExtension: String = "png", val quality: Int = 100) {
+    val format = when (fileExtension) {
+        "jpg" -> Bitmap.CompressFormat.JPEG
+        "webp" -> Bitmap.CompressFormat.WEBP
+        else -> {
+            fileExtension = "png"
+            Bitmap.CompressFormat.PNG
+        }
+    }
+}
+
+/**
+ * Get a CompressionsOptions object from the file_format setting
+ */
+fun compressionPreference(context: Context): CompressionOptions {
+    var prefFileFormat = (context.applicationContext as? App)?.prefManager?.fileFormat ?: context.getString(R.string.setting_file_format_value_default)
+    val parts = prefFileFormat.split("_")
+    prefFileFormat = parts[0]
+    val quality = if(parts.size > 1) {
+        parts[1].toInt()
+    } else 100
+    return CompressionOptions(prefFileFormat, quality)
+}
+
+/**
  * Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss".
  */
-fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, Bitmap>? {
+fun saveImageToFile(
+    context: Context,
+    image: Image,
+    prefix: String,
+    compressionOptions: CompressionOptions = CompressionOptions()
+): Pair<File, Bitmap>? {
     val date = Date()
     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.getDefault()).format(date)
     val filename = "$prefix$timeStamp"
-    var imageFile = createImageFile(context, "$filename.png")
+
+    var imageFile = createImageFile(context, "$filename.${compressionOptions.fileExtension}")
 
     try {
         imageFile.createNewFile()
@@ -122,7 +155,7 @@ fun saveImageToFile(context: Context, image: Image, prefix: String): Pair<File, 
     val bitmap = imageToBitmap(image)
     image.close()
     val bytes = ByteArrayOutputStream()
-    bitmap.compress(Bitmap.CompressFormat.PNG, 100, bytes)
+    bitmap.compress(compressionOptions.format, compressionOptions.quality, bytes)
 
     val fileOutputStream = FileOutputStream(imageFile)
     fileOutputStream.write(bytes.toByteArray())

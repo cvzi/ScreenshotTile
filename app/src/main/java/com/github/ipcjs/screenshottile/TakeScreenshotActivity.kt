@@ -166,7 +166,10 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             finish()
             return
         }
-        val pair = saveImageToFile(applicationContext, image, "Screenshot_")
+
+        val compressionOptions = compressionPreference(applicationContext)
+
+        val pair = saveImageToFile(applicationContext, image, "Screenshot_", compressionOptions)  // TODO put this in another thread
         if (pair == null) {
             screenShotFailedToast()
             finish()

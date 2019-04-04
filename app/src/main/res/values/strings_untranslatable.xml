@@ -17,6 +17,29 @@
     <string name="pref_key_delay" translatable="false">delays_string</string>
     <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
     <string name="pref_key_hide_app" translatable="false">hide_app</string>
+    <string name="pref_key_file_format" translatable="false">file_format</string>
+
+    <string name="setting_file_format_value_default" translatable="false">png</string>
+    <string-array name="setting_file_format_entries" translatable="false">
+        <item>@string/setting_file_format_entry_default</item>
+        <item>@string/setting_file_format_entry_webp</item>
+        <item>@string/setting_file_format_entry_jpg_100</item>
+        <item>@string/setting_file_format_entry_jpg_90</item>
+        <item>@string/setting_file_format_entry_jpg_70</item>
+    </string-array>
+    <string-array name="setting_file_format_values" translatable="false">
+        <item>@string/setting_file_format_value_default</item>
+        <item>webp</item>
+        <item>jpg_100</item>
+        <item>jpg_90</item>
+        <item>jpg_70</item>
+    </string-array>
+    <string name="setting_file_format_entry_default" translatable="false">PNG</string>
+    <string name="setting_file_format_entry_webp" translatable="false">WEBP</string>
+    <string name="setting_file_format_entry_jpg_100" translatable="false">JPG (100％)</string>
+    <string name="setting_file_format_entry_jpg_90" translatable="false">JPG (90％)</string>
+    <string name="setting_file_format_entry_jpg_70" translatable="false">JPG (70％)</string>
+
     <!-- About in settings -->
     <string name="pref_static_field_key_about_app_1" translatable="false">pref_static_field_key_about_app_1</string>
     <string name="pref_static_field_key_about_app_2" translatable="false">pref_static_field_key_about_app_2</string>
