@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.PixelFormat
 import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
@@ -12,11 +13,15 @@ import android.media.ImageReader
 import android.media.projection.MediaProjection
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.os.StrictMode
 import android.util.DisplayMetrics
 import android.view.Surface
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.Utils.p
+import java.io.File
+import java.lang.ref.WeakReference
 
 
 /**
@@ -31,6 +36,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         const val SCREENSHOT_DIRECTORY = "Screenshots"
         const val NOTIFICATION_PREVIEW_MIN_SIZE = 50
         const val NOTIFICATION_PREVIEW_MAX_SIZE = 400
+        const val THREAD_START = 1
+        const val THREAD_FINISHED = 2
 
         /**
          * Start activity.
@@ -42,6 +49,20 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         private fun newIntent(context: Context): Intent {
             return Intent(context, TakeScreenshotActivity::class.java)
         }
+
+        class SaveImageHandler(takeScreenshotActivity: TakeScreenshotActivity) : Handler() {
+            private var activity: WeakReference<TakeScreenshotActivity> = WeakReference(takeScreenshotActivity)
+            override fun handleMessage(msg: Message) {
+                super.handleMessage(msg)
+                p("SaveImageHandler handleMessage() what=${msg.what}")
+                if (msg.what == THREAD_START) {
+                    activity.get()!!.thread.start()
+                } else if (msg.what == THREAD_FINISHED) {
+                    activity.get()?.onFileSaved()
+                }
+            }
+        }
+
     }
 
     private var screenDensity: Int = 0
@@ -53,10 +74,16 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     private var imageReader: ImageReader? = null
     private var mediaProjection: MediaProjection? = null
 
+    lateinit var handler: Handler
+    lateinit var thread: Thread
+    var resultPair: Pair<File, Bitmap>? = null
+
     private var askedForPermission = false
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        handler = SaveImageHandler(this)
 
         // Avoid android.os.FileUriExposedException:
         val builder = StrictMode.VmPolicy.Builder()
@@ -169,22 +196,39 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
         val compressionOptions = compressionPreference(applicationContext)
 
-        val pair = saveImageToFile(applicationContext, image, "Screenshot_", compressionOptions)  // TODO put this in another thread
-        if (pair == null) {
+        thread = Thread(Runnable {
+            resultPair = saveImageToFile(applicationContext, image, "Screenshot_", compressionOptions)
+            image.close()
+
+            val message = Message()
+            message.what = THREAD_FINISHED
+            handler.sendMessage(message)
+
+        })
+        handler.sendEmptyMessage(THREAD_START)
+    }
+
+    private fun onFileSaved() {
+        if (resultPair == null) {
             screenShotFailedToast()
             finish()
             return
         }
 
-        image.close()
-        val imageFile = pair.first
-        p("saveImage() imageFile.absolutePath=${imageFile.absolutePath}")
-        Toast.makeText(
-            this,
-            getString(R.string.screenshot_file_saved, imageFile.canonicalFile), Toast.LENGTH_LONG
-        ).show()
-        createNotification(this, Uri.fromFile(imageFile), resizeToNotificationIcon(pair.second, screenDensity))
-        pair.second.recycle()
+        resultPair?.run {
+            val imageFile = first
+            p("saveImage() imageFile.absolutePath=${imageFile.absolutePath}")
+            Toast.makeText(
+                this@TakeScreenshotActivity,
+                getString(R.string.screenshot_file_saved, imageFile.canonicalFile), Toast.LENGTH_LONG
+            ).show()
+            createNotification(
+                this@TakeScreenshotActivity,
+                Uri.fromFile(imageFile),
+                resizeToNotificationIcon(second, screenDensity)
+            )
+            second.recycle()
+        } ?: screenShotFailedToast()
         finish()
     }
 
