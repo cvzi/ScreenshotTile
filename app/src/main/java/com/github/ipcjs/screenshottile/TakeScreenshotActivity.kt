@@ -50,19 +50,6 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             return Intent(context, TakeScreenshotActivity::class.java)
         }
 
-        class SaveImageHandler(takeScreenshotActivity: TakeScreenshotActivity) : Handler() {
-            private var activity: WeakReference<TakeScreenshotActivity> = WeakReference(takeScreenshotActivity)
-            override fun handleMessage(msg: Message) {
-                super.handleMessage(msg)
-                p("SaveImageHandler handleMessage() what=${msg.what}")
-                if (msg.what == THREAD_START) {
-                    activity.get()!!.thread.start()
-                } else if (msg.what == THREAD_FINISHED) {
-                    activity.get()?.onFileSaved()
-                }
-            }
-        }
-
     }
 
     private var screenDensity: Int = 0
@@ -73,17 +60,14 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     private var surface: Surface? = null
     private var imageReader: ImageReader? = null
     private var mediaProjection: MediaProjection? = null
-
-    lateinit var handler: Handler
-    lateinit var thread: Thread
-    var resultPair: Pair<File, Bitmap>? = null
+    private var handler = SaveImageHandler(this)
+    private var thread: Thread? = null
+    private var resultPair: Pair<File, Bitmap>? = null
 
     private var askedForPermission = false
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        handler = SaveImageHandler(this)
 
         // Avoid android.os.FileUriExposedException:
         val builder = StrictMode.VmPolicy.Builder()
@@ -184,8 +168,9 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             finish()
             return
         }
-        val image =
-            imageReader?.acquireNextImage()  // acquireLatestImage produces warning for  maxImages = 1: "Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers"
+
+        // acquireLatestImage produces warning for  maxImages = 1: "Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers"
+        val image = imageReader?.acquireNextImage()
         stopScreenSharing()
         if (image == null) {
             p("saveImage() image == null")
@@ -206,6 +191,19 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
         })
         handler.sendEmptyMessage(THREAD_START)
+    }
+
+    class SaveImageHandler(takeScreenshotActivity: TakeScreenshotActivity) : Handler() {
+        private var activity: WeakReference<TakeScreenshotActivity> = WeakReference(takeScreenshotActivity)
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            p("SaveImageHandler handleMessage() what=${msg.what}")
+            if (msg.what == THREAD_START) {
+                activity.get()!!.thread!!.start()
+            } else if (msg.what == THREAD_FINISHED) {
+                activity.get()?.onFileSaved()
+            }
+        }
     }
 
     private fun onFileSaved() {
