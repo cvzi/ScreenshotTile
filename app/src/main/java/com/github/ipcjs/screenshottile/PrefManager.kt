@@ -23,7 +23,7 @@ class PrefManager {
         get() = pref.getString(
             context.getString(R.string.pref_key_delay),
             context.getString(R.string.setting_delay_value_default)
-        ).toIntOrNull() ?: 0
+        )?.toIntOrNull() ?: 0
         set(value) = pref.edit().putString(context.getString(R.string.pref_key_delay), value.toString()).apply()
 
     var showCountDown: Boolean
@@ -38,7 +38,7 @@ class PrefManager {
         get() = pref.getString(
             context.getString(R.string.pref_key_file_format),
             context.getString(R.string.setting_file_format_value_default)
-        )
+        ) ?: "png"
         set(value) = pref.edit().putString(context.getString(R.string.pref_key_file_format), value).apply()
 
 }
