@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.2
+*   Added file format: png, jpg, webp
+*   Moved compressing the bitmap to file in separate thread
 ## 1.3.0
 *   Added "Edit" button
 ## 1.2.4
