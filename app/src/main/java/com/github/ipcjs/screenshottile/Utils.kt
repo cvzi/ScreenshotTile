@@ -10,6 +10,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.Icon
+import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.media.Image
 import android.net.Uri
@@ -22,11 +23,11 @@ import android.util.Log
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MAX_SIZE
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MIN_SIZE
+import com.github.ipcjs.screenshottile.Utils.p
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.max
 import kotlin.math.min
@@ -47,8 +48,8 @@ fun screenshot(context: Context) {
  * Copy image content to new bitmap.
  */
 fun imageToBitmap(image: Image): Bitmap {
-    val w =
-        image.width + (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
+    val offset = (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
+    val w = image.width + offset
     val h = image.height
     val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
     bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
@@ -64,14 +65,14 @@ fun addImageToGallery(
     title: String,
     description: String,
     mimeType: String = "image/jpeg"
-): Uri {
+): Uri? {
     val values = ContentValues()
     values.put(Images.Media.TITLE, title)
     values.put(Images.Media.DESCRIPTION, description)
     values.put(Images.Media.DATE_TAKEN, System.currentTimeMillis())
     values.put(Images.Media.MIME_TYPE, mimeType)
     values.put(MediaStore.MediaColumns.DATA, filepath)
-    return context.contentResolver.insert(Images.Media.EXTERNAL_CONTENT_URI, values)!!
+    return context.contentResolver?.insert(Images.Media.EXTERNAL_CONTENT_URI, values)
 }
 
 /**
@@ -108,10 +109,11 @@ class CompressionOptions(var fileExtension: String = "png", val quality: Int = 1
  * Get a CompressionsOptions object from the file_format setting
  */
 fun compressionPreference(context: Context): CompressionOptions {
-    var prefFileFormat = (context.applicationContext as? App)?.prefManager?.fileFormat ?: context.getString(R.string.setting_file_format_value_default)
+    var prefFileFormat = (context.applicationContext as? App)?.prefManager?.fileFormat
+        ?: context.getString(R.string.setting_file_format_value_default)
     val parts = prefFileFormat.split("_")
     prefFileFormat = parts[0]
-    val quality = if(parts.size > 1) {
+    val quality = if (parts.size > 1) {
         parts[1].toInt()
     } else 100
     return CompressionOptions(prefFileFormat, quality)
@@ -127,7 +129,7 @@ fun saveImageToFile(
     compressionOptions: CompressionOptions = CompressionOptions()
 ): Pair<File, Bitmap>? {
     val date = Date()
-    val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.getDefault()).format(date)
+    val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.US).format(date)
     val filename = "$prefix$timeStamp"
 
     var imageFile = createImageFile(context, "$filename.${compressionOptions.fileExtension}")
@@ -154,6 +156,12 @@ fun saveImageToFile(
     // Save image
     val bitmap = imageToBitmap(image)
     image.close()
+
+    if (bitmap.width == 0 || bitmap.height == 0) {
+        Log.e("Utils.kt:saveImageToFile()", "Bitmap width or height is 0")
+        return null
+    }
+
     val bytes = ByteArrayOutputStream()
     bitmap.compress(compressionOptions.format, compressionOptions.quality, bytes)
 
@@ -186,22 +194,19 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
         val channelName = context.getString(R.string.notification_title)
         val channelDescription = context.getString(R.string.notification_channel_description)
 
-        val notificationManager =
-            context.applicationContext.getSystemService(NotificationManager::class.java) as NotificationManager
-
-        var channel = notificationManager.getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN)
-        if (channel == null) {
-            channel = NotificationChannel(
-                NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN,
-                channelName,
-                NotificationManager.IMPORTANCE_LOW
-            ).apply {
-                description = channelDescription
-                enableVibration(false)
-                enableLights(false)
-                setSound(null, null)
+        context.applicationContext.getSystemService(NotificationManager::class.java)?.run {
+            if (getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN) == null) {
+                createNotificationChannel(NotificationChannel(
+                    NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN,
+                    channelName,
+                    NotificationManager.IMPORTANCE_LOW
+                ).apply {
+                    description = channelDescription
+                    enableVibration(false)
+                    enableLights(false)
+                    setSound(null, null)
+                })
             }
-            notificationManager.createNotificationChannel(channel)
         }
     }
     return NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
