@@ -22,71 +22,61 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     var screenshotPermission: Intent? = null
     var takeScreenshotOnStopListening = false
 
+    private fun setState(newState: Int) {
+        try {
+            qsTile?.run {
+                state = newState
+                updateTile()
+            }
+        } catch (e: IllegalStateException) {
+            Log.e("ScreenshotTileService", "setState: IllegalStateException", e)
+        } catch (e: NullPointerException) {
+            Log.e("ScreenshotTileService", "setState: NullPointerException", e)
+        }
+    }
+
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         instance = this
     }
 
     override fun onTileAdded() {
-        try {
-            super.onTileAdded()
-            p("onTileAdded")
+        super.onTileAdded()
+        p("ScreenshotTileService.onTileAdded")
 
-            App.acquireScreenshotPermission(this, this)
+        App.acquireScreenshotPermission(this, this)
 
-            qsTile.state = Tile.STATE_INACTIVE
-        } catch (e: IllegalStateException) {
-            Log.e("ScreenshotTileService", "onTileAdded: IllegalStateException", e)
-        }
+        setState(Tile.STATE_INACTIVE)
     }
 
     override fun onAcquireScreenshotPermission() {
-        p("onAcquireScreenshotPermission")
-        try {
-            qsTile.state = Tile.STATE_INACTIVE
-            qsTile.updateTile()
-        } catch (e: IllegalStateException) {
-            Log.e("ScreenshotTileService", "onAcquireScreenshotPermission: IllegalStateException", e)
-        }
+        p("ScreenshotTileService.onAcquireScreenshotPermission")
+        setState(Tile.STATE_INACTIVE)
     }
 
     override fun onStartListening() {
         super.onStopListening()
-        p("onStartListening")
-        try {
-            qsTile.state = Tile.STATE_INACTIVE
-            qsTile.updateTile()
-        } catch (e: IllegalStateException) {
-            Log.e("ScreenshotTileService", "onStartListening: IllegalStateException", e)
-        }
+        p("ScreenshotTileService.onStartListening")
+        setState(Tile.STATE_INACTIVE)
     }
 
     override fun onStopListening() {
         super.onStopListening()
-        p("onStopListening")
+        p("ScreenshotTileService.onStopListening")
 
         // Here we can be sure that the notification panel has fully collapsed
         if (takeScreenshotOnStopListening) {
             takeScreenshotOnStopListening = false
             App.getInstance().takeScreenshotFromTileService(this)
         }
-        try {
-            qsTile.state = Tile.STATE_INACTIVE
-            qsTile.updateTile()
-        } catch (e: IllegalStateException) {
-            Log.e("ScreenshotTileService", "onStopListening: IllegalStateException", e)
-        }
+        setState(Tile.STATE_INACTIVE)
     }
 
     override fun onClick() {
         super.onClick()
-        p("onClick")
-        try {
-            qsTile.state = Tile.STATE_ACTIVE
-            qsTile.updateTile()
-        } catch (e: IllegalStateException) {
-            Log.e("ScreenshotTileService", "onClick: IllegalStateException", e)
-        }
+        p("ScreenshotTileService.onClick")
+
+        setState(Tile.STATE_ACTIVE)
         App.getInstance().screenshot(this)
     }
 
