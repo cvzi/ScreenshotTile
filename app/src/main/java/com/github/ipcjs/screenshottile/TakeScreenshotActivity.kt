@@ -17,6 +17,7 @@ import android.os.Handler
 import android.os.Message
 import android.os.StrictMode
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.Surface
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.Utils.p
@@ -74,9 +75,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         StrictMode.setVmPolicy(builder.build())
         builder.detectFileUriExposure()
 
-        val metrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(metrics)
-        with(metrics) {
+        with(DisplayMetrics()) {
+            windowManager.defaultDisplay.getRealMetrics(this)
             screenDensity = densityDpi
             screenWidth = widthPixels
             screenHeight = heightPixels
