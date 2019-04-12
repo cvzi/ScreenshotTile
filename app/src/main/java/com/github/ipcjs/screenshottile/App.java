@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.os.Handler;
@@ -13,9 +12,6 @@ import android.preference.PreferenceManager;
 import android.service.quicksettings.TileService;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.github.ipcjs.screenshottile.NotificationActionReceiverKt.NOTIFICATION_ACTION_DELETE;
-import static com.github.ipcjs.screenshottile.NotificationActionReceiverKt.NOTIFICATION_ACTION_EDIT;
-import static com.github.ipcjs.screenshottile.NotificationActionReceiverKt.NOTIFICATION_ACTION_SHARE;
 import static com.github.ipcjs.screenshottile.Utils.p;
 
 /**
@@ -31,6 +27,7 @@ public class App extends Application {
     private static OnAcquireScreenshotPermissionListener onAcquireScreenshotPermissionListener = null;
     private static MediaProjection mediaProjection = null;
     private static volatile boolean receiverRegistered = false;
+    private static NotificationActionReceiver notificationActionReceiver;
     private final Handler handler = new Handler(Looper.getMainLooper());
     public PrefManager prefManager;
     private Runnable screenshotRunnable;
@@ -52,20 +49,8 @@ public class App extends Application {
             return;
         }
 
-        Context context = App.getInstance();
-        NotificationActionReceiver notificationActionReceiver = new NotificationActionReceiver();
-
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(NOTIFICATION_ACTION_SHARE);
-        context.registerReceiver(notificationActionReceiver, intentFilter);
-
-        intentFilter = new IntentFilter();
-        intentFilter.addAction(NOTIFICATION_ACTION_DELETE);
-        context.registerReceiver(notificationActionReceiver, intentFilter);
-
-        intentFilter = new IntentFilter();
-        intentFilter.addAction(NOTIFICATION_ACTION_EDIT);
-        context.registerReceiver(notificationActionReceiver, intentFilter);
+        notificationActionReceiver = new NotificationActionReceiver();
+        notificationActionReceiver.registerReceiver(App.getInstance());
 
         receiverRegistered = true;
     }

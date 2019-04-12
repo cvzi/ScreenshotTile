@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.content.IntentFilter
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast
@@ -83,5 +84,19 @@ class NotificationActionReceiver : BroadcastReceiver() {
                 }
             }
         }
+    }
+
+    fun registerReceiver(context: App) {
+        var intentFilter = IntentFilter()
+        intentFilter.addAction(NOTIFICATION_ACTION_SHARE)
+        context.registerReceiver(this, intentFilter)
+
+        intentFilter = IntentFilter()
+        intentFilter.addAction(NOTIFICATION_ACTION_DELETE)
+        context.registerReceiver(this, intentFilter)
+
+        intentFilter = IntentFilter()
+        intentFilter.addAction(NOTIFICATION_ACTION_EDIT)
+        context.registerReceiver(this, intentFilter)
     }
 }
