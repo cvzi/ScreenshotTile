@@ -125,6 +125,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     }
 
     private fun prepareForScreenSharing() {
+        resultPair = null
         screenSharing = true
         mediaProjection = App.createMediaProjection()
         if (surface == null) {
@@ -179,6 +180,13 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             return
         }
 
+        if (image.width == 0 || image.height == 0) {
+            Log.e("TakeScreenshotActivity.kt:saveImage()","Image size: ${image.width}x${image.width}")
+            screenShotFailedToast()
+            finish()
+            return
+        }
+
         val compressionOptions = compressionPreference(applicationContext)
 
         thread = Thread(Runnable {
@@ -227,6 +235,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             )
             second.recycle()
         } ?: screenShotFailedToast()
+
+        resultPair = null
         finish()
     }
 
