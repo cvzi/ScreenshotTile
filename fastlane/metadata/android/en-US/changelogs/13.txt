@@ -1,0 +1,1 @@
+Fixed: On some devices the screenshots were cropped with a black border on the left and right
