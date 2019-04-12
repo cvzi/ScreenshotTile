@@ -193,10 +193,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             resultPair = saveImageToFile(applicationContext, image, "Screenshot_", compressionOptions)
             image.close()
 
-            val message = Message()
-            message.what = THREAD_FINISHED
-            handler.sendMessage(message)
-
+            handler.sendEmptyMessage(THREAD_FINISHED)
         })
         handler.sendEmptyMessage(THREAD_START)
     }
