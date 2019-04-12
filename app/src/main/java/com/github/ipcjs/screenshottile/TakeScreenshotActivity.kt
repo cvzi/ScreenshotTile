@@ -181,7 +181,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         }
 
         if (image.width == 0 || image.height == 0) {
-            Log.e("TakeScreenshotActivity.kt:saveImage()","Image size: ${image.width}x${image.width}")
+            Log.e("TakeScreenshotActivity.kt:saveImage()", "Image size: ${image.width}x${image.width}")
             screenShotFailedToast()
             finish()
             return

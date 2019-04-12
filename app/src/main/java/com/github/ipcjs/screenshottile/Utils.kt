@@ -23,7 +23,6 @@ import android.util.Log
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MAX_SIZE
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MIN_SIZE
-import com.github.ipcjs.screenshottile.Utils.p
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
