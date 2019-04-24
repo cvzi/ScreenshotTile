@@ -5,9 +5,9 @@
     <string name="more_setting">Opsyon</string>>
     <string name="file_title">Screenshot</string>
     <string name="file_description_simpledateformat">MM-dd-yyyy HH:mm:ss</string>
-    <string name="notification_body">Tingnan ang litrato</string>
+    <string name="notification_body">I-tap upang tingnan ang iyong screenshot</string>
     <string name="notification_app_chooser">Buksan sa …</string>
-    <string name="screenshot_failed">Nabigo ang screenshot, pakisubukang muli</string>
+    <string name="screenshot_failed">Hindi ma-save ang screenshot, pakisubukang muli</string>
     <string name="notification_delete_screenshot">Tanggalin</string>
     <string name="notification_share_screenshot">Ibahagi</string>
     <string name="screenshot_deleted">Tinanggal na ang screenshot</string>
@@ -18,7 +18,7 @@
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
-    <string name="notification_title">Screenshot</string>
+    <string name="notification_title">Na-save ang screenshot</string>
     <string name="show_count_down">Ipakita countdown</string>
     <string name="file_description">Screenshot na kinuha noong %1$s</string>
     <string name="notification_channel_description">Shows a notification when you have taken a screenshot</string>

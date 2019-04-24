@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
-    <string name="notification_title">Captura guardada</string>
+    <string name="notification_title">Se ha guardado la captura de pantalla</string>
     <string name="notification_body">Toca para ver la captura de pantalla</string>
     <string name="file_title">Captura de pantalla</string>
-    <string name="screenshot_failed">No se puede capturar una captura</string>
+    <string name="screenshot_failed">No se ha podido guardar la captura de pantalla</string>
     <string name="tile_label">Captura de pantalla</string>
     <string name="more_setting">Mas ajustes</string>
     <string name="file_description_simpledateformat">dd/MM/yyyy HH:mm:ss</string>

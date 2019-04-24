@@ -9,12 +9,12 @@
     <string name="setting_delay_entry_1s">1 detik</string>
     <string name="setting_delay_entry_2s">2 detik</string>
     <string name="setting_delay_entry_5s">5 detik</string>
-    <string name="screenshot_failed">Gagal mengambil tangkapan layar</string>
+    <string name="screenshot_failed">Tidak dapat menyimpan tangkapan layar</string>
     <string name="file_title">Tangkapan layar</string>
     <string name="file_description_simpledateformat">dd/MM/yyyy HH:mm:ss</string>
     <string name="file_description">Screenshot dari %1$s</string>
     <string name="screenshot_file_saved">Disimpan tangkapan layar %1$s</string>
-    <string name="notification_body">Sentuh untuk melihat tangkapan layar</string>
+    <string name="notification_body">Tap untuk melihat tangkapan layar</string>
     <string name="notification_channel_description">Shows a notification when you have taken a screenshot</string>
     <string name="notification_share_screenshot">Kongsi</string>
     <string name="notification_app_chooser_share">Kongsi dengan…</string>
@@ -22,7 +22,7 @@
     <string name="notification_delete_screenshot">Padam</string>
     <string name="notification_edit_screenshot">Sunting</string>
     <string name="notification_app_chooser_edit">Sunting melalui…</string>
-    <string name="notification_title">Berhasil menangkap tangkapan layar</string>
+    <string name="notification_title">Tangkapan layar disimpan</string>
     <string name="screenshot_delete_failed">Tidak dapat hapus file</string>
     <string name="screenshot_deleted">Tangkapan layar telah di delete</string>
     <string name="hide_app_from_launcher">Sembunyikan ikon aplikasi ini</string>
@@ -30,7 +30,7 @@
     <string name="permission_missing_external_storage">Failed to acquire permission for storage</string>
     <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
     <string name="tutorial">Tutorial</string>
-    <string name="tap_for_next_step">Sentuh untuk langkah selanjutnya</string>
+    <string name="tap_for_next_step">Tap untuk langkah selanjutnya</string>
     <string name="take_screenshot">Mengambil tangkapan layar</string>
 
     <!-- About -->

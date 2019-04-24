@@ -13,11 +13,11 @@
     <string name="file_description">Capture d\'écran %1$s</string>
     <string name="file_title">Capture d\'écran</string>
     <string name="screenshot_file_saved">Capture d\'écran enregistré dans %1$s</string>
-    <string name="screenshot_failed">Échec d\'enregistrement de capture d\'écran</string>
-    <string name="notification_body">Touchez pour ourvir image</string>
+    <string name="screenshot_failed">Impossible d\'enregistrer la capture d\'écran</string>
+    <string name="notification_body">Appuyez pour afficher votre capture d\'écran</string>
     <string name="notification_channel_description">Afficher une notification quand un capture d\'écran a été pris</string>
     <string name="notification_app_chooser">Ouvrir</string>
-    <string name="notification_title">Capture d\'écran prise</string>
+    <string name="notification_title">Capture d\'écran enregistrée</string>
     <string name="permission_missing_external_storage">Échoué à obtenir l’autorisation Stockage</string>
     <string name="permission_missing_screen_capture">Échoué à obtenir l’autorisation pour capturer d\'écran</string>
     <string name="screenshot_deleted">Capture d\'écran supprimée</string>
@@ -26,12 +26,12 @@
     <string name="notification_share_screenshot">Partager</string>
     <string name="notification_delete_screenshot">Supprimer</string>
     <string name="notification_app_chooser_edit">Éditer…</string>
-    <string name="notification_edit_screenshot">Éditer</string>
+    <string name="notification_edit_screenshot">Modifier</string>
     <string name="tutorial">L\'instruction</string>
     <string name="toggle_app_icon_failed">Échoué à afficher/masquer l\'icône de l\'application</string>
     <string name="hide_app_from_launcher">Masquer l\'icône de l\'app</string>
     <string name="take_screenshot">Capture d\'écran</string>
-    <string name="tap_for_next_step">Touchez pour avancer</string>
+    <string name="tap_for_next_step">Appuyez pour avancer</string>
 
     <!-- About -->
     <string name="about_app_title">À propos</string>

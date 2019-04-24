@@ -12,7 +12,7 @@
     <string name="file_description">Screenshot taken on %1$s</string>
     <string name="file_description_simpledateformat">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Screenshot taken</string>
-    <string name="notification_body">Click to see the image</string>
+    <string name="notification_body">Tap to see the image</string>
     <string name="notification_channel_description">Shows a notification when you have taken a screenshot</string>
     <string name="notification_app_chooser">Open file with…</string>
     <string name="notification_app_chooser_share">Share file with…</string>
