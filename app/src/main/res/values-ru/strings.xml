@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="notification_title">Скриншот сохранен</string>
+    <string name="notification_body">Нажмите, чтобы увидеть скриншот.</string>
+    <string name="screenshot_failed">Не удалось сохранить скриншот</string>
+    <string name="notification_share_screenshot">Поделиться</string>
+    <string name="notification_edit_screenshot">Редактировать</string>
+    <string name="notification_delete_screenshot">Удалить</string>
+    <string name="tile_label">скриншот</string>
+</resources>
