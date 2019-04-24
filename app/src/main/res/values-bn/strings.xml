@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="notification_title">স্ক্রিনশট সেভ করা হয়েছে</string>
+    <string name="notification_body">স্ক্রিনশটটি দেখতে ট্যাপ করুন</string>
+    <string name="screenshot_failed">স্ক্রিনশট সেভ করা যায়নি</string>
+    <string name="notification_share_screenshot">ভাগ করুন</string>
+    <string name="notification_delete_screenshot">মুছুন</string>
+    <string name="notification_edit_screenshot">সম্পাদন করা</string>
+    <string name="tile_label">স্ক্রিনশট নিন</string>
+</resources>
