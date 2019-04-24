@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.0
+*   Redesigned the notification with a big picture and reordered the buttons
+*   Added a list of open source projects used to the about section
+*   Allow installation to internal storage only
+*   Improved existing translations
+*   Added incomplete translations for Arabic, Bengali, Gujarati, Hindi, Japanese, Kannada, Malay, Marathi, Persian, Portuguese, Punjabi, Russian, Tamil, Telugu, Thai, Uighur, Urdu, Vietnamese
+*   Update gradle
 ## 1.3.3
 *   Removed black borders on screenshots with some devices
 *   Fix some nullable crashes
