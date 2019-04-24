@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="notification_title">ஸ்கிரீன்ஷாட் சேமிக்கப்பட்டது</string>
+    <string name="notification_body">ஸ்கிரீன்ஷாட்டைப் பார்க்க, தட்டவும்</string>
+    <string name="screenshot_failed">ஸ்கிரீன் ஷாட்டைச் சேமிக்க முடியவில்லை</string>
+    <string name="notification_share_screenshot">பகிர்</string>
+    <string name="notification_delete_screenshot">நீக்கு</string>
+    <string name="notification_edit_screenshot">திருத்து</string>
+    <string name="tile_label">ஸ்கிரீன்ஷாட்</string>
+</resources>
