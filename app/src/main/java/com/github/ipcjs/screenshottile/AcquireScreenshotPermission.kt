@@ -60,9 +60,9 @@ class AcquireScreenshotPermission : Activity() {
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        p("onActivityResult called " + (Activity.RESULT_OK == resultCode))
+        p("onActivityResult called " + (RESULT_OK == resultCode))
         if (SCREENSHOT_REQUEST_CODE == requestCode) {
-            if (Activity.RESULT_OK == resultCode) {
+            if (RESULT_OK == resultCode) {
                 p("AcquireScreenshotPermission RESULT_OK")
                 data?.run {
                     (data.clone() as? Intent)?.apply {

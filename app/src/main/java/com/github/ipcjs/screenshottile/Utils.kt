@@ -26,7 +26,6 @@ import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICA
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MIN_SIZE
 import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 import kotlin.math.max
@@ -233,7 +232,7 @@ fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
  * Create notification big picture icon, bitmap cropped (centered)
  */
 fun resizeToBigPicture(bitmap: Bitmap): Bitmap {
-    return if(bitmap.height > NOTIFICATION_BIG_PICTURE_MAX_HEIGHT) {
+    return if (bitmap.height > NOTIFICATION_BIG_PICTURE_MAX_HEIGHT) {
         val offsetY = (bitmap.height - NOTIFICATION_BIG_PICTURE_MAX_HEIGHT) / 2
         Bitmap.createBitmap(bitmap, 0, offsetY, bitmap.width, NOTIFICATION_BIG_PICTURE_MAX_HEIGHT)
     } else {
@@ -408,14 +407,14 @@ fun deleteImage(context: Context, file: File): Boolean {
 
     if (file.delete()) {
         Utils.p("File deleted from storage: ${file.absoluteFile}")
-        val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        val projection = arrayOf(MediaStore.Images.Media._ID)
-        val selection = MediaStore.Images.Media.DATA + " = ?"
+        val uri = Images.Media.EXTERNAL_CONTENT_URI
+        val projection = arrayOf(Images.Media._ID)
+        val selection = Images.Media.DATA + " = ?"
         val queryArgs = arrayOf(file.absolutePath)
         context.contentResolver.query(uri, projection, selection, queryArgs, null)?.apply {
             if (moveToFirst()) {
-                val id = getLong(getColumnIndexOrThrow(MediaStore.Images.Media._ID))
-                val contentUri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+                val id = getLong(getColumnIndexOrThrow(Images.Media._ID))
+                val contentUri = ContentUris.withAppendedId(Images.Media.EXTERNAL_CONTENT_URI, id)
                 context.contentResolver.delete(contentUri, null, null)
                 Utils.p("File deleted from MediaStore: $contentUri")
             }
