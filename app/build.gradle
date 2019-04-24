@@ -67,6 +67,11 @@ android {
     buildToolsVersion '28.0.3'
     productFlavors {
     }
+
+    lintOptions {
+        // For travis-ci:
+        disable 'MissingTranslation', 'ExtraTranslation'
+    }
 }
 
 dependencies {
