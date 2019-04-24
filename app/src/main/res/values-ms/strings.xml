@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="notification_title">Tangkapan skrin disimpan</string>
+    <string name="notification_body">Ketik untuk melihat tangkapan skrin anda</string>
+    <string name="screenshot_failed">Tidak dapat menyimpan tangkapan skrin</string>
+    <string name="notification_share_screenshot">Kongsi</string>
+    <string name="notification_delete_screenshot">Padam</string>
+    <string name="notification_edit_screenshot">Edit</string>
+    <string name="tile_label">Screenshot</string>
+</resources>
