@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="notification_title">ਸਕ੍ਰੀਨਸ਼ਾਟ ਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ</string>
+    <string name="notification_body">ਆਪਣਾ ਸਕ੍ਰੀਨਸ਼ਾਟ ਦੇਖਣ ਲਈ ਟੈਪ ਕਰੋ</string>
+    <string name="screenshot_failed">ਸਕ੍ਰੀਨਸ਼ਾਟ ਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ</string>
+    <string name="notification_delete_screenshot">ਹਟਾਓ</string>
+    <string name="notification_edit_screenshot">ਸੰਪਾਦਨ ਕਰੋ</string>
+    <string name="notification_share_screenshot">ਸਾਂਝਾ ਕਰੋ</string>
+    <string name="tile_label">ਯਾਤਰਾ ਦੇ ਵੇਰਵੇ</string>
+</resources>
