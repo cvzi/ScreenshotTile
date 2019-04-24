@@ -45,7 +45,11 @@
     <string name="pref_static_field_key_about_app_2" translatable="false">pref_static_field_key_about_app_2</string>
     <string name="pref_static_field_key_about_app_3" translatable="false">pref_static_field_key_about_app_3</string>
     <string name="pref_static_field_key_about_license_1" translatable="false">pref_static_field_key_about_license_1</string>
+    <string name="pref_static_field_key_about_open_source" translatable="false">pref_static_field_key_about_open_source</string>
     <string name="pref_static_field_link_about_app_1" translatable="false">https://github.com/ipcjs/ScreenshotTile</string>
     <string name="pref_static_field_link_about_app_3" translatable="false">https://github.com/cvzi/ScreenshotTile</string>
     <string name="pref_static_field_link_about_license_1" translatable="false">https://www.gnu.org/licenses/gpl-3.0</string>
+
+    <string name="about_open_source_title" translatable="false">Open source used</string>
+    <string name="about_open_source" translatable="false">Kotlin\ngradle\nMaterial Design Icons by Google</string>
 </resources>

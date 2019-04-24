@@ -55,4 +55,10 @@
         android:summary="@string/about_license_1"
         android:title="@string/about_license_title" />
 
+    <Preference
+        android:key="@string/pref_static_field_key_about_open_source"
+        android:persistent="false"
+        android:selectable="false"
+        android:summary="@string/about_open_source"
+        android:title="@string/about_open_source_title" />
 </PreferenceScreen>
