@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="notification_title">تم حفظ لقطة الشاشة.</string>
+    <string name="notification_body">انقر لعرض لقطة الشاشة.</string>
+    <string name="screenshot_failed">تعذّر حفظ لقطة الشاشة</string>
+    <string name="notification_share_screenshot">مشاركة</string>
+    <string name="notification_edit_screenshot">تعديل</string>
+    <string name="notification_delete_screenshot">حذف</string>
+    <string name="tile_label">لقطة شاشة</string>
+</resources>
