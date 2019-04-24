@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="notification_title">Đã chụp ảnh màn hình</string>
+    <string name="notification_body">Chạm để xem ảnh chụp màn hình của bạn</string>
+    <string name="screenshot_failed">Không thể chụp ảnh màn hình</string>
+    <string name="notification_share_screenshot">Chia sẻ</string>
+    <string name="notification_delete_screenshot">Xóa</string>
+    <string name="notification_edit_screenshot">Chỉnh sửa</string>
+    <string name="tile_label">Chụp màn hình</string>
+</resources>
