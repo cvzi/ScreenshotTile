@@ -103,6 +103,7 @@ class CompressionOptions(var fileExtension: String = "png", val quality: Int = 1
             Bitmap.CompressFormat.PNG
         }
     }
+    val mimeType = "image/$fileExtension"
 }
 
 /**
@@ -179,7 +180,8 @@ fun saveImageToFile(
             SimpleDateFormat(context.getString(R.string.file_description_simpledateformat), Locale.getDefault()).format(
                 date
             )
-        )
+        ),
+        compressionOptions.mimeType
     )
 
     return Pair(imageFile, bitmap)
