@@ -37,6 +37,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         const val SCREENSHOT_DIRECTORY = "Screenshots"
         const val NOTIFICATION_PREVIEW_MIN_SIZE = 50
         const val NOTIFICATION_PREVIEW_MAX_SIZE = 400
+        const val NOTIFICATION_BIG_PICTURE_MAX_HEIGHT = 1024
         const val THREAD_START = 1
         const val THREAD_FINISHED = 2
 
@@ -228,9 +229,12 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             createNotification(
                 this@TakeScreenshotActivity,
                 Uri.fromFile(imageFile),
-                resizeToNotificationIcon(second, screenDensity)
+                second,
+                screenDensity
             )
-            second.recycle()
+            if(!second.isRecycled) {
+                second.recycle()
+            }
         } ?: screenShotFailedToast()
 
         resultPair = null

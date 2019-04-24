@@ -20,6 +20,7 @@ import android.os.Environment.getExternalStoragePublicDirectory
 import android.provider.MediaStore
 import android.provider.MediaStore.Images
 import android.util.Log
+import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_BIG_PICTURE_MAX_HEIGHT
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MAX_SIZE
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MIN_SIZE
@@ -227,10 +228,26 @@ fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
 }
 
 /**
+ * Create notification big picture icon, bitmap cropped (centered)
+ */
+fun resizeToBigPicture(bitmap: Bitmap): Bitmap {
+    return if(bitmap.height > NOTIFICATION_BIG_PICTURE_MAX_HEIGHT) {
+        val offsetY = (bitmap.height - NOTIFICATION_BIG_PICTURE_MAX_HEIGHT) / 2
+        Bitmap.createBitmap(bitmap, 0, offsetY, bitmap.width, NOTIFICATION_BIG_PICTURE_MAX_HEIGHT)
+    } else {
+        bitmap
+    }
+}
+
+/**
  * Show a notification that opens the image file on tap.
  */
-fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
+fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensity: Int) {
     val appContext = context.applicationContext
+
+    val bigPicture = resizeToBigPicture(bitmap)
+
+    val largeIcon = resizeToNotificationIcon(bitmap, screenDensity)
 
     val uniqueId =
         (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
@@ -250,9 +267,10 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
         setShowWhen(true)
         setContentTitle(appContext.getString(R.string.notification_title))
         setContentText(appContext.getString(R.string.notification_body))
-        setSmallIcon(R.drawable.ic_stat_name)
-        setLargeIcon(bitmap)
+        setSmallIcon(R.drawable.stat_notify_image)
+        setLargeIcon(largeIcon)
         setAutoCancel(true)
+        style = Notification.BigPictureStyle().bigPicture(bigPicture).bigLargeIcon(null as Icon?)
         if (openImageIntent.resolveActivity(context.applicationContext.packageManager) != null) {
             setContentIntent(contentPendingIntent)
         } else {
@@ -264,16 +282,6 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
         appContext,
         R.drawable.ic_stat_name
     ) // This is not shown on Android 7+ anyways so let's just use the app icon
-
-    val deleteIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_DELETE)
-    val pendingIntentDelete = PendingIntent.getBroadcast(appContext, uniqueId + 2, deleteIntent, 0)
-    builder.addAction(
-        Notification.Action.Builder(
-            icon,
-            appContext.getString(R.string.notification_delete_screenshot),
-            pendingIntentDelete
-        ).build()
-    )
 
     val shareIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_SHARE)
     val pendingIntentShare = PendingIntent.getBroadcast(appContext, uniqueId + 3, shareIntent, 0)
@@ -297,6 +305,16 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
         )
     }
 
+    val deleteIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_DELETE)
+    val pendingIntentDelete = PendingIntent.getBroadcast(appContext, uniqueId + 2, deleteIntent, 0)
+    builder.addAction(
+        Notification.Action.Builder(
+            icon,
+            appContext.getString(R.string.notification_delete_screenshot),
+            pendingIntentDelete
+        ).build()
+    )
+
     // Listen for action buttons clicks
     App.registerNotificationReceiver()
 
@@ -304,6 +322,9 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap) {
     (appContext.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.apply {
         notify(uniqueId, builder.build())
     }
+
+    largeIcon.recycle()
+    bigPicture.recycle()
 }
 
 /**
