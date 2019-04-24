@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="notification_title">スクリーンショットを保存しました</string>
+    <string name="notification_body">タップするとスクリーンショットが表示されます</string>
+    <string name="screenshot_failed">スクリーンショット保存エラー</string>
+    <string name="notification_share_screenshot">シェア</string>
+    <string name="notification_edit_screenshot">編集</string>
+    <string name="notification_delete_screenshot">削除</string>
+    <string name="tile_label">スクリーンショット</string>
+</resources>
