@@ -166,9 +166,9 @@ fun saveImageToFile(
     val bytes = ByteArrayOutputStream()
     bitmap.compress(compressionOptions.format, compressionOptions.quality, bytes)
 
-    val fileOutputStream = FileOutputStream(imageFile)
-    fileOutputStream.write(bytes.toByteArray())
-    fileOutputStream.close()
+    imageFile.outputStream().use {
+        it.write(bytes.toByteArray())
+    }
 
     // Add to g
     addImageToGallery(
