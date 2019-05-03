@@ -24,9 +24,7 @@ import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICA
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MAX_SIZE
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MIN_SIZE
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.IOException
+import java.io.*
 import java.util.*
 import kotlin.math.max
 import kotlin.math.min
@@ -120,6 +118,26 @@ fun compressionPreference(context: Context): CompressionOptions {
 }
 
 /**
+ * Result of saveImageToFile()
+ */
+open class SaveImageResult(
+    val errorMessage: String = "",
+    val success: Boolean = false
+) : Serializable {
+    /**
+     * Returns string representation
+     */
+    override fun toString(): String = "SaveImageResult($errorMessage)"
+}
+
+data class SaveImageResultSuccess (
+    val bitmap: Bitmap,
+    val file: File
+) : SaveImageResult("", true) {
+    override fun toString(): String = "SaveImageResultSuccess($file)"
+}
+
+/**
  * Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss".
  */
 fun saveImageToFile(
@@ -127,7 +145,7 @@ fun saveImageToFile(
     image: Image,
     prefix: String,
     compressionOptions: CompressionOptions = CompressionOptions()
-): Pair<File, Bitmap>? {
+): SaveImageResult {
     val date = Date()
     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.US).format(date)
     val filename = "$prefix$timeStamp"
@@ -136,21 +154,21 @@ fun saveImageToFile(
 
     try {
         imageFile.createNewFile()
-    } catch (e: IOException) {
+    } catch (e: Exception) {
         // Try again to fallback to "private" data/Package.Name/... directory
-        Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() ${imageFile.absolutePath}")
+        Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() ${imageFile.absolutePath} $e")
         imageFile = File(context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES), imageFile.name)
         try {
             imageFile.createNewFile()
-        } catch (e: IOException) {
-            Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() for fallback file ${imageFile.absolutePath}")
-            return null
+        } catch (e: Exception) {
+            Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() for fallback file ${imageFile.absolutePath} $e")
+            return SaveImageResult("Could not create new file")
         }
     }
 
     if (!imageFile.exists() || !imageFile.canWrite()) {
         Log.e("Utils.kt:saveImageToFile()", "File ${imageFile.absolutePath} does not exist or is not writable")
-        return null
+        return SaveImageResult("Cannot write to file")
     }
 
     // Save image
@@ -159,31 +177,58 @@ fun saveImageToFile(
 
     if (bitmap.width == 0 || bitmap.height == 0) {
         Log.e("Utils.kt:saveImageToFile()", "Bitmap width or height is 0")
-        return null
+        return SaveImageResult("Bitmap is empty")
     }
 
     val bytes = ByteArrayOutputStream()
     bitmap.compress(compressionOptions.format, compressionOptions.quality, bytes)
 
-    imageFile.outputStream().use {
-        it.write(bytes.toByteArray())
+    var outputStream: FileOutputStream? = null
+    var success = false
+    var error = ""
+    try {
+        outputStream = imageFile.outputStream()
+        outputStream.write(bytes.toByteArray())
+        success = true
+    } catch (e: FileNotFoundException) {
+        error = e.toString()
+        Log.e("Utils.kt:saveImageToFile()", error)
+    } catch (e: SecurityException) {
+        error = e.toString()
+        Log.e("Utils.kt:saveImageToFile()", error)
+    } catch (e: IOException) {
+        error = e.toString()
+        Log.e("Utils.kt:saveImageToFile()", error)
+        if(error.contains("enospc", ignoreCase = true)) {
+            error = "No space left on internal device storage"
+        }
+
+    } catch (e: NullPointerException) {
+        error = e.toString()
+        Log.e("Utils.kt:saveImageToFile()", error)
+    } finally {
+        outputStream?.close()
     }
 
-    // Add to g
+    if (!success) {
+        return SaveImageResult("Could not save image file:\n$error")
+    }
+
+    // Add to gallery
     addImageToGallery(
         context,
         imageFile.absolutePath,
         context.getString(R.string.file_title),
         context.getString(
             R.string.file_description,
-            SimpleDateFormat(context.getString(R.string.file_description_simpledateformat), Locale.getDefault()).format(
+            SimpleDateFormat(context.getString(R.string.file_description_simple_date_format), Locale.getDefault()).format(
                 date
             )
         ),
         compressionOptions.mimeType
     )
 
-    return Pair(imageFile, bitmap)
+    return SaveImageResultSuccess(bitmap, imageFile)
 }
 
 /**

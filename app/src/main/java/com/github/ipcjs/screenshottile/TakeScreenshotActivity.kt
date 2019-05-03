@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.PixelFormat
 import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
@@ -21,7 +20,6 @@ import android.util.Log
 import android.view.Surface
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.Utils.p
-import java.io.File
 import java.lang.ref.WeakReference
 
 
@@ -64,7 +62,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     private var mediaProjection: MediaProjection? = null
     private var handler = SaveImageHandler(this)
     private var thread: Thread? = null
-    private var resultPair: Pair<File, Bitmap>? = null
+    private var saveImageResult: SaveImageResult? = null
 
     private var askedForPermission = false
 
@@ -126,17 +124,17 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     }
 
     private fun prepareForScreenSharing() {
-        resultPair = null
+        saveImageResult = null
         screenSharing = true
         mediaProjection = App.createMediaProjection()
         if (surface == null) {
             p("shareScreen() surface == null")
+            screenShotFailedToast("Failed to create ImageReader surface")
             finish()
             return
         }
         if (mediaProjection == null) {
             p("shareScreen() mediaProjection == null")
-            screenShotFailedToast()
             if (!askedForPermission) {
                 askedForPermission = true
                 p("App.acquireScreenshotPermission() in shareScreen()")
@@ -144,6 +142,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             }
             mediaProjection = App.createMediaProjection()
             if (mediaProjection == null) {
+                screenShotFailedToast("Failed to create MediaProjection")
                 p("shareScreen() mediaProjection == null")
                 finish()
                 return
@@ -167,6 +166,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         if (imageReader == null) {
             p("saveImage() imageReader == null")
             stopScreenSharing()
+            screenShotFailedToast("Could not start screen capture")
             finish()
             return
         }
@@ -176,14 +176,14 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         stopScreenSharing()
         if (image == null) {
             p("saveImage() image == null")
-            screenShotFailedToast()
+            screenShotFailedToast("Could not acquire image")
             finish()
             return
         }
 
         if (image.width == 0 || image.height == 0) {
             Log.e("TakeScreenshotActivity.kt:saveImage()", "Image size: ${image.width}x${image.width}")
-            screenShotFailedToast()
+            screenShotFailedToast("Incorrect image dimensions: ${image.width}x${image.width}")
             finish()
             return
         }
@@ -191,7 +191,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         val compressionOptions = compressionPreference(applicationContext)
 
         thread = Thread(Runnable {
-            resultPair = saveImageToFile(applicationContext, image, "Screenshot_", compressionOptions)
+            saveImageResult = saveImageToFile(applicationContext, image, "Screenshot_", compressionOptions)
             image.close()
 
             handler.sendEmptyMessage(THREAD_FINISHED)
@@ -203,7 +203,6 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         private var activity: WeakReference<TakeScreenshotActivity> = WeakReference(takeScreenshotActivity)
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-            p("SaveImageHandler handleMessage() what=${msg.what}")
             if (msg.what == THREAD_START) {
                 activity.get()!!.thread!!.start()
             } else if (msg.what == THREAD_FINISHED) {
@@ -213,31 +212,37 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     }
 
     private fun onFileSaved() {
-        if (resultPair == null) {
-            screenShotFailedToast()
+        if (saveImageResult == null) {
+            screenShotFailedToast("saveImageResult is null")
+            finish()
+            return
+        }
+        if (saveImageResult?.success != true) {
+            screenShotFailedToast(saveImageResult?.errorMessage)
             finish()
             return
         }
 
-        resultPair?.run {
-            val imageFile = first
-            p("saveImage() imageFile.absolutePath=${imageFile.absolutePath}")
+        val result = saveImageResult as? SaveImageResultSuccess?
+
+        result?.let {
+            p("saveImage() imageFile.absolutePath=${it.file.absolutePath}")
             Toast.makeText(
-                this@TakeScreenshotActivity,
-                getString(R.string.screenshot_file_saved, imageFile.canonicalFile), Toast.LENGTH_LONG
+                this,
+                getString(R.string.screenshot_file_saved, it.file.canonicalFile), Toast.LENGTH_LONG
             ).show()
             createNotification(
-                this@TakeScreenshotActivity,
-                Uri.fromFile(imageFile),
-                second,
+                this,
+                Uri.fromFile(it.file),
+                it.bitmap,
                 screenDensity
             )
-            if(!second.isRecycled) {
-                second.recycle()
+            if (!it.bitmap.isRecycled) {
+                it.bitmap.recycle()
             }
-        } ?: screenShotFailedToast()
+        } ?: screenShotFailedToast("Failed to cast SaveImageResult")
 
-        resultPair = null
+        saveImageResult = null
         finish()
     }
 
@@ -255,11 +260,13 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         )
     }
 
-    private fun screenShotFailedToast() {
-        Toast.makeText(
-            this,
-            getString(R.string.screenshot_failed), Toast.LENGTH_LONG
-        ).show()
+    private fun screenShotFailedToast(errorMessage: String? = null) {
+        val message = getString(R.string.screenshot_failed) + if (errorMessage != null) {
+            "\n$errorMessage"
+        } else {
+            ""
+        }
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
 }
