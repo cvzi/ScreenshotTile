@@ -25,7 +25,7 @@
         android:entryValues="@array/setting_file_format_values"
         android:key="@string/pref_key_file_format"
         android:summary="@string/setting_file_format_entry_default"
-        android:title="File format" /> <!-- TODO translate this title-->
+        android:title="@string/file_format" />
 
     <Preference
         android:key="@string/pref_static_field_key_about_app_1"
