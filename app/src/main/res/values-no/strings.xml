@@ -4,7 +4,7 @@
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
-    <string name="file_description_simpledateformat">dd.MM.yyyy HH:mm:ss</string>
+    <string name="file_description_simple_date_format">dd.MM.yyyy HH:mm:ss</string>
     <string name="tile_label">Screenshot</string>
     <string name="file_title">Screenshot</string>
     <string name="file_description">Skjermbilde fra %1$s</string>
@@ -16,6 +16,7 @@
     <string name="screenshot_failed">Kunne ikke ta skjermbilde, prøv igjen</string>
     <string name="setting_delay_entry_default">Øyeblikkelig</string>
     <string name="more_setting">Flere innstillinger</string>
+    <string name="file_format">Filformat</string>
     <string name="title_delay">Forsinkelsestid</string>
     <string name="show_count_down">Vis countdown</string>
     <string name="permission_missing_external_storage">Mislyktes å skaffe tillatelse for Lagring</string>

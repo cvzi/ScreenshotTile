@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">ภาพหน้าจอ</string>
     <string name="notification_title">บันทึกภาพหน้าจอแล้ว</string>
     <string name="notification_body">แตะเพื่อดูภาพหน้าจอ</string>
     <string name="screenshot_failed">บันทึกภาพหน้าจอไม่ได้</string>
     <string name="notification_share_screenshot">แบ่งปัน</string>
     <string name="notification_delete_screenshot">ลบ</string>
     <string name="notification_edit_screenshot">แก้ไข</string>
-    <string name="tile_label">ภาพหน้าจอ</string>
+    <string name="file_format">ประเภทของไฟล์</string>
+    <string name="setting_delay_entry_default">ทันที</string>
+    <string name="setting_delay_entry_1s">1 วินาที</string>
+    <string name="setting_delay_entry_2s">2 วินาที</string>
+    <string name="setting_delay_entry_5s">5 วินาที</string>
+    <string name="hide_app_from_launcher">ซ่อนแอป จากรายการแอพ</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
 </resources>

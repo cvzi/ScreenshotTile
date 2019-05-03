@@ -4,10 +4,11 @@
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
-    <string name="file_description_simpledateformat">dd/MM/yyyy HH:mm:ss</string>
+    <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
     <string name="tile_label">Capture d\'écran</string>
     <string name="title_delay">Temporisation</string>
     <string name="more_setting">Paramètres</string>
+    <string name="file_format">Format du fichier</string>
     <string name="setting_delay_entry_default">Tout de suite</string>
     <string name="show_count_down">Afficher le décompte</string>
     <string name="file_description">Capture d\'écran %1$s</string>

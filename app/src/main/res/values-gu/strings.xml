@@ -8,4 +8,11 @@
     <string name="notification_delete_screenshot">હટાવો</string>
     <string name="notification_edit_screenshot">સંપાદિત કરો</string>
     <string name="tile_label">સ્ક્રીનશૉટ</string>
+    <string name="file_format">ઇમેજ ફૉર્મૅટ</string>
+    <string name="setting_delay_entry_default">તાત્કાલિક</string>
+    <string name="setting_delay_entry_5s">5 સેકંડ</string>
+    <string name="setting_delay_entry_2s">2 સેકંડ</string>
+    <string name="setting_delay_entry_1s">1 સેકંડ</string>
+    <string name="hide_app_from_launcher">"એપ્લિકેશન ડ્રોઅરથી એપ્લિકેશન છુપાવો "</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
 </resources>

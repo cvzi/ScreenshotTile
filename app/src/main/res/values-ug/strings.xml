@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">ئېكران كەسمىسى تۇت</string>
     <string name="notification_title">ئېكران كەسمىسىگە ئېرىشتى</string>
     <string name="notification_body">چېكىلسە ئېكران كەسمىسىنى كۆرسىتىدۇ</string>
     <string name="screenshot_failed">ئېكران كەسمىسىگە ئېرىشەلمەيدۇ</string>
     <string name="notification_share_screenshot">ھەمبەھىر</string>
     <string name="notification_delete_screenshot">ئۆچۈر</string>
     <string name="notification_edit_screenshot">تەھرىر</string>
-    <string name="tile_label">ئېكران كەسمىسى تۇت</string>
+    <string name="file_format">خىلدىكى سۈرەت</string>
+    <string name="setting_delay_entry_default">دەرھال</string>
+    <string name="setting_delay_entry_5s">5 سېكۇنت</string>
+    <string name="setting_delay_entry_2s">2 سېكۇنت</string>
+    <string name="setting_delay_entry_1s">1 سېكۇنت</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
 </resources>

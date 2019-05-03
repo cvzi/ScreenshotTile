@@ -8,4 +8,5 @@
     <string name="notification_edit_screenshot">ਸੰਪਾਦਨ ਕਰੋ</string>
     <string name="notification_share_screenshot">ਸਾਂਝਾ ਕਰੋ</string>
     <string name="tile_label">ਯਾਤਰਾ ਦੇ ਵੇਰਵੇ</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
 </resources>

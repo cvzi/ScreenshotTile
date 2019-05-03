@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">স্ক্রিনশট নিন</string>
     <string name="notification_title">স্ক্রিনশট সেভ করা হয়েছে</string>
     <string name="notification_body">স্ক্রিনশটটি দেখতে ট্যাপ করুন</string>
     <string name="screenshot_failed">স্ক্রিনশট সেভ করা যায়নি</string>
     <string name="notification_share_screenshot">ভাগ করুন</string>
     <string name="notification_delete_screenshot">মুছুন</string>
     <string name="notification_edit_screenshot">সম্পাদন করা</string>
-    <string name="tile_label">স্ক্রিনশট নিন</string>
+    <string name="setting_delay_entry_default">সাথে</string>
+    <string name="setting_delay_entry_1s">1 সেকেন্ড</string>
+    <string name="setting_delay_entry_2s">2 সেকেন্ড</string>
+    <string name="setting_delay_entry_5s">5 সেকেন্ড</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
 </resources>

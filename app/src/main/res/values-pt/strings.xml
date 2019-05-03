@@ -8,4 +8,11 @@
     <string name="notification_delete_screenshot">Excluir</string>
     <string name="notification_edit_screenshot">Editar</string>
     <string name="tile_label">Captura de tela</string>
+    <string name="setting_delay_entry_default">Imediatamente</string>
+    <string name="setting_delay_entry_5s">5s</string>
+    <string name="setting_delay_entry_2s">2s</string>
+    <string name="setting_delay_entry_1s">1s</string>
+    <string name="file_format">Formato de arquivo</string>
+    <string name="hide_app_from_launcher">Ocultar aplicação no menu</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
 </resources>

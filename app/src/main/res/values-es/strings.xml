@@ -7,7 +7,7 @@
     <string name="screenshot_failed">No se ha podido guardar la captura de pantalla</string>
     <string name="tile_label">Captura de pantalla</string>
     <string name="more_setting">Mas ajustes</string>
-    <string name="file_description_simpledateformat">dd/MM/yyyy HH:mm:ss</string>
+    <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
     <string name="notification_channel_description">Monstrar notificationes de capturas de pantalla</string>
     <string name="file_description">Captura de pantalla creado %1$s</string>
     <string name="screenshot_file_saved">Captura de pantalla guardada %1$s</string>
@@ -40,4 +40,5 @@
     <string name="about_app_3">Para obtener más información e informes de errores, visite:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Licencia</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="file_format">Formato de archivo</string>
 </resources>

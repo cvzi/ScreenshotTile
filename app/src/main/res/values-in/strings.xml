@@ -4,6 +4,7 @@
     <string name="title_delay">Penundaan</string>
     <string name="tile_label">Screenshot</string>
     <string name="more_setting">Lagi pilihan</string>
+    <string name="file_format">Format gambar</string>
     <string name="show_count_down">Perlihatkan hitungan mundur</string>
     <string name="setting_delay_entry_default">Langsung</string>
     <string name="setting_delay_entry_1s">1 detik</string>
@@ -11,7 +12,7 @@
     <string name="setting_delay_entry_5s">5 detik</string>
     <string name="screenshot_failed">Tidak dapat menyimpan tangkapan layar</string>
     <string name="file_title">Tangkapan layar</string>
-    <string name="file_description_simpledateformat">dd/MM/yyyy HH:mm:ss</string>
+    <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
     <string name="file_description">Screenshot dari %1$s</string>
     <string name="screenshot_file_saved">Disimpan tangkapan layar %1$s</string>
     <string name="notification_body">Tap untuk melihat tangkapan layar</string>

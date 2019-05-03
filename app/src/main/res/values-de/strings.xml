@@ -4,6 +4,7 @@
     <string name="tile_label">Screenshot</string>
     <string name="title_delay">Verzögerung</string>
     <string name="more_setting">Mehr Einstellungen</string>
+    <string name="file_format">Dateiformat</string>
     <string name="setting_delay_entry_default">Sofort</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
@@ -11,7 +12,7 @@
     <string name="show_count_down">Countdown anzeigen</string>
     <string name="file_title">Screenshot</string>
     <string name="file_description">Screenshot vom %1$s</string>
-    <string name="file_description_simpledateformat">dd.MM.yyyy HH:mm:ss</string>
+    <string name="file_description_simple_date_format">dd.MM.yyyy HH:mm:ss</string>
     <string name="notification_title">Screenshot aufgenommen</string>
     <string name="notification_body">Screenshot öffnen</string>
     <string name="notification_channel_description">Zeigt eine Benachrichtigung für jeden aufgenommenen Screenshot</string>

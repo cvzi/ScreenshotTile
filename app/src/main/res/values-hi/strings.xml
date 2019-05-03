@@ -8,4 +8,12 @@
     <string name="notification_delete_screenshot">हटाएं</string>
     <string name="notification_edit_screenshot">संपादित करें</string>
     <string name="tile_label">ਸਕ੍ਰੀਨਸ਼ਾਟ</string>
+    <string name="file_format">छवि स्वरूप</string>
+    <string name="setting_delay_entry_default">तत्‍काल</string>
+    <string name="setting_delay_entry_1s">1 सेकंड</string>
+    <string name="setting_delay_entry_2s">2 सेकंड</string>
+    <string name="setting_delay_entry_5s">5 सेकंड</string>
+    <string name="hide_app_from_launcher">एप्लिकेशन ड्रॉअर से ऐप छुपाए</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="screenshot_deleted">फ़ाइल सफलतापूर्वक नष्ट कर दिया</string>
 </resources>

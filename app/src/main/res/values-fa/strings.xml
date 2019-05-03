@@ -8,4 +8,11 @@
     <string name="notification_delete_screenshot">حذف</string>
     <string name="notification_edit_screenshot">ویرایش</string>
     <string name="tile_label">عکس صفحه‌نمایش</string>
+    <string name="setting_delay_entry_default">فوری</string>
+    <string name="setting_delay_entry_5s">۵ ثانیه</string>
+    <string name="setting_delay_entry_2s">۲ ثانیه</string>
+    <string name="setting_delay_entry_1s">۱ ثانیه</string>
+    <string name="hide_app_from_launcher">مخفی کردن برنامه از کشوی برنامه ها</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="file_format">فرمت تصویر</string>
 </resources>

@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">Chụp màn hình</string>
     <string name="notification_title">Đã chụp ảnh màn hình</string>
     <string name="notification_body">Chạm để xem ảnh chụp màn hình của bạn</string>
     <string name="screenshot_failed">Không thể chụp ảnh màn hình</string>
     <string name="notification_share_screenshot">Chia sẻ</string>
     <string name="notification_delete_screenshot">Xóa</string>
     <string name="notification_edit_screenshot">Chỉnh sửa</string>
-    <string name="tile_label">Chụp màn hình</string>
+    <string name="setting_delay_entry_default">Ngay lập tức</string>
+    <string name="setting_delay_entry_1s">1 giây</string>
+    <string name="setting_delay_entry_2s">2 giây</string>
+    <string name="setting_delay_entry_5s">5 giây</string>
+    <string name="file_format">Định dạng tập tin</string>
+    <string name="hide_app_from_launcher">Ẩn khỏi ngăn chứa ứng dụng</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
 </resources>

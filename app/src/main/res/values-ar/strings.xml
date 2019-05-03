@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">لقطة شاشة</string>
     <string name="notification_title">تم حفظ لقطة الشاشة.</string>
     <string name="notification_body">انقر لعرض لقطة الشاشة.</string>
     <string name="screenshot_failed">تعذّر حفظ لقطة الشاشة</string>
     <string name="notification_share_screenshot">مشاركة</string>
     <string name="notification_edit_screenshot">تعديل</string>
     <string name="notification_delete_screenshot">حذف</string>
-    <string name="tile_label">لقطة شاشة</string>
+    <string name="title_delay">تأخير</string>
+    <string name="hide_app_from_launcher">إخفاء التطبيق من درج التطبيقات</string>
+    <string name="more_setting">المزيد الإعدادات</string>
+    <string name="setting_delay_entry_1s">ثانية واحدة</string>
+    <string name="setting_delay_entry_2s">٢ ثانية</string>
+    <string name="setting_delay_entry_5s">٥ ثانية</string>
+    <string name="setting_delay_entry_default">فورًا</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
+    <string name="file_title">Screenshot</string>
+    <string name="screenshot_file_saved">%1$s تم التقاط لقطة الشاشة</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
 </resources>

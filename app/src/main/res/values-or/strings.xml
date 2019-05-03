@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="setting_delay_entry_default">ତୁରନ୍ତ</string>
+    <string name="setting_delay_entry_5s">5 ସେକେଣ୍ଡ୍</string>
+    <string name="setting_delay_entry_2s">2 ସେକେଣ୍ଡ୍</string>
+    <string name="setting_delay_entry_1s">1 ସେକେଣ୍ଡ୍</string>
+    <string name="screenshot_failed">କ୍ରିନସଟ୍ କ୍ୟାପଚର୍ କରିପାରିଲା ନାହିଁ।</string>
+    <string name="notification_title">ସ୍କ୍ରିନସଟ୍ କ୍ୟାପଚର୍ ହୋଇଛି।</string>
+    <string name="notification_body">ଆପଣଙ୍କ ସ୍କ୍ରିନସଟ୍ ଦର୍ଶନ କରିବାକୁ ସ୍ପର୍ଶ କରନ୍ତୁ।</string>
+    <string name="notification_delete_screenshot">ଖାଲି</string>
+    <string name="more_setting">ସେଟିଂସ୍‌</string>
+    <string name="file_format">ଫଟୋ ଫର୍ମା୍ଟ୍‍</string>
+    <string name="notification_app_chooser_share">ସହ ଅଂଶୀଦାର କରନ୍ତୁ</string>
+    <string name="notification_share_screenshot">ଅଂଶୀଦାର</string>
+    <string name="notification_edit_screenshot">ସମ୍ପାଦନ</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+</resources>

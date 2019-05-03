@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">ஸ்கிரீன்ஷாட்</string>
     <string name="notification_title">ஸ்கிரீன்ஷாட் சேமிக்கப்பட்டது</string>
     <string name="notification_body">ஸ்கிரீன்ஷாட்டைப் பார்க்க, தட்டவும்</string>
     <string name="screenshot_failed">ஸ்கிரீன் ஷாட்டைச் சேமிக்க முடியவில்லை</string>
     <string name="notification_share_screenshot">பகிர்</string>
     <string name="notification_delete_screenshot">நீக்கு</string>
     <string name="notification_edit_screenshot">திருத்து</string>
-    <string name="tile_label">ஸ்கிரீன்ஷாட்</string>
+    <string name="file_format">பட வடிவம்</string>
+    <string name="setting_delay_entry_1s">1 வினாடி</string>
+    <string name="setting_delay_entry_2s">2 விநாடிகள்</string>
+    <string name="setting_delay_entry_5s">5 விநாடிகள்</string>
+    <string name="setting_delay_entry_default">உடனடியாக</string>
+    <string name="hide_app_from_launcher">பயன்பாட்டின் டிராயரில் பயன்பாட்டை மறை</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
 </resources>
