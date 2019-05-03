@@ -10,7 +10,7 @@
 ## 1.3.3
 *   Removed black borders on screenshots with some devices
 *   Fix some nullable crashes
-*   Update Kotline version
+*   Update Kotlin version
 ## 1.3.2
 *   Added file format: png, jpg, webp
 *   Moved compressing the bitmap to file in separate thread

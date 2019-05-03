@@ -13,7 +13,7 @@ import android.os.Bundle
 
 open class TransparentContainerActivity : Activity() {
     companion object {
-        const val EXTRA_FNAME = "fname"
+        const val EXTRA_FRAGMENT_NAME = "fragment_name"
         const val EXTRA_ARGS = "args"
 
         /**
@@ -22,11 +22,11 @@ open class TransparentContainerActivity : Activity() {
         fun newIntent(
             ctx: Context,
             activityClass: Class<out Activity>,
-            fclass: Class<out Fragment>,
+            fragmentClass: Class<out Fragment>,
             args: Bundle?
         ): Intent {
             val intent = Intent(ctx, activityClass)
-            intent.putExtra(EXTRA_FNAME, fclass.name)
+            intent.putExtra(EXTRA_FRAGMENT_NAME, fragmentClass.name)
             intent.putExtra(EXTRA_ARGS, args)
             return intent
         }
@@ -35,15 +35,15 @@ open class TransparentContainerActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            val fname = intent.getStringExtra(EXTRA_FNAME)
+            val fragmentClass = intent.getStringExtra(EXTRA_FRAGMENT_NAME)
             val args = intent.getBundleExtra(EXTRA_ARGS)
-            val fragment = Fragment.instantiate(this, fname, args)
+            val fragment = Fragment.instantiate(this, fragmentClass, args)
 
             if (fragment is DialogFragment) {
-                fragment.show(fragmentManager, fname)
+                fragment.show(fragmentManager, fragmentClass)
             } else {
                 fragmentManager.beginTransaction()
-                    .add(android.R.id.content, fragment, fname)
+                    .add(android.R.id.content, fragment, fragmentClass)
                     .commit()
             }
         }

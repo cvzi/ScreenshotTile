@@ -13,8 +13,8 @@ class ContainerActivity : TransparentContainerActivity() {
         /**
          * Start activity
          */
-        fun start(ctx: Context, fclass: Class<out Fragment>, args: Bundle? = null) {
-            ctx.startActivity(newIntent(ctx, ContainerActivity::class.java, fclass, args))
+        fun start(ctx: Context, fragmentClass: Class<out Fragment>, args: Bundle? = null) {
+            ctx.startActivity(newIntent(ctx, ContainerActivity::class.java, fragmentClass, args))
         }
     }
 }
