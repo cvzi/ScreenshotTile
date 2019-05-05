@@ -237,8 +237,9 @@ fun saveImageToFile(
 fun createNotificationScreenshotTakenChannel(context: Context): String {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-        val channelName = context.getString(R.string.notification_title)
-        val channelDescription = context.getString(R.string.notification_channel_description)
+        val channelName = context.getString(R.string.notification_channel_description)
+        val notificationTitle = context.getString(R.string.notification_title)
+        val channelDescription = context.getString(R.string.notification_channel_description) + "\n'$notificationTitle'"
 
         context.applicationContext.getSystemService(NotificationManager::class.java)?.run {
             if (getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN) == null) {
