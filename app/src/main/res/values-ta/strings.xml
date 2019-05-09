@@ -15,4 +15,5 @@
     <string name="setting_delay_entry_default">உடனடியாக</string>
     <string name="hide_app_from_launcher">பயன்பாட்டின் டிராயரில் பயன்பாட்டை மறை</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="tutorial">பயிற்சி</string>
 </resources>

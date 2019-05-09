@@ -13,4 +13,13 @@
     <string name="setting_delay_entry_2s">2 সেকেন্ড</string>
     <string name="setting_delay_entry_5s">5 সেকেন্ড</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="notification_settings">বিজ্ঞপ্তিগুলি</string>
+    <string name="notification_settings_on">চালু আছে</string>
+    <string name="notification_settings_off">বন্ধ</string>
+    <string name="screenshot_file_saved">স্ক্রীনশট নেওয়া হযেছে৷ %1$s</string>
+    <string name="more_setting">সেটিংস</string>
+    <string name="take_screenshot">স্ক্রিনশট</string>
+    <string name="tutorial">টিউটোরিয়াল</string>
+    <string name="tap_for_next_step">পরবর্তী পর্ব দেখতে ট্যাপ করুন</string>
+    <string name="about_license_title">লাইসেন্স</string>
 </resources>

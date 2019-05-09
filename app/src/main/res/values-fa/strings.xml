@@ -15,4 +15,5 @@
     <string name="hide_app_from_launcher">مخفی کردن برنامه از کشوی برنامه ها</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="file_format">فرمت تصویر</string>
+    <string name="tutorial">آموزش گام‌به‌گام</string>
 </resources>

@@ -19,4 +19,9 @@
     <string name="file_title">Screenshot</string>
     <string name="screenshot_file_saved">%1$s تم التقاط لقطة الشاشة</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="notification_settings">الإشعارات</string>
+    <string name="notification_settings_off">تم إيقاف</string>
+    <string name="notification_settings_on">‏‏تم تشغيل</string>
+    <string name="tutorial">برنامج التعليمي</string>
+    <string name="tap_for_next_step">تبع الخطوات التالية</string>
 </resources>

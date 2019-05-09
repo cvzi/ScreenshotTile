@@ -3,7 +3,7 @@
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="title_delay">Penundaan</string>
     <string name="tile_label">Screenshot</string>
-    <string name="more_setting">Lagi pilihan</string>
+    <string name="more_setting">Pengaturan</string>
     <string name="file_format">Format gambar</string>
     <string name="show_count_down">Perlihatkan hitungan mundur</string>
     <string name="setting_delay_entry_default">Langsung</string>
@@ -41,4 +41,7 @@
     <string name="about_license_title">License</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">This app still has some problems and is under development.\nIf you have root access on your phone, please use ipcjs\' version, it\'s faster and more reliant.</string>
+    <string name="notification_settings_on">Diaktifkan</string>
+    <string name="notification_settings_off">Dinonaktifkan</string>
+    <string name="notification_settings">Pemberitahuan</string>
 </resources>

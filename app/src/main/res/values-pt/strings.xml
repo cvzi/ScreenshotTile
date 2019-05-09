@@ -15,4 +15,9 @@
     <string name="file_format">Formato de arquivo</string>
     <string name="hide_app_from_launcher">Ocultar aplicação no menu</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="notification_settings_off">Desligado</string>
+    <string name="notification_settings">Notificações</string>
+    <string name="notification_settings_on">Ligado</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="about_license_title">Licença</string>
 </resources>

@@ -15,4 +15,5 @@
     <string name="setting_delay_entry_5s">5 วินาที</string>
     <string name="hide_app_from_launcher">ซ่อนแอป จากรายการแอพ</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="tutorial">บทแนะนำ</string>
 </resources>

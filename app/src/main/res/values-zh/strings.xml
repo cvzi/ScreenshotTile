@@ -40,4 +40,7 @@
     <string name="about_license_title">许可证</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="take_screenshot">屏幕截图</string>
+    <string name="notification_settings">通知</string>
+    <string name="notification_settings_off">已禁用</string>
+    <string name="notification_settings_on">已启用</string>
 </resources>

@@ -16,4 +16,6 @@
     <string name="hide_app_from_launcher">एप्लिकेशन ड्रॉअर से ऐप छुपाए</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="screenshot_deleted">फ़ाइल सफलतापूर्वक नष्ट कर दिया</string>
+    <string name="tutorial">ट्यूटोरियल</string>
+    <string name="about_license_title">लाइसेंस</string>
 </resources>

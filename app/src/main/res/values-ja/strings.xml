@@ -15,4 +15,6 @@
     <string name="setting_delay_entry_5s">5秒</string>
     <string name="hide_app_from_launcher">ドロワーからアプリを非表示にする</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="tutorial">チュートリアル</string>
+    <string name="about_license_title">ライセンス</string>
 </resources>

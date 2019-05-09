@@ -41,4 +41,7 @@
     <string name="about_app_3">Für mehr informationen und Fehlerberichte, besuche bitte\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Lizenz</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="notification_settings">Benachrichtigungen</string>
+    <string name="notification_settings_off">Deaktiviert</string>
+    <string name="notification_settings_on">Aktiviert</string>
 </resources>

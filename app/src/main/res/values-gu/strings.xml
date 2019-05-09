@@ -15,4 +15,6 @@
     <string name="setting_delay_entry_1s">1 સેકંડ</string>
     <string name="hide_app_from_launcher">"એપ્લિકેશન ડ્રોઅરથી એપ્લિકેશન છુપાવો "</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="tutorial">ટ્યૂટૉરિઅલ</string>
+    <string name="about_license_title">લાઇસન્સ</string>
 </resources>

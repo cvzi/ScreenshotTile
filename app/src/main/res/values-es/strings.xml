@@ -41,4 +41,7 @@
     <string name="about_license_title">Licencia</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="file_format">Formato de archivo</string>
+    <string name="notification_settings_on">Activado</string>
+    <string name="notification_settings">Notificaciones</string>
+    <string name="notification_settings_off">Desactivado</string>
 </resources>

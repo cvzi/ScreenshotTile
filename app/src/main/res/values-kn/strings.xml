@@ -14,4 +14,6 @@
     <string name="setting_delay_entry_2s">2 ಸೆಕೆಂಡುಗಳು</string>
     <string name="setting_delay_entry_1s">1 ಸೆಕೆಂಡ್</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="tutorial">ಟ್ಯುಟೋರಿಯಲ್</string>
+    <string name="about_license_title">ಪರವಾನಗಿ</string>
 </resources>

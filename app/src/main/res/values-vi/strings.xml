@@ -15,4 +15,6 @@
     <string name="file_format">Định dạng tập tin</string>
     <string name="hide_app_from_launcher">Ẩn khỏi ngăn chứa ứng dụng</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="tutorial">Hướng dẫn</string>
+    <string name="about_license_title">Giấy phép</string>
 </resources>

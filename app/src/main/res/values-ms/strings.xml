@@ -15,4 +15,16 @@
     <string name="setting_delay_entry_1s">1 saat</string>
     <string name="hide_app_from_launcher">Sembunyikan aplikasi dari laci aplikasi</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="notification_settings">Pemberitahuan</string>
+    <string name="notification_settings_on">Dihidupkan</string>
+    <string name="notification_settings_off">Dimatikan</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="about_license_title">Lesen</string>
+    <string name="notification_app_chooser">Buka melalui…</string>
+    <string name="notification_app_chooser_edit">Edit melalui…</string>
+    <string name="notification_app_chooser_share">Kongsi dengan…</string>
+    <string name="more_setting">Pengaturan</string>
+    <string name="file_description">Tangkapan skrin diambil pada %1$s</string>
+    <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
+    <string name="file_title">Screenshot</string>
 </resources>
