@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.0
+*   Added settings entry for notifications
+*   Moved Fragments and Preference to androidx/AppCompat
+*   Translations improved
 ## 1.4.0
 *   Redesigned the notification with a big picture and reordered the buttons
 *   Added a list of open source projects used to the about section
