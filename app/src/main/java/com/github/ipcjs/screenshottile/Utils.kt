@@ -19,7 +19,9 @@ import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
 import android.provider.MediaStore
 import android.provider.MediaStore.Images
+import android.provider.Settings
 import android.util.Log
+import androidx.core.app.NotificationManagerCompat
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_BIG_PICTURE_MAX_HEIGHT
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MAX_SIZE
@@ -130,7 +132,7 @@ open class SaveImageResult(
     override fun toString(): String = "SaveImageResult($errorMessage)"
 }
 
-data class SaveImageResultSuccess (
+data class SaveImageResultSuccess(
     val bitmap: Bitmap,
     val file: File
 ) : SaveImageResult("", true) {
@@ -161,7 +163,10 @@ fun saveImageToFile(
         try {
             imageFile.createNewFile()
         } catch (e: Exception) {
-            Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() for fallback file ${imageFile.absolutePath} $e")
+            Log.e(
+                "Utils.kt:saveImageToFile()",
+                "Could not createNewFile() for fallback file ${imageFile.absolutePath} $e"
+            )
             return SaveImageResult("Could not create new file")
         }
     }
@@ -199,7 +204,7 @@ fun saveImageToFile(
     } catch (e: IOException) {
         error = e.toString()
         Log.e("Utils.kt:saveImageToFile()", error)
-        if(error.contains("enospc", ignoreCase = true)) {
+        if (error.contains("enospc", ignoreCase = true)) {
             error = "No space left on internal device storage"
         }
 
@@ -221,7 +226,10 @@ fun saveImageToFile(
         context.getString(R.string.file_title),
         context.getString(
             R.string.file_description,
-            SimpleDateFormat(context.getString(R.string.file_description_simple_date_format), Locale.getDefault()).format(
+            SimpleDateFormat(
+                context.getString(R.string.file_description_simple_date_format),
+                Locale.getDefault()
+            ).format(
                 date
             )
         ),
@@ -257,6 +265,23 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
         }
     }
     return NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
+}
+
+/**
+ * Check if the notification channel was disabled by the user
+ */
+fun notificationScreenshotTakenChannelEnabled(context: Context): Boolean {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationChannel = notificationManager.getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN)
+        if (notificationChannel == null) {
+            true  // default to true if the channel does not yet exist
+        } else {
+            notificationChannel.importance != NotificationManager.IMPORTANCE_NONE
+        }
+    } else {
+        NotificationManagerCompat.from(context).areNotificationsEnabled()
+    }
 }
 
 /**
@@ -432,6 +457,39 @@ fun openImageIntent(path: Uri): Intent {
 fun hideNotification(context: Context, notificationId: Int) {
     (context.applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.apply {
         cancel(notificationId)
+    }
+}
+
+/**
+ * Intent to open the notification settings of the package in the Android system settings
+ */
+fun notificationSettingsIntent(packageName: String, channelId: String? = null): Intent {
+    return when {
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.P -> {
+            Intent(if (channelId != null) Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS else Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+                if (channelId != null) {
+                    putExtra(Settings.EXTRA_CHANNEL_ID, channelId)
+                }
+            }
+        }
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> {
+            Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+                if (channelId != null) {
+                    putExtra(Settings.EXTRA_CHANNEL_ID, channelId)
+                }
+            }
+        }
+        else -> {
+            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                data = Uri.parse("package:$packageName")
+                addCategory(Intent.CATEGORY_DEFAULT)
+            }
+        }
     }
 }
 

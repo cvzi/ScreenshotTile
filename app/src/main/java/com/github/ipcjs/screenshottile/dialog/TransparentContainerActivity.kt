@@ -1,17 +1,18 @@
 package com.github.ipcjs.screenshottile.dialog
 
 import android.app.Activity
-import android.app.DialogFragment
-import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 
 /**
  * Created by ipcjs on 2017/8/16.
  */
 
-open class TransparentContainerActivity : Activity() {
+open class TransparentContainerActivity : FragmentActivity() {
     companion object {
         const val EXTRA_FRAGMENT_NAME = "fragment_name"
         const val EXTRA_ARGS = "args"
@@ -40,9 +41,9 @@ open class TransparentContainerActivity : Activity() {
             val fragment = Fragment.instantiate(this, fragmentClass, args)
 
             if (fragment is DialogFragment) {
-                fragment.show(fragmentManager, fragmentClass)
+                fragment.show(supportFragmentManager, fragmentClass)
             } else {
-                fragmentManager.beginTransaction()
+                supportFragmentManager.beginTransaction()
                     .add(android.R.id.content, fragment, fragmentClass)
                     .commit()
             }

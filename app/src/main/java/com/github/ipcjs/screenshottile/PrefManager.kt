@@ -2,7 +2,7 @@ package com.github.ipcjs.screenshottile
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 
 /**
  * Created by ipcjs on 2017/8/17.

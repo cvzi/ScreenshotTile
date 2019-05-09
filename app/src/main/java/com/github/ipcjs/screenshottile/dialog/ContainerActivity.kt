@@ -1,8 +1,8 @@
 package com.github.ipcjs.screenshottile.dialog
 
-import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 
 /**
  * Created by ipcjs on 2017/8/17.

@@ -8,8 +8,8 @@ import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.os.Handler;
 import android.os.Looper;
-import android.preference.PreferenceManager;
 import android.service.quicksettings.TileService;
+import androidx.preference.PreferenceManager;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static com.github.ipcjs.screenshottile.Utils.p;
@@ -60,6 +60,7 @@ public class App extends Application {
      *
      * @return MediaProjection if permission was granted or null
      */
+    @SuppressWarnings("UnusedReturnValue")
     protected static MediaProjection createMediaProjection() {
         if (mediaProjection == null) {
             if (screenshotPermission == null && ScreenshotTileService.Companion.getInstance() != null) {

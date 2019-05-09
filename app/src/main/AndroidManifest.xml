@@ -41,7 +41,7 @@
             android:name=".dialog.ContainerActivity"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
-            android:theme="@android:style/Theme.Material" />
+            android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".SettingDialogActivity"
             android:excludeFromRecents="true">

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreference
+    <androidx.preference.SwitchPreference
         android:defaultValue="false"
         android:key="@string/pref_key_hide_app"
         android:title="@string/hide_app_from_launcher" />
 
-    <SwitchPreference
+    <androidx.preference.SwitchPreference
         android:defaultValue="true"
         android:key="@string/pref_key_show_count_down"
         android:title="@string/show_count_down" />
 
-    <ListPreference
+    <androidx.preference.ListPreference
         android:defaultValue="@string/setting_delay_value_default"
         android:entries="@array/setting_delay_entries"
         android:entryValues="@array/setting_delay_values"
@@ -19,7 +19,7 @@
         android:summary="@string/setting_delay_entry_default"
         android:title="@string/title_delay" />
 
-    <ListPreference
+    <androidx.preference.ListPreference
         android:defaultValue="@string/setting_file_format_value_default"
         android:entries="@array/setting_file_format_entries"
         android:entryValues="@array/setting_file_format_values"
@@ -27,38 +27,45 @@
         android:summary="@string/setting_file_format_entry_default"
         android:title="@string/file_format" />
 
-    <Preference
+    <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_notification_settings"
+        android:persistent="false"
+        android:selectable="true"
+        android:summary="@string/notification_settings_on"
+        android:title="@string/notification_settings" />
+
+    <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_app_1"
         android:persistent="false"
         android:selectable="true"
         android:summary="@string/about_app_1"
         android:title="@string/about_app_title" />
 
-    <Preference
+    <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_app_2"
         android:persistent="false"
         android:selectable="false"
         android:summary="@string/about_app_2"
         android:title="" />
 
-    <Preference
+    <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_app_3"
         android:persistent="false"
         android:selectable="true"
         android:summary="@string/about_app_3"
         android:title="" />
 
-    <Preference
+    <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_license_1"
         android:persistent="false"
         android:selectable="true"
         android:summary="@string/about_license_1"
         android:title="@string/about_license_title" />
 
-    <Preference
+    <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_open_source"
         android:persistent="false"
         android:selectable="false"
         android:summary="@string/about_open_source"
         android:title="@string/about_open_source_title" />
-</PreferenceScreen>
+</androidx.preference.PreferenceScreen>

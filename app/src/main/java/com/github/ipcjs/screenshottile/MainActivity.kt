@@ -8,8 +8,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.collection.LruCache
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -74,7 +74,7 @@ class MainActivity : Activity() {
         }
     }
 
-    private inner class ClickableImageView(context: Context?) : ImageView(context) {
+    private inner class ClickableImageView(context: Context?) : AppCompatImageView(context) {
         init {
             setOnClickListener {
                 viewPager.setCurrentItem((viewPager.currentItem + 1) % images.size, true)
