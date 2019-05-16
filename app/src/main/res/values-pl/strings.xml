@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">Zrzut ekranu</string>
+    <string name="more_setting">Ustawienia</string>
+    <string name="show_count_down">Pokaż odliczanie</string>
+    <string name="notification_settings">Powiadomienia</string>
+    <string name="notification_settings_on">Włączony</string>
+    <string name="notification_settings_off">Wyłączony</string>
+    <string name="file_format">Typu pliku</string>
+    <string name="hide_app_from_launcher">Ukryj app z szuflady aplikacji/ekranu głównego</string>
+    <string name="toggle_app_icon_failed">Nie udało się wyświetlić/ukryć ikony app</string>
+    <string name="title_delay">Opóźnienie wykonania</string>
+    <string name="setting_delay_entry_default">Natychmiastową</string>
+    <string name="setting_delay_entry_1s">1s</string>
+    <string name="setting_delay_entry_2s">2s</string>
+    <string name="setting_delay_entry_5s">5s</string>
+    <string name="notification_channel_description">Pokazuje powiadomienia, kiedy zostanie zrobiony zrzut ekranu.</string>
+    <string name="notification_title">Wykonano zrzut ekranu</string>
+    <string name="notification_body">Dotknij, aby wyświetlić zrzut ekranu</string>
+    <string name="notification_delete_screenshot">Usuń</string>
+    <string name="notification_edit_screenshot">Edytuj</string>
+    <string name="notification_share_screenshot">Udostępnij</string>
+    <string name="notification_app_chooser_share">Udostępnij przez…</string>
+    <string name="notification_app_chooser">Otwórz w aplikacji</string>
+    <string name="notification_app_chooser_edit">Edytuj w aplikacji…</string>
+    <string name="file_title">Zrzut ekranu</string>
+    <string name="file_description">Zrzut ekranu z %1$s</string>
+    <string name="file_description_simple_date_format">yyyy-MM-dd HH:mm:ss</string>
+    <string name="take_screenshot">Wykonaj zrzut ekranu</string>
+    <string name="screenshot_deleted">Zrzut ekranu usunięty</string>
+    <string name="screenshot_delete_failed">Nie można usunąć plik</string>
+    <string name="screenshot_failed">Nie udało się wykonać zrzutu ekranu</string>
+    <string name="screenshot_file_saved">Wykonano zrzut ekranu: %1$s</string>
+    <string name="tutorial">Instrukcje</string>
+    <string name="tap_for_next_step">Stuknij aby dowiedzieć się więcej</string>
+    <string name="permission_missing_screen_capture">Brak wymaganych uprawnień. Aplikacja wymaga uprawnień, aby przechwycić ekran.</string>
+    <string name="permission_missing_external_storage">Brak wymaganych uprawnień. Aplikacja wymaga dostępu do pamięci urządzenia, aby celu zapisania nagranych plików</string>
+
+    <!-- About -->
+    <string name="about_app_title">O app</string>
+    <string name="about_license_title">Licencja</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+</resources>
