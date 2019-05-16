@@ -19,7 +19,7 @@
             android:name=".MainActivity"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
-            android:theme="@android:style/Theme.Material">
+            android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -15,35 +15,23 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:weightSum="4">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/textViewHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tutorial"
-                    android:textAppearance="@android:style/TextAppearance.Material.Title" />
-
-                <TextView
-                    android:id="@+id/textViewFooter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/tap_for_next_step"
-                    android:textSize="18sp" />
-            </LinearLayout>
+                android:text="@string/tutorial"
+                android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
             <TextView
                 android:id="@+id/textViewStep"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:gravity="center_horizontal"
+                android:singleLine="true"
                 android:text="@string/tutorial_step_one"
                 android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
@@ -52,11 +40,16 @@
                 style="@android:style/Widget.Holo.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/more_setting"
-                tools:layout_editor_absoluteX="135dp"
-                tools:layout_editor_absoluteY="0dp" />
+                android:layout_weight="1"
+                android:text="@string/more_setting" />
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/textViewFooter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tap_for_next_step"
+            android:textSize="18sp" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
