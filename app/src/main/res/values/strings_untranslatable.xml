@@ -53,6 +53,7 @@
     <string name="pref_static_field_link_about_app_1" translatable="false">https://github.com/ipcjs/ScreenshotTile</string>
     <string name="pref_static_field_link_about_app_3" translatable="false">https://github.com/cvzi/ScreenshotTile</string>
     <string name="pref_static_field_link_about_license_1" translatable="false">https://www.gnu.org/licenses/gpl-3.0</string>
+    <string name="pref_static_field_link_about_open_source" translatable="false">http://192.168.178.36/docs/opensource.html</string>
 
     <string name="about_open_source_title" translatable="false">Open source used</string>
     <string name="about_open_source" translatable="false">Kotlin\ngradle\nMaterial Design Icons by Google</string>

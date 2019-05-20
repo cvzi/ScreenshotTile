@@ -46,6 +46,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         makeLink(R.string.pref_static_field_key_about_app_1, R.string.pref_static_field_link_about_app_1)
         makeLink(R.string.pref_static_field_key_about_app_3, R.string.pref_static_field_link_about_app_3)
         makeLink(R.string.pref_static_field_key_about_license_1, R.string.pref_static_field_link_about_license_1)
+        makeLink(R.string.pref_static_field_key_about_open_source, R.string.pref_static_field_link_about_open_source)
 
         makeNotificationSettingsLink(R.string.pref_static_field_key_notification_settings)
     }
@@ -61,6 +62,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         val myActivity = activity
         myActivity?.let {
             val myPref = findPreference(getString(name)) as Preference
+            myPref.isSelectable = true
             myPref.onPreferenceClickListener = OnPreferenceClickListener {
                 Intent(Intent.ACTION_VIEW, Uri.parse(getString(link))).apply {
                     if (resolveActivity(myActivity.packageManager) != null) {
@@ -74,6 +76,7 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     private fun makeNotificationSettingsLink(name: Int) {
         val myPref = findPreference(getString(name)) as Preference
+        myPref.isSelectable = true
         myPref.onPreferenceClickListener = OnPreferenceClickListener {
             val myActivity = activity
             myActivity?.let {
