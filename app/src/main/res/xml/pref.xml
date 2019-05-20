@@ -65,7 +65,7 @@
     <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_open_source"
         android:persistent="false"
-        android:selectable="false"
+        android:selectable="true"
         android:summary="@string/about_open_source"
         android:title="@string/about_open_source_title" />
 </androidx.preference.PreferenceScreen>
