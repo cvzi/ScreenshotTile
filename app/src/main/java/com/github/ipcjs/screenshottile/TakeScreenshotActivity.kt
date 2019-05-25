@@ -172,7 +172,15 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         }
 
         // acquireLatestImage produces warning for  maxImages = 1: "Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers"
-        val image = imageReader?.acquireNextImage()
+        val image = try {
+            imageReader?.acquireNextImage()
+        } catch(e: UnsupportedOperationException ) {
+            stopScreenSharing()
+            p("acquireNextImage() UnsupportedOperationException", e)
+            screenShotFailedToast("Could not acquire image.\nUnsupportedOperationException\nThis device is not supported.")
+            finish()
+            return
+        }
         stopScreenSharing()
         if (image == null) {
             p("saveImage() image == null")
