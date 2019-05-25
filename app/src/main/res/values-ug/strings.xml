@@ -14,4 +14,10 @@
     <string name="setting_delay_entry_2s">2 سېكۇنت</string>
     <string name="setting_delay_entry_1s">1 سېكۇنت</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="tutorial">ياردەم</string>
+    <string name="title_delay">ئېكران كۆرۈنۈشى كېچىكتۈر</string>
+    <string name="file_description">ئېكران كۆرۈنۈشىنىڭ ئورنى\n%1$s</string>
+    <string name="notification_settings_off">ياق</string>
+    <string name="notification_settings_on">ھەئە</string>
+    <string name="screenshot_delete_failed">ئۆچۈرۈش مەغلۇپ بولدى</string>
 </resources>
