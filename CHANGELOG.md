@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.1
+*   Added Polish translation
+*   Translations improved
+*   Small bugfix
 ## 1.5.0
 *   Added settings entry for notifications
 *   Moved Fragments and Preference to androidx/AppCompat
