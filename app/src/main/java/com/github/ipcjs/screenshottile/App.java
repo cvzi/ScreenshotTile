@@ -178,6 +178,7 @@ public class App extends Application {
     private void screenshotShowCountdown(Context context) {
         int delay = prefManager.getDelay();
         Intent intent;
+        boolean startActivityAndCollapseSucceeded = false;
         if (context instanceof ScreenshotTileService || ScreenshotTileService.Companion.getInstance() != null) {
             ScreenshotTileService tileService = (context instanceof ScreenshotTileService) ? (ScreenshotTileService) context : ScreenshotTileService.Companion.getInstance();
             if (delay > 0) {
@@ -188,8 +189,14 @@ public class App extends Application {
                 tileService.setTakeScreenshotOnStopListening(true);
             }
             intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-            tileService.startActivityAndCollapse(intent);
-        } else {
+            try {
+                tileService.startActivityAndCollapse(intent);
+                startActivityAndCollapseSucceeded = true;
+            } catch(NullPointerException e) {
+                startActivityAndCollapseSucceeded = false;
+            }
+        }
+        if(!startActivityAndCollapseSucceeded) {
             if (delay > 0) {
                 intent = DelayScreenshotActivity.Companion.newIntent(context, delay);
             } else {
