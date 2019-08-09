@@ -32,6 +32,8 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
             Log.e("ScreenshotTileService", "setState: IllegalStateException", e)
         } catch (e: NullPointerException) {
             Log.e("ScreenshotTileService", "setState: NullPointerException", e)
+        } catch (e: IllegalArgumentException) {
+          Log.e("ScreenshotTileService", "setState: IllegalArgumentException", e)
         }
     }
 
