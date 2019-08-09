@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.DialogFragment
 import com.github.ipcjs.screenshottile.App
 import com.github.ipcjs.screenshottile.R
@@ -32,7 +33,11 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
                     val delay = values[which].toInt()
                     pref.delay = delay
                     App.getInstance().screenshot(context)
-                    dismiss()
+                    try {
+                        dismiss()
+                    } catch (e: IllegalStateException) {
+                        Log.e("SettingsDialogFragment", "AlertDialog.dismiss: IllegalStateException", e)
+                    }
                 }
 //                .setPositiveButton(android.R.string.ok, this)
                 .setNeutralButton(R.string.more_setting, this)
