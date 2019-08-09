@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.5.2
+*   Bugfix
 ## 1.5.1
 *   Added Polish translation
 *   Translations improved
