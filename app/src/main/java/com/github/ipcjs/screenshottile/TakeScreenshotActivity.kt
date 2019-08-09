@@ -1,6 +1,7 @@
 package com.github.ipcjs.screenshottile
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -81,7 +82,9 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             screenHeight = heightPixels
         }
 
+        @SuppressLint("WrongConstant")
         imageReader = ImageReader.newInstance(screenWidth, screenHeight, PixelFormat.RGBA_8888, 1)
+
         surface = imageReader?.surface
 
         if (packageManager.checkPermission(
