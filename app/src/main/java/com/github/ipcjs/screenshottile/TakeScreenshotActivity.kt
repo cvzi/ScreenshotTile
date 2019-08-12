@@ -12,10 +12,7 @@ import android.hardware.display.VirtualDisplay
 import android.media.ImageReader
 import android.media.projection.MediaProjection
 import android.net.Uri
-import android.os.Bundle
-import android.os.Handler
-import android.os.Message
-import android.os.StrictMode
+import android.os.*
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Surface
@@ -32,7 +29,9 @@ import java.lang.ref.WeakReference
 class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener {
 
     companion object {
+        const val FOREGROUND_SERVICE_ID = 7593
         const val NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN = "notification_channel_screenshot_taken"
+        const val NOTIFICATION_CHANNEL_FOREGROUND = "notification_channel_foreground"
         const val SCREENSHOT_DIRECTORY = "Screenshots"
         const val NOTIFICATION_PREVIEW_MIN_SIZE = 50
         const val NOTIFICATION_PREVIEW_MAX_SIZE = 400
@@ -254,6 +253,12 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         } ?: screenShotFailedToast("Failed to cast SaveImageResult")
 
         saveImageResult = null
+
+        ScreenshotTileService.instance?.run {
+            // Stop foreground service for Android Q+
+            background()
+        }
+
         finish()
     }
 

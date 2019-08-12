@@ -1,7 +1,10 @@
 package com.github.ipcjs.screenshottile
 
+import android.app.Notification
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ServiceInfo
+import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
@@ -78,8 +81,33 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         super.onClick()
         p("ScreenshotTileService.onClick")
 
+        foreground()
+
         setState(Tile.STATE_ACTIVE)
         App.getInstance().screenshot(this)
     }
+
+    fun foreground() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return
+        }
+
+        val builder = Notification.Builder(this, createNotificationForegroundServiceChannel(this))
+        builder.apply {
+            setShowWhen(false)
+            setContentTitle(getString(R.string.notification_foreground_title))
+            setContentText(getString(R.string.notification_foreground_body))
+            setAutoCancel(true)
+        }
+        startForeground(TakeScreenshotActivity.FOREGROUND_SERVICE_ID, builder.build(), ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION)
+    }
+
+    fun background() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return
+        }
+        stopForeground(true)
+    }
+
 
 }

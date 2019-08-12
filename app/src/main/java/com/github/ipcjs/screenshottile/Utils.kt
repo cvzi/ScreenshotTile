@@ -23,6 +23,7 @@ import android.provider.Settings
 import android.util.Log
 import androidx.core.app.NotificationManagerCompat
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_BIG_PICTURE_MAX_HEIGHT
+import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_FOREGROUND
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MAX_SIZE
 import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MIN_SIZE
@@ -79,6 +80,7 @@ fun addImageToGallery(
  */
 fun createImageFile(context: Context, filename: String): File {
     var storageDir: File?
+    // TODO https://stackoverflow.com/questions/56468539/getexternalstoragepublicdirectory-deprecated-in-android-q
     storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
     if (storageDir == null) {
         // Fallback to "private" data/Package.Name/... directory
@@ -155,13 +157,17 @@ fun saveImageToFile(
     var imageFile = createImageFile(context, "$filename.${compressionOptions.fileExtension}")
 
     try {
+        imageFile.parentFile.mkdirs()
         imageFile.createNewFile()
     } catch (e: Exception) {
         // Try again to fallback to "private" data/Package.Name/... directory
         Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() ${imageFile.absolutePath} $e")
-        imageFile = File(context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES), imageFile.name)
+        val directory = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        imageFile = File(directory, imageFile.name)
         try {
+            directory?.mkdirs()
             imageFile.createNewFile()
+            Log.i("Utils.kt:saveImageToFile()", "Fallback to getExternalFilesDir ${imageFile.absolutePath}")
         } catch (e: Exception) {
             Log.e(
                 "Utils.kt:saveImageToFile()",
@@ -266,6 +272,35 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
     }
     return NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
 }
+
+/**
+ * Create notification channel (if it does not exists) and return its name.
+ */
+fun createNotificationForegroundServiceChannel(context: Context): String {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+        val channelName = context.getString(R.string.notification_foreground_channel_description)
+        val notificationTitle = context.getString(R.string.notification_foreground_title)
+        val channelDescription = context.getString(R.string.notification_foreground_channel_description) + "\n'$notificationTitle'"
+
+        context.applicationContext.getSystemService(NotificationManager::class.java)?.run {
+            if (getNotificationChannel(NOTIFICATION_CHANNEL_FOREGROUND) == null) {
+                createNotificationChannel(NotificationChannel(
+                    NOTIFICATION_CHANNEL_FOREGROUND,
+                    channelName,
+                    NotificationManager.IMPORTANCE_LOW
+                ).apply {
+                    description = channelDescription
+                    enableVibration(false)
+                    enableLights(false)
+                    setSound(null, null)
+                })
+            }
+        }
+    }
+    return NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
+}
+
 
 /**
  * Check if the notification channel was disabled by the user
