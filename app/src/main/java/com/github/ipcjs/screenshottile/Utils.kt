@@ -57,7 +57,7 @@ fun imageToBitmap(image: Image): Bitmap {
 }
 
 /**
- * Add image file and information to media store.
+ * Add image file and information to media store. (used only for Android P and lower)
  */
 fun addImageToGallery(
     context: Context,
@@ -69,18 +69,18 @@ fun addImageToGallery(
     val values = ContentValues()
     values.put(Images.Media.TITLE, title)
     values.put(Images.Media.DESCRIPTION, description)
-    values.put(Images.Media.DATE_TAKEN, System.currentTimeMillis())
     values.put(Images.Media.MIME_TYPE, mimeType)
+    @Suppress("DEPRECATION")
     values.put(MediaStore.MediaColumns.DATA, filepath)
     return context.contentResolver?.insert(Images.Media.EXTERNAL_CONTENT_URI, values)
 }
 
 /**
- * New image file in default "Picture" directory.
+ * New image file in default "Picture" directory. (used only for Android P and lower)
  */
 fun createImageFile(context: Context, filename: String): File {
     var storageDir: File?
-    // TODO https://stackoverflow.com/questions/56468539/getexternalstoragepublicdirectory-deprecated-in-android-q
+    @Suppress("DEPRECATION")
     storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
     if (storageDir == null) {
         // Fallback to "private" data/Package.Name/... directory
@@ -136,9 +136,127 @@ open class SaveImageResult(
 
 data class SaveImageResultSuccess(
     val bitmap: Bitmap,
-    val file: File
+    val file: File?,
+    val uri: Uri? = null
 ) : SaveImageResult("", true) {
     override fun toString(): String = "SaveImageResultSuccess($file)"
+}
+
+/**
+ * Result of createOutputStream()
+ */
+open class OutputStreamResult(
+    val errorMessage: String = "",
+    val success: Boolean = false
+) : Serializable {
+    /**
+     * Returns string representation
+     */
+    override fun toString(): String = "OutputStreamResult($errorMessage)"
+}
+
+data class OutputStreamResultSuccess(
+    val fileOutputStream: OutputStream,
+    val imageFile: File?,
+    val uri: Uri? = null
+) : OutputStreamResult("", true) {
+    override fun toString(): String = "OutputStreamResultSuccess()"
+}
+
+/**
+ * Get output stream for an image file
+ */
+fun createOutputStream(context: Context, fileTitle: String, compressionOptions: CompressionOptions): OutputStreamResult {
+    return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+        createOutputStreamLegacy(context, fileTitle, compressionOptions)
+    } else {
+        createOutputStreamMediaStore(context, fileTitle, compressionOptions)
+    }
+}
+
+/**
+ * Get output stream for an image file, until Android P
+ */
+fun createOutputStreamLegacy(context: Context, fileTitle: String, compressionOptions: CompressionOptions): OutputStreamResult {
+
+    val filename = "$fileTitle.${compressionOptions.fileExtension}"
+
+    var imageFile = createImageFile(context, filename)
+
+    try {
+        imageFile.parentFile?.mkdirs()
+        imageFile.createNewFile()
+    } catch (e: Exception) {
+        // Try again to fallback to "private" data/Package.Name/... directory
+        Log.e("Utils.kt:createOutputStreamLegacy()", "Could not createNewFile() ${imageFile.absolutePath} $e")
+        val directory = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        imageFile = File(directory, imageFile.name)
+        try {
+            directory?.mkdirs()
+            imageFile.createNewFile()
+            Log.i("Utils.kt:createOutputStreamLegacy()", "Fallback to getExternalFilesDir ${imageFile.absolutePath}")
+        } catch (e: Exception) {
+            Log.e(
+                "Utils.kt:createOutputStreamLegacy()",
+                "Could not createOutputStreamLegacy() for fallback file ${imageFile.absolutePath} $e"
+            )
+            return OutputStreamResult("Could not create new file")
+        }
+    }
+
+    if (!imageFile.exists() || !imageFile.canWrite()) {
+        Log.e("Utils.kt:createOutputStreamLegacy()", "File ${imageFile.absolutePath} does not exist or is not writable")
+        return OutputStreamResult("Cannot write to file")
+    }
+
+    val outputStream: FileOutputStream
+    try {
+        outputStream = imageFile.outputStream()
+    } catch (e: FileNotFoundException) {
+        val error = e.toString()
+        Log.e("Utils.kt:createOutputStreamLegacy()", error)
+        return OutputStreamResult("Could not find output file")
+    } catch (e: SecurityException) {
+        val error = e.toString()
+        Log.e("Utils.kt:createOutputStreamLegacy()", error)
+        return OutputStreamResult("Could not open output file because of a security exception")
+    } catch (e: IOException) {
+        var error = e.toString()
+        Log.e("Utils.kt:createOutputStreamLegacy()", error)
+        if (error.contains("enospc", ignoreCase = true)) {
+            error = "No space left on internal device storage"
+            Log.e("Utils.kt:createOutputStreamLegacy()", error)
+            return OutputStreamResult("Could not open output file. No space left on internal device storage")
+        } else {
+            return OutputStreamResult("Could not open output file. IOException")
+        }
+    } catch (e: NullPointerException) {
+        val error = e.toString()
+        Log.e("Utils.kt:createOutputStreamLegacy()", error)
+        return OutputStreamResult("Could not open output file. $error")
+    }
+    return OutputStreamResultSuccess(outputStream, imageFile)
+}
+
+/**
+ * Get output stream for an image file, Android Q+
+ */
+fun createOutputStreamMediaStore(context: Context, fileTitle: String, compressionOptions: CompressionOptions): OutputStreamResult {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+        return OutputStreamResult("Dummy return")
+    }
+    val resolver = context.contentResolver
+    val contentValues = ContentValues().apply {
+        put(MediaStore.MediaColumns.DISPLAY_NAME, fileTitle)
+        put(MediaStore.MediaColumns.DATE_TAKEN, System.currentTimeMillis())
+        put(MediaStore.MediaColumns.MIME_TYPE, compressionOptions.mimeType)
+        put(MediaStore.MediaColumns.RELATIVE_PATH, "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}")
+    }
+
+    val uri = resolver.insert(Images.Media.EXTERNAL_CONTENT_URI, contentValues) ?: return OutputStreamResult("MediaStore failed to provide a file")
+    val outputStream = resolver.openOutputStream(uri) ?: return OutputStreamResult("Could not open output stream from MediaStore")
+
+    return OutputStreamResultSuccess(outputStream, null, uri)
 }
 
 /**
@@ -154,33 +272,17 @@ fun saveImageToFile(
     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.US).format(date)
     val filename = "$prefix$timeStamp"
 
-    var imageFile = createImageFile(context, "$filename.${compressionOptions.fileExtension}")
+    val outputStreamResult = createOutputStream(context, filename, compressionOptions)
 
-    try {
-        imageFile.parentFile.mkdirs()
-        imageFile.createNewFile()
-    } catch (e: Exception) {
-        // Try again to fallback to "private" data/Package.Name/... directory
-        Log.e("Utils.kt:saveImageToFile()", "Could not createNewFile() ${imageFile.absolutePath} $e")
-        val directory = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        imageFile = File(directory, imageFile.name)
-        try {
-            directory?.mkdirs()
-            imageFile.createNewFile()
-            Log.i("Utils.kt:saveImageToFile()", "Fallback to getExternalFilesDir ${imageFile.absolutePath}")
-        } catch (e: Exception) {
-            Log.e(
-                "Utils.kt:saveImageToFile()",
-                "Could not createNewFile() for fallback file ${imageFile.absolutePath} $e"
-            )
-            return SaveImageResult("Could not create new file")
-        }
+    if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
+        Log.e("Utils.kt:saveImageToFile()", "outputStreamResult.success is false")
+        return SaveImageResult(outputStreamResult.errorMessage)
     }
 
-    if (!imageFile.exists() || !imageFile.canWrite()) {
-        Log.e("Utils.kt:saveImageToFile()", "File ${imageFile.absolutePath} does not exist or is not writable")
-        return SaveImageResult("Cannot write to file")
-    }
+    val result = (outputStreamResult as? OutputStreamResultSuccess?) ?:
+        return SaveImageResult("Could not create output stream")
+
+    val outputStream: OutputStream = result.fileOutputStream
 
     // Save image
     val bitmap = imageToBitmap(image)
@@ -194,11 +296,9 @@ fun saveImageToFile(
     val bytes = ByteArrayOutputStream()
     bitmap.compress(compressionOptions.format, compressionOptions.quality, bytes)
 
-    var outputStream: FileOutputStream? = null
     var success = false
     var error = ""
     try {
-        outputStream = imageFile.outputStream()
         outputStream.write(bytes.toByteArray())
         success = true
     } catch (e: FileNotFoundException) {
@@ -218,7 +318,7 @@ fun saveImageToFile(
         error = e.toString()
         Log.e("Utils.kt:saveImageToFile()", error)
     } finally {
-        outputStream?.close()
+        outputStream.close()
     }
 
     if (!success) {
@@ -226,23 +326,28 @@ fun saveImageToFile(
     }
 
     // Add to gallery
-    addImageToGallery(
-        context,
-        imageFile.absolutePath,
-        context.getString(R.string.file_title),
-        context.getString(
-            R.string.file_description,
-            SimpleDateFormat(
-                context.getString(R.string.file_description_simple_date_format),
-                Locale.getDefault()
-            ).format(
-                date
-            )
-        ),
-        compressionOptions.mimeType
-    )
+    if(result.imageFile != null) {
+        addImageToGallery(
+            context,
+            result.imageFile.absolutePath,
+            context.getString(R.string.file_title),
+            context.getString(
+                R.string.file_description,
+                SimpleDateFormat(
+                    context.getString(R.string.file_description_simple_date_format),
+                    Locale.getDefault()
+                ).format(
+                    date
+                )
+            ),
+            compressionOptions.mimeType
+        )
+        return SaveImageResultSuccess(bitmap, result.imageFile)
+    } else {
+        return SaveImageResultSuccess(bitmap, null, result.uri)
+    }
 
-    return SaveImageResultSuccess(bitmap, imageFile)
+
 }
 
 /**
@@ -298,7 +403,7 @@ fun createNotificationForegroundServiceChannel(context: Context): String {
             }
         }
     }
-    return NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
+    return NOTIFICATION_CHANNEL_FOREGROUND
 }
 
 

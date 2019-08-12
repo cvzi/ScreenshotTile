@@ -235,15 +235,24 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
         val result = saveImageResult as? SaveImageResultSuccess?
 
+        // TODO Android Q, delete and edit from notification
+
         result?.let {
-            p("saveImage() imageFile.absolutePath=${it.file.absolutePath}")
+
+            val uri = if(it.uri != null) it.uri else if(it.file != null) Uri.fromFile(it.file) else null
+            val path = if(it.uri != null) it.uri.path else if(it.file != null) it.file.absolutePath else null
+
+            if (uri == null || path == null) {
+                return screenShotFailedToast("Failed to cast SaveImageResult path/uri")
+            }
+            p("saveImage() imageFile.absolutePath=${path}")
             Toast.makeText(
                 this,
-                getString(R.string.screenshot_file_saved, it.file.canonicalFile), Toast.LENGTH_LONG
+                getString(R.string.screenshot_file_saved, path), Toast.LENGTH_LONG
             ).show()
             createNotification(
                 this,
-                Uri.fromFile(it.file),
+                uri,
                 it.bitmap,
                 screenDensity
             )
