@@ -137,7 +137,8 @@ open class SaveImageResult(
 data class SaveImageResultSuccess(
     val bitmap: Bitmap,
     val file: File?,
-    val uri: Uri? = null
+    val uri: Uri? = null,
+    val fileTitle: String? = null
 ) : SaveImageResult("", true) {
     override fun toString(): String = "SaveImageResultSuccess($file)"
 }
@@ -158,7 +159,8 @@ open class OutputStreamResult(
 data class OutputStreamResultSuccess(
     val fileOutputStream: OutputStream,
     val imageFile: File?,
-    val uri: Uri? = null
+    val uri: Uri? = null,
+    val contentValues: ContentValues? = null
 ) : OutputStreamResult("", true) {
     override fun toString(): String = "OutputStreamResultSuccess()"
 }
@@ -166,7 +168,11 @@ data class OutputStreamResultSuccess(
 /**
  * Get output stream for an image file
  */
-fun createOutputStream(context: Context, fileTitle: String, compressionOptions: CompressionOptions): OutputStreamResult {
+fun createOutputStream(
+    context: Context,
+    fileTitle: String,
+    compressionOptions: CompressionOptions
+): OutputStreamResult {
     return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
         createOutputStreamLegacy(context, fileTitle, compressionOptions)
     } else {
@@ -177,7 +183,11 @@ fun createOutputStream(context: Context, fileTitle: String, compressionOptions: 
 /**
  * Get output stream for an image file, until Android P
  */
-fun createOutputStreamLegacy(context: Context, fileTitle: String, compressionOptions: CompressionOptions): OutputStreamResult {
+fun createOutputStreamLegacy(
+    context: Context,
+    fileTitle: String,
+    compressionOptions: CompressionOptions
+): OutputStreamResult {
 
     val filename = "$fileTitle.${compressionOptions.fileExtension}"
 
@@ -223,12 +233,12 @@ fun createOutputStreamLegacy(context: Context, fileTitle: String, compressionOpt
     } catch (e: IOException) {
         var error = e.toString()
         Log.e("Utils.kt:createOutputStreamLegacy()", error)
-        if (error.contains("enospc", ignoreCase = true)) {
+        return if (error.contains("enospc", ignoreCase = true)) {
             error = "No space left on internal device storage"
             Log.e("Utils.kt:createOutputStreamLegacy()", error)
-            return OutputStreamResult("Could not open output file. No space left on internal device storage")
+            OutputStreamResult("Could not open output file. No space left on internal device storage")
         } else {
-            return OutputStreamResult("Could not open output file. IOException")
+            OutputStreamResult("Could not open output file. IOException")
         }
     } catch (e: NullPointerException) {
         val error = e.toString()
@@ -241,22 +251,45 @@ fun createOutputStreamLegacy(context: Context, fileTitle: String, compressionOpt
 /**
  * Get output stream for an image file, Android Q+
  */
-fun createOutputStreamMediaStore(context: Context, fileTitle: String, compressionOptions: CompressionOptions): OutputStreamResult {
+fun createOutputStreamMediaStore(
+    context: Context,
+    fileTitle: String,
+    compressionOptions: CompressionOptions
+): OutputStreamResult {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
         return OutputStreamResult("Dummy return")
     }
+
+    val filename = "$fileTitle.${compressionOptions.fileExtension}"
+
     val resolver = context.contentResolver
     val contentValues = ContentValues().apply {
-        put(MediaStore.MediaColumns.DISPLAY_NAME, fileTitle)
-        put(MediaStore.MediaColumns.DATE_TAKEN, System.currentTimeMillis())
-        put(MediaStore.MediaColumns.MIME_TYPE, compressionOptions.mimeType)
-        put(MediaStore.MediaColumns.RELATIVE_PATH, "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}")
+        put(Images.ImageColumns.TITLE, fileTitle)
+        put(Images.ImageColumns.DISPLAY_NAME, filename)
+        put(
+            Images.ImageColumns.DESCRIPTION, context.getString(
+                R.string.file_description,
+                SimpleDateFormat(
+                    context.getString(R.string.file_description_simple_date_format),
+                    Locale.getDefault()
+                ).format(Date())
+            )
+        )
+        put(Images.ImageColumns.DATE_TAKEN, System.currentTimeMillis())
+        put(Images.ImageColumns.MIME_TYPE, compressionOptions.mimeType)
+        put(
+            Images.ImageColumns.RELATIVE_PATH,
+            "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}"
+        )
+        put(Images.ImageColumns.IS_PENDING, 1)
     }
 
-    val uri = resolver.insert(Images.Media.EXTERNAL_CONTENT_URI, contentValues) ?: return OutputStreamResult("MediaStore failed to provide a file")
-    val outputStream = resolver.openOutputStream(uri) ?: return OutputStreamResult("Could not open output stream from MediaStore")
+    val uri = resolver.insert(Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+        ?: return OutputStreamResult("MediaStore failed to provide a file")
+    val outputStream =
+        resolver.openOutputStream(uri) ?: return OutputStreamResult("Could not open output stream from MediaStore")
 
-    return OutputStreamResultSuccess(outputStream, null, uri)
+    return OutputStreamResultSuccess(outputStream, null, uri, contentValues)
 }
 
 /**
@@ -279,8 +312,8 @@ fun saveImageToFile(
         return SaveImageResult(outputStreamResult.errorMessage)
     }
 
-    val result = (outputStreamResult as? OutputStreamResultSuccess?) ?:
-        return SaveImageResult("Could not create output stream")
+    val result =
+        (outputStreamResult as? OutputStreamResultSuccess?) ?: return SaveImageResult("Could not create output stream")
 
     val outputStream: OutputStream = result.fileOutputStream
 
@@ -326,28 +359,37 @@ fun saveImageToFile(
     }
 
     // Add to gallery
-    if(result.imageFile != null) {
-        addImageToGallery(
-            context,
-            result.imageFile.absolutePath,
-            context.getString(R.string.file_title),
-            context.getString(
-                R.string.file_description,
-                SimpleDateFormat(
-                    context.getString(R.string.file_description_simple_date_format),
-                    Locale.getDefault()
-                ).format(
-                    date
-                )
-            ),
-            compressionOptions.mimeType
-        )
-        return SaveImageResultSuccess(bitmap, result.imageFile)
-    } else {
-        return SaveImageResultSuccess(bitmap, null, result.uri)
+    return when {
+        result.imageFile != null -> {
+            addImageToGallery(
+                context,
+                result.imageFile.absolutePath,
+                context.getString(R.string.file_title),
+                context.getString(
+                    R.string.file_description,
+                    SimpleDateFormat(
+                        context.getString(R.string.file_description_simple_date_format),
+                        Locale.getDefault()
+                    ).format(
+                        date
+                    )
+                ),
+                compressionOptions.mimeType
+            )
+            SaveImageResultSuccess(bitmap, result.imageFile)
+        }
+        result.uri != null -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                result.contentValues?.run {
+                    this.clear()
+                    this.put(Images.ImageColumns.IS_PENDING, 0)
+                    context.contentResolver.update(result.uri, this, null, null)
+                }
+            }
+            SaveImageResultSuccess(bitmap, null, result.uri, filename)
+        }
+        else -> SaveImageResult("Could not save image file, no URI")
     }
-
-
 }
 
 /**
@@ -386,7 +428,8 @@ fun createNotificationForegroundServiceChannel(context: Context): String {
 
         val channelName = context.getString(R.string.notification_foreground_channel_description)
         val notificationTitle = context.getString(R.string.notification_foreground_title)
-        val channelDescription = context.getString(R.string.notification_foreground_channel_description) + "\n'$notificationTitle'"
+        val channelDescription =
+            context.getString(R.string.notification_foreground_channel_description) + "\n'$notificationTitle'"
 
         context.applicationContext.getSystemService(NotificationManager::class.java)?.run {
             if (getNotificationChannel(NOTIFICATION_CHANNEL_FOREGROUND) == null) {
@@ -634,40 +677,71 @@ fun notificationSettingsIntent(packageName: String, channelId: String? = null): 
 }
 
 /**
- * Delete image from file system and from MediaStore.
- * Returns false if the file could not be deleted from file system,
- * otherwise true even if deleting from Media Store failed
+ * Delete image. Return true on success, false on failure.
+ * content:// Uris are deleted from MediaStore
+ * file:// Uris are deleted from filesystem and MediaStore
  */
-fun deleteImage(context: Context, file: File): Boolean {
-    if (!file.exists()) {
-        Log.w("Screenshot", "File does not exist: ${file.absoluteFile}")
+fun deleteImage(context: Context, uri: Uri?): Boolean {
+    if (uri == null) {
+        Log.w("Screenshot", "Could not delete file: uri is null")
         return false
     }
 
-    if (!file.canWrite()) {
-        Log.w("Screenshot", "File is not writable: ${file.absoluteFile}")
-        return false
-    }
-
-    if (file.delete()) {
-        Utils.p("File deleted from storage: ${file.absoluteFile}")
-        val uri = Images.Media.EXTERNAL_CONTENT_URI
-        val projection = arrayOf(Images.Media._ID)
-        val selection = Images.Media.DATA + " = ?"
-        val queryArgs = arrayOf(file.absolutePath)
-        context.contentResolver.query(uri, projection, selection, queryArgs, null)?.apply {
-            if (moveToFirst()) {
-                val id = getLong(getColumnIndexOrThrow(Images.Media._ID))
-                val contentUri = ContentUris.withAppendedId(Images.Media.EXTERNAL_CONTENT_URI, id)
-                context.contentResolver.delete(contentUri, null, null)
-                Utils.p("File deleted from MediaStore: $contentUri")
-            }
-            close()
+    uri.normalizeScheme()
+    when {
+        uri.scheme == "content" -> { // Android Q+
+            val deletedRows = context.contentResolver.delete(uri, null, null)
+            Utils.p("File deleted from MediaStore ($deletedRows rows deleted)")
+            return deletedRows > 0
         }
-    } else {
-        Log.w("Screenshot", "Could not delete file: ${file.absoluteFile}")
-        return false
+
+        uri.scheme == "file" -> { // until Android P
+            val path = uri.path
+            if (path == null) {
+                Log.w("Screenshot", "File path is null. uri=$uri")
+                return false
+            }
+
+            val file = File(path)
+
+            if (!file.exists()) {
+                Log.w("Screenshot", "File does not exist: ${file.absoluteFile}")
+                return false
+            }
+
+            if (!file.canWrite()) {
+                Log.w("Screenshot", "File is not writable: ${file.absoluteFile}")
+                return false
+            }
+
+            if (file.delete()) {
+                Utils.p("File deleted from storage: ${file.absoluteFile}")
+                val externalContentUri = Images.Media.EXTERNAL_CONTENT_URI
+                val projection = arrayOf(Images.Media._ID)
+                @Suppress("DEPRECATION")
+                val selection = Images.Media.DATA + " = ?"
+                val queryArgs = arrayOf(file.absolutePath)
+                context.contentResolver.query(externalContentUri, projection, selection, queryArgs, null)?.apply {
+                    if (moveToFirst()) {
+                        val id = getLong(getColumnIndexOrThrow(Images.Media._ID))
+                        val contentUri = ContentUris.withAppendedId(Images.Media.EXTERNAL_CONTENT_URI, id)
+                        context.contentResolver.delete(contentUri, null, null)
+                        Utils.p("File deleted from MediaStore: $contentUri")
+                    }
+                    close()
+                }
+            } else {
+                Log.w("Screenshot", "Could not delete file: ${file.absoluteFile}")
+                return false
+            }
+        }
+        else -> {
+            Log.w("Screenshot", "Could not delete file. Unknown error. uri=$uri")
+            return false
+        }
+
     }
+
 
     return true
 }

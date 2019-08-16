@@ -9,12 +9,12 @@ import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.Utils.p
-import java.io.File
 
 
 const val NOTIFICATION_ACTION_SHARE = "NOTIFICATION_ACTION_SHARE"
 const val NOTIFICATION_ACTION_DELETE = "NOTIFICATION_ACTION_DELETE"
 const val NOTIFICATION_ACTION_EDIT = "NOTIFICATION_ACTION_EDIT"
+const val NOTIFICATION_ACTION_STOP = "NOTIFICATION_ACTION_STOP"
 const val NOTIFICATION_ACTION_DATA_URI = "NOTIFICATION_ACTION_DATA_URI"
 const val NOTIFICATION_ACTION_ID = "NOTIFICATION_ACTION_ID"
 
@@ -55,7 +55,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
 
-                    if (path != null && deleteImage(this, File(path.path!!))) {
+                    if (path != null && deleteImage(this, path)) {
                         Toast.makeText(this, context.getString(R.string.screenshot_deleted), Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this, context.getString(R.string.screenshot_delete_failed), Toast.LENGTH_LONG)
@@ -82,6 +82,11 @@ class NotificationActionReceiver : BroadcastReceiver() {
                         Log.e("NotificationActionReceiver", "resolveActivity(shareIntent) returned null")
                     }
                 }
+                NOTIFICATION_ACTION_STOP -> {
+                    p("NotificationActionReceiver: ${intent.action}")
+                    ScreenshotTileService.instance?.background()
+                }
+
             }
         }
     }
@@ -97,6 +102,10 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
         intentFilter = IntentFilter()
         intentFilter.addAction(NOTIFICATION_ACTION_EDIT)
+        context.registerReceiver(this, intentFilter)
+
+        intentFilter = IntentFilter()
+        intentFilter.addAction(NOTIFICATION_ACTION_STOP)
         context.registerReceiver(this, intentFilter)
     }
 }

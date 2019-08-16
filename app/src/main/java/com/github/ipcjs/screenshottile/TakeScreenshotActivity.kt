@@ -176,7 +176,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         // acquireLatestImage produces warning for  maxImages = 1: "Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers"
         val image = try {
             imageReader?.acquireNextImage()
-        } catch(e: UnsupportedOperationException ) {
+        } catch (e: UnsupportedOperationException) {
             stopScreenSharing()
             p("acquireNextImage() UnsupportedOperationException", e)
             screenShotFailedToast("Could not acquire image.\nUnsupportedOperationException\nThis device is not supported.")
@@ -235,31 +235,50 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
         val result = saveImageResult as? SaveImageResultSuccess?
 
-        // TODO Android Q, delete and edit from notification
-
-        result?.let {
-
-            val uri = if(it.uri != null) it.uri else if(it.file != null) Uri.fromFile(it.file) else null
-            val path = if(it.uri != null) it.uri.path else if(it.file != null) it.file.absolutePath else null
-
-            if (uri == null || path == null) {
-                return screenShotFailedToast("Failed to cast SaveImageResult path/uri")
+        when {
+            result == null -> {
+                screenShotFailedToast("Failed to cast SaveImageResult")
             }
-            p("saveImage() imageFile.absolutePath=${path}")
-            Toast.makeText(
-                this,
-                getString(R.string.screenshot_file_saved, path), Toast.LENGTH_LONG
-            ).show()
-            createNotification(
-                this,
-                uri,
-                it.bitmap,
-                screenDensity
-            )
-            if (!it.bitmap.isRecycled) {
-                it.bitmap.recycle()
+            result.uri != null -> {
+                // Android Q+ works with MediaStore content:// URI
+                p("saveImage() URI=${result.uri}")
+
+                val dummyPath = "${Environment.DIRECTORY_PICTURES}/$SCREENSHOT_DIRECTORY/${result.fileTitle}"
+                Toast.makeText(
+                    this,
+                    getString(R.string.screenshot_file_saved, dummyPath), Toast.LENGTH_LONG
+                ).show()
+
+                createNotification(
+                    this,
+                    result.uri,
+                    result.bitmap,
+                    screenDensity
+                )
             }
-        } ?: screenShotFailedToast("Failed to cast SaveImageResult")
+            result.file != null -> {
+                // Legacy behaviour until Android P, works with the real file path
+                val uri = Uri.fromFile(result.file)
+                val path = result.file.absolutePath
+
+                p("saveImage() imageFile.absolutePath=$path")
+
+                Toast.makeText(
+                    this,
+                    getString(R.string.screenshot_file_saved, path), Toast.LENGTH_LONG
+                ).show()
+
+                createNotification(
+                    this,
+                    uri,
+                    result.bitmap,
+                    screenDensity
+                )
+            }
+            else -> {
+                screenShotFailedToast("Failed to cast SaveImageResult path/uri")
+            }
+        }
 
         saveImageResult = null
 

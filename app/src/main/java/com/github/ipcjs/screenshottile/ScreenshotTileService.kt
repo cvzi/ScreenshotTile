@@ -1,6 +1,7 @@
 package com.github.ipcjs.screenshottile
 
 import android.app.Notification
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
@@ -36,7 +37,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         } catch (e: NullPointerException) {
             Log.e("ScreenshotTileService", "setState: NullPointerException", e)
         } catch (e: IllegalArgumentException) {
-          Log.e("ScreenshotTileService", "setState: IllegalArgumentException", e)
+            Log.e("ScreenshotTileService", "setState: IllegalArgumentException", e)
         }
     }
 
@@ -92,14 +93,23 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
             return
         }
 
+        val context = this
         val builder = Notification.Builder(this, createNotificationForegroundServiceChannel(this))
         builder.apply {
             setShowWhen(false)
             setContentTitle(getString(R.string.notification_foreground_title))
             setContentText(getString(R.string.notification_foreground_body))
             setAutoCancel(true)
+            setSmallIcon(R.drawable.transparent_icon)
+            setContentIntent(PendingIntent.getBroadcast(context, 1, Intent().apply {
+                action = NOTIFICATION_ACTION_STOP
+            }, 0))
         }
-        startForeground(TakeScreenshotActivity.FOREGROUND_SERVICE_ID, builder.build(), ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION)
+        startForeground(
+            TakeScreenshotActivity.FOREGROUND_SERVICE_ID,
+            builder.build(),
+            ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
+        )
     }
 
     fun background() {

@@ -82,9 +82,10 @@ public class App extends Application {
      */
     protected static void acquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener myOnAcquireScreenshotPermissionListener) {
         onAcquireScreenshotPermissionListener = myOnAcquireScreenshotPermissionListener;
+        ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
 
-        if (screenshotPermission == null && ScreenshotTileService.Companion.getInstance() != null) {
-            screenshotPermission = ScreenshotTileService.Companion.getInstance().getScreenshotPermission();
+        if (screenshotPermission == null && screenshotTileService != null) {
+            screenshotPermission = screenshotTileService.getScreenshotPermission();
         }
 
         p("App.acquireScreenshotPermission screenshotPermission=" + screenshotPermission);
@@ -92,6 +93,9 @@ public class App extends Application {
             if (null != mediaProjection) {
                 mediaProjection.stop();
                 mediaProjection = null;
+            }
+            if(screenshotTileService != null) {
+                screenshotTileService.foreground();
             }
             mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
             p("App.acquireScreenshotPermission mediaProjection=" + mediaProjection);
