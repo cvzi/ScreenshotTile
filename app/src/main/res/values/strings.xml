@@ -18,9 +18,9 @@
     <string name="notification_title">Screenshot taken</string>
     <string name="notification_body">Tap to see the image</string>
     <string name="notification_channel_description">Shows a notification when you have taken a screenshot</string>
-    <string name="notification_foreground_title">ScreenshotTile is running</string>
-    <string name="notification_foreground_body">ScreenshotTile is about to take a screenshot</string>
-    <string name="notification_foreground_channel_description">Shows a notification when you are taking a screenshot to keep the app in the foreground</string>
+    <string name="notification_foreground_title">Taking a screenshot…</string>
+    <string name="notification_foreground_body">Processing screenshot</string>
+    <string name="notification_foreground_channel_description">Shows a notification when you are taking a screenshot. Prevents the app from being terminated by the battery optimization while a screenshot is in process</string>
     <string name="notification_app_chooser">Open file with…</string>
     <string name="notification_app_chooser_share">Share file with…</string>
     <string name="notification_app_chooser_edit">Edit file with…</string>
