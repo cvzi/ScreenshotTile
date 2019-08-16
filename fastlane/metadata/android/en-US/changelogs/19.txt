@@ -1,0 +1,1 @@
+Fixed: Delete from notification on Android Q

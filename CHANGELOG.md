@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.5.4
+*   Fixed: Delete from notification on Android Q
 ## 1.5.3
 *   Enhancements for Android Q
 ## 1.5.2
