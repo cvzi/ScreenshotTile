@@ -78,14 +78,19 @@ fun addImageToGallery(
     filepath: String,
     title: String,
     description: String,
-    mimeType: String = "image/jpeg"
+    mimeType: String = "image/jpeg",
+    date: Date? = null
 ): Uri? {
-    val values = ContentValues()
-    values.put(Images.Media.TITLE, title)
-    values.put(Images.Media.DESCRIPTION, description)
-    values.put(Images.Media.MIME_TYPE, mimeType)
-    @Suppress("DEPRECATION")
-    values.put(MediaStore.MediaColumns.DATA, filepath)
+    val dateSeconds = (date?.time ?: System.currentTimeMillis()) / 1000
+    val values = ContentValues().apply {
+        put(Images.Media.TITLE, title)
+        put(Images.Media.DESCRIPTION, description)
+        put(Images.Media.MIME_TYPE, mimeType)
+        put(Images.ImageColumns.DATE_ADDED, dateSeconds)
+        put(Images.ImageColumns.DATE_MODIFIED, dateSeconds)
+        @Suppress("DEPRECATION")
+        put(MediaStore.MediaColumns.DATA, filepath)
+    }
     return context.contentResolver?.insert(Images.Media.EXTERNAL_CONTENT_URI, values)
 }
 
@@ -185,12 +190,13 @@ data class OutputStreamResultSuccess(
 fun createOutputStream(
     context: Context,
     fileTitle: String,
-    compressionOptions: CompressionOptions
+    compressionOptions: CompressionOptions,
+    date: Date
 ): OutputStreamResult {
     return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-        createOutputStreamLegacy(context, fileTitle, compressionOptions)
+        createOutputStreamLegacy(context, fileTitle, compressionOptions, date)
     } else {
-        createOutputStreamMediaStore(context, fileTitle, compressionOptions)
+        createOutputStreamMediaStore(context, fileTitle, compressionOptions, date)
     }
 }
 
@@ -200,7 +206,8 @@ fun createOutputStream(
 fun createOutputStreamLegacy(
     context: Context,
     fileTitle: String,
-    compressionOptions: CompressionOptions
+    compressionOptions: CompressionOptions,
+    date: Date
 ): OutputStreamResult {
 
     val filename = "$fileTitle.${compressionOptions.fileExtension}"
@@ -268,7 +275,8 @@ fun createOutputStreamLegacy(
 fun createOutputStreamMediaStore(
     context: Context,
     fileTitle: String,
-    compressionOptions: CompressionOptions
+    compressionOptions: CompressionOptions,
+    date: Date
 ): OutputStreamResult {
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
         return OutputStreamResult("Dummy return")
@@ -277,6 +285,8 @@ fun createOutputStreamMediaStore(
     val filename = "$fileTitle.${compressionOptions.fileExtension}"
 
     val resolver = context.contentResolver
+    val dateMilliseconds = date.time
+    val dateSeconds = dateMilliseconds / 1000
     val contentValues = ContentValues().apply {
         put(Images.ImageColumns.TITLE, fileTitle)
         put(Images.ImageColumns.DISPLAY_NAME, filename)
@@ -289,7 +299,9 @@ fun createOutputStreamMediaStore(
                 ).format(Date())
             )
         )
-        put(Images.ImageColumns.DATE_TAKEN, System.currentTimeMillis())
+        put(Images.ImageColumns.DATE_TAKEN, dateMilliseconds)
+        put(Images.ImageColumns.DATE_ADDED, dateSeconds)
+        put(Images.ImageColumns.DATE_MODIFIED, dateSeconds)
         put(Images.ImageColumns.MIME_TYPE, compressionOptions.mimeType)
         put(
             Images.ImageColumns.RELATIVE_PATH,
@@ -320,7 +332,7 @@ fun saveImageToFile(
     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.US).format(date)
     val filename = "$prefix$timeStamp"
 
-    val outputStreamResult = createOutputStream(context, filename, compressionOptions)
+    val outputStreamResult = createOutputStream(context, filename, compressionOptions, date)
 
     if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
         Log.e("Utils.kt:saveImageToFile()", "outputStreamResult.success is false")
@@ -394,7 +406,8 @@ fun saveImageToFile(
                         date
                     )
                 ),
-                compressionOptions.mimeType
+                compressionOptions.mimeType,
+                date
             )
             SaveImageResultSuccess(bitmap, result.imageFile)
         }
@@ -761,7 +774,6 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
         }
 
     }
-
 
     return true
 }
