@@ -12,6 +12,7 @@ import static com.github.ipcjs.screenshottile.UtilsKt.screenshot;
 public class NoDisplayActivity extends Activity {
 
     private static final String EXTRA_SCREENSHOT = APPLICATION_ID + ".NoDisplayActivity.EXTRA_SCREENSHOT";
+    private static final String EXTRA_PARTIAL = APPLICATION_ID + ".NoDisplayActivity.EXTRA_PARTIAL";
 
     /**
      * New Intent that takes a screenshot immediately if screenshot is true
@@ -26,15 +27,31 @@ public class NoDisplayActivity extends Activity {
         return intent;
     }
 
+    /**
+     * New Intent that opens the partial screenshot selector
+     *
+     * @param context Context
+     * @return The intent
+     */
+    public static Intent newPartialIntent(Context context) {
+        Intent intent = new Intent(context, NoDisplayActivity.class);
+        intent.putExtra(EXTRA_PARTIAL, true);
+        return intent;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         if (intent != null) {
             String action = intent.getAction();
-            if (intent.getBooleanExtra(EXTRA_SCREENSHOT, false) || (action != null && action.equals(EXTRA_SCREENSHOT))) {
+
+            if (intent.getBooleanExtra(EXTRA_PARTIAL, false)) {
+                p("NoDisplayActivity.onCreate EXTRA_PARTIAL=true");
+                screenshot(this, true);
+            } else if (intent.getBooleanExtra(EXTRA_SCREENSHOT, false) || (action != null && action.equals(EXTRA_SCREENSHOT))) {
                 p("NoDisplayActivity.onCreate EXTRA_SCREENSHOT=true");
-                screenshot(this);
+                screenshot(this, false);
             } else {
                 p("NoDisplayActivity.onCreate EXTRA_SCREENSHOT=false");
             }

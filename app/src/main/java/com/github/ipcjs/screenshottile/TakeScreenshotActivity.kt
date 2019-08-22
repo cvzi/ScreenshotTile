@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.PixelFormat
+import android.graphics.Rect
 import android.hardware.display.DisplayManager
 import android.hardware.display.VirtualDisplay
 import android.media.ImageReader
@@ -16,10 +17,13 @@ import android.os.*
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Surface
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
+import com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID
 import com.github.ipcjs.screenshottile.Utils.p
+import com.github.ipcjs.screenshottile.partial.ScreenshotSelectorView
 import java.lang.ref.WeakReference
-
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.
@@ -38,16 +42,18 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         const val NOTIFICATION_BIG_PICTURE_MAX_HEIGHT = 1024
         const val THREAD_START = 1
         const val THREAD_FINISHED = 2
-
+        const val EXTRA_PARTIAL = "$APPLICATION_ID.TakeScreenshotActivity.EXTRA_PARTIAL"
         /**
          * Start activity.
          */
-        fun start(context: Context) {
-            context.startActivity(newIntent(context))
+        fun start(context: Context, partial: Boolean = false) {
+            context.startActivity(newIntent(context, partial))
         }
 
-        private fun newIntent(context: Context): Intent {
-            return Intent(context, TakeScreenshotActivity::class.java)
+        private fun newIntent(context: Context, partial: Boolean = false): Intent {
+            return Intent(context, TakeScreenshotActivity::class.java).apply {
+                putExtra(EXTRA_PARTIAL, partial)
+            }
         }
 
     }
@@ -60,9 +66,11 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     private var surface: Surface? = null
     private var imageReader: ImageReader? = null
     private var mediaProjection: MediaProjection? = null
+    private var cutOutRect: Rect? = null
     private var handler = SaveImageHandler(this)
     private var thread: Thread? = null
     private var saveImageResult: SaveImageResult? = null
+    private var partial = false
 
     private var askedForPermission = false
 
@@ -73,6 +81,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         val builder = StrictMode.VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
         builder.detectFileUriExposure()
+
+        partial = intent?.getBooleanExtra(EXTRA_PARTIAL, false) ?: false
 
         with(DisplayMetrics()) {
             windowManager.defaultDisplay.getRealMetrics(this)
@@ -104,6 +114,35 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             p("onCreate() else")
 
         }
+
+    }
+
+
+    /**
+     * Show partial screenshot selector
+     */
+    private fun partialScreenshot() {
+        // Go fullscreen without status bar and without display notch/cutout
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            window.attributes.layoutInDisplayCutoutMode =
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+        }
+        // Load layout
+        setContentView(R.layout.partial_screenshot)
+        val mScreenshotSelectorView = findViewById<ScreenshotSelectorView>(R.id.global_screenshot_selector)
+        mScreenshotSelectorView.text = getString(R.string.take_screenshot)
+        mScreenshotSelectorView.shutter = R.drawable.ic_stat_name
+        mScreenshotSelectorView.onShutter = {
+            cutOutRect = it
+            prepareForScreenSharing()
+        }
+
     }
 
     override fun onAcquireScreenshotPermission() {
@@ -114,7 +153,12 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
          }, 350)
         */
         ScreenshotTileService.instance?.onAcquireScreenshotPermission()
-        prepareForScreenSharing()
+
+        if (partial) {
+            partialScreenshot()
+        } else {
+            prepareForScreenSharing()
+        }
     }
 
     public override fun onDestroy() {
@@ -201,7 +245,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         val compressionOptions = compressionPreference(applicationContext)
 
         thread = Thread(Runnable {
-            saveImageResult = saveImageToFile(applicationContext, image, "Screenshot_", compressionOptions)
+            saveImageResult = saveImageToFile(applicationContext, image, "Screenshot_", compressionOptions, cutOutRect)
             image.close()
 
             handler.sendEmptyMessage(THREAD_FINISHED)

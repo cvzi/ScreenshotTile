@@ -94,7 +94,7 @@ public class App extends Application {
                 mediaProjection.stop();
                 mediaProjection = null;
             }
-            if(screenshotTileService != null) {
+            if (screenshotTileService != null) {
                 screenshotTileService.foreground();
             }
             mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
@@ -179,6 +179,20 @@ public class App extends Application {
         }
     }
 
+    /**
+     * Take a partial screenshot
+     *
+     * @param context Context
+     */
+    public void screenshotPartial(Context context) {
+        Intent intent = NoDisplayActivity.newPartialIntent(context);
+        if (!(context instanceof Activity)) {
+            intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+        }
+        context.startActivity(intent);
+    }
+
+
     private void screenshotShowCountdown(Context context) {
         int delay = prefManager.getDelay();
         Intent intent;
@@ -196,11 +210,11 @@ public class App extends Application {
             try {
                 tileService.startActivityAndCollapse(intent);
                 startActivityAndCollapseSucceeded = true;
-            } catch(NullPointerException e) {
+            } catch (NullPointerException e) {
                 startActivityAndCollapseSucceeded = false;
             }
         }
-        if(!startActivityAndCollapseSucceeded) {
+        if (!startActivityAndCollapseSucceeded) {
             if (delay > 0) {
                 intent = DelayScreenshotActivity.Companion.newIntent(context, delay);
             } else {

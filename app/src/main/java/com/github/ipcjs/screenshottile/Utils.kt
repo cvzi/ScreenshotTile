@@ -9,6 +9,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Rect
 import android.graphics.drawable.Icon
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
@@ -40,8 +41,8 @@ import kotlin.math.min
 /**
  * Start screenshot activity and take a screenshot
  */
-fun screenshot(context: Context) {
-    TakeScreenshotActivity.start(context)
+fun screenshot(context: Context, partial: Boolean = false) {
+    TakeScreenshotActivity.start(context, partial)
 }
 
 /**
@@ -55,6 +56,19 @@ fun imageToBitmap(image: Image): Bitmap {
     bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
     return Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
 }
+
+/**
+ * Copy rectangle of image content to new bitmap.
+ */
+fun imageCutOutToBitmap(image: Image, rect: Rect): Bitmap {
+    val offset = (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
+    val w = image.width + offset
+    val h = image.height
+    val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+    bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
+    return Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
+}
+
 
 /**
  * Add image file and information to media store. (used only for Android P and lower)
@@ -299,7 +313,8 @@ fun saveImageToFile(
     context: Context,
     image: Image,
     prefix: String,
-    compressionOptions: CompressionOptions = CompressionOptions()
+    compressionOptions: CompressionOptions = CompressionOptions(),
+    cutOutRect: Rect?
 ): SaveImageResult {
     val date = Date()
     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.US).format(date)
@@ -318,7 +333,12 @@ fun saveImageToFile(
     val outputStream: OutputStream = result.fileOutputStream
 
     // Save image
-    val bitmap = imageToBitmap(image)
+
+    val bitmap = if (cutOutRect == null) {
+        imageToBitmap(image)
+    } else {
+        imageCutOutToBitmap(image, cutOutRect)
+    }
     image.close()
 
     if (bitmap.width == 0 || bitmap.height == 0) {
