@@ -297,7 +297,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                     this,
                     result.uri,
                     result.bitmap,
-                    screenDensity
+                    screenDensity,
+                    result.mimeType
                 )
             }
             result.file != null -> {
@@ -316,7 +317,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                     this,
                     uri,
                     result.bitmap,
-                    screenDensity
+                    screenDensity,
+                    result.mimeType
                 )
             }
             else -> {

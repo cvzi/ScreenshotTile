@@ -16,6 +16,7 @@ const val NOTIFICATION_ACTION_DELETE = "NOTIFICATION_ACTION_DELETE"
 const val NOTIFICATION_ACTION_EDIT = "NOTIFICATION_ACTION_EDIT"
 const val NOTIFICATION_ACTION_STOP = "NOTIFICATION_ACTION_STOP"
 const val NOTIFICATION_ACTION_DATA_URI = "NOTIFICATION_ACTION_DATA_URI"
+const val NOTIFICATION_ACTION_DATA_MIME_TYPE = "NOTIFICATION_ACTION_DATA_MIME_TYPE"
 const val NOTIFICATION_ACTION_ID = "NOTIFICATION_ACTION_ID"
 
 /**
@@ -34,8 +35,9 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
+                    val mimeType = intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE) ?: "image/png"
 
-                    val shareIntent = shareImageChooserIntent(this, path)
+                    val shareIntent = shareImageChooserIntent(this, path, mimeType)
                     shareIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
 
                     if (shareIntent.resolveActivity(context.packageManager) != null) {
@@ -68,8 +70,9 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
+                    val mimeType = intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE) ?: "image/png"
 
-                    val shareIntent = editImageChooserIntent(this, path)
+                    val shareIntent = editImageChooserIntent(this, path, mimeType)
                     shareIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
 
                     if (shareIntent.resolveActivity(context.packageManager) != null) {

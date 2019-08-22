@@ -155,6 +155,7 @@ open class SaveImageResult(
 
 data class SaveImageResultSuccess(
     val bitmap: Bitmap,
+    val mimeType: String,
     val file: File?,
     val uri: Uri? = null,
     val fileTitle: String? = null
@@ -409,7 +410,7 @@ fun saveImageToFile(
                 compressionOptions.mimeType,
                 date
             )
-            SaveImageResultSuccess(bitmap, result.imageFile)
+            SaveImageResultSuccess(bitmap, compressionOptions.mimeType, result.imageFile)
         }
         result.uri != null -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -419,7 +420,7 @@ fun saveImageToFile(
                     context.contentResolver.update(result.uri, this, null, null)
                 }
             }
-            SaveImageResultSuccess(bitmap, null, result.uri, filename)
+            SaveImageResultSuccess(bitmap, compressionOptions.mimeType, null, result.uri, filename)
         }
         else -> SaveImageResult("Could not save image file, no URI")
     }
@@ -530,7 +531,7 @@ fun resizeToBigPicture(bitmap: Bitmap): Bitmap {
 /**
  * Show a notification that opens the image file on tap.
  */
-fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensity: Int) {
+fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensity: Int, mimeType: String) {
     val appContext = context.applicationContext
 
     val bigPicture = resizeToBigPicture(bitmap)
@@ -540,7 +541,7 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensit
     val uniqueId =
         (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
 
-    val openImageIntent = openImageIntent(path)
+    val openImageIntent = openImageIntent(path, mimeType)
     val contentPendingIntent = PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent, 0)
 
     // Create notification
@@ -571,7 +572,7 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensit
         R.drawable.ic_stat_name
     ) // This is not shown on Android 7+ anyways so let's just use the app icon
 
-    val shareIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_SHARE)
+    val shareIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_SHARE)
     val pendingIntentShare = PendingIntent.getBroadcast(appContext, uniqueId + 3, shareIntent, 0)
     builder.addAction(
         Notification.Action.Builder(
@@ -581,8 +582,8 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensit
         ).build()
     )
 
-    if (editImageIntent(path).resolveActivity(context.applicationContext.packageManager) != null) {
-        val editIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_EDIT)
+    if (editImageIntent(path, mimeType).resolveActivity(context.applicationContext.packageManager) != null) {
+        val editIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_EDIT)
         val pendingIntentEdit = PendingIntent.getBroadcast(appContext, uniqueId + 4, editIntent, 0)
         builder.addAction(
             Notification.Action.Builder(
@@ -593,7 +594,7 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensit
         )
     }
 
-    val deleteIntent = actionButtonIntent(path, uniqueId, NOTIFICATION_ACTION_DELETE)
+    val deleteIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_DELETE)
     val pendingIntentDelete = PendingIntent.getBroadcast(appContext, uniqueId + 2, deleteIntent, 0)
     builder.addAction(
         Notification.Action.Builder(
@@ -618,10 +619,11 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensit
 /**
  * Intent for notification action button.
  */
-fun actionButtonIntent(path: Uri, notificationId: Int, intentAction: String): Intent {
+fun actionButtonIntent(path: Uri, mimeType: String, notificationId: Int, intentAction: String): Intent {
     return Intent().apply {
         action = intentAction
         putExtra(NOTIFICATION_ACTION_DATA_URI, path.toString())
+        putExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE, mimeType)
         putExtra(NOTIFICATION_ACTION_ID, notificationId)
     }
 }
@@ -629,10 +631,11 @@ fun actionButtonIntent(path: Uri, notificationId: Int, intentAction: String): In
 /**
  * Intent to open share chooser.
  */
-fun shareImageChooserIntent(context: Context, path: Uri): Intent {
+fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Intent {
     Intent(Intent.ACTION_SEND).apply {
-        type = "image/png"
+        type = mimeType
         putExtra(Intent.EXTRA_STREAM, path)
+        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_share))
     }
 }
@@ -640,18 +643,20 @@ fun shareImageChooserIntent(context: Context, path: Uri): Intent {
 /**
  * Intent to edit image.
  */
-fun editImageIntent(path: Uri): Intent {
+fun editImageIntent(path: Uri, mimeType: String): Intent {
     return Intent(Intent.ACTION_EDIT).apply {
-        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        setDataAndType(path, "image/png")
+        setDataAndType(path, mimeType)
+        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
     }
 }
 
 /**
  * Intent to open edit image chooser.
  */
-fun editImageChooserIntent(context: Context, path: Uri): Intent {
-    editImageIntent(path).apply {
+fun editImageChooserIntent(context: Context, path: Uri, mimeType: String): Intent {
+    editImageIntent(path, mimeType).apply {
         return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_edit))
     }
 }
@@ -659,11 +664,12 @@ fun editImageChooserIntent(context: Context, path: Uri): Intent {
 /**
  * Intent to open image file on notification tap.
  */
-fun openImageIntent(path: Uri): Intent {
+fun openImageIntent(path: Uri, mimeType: String): Intent {
     // Create intent for notification click
     return Intent(Intent.ACTION_VIEW).apply {
-        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        setDataAndType(path, "image/png")
+        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        setDataAndType(path, mimeType)
     }
 }
 
