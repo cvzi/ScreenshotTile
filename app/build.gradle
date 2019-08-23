@@ -38,32 +38,7 @@ android {
             versionNameSuffix '.debug'
         }
     }
-    // 2017-08-15 15:40:13 该方法在新版gradle中已失效...
-    // 自动在debug版的app_name后加".debug"（兼容各种版本的as）
-    /*
-    applicationVariants.all { variant ->// 遍历所有的variant
-        if (variant.buildType.name.equals("debug")) {// 该variant的buildType是debug
-            variant.mergeResources.doLast {// 合并完res后执行：
-                def encoding = "UTF-8"// 文件编码(不要取系统默认编码，win*的系统默认编码是GBK)
-                def langDirs = ["values", "values-zh"]// 语言列表
-                langDirs.each { langDir ->
-                    File valuesFile = file("${variant.mergeResources.outputDir.absolutePath}/${langDir}/${langDir}.xml")
-                    // 合并后的values文件
-                    if (valuesFile.exists()) {// 若存在
-                        String content = valuesFile.getText(encoding)// 读取values
-                        content = content.replaceFirst("<string name=\"app_name\">(.+)</string>", "<string name=\"app_name\">\$1.debug</string>")
-                        // 替换app_name的内容
-                        valuesFile.write(content, encoding)// 写入values
-                        println ">>>替换${valuesFile.absolutePath}中的app_name"
-                    } else {
-                        println ">>>不存在: ${valuesFile.absolutePath}"
-                    }
-                }
 
-            }
-        }
-    }
-*/
     buildToolsVersion '29.0.1'
     productFlavors {
     }
