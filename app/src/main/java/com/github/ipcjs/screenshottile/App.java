@@ -9,10 +9,10 @@ import android.media.projection.MediaProjectionManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.service.quicksettings.TileService;
+import android.util.Log;
 import androidx.preference.PreferenceManager;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.github.ipcjs.screenshottile.Utils.p;
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -21,6 +21,7 @@ import static com.github.ipcjs.screenshottile.Utils.p;
 
 
 public class App extends Application {
+    private static final String TAG = "App.java";
     private static MediaProjectionManager mediaProjectionManager = null;
     private static App instance;
     private static Intent screenshotPermission = null;
@@ -88,7 +89,7 @@ public class App extends Application {
             screenshotPermission = screenshotTileService.getScreenshotPermission();
         }
 
-        p("App.acquireScreenshotPermission screenshotPermission=" + screenshotPermission);
+        Log.v(TAG, "acquireScreenshotPermission() screenshotPermission=" + screenshotPermission);
         if (screenshotPermission != null) {
             if (null != mediaProjection) {
                 mediaProjection.stop();
@@ -98,13 +99,13 @@ public class App extends Application {
                 screenshotTileService.foreground();
             }
             mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
-            p("App.acquireScreenshotPermission mediaProjection=" + mediaProjection);
+            Log.v(TAG, "acquireScreenshotPermission() mediaProjection=" + mediaProjection);
             if (onAcquireScreenshotPermissionListener != null) {
                 onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission();
             }
 
         } else {
-            p("App.acquireScreenshotPermission openScreenshotPermissionRequester(context)");
+            Log.v(TAG, "acquireScreenshotPermission() -> openScreenshotPermissionRequester(context)");
             openScreenshotPermissionRequester(context);
         }
     }
@@ -180,7 +181,7 @@ public class App extends Application {
     }
 
     /**
-     * Take a partial screenshot
+     * Take a partial screenshot.
      *
      * @param context Context
      */

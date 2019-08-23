@@ -8,7 +8,6 @@ import android.content.IntentFilter
 import android.net.Uri
 import android.util.Log
 import android.widget.Toast
-import com.github.ipcjs.screenshottile.Utils.p
 
 
 const val NOTIFICATION_ACTION_SHARE = "NOTIFICATION_ACTION_SHARE"
@@ -25,13 +24,15 @@ const val NOTIFICATION_ACTION_ID = "NOTIFICATION_ACTION_ID"
  * Created by cuzi (cuzi@openmail.cc) on 2019/03/07.
  */
 class NotificationActionReceiver : BroadcastReceiver() {
+    companion object {
+        private const val TAG = "NotificationActionRcver"
+    }
 
     override fun onReceive(context: Context?, intent: Intent?) {
         context?.apply {
+            Log.v(TAG, "onReceive() action=${intent?.action}")
             when (intent?.action) {
                 NOTIFICATION_ACTION_SHARE -> {
-                    p("NotificationActionReceiver: ${intent.action}")
-
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
@@ -47,12 +48,10 @@ class NotificationActionReceiver : BroadcastReceiver() {
                             startActivity(shareIntent)
                         }
                     } else {
-                        Log.e("NotificationActionReceiver", "resolveActivity(shareIntent) returned null")
+                        Log.e(TAG, "resolveActivity(shareIntent) returned null")
                     }
                 }
                 NOTIFICATION_ACTION_DELETE -> {
-                    p("NotificationActionReceiver: ${intent.action}")
-
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
@@ -65,8 +64,6 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     }
                 }
                 NOTIFICATION_ACTION_EDIT -> {
-                    p("NotificationActionReceiver: ${intent.action}")
-
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
@@ -82,11 +79,10 @@ class NotificationActionReceiver : BroadcastReceiver() {
                             startActivity(shareIntent)
                         }
                     } else {
-                        Log.e("NotificationActionReceiver", "resolveActivity(shareIntent) returned null")
+                        Log.e(TAG, "resolveActivity(shareIntent) returned null")
                     }
                 }
                 NOTIFICATION_ACTION_STOP -> {
-                    p("NotificationActionReceiver: ${intent.action}")
                     ScreenshotTileService.instance?.background()
                 }
 
@@ -94,6 +90,9 @@ class NotificationActionReceiver : BroadcastReceiver() {
         }
     }
 
+    /**
+     * Start receiver for notification buttons.
+     */
     fun registerReceiver(context: App) {
         var intentFilter = IntentFilter()
         intentFilter.addAction(NOTIFICATION_ACTION_SHARE)

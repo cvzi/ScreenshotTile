@@ -21,7 +21,6 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID
-import com.github.ipcjs.screenshottile.Utils.p
 import com.github.ipcjs.screenshottile.partial.ScreenshotSelectorView
 import java.lang.ref.WeakReference
 
@@ -33,6 +32,7 @@ import java.lang.ref.WeakReference
 class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener {
 
     companion object {
+        private const val TAG = "TakeScreenshotActivity"
         const val FOREGROUND_SERVICE_ID = 7593
         const val NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN = "notification_channel_screenshot_taken"
         const val NOTIFICATION_CHANNEL_FOREGROUND = "notification_channel_foreground"
@@ -101,17 +101,17 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                 packageName
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            p("TakeScreenshotActivity.onCreate(): missing WRITE_EXTERNAL_STORAGE permission")
+            Log.v(TAG, "onCreate() missing WRITE_EXTERNAL_STORAGE permission")
             App.requestStoragePermission(this)
             return
         }
 
         if (!askedForPermission) {
             askedForPermission = true
-            p("App.acquireScreenshotPermission() in TakeScreenshotActivity.onCreate()")
+            Log.v(TAG, "TakeScreenshotActivity.onCreate() -> App.acquireScreenshotPermission()")
             App.acquireScreenshotPermission(this, this)
         } else {
-            p("onCreate() else")
+            Log.v(TAG, "onCreate() else")
 
         }
 
@@ -174,22 +174,22 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         screenSharing = true
         mediaProjection = App.createMediaProjection()
         if (surface == null) {
-            p("shareScreen() surface == null")
+            Log.v(TAG, "prepareForScreenSharing(): surface == null")
             screenShotFailedToast("Failed to create ImageReader surface")
             finish()
             return
         }
         if (mediaProjection == null) {
-            p("shareScreen() mediaProjection == null")
+            Log.v(TAG, "prepareForScreenSharing() mediaProjection == null")
             if (!askedForPermission) {
                 askedForPermission = true
-                p("App.acquireScreenshotPermission() in shareScreen()")
+                Log.v(TAG, "prepareForScreenSharing() -> App.acquireScreenshotPermission()")
                 App.acquireScreenshotPermission(this, this)
             }
             mediaProjection = App.createMediaProjection()
             if (mediaProjection == null) {
                 screenShotFailedToast("Failed to create MediaProjection")
-                p("shareScreen() mediaProjection == null")
+                Log.v(TAG, "prepareForScreenSharing() mediaProjection == null")
                 finish()
                 return
             }
@@ -200,7 +200,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     private fun startVirtualDisplay() {
         virtualDisplay = createVirtualDisplay()
         imageReader?.setOnImageAvailableListener({
-            p("onImageAvailable()")
+            Log.v(TAG, "startVirtualDisplay:onImageAvailable()")
             // Remove listener, after first image
             it.setOnImageAvailableListener(null, null)
             // Read and save image
@@ -210,7 +210,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
     private fun saveImage() {
         if (imageReader == null) {
-            p("saveImage() imageReader == null")
+            Log.v(TAG, "saveImage() imageReader == null")
             stopScreenSharing()
             screenShotFailedToast("Could not start screen capture")
             finish()
@@ -222,21 +222,21 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             imageReader?.acquireNextImage()
         } catch (e: UnsupportedOperationException) {
             stopScreenSharing()
-            p("acquireNextImage() UnsupportedOperationException", e)
+            Log.v(TAG, "saveImage() acquireNextImage() UnsupportedOperationException", e)
             screenShotFailedToast("Could not acquire image.\nUnsupportedOperationException\nThis device is not supported.")
             finish()
             return
         }
         stopScreenSharing()
         if (image == null) {
-            p("saveImage() image == null")
+            Log.v(TAG, "saveImage() image == null")
             screenShotFailedToast("Could not acquire image")
             finish()
             return
         }
 
         if (image.width == 0 || image.height == 0) {
-            Log.e("TakeScreenshotActivity.kt:saveImage()", "Image size: ${image.width}x${image.width}")
+            Log.e(TAG, "saveImage() Image size: ${image.width}x${image.width}")
             screenShotFailedToast("Incorrect image dimensions: ${image.width}x${image.width}")
             finish()
             return
@@ -253,12 +253,15 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         handler.sendEmptyMessage(THREAD_START)
     }
 
+    /**
+     * Handle messages from/to activity/thread
+     */
     class SaveImageHandler(takeScreenshotActivity: TakeScreenshotActivity) : Handler() {
         private var activity: WeakReference<TakeScreenshotActivity> = WeakReference(takeScreenshotActivity)
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
             if (msg.what == THREAD_START) {
-                activity.get()!!.thread!!.start()
+                activity.get()?.thread?.start()
             } else if (msg.what == THREAD_FINISHED) {
                 activity.get()?.onFileSaved()
             }
@@ -285,7 +288,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             }
             result.uri != null -> {
                 // Android Q+ works with MediaStore content:// URI
-                p("saveImage() URI=${result.uri}")
+                Log.v(TAG, "onFileSaved() URI=${result.uri}")
 
                 val dummyPath = "${Environment.DIRECTORY_PICTURES}/$SCREENSHOT_DIRECTORY/${result.fileTitle}"
                 Toast.makeText(
@@ -306,7 +309,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
-                p("saveImage() imageFile.absolutePath=$path")
+                Log.v(TAG, "onFileSaved() imageFile.absolutePath=$path")
 
                 Toast.makeText(
                     this,

@@ -9,7 +9,6 @@ import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
-import com.github.ipcjs.screenshottile.Utils.p
 
 
 /**
@@ -20,6 +19,7 @@ import com.github.ipcjs.screenshottile.Utils.p
 
 class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListener {
     companion object {
+        private const val TAG = "ScreenshotTileService"
         var instance: ScreenshotTileService? = null
     }
 
@@ -33,11 +33,11 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
                 updateTile()
             }
         } catch (e: IllegalStateException) {
-            Log.e("ScreenshotTileService", "setState: IllegalStateException", e)
+            Log.e(TAG, "setState: IllegalStateException", e)
         } catch (e: NullPointerException) {
-            Log.e("ScreenshotTileService", "setState: NullPointerException", e)
+            Log.e(TAG, "setState: NullPointerException", e)
         } catch (e: IllegalArgumentException) {
-            Log.e("ScreenshotTileService", "setState: IllegalArgumentException", e)
+            Log.e(TAG, "setState: IllegalArgumentException", e)
         }
     }
 
@@ -48,7 +48,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
 
     override fun onTileAdded() {
         super.onTileAdded()
-        p("ScreenshotTileService.onTileAdded")
+        Log.v(TAG, "onTileAdded()")
 
         App.acquireScreenshotPermission(this, this)
 
@@ -56,19 +56,19 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     }
 
     override fun onAcquireScreenshotPermission() {
-        p("ScreenshotTileService.onAcquireScreenshotPermission")
+        Log.v(TAG, "onAcquireScreenshotPermission()")
         setState(Tile.STATE_INACTIVE)
     }
 
     override fun onStartListening() {
         super.onStopListening()
-        p("ScreenshotTileService.onStartListening")
+        Log.v(TAG, "onStartListening()")
         setState(Tile.STATE_INACTIVE)
     }
 
     override fun onStopListening() {
         super.onStopListening()
-        p("ScreenshotTileService.onStopListening")
+        Log.v(TAG, "onStopListening()")
 
         // Here we can be sure that the notification panel has fully collapsed
         if (takeScreenshotOnStopListening) {
@@ -80,7 +80,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
 
     override fun onClick() {
         super.onClick()
-        p("ScreenshotTileService.onClick")
+        Log.v(TAG, "onClick()")
 
         foreground()
 

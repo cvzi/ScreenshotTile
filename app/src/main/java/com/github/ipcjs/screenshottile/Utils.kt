@@ -38,6 +38,9 @@ import kotlin.math.min
  * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.
  */
 
+
+const val TAG = "Utils.kt"
+
 /**
  * Start screenshot activity and take a screenshot
  */
@@ -103,7 +106,7 @@ fun createImageFile(context: Context, filename: String): File {
     storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
     if (storageDir == null) {
         // Fallback to "private" data/Package.Name/... directory
-        Log.e("Utils.kt:createImageFile()", "Fallback to getExternalFilesDir(Environment.DIRECTORY_PICTURES)")
+        Log.e(TAG, "createImageFile() Fallback to getExternalFilesDir(Environment.DIRECTORY_PICTURES)")
         storageDir = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     }
     val screenshotDir = File(storageDir, TakeScreenshotActivity.SCREENSHOT_DIRECTORY)
@@ -153,6 +156,9 @@ open class SaveImageResult(
     override fun toString(): String = "SaveImageResult($errorMessage)"
 }
 
+/**
+ * Successful result of saveImageToFile()
+ */
 data class SaveImageResultSuccess(
     val bitmap: Bitmap,
     val mimeType: String,
@@ -176,6 +182,9 @@ open class OutputStreamResult(
     override fun toString(): String = "OutputStreamResult($errorMessage)"
 }
 
+/**
+ * Successful Result of createOutputStream()
+ */
 data class OutputStreamResultSuccess(
     val fileOutputStream: OutputStream,
     val imageFile: File?,
@@ -195,7 +204,7 @@ fun createOutputStream(
     date: Date
 ): OutputStreamResult {
     return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-        createOutputStreamLegacy(context, fileTitle, compressionOptions, date)
+        createOutputStreamLegacy(context, fileTitle, compressionOptions)
     } else {
         createOutputStreamMediaStore(context, fileTitle, compressionOptions, date)
     }
@@ -207,8 +216,7 @@ fun createOutputStream(
 fun createOutputStreamLegacy(
     context: Context,
     fileTitle: String,
-    compressionOptions: CompressionOptions,
-    date: Date
+    compressionOptions: CompressionOptions
 ): OutputStreamResult {
 
     val filename = "$fileTitle.${compressionOptions.fileExtension}"
@@ -220,16 +228,16 @@ fun createOutputStreamLegacy(
         imageFile.createNewFile()
     } catch (e: Exception) {
         // Try again to fallback to "private" data/Package.Name/... directory
-        Log.e("Utils.kt:createOutputStreamLegacy()", "Could not createNewFile() ${imageFile.absolutePath} $e")
+        Log.e(TAG, "createOutputStreamLegacy() Could not createNewFile() ${imageFile.absolutePath} $e")
         val directory = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         imageFile = File(directory, imageFile.name)
         try {
             directory?.mkdirs()
             imageFile.createNewFile()
-            Log.i("Utils.kt:createOutputStreamLegacy()", "Fallback to getExternalFilesDir ${imageFile.absolutePath}")
+            Log.i(TAG, "createOutputStreamLegacy() Fallback to getExternalFilesDir ${imageFile.absolutePath}")
         } catch (e: Exception) {
             Log.e(
-                "Utils.kt:createOutputStreamLegacy()",
+                TAG,
                 "Could not createOutputStreamLegacy() for fallback file ${imageFile.absolutePath} $e"
             )
             return OutputStreamResult("Could not create new file")
@@ -237,7 +245,7 @@ fun createOutputStreamLegacy(
     }
 
     if (!imageFile.exists() || !imageFile.canWrite()) {
-        Log.e("Utils.kt:createOutputStreamLegacy()", "File ${imageFile.absolutePath} does not exist or is not writable")
+        Log.e(TAG, "createOutputStreamLegacy() File ${imageFile.absolutePath} does not exist or is not writable")
         return OutputStreamResult("Cannot write to file")
     }
 
@@ -246,25 +254,25 @@ fun createOutputStreamLegacy(
         outputStream = imageFile.outputStream()
     } catch (e: FileNotFoundException) {
         val error = e.toString()
-        Log.e("Utils.kt:createOutputStreamLegacy()", error)
+        Log.e(TAG, "createOutputStreamLegacy() $error")
         return OutputStreamResult("Could not find output file")
     } catch (e: SecurityException) {
         val error = e.toString()
-        Log.e("Utils.kt:createOutputStreamLegacy()", error)
+        Log.e(TAG, "createOutputStreamLegacy() $error")
         return OutputStreamResult("Could not open output file because of a security exception")
     } catch (e: IOException) {
         var error = e.toString()
-        Log.e("Utils.kt:createOutputStreamLegacy()", error)
+        Log.e(TAG, "createOutputStreamLegacy() $error")
         return if (error.contains("enospc", ignoreCase = true)) {
             error = "No space left on internal device storage"
-            Log.e("Utils.kt:createOutputStreamLegacy()", error)
+            Log.e(TAG, "createOutputStreamLegacy() $error")
             OutputStreamResult("Could not open output file. No space left on internal device storage")
         } else {
             OutputStreamResult("Could not open output file. IOException")
         }
     } catch (e: NullPointerException) {
         val error = e.toString()
-        Log.e("Utils.kt:createOutputStreamLegacy()", error)
+        Log.e(TAG, "createOutputStreamLegacy() $error")
         return OutputStreamResult("Could not open output file. $error")
     }
     return OutputStreamResultSuccess(outputStream, imageFile)
@@ -336,7 +344,7 @@ fun saveImageToFile(
     val outputStreamResult = createOutputStream(context, filename, compressionOptions, date)
 
     if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
-        Log.e("Utils.kt:saveImageToFile()", "outputStreamResult.success is false")
+        Log.e(TAG, "saveImageToFile() outputStreamResult.success is false")
         return SaveImageResult(outputStreamResult.errorMessage)
     }
 
@@ -355,7 +363,7 @@ fun saveImageToFile(
     image.close()
 
     if (bitmap.width == 0 || bitmap.height == 0) {
-        Log.e("Utils.kt:saveImageToFile()", "Bitmap width or height is 0")
+        Log.e(TAG, "saveImageToFile() Bitmap width or height is 0")
         return SaveImageResult("Bitmap is empty")
     }
 
@@ -369,20 +377,20 @@ fun saveImageToFile(
         success = true
     } catch (e: FileNotFoundException) {
         error = e.toString()
-        Log.e("Utils.kt:saveImageToFile()", error)
+        Log.e(TAG, "saveImageToFile() $error")
     } catch (e: SecurityException) {
         error = e.toString()
-        Log.e("Utils.kt:saveImageToFile()", error)
+        Log.e(TAG, "saveImageToFile() $error")
     } catch (e: IOException) {
         error = e.toString()
-        Log.e("Utils.kt:saveImageToFile()", error)
+        Log.e(TAG, "saveImageToFile() $error")
         if (error.contains("enospc", ignoreCase = true)) {
             error = "No space left on internal device storage"
         }
 
     } catch (e: NullPointerException) {
         error = e.toString()
-        Log.e("Utils.kt:saveImageToFile()", error)
+        Log.e(TAG, "saveImageToFile() $error")
     } finally {
         outputStream.close()
     }
@@ -489,8 +497,8 @@ fun createNotificationForegroundServiceChannel(context: Context): String {
  */
 fun notificationScreenshotTakenChannelEnabled(context: Context): Boolean {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val notificationChannel = notificationManager.getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN)
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager?
+        val notificationChannel = notificationManager?.getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN)
         if (notificationChannel == null) {
             true  // default to true if the channel does not yet exist
         } else {
@@ -559,11 +567,11 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensit
         setSmallIcon(R.drawable.stat_notify_image)
         setLargeIcon(largeIcon)
         setAutoCancel(true)
-        style = Notification.BigPictureStyle().bigPicture(bigPicture).bigLargeIcon(null as Icon?)
+        style = Notification.BigPictureStyle().bigPicture(bigPicture).bigLargeIcon(null as? Icon?)
         if (openImageIntent.resolveActivity(context.applicationContext.packageManager) != null) {
             setContentIntent(contentPendingIntent)
         } else {
-            Log.e("Utils.kt:createNotification()", "resolveActivity(openImageIntent) returned null")
+            Log.e(TAG, "createNotification() resolveActivity(openImageIntent) returned null")
         }
     }
 
@@ -647,8 +655,8 @@ fun editImageIntent(path: Uri, mimeType: String): Intent {
     return Intent(Intent.ACTION_EDIT).apply {
         setDataAndType(path, mimeType)
         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
     }
 }
 
@@ -722,7 +730,7 @@ fun notificationSettingsIntent(packageName: String, channelId: String? = null): 
  */
 fun deleteImage(context: Context, uri: Uri?): Boolean {
     if (uri == null) {
-        Log.w("Screenshot", "Could not delete file: uri is null")
+        Log.e(TAG, "Could not delete file: uri is null")
         return false
     }
 
@@ -730,31 +738,31 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
     when {
         uri.scheme == "content" -> { // Android Q+
             val deletedRows = context.contentResolver.delete(uri, null, null)
-            Utils.p("File deleted from MediaStore ($deletedRows rows deleted)")
+            Log.v(TAG, "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)")
             return deletedRows > 0
         }
 
         uri.scheme == "file" -> { // until Android P
             val path = uri.path
             if (path == null) {
-                Log.w("Screenshot", "File path is null. uri=$uri")
+                Log.e(TAG, "deleteImage() File path is null. uri=$uri")
                 return false
             }
 
             val file = File(path)
 
             if (!file.exists()) {
-                Log.w("Screenshot", "File does not exist: ${file.absoluteFile}")
+                Log.w(TAG, "deleteImage() File does not exist: ${file.absoluteFile}")
                 return false
             }
 
             if (!file.canWrite()) {
-                Log.w("Screenshot", "File is not writable: ${file.absoluteFile}")
+                Log.w(TAG, "deleteImage() File is not writable: ${file.absoluteFile}")
                 return false
             }
 
             if (file.delete()) {
-                Utils.p("File deleted from storage: ${file.absoluteFile}")
+                Log.v(TAG, "deleteImage() File deleted from storage: ${file.absoluteFile}")
                 val externalContentUri = Images.Media.EXTERNAL_CONTENT_URI
                 val projection = arrayOf(Images.Media._ID)
                 @Suppress("DEPRECATION")
@@ -765,17 +773,17 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
                         val id = getLong(getColumnIndexOrThrow(Images.Media._ID))
                         val contentUri = ContentUris.withAppendedId(Images.Media.EXTERNAL_CONTENT_URI, id)
                         context.contentResolver.delete(contentUri, null, null)
-                        Utils.p("File deleted from MediaStore: $contentUri")
+                        Log.v(TAG, "deleteImage() File deleted from MediaStore: $contentUri")
                     }
                     close()
                 }
             } else {
-                Log.w("Screenshot", "Could not delete file: ${file.absoluteFile}")
+                Log.w(TAG, "deleteImage() Could not delete file: ${file.absoluteFile}")
                 return false
             }
         }
         else -> {
-            Log.w("Screenshot", "Could not delete file. Unknown error. uri=$uri")
+            Log.e(TAG, "deleteImage() Could not delete file. Unknown error. uri=$uri")
             return false
         }
 

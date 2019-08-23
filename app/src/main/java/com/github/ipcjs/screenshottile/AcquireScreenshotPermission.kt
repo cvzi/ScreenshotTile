@@ -11,7 +11,6 @@ import android.util.Log
 import android.widget.Toast
 
 import com.github.ipcjs.screenshottile.App.setScreenshotPermission
-import com.github.ipcjs.screenshottile.Utils.p
 
 
 /**
@@ -20,6 +19,7 @@ import com.github.ipcjs.screenshottile.Utils.p
 
 class AcquireScreenshotPermission : Activity() {
     companion object {
+        private const val TAG = "AcquireScreenshotPrmssn"
         const val EXTRA_REQUEST_PERMISSION_SCREENSHOT = "extra_request_permission_screenshot"
         const val EXTRA_REQUEST_PERMISSION_STORAGE = "extra_request_permission_storage"
         private const val SCREENSHOT_REQUEST_CODE = 4552
@@ -60,10 +60,9 @@ class AcquireScreenshotPermission : Activity() {
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        p("onActivityResult called " + (RESULT_OK == resultCode))
         if (SCREENSHOT_REQUEST_CODE == requestCode) {
             if (RESULT_OK == resultCode) {
-                p("AcquireScreenshotPermission RESULT_OK")
+                Log.v(TAG, "onActivityResult() RESULT_OK")
                 data?.run {
                     (data.clone() as? Intent)?.apply {
                         setScreenshotPermission(this)
@@ -71,7 +70,7 @@ class AcquireScreenshotPermission : Activity() {
                 }
             } else {
                 setScreenshotPermission(null)
-                Log.w("onActivityResult", "No screen capture permission: resultCode==$resultCode")
+                Log.w(TAG, "onActivityResult() No screen capture permission: resultCode==$resultCode")
                 Toast.makeText(
                     this,
                     getString(R.string.permission_missing_screen_capture), Toast.LENGTH_LONG
@@ -88,12 +87,12 @@ class AcquireScreenshotPermission : Activity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (WRITE_REQUEST_CODE == requestCode) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                p("AcquireScreenshotPermission WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED")
+                Log.v(TAG, "onRequestPermissionsResult() WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED")
                 if (askedForStoragePermission) {
                     App.getInstance().screenshot(this)
                 }
             } else {
-                Log.w("onRequestPermissionsResult", "Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE")
+                Log.w(TAG, "onRequestPermissionsResult() Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE")
                 Toast.makeText(
                     this,
                     getString(R.string.permission_missing_external_storage), Toast.LENGTH_LONG

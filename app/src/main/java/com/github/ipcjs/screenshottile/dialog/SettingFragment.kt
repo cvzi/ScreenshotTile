@@ -20,6 +20,10 @@ import com.github.ipcjs.screenshottile.*
  * Changes by cuzi (cuzi@openmail.cc)
  */
 class SettingFragment : PreferenceFragmentCompat() {
+    companion object {
+        private const val TAG = "SettingFragment.kt"
+    }
+
     private val notificationPref by lazy { findPreference(getString(R.string.pref_static_field_key_notification_settings)) }
     private val delayPref by lazy { findPreference(getString(R.string.pref_key_delay)) as ListPreference }
     private val fileFormatPref by lazy { findPreference(getString(R.string.pref_key_file_format)) as ListPreference }
@@ -123,7 +127,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 )
                 true
             } catch (e: Exception) {
-                Log.e("SettingFragment", "setComponentEnabledSetting", e)
+                Log.e(TAG, "setComponentEnabledSetting", e)
                 Toast.makeText(context, myActivity.getString(R.string.toggle_app_icon_failed), Toast.LENGTH_LONG).show()
                 prefManager.hideApp = !hide
                 false

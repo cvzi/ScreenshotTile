@@ -9,10 +9,16 @@ import androidx.fragment.app.DialogFragment
 import com.github.ipcjs.screenshottile.App
 import com.github.ipcjs.screenshottile.R
 
+/**
+ * Settings dialog appears on long press on the screenshot tile.
+ * Offers delay options, open partial screenshot and open more settings.
+ */
 class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener {
     private val pref by lazy { App.getInstance().prefManager }
 
     companion object {
+        private const val TAG = "SettingDialogFragment"
+
         /**
          * Return new instance
          */
@@ -36,7 +42,7 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
                     try {
                         dismiss()
                     } catch (e: IllegalStateException) {
-                        Log.e("SettingsDialogFragment", "AlertDialog.dismiss: IllegalStateException", e)
+                        Log.e(TAG, "AlertDialog.dismiss: IllegalStateException", e)
                     }
                 }
                 .setPositiveButton(R.string.partial_screenshot, this)
