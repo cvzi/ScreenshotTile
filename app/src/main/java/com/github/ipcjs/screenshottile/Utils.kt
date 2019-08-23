@@ -1,37 +1,20 @@
 package com.github.ipcjs.screenshottile
 
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Rect
-import android.graphics.drawable.Icon
 import android.icu.text.SimpleDateFormat
-import android.icu.util.Calendar
 import android.media.Image
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
-import android.provider.MediaStore
 import android.provider.MediaStore.Images
-import android.provider.Settings
 import android.util.Log
-import androidx.core.app.NotificationManagerCompat
-import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_BIG_PICTURE_MAX_HEIGHT
-import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_FOREGROUND
-import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
-import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MAX_SIZE
-import com.github.ipcjs.screenshottile.TakeScreenshotActivity.Companion.NOTIFICATION_PREVIEW_MIN_SIZE
+
 import java.io.*
 import java.util.*
-import kotlin.math.max
-import kotlin.math.min
 
 
 /**
@@ -39,7 +22,7 @@ import kotlin.math.min
  */
 
 
-const val TAG = "Utils.kt"
+const val UTILSKT = "Utils.kt"
 
 /**
  * Start screenshot activity and take a screenshot
@@ -48,54 +31,6 @@ fun screenshot(context: Context, partial: Boolean = false) {
     TakeScreenshotActivity.start(context, partial)
 }
 
-/**
- * Copy image content to new bitmap.
- */
-fun imageToBitmap(image: Image): Bitmap {
-    val offset = (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
-    val w = image.width + offset
-    val h = image.height
-    val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
-    bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
-    return Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
-}
-
-/**
- * Copy rectangle of image content to new bitmap.
- */
-fun imageCutOutToBitmap(image: Image, rect: Rect): Bitmap {
-    val offset = (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
-    val w = image.width + offset
-    val h = image.height
-    val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
-    bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
-    return Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
-}
-
-
-/**
- * Add image file and information to media store. (used only for Android P and lower)
- */
-fun addImageToGallery(
-    context: Context,
-    filepath: String,
-    title: String,
-    description: String,
-    mimeType: String = "image/jpeg",
-    date: Date? = null
-): Uri? {
-    val dateSeconds = (date?.time ?: System.currentTimeMillis()) / 1000
-    val values = ContentValues().apply {
-        put(Images.Media.TITLE, title)
-        put(Images.Media.DESCRIPTION, description)
-        put(Images.Media.MIME_TYPE, mimeType)
-        put(Images.ImageColumns.DATE_ADDED, dateSeconds)
-        put(Images.ImageColumns.DATE_MODIFIED, dateSeconds)
-        @Suppress("DEPRECATION")
-        put(MediaStore.MediaColumns.DATA, filepath)
-    }
-    return context.contentResolver?.insert(Images.Media.EXTERNAL_CONTENT_URI, values)
-}
 
 /**
  * New image file in default "Picture" directory. (used only for Android P and lower)
@@ -106,7 +41,7 @@ fun createImageFile(context: Context, filename: String): File {
     storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
     if (storageDir == null) {
         // Fallback to "private" data/Package.Name/... directory
-        Log.e(TAG, "createImageFile() Fallback to getExternalFilesDir(Environment.DIRECTORY_PICTURES)")
+        Log.e(UTILSKT, "createImageFile() Fallback to getExternalFilesDir(Environment.DIRECTORY_PICTURES)")
         storageDir = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     }
     val screenshotDir = File(storageDir, TakeScreenshotActivity.SCREENSHOT_DIRECTORY)
@@ -228,16 +163,16 @@ fun createOutputStreamLegacy(
         imageFile.createNewFile()
     } catch (e: Exception) {
         // Try again to fallback to "private" data/Package.Name/... directory
-        Log.e(TAG, "createOutputStreamLegacy() Could not createNewFile() ${imageFile.absolutePath} $e")
+        Log.e(UTILSKT, "createOutputStreamLegacy() Could not createNewFile() ${imageFile.absolutePath} $e")
         val directory = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         imageFile = File(directory, imageFile.name)
         try {
             directory?.mkdirs()
             imageFile.createNewFile()
-            Log.i(TAG, "createOutputStreamLegacy() Fallback to getExternalFilesDir ${imageFile.absolutePath}")
+            Log.i(UTILSKT, "createOutputStreamLegacy() Fallback to getExternalFilesDir ${imageFile.absolutePath}")
         } catch (e: Exception) {
             Log.e(
-                TAG,
+                UTILSKT,
                 "Could not createOutputStreamLegacy() for fallback file ${imageFile.absolutePath} $e"
             )
             return OutputStreamResult("Could not create new file")
@@ -245,7 +180,7 @@ fun createOutputStreamLegacy(
     }
 
     if (!imageFile.exists() || !imageFile.canWrite()) {
-        Log.e(TAG, "createOutputStreamLegacy() File ${imageFile.absolutePath} does not exist or is not writable")
+        Log.e(UTILSKT, "createOutputStreamLegacy() File ${imageFile.absolutePath} does not exist or is not writable")
         return OutputStreamResult("Cannot write to file")
     }
 
@@ -254,25 +189,25 @@ fun createOutputStreamLegacy(
         outputStream = imageFile.outputStream()
     } catch (e: FileNotFoundException) {
         val error = e.toString()
-        Log.e(TAG, "createOutputStreamLegacy() $error")
+        Log.e(UTILSKT, "createOutputStreamLegacy() $error")
         return OutputStreamResult("Could not find output file")
     } catch (e: SecurityException) {
         val error = e.toString()
-        Log.e(TAG, "createOutputStreamLegacy() $error")
+        Log.e(UTILSKT, "createOutputStreamLegacy() $error")
         return OutputStreamResult("Could not open output file because of a security exception")
     } catch (e: IOException) {
         var error = e.toString()
-        Log.e(TAG, "createOutputStreamLegacy() $error")
+        Log.e(UTILSKT, "createOutputStreamLegacy() $error")
         return if (error.contains("enospc", ignoreCase = true)) {
             error = "No space left on internal device storage"
-            Log.e(TAG, "createOutputStreamLegacy() $error")
+            Log.e(UTILSKT, "createOutputStreamLegacy() $error")
             OutputStreamResult("Could not open output file. No space left on internal device storage")
         } else {
             OutputStreamResult("Could not open output file. IOException")
         }
     } catch (e: NullPointerException) {
         val error = e.toString()
-        Log.e(TAG, "createOutputStreamLegacy() $error")
+        Log.e(UTILSKT, "createOutputStreamLegacy() $error")
         return OutputStreamResult("Could not open output file. $error")
     }
     return OutputStreamResultSuccess(outputStream, imageFile)
@@ -344,7 +279,7 @@ fun saveImageToFile(
     val outputStreamResult = createOutputStream(context, filename, compressionOptions, date)
 
     if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
-        Log.e(TAG, "saveImageToFile() outputStreamResult.success is false")
+        Log.e(UTILSKT, "saveImageToFile() outputStreamResult.success is false")
         return SaveImageResult(outputStreamResult.errorMessage)
     }
 
@@ -363,7 +298,7 @@ fun saveImageToFile(
     image.close()
 
     if (bitmap.width == 0 || bitmap.height == 0) {
-        Log.e(TAG, "saveImageToFile() Bitmap width or height is 0")
+        Log.e(UTILSKT, "saveImageToFile() Bitmap width or height is 0")
         return SaveImageResult("Bitmap is empty")
     }
 
@@ -377,20 +312,20 @@ fun saveImageToFile(
         success = true
     } catch (e: FileNotFoundException) {
         error = e.toString()
-        Log.e(TAG, "saveImageToFile() $error")
+        Log.e(UTILSKT, "saveImageToFile() $error")
     } catch (e: SecurityException) {
         error = e.toString()
-        Log.e(TAG, "saveImageToFile() $error")
+        Log.e(UTILSKT, "saveImageToFile() $error")
     } catch (e: IOException) {
         error = e.toString()
-        Log.e(TAG, "saveImageToFile() $error")
+        Log.e(UTILSKT, "saveImageToFile() $error")
         if (error.contains("enospc", ignoreCase = true)) {
             error = "No space left on internal device storage"
         }
 
     } catch (e: NullPointerException) {
         error = e.toString()
-        Log.e(TAG, "saveImageToFile() $error")
+        Log.e(UTILSKT, "saveImageToFile() $error")
     } finally {
         outputStream.close()
     }
@@ -432,362 +367,4 @@ fun saveImageToFile(
         }
         else -> SaveImageResult("Could not save image file, no URI")
     }
-}
-
-/**
- * Create notification channel (if it does not exists) and return its name.
- */
-fun createNotificationScreenshotTakenChannel(context: Context): String {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-        val channelName = context.getString(R.string.notification_channel_description)
-        val notificationTitle = context.getString(R.string.notification_title)
-        val channelDescription = context.getString(R.string.notification_channel_description) + "\n'$notificationTitle'"
-
-        context.applicationContext.getSystemService(NotificationManager::class.java)?.run {
-            if (getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN) == null) {
-                createNotificationChannel(NotificationChannel(
-                    NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN,
-                    channelName,
-                    NotificationManager.IMPORTANCE_LOW
-                ).apply {
-                    description = channelDescription
-                    enableVibration(false)
-                    enableLights(false)
-                    setSound(null, null)
-                })
-            }
-        }
-    }
-    return NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN
-}
-
-/**
- * Create notification channel (if it does not exists) and return its name.
- */
-fun createNotificationForegroundServiceChannel(context: Context): String {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-        val channelName = context.getString(R.string.notification_foreground_channel_description)
-        val notificationTitle = context.getString(R.string.notification_foreground_title)
-        val channelDescription =
-            context.getString(R.string.notification_foreground_channel_description) + "\n'$notificationTitle'"
-
-        context.applicationContext.getSystemService(NotificationManager::class.java)?.run {
-            if (getNotificationChannel(NOTIFICATION_CHANNEL_FOREGROUND) == null) {
-                createNotificationChannel(NotificationChannel(
-                    NOTIFICATION_CHANNEL_FOREGROUND,
-                    channelName,
-                    NotificationManager.IMPORTANCE_LOW
-                ).apply {
-                    description = channelDescription
-                    enableVibration(false)
-                    enableLights(false)
-                    setSound(null, null)
-                })
-            }
-        }
-    }
-    return NOTIFICATION_CHANNEL_FOREGROUND
-}
-
-
-/**
- * Check if the notification channel was disabled by the user
- */
-fun notificationScreenshotTakenChannelEnabled(context: Context): Boolean {
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager?
-        val notificationChannel = notificationManager?.getNotificationChannel(NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN)
-        if (notificationChannel == null) {
-            true  // default to true if the channel does not yet exist
-        } else {
-            notificationChannel.importance != NotificationManager.IMPORTANCE_NONE
-        }
-    } else {
-        NotificationManagerCompat.from(context).areNotificationsEnabled()
-    }
-}
-
-/**
- * Create notification preview icon with appropriate size according to the device screen.
- */
-fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
-    val maxSize = (min(max(screenDensity / 2, NOTIFICATION_PREVIEW_MIN_SIZE), NOTIFICATION_PREVIEW_MAX_SIZE)).toDouble()
-
-    val ratioX = maxSize / bitmap.width
-    val ratioY = maxSize / bitmap.height
-    val ratio = min(ratioX, ratioY)
-    val newWidth = (bitmap.width * ratio).toInt()
-    val newHeight = (bitmap.height * ratio).toInt()
-
-    return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, false)
-}
-
-/**
- * Create notification big picture icon, bitmap cropped (centered)
- */
-fun resizeToBigPicture(bitmap: Bitmap): Bitmap {
-    return if (bitmap.height > NOTIFICATION_BIG_PICTURE_MAX_HEIGHT) {
-        val offsetY = (bitmap.height - NOTIFICATION_BIG_PICTURE_MAX_HEIGHT) / 2
-        Bitmap.createBitmap(bitmap, 0, offsetY, bitmap.width, NOTIFICATION_BIG_PICTURE_MAX_HEIGHT)
-    } else {
-        bitmap
-    }
-}
-
-/**
- * Show a notification that opens the image file on tap.
- */
-fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensity: Int, mimeType: String) {
-    val appContext = context.applicationContext
-
-    val bigPicture = resizeToBigPicture(bitmap)
-
-    val largeIcon = resizeToNotificationIcon(bitmap, screenDensity)
-
-    val uniqueId =
-        (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
-
-    val openImageIntent = openImageIntent(path, mimeType)
-    val contentPendingIntent = PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent, 0)
-
-    // Create notification
-    val builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        Notification.Builder(appContext, createNotificationScreenshotTakenChannel(appContext))
-    } else {
-        @Suppress("DEPRECATION")
-        Notification.Builder(appContext)
-    }
-    builder.apply {
-        setWhen(Calendar.getInstance().timeInMillis)
-        setShowWhen(true)
-        setContentTitle(appContext.getString(R.string.notification_title))
-        setContentText(appContext.getString(R.string.notification_body))
-        setSmallIcon(R.drawable.stat_notify_image)
-        setLargeIcon(largeIcon)
-        setAutoCancel(true)
-        style = Notification.BigPictureStyle().bigPicture(bigPicture).bigLargeIcon(null as? Icon?)
-        if (openImageIntent.resolveActivity(context.applicationContext.packageManager) != null) {
-            setContentIntent(contentPendingIntent)
-        } else {
-            Log.e(TAG, "createNotification() resolveActivity(openImageIntent) returned null")
-        }
-    }
-
-    val icon = Icon.createWithResource(
-        appContext,
-        R.drawable.ic_stat_name
-    ) // This is not shown on Android 7+ anyways so let's just use the app icon
-
-    val shareIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_SHARE)
-    val pendingIntentShare = PendingIntent.getBroadcast(appContext, uniqueId + 3, shareIntent, 0)
-    builder.addAction(
-        Notification.Action.Builder(
-            icon,
-            appContext.getString(R.string.notification_share_screenshot),
-            pendingIntentShare
-        ).build()
-    )
-
-    if (editImageIntent(path, mimeType).resolveActivity(context.applicationContext.packageManager) != null) {
-        val editIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_EDIT)
-        val pendingIntentEdit = PendingIntent.getBroadcast(appContext, uniqueId + 4, editIntent, 0)
-        builder.addAction(
-            Notification.Action.Builder(
-                icon,
-                appContext.getString(R.string.notification_edit_screenshot),
-                pendingIntentEdit
-            ).build()
-        )
-    }
-
-    val deleteIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_DELETE)
-    val pendingIntentDelete = PendingIntent.getBroadcast(appContext, uniqueId + 2, deleteIntent, 0)
-    builder.addAction(
-        Notification.Action.Builder(
-            icon,
-            appContext.getString(R.string.notification_delete_screenshot),
-            pendingIntentDelete
-        ).build()
-    )
-
-    // Listen for action buttons clicks
-    App.registerNotificationReceiver()
-
-    // Show notification
-    (appContext.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.apply {
-        notify(uniqueId, builder.build())
-    }
-
-    largeIcon.recycle()
-    bigPicture.recycle()
-}
-
-/**
- * Intent for notification action button.
- */
-fun actionButtonIntent(path: Uri, mimeType: String, notificationId: Int, intentAction: String): Intent {
-    return Intent().apply {
-        action = intentAction
-        putExtra(NOTIFICATION_ACTION_DATA_URI, path.toString())
-        putExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE, mimeType)
-        putExtra(NOTIFICATION_ACTION_ID, notificationId)
-    }
-}
-
-/**
- * Intent to open share chooser.
- */
-fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Intent {
-    Intent(Intent.ACTION_SEND).apply {
-        type = mimeType
-        putExtra(Intent.EXTRA_STREAM, path)
-        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_share))
-    }
-}
-
-/**
- * Intent to edit image.
- */
-fun editImageIntent(path: Uri, mimeType: String): Intent {
-    return Intent(Intent.ACTION_EDIT).apply {
-        setDataAndType(path, mimeType)
-        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-    }
-}
-
-/**
- * Intent to open edit image chooser.
- */
-fun editImageChooserIntent(context: Context, path: Uri, mimeType: String): Intent {
-    editImageIntent(path, mimeType).apply {
-        return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_edit))
-    }
-}
-
-/**
- * Intent to open image file on notification tap.
- */
-fun openImageIntent(path: Uri, mimeType: String): Intent {
-    // Create intent for notification click
-    return Intent(Intent.ACTION_VIEW).apply {
-        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        setDataAndType(path, mimeType)
-    }
-}
-
-/**
- * Cancel a notification.
- */
-fun hideNotification(context: Context, notificationId: Int) {
-    (context.applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.apply {
-        cancel(notificationId)
-    }
-}
-
-/**
- * Intent to open the notification settings of the package in the Android system settings
- */
-fun notificationSettingsIntent(packageName: String, channelId: String? = null): Intent {
-    return when {
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.P -> {
-            Intent(if (channelId != null) Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS else Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
-                if (channelId != null) {
-                    putExtra(Settings.EXTRA_CHANNEL_ID, channelId)
-                }
-            }
-        }
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> {
-            Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
-                if (channelId != null) {
-                    putExtra(Settings.EXTRA_CHANNEL_ID, channelId)
-                }
-            }
-        }
-        else -> {
-            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                data = Uri.parse("package:$packageName")
-                addCategory(Intent.CATEGORY_DEFAULT)
-            }
-        }
-    }
-}
-
-/**
- * Delete image. Return true on success, false on failure.
- * content:// Uris are deleted from MediaStore
- * file:// Uris are deleted from filesystem and MediaStore
- */
-fun deleteImage(context: Context, uri: Uri?): Boolean {
-    if (uri == null) {
-        Log.e(TAG, "Could not delete file: uri is null")
-        return false
-    }
-
-    uri.normalizeScheme()
-    when {
-        uri.scheme == "content" -> { // Android Q+
-            val deletedRows = context.contentResolver.delete(uri, null, null)
-            Log.v(TAG, "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)")
-            return deletedRows > 0
-        }
-
-        uri.scheme == "file" -> { // until Android P
-            val path = uri.path
-            if (path == null) {
-                Log.e(TAG, "deleteImage() File path is null. uri=$uri")
-                return false
-            }
-
-            val file = File(path)
-
-            if (!file.exists()) {
-                Log.w(TAG, "deleteImage() File does not exist: ${file.absoluteFile}")
-                return false
-            }
-
-            if (!file.canWrite()) {
-                Log.w(TAG, "deleteImage() File is not writable: ${file.absoluteFile}")
-                return false
-            }
-
-            if (file.delete()) {
-                Log.v(TAG, "deleteImage() File deleted from storage: ${file.absoluteFile}")
-                val externalContentUri = Images.Media.EXTERNAL_CONTENT_URI
-                val projection = arrayOf(Images.Media._ID)
-                @Suppress("DEPRECATION")
-                val selection = Images.Media.DATA + " = ?"
-                val queryArgs = arrayOf(file.absolutePath)
-                context.contentResolver.query(externalContentUri, projection, selection, queryArgs, null)?.apply {
-                    if (moveToFirst()) {
-                        val id = getLong(getColumnIndexOrThrow(Images.Media._ID))
-                        val contentUri = ContentUris.withAppendedId(Images.Media.EXTERNAL_CONTENT_URI, id)
-                        context.contentResolver.delete(contentUri, null, null)
-                        Log.v(TAG, "deleteImage() File deleted from MediaStore: $contentUri")
-                    }
-                    close()
-                }
-            } else {
-                Log.w(TAG, "deleteImage() Could not delete file: ${file.absoluteFile}")
-                return false
-            }
-        }
-        else -> {
-            Log.e(TAG, "deleteImage() Could not delete file. Unknown error. uri=$uri")
-            return false
-        }
-
-    }
-
-    return true
 }
