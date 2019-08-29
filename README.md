@@ -59,7 +59,7 @@ This is required to save the screenshot files on the internal storage of your de
 
 #### [`android.permission.FOREGROUND_SERVICE`](https://developer.android.com/reference/android/Manifest.permission#FOREGROUND_SERVICE)
 
-Since Android 9/Pie this permission is required to take screenshots. It basically means that this app can run without showing itself. However the app always shows an notification when it is running.
+Since Android 9/Pie this permission is required to take screenshots. It basically means that this app can run without showing itself. However the app will always show a notification when it is running.
 
 #### [ScreenCaptureIntent](https://developer.android.com/reference/android/media/projection/MediaProjectionManager.html#createScreenCaptureIntent())
 
