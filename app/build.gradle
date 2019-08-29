@@ -23,8 +23,8 @@ android {
         applicationId "com.github.cvzi.screenshottile"
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 19
-        versionName "1.5.4"
+        versionCode 20
+        versionName "1.6.0"
     }
     buildTypes {
         release {

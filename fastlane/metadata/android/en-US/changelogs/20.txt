@@ -1,0 +1,2 @@
+* New option in the long-press menu to select an area before taking a screenshot
+* Automated screenshots from apps like MacroDroid or Tasker

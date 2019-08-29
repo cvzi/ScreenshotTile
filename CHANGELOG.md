@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.6.0
+*   Added an option in the long-press menu to select an area before taking a screenshot
+*   Added a Broadcast receiver for broadcast intents from other apps like MacroDroid
 ## 1.5.4
 *   Fixed: Delete from notification on Android Q
 ## 1.5.3
