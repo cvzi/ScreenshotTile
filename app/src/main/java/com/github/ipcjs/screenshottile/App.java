@@ -165,7 +165,6 @@ public class App extends Application {
 
         if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                    .detectDiskWrites()
                     .detectNetwork()
                     .detectCustomSlowCalls()
                     .detectResourceMismatches()
