@@ -290,11 +290,7 @@ fun saveImageToFile(
 
     // Save image
 
-    val bitmap = if (cutOutRect == null) {
-        imageToBitmap(image)
-    } else {
-        imageCutOutToBitmap(image, cutOutRect)
-    }
+    val bitmap = imageToBitmap(image, cutOutRect)
     image.close()
 
     if (bitmap.width == 0 || bitmap.height == 0) {

@@ -21,27 +21,19 @@ import kotlin.math.min
 const val UTILSIMAGEKT = "UtilsImage.kt"
 
 /**
- * Copy image content to new bitmap.
+ * Copy rectangle of image content to new bitmap or complete image if rect is null.
  */
-fun imageToBitmap(image: Image): Bitmap {
+fun imageToBitmap(image: Image, rect: Rect? = null): Bitmap {
     val offset = (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
     val w = image.width + offset
     val h = image.height
     val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
     bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
-    return Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
-}
-
-/**
- * Copy rectangle of image content to new bitmap.
- */
-fun imageCutOutToBitmap(image: Image, rect: Rect): Bitmap {
-    val offset = (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
-    val w = image.width + offset
-    val h = image.height
-    val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
-    bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
-    return Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
+    return if (rect == null ) {
+        Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
+    } else {
+        Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
+    }
 }
 
 
