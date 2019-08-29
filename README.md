@@ -26,3 +26,43 @@ a good idea to know when an app is recording the screen.
 Here's an explanation on how to turn it off:
 [PCTattletale.com - How to turn off Android's Pesky Chromecast Icon](https://www.pctattletale.com/blog/3050/how-to-turn-off-androids-pesky-chromecast-icon/)
 
+## Automatic screenshots with Broadcast intents
+
+You can automate taking screenshots with apps like [MacroDroid](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid) or [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm).
+This works via [Broadcast intents](https://developer.android.com/guide/components/broadcasts).
+
+![Macro intent screenshot](/docs/imgs/MacroDroid_overview.png)
+
+First you have to activate this feature by setting a password in the app settings.
+
+Now you can **add a macro** to MacroDroid:
+*   Open MacroDroid and tap on *Macros* and then *Add Macro* or the ➕ Symbol
+*   Tab ➕ on *Triggers* and add your desired trigger
+*   Tab ➕ on *Actions* and go to *Connectivity* -> *Send Intent*
+*   Under *Target* select *Broadcast* and fill out the fields:
+    *   Action: `com.github.screenshottile.SCREENSHOT`
+    *   Package: `com.github.screenshottile`
+    *   Data (class name): `com.github.ipcjs.screenshottile.IntentHandler`
+    *   Extra 1 parameter: `secret`
+    *   Extra 1 value: `yourPasswordFromEarlier`
+    *   (Optional: Extra 2 parameter `partial`, value `true` to open the area selector for a partial screenshot instead of taking a screenshot)
+
+![Macro intent screenshot](/docs/imgs/MacroDroid_SendIntent.png)
+
+## Permissions
+
+#### [`android.permission.WRITE_EXTERNAL_STORAGE`](https://developer.android.com/reference/android/Manifest.permission#WRITE_EXTERNAL_STORAGE) "Photos/Media/Files and Storage"
+>   Read the contents of your internal storage/USB storage  
+>   Modify or delete the contents of your internal storage/USB storage
+
+This is required to save the screenshot files on the internal storage of your device.
+
+#### [`android.permission.FOREGROUND_SERVICE`](https://developer.android.com/reference/android/Manifest.permission#FOREGROUND_SERVICE)
+
+Since Android 9/Pie this permission is required to take screenshots. It basically means that this app can run without showing itself. However the app always shows an notification when it is running.
+
+#### [ScreenCaptureIntent](https://developer.android.com/reference/android/media/projection/MediaProjectionManager.html#createScreenCaptureIntent())
+
+>   ScreenshotTile will start capturing everything that's displayed on your screen.
+
+This is a special permission that is requested before you take a screenshot or when you add the tile to you quick settings. It allows the app to record the screen. In this case, for a screenshot, the recording is only one image/frame.
