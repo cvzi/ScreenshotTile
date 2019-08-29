@@ -24,7 +24,7 @@ class IntentHandler : BroadcastReceiver() {
             }
 
             if (expected != secret) {
-                Log.e("ScreenshotReceiver", "Wrong secret (=$secret).")
+                Log.e("ScreenshotReceiver", "Wrong secret.")
                 return
             }
 
