@@ -71,7 +71,7 @@
         </service>
 
         <receiver
-            android:name=".ScreenshotReceiver"
+            android:name=".IntentHandler"
             android:enabled="true"
             android:exported="true"
             android:label="@string/app_name">

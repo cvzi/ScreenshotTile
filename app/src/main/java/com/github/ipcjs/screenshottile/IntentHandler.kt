@@ -6,7 +6,7 @@ import android.content.Intent
 import android.util.Log
 
 
-class ScreenshotReceiver : BroadcastReceiver() {
+class IntentHandler : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
 
         if (intent != null) {
