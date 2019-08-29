@@ -18,6 +18,8 @@
     <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
     <string name="pref_key_hide_app" translatable="false">hide_app</string>
     <string name="pref_key_file_format" translatable="false">file_format</string>
+    <string name="pref_key_broadcast_secret" translatable="false">broadcast_secret</string>
+    <string name="setting_broadcast_secret_value_default" translatable="false">(unset)</string>
 
     <string name="setting_file_format_value_default" translatable="false">png</string>
     <string-array name="setting_file_format_entries" translatable="false">

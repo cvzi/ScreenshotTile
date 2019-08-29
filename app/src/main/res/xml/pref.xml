@@ -27,6 +27,13 @@
         android:summary="@string/setting_file_format_entry_default"
         android:title="@string/file_format" />
 
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/setting_broadcast_secret_value_default"
+        android:key="@string/pref_key_broadcast_secret"
+        android:inputType="textVisiblePassword"
+        android:summary="@string/setting_broadcast_secret_description"
+        android:title="@string/setting_broadcast_secret" />
+
     <androidx.preference.Preference
         android:key="@string/pref_static_field_key_notification_settings"
         android:persistent="false"
