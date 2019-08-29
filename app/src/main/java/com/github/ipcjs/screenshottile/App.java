@@ -6,8 +6,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.StrictMode;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 import androidx.preference.PreferenceManager;
@@ -160,6 +162,24 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                    .detectDiskWrites()
+                    .detectNetwork()
+                    .detectCustomSlowCalls()
+                    .detectResourceMismatches()
+                    .detectUnbufferedIo()
+                    .penaltyLog()
+                    .penaltyDialog()
+                    .build());
+            StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                    .detectAll()
+                    .penaltyLog()
+                    .penaltyDeath()
+                    .build());
+        }
+
         PreferenceManager.setDefaultValues(this, R.xml.pref, false);
         prefManager = new PrefManager(this);
     }
