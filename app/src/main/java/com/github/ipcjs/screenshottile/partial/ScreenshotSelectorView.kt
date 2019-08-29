@@ -39,15 +39,15 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
     var text: String? = null
 
     private var showShutter = false
-    private var mStartPoint: Point? = null
+    private var startPoint: Point? = null
     private var selectionRect: Rect? = null
     private var resultRect: Rect? = null
 
-    private val mPaintSelection = Paint(Color.TRANSPARENT).apply {
+    private val paintSelection = Paint(Color.TRANSPARENT).apply {
         style = Paint.Style.FILL
         xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
     }
-    private val mPaintBackground = Paint(Color.BLACK).apply {
+    private val paintBackground = Paint(Color.BLACK).apply {
         alpha = 160
         style = Paint.Style.FILL
         if (BuildConfig.DEBUG) {
@@ -55,16 +55,20 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
             alpha = 200
         }
     }
+    private val paintText = Paint(Color.DKGRAY).apply {
+        style = Paint.Style.FILL
+        xfermode = PorterDuffXfermode(PorterDuff.Mode.XOR)
+    }
 
     private fun startSelection(x: Int, y: Int) {
-        mStartPoint = Point(x, y)
+        startPoint = Point(x, y)
         selectionRect = Rect(x, y, x, y)
         showShutter = false
     }
 
     private fun updateSelection(x: Int, y: Int) {
         selectionRect?.run {
-            mStartPoint?.let {
+            startPoint?.let {
                 left = min(it.x, x)
                 right = max(it.x, x)
                 top = min(it.y, y)
@@ -75,7 +79,7 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
     }
 
     private fun stopSelection() {
-        mStartPoint = null
+        startPoint = null
         resultRect = selectionRect
         selectionRect = null
     }
@@ -95,33 +99,58 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
     override fun draw(canvas: Canvas) {
         super.draw(canvas)
 
-        canvas.drawPaint(mPaintBackground)
+        canvas.drawPaint(paintBackground)
         selectionRect?.let { rect ->
-            canvas.drawRect(rect, mPaintSelection)
+            canvas.drawRect(rect, paintSelection)
             return
         }
         resultRect?.let { rect ->
-            canvas.drawRect(rect, mPaintSelection)
+            canvas.drawRect(rect, paintSelection)
 
             if (showShutter) {
                 shutter?.run {
+                    // Show image on dark rounded rect
                     resources.getDrawable(this, null).apply {
                         if (rect.width() > intrinsicWidth || rect.height() > intrinsicHeight) {
-                            val m = min(intrinsicWidth / 2, intrinsicHeight / 2)
-                            setBounds(rect.centerX() - m, rect.centerY() - m, rect.centerX() + m, rect.centerY() + m)
+                            val m0 = min(intrinsicWidth / 2, intrinsicHeight / 2)
+                            setBounds(
+                                rect.centerX() - m0,
+                                rect.centerY() - m0,
+                                rect.centerX() + m0,
+                                rect.centerY() + m0
+                            )
+                            val m1 = min(
+                                min(rect.width(), rect.height()) / 5,
+                                min(intrinsicWidth, intrinsicHeight)
+                            )
+                            canvas.drawRoundRect(
+                                (rect.centerX() - m1).toFloat(),
+                                (rect.centerY() - m1).toFloat(),
+                                (rect.centerX() + m1).toFloat(),
+                                (rect.centerY() + m1).toFloat(),
+                                20.0f,
+                                20.0f,
+                                paintBackground
+                            )
                         } else {
                             setBounds(rect.left, rect.top, rect.right, rect.bottom)
                         }
                         draw(canvas)
                     }
                 }
-
-                val paint = Paint(Color.DKGRAY).apply {
-                    style = Paint.Style.FILL
-                    xfermode = PorterDuffXfermode(PorterDuff.Mode.XOR)
-                    textSize = this@ScreenshotSelectorView.width / 20.0f
+                if (shutter == null) {
+                    // Show text if no image was provided
+                    val textBounds = Rect()
+                    val mText = text ?: "Tap to save"
+                    paintText.getTextBounds(mText, 0, mText.length, textBounds)
+                    paintText.textSize = this@ScreenshotSelectorView.width / 20.0f
+                    canvas.drawText(
+                        mText,
+                        rect.centerX().toFloat() - textBounds.centerX(),
+                        rect.centerY().toFloat() - textBounds.centerY(),
+                        paintText
+                    )
                 }
-                canvas.drawText(text ?: "Tap to save", rect.centerX().toFloat(), rect.centerY().toFloat(), paint)
             }
         }
     }
