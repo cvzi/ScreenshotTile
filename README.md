@@ -26,7 +26,7 @@ a good idea to know when an app is recording the screen.
 Here's an explanation on how to turn it off:
 [PCTattletale.com - How to turn off Android's Pesky Chromecast Icon](https://www.pctattletale.com/blog/3050/how-to-turn-off-androids-pesky-chromecast-icon/)
 
-## <a name="auto">Automatic screenshots with Broadcast intents</a>
+## <a name="automatic">Automatic screenshots with Broadcast intents</a>
 
 You can automate taking screenshots with apps like [MacroDroid](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid) or [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm).
 This works via [Broadcast intents](https://developer.android.com/guide/components/broadcasts).
