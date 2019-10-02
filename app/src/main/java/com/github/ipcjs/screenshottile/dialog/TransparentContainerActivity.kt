@@ -7,6 +7,9 @@ import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentFactory
+import androidx.preference.PreferenceFragmentCompat
+import java.lang.reflect.InvocationTargetException
 
 /**
  * Created by ipcjs on 2017/8/16.
@@ -35,14 +38,25 @@ open class TransparentContainerActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState == null) {
-            val fragmentClass = intent.getStringExtra(EXTRA_FRAGMENT_NAME)
+        val fragmentClass = intent.getStringExtra(EXTRA_FRAGMENT_NAME)
+        if (savedInstanceState == null && fragmentClass != null) {
             val args = intent.getBundleExtra(EXTRA_ARGS)
-            val fragment = Fragment.instantiate(this, fragmentClass, args)
+            val fragment: Fragment? = try {
+                val fragment = FragmentFactory.loadFragmentClass(
+                    classLoader, fragmentClass
+                ).getConstructor().newInstance()
+                args?.run {
+                    classLoader = fragment.javaClass.classLoader
+                    fragment.arguments = this
+                }
+                fragment as Fragment
+            } catch (e: Throwable ) {
+                null
+            }
 
             if (fragment is DialogFragment) {
                 fragment.show(supportFragmentManager, fragmentClass)
-            } else {
+            } else if(fragment != null) {
                 supportFragmentManager.beginTransaction()
                     .add(android.R.id.content, fragment, fragmentClass)
                     .commit()
