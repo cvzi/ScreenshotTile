@@ -24,11 +24,11 @@ class SettingFragment : PreferenceFragmentCompat() {
         private const val TAG = "SettingFragment.kt"
     }
 
-    private val notificationPref by lazy { findPreference(getString(R.string.pref_static_field_key_notification_settings)) }
-    private val delayPref by lazy { findPreference(getString(R.string.pref_key_delay)) as ListPreference }
-    private val fileFormatPref by lazy { findPreference(getString(R.string.pref_key_file_format)) as ListPreference }
-    private val pref: SharedPreferences by lazy { preferenceManager.sharedPreferences }
-    private val prefManager by lazy { App.getInstance().prefManager }
+    private var notificationPref: Preference? = null
+    private var delayPref: ListPreference? = null
+    private var fileFormatPref: ListPreference? = null
+    private lateinit var pref: SharedPreferences
+    private val prefManager = App.getInstance().prefManager
 
     private val prefListener =
         SharedPreferences.OnSharedPreferenceChangeListener { _: SharedPreferences?, key: String? ->
@@ -40,11 +40,18 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        pref = preferenceManager.sharedPreferences
+
         addPreferencesFromResource(R.xml.pref)
 
+        notificationPref = findPreference(getString(R.string.pref_static_field_key_notification_settings))
+        delayPref = findPreference(getString(R.string.pref_key_delay)) as ListPreference?
+        fileFormatPref = findPreference(getString(R.string.pref_key_file_format)) as ListPreference?
+
+
         pref.registerOnSharedPreferenceChangeListener(prefListener)
-        updateDelaySummary(delayPref.value)
-        updateFileFormatSummary(fileFormatPref.value)
+        delayPref?.run { updateDelaySummary(value) }
+        fileFormatPref?.run {updateFileFormatSummary(value)}
         updateNotificationSummary()
 
         makeLink(R.string.pref_static_field_key_about_app_1, R.string.pref_static_field_link_about_app_1)
@@ -65,9 +72,9 @@ class SettingFragment : PreferenceFragmentCompat() {
     private fun makeLink(name: Int, link: Int) {
         val myActivity = activity
         myActivity?.let {
-            val myPref = findPreference(getString(name)) as Preference
-            myPref.isSelectable = true
-            myPref.onPreferenceClickListener = OnPreferenceClickListener {
+            val myPref = findPreference(getString(name)) as Preference?
+            myPref?.isSelectable = true
+            myPref?.onPreferenceClickListener = OnPreferenceClickListener {
                 Intent(Intent.ACTION_VIEW, Uri.parse(getString(link))).apply {
                     if (resolveActivity(myActivity.packageManager) != null) {
                         startActivity(this)
@@ -79,9 +86,10 @@ class SettingFragment : PreferenceFragmentCompat() {
     }
 
     private fun makeNotificationSettingsLink(name: Int) {
-        val myPref = findPreference(getString(name)) as Preference
-        myPref.isSelectable = true
-        myPref.onPreferenceClickListener = OnPreferenceClickListener {
+        val myPref = findPreference(getString(name)) as Preference?
+
+        myPref?.isSelectable = true
+        myPref?.onPreferenceClickListener = OnPreferenceClickListener {
             val myActivity = activity
             myActivity?.let {
                 val intent = notificationSettingsIntent(
@@ -99,7 +107,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private fun updateNotificationSummary() {
         val myActivity = activity
         myActivity?.let {
-            notificationPref.summary = if (notificationScreenshotTakenChannelEnabled(myActivity)) {
+            notificationPref?.summary = if (notificationScreenshotTakenChannelEnabled(myActivity)) {
                 getString(R.string.notification_settings_on)
             } else {
                 getString(R.string.notification_settings_off)
@@ -108,11 +116,15 @@ class SettingFragment : PreferenceFragmentCompat() {
     }
 
     private fun updateDelaySummary(value: String) {
-        delayPref.summary = delayPref.entries[delayPref.findIndexOfValue(value)]
+        delayPref?.apply {
+            summary = entries[findIndexOfValue(value)]
+        }
     }
 
     private fun updateFileFormatSummary(value: String) {
-        fileFormatPref.summary = fileFormatPref.entries[fileFormatPref.findIndexOfValue(value)]
+        fileFormatPref?.apply {
+           summary = entries[findIndexOfValue(value)]
+        }
     }
 
     private fun updateHideApp(hide: Boolean): Boolean {
