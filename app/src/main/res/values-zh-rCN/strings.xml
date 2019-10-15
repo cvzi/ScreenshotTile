@@ -30,7 +30,7 @@
     <string name="hide_app_from_launcher">从启动器隐藏应用图标</string>
     <string name="toggle_app_icon_failed">显示/隐藏应用图标失败</string>
     <string name="tutorial">教程</string>
-    <string name="tap_for_next_step">点按进入下一步</string>
+    <string name="tutorial_tap_for_next_step">点按进入下一步</string>
 
     <!-- About -->
     <string name="about_app_title">关于</string>

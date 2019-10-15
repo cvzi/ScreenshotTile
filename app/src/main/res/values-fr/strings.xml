@@ -32,7 +32,7 @@
     <string name="toggle_app_icon_failed">Échoué à afficher/masquer l\'icône de l\'application</string>
     <string name="hide_app_from_launcher">Masquer l\'icône de l\'app</string>
     <string name="take_screenshot">Capture d\'écran</string>
-    <string name="tap_for_next_step">Appuyez pour avancer</string>
+    <string name="tutorial_tap_for_next_step">Appuyez pour avancer</string>
 
     <!-- About -->
     <string name="about_app_title">À propos</string>

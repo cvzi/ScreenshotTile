@@ -33,7 +33,7 @@
     <string name="screenshot_failed">Nie udało się wykonać zrzutu ekranu</string>
     <string name="screenshot_file_saved">Wykonano zrzut ekranu: %1$s</string>
     <string name="tutorial">Instrukcje</string>
-    <string name="tap_for_next_step">Stuknij aby dowiedzieć się więcej</string>
+    <string name="tutorial_tap_for_next_step">Stuknij aby dowiedzieć się więcej</string>
     <string name="permission_missing_screen_capture">Brak wymaganych uprawnień. Aplikacja wymaga uprawnień, aby przechwycić ekran.</string>
     <string name="permission_missing_external_storage">Brak wymaganych uprawnień. Aplikacja wymaga dostępu do pamięci urządzenia, aby celu zapisania nagranych plików</string>
 

@@ -31,7 +31,7 @@
     <string name="permission_missing_external_storage">Failed to acquire permission for storage</string>
     <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
     <string name="tutorial">Tutorial</string>
-    <string name="tap_for_next_step">Tap untuk langkah selanjutnya</string>
+    <string name="tutorial_tap_for_next_step">Tap untuk langkah selanjutnya</string>
     <string name="take_screenshot">Mengambil tangkapan layar</string>
 
     <!-- About -->

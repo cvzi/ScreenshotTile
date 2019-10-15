@@ -23,5 +23,5 @@
     <string name="notification_settings_off">تم إيقاف</string>
     <string name="notification_settings_on">‏‏تم تشغيل</string>
     <string name="tutorial">برنامج التعليمي</string>
-    <string name="tap_for_next_step">تبع الخطوات التالية</string>
+    <string name="tutorial_tap_for_next_step">تبع الخطوات التالية</string>
 </resources>

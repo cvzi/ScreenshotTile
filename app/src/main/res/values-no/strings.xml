@@ -31,7 +31,7 @@
     <string name="hide_app_from_launcher">Skjul app ikonet</string>
     <string name="toggle_app_icon_failed">Mislyktes å vise/skjule app ikonet</string>
     <string name="tutorial">Undervisning</string>
-    <string name="tap_for_next_step">Trykk for neste trinnet</string>
+    <string name="tutorial_tap_for_next_step">Trykk for neste trinnet</string>
     <string name="take_screenshot">Ta et skjermbilde</string>
 
     <!-- About -->

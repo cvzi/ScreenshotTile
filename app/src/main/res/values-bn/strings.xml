@@ -20,6 +20,6 @@
     <string name="more_setting">সেটিংস</string>
     <string name="take_screenshot">স্ক্রিনশট</string>
     <string name="tutorial">টিউটোরিয়াল</string>
-    <string name="tap_for_next_step">পরবর্তী পর্ব দেখতে ট্যাপ করুন</string>
+    <string name="tutorial_tap_for_next_step">পরবর্তী পর্ব দেখতে ট্যাপ করুন</string>
     <string name="about_license_title">লাইসেন্স</string>
 </resources>

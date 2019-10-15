@@ -31,7 +31,7 @@
     <string name="screenshot_deleted">Screenshot gelöscht</string>
     <string name="screenshot_delete_failed">Screenshot konnte nicht gelöscht werden</string>
     <string name="notification_app_chooser_share">Teilen mit…</string>
-    <string name="tap_for_next_step">Berühren für nächsten Schritt</string>
+    <string name="tutorial_tap_for_next_step">Berühren für nächsten Schritt</string>
     <string name="tutorial">Tutorial</string>
     <string name="toggle_app_icon_failed">Fehler beim Zeigen/Verstecken des App Icons</string>
     <string name="hide_app_from_launcher">Verstecke App icon vom App Drawer</string>

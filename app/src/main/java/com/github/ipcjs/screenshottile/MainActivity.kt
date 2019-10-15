@@ -42,10 +42,30 @@ class MainActivity : Activity() {
         R.drawable.screenshot_16
     )
 
+    private val descriptions = arrayOf(
+        R.string.tutorial_tap_for_next_step,
+        R.string.tutorial_step2,
+        R.string.tutorial_step3,
+        R.string.tutorial_step4,
+        R.string.tutorial_step5,
+        R.string.tutorial_step6,
+        R.string.tutorial_step6,
+        R.string.tutorial_step8,
+        R.string.tutorial_step8,
+        R.string.tutorial_step10,
+        R.string.tutorial_step11,
+        R.string.tutorial_step11,
+        R.string.tutorial_step11,
+        R.string.tutorial_step11,
+        R.string.tutorial_step11,
+        R.string.tutorial_step16
+    )
+
     private lateinit var bitmapCache: BitmapCache
 
     private lateinit var viewPager: ViewPager
     private lateinit var textViewStep: TextView
+    private lateinit var textViewFooter: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +75,7 @@ class MainActivity : Activity() {
         bitmapCache = BitmapCache(cacheSize)
 
         textViewStep = findViewById(R.id.textViewStep)
+        textViewFooter = findViewById(R.id.textViewFooter)
 
         viewPager = findViewById(R.id.viewPager)
         viewPager.adapter = TutorialPagerAdapter()
@@ -63,9 +84,20 @@ class MainActivity : Activity() {
         }
         viewPager.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {}
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+            }
+
             override fun onPageSelected(position: Int) {
                 textViewStep.text = (position + 1).toString()
+                textViewFooter.text = if (position >= 0 && position < descriptions.size) {
+                    getString(descriptions[position])
+                } else {
+                    getString(descriptions[0])
+                }
             }
         })
 

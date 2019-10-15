@@ -29,7 +29,7 @@
     <string name="screenshot_deleted">צילום מסך נמחק</string>
     <string name="screenshot_delete_failed">לא ניתן למחוק את הקובץ</string>
     <string name="take_screenshot">קח תמונת מסך</string>
-    <string name="tap_for_next_step">הקש כדי לנווט קדימה</string>
+    <string name="tutorial_tap_for_next_step">הקש כדי לנווט קדימה</string>
     <string name="tutorial">הדרכה</string>
     <string name="hide_app_from_launcher">הסתר את סמל היישום</string>
     <string name="toggle_app_icon_failed">אירעה שגיאה להציג/להסתיר את סמל</string>
