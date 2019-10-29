@@ -28,8 +28,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
-            useProguard false
+            minifyEnabled true
             signingConfig signingConfigs.release
             debuggable false
         }
@@ -45,7 +44,7 @@ android {
 
     lintOptions {
         // For travis-ci:
-        disable 'MissingTranslation', 'ExtraTranslation'
+        disable 'MissingTranslation'
     }
 }
 
