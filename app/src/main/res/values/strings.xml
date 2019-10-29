@@ -24,7 +24,6 @@
     <string name="notification_foreground_title">Taking a screenshot…</string>
     <string name="notification_foreground_body">Processing screenshot… Tap to cancel</string>
     <string name="notification_foreground_channel_description">Shows a notification when you are taking a screenshot. Prevents the app from being terminated by the battery optimization while a screenshot is in process</string>
-    <string name="notification_app_chooser">Open file with…</string>
     <string name="notification_app_chooser_share">Share file with…</string>
     <string name="notification_app_chooser_edit">Edit file with…</string>
     <string name="screenshot_failed">Failed to take screenshot, please try again</string>

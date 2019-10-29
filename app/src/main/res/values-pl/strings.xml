@@ -22,7 +22,6 @@
     <string name="notification_edit_screenshot">Edytuj</string>
     <string name="notification_share_screenshot">Udostępnij</string>
     <string name="notification_app_chooser_share">Udostępnij przez…</string>
-    <string name="notification_app_chooser">Otwórz w aplikacji</string>
     <string name="notification_app_chooser_edit">Edytuj w aplikacji…</string>
     <string name="file_title">Zrzut ekranu</string>
     <string name="file_description">Zrzut ekranu z %1$s</string>

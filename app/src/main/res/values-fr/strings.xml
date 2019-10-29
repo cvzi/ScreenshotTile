@@ -17,7 +17,6 @@
     <string name="screenshot_failed">Impossible d\'enregistrer la capture d\'écran</string>
     <string name="notification_body">Appuyez pour afficher votre capture d\'écran</string>
     <string name="notification_channel_description">Afficher une notification quand un capture d\'écran a été pris</string>
-    <string name="notification_app_chooser">Ouvrir</string>
     <string name="notification_title">Capture d\'écran enregistrée</string>
     <string name="permission_missing_external_storage">Échoué à obtenir l’autorisation Stockage</string>
     <string name="permission_missing_screen_capture">Échoué à obtenir l’autorisation pour capturer d\'écran</string>

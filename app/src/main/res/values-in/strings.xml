@@ -19,7 +19,6 @@
     <string name="notification_channel_description">Lihat notifikasi ketika menangkap layar</string>
     <string name="notification_share_screenshot">Bagikan</string>
     <string name="notification_app_chooser_share">Bagikan dengan</string>
-    <string name="notification_app_chooser">Buka melalui</string>
     <string name="notification_delete_screenshot">Hapus</string>
     <string name="notification_edit_screenshot">Sunting</string>
     <string name="notification_app_chooser_edit">Sunting melalui</string>

@@ -18,7 +18,6 @@
     <string name="screenshot_failed">לא ניתן היה לשמור צילום מסך</string>
     <string name="show_count_down">מציג ספירה לאחור</string>
     <string name="file_description">%1$s צילום מסך</string>
-    <string name="notification_app_chooser">פתח</string>
     <string name="setting_delay_entry_2s">2 שניות</string>
     <string name="setting_delay_entry_5s">5 שניות</string>
     <string name="notification_delete_screenshot">מחיקה</string>

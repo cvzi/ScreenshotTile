@@ -15,7 +15,6 @@
     <string name="notification_title">已保存屏幕截图</string>
     <string name="notification_body">点按即可查看您的屏幕截图</string>
     <string name="notification_channel_description">屏幕截图后显示通知</string>
-    <string name="notification_app_chooser">打开文件…</string>
     <string name="notification_app_chooser_share">分享文件…</string>
     <string name="notification_edit_screenshot">编辑</string>
     <string name="notification_app_chooser_edit">编辑文件…</string>

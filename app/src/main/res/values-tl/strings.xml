@@ -6,7 +6,6 @@
     <string name="file_title">Screenshot</string>
     <string name="file_description_simple_date_format">MM-dd-yyyy HH:mm:ss</string>
     <string name="notification_body">I-tap upang tingnan ang iyong screenshot</string>
-    <string name="notification_app_chooser">Buksan sa …</string>
     <string name="screenshot_failed">Hindi ma-save ang screenshot, pakisubukang muli</string>
     <string name="notification_delete_screenshot">Tanggalin</string>
     <string name="notification_share_screenshot">Ibahagi</string>
