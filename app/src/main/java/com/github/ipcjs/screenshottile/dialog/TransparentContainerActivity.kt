@@ -8,8 +8,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentFactory
-import androidx.preference.PreferenceFragmentCompat
-import java.lang.reflect.InvocationTargetException
 
 /**
  * Created by ipcjs on 2017/8/16.
