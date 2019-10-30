@@ -20,4 +20,10 @@
     <string name="notification_settings_on">Ligado</string>
     <string name="tutorial">Tutorial</string>
     <string name="about_license_title">Licença</string>
+    <string name="partial_screenshot">Selecionar retângulo</string>
+    <string name="title_delay">Atraso</string>
+    <string name="show_count_down">Mostrar countdown</string>
+    <string name="notification_foreground_title">Salvando captura de tela…</string>
+    <string name="notification_foreground_body">Processando captura de tela… Toque para cancelar</string>
+    <string name="more_setting">Ajustes</string>
 </resources>

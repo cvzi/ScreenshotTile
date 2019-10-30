@@ -24,4 +24,7 @@
     <string name="notification_settings_on">‏‏تم تشغيل</string>
     <string name="tutorial">برنامج التعليمي</string>
     <string name="tutorial_tap_for_next_step">تبع الخطوات التالية</string>
+    <string name="notification_foreground_title">جارٍ حفظ لقطة الشاشة…</string>
+    <string name="notification_foreground_body">جارٍ حفظ لقطة الشاشة… انقر للخروج</string>
+    <string name="partial_screenshot">قص</string>
 </resources>

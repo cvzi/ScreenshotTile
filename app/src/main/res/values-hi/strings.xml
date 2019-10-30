@@ -18,4 +18,10 @@
     <string name="screenshot_deleted">फ़ाइल सफलतापूर्वक नष्ट कर दिया</string>
     <string name="tutorial">ट्यूटोरियल</string>
     <string name="about_license_title">लाइसेंस</string>
+    <string name="notification_foreground_title">स्क्रीनशॉट सहेजा जा रहा है…</string>
+    <string name="notification_foreground_body">स्क्रीनशॉट सहेजा जा रहा है… बाहर निकलने के लिए टैप करें</string>
+    <string name="partial_screenshot">क्रॉप</string>
+    <string name="notification_settings">सूचनाएं</string>
+    <string name="notification_settings_off">बंद</string>
+    <string name="notification_settings_on">चालू</string>
 </resources>

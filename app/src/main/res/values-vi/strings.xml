@@ -17,4 +17,10 @@
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="tutorial">Hướng dẫn</string>
     <string name="about_license_title">Giấy phép</string>
+    <string name="notification_foreground_body">Đang lưu ảnh chụp màn hình… Nhấn để hủy bỏ</string>
+    <string name="partial_screenshot">Chọn phần</string>
+    <string name="notification_settings">Thông báo</string>
+    <string name="notification_settings_off">Tắt</string>
+    <string name="notification_settings_on">Bật</string>
+    <string name="more_setting">Cài đặt</string>
 </resources>

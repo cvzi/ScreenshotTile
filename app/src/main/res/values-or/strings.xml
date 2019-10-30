@@ -15,4 +15,10 @@
     <string name="notification_share_screenshot">ଅଂଶୀଦାର</string>
     <string name="notification_edit_screenshot">ସମ୍ପାଦନ</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="notification_foreground_title">ସ୍କ୍ରୀନଶଟ୍‍ ସେଭ୍‍ କରାଯାଉଛି…</string>
+    <string name="notification_foreground_body">ସ୍କ୍ରୀନଶଟ୍‍ ସେଭ୍‍ କରାଯାଉଛି…</string>
+    <string name="notification_settings">ବିଜ୍ଞପ୍ତି</string>
+    <string name="notification_settings_off">ଅଫ୍।</string>
+    <string name="notification_settings_on">ଅନ୍।</string>
+    <string name="partial_screenshot">କ୍ରପ୍ କରନ୍ତୁ</string>
 </resources>

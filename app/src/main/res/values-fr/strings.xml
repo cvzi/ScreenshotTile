@@ -43,4 +43,7 @@
     <string name="notification_settings_on">Activé</string>
     <string name="notification_settings_off">Désactivé</string>
     <string name="notification_settings">Notifications</string>
+    <string name="partial_screenshot">Rogner</string>
+    <string name="notification_foreground_body">Enregistrement capture d\'écran… Appuyez pour quitter</string>
+    <string name="notification_foreground_title">Enregistrement capture d\'écran…</string>
 </resources>

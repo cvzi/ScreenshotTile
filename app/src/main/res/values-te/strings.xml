@@ -15,4 +15,11 @@
     <string name="setting_delay_entry_5s">5 సెకను</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="tutorial">ట్యుటోరియల్</string>
+    <string name="notification_foreground_title">స్క్రీన్‌షాట్‌ను సేవ్ చేస్తోంది…</string>
+    <string name="notification_foreground_body">స్క్రీన్‌షాట్‌ను సేవ్ చేస్తోంది… రద్దు చేయడానికి తాకండి</string>
+    <string name="more_setting">సెట్టింగ్‌లు</string>
+    <string name="notification_settings">నోటిఫికేషన్‌లు</string>
+    <string name="notification_settings_off">ఆఫ్‌లో ఉంది</string>
+    <string name="notification_settings_on">ఆన్‌లో ఉంది</string>
+    <string name="partial_screenshot">కత్తరింపు</string>
 </resources>

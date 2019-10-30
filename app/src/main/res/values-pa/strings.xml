@@ -11,4 +11,9 @@
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="tutorial">ਟਿਊਟੋਰੀਅਲ</string>
     <string name="about_license_title">ਲਾਇਸੰਸ</string>
+    <string name="notification_foreground_body">ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ… ਬਾਹਰ ਜਾਣ ਲਈ ਟੈਪ ਕਰੋ</string>
+    <string name="notification_foreground_title">ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…</string>
+    <string name="notification_settings">ਸੂਚਨਾਵਾਂ</string>
+    <string name="notification_settings_off">ਬੰਦ</string>
+    <string name="notification_settings_on">ਚਾਲੂ</string>
 </resources>

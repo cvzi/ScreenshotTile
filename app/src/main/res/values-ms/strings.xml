@@ -26,4 +26,7 @@
     <string name="file_description">Tangkapan skrin diambil pada %1$s</string>
     <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
     <string name="file_title">Screenshot</string>
+    <string name="notification_foreground_title">Menyimpan tangkapan skrin…</string>
+    <string name="notification_foreground_body">Menyimpan tangkapan skrin… Klik untuk keluar</string>
+    <string name="partial_screenshot">Potong</string>
 </resources>

@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.6.2
+*   Updated translations
+*   Compressed images and removed unused resources
 ## 1.6.1
 *   Updated Indonesian translation. Thanks to [@alexschenider](https://github.com/alexschenider/)
 *   Added short text to each tutorial screenshot

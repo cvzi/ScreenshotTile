@@ -40,4 +40,7 @@
     <string name="about_app_title">O app</string>
     <string name="about_license_title">Licencja</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="notification_foreground_title">Zapisywanie zrzutu ekranu…</string>
+    <string name="notification_foreground_body">Zapisywanie zrzutu ekranu… Stuknij aby anulować</string>
+    <string name="partial_screenshot">Wybierz prostokąt</string>
 </resources>

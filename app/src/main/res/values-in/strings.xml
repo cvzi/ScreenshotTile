@@ -43,4 +43,7 @@
     <string name="notification_settings_on">Diaktifkan</string>
     <string name="notification_settings_off">Dinonaktifkan</string>
     <string name="notification_settings">Pemberitahuan</string>
+    <string name="notification_foreground_title">Menyimpan screenshot…</string>
+    <string name="notification_foreground_body">Menyimpan screenshot… Ketuk untuk keluar</string>
+    <string name="partial_screenshot">Potong</string>
 </resources>

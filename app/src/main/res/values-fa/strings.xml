@@ -16,4 +16,10 @@
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="file_format">فرمت تصویر</string>
     <string name="tutorial">آموزش گام‌به‌گام</string>
+    <string name="notification_foreground_title">در حال ذخیره عکس صفحه‌نمایش…</string>
+    <string name="notification_foreground_body">در حال ذخیره عکس صفحه‌نمایش… برای لغو ضربه بزنید</string>
+    <string name="partial_screenshot">برش</string>
+    <string name="notification_settings">اعلان ها</string>
+    <string name="notification_settings_off">اعلان ها غیرفعال شدند</string>
+    <string name="notification_settings_on">روشن</string>
 </resources>

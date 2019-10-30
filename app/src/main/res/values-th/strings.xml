@@ -16,4 +16,11 @@
     <string name="hide_app_from_launcher">ซ่อนแอป จากรายการแอพ</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="tutorial">บทแนะนำ</string>
+    <string name="partial_screenshot">ตัดภาพ</string>
+    <string name="notification_settings">การแจ้งเตือน</string>
+    <string name="notification_settings_off">ปิด</string>
+    <string name="notification_settings_on">เปิด</string>
+    <string name="more_setting">การตั้งค่า</string>
+    <string name="notification_foreground_title">กำลังบันทึกภาพหน้าจอ…</string>
+    <string name="notification_foreground_body">กำลังบันทึกภาพหน้าจอ… แตะเพื่อออก</string>
 </resources>

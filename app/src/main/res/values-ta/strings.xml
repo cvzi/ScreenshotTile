@@ -16,4 +16,11 @@
     <string name="hide_app_from_launcher">பயன்பாட்டின் டிராயரில் பயன்பாட்டை மறை</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="tutorial">பயிற்சி</string>
+    <string name="partial_screenshot">செதுக்கு</string>
+    <string name="notification_foreground_body">ஸ்க்ரீன் ஷாட்டைச் சேமிக்கிறது… வெளியேற தட்டவும்</string>
+    <string name="notification_foreground_title">ஸ்க்ரீன் ஷாட்டைச் சேமிக்கிறது…</string>
+    <string name="more_setting">அமைப்புகளை</string>
+    <string name="notification_settings">அறிவிப்புகள்</string>
+    <string name="notification_settings_off">முடக்கப்பட்டுள்ளது</string>
+    <string name="notification_settings_on">இயக்கப்பட்டுள்ளது</string>
 </resources>

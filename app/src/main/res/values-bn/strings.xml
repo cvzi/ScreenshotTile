@@ -22,4 +22,7 @@
     <string name="tutorial">টিউটোরিয়াল</string>
     <string name="tutorial_tap_for_next_step">পরবর্তী পর্ব দেখতে ট্যাপ করুন</string>
     <string name="about_license_title">লাইসেন্স</string>
+    <string name="partial_screenshot">ক্রপ</string>
+    <string name="notification_foreground_title">স্ক্রিনশট সেভ করা হচ্ছে…</string>
+    <string name="notification_foreground_body">স্ক্রিনশট সেভ করা হচ্ছে… প্রস্থান করতে ট্যাপ করুন</string>
 </resources>

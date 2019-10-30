@@ -17,4 +17,9 @@
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="tutorial">チュートリアル</string>
     <string name="about_license_title">ライセンス</string>
+    <string name="notification_foreground_title">スクリーンショットを保存中…</string>
+    <string name="notification_foreground_body">スクリーンショットを保存中… タップして終了する</string>
+    <string name="notification_settings_off">OFF</string>
+    <string name="notification_settings_on">ON</string>
+    <string name="notification_settings">通知</string>
 </resources>

@@ -42,4 +42,7 @@
     <string name="notification_settings">通知</string>
     <string name="notification_settings_off">已禁用</string>
     <string name="notification_settings_on">已启用</string>
+    <string name="partial_screenshot">裁切</string>
+    <string name="notification_foreground_title">正在保存屏幕截图…</string>
+    <string name="notification_foreground_body">正在保存屏幕截图… 点击退出</string>
 </resources>

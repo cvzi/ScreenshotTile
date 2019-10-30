@@ -18,4 +18,11 @@
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="tutorial">Руководство</string>
     <string name="about_license_title">Лицензия</string>
+    <string name="notification_foreground_title">Сохранение…</string>
+    <string name="notification_foreground_body">Сохранение… Нажмите для выхода</string>
+    <string name="more_setting">Настройки</string>
+    <string name="notification_settings">Уведомления</string>
+    <string name="notification_settings_off">Откл</string>
+    <string name="notification_settings_on">Вкл</string>
+    <string name="partial_screenshot">Обрезка</string>
 </resources>

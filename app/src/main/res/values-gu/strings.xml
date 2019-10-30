@@ -17,4 +17,10 @@
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="tutorial">ટ્યૂટૉરિઅલ</string>
     <string name="about_license_title">લાઇસન્સ</string>
+    <string name="notification_foreground_title">સ્ક્રીનશોટ સાચવી રહ્યું છે…</string>
+    <string name="notification_foreground_body">સ્ક્રીનશોટ સાચવી રહ્યું છે… બહાર નીકળવા ટૅપ કરો</string>
+    <string name="notification_settings_off">બંધ</string>
+    <string name="notification_settings_on">ચાલુ</string>
+    <string name="notification_settings">નોટિફિકેશનો</string>
+    <string name="partial_screenshot">કાપો</string>
 </resources>
