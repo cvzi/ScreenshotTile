@@ -20,6 +20,7 @@ import android.util.Log
 class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListener {
     companion object {
         private const val TAG = "ScreenshotTileService"
+        const val FOREGROUND_NOTIFICATION_ID = 8139
         var instance: ScreenshotTileService? = null
     }
 
@@ -92,8 +93,8 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return
         }
-
         val context = this
+
         val builder = Notification.Builder(this, createNotificationForegroundServiceChannel(this))
         builder.apply {
             setShowWhen(false)
@@ -103,6 +104,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
             setSmallIcon(R.drawable.transparent_icon)
             setContentIntent(PendingIntent.getBroadcast(context, 1, Intent().apply {
                 action = NOTIFICATION_ACTION_STOP
+                putExtra(NOTIFICATION_ACTION_ID, FOREGROUND_NOTIFICATION_ID)
             }, 0))
         }
         startForeground(

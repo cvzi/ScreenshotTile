@@ -84,6 +84,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                 }
                 NOTIFICATION_ACTION_STOP -> {
                     ScreenshotTileService.instance?.background()
+                    hideNotification(this, ScreenshotTileService.FOREGROUND_NOTIFICATION_ID)
                 }
 
             }
