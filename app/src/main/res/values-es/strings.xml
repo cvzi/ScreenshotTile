@@ -48,5 +48,4 @@
     <string name="notification_foreground_body">Procesando la captura de pantalla… Toque para cancelar</string>
     <string name="notification_foreground_channel_description">Muestra una notificación cuando estás tomando una captura de pantalla. Evita que la optimización de la batería finalice la aplicación mientras se está realizando una captura de pantalla</string>
     <string name="setting_broadcast_secret">Contraseña de Broadcast intent</string>
-    <string name="setting_broadcast_secret_description">A secret phrase to allow other applications (like MacroDroid or Tasker) to initiate screenshots</string>
 </resources>
