@@ -29,8 +29,10 @@ android {
     buildTypes {
         release {
             minifyEnabled true
+            shrinkResources true
             signingConfig signingConfigs.release
             debuggable false
+            proguardFiles 'proguard-rules.pro'
         }
         debug {
             applicationIdSuffix '.debug'
