@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.6.3
+*   Updated Indonesian translation. Thanks to [@alexschenider](https://github.com/alexschenider/)
 ## 1.6.2
 *   Updated translations
 *   Compressed images and removed unused resources
