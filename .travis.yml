@@ -41,4 +41,7 @@ before_script:
 - chmod +x gradlew
 script:
 - "./gradlew build"
-- "if [ '$TRAVIS_PULL_REQUEST' = 'false' ]; then ./gradlew sonarqub; fi"
+- 'echo $TRAVIS_PULL_REQUEST'
+- 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then ./gradlew sonarqub; fi'
+
+
