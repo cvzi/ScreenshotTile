@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.6.4
+*   Support night mode on Android Q
+*   Disable back gesture on viewpager on Android Q
 ## 1.6.3
 *   Updated Indonesian translation. Thanks to [@alexschenider](https://github.com/alexschenider/)
 ## 1.6.2
