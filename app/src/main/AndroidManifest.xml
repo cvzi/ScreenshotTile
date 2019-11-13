@@ -20,7 +20,7 @@
             android:name=".MainActivity"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
-            android:theme="@style/Theme.AppCompat">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -42,7 +42,7 @@
             android:name=".dialog.ContainerActivity"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".SettingDialogActivity"
             android:excludeFromRecents="true">

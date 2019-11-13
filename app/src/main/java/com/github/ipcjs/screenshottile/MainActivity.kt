@@ -2,8 +2,11 @@ package com.github.ipcjs.screenshottile
 
 import android.app.Activity
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Rect
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -79,6 +82,20 @@ class MainActivity : Activity() {
 
         viewPager = findViewById(R.id.viewPager)
         viewPager.adapter = TutorialPagerAdapter()
+
+        if (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) {
+            // Night Mode -> Background is black so transparency makes the images darker
+            viewPager.alpha = 0.7f
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // Disable back gesture (slide from right edge to left) on viewPager
+            viewPager.systemGestureExclusionRects =
+                listOf(Rect(0, 0, viewPager.width, viewPager.height))
+            viewPager.addOnLayoutChangeListener { v, _, _, _, _, _, _, _, _ ->
+                viewPager.systemGestureExclusionRects = listOf(Rect(0, 0, v.width, v.height))
+            }
+        }
+
         viewPager.setOnClickListener {
             viewPager.setCurrentItem(viewPager.currentItem + 1 % images.size, true)
         }
