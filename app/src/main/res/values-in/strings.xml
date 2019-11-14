@@ -17,7 +17,7 @@
     <string name="notification_settings_on">Diaktifkan</string>
     <string name="notification_settings_off">Nonaktifkan</string>
     <string name="file_title">Tangkapan layar</string>
-    <string name="file_description">Tangkapan layar diambilbpada %1$s</string>
+    <string name="file_description">Tangkapan layar diambil pada %1$s</string>
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Tangkapan layar diambil</string>
     <string name="notification_body">Sentuh untuk melihat gambar</string>
