@@ -75,4 +75,11 @@
         android:selectable="true"
         android:summary="@string/about_open_source"
         android:title="@string/about_open_source_title" />
+
+    <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_about_privacy"
+        android:persistent="false"
+        android:selectable="true"
+        android:summary="@string/about_privacy_summary"
+        android:title="@string/about_privacy_title" />
 </androidx.preference.PreferenceScreen>

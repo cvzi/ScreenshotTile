@@ -58,6 +58,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         makeLink(R.string.pref_static_field_key_about_app_3, R.string.pref_static_field_link_about_app_3)
         makeLink(R.string.pref_static_field_key_about_license_1, R.string.pref_static_field_link_about_license_1)
         makeLink(R.string.pref_static_field_key_about_open_source, R.string.pref_static_field_link_about_open_source)
+        makeLink(R.string.pref_static_field_key_about_privacy, R.string.pref_static_field_link_about_privacy)
 
         makeNotificationSettingsLink(R.string.pref_static_field_key_notification_settings)
     }
