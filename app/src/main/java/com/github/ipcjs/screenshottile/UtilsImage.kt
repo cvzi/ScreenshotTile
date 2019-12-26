@@ -108,14 +108,14 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
     }
 
     uri.normalizeScheme()
-    when {
-        uri.scheme == "content" -> { // Android Q+
+    when(uri.scheme) {
+        "content" -> { // Android Q+
             val deletedRows = context.contentResolver.delete(uri, null, null)
             Log.v(UTILSIMAGEKT, "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)")
             return deletedRows > 0
         }
 
-        uri.scheme == "file" -> { // until Android P
+        "file" -> { // until Android P
             val path = uri.path
             if (path == null) {
                 Log.e(UTILSIMAGEKT, "deleteImage() File path is null. uri=$uri")
