@@ -135,7 +135,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         }
         // Load layout
         setContentView(R.layout.partial_screenshot)
-        val mScreenshotSelectorView = findViewById<ScreenshotSelectorView>(R.id.global_screenshot_selector)
+        val mScreenshotSelectorView =
+            findViewById<ScreenshotSelectorView>(R.id.global_screenshot_selector)
         mScreenshotSelectorView.text = getString(R.string.take_screenshot)
         mScreenshotSelectorView.shutter = R.drawable.ic_stat_name
         mScreenshotSelectorView.onShutter = {
@@ -245,7 +246,13 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         val compressionOptions = compressionPreference(applicationContext)
 
         thread = Thread(Runnable {
-            saveImageResult = saveImageToFile(applicationContext, image, "Screenshot_", compressionOptions, cutOutRect)
+            saveImageResult = saveImageToFile(
+                applicationContext,
+                image,
+                "Screenshot_",
+                compressionOptions,
+                cutOutRect
+            )
             image.close()
 
             handler.sendEmptyMessage(THREAD_FINISHED)
@@ -257,7 +264,9 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
      * Handle messages from/to activity/thread
      */
     class SaveImageHandler(takeScreenshotActivity: TakeScreenshotActivity) : Handler() {
-        private var activity: WeakReference<TakeScreenshotActivity> = WeakReference(takeScreenshotActivity)
+        private var activity: WeakReference<TakeScreenshotActivity> =
+            WeakReference(takeScreenshotActivity)
+
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
             if (msg.what == THREAD_START) {
@@ -290,7 +299,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                 // Android Q+ works with MediaStore content:// URI
                 Log.v(TAG, "onFileSaved() URI=${result.uri}")
 
-                val dummyPath = "${Environment.DIRECTORY_PICTURES}/$SCREENSHOT_DIRECTORY/${result.fileTitle}"
+                val dummyPath =
+                    "${Environment.DIRECTORY_PICTURES}/$SCREENSHOT_DIRECTORY/${result.fileTitle}"
                 Toast.makeText(
                     this,
                     getString(R.string.screenshot_file_saved, dummyPath), Toast.LENGTH_LONG
