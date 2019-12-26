@@ -39,6 +39,13 @@ class PrefManager {
             value
         ).apply()
 
+    var useNative: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_use_native), false)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_use_native),
+            value
+        ).apply()
+
     var hideApp: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_hide_app), false)
         set(value) = pref.edit().putBoolean(

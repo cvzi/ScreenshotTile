@@ -28,9 +28,20 @@ const val UTILSKT = "Utils.kt"
  * Start screenshot activity and take a screenshot
  */
 fun screenshot(context: Context, partial: Boolean = false) {
-    TakeScreenshotActivity.start(context, partial)
+    if (partial || !tryNativeScreenshot()) {
+        TakeScreenshotActivity.start(context, partial)
+    }
 }
 
+/**
+ * Try to take a screenshot from the accessibility service/system method if it's enabled and available
+ */
+fun tryNativeScreenshot(): Boolean {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.useNative) {
+        return ScreenshotAccessibilityService.instance?.simulateScreenshotButton() ?: false
+    }
+    return false
+}
 
 /**
  * New image file in default "Picture" directory. (used only for Android P and lower)
@@ -41,7 +52,10 @@ fun createImageFile(context: Context, filename: String): File {
     storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
     if (storageDir == null) {
         // Fallback to "private" data/Package.Name/... directory
-        Log.e(UTILSKT, "createImageFile() Fallback to getExternalFilesDir(Environment.DIRECTORY_PICTURES)")
+        Log.e(
+            UTILSKT,
+            "createImageFile() Fallback to getExternalFilesDir(Environment.DIRECTORY_PICTURES)"
+        )
         storageDir = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     }
     val screenshotDir = File(storageDir, TakeScreenshotActivity.SCREENSHOT_DIRECTORY)
@@ -163,13 +177,20 @@ fun createOutputStreamLegacy(
         imageFile.createNewFile()
     } catch (e: Exception) {
         // Try again to fallback to "private" data/Package.Name/... directory
-        Log.e(UTILSKT, "createOutputStreamLegacy() Could not createNewFile() ${imageFile.absolutePath} $e")
-        val directory = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        Log.e(
+            UTILSKT,
+            "createOutputStreamLegacy() Could not createNewFile() ${imageFile.absolutePath} $e"
+        )
+        val directory =
+            context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         imageFile = File(directory, imageFile.name)
         try {
             directory?.mkdirs()
             imageFile.createNewFile()
-            Log.i(UTILSKT, "createOutputStreamLegacy() Fallback to getExternalFilesDir ${imageFile.absolutePath}")
+            Log.i(
+                UTILSKT,
+                "createOutputStreamLegacy() Fallback to getExternalFilesDir ${imageFile.absolutePath}"
+            )
         } catch (e: Exception) {
             Log.e(
                 UTILSKT,
@@ -180,7 +201,10 @@ fun createOutputStreamLegacy(
     }
 
     if (!imageFile.exists() || !imageFile.canWrite()) {
-        Log.e(UTILSKT, "createOutputStreamLegacy() File ${imageFile.absolutePath} does not exist or is not writable")
+        Log.e(
+            UTILSKT,
+            "createOutputStreamLegacy() File ${imageFile.absolutePath} does not exist or is not writable"
+        )
         return OutputStreamResult("Cannot write to file")
     }
 
@@ -257,7 +281,8 @@ fun createOutputStreamMediaStore(
     val uri = resolver.insert(Images.Media.EXTERNAL_CONTENT_URI, contentValues)
         ?: return OutputStreamResult("MediaStore failed to provide a file")
     val outputStream =
-        resolver.openOutputStream(uri) ?: return OutputStreamResult("Could not open output stream from MediaStore")
+        resolver.openOutputStream(uri)
+            ?: return OutputStreamResult("Could not open output stream from MediaStore")
 
     return OutputStreamResultSuccess(outputStream, null, uri, contentValues)
 }
@@ -284,7 +309,8 @@ fun saveImageToFile(
     }
 
     val result =
-        (outputStreamResult as? OutputStreamResultSuccess?) ?: return SaveImageResult("Could not create output stream")
+        (outputStreamResult as? OutputStreamResultSuccess?)
+            ?: return SaveImageResult("Could not create output stream")
 
     val outputStream: OutputStream = result.fileOutputStream
 

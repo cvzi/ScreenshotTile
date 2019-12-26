@@ -27,6 +27,12 @@
         android:summary="@string/setting_file_format_entry_default"
         android:title="@string/file_format" />
 
+    <androidx.preference.SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_key_use_native"
+        android:title="@string/use_native_screenshot"
+        android:summary="@string/use_native_screenshot_summary"/>
+
     <androidx.preference.EditTextPreference
         android:defaultValue="@string/setting_broadcast_secret_value_default"
         android:key="@string/pref_key_broadcast_secret"

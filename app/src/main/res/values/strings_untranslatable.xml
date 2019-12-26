@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <bool name="accessibility_service_enabled">false</bool>
     <!-- Settings -->
     <string name="setting_delay_value_default" translatable="false">0</string>
     <string-array name="setting_delay_entries" translatable="false">
@@ -16,6 +17,7 @@
     </string-array>
     <string name="pref_key_delay" translatable="false">delays_string</string>
     <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
+    <string name="pref_key_use_native" translatable="false">use_native</string>
     <string name="pref_key_hide_app" translatable="false">hide_app</string>
     <string name="pref_key_file_format" translatable="false">file_format</string>
     <string name="pref_key_broadcast_secret" translatable="false">broadcast_secret</string>

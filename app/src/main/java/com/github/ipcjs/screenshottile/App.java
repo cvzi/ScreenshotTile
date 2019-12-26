@@ -12,9 +12,11 @@ import android.os.Looper;
 import android.os.StrictMode;
 import android.service.quicksettings.TileService;
 import android.util.Log;
+
 import androidx.preference.PreferenceManager;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static com.github.ipcjs.screenshottile.UtilsKt.tryNativeScreenshot;
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -195,7 +197,7 @@ public class App extends Application {
         if (prefManager.getShowCountDown()) {
             screenshotShowCountdown(context);
         } else {
-            screenshotHiddenCountdown(context, false);
+            screenshotHiddenCountdown(context, false, false);
         }
     }
 
@@ -234,39 +236,64 @@ public class App extends Application {
                 startActivityAndCollapseSucceeded = false;
             }
         }
+
         if (!startActivityAndCollapseSucceeded) {
             if (delay > 0) {
                 intent = DelayScreenshotActivity.Companion.newIntent(context, delay);
+                context.startActivity(intent);
             } else {
-                intent = NoDisplayActivity.newIntent(context, false);
+                if (!tryNativeScreenshot()) {
+                    intent = NoDisplayActivity.newIntent(context, false);
+                    context.startActivity(intent);
+                }
             }
-            context.startActivity(intent);
         }
     }
 
-    private void screenshotHiddenCountdown(Context context, Boolean now) {
+    private void screenshotHiddenCountdown(Context context, Boolean now, Boolean alreadyCollapsed) {
         int delay = prefManager.getDelay();
         if (now) {
             delay = 0;
         }
         if (delay > 0) {
+            boolean startActivityAndCollapseSucceeded = false;
+            if (!alreadyCollapsed && context instanceof ScreenshotTileService || ScreenshotTileService.Companion.getInstance() != null) {
+                // Open empty activity to collapse panel as soon as possible
+                ScreenshotTileService tileService = (context instanceof ScreenshotTileService) ? (ScreenshotTileService) context : ScreenshotTileService.Companion.getInstance();
+                Intent intent = NoDisplayActivity.newIntent(context, false);
+                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+                try {
+                    tileService.startActivityAndCollapse(intent);
+                    startActivityAndCollapseSucceeded = true;
+                } catch (NullPointerException e) {
+                    Log.v(TAG, "screenshotHiddenCountdown() tileService was null");
+                }
+            }
+
             handler.removeCallbacks(screenshotRunnable);
-            screenshotRunnable = new CountDownRunnable(this, delay);
+            screenshotRunnable = new CountDownRunnable(this, delay, startActivityAndCollapseSucceeded);
             handler.post(screenshotRunnable);
         } else {
             if (context instanceof ScreenshotTileService || ScreenshotTileService.Companion.getInstance() != null) {
                 ScreenshotTileService tileService = (context instanceof ScreenshotTileService) ? (ScreenshotTileService) context : ScreenshotTileService.Companion.getInstance();
                 // Open a activity to collapse notification bar, and wait for notification panel closing
-                tileService.setTakeScreenshotOnStopListening(true);
-                Intent intent = NoDisplayActivity.newIntent(context, false);
+                Intent intent;
+                if (alreadyCollapsed) {
+                    intent = NoDisplayActivity.newIntent(context, true);
+                } else {
+                    tileService.setTakeScreenshotOnStopListening(true);
+                    intent = NoDisplayActivity.newIntent(context, false);
+                }
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 tileService.startActivityAndCollapse(intent);
             } else {
-                Intent intent = NoDisplayActivity.newIntent(context, true);
-                if (!(context instanceof Activity)) {
-                    intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+                if (!tryNativeScreenshot()) {
+                    Intent intent = NoDisplayActivity.newIntent(context, true);
+                    if (!(context instanceof Activity)) {
+                        intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+                    }
+                    context.startActivity(intent);
                 }
-                context.startActivity(intent);
             }
         }
     }
@@ -277,17 +304,25 @@ public class App extends Application {
      * @param context Context
      */
     protected void takeScreenshotFromTileService(TileService context) {
-        Intent intent = NoDisplayActivity.newIntent(context, true);
-        intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
+        boolean done = tryNativeScreenshot();
+        if (!done) {
+            // Use app's screenshot function
+            Intent intent = NoDisplayActivity.newIntent(context, true);
+            intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } else if (ScreenshotTileService.Companion.getInstance() != null) {
+            ScreenshotTileService.Companion.getInstance().background();
+        }
     }
 
     private class CountDownRunnable implements Runnable {
         private final Context ctx;
         private int count;
+        private boolean alreadyCollapsed;
 
-        CountDownRunnable(Context context, int count) {
+        CountDownRunnable(Context context, int count, boolean alreadyCollapsed) {
             this.count = count;
+            this.alreadyCollapsed = alreadyCollapsed;
             ctx = context;
         }
 
@@ -296,7 +331,7 @@ public class App extends Application {
 
             count--;
             if (count < 0) {
-                screenshotHiddenCountdown(ctx, true);
+                screenshotHiddenCountdown(ctx, true, alreadyCollapsed);
             } else {
                 handler.postDelayed(this, 1000);
             }

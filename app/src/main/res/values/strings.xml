@@ -10,6 +10,12 @@
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
     <string name="show_count_down">Show count down</string>
+    <string name="use_native_screenshot">Use native screenshot method</string>
+    <string name="use_native_screenshot_summary">Simulate home + power button press</string>
+    <string name="use_native_screenshot_unsupported">Requires Android 9 Pie</string>
+    <string name="use_native_screenshot_unavailable">Accessibility service is disabled</string>
+    <string name="use_native_screenshot_option_default">Native method uses system\'s default</string>
+    <string name="accessibility_service_description">If this service is enabled, the app can simulate a power+home button press to take screenshots.\nOn some devices enabling this method may be more stable or faster than the default method.\n\nIf you enable the service here, you also need to enable the "native method" in the app settings.</string>
     <string name="setting_broadcast_secret">Broadcast intent password</string>
     <string name="setting_broadcast_secret_description">A secret phrase to allow other applications (like MacroDroid or Tasker) to initiate screenshots</string>
     <string name="notification_settings">Notifications</string>
