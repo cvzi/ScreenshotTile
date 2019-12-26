@@ -52,6 +52,17 @@ public class NoDisplayActivity extends Activity {
                 screenshot(this, true);
             } else if (intent.getBooleanExtra(EXTRA_SCREENSHOT, false) || (action != null && action.equals(EXTRA_SCREENSHOT))) {
                 Log.v(TAG, ".onCreate() EXTRA_SCREENSHOT=true");
+
+                // make sure that a foreground service runs
+                ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
+                if (ScreenshotTileService.Companion.getInstance() == null) {
+                    screenshotTileService = new ScreenshotTileService();
+                    screenshotTileService.attachBaseContext(this);
+                }
+                if (screenshotTileService != null) {
+                    screenshotTileService.foreground();
+                }
+
                 screenshot(this, false);
             } else {
                 Log.v(TAG, "onCreate() EXTRA_SCREENSHOT=false");
