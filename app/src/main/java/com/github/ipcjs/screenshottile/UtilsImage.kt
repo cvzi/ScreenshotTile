@@ -24,12 +24,13 @@ const val UTILSIMAGEKT = "UtilsImage.kt"
  * Copy rectangle of image content to new bitmap or complete image if rect is null.
  */
 fun imageToBitmap(image: Image, rect: Rect? = null): Bitmap {
-    val offset = (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
+    val offset =
+        (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
     val w = image.width + offset
     val h = image.height
     val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
     bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
-    return if (rect == null ) {
+    return if (rect == null) {
         Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
     } else {
         Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
@@ -60,7 +61,8 @@ fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
  */
 fun resizeToBigPicture(bitmap: Bitmap): Bitmap {
     return if (bitmap.height > TakeScreenshotActivity.NOTIFICATION_BIG_PICTURE_MAX_HEIGHT) {
-        val offsetY = (bitmap.height - TakeScreenshotActivity.NOTIFICATION_BIG_PICTURE_MAX_HEIGHT) / 2
+        val offsetY =
+            (bitmap.height - TakeScreenshotActivity.NOTIFICATION_BIG_PICTURE_MAX_HEIGHT) / 2
         Bitmap.createBitmap(
             bitmap, 0, offsetY, bitmap.width,
             TakeScreenshotActivity.NOTIFICATION_BIG_PICTURE_MAX_HEIGHT
@@ -108,10 +110,13 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
     }
 
     uri.normalizeScheme()
-    when(uri.scheme) {
+    when (uri.scheme) {
         "content" -> { // Android Q+
             val deletedRows = context.contentResolver.delete(uri, null, null)
-            Log.v(UTILSIMAGEKT, "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)")
+            Log.v(
+                UTILSIMAGEKT,
+                "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"
+            )
             return deletedRows > 0
         }
 
@@ -141,12 +146,24 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
                 @Suppress("DEPRECATION")
                 val selection = MediaStore.Images.Media.DATA + " = ?"
                 val queryArgs = arrayOf(file.absolutePath)
-                context.contentResolver.query(externalContentUri, projection, selection, queryArgs, null)?.apply {
+                context.contentResolver.query(
+                    externalContentUri,
+                    projection,
+                    selection,
+                    queryArgs,
+                    null
+                )?.apply {
                     if (moveToFirst()) {
                         val id = getLong(getColumnIndexOrThrow(MediaStore.Images.Media._ID))
-                        val contentUri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+                        val contentUri = ContentUris.withAppendedId(
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                            id
+                        )
                         context.contentResolver.delete(contentUri, null, null)
-                        Log.v(UTILSIMAGEKT, "deleteImage() File deleted from MediaStore: $contentUri")
+                        Log.v(
+                            UTILSIMAGEKT,
+                            "deleteImage() File deleted from MediaStore: $contentUri"
+                        )
                     }
                     close()
                 }

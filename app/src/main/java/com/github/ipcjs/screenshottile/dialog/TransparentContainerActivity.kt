@@ -48,13 +48,13 @@ open class TransparentContainerActivity : FragmentActivity() {
                     fragment.arguments = this
                 }
                 fragment as Fragment
-            } catch (e: Throwable ) {
+            } catch (e: Throwable) {
                 null
             }
 
             if (fragment is DialogFragment) {
                 fragment.show(supportFragmentManager, fragmentClass)
-            } else if(fragment != null) {
+            } else if (fragment != null) {
                 supportFragmentManager.beginTransaction()
                     .add(android.R.id.content, fragment, fragmentClass)
                     .commit()

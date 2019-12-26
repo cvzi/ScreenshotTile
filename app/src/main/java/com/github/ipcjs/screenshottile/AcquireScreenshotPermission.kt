@@ -70,7 +70,10 @@ class AcquireScreenshotPermission : Activity() {
                 }
             } else {
                 setScreenshotPermission(null)
-                Log.w(TAG, "onActivityResult() No screen capture permission: resultCode==$resultCode")
+                Log.w(
+                    TAG,
+                    "onActivityResult() No screen capture permission: resultCode==$resultCode"
+                )
                 Toast.makeText(
                     this,
                     getString(R.string.permission_missing_screen_capture), Toast.LENGTH_LONG
@@ -83,16 +86,26 @@ class AcquireScreenshotPermission : Activity() {
     /**
      * Storage permission result.
      */
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (WRITE_REQUEST_CODE == requestCode) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG, "onRequestPermissionsResult() WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED")
+                Log.v(
+                    TAG,
+                    "onRequestPermissionsResult() WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED"
+                )
                 if (askedForStoragePermission) {
                     App.getInstance().screenshot(this)
                 }
             } else {
-                Log.w(TAG, "onRequestPermissionsResult() Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE")
+                Log.w(
+                    TAG,
+                    "onRequestPermissionsResult() Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE"
+                )
                 Toast.makeText(
                     this,
                     getString(R.string.permission_missing_external_storage), Toast.LENGTH_LONG

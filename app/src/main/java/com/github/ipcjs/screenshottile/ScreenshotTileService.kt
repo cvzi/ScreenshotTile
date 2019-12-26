@@ -84,8 +84,8 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         Log.v(TAG, "onClick()")
 
         foreground()
-
         setState(Tile.STATE_ACTIVE)
+
         App.getInstance().screenshot(this)
     }
 

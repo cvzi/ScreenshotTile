@@ -31,7 +31,8 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
 
         val channelName = context.getString(R.string.notification_channel_description)
         val notificationTitle = context.getString(R.string.notification_title)
-        val channelDescription = context.getString(R.string.notification_channel_description) + "\n'$notificationTitle'"
+        val channelDescription =
+            context.getString(R.string.notification_channel_description) + "\n'$notificationTitle'"
 
         context.applicationContext.getSystemService(NotificationManager::class.java)?.run {
             if (getNotificationChannel(TakeScreenshotActivity.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN) == null) {
@@ -88,7 +89,8 @@ fun createNotificationForegroundServiceChannel(context: Context): String {
  */
 fun notificationScreenshotTakenChannelEnabled(context: Context): Boolean {
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager?
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager?
         val notificationChannel =
             notificationManager?.getNotificationChannel(TakeScreenshotActivity.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN)
         if (notificationChannel == null) {
@@ -105,7 +107,13 @@ fun notificationScreenshotTakenChannelEnabled(context: Context): Boolean {
 /**
  * Show a notification that opens the image file on tap.
  */
-fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensity: Int, mimeType: String) {
+fun createNotification(
+    context: Context,
+    path: Uri,
+    bitmap: Bitmap,
+    screenDensity: Int,
+    mimeType: String
+) {
     val appContext = context.applicationContext
 
     val bigPicture = resizeToBigPicture(bitmap)
@@ -116,7 +124,8 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensit
         (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
 
     val openImageIntent = openImageIntent(path, mimeType)
-    val contentPendingIntent = PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent, 0)
+    val contentPendingIntent =
+        PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent, 0)
 
     // Create notification
     val builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -137,7 +146,10 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensit
         if (openImageIntent.resolveActivity(context.applicationContext.packageManager) != null) {
             setContentIntent(contentPendingIntent)
         } else {
-            Log.e(UTILSNOTIKT, "createNotification() resolveActivity(openImageIntent) returned null")
+            Log.e(
+                UTILSNOTIKT,
+                "createNotification() resolveActivity(openImageIntent) returned null"
+            )
         }
     }
 
@@ -156,7 +168,11 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensit
         ).build()
     )
 
-    if (editImageIntent(path, mimeType).resolveActivity(context.applicationContext.packageManager) != null) {
+    if (editImageIntent(
+            path,
+            mimeType
+        ).resolveActivity(context.applicationContext.packageManager) != null
+    ) {
         val editIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_EDIT)
         val pendingIntentEdit = PendingIntent.getBroadcast(appContext, uniqueId + 4, editIntent, 0)
         builder.addAction(
@@ -193,7 +209,12 @@ fun createNotification(context: Context, path: Uri, bitmap: Bitmap, screenDensit
 /**
  * Intent for notification action button.
  */
-fun actionButtonIntent(path: Uri, mimeType: String, notificationId: Int, intentAction: String): Intent {
+fun actionButtonIntent(
+    path: Uri,
+    mimeType: String,
+    notificationId: Int,
+    intentAction: String
+): Intent {
     return Intent().apply {
         action = intentAction
         putExtra(NOTIFICATION_ACTION_DATA_URI, path.toString())
@@ -210,7 +231,10 @@ fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Inte
         type = mimeType
         putExtra(Intent.EXTRA_STREAM, path)
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_share))
+        return Intent.createChooser(
+            this,
+            context.getString(R.string.notification_app_chooser_share)
+        )
     }
 }
 
