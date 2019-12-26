@@ -36,7 +36,8 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
-                    val mimeType = intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE) ?: "image/png"
+                    val mimeType =
+                        intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE) ?: "image/png"
 
                     val shareIntent = shareImageChooserIntent(this, path, mimeType)
                     shareIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
@@ -57,9 +58,17 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
 
                     if (path != null && deleteImage(this, path)) {
-                        Toast.makeText(this, context.getString(R.string.screenshot_deleted), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            context.getString(R.string.screenshot_deleted),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     } else {
-                        Toast.makeText(this, context.getString(R.string.screenshot_delete_failed), Toast.LENGTH_LONG)
+                        Toast.makeText(
+                            this,
+                            context.getString(R.string.screenshot_delete_failed),
+                            Toast.LENGTH_LONG
+                        )
                             .show()
                     }
                 }
@@ -67,7 +76,8 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
-                    val mimeType = intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE) ?: "image/png"
+                    val mimeType =
+                        intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE) ?: "image/png"
 
                     val shareIntent = editImageChooserIntent(this, path, mimeType)
                     shareIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
