@@ -1,0 +1,3 @@
+Android Pie/9+: 
+Simulate Home+Power button press. The app can now use the native screenshot method of the Android system to take screenshots. 
+Go to settings and enable "Use native screenshot" and then activate the accessibility service.
