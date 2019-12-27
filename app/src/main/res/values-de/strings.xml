@@ -35,6 +35,13 @@
     <string name="toggle_app_icon_failed">Fehler beim Zeigen/Verstecken des App Icons</string>
     <string name="hide_app_from_launcher">Verstecke App icon vom App Drawer</string>
     <string name="take_screenshot">Screenshot aufnehmen</string>
+    <string name="notification_settings">Benachrichtigungen</string>
+    <string name="notification_settings_off">Deaktiviert</string>
+    <string name="notification_settings_on">Aktiviert</string>
+    <string name="setting_broadcast_secret">Passwort für Broadcast intents</string>
+    <string name="setting_broadcast_secret_description">Mit dem Passwort können andere Apps (z.B.  MacroDroid oder Tasker) automatisch Screenshots erstellen</string>
+    <string name="partial_screenshot">Bereich auswählen</string>
+    <string name="use_native_screenshot_unsupported">Benötigt Android 9 Pie</string>
 
     <!-- About -->
     <string name="about_app_title">Info</string>
@@ -43,10 +50,4 @@
     <string name="about_app_3">Für mehr informationen und Fehlerberichte, besuche bitte\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Lizenz</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="notification_settings">Benachrichtigungen</string>
-    <string name="notification_settings_off">Deaktiviert</string>
-    <string name="notification_settings_on">Aktiviert</string>
-    <string name="setting_broadcast_secret">Passwort für Broadcast intents</string>
-    <string name="setting_broadcast_secret_description">Mit dem Passwort können andere Apps (z.B.  MacroDroid oder Tasker) automatisch Screenshots erstellen</string>
-    <string name="partial_screenshot">Bereich auswählen</string>
 </resources>
