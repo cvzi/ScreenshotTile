@@ -92,6 +92,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         super.onResume()
 
         updateNotificationSummary()
+        updateUseNative()
     }
 
     private fun makeLink(name: Int, link: Int) {

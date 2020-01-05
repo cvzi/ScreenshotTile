@@ -71,6 +71,7 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
+        App.stopMediaProjection()
         activity?.finish()
     }
 }

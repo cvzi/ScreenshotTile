@@ -55,10 +55,6 @@ public class NoDisplayActivity extends Activity {
 
                 // make sure that a foreground service runs
                 ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
-                if (ScreenshotTileService.Companion.getInstance() == null) {
-                    screenshotTileService = new ScreenshotTileService();
-                    screenshotTileService.attachBaseContext(this);
-                }
                 if (screenshotTileService != null) {
                     screenshotTileService.foreground();
                 }
