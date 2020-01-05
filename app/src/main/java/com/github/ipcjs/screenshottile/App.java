@@ -48,7 +48,11 @@ public class App extends Application {
     public static void setMediaProjectionManager(MediaProjectionManager mediaProjectionManager) {
         App.mediaProjectionManager = mediaProjectionManager;
     }
-
+    public static void stopMediaProjection() {
+        if (mediaProjection != null) {
+            mediaProjection.stop();
+        }
+    }
     protected static void registerNotificationReceiver() {
         if (receiverRegistered) {
             return;
@@ -285,7 +289,11 @@ public class App extends Application {
                     intent = NoDisplayActivity.newIntent(context, false);
                 }
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-                tileService.startActivityAndCollapse(intent);
+                try {
+                    tileService.startActivityAndCollapse(intent);
+                } catch (NullPointerException e) {
+                    context.startActivity(intent);
+                }
             } else {
                 if (!tryNativeScreenshot()) {
                     Intent intent = NoDisplayActivity.newIntent(context, true);
