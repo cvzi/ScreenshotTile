@@ -1,0 +1,1 @@
+Several bugfixes, updated Chinese translations (thanks to linsui)

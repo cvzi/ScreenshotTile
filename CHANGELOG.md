@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.7.1
+*   Updated Chinese translations. Thanks to [@linsui](https://github.com/linsui)
+*   Several bugfixes
 ## 1.7.0
 *   Simulate Home+Power button press to use native/system screenshot function. Requires enabled accessibility service and Android Pie/9+
 ## 1.6.5
