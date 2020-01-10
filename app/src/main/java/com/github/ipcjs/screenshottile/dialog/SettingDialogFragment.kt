@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.fragment.app.DialogFragment
 import com.github.ipcjs.screenshottile.App
 import com.github.ipcjs.screenshottile.R
+import com.github.ipcjs.screenshottile.ScreenshotTileService
 
 /**
  * Settings dialog appears on long press on the screenshot tile.
@@ -72,6 +73,7 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
         App.stopMediaProjection()
+        ScreenshotTileService.instance?.background()
         activity?.finish()
     }
 }
