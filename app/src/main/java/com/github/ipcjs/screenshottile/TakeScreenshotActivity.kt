@@ -351,6 +351,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
     private fun stopScreenSharing() {
         screenSharing = false
+        mediaProjection?.stop()
         virtualDisplay?.release()
     }
 
