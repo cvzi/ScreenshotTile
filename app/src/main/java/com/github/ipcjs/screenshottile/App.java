@@ -48,11 +48,13 @@ public class App extends Application {
     public static void setMediaProjectionManager(MediaProjectionManager mediaProjectionManager) {
         App.mediaProjectionManager = mediaProjectionManager;
     }
+
     public static void stopMediaProjection() {
         if (mediaProjection != null) {
             mediaProjection.stop();
         }
     }
+
     protected static void registerNotificationReceiver() {
         if (receiverRegistered) {
             return;
