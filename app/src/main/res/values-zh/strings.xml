@@ -18,6 +18,8 @@
     <string name="accessibility_service_description">如果启用此服务，应用可以模拟电源 + home 键按压截取屏幕截图\n在一些设备上此方式可能比默认方式更加稳定快速。\n\n如果你启用此服务，你还需要在应用设置中启用“原生方式”。</string>
     <string name="setting_broadcast_secret">广播消息密码</string>
     <string name="setting_broadcast_secret_description">允许其他应用 (如 MacroDroid 或 Tasker) 启动屏幕截图的秘密短语</string>
+    <string name="setting_storage_directory">保存位置</string>
+    <string name="setting_storage_directory_description">用来保存文件的文件夹</string>
     <string name="notification_settings">通知</string>
     <string name="notification_settings_on">已启用</string>
     <string name="notification_settings_off">已禁用</string>

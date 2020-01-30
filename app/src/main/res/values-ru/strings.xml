@@ -25,4 +25,6 @@
     <string name="notification_settings_off">Откл</string>
     <string name="notification_settings_on">Вкл</string>
     <string name="partial_screenshot">Обрезка</string>
+    <string name="setting_storage_directory">Папка сохранения</string>
+    <string name="setting_storage_directory_description">папки для сохранения фото</string>
 </resources>

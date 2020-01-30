@@ -7,14 +7,19 @@
     <string name="screenshot_failed">No se ha podido guardar la captura de pantalla</string>
     <string name="tile_label">Captura de pantalla</string>
     <string name="more_setting">Mas ajustes</string>
+    <string name="partial_screenshot">Seleccionar rectángulo</string>
     <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
     <string name="notification_channel_description">Monstrar notificationes de capturas de pantalla</string>
     <string name="file_description">Captura de pantalla creado %1$s</string>
     <string name="screenshot_file_saved">Captura de pantalla guardada %1$s</string>
+    <string name="file_format">Formato de archivo</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
     <string name="setting_delay_entry_default">Instantáneo</string>
+    <string name="setting_broadcast_secret">Contraseña de Broadcast intent</string>
+    <string name="setting_storage_directory">Carpeta de almacenamiento</string>
+    <string name="setting_storage_directory_description">Carpeta para guardar screenshots</string>
     <string name="title_delay">Retraso</string>
     <string name="show_count_down">Monstrar count down</string>
     <string name="permission_missing_external_storage">Error al obtener permiso para almacenamiento</string>
@@ -23,6 +28,12 @@
     <string name="notification_delete_screenshot">Eliminar</string>
     <string name="notification_edit_screenshot">Editar</string>
     <string name="notification_app_chooser_edit">Editar imagen con…</string>
+    <string name="notification_foreground_title">Tomando la captura de pantalla…</string>
+    <string name="notification_foreground_body">Procesando la captura de pantalla… Toque para cancelar</string>
+    <string name="notification_foreground_channel_description">Muestra una notificación cuando estás tomando una captura de pantalla. Evita que la optimización de la batería finalice la aplicación mientras se está realizando una captura de pantalla</string>
+    <string name="notification_settings_on">Activado</string>
+    <string name="notification_settings">Notificaciones</string>
+    <string name="notification_settings_off">Desactivado</string>
     <string name="screenshot_delete_failed">No se pudo eliminar la imagen</string>
     <string name="screenshot_deleted">Imagen borrada</string>
     <string name="notification_app_chooser_share">Compartir imagen con…</string>
@@ -39,13 +50,4 @@
     <string name="about_app_3">Para obtener más información e informes de errores, visite:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Licencia</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="file_format">Formato de archivo</string>
-    <string name="notification_settings_on">Activado</string>
-    <string name="notification_settings">Notificaciones</string>
-    <string name="notification_settings_off">Desactivado</string>
-    <string name="partial_screenshot">Seleccionar rectángulo</string>
-    <string name="notification_foreground_title">Tomando la captura de pantalla…</string>
-    <string name="notification_foreground_body">Procesando la captura de pantalla… Toque para cancelar</string>
-    <string name="notification_foreground_channel_description">Muestra una notificación cuando estás tomando una captura de pantalla. Evita que la optimización de la batería finalice la aplicación mientras se está realizando una captura de pantalla</string>
-    <string name="setting_broadcast_secret">Contraseña de Broadcast intent</string>
 </resources>

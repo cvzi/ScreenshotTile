@@ -40,6 +40,8 @@
     <string name="notification_settings_on">Aktiviert</string>
     <string name="setting_broadcast_secret">Passwort für Broadcast intents</string>
     <string name="setting_broadcast_secret_description">Mit dem Passwort können andere Apps (z.B.  MacroDroid oder Tasker) automatisch Screenshots erstellen</string>
+    <string name="setting_storage_directory">Speicherort</string>
+    <string name="setting_storage_directory_description">Ordner, wo Screenshots gespeichert werden</string>
     <string name="partial_screenshot">Bereich auswählen</string>
     <string name="use_native_screenshot_unsupported">Benötigt Android 9 Pie</string>
     <string name="accessibility_service_description">Wenn dieser Service aktiviert ist, kann die App einen Tastendruck von Power und Home button simulieren um Screenshots mit der Android Systemfunktion aufzunehmen.\nAuf manchen Geräten kann diese Methode schneller oder stabiler sein.\n\nWenn du den Service hier aktivierst musst du in der Appeinstellungen auch noch den nativen Modus aktivieren.</string>

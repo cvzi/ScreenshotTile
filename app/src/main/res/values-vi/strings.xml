@@ -23,4 +23,6 @@
     <string name="notification_settings_off">Tắt</string>
     <string name="notification_settings_on">Bật</string>
     <string name="more_setting">Cài đặt</string>
+    <string name="setting_storage_directory">Vị trí lưu</string>
+    <string name="setting_storage_directory_description">Thư mục lưu tệp tin</string>
 </resources>

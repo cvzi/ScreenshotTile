@@ -3,6 +3,7 @@
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Zrzut ekranu</string>
     <string name="more_setting">Ustawienia</string>
+    <string name="partial_screenshot">Wybierz prostokąt</string>
     <string name="show_count_down">Pokaż odliczanie</string>
     <string name="notification_settings">Powiadomienia</string>
     <string name="notification_settings_on">Włączony</string>
@@ -15,6 +16,8 @@
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
+    <string name="setting_storage_directory">Lokalizacja zapisu</string>
+    <string name="setting_storage_directory_description">Folder do którego będą zapisywane pliki</string>
     <string name="notification_channel_description">Pokazuje powiadomienia, kiedy zostanie zrobiony zrzut ekranu.</string>
     <string name="notification_title">Wykonano zrzut ekranu</string>
     <string name="notification_body">Dotknij, aby wyświetlić zrzut ekranu</string>
@@ -23,6 +26,8 @@
     <string name="notification_share_screenshot">Udostępnij</string>
     <string name="notification_app_chooser_share">Udostępnij przez…</string>
     <string name="notification_app_chooser_edit">Edytuj w aplikacji…</string>
+    <string name="notification_foreground_title">Zapisywanie zrzutu ekranu…</string>
+    <string name="notification_foreground_body">Zapisywanie zrzutu ekranu… Stuknij aby anulować</string>
     <string name="file_title">Zrzut ekranu</string>
     <string name="file_description">Zrzut ekranu z %1$s</string>
     <string name="file_description_simple_date_format">yyyy-MM-dd HH:mm:ss</string>
@@ -40,7 +45,4 @@
     <string name="about_app_title">O app</string>
     <string name="about_license_title">Licencja</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="notification_foreground_title">Zapisywanie zrzutu ekranu…</string>
-    <string name="notification_foreground_body">Zapisywanie zrzutu ekranu… Stuknij aby anulować</string>
-    <string name="partial_screenshot">Wybierz prostokąt</string>
 </resources>

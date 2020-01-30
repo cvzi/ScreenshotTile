@@ -26,4 +26,6 @@
     <string name="notification_foreground_title">Salvando captura de tela…</string>
     <string name="notification_foreground_body">Processando captura de tela… Toque para cancelar</string>
     <string name="more_setting">Ajustes</string>
+    <string name="setting_storage_directory">Local de armazenamento</string>
+    <string name="setting_storage_directory_description">Pasta para guardar os ficheiros</string>
 </resources>
