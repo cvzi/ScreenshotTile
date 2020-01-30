@@ -1,0 +1,1 @@
+Adde custom storage location. In the settings you can select a folder to store the image files

@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.8.0
+*   Added support for a custom storage location
 ## 1.7.1
 *   Updated Chinese translations. Thanks to [@linsui](https://github.com/linsui)
 *   Several bugfixes
