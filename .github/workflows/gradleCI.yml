@@ -1,0 +1,20 @@
+name: gradleCI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Add exec permission
+      run: chmod +x gradlew
+    - name: Build
+      run: ./gradlew build
+
