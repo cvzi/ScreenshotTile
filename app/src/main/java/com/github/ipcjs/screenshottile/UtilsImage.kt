@@ -9,6 +9,7 @@ import android.media.Image
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
+import androidx.documentfile.provider.DocumentFile
 import java.io.File
 import java.util.*
 import kotlin.math.max
@@ -112,7 +113,18 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
     uri.normalizeScheme()
     when (uri.scheme) {
         "content" -> { // Android Q+
-            val deletedRows = context.contentResolver.delete(uri, null, null)
+            val deletedRows = try {
+                context.contentResolver.delete(uri, null, null)
+            } catch (e: UnsupportedOperationException) {
+                // Try to delete DocumentFile in custom directory
+                if (App.getInstance().prefManager.screenshotDirectory != null) {
+                    val docDir = DocumentFile.fromSingleUri(context, uri)
+                    if (docDir != null) {
+                        return docDir.delete()
+                    }
+                }
+                0
+            }
             Log.v(
                 UTILSIMAGEKT,
                 "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"

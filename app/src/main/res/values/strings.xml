@@ -18,6 +18,8 @@
     <string name="accessibility_service_description">If this service is enabled, the app can simulate a power+home button press to take screenshots.\nOn some devices enabling this method may be more stable or faster than the default method.\n\nIf you enable the service here, you also need to enable the "native method" in the app settings.</string>
     <string name="setting_broadcast_secret">Broadcast intent password</string>
     <string name="setting_broadcast_secret_description">A secret phrase to allow other applications (like MacroDroid or Tasker) to initiate screenshots</string>
+    <string name="setting_storage_directory">Save location</string>
+    <string name="setting_storage_directory_description">Folder to save screenshots in</string>
     <string name="notification_settings">Notifications</string>
     <string name="notification_settings_on">Enabled</string>
     <string name="notification_settings_off">Disabled</string>

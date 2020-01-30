@@ -2,11 +2,14 @@ package com.github.ipcjs.screenshottile.dialog
 
 import android.content.ComponentName
 import android.content.Intent
+import android.content.Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
+import android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.DocumentsContract
 import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
@@ -25,12 +28,14 @@ import com.github.ipcjs.screenshottile.*
 class SettingFragment : PreferenceFragmentCompat() {
     companion object {
         private const val TAG = "SettingFragment.kt"
+        private const val DIRECTORY_CHOOSER_REQUEST_CODE = 8912
     }
 
     private var notificationPref: Preference? = null
     private var delayPref: ListPreference? = null
     private var fileFormatPref: ListPreference? = null
     private var useNativePref: SwitchPreference? = null
+    private var storageDirectoryPref: Preference? = null
     private lateinit var pref: SharedPreferences
     private val prefManager = App.getInstance().prefManager
 
@@ -54,12 +59,14 @@ class SettingFragment : PreferenceFragmentCompat() {
         delayPref = findPreference(getString(R.string.pref_key_delay)) as ListPreference?
         fileFormatPref = findPreference(getString(R.string.pref_key_file_format)) as ListPreference?
         useNativePref = findPreference(getString(R.string.pref_key_use_native)) as SwitchPreference?
+        storageDirectoryPref = findPreference(getString(R.string.pref_key_storage_directory))
 
         pref.registerOnSharedPreferenceChangeListener(prefListener)
         delayPref?.run { updateDelaySummary(value) }
         fileFormatPref?.run { updateFileFormatSummary(value) }
         updateNotificationSummary()
         updateUseNative()
+        updateStorageDirectory()
 
 
         makeLink(
@@ -85,6 +92,7 @@ class SettingFragment : PreferenceFragmentCompat() {
 
         makeNotificationSettingsLink()
         makeAccessibilitySettingsLink()
+        makeStorageDirectoryLink()
     }
 
 
@@ -93,6 +101,7 @@ class SettingFragment : PreferenceFragmentCompat() {
 
         updateNotificationSummary()
         updateUseNative()
+        updateStorageDirectory()
     }
 
     private fun makeLink(name: Int, link: Int) {
@@ -141,6 +150,29 @@ class SettingFragment : PreferenceFragmentCompat() {
                         if (resolveActivity(myActivity.packageManager) != null) {
                             startActivity(this)
                         }
+                    }
+                }
+            }
+            true
+        }
+    }
+
+    private fun makeStorageDirectoryLink() {
+        storageDirectoryPref?.setOnPreferenceClickListener {
+            val myActivity = activity
+            val currentDir = prefManager.screenshotDirectory
+            myActivity?.let {
+                Intent(Intent.ACTION_OPEN_DOCUMENT_TREE).apply {
+                    addFlags(FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
+                    addFlags(FLAG_GRANT_WRITE_URI_PERMISSION)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !currentDir.isNullOrEmpty()) {
+                        putExtra(DocumentsContract.EXTRA_INITIAL_URI, Uri.parse(currentDir))
+                    }
+                    if (resolveActivity(myActivity.packageManager) != null) {
+                        startActivityForResult(
+                            Intent.createChooser(this, "Choose directory"),
+                            DIRECTORY_CHOOSER_REQUEST_CODE
+                        );
                     }
                 }
             }
@@ -211,18 +243,50 @@ class SettingFragment : PreferenceFragmentCompat() {
                     if (ScreenshotAccessibilityService.instance == null) {
                         summary = getString(R.string.use_native_screenshot_unavailable)
                     } else {
+                        prefManager.screenshotDirectory = null  // Reset screenshot directory
                         summary = getString(R.string.use_native_screenshot_summary)
                         fileFormatPref?.isEnabled = false
                         fileFormatPref?.summary =
                             getString(R.string.use_native_screenshot_option_default)
                     }
                     updateNotificationSummary()
+                    updateStorageDirectory()
                 }
                 else -> {
                     summary = getString(R.string.use_native_screenshot_summary)
                     fileFormatPref?.isEnabled = true
                     updateFileFormatSummary(prefManager.fileFormat)
                     updateNotificationSummary()
+                    updateStorageDirectory()
+                }
+            }
+        }
+    }
+
+    private fun updateStorageDirectory() {
+        storageDirectoryPref?.run {
+            summary =
+                if (prefManager.useNative && ScreenshotAccessibilityService.instance != null) {
+                    getString(R.string.use_native_screenshot_option_default)
+                } else if (prefManager.screenshotDirectory != null) {
+                    nicePathFromUri(prefManager.screenshotDirectory)
+                } else {
+                    getString(R.string.setting_storage_directory_description)
+                }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intent)
+        if (requestCode == DIRECTORY_CHOOSER_REQUEST_CODE && intent != null) {
+            val uri = intent.data
+            if (uri != null) {
+                if (activity != null && activity?.contentResolver != null) {
+                    prefManager.screenshotDirectory = uri.toString()
+                    activity?.contentResolver?.takePersistableUriPermission(
+                        uri,
+                        intent.flags and FLAG_GRANT_WRITE_URI_PERMISSION
+                    )
                 }
             }
         }

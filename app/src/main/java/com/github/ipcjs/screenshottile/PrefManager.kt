@@ -76,4 +76,27 @@ class PrefManager {
                 value
             }
         ).apply()
+
+    var screenshotDirectory: String?
+        get() {
+            val defaultValue = context.getString(R.string.setting_storage_directory_value_default)
+            val value = pref.getString(
+                context.getString(R.string.pref_key_storage_directory),
+                null
+            )
+            return if (value != defaultValue) {
+                value
+            } else {
+                null
+            }
+        }
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_storage_directory),
+            if (value == null || value.trim().isEmpty()) {
+                context.getString(R.string.setting_storage_directory_value_default)
+            } else {
+                value
+            }
+        ).apply()
+
 }

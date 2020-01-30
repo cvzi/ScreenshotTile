@@ -48,6 +48,12 @@
         android:title="@string/notification_settings" />
 
     <androidx.preference.Preference
+        android:defaultValue="@string/setting_broadcast_secret_value_default"
+        android:key="@string/pref_key_storage_directory"
+        android:summary="@string/setting_storage_directory_description"
+        android:title="@string/setting_storage_directory" />
+
+    <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_app_1"
         android:persistent="false"
         android:selectable="true"

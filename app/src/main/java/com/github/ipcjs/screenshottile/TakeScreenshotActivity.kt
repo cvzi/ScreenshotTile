@@ -299,8 +299,11 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                 // Android Q+ works with MediaStore content:// URI
                 Log.v(TAG, "onFileSaved() URI=${result.uri}")
 
-                val dummyPath =
+                var dummyPath =
                     "${Environment.DIRECTORY_PICTURES}/$SCREENSHOT_DIRECTORY/${result.fileTitle}"
+                if (result.dummyPath.isNotEmpty()) {
+                    dummyPath = result.dummyPath
+                }
                 Toast.makeText(
                     this,
                     getString(R.string.screenshot_file_saved, dummyPath), Toast.LENGTH_LONG

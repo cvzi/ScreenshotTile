@@ -10,10 +10,12 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
+import android.os.StatFs
 import android.provider.MediaStore.Images
 import android.util.Log
-
+import androidx.documentfile.provider.DocumentFile
 import java.io.*
+import java.net.URLDecoder
 import java.util.*
 
 
@@ -113,7 +115,8 @@ data class SaveImageResultSuccess(
     val mimeType: String,
     val file: File?,
     val uri: Uri? = null,
-    val fileTitle: String? = null
+    val fileTitle: String? = null,
+    val dummyPath: String = ""
 ) : SaveImageResult("", true) {
     override fun toString(): String = "SaveImageResultSuccess($file)"
 }
@@ -138,7 +141,8 @@ data class OutputStreamResultSuccess(
     val fileOutputStream: OutputStream,
     val imageFile: File?,
     val uri: Uri? = null,
-    val contentValues: ContentValues? = null
+    val contentValues: ContentValues? = null,
+    val dummyPath: String = ""
 ) : OutputStreamResult("", true) {
     override fun toString(): String = "OutputStreamResultSuccess()"
 }
@@ -153,7 +157,7 @@ fun createOutputStream(
     date: Date
 ): OutputStreamResult {
     return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-        createOutputStreamLegacy(context, fileTitle, compressionOptions)
+        createOutputStreamLegacy(context, fileTitle, compressionOptions, date)
     } else {
         createOutputStreamMediaStore(context, fileTitle, compressionOptions, date)
     }
@@ -165,12 +169,25 @@ fun createOutputStream(
 fun createOutputStreamLegacy(
     context: Context,
     fileTitle: String,
-    compressionOptions: CompressionOptions
+    compressionOptions: CompressionOptions,
+    date: Date
 ): OutputStreamResult {
 
     val filename = "$fileTitle.${compressionOptions.fileExtension}"
 
-    var imageFile = createImageFile(context, filename)
+    val customDirectory = App.getInstance().prefManager.screenshotDirectory
+
+    var imageFile: File? = null
+    if (customDirectory != null) {
+        if (customDirectory.startsWith("content://")) {
+            return createOutputStreamMediaStore(context, fileTitle, compressionOptions, date)
+        } else if (customDirectory.startsWith("file://")) {
+            imageFile = File(customDirectory.substring(7), filename)
+        }
+    }
+    if (imageFile == null || !imageFile.canWrite()) {
+        imageFile = createImageFile(context, filename)
+    }
 
     try {
         imageFile.parentFile?.mkdirs()
@@ -246,11 +263,30 @@ fun createOutputStreamMediaStore(
     compressionOptions: CompressionOptions,
     date: Date
 ): OutputStreamResult {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-        return OutputStreamResult("Dummy return")
-    }
-
     val filename = "$fileTitle.${compressionOptions.fileExtension}"
+
+    var relativePath =
+        "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}"
+    var storageUri = Images.Media.EXTERNAL_CONTENT_URI
+    var outputStream: OutputStream? = null
+    var dummyPath = ""
+
+    App.getInstance().prefManager.screenshotDirectory?.let {
+        // Use DocumentFile for custom directory
+        val customDirectoryUri = Uri.parse(it)
+        val docDir = DocumentFile.fromTreeUri(context, customDirectoryUri)
+        if (docDir != null) {
+            val createdFile = docDir.createFile(compressionOptions.mimeType, filename)
+            if (createdFile != null && createdFile.canWrite()) {
+                outputStream = context.contentResolver.openOutputStream(createdFile.uri)
+                if (outputStream != null) {
+                    storageUri = createdFile.uri
+                    relativePath = ""
+                    dummyPath = "${nicePathFromUri(docDir)}/$filename"
+                }
+            }
+        }
+    }
 
     val resolver = context.contentResolver
     val dateMilliseconds = date.time
@@ -271,20 +307,32 @@ fun createOutputStreamMediaStore(
         put(Images.ImageColumns.DATE_ADDED, dateSeconds)
         put(Images.ImageColumns.DATE_MODIFIED, dateSeconds)
         put(Images.ImageColumns.MIME_TYPE, compressionOptions.mimeType)
-        put(
-            Images.ImageColumns.RELATIVE_PATH,
-            "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}"
-        )
+        if (relativePath.isNotEmpty()) {
+            put(Images.ImageColumns.RELATIVE_PATH, relativePath)
+            dummyPath = "$relativePath/$filename"
+        }
         put(Images.ImageColumns.IS_PENDING, 1)
     }
 
-    val uri = resolver.insert(Images.Media.EXTERNAL_CONTENT_URI, contentValues)
-        ?: return OutputStreamResult("MediaStore failed to provide a file")
-    val outputStream =
+    val uri = if (outputStream == null) {
+        resolver.insert(storageUri, contentValues)
+            ?: return OutputStreamResult("MediaStore failed to provide a file")
+    } else {
+        storageUri
+    }
+
+    if (outputStream == null) {
         resolver.openOutputStream(uri)
             ?: return OutputStreamResult("Could not open output stream from MediaStore")
+    }
 
-    return OutputStreamResultSuccess(outputStream, null, uri, contentValues)
+    return OutputStreamResultSuccess(
+        outputStream ?: return OutputStreamResult("Could not open output stream from MediaStore"),
+        null,
+        uri,
+        contentValues,
+        dummyPath
+    )
 }
 
 /**
@@ -382,11 +430,72 @@ fun saveImageToFile(
                 result.contentValues?.run {
                     this.clear()
                     this.put(Images.ImageColumns.IS_PENDING, 0)
-                    context.contentResolver.update(result.uri, this, null, null)
+                    try {
+                        context.contentResolver.update(result.uri, this, null, null)
+                    } catch (e: UnsupportedOperationException) {
+                        // This happens if the file was created with DocumentFile instead of the contentResolver
+                        addImageToGallery(
+                            context,
+                            result.uri.toString(),
+                            context.getString(R.string.file_title),
+                            context.getString(
+                                R.string.file_description,
+                                SimpleDateFormat(
+                                    context.getString(R.string.file_description_simple_date_format),
+                                    Locale.getDefault()
+                                ).format(
+                                    date
+                                )
+                            ),
+                            compressionOptions.mimeType,
+                            date
+                        )
+                    }
                 }
             }
-            SaveImageResultSuccess(bitmap, compressionOptions.mimeType, null, result.uri, filename)
+            SaveImageResultSuccess(
+                bitmap,
+                compressionOptions.mimeType,
+                null,
+                result.uri,
+                filename,
+                result.dummyPath
+            )
         }
         else -> SaveImageResult("Could not save image file, no URI")
     }
+}
+
+fun getCacheMaxFreeSpace(context: Context): File? {
+    val cacheDirs = context.externalCacheDirs
+    val maxIndex =
+        cacheDirs.indices.maxBy { index -> StatFs(cacheDirs[index].path).availableBytes } ?: -1
+    if (maxIndex == -1) {
+        return null
+    }
+    return cacheDirs[maxIndex]
+}
+
+fun nicePathFromUri(documentFile: DocumentFile): String {
+    return if (documentFile.name.isNullOrEmpty()) {
+        nicePathFromUri(documentFile.uri)
+    } else {
+        documentFile.name.toString()
+    }
+}
+
+fun nicePathFromUri(uri: Uri): String {
+    return nicePathFromUri(uri.toString())
+}
+
+fun nicePathFromUri(str: String?): String {
+    if (str == null) {
+        return "null"
+    }
+    var path = URLDecoder.decode(str.toString(), "UTF-8")
+    path = path.split("/").last()
+    if (path.startsWith("primary:")) {
+        path = path.substring(8)
+    }
+    return path
 }
