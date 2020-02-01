@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.8.1
+*   Bugfix: Edit did not work with custom storage location and Google Photos app
 ## 1.8.0
 *   Added support for a custom storage location
 ## 1.7.1
