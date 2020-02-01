@@ -11,6 +11,7 @@ import android.graphics.drawable.Icon
 import android.icu.util.Calendar
 import android.net.Uri
 import android.os.Build
+import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import androidx.core.app.NotificationManagerCompat
@@ -247,6 +248,10 @@ fun editImageIntent(path: Uri, mimeType: String): Intent {
         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+        if (path.scheme == "content") {
+            // Google Photos needs this, other apps don't need it
+            putExtra(MediaStore.EXTRA_OUTPUT, path)
+        }
     }
 }
 
