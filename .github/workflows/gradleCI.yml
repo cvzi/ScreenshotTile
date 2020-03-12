@@ -17,7 +17,5 @@ jobs:
       run: chmod +x gradlew
     - name: Add gradle.properties files
       run: echo -e "android.useAndroidX=true\n" > gradle.properties
-    - name: Accept licenses
-      run: yes | /usr/local/android-sdk/tools/bin/sdkmanager --licenses
     - name: Build
       run: ./gradlew build
