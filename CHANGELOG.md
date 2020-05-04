@@ -1,6 +1,9 @@
 # Changelog
 
 ## 1.8.1
+*   Bugfix: [sdcard error after reboot](https://github.com/cvzi/ScreenshotTile/issues/24)
+*   Remove "hide app icon" on Android Q. [It's no longer supported since Android 10+](https://github.com/cvzi/ScreenshotTile/issues/25)
+## 1.8.1
 *   Bugfix: Edit did not work with custom storage location and Google Photos app
 ## 1.8.0
 *   Added support for a custom storage location
