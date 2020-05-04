@@ -264,13 +264,11 @@ fun createOutputStreamMediaStore(
     date: Date
 ): OutputStreamResult {
     val filename = "$fileTitle.${compressionOptions.fileExtension}"
-
     var relativePath =
         "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}"
     var storageUri = Images.Media.EXTERNAL_CONTENT_URI
     var outputStream: OutputStream? = null
     var dummyPath = ""
-
     App.getInstance().prefManager.screenshotDirectory?.let {
         // Use DocumentFile for custom directory
         val customDirectoryUri = Uri.parse(it)
@@ -303,15 +301,18 @@ fun createOutputStreamMediaStore(
                 ).format(Date())
             )
         )
-        put(Images.ImageColumns.DATE_TAKEN, dateMilliseconds)
+
         put(Images.ImageColumns.DATE_ADDED, dateSeconds)
         put(Images.ImageColumns.DATE_MODIFIED, dateSeconds)
         put(Images.ImageColumns.MIME_TYPE, compressionOptions.mimeType)
-        if (relativePath.isNotEmpty()) {
-            put(Images.ImageColumns.RELATIVE_PATH, relativePath)
-            dummyPath = "$relativePath/$filename"
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            put(Images.ImageColumns.DATE_TAKEN, dateMilliseconds)
+            if (relativePath.isNotEmpty()) {
+                put(Images.ImageColumns.RELATIVE_PATH, relativePath)
+                dummyPath = "$relativePath/$filename"
+            }
+            put(Images.ImageColumns.IS_PENDING, 1)
         }
-        put(Images.ImageColumns.IS_PENDING, 1)
     }
 
     val uri = if (outputStream == null) {
@@ -320,14 +321,12 @@ fun createOutputStreamMediaStore(
     } else {
         storageUri
     }
-
     if (outputStream == null) {
-        resolver.openOutputStream(uri)
+        outputStream = resolver.openOutputStream(uri)
             ?: return OutputStreamResult("Could not open output stream from MediaStore")
     }
-
     return OutputStreamResultSuccess(
-        outputStream ?: return OutputStreamResult("Could not open output stream from MediaStore"),
+        outputStream ?: return OutputStreamResult("MediaStore output stream is null"),
         null,
         uri,
         contentValues,
