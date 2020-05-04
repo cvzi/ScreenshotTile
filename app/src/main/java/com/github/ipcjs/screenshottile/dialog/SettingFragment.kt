@@ -34,6 +34,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var delayPref: ListPreference? = null
     private var fileFormatPref: ListPreference? = null
     private var useNativePref: SwitchPreference? = null
+    private var hideAppPref: SwitchPreference? = null
     private var storageDirectoryPref: Preference? = null
     private lateinit var pref: SharedPreferences
     private val prefManager = App.getInstance().prefManager
@@ -42,7 +43,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         SharedPreferences.OnSharedPreferenceChangeListener { _: SharedPreferences?, key: String? ->
             when (key) {
                 getString(R.string.pref_key_delay) -> updateDelaySummary(prefManager.delay.toString())
-                getString(R.string.pref_key_hide_app) -> updateHideApp(prefManager.hideApp)
+                getString(R.string.pref_key_hide_app) -> onHideApp(prefManager.hideApp)
                 getString(R.string.pref_key_file_format) -> updateFileFormatSummary(prefManager.fileFormat)
                 getString(R.string.pref_key_use_native) -> updateUseNative()
             }
@@ -58,6 +59,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         delayPref = findPreference(getString(R.string.pref_key_delay)) as ListPreference?
         fileFormatPref = findPreference(getString(R.string.pref_key_file_format)) as ListPreference?
         useNativePref = findPreference(getString(R.string.pref_key_use_native)) as SwitchPreference?
+        hideAppPref = findPreference(getString(R.string.pref_key_hide_app)) as SwitchPreference?
         storageDirectoryPref = findPreference(getString(R.string.pref_key_storage_directory))
 
         pref.registerOnSharedPreferenceChangeListener(prefListener)
@@ -66,6 +68,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         updateNotificationSummary()
         updateUseNative()
         updateStorageDirectory()
+        updateHideApp(true)
 
 
         makeLink(
@@ -163,6 +166,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             myActivity?.let {
                 Intent(ACTION_OPEN_DOCUMENT_TREE).apply {
                     addFlags(FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
+                    addFlags(FLAG_GRANT_READ_URI_PERMISSION)
                     addFlags(FLAG_GRANT_WRITE_URI_PERMISSION)
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !currentDir.isNullOrEmpty()) {
                         putExtra(DocumentsContract.EXTRA_INITIAL_URI, Uri.parse(currentDir))
@@ -206,7 +210,22 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
     }
 
-    private fun updateHideApp(hide: Boolean): Boolean {
+    private fun updateHideApp(hideOptionCompletely: Boolean = false) {
+        /* Do not show "hide_app_from_launcher" setting, it's no longer possible on Android 10+
+          If the icon is already hidden, show the option anyway, to restore it
+          If the icons was hidden and the user just restored it, show a hint that it is unsupported.
+        */
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && !prefManager.hideApp) {
+            hideAppPref?.apply {
+                isChecked = false
+                isEnabled = false
+                summary = getString(R.string.hide_app_unsupported)
+                isVisible = !hideOptionCompletely
+            }
+        }
+    }
+
+    private fun onHideApp(hide: Boolean): Boolean {
         val myActivity = activity
         return myActivity?.let {
             val componentName = ComponentName(myActivity, MainActivity::class.java)
@@ -216,6 +235,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     if (hide) PackageManager.COMPONENT_ENABLED_STATE_DISABLED else PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
                     PackageManager.DONT_KILL_APP
                 )
+                updateHideApp()
                 true
             } catch (e: Exception) {
                 Log.e(TAG, "setComponentEnabledSetting", e)

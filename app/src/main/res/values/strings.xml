@@ -44,6 +44,7 @@
     <string name="permission_missing_external_storage">Failed to acquire permission for storage</string>
     <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
     <string name="hide_app_from_launcher">Hide app icon from launcher</string>
+    <string name="hide_app_unsupported">Not supported on Android 10+</string>
     <string name="toggle_app_icon_failed">Failed to show/hide app icon</string>
     <string name="tutorial">Tutorial</string>
     <string name="tutorial_tap_for_next_step">Tap for next step</string>
