@@ -2,8 +2,7 @@ package com.github.ipcjs.screenshottile.dialog
 
 import android.content.ComponentName
 import android.content.Intent
-import android.content.Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
-import android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+import android.content.Intent.*
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -110,7 +109,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             val myPref = findPreference(getString(name)) as Preference?
             myPref?.isSelectable = true
             myPref?.onPreferenceClickListener = OnPreferenceClickListener {
-                Intent(Intent.ACTION_VIEW, Uri.parse(getString(link))).apply {
+                Intent(ACTION_VIEW, Uri.parse(getString(link))).apply {
                     if (resolveActivity(myActivity.packageManager) != null) {
                         startActivity(this)
                     }
@@ -162,7 +161,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             val myActivity = activity
             val currentDir = prefManager.screenshotDirectory
             myActivity?.let {
-                Intent(Intent.ACTION_OPEN_DOCUMENT_TREE).apply {
+                Intent(ACTION_OPEN_DOCUMENT_TREE).apply {
                     addFlags(FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
                     addFlags(FLAG_GRANT_WRITE_URI_PERMISSION)
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !currentDir.isNullOrEmpty()) {
@@ -170,9 +169,9 @@ class SettingFragment : PreferenceFragmentCompat() {
                     }
                     if (resolveActivity(myActivity.packageManager) != null) {
                         startActivityForResult(
-                            Intent.createChooser(this, "Choose directory"),
+                            createChooser(this, "Choose directory"),
                             DIRECTORY_CHOOSER_REQUEST_CODE
-                        );
+                        )
                     }
                 }
             }
@@ -280,13 +279,12 @@ class SettingFragment : PreferenceFragmentCompat() {
         super.onActivityResult(requestCode, resultCode, intent)
         if (requestCode == DIRECTORY_CHOOSER_REQUEST_CODE && intent != null) {
             val uri = intent.data
+            val takeFlags: Int = intent.flags and
+                    (FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION)
             if (uri != null) {
                 if (activity != null && activity?.contentResolver != null) {
                     prefManager.screenshotDirectory = uri.toString()
-                    activity?.contentResolver?.takePersistableUriPermission(
-                        uri,
-                        intent.flags and FLAG_GRANT_WRITE_URI_PERMISSION
-                    )
+                    activity?.contentResolver?.takePersistableUriPermission(uri, takeFlags)
                 }
             }
         }
