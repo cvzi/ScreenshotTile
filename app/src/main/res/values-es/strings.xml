@@ -41,6 +41,7 @@
     <string name="tutorial">Instrucciones</string>
     <string name="toggle_app_icon_failed">Error al mostrar/ocultar el icono de la aplicación</string>
     <string name="hide_app_from_launcher">Ocultar el icono de la aplicación</string>
+    <string name="hide_app_unsupported">Imposible desde Android 10+</string>
     <string name="take_screenshot">Captura de pantalla</string>
 
     <!-- About -->

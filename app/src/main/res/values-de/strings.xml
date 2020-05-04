@@ -34,6 +34,7 @@
     <string name="tutorial">Tutorial</string>
     <string name="toggle_app_icon_failed">Fehler beim Zeigen/Verstecken des App Icons</string>
     <string name="hide_app_from_launcher">Verstecke App icon vom App Drawer</string>
+    <string name="hide_app_unsupported">Nicht möglich ab Android 10+</string>
     <string name="take_screenshot">Screenshot aufnehmen</string>
     <string name="notification_settings">Benachrichtigungen</string>
     <string name="notification_settings_off">Deaktiviert</string>
