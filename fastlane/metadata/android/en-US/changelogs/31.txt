@@ -1,0 +1,2 @@
+* Fix sdcard error after reboot
+* Remove "hide app icon" on Android Q (no longer supported since Android 10+)

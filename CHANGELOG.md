@@ -1,6 +1,8 @@
 # Changelog
 
-## 1.8.1
+## 1.8.3
+*   gradle.properties: android.useAndroidX=true
+## 1.8.2
 *   Bugfix: [sdcard error after reboot](https://github.com/cvzi/ScreenshotTile/issues/24)
 *   Remove "hide app icon" on Android Q. [It's no longer supported since Android 10+](https://github.com/cvzi/ScreenshotTile/issues/25)
 ## 1.8.1
