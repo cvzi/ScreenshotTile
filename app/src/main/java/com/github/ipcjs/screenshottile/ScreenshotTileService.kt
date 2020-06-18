@@ -56,7 +56,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         setState(Tile.STATE_INACTIVE)
     }
 
-    override fun onAcquireScreenshotPermission() {
+    override fun onAcquireScreenshotPermission(isNewPermission: Boolean) {
         Log.v(TAG, "onAcquireScreenshotPermission()")
         setState(Tile.STATE_INACTIVE)
     }

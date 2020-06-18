@@ -146,19 +146,27 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
     }
 
-    override fun onAcquireScreenshotPermission() {
+    override fun onAcquireScreenshotPermission(isNewPermission: Boolean) {
         /*
         Handler().postDelayed({
             // Wait so the notification area is really collapsed
             shareScreen()
          }, 350)
         */
-        ScreenshotTileService.instance?.onAcquireScreenshotPermission()
+        ScreenshotTileService.instance?.onAcquireScreenshotPermission(isNewPermission)
 
         if (partial) {
             partialScreenshot()
         } else {
-            prepareForScreenSharing()
+            if (isNewPermission) {
+                // Wait a little bit, so the permission dialog can fully hide itself
+                // TODO Handler() is deprecated
+                Handler().postDelayed({
+                    prepareForScreenSharing()
+                }, 300)
+            } else {
+                prepareForScreenSharing()
+            }
         }
     }
 

@@ -111,7 +111,7 @@ public class App extends Application {
             mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
             Log.v(TAG, "acquireScreenshotPermission() mediaProjection=" + mediaProjection);
             if (onAcquireScreenshotPermissionListener != null) {
-                onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission();
+                onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission(false);
             }
 
         } else {
@@ -141,10 +141,10 @@ public class App extends Application {
         screenshotPermission = permissionIntent;
         if (ScreenshotTileService.Companion.getInstance() != null) {
             ScreenshotTileService.Companion.getInstance().setScreenshotPermission(screenshotPermission);
-            if (onAcquireScreenshotPermissionListener != null) {
-                onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission();
-                onAcquireScreenshotPermissionListener = null;
-            }
+        }
+        if (onAcquireScreenshotPermissionListener != null) {
+            onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission(true);
+            onAcquireScreenshotPermissionListener = null;
         }
     }
 
