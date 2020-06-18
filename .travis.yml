@@ -3,8 +3,8 @@ sudo: required
 jdk: oraclejdk8
 env:
   global:
-  - ANDROID_API_LEVEL=29
-  - ANDROID_BUILD_TOOLS_VERSION=29.0.1
+  - ANDROID_API_LEVEL=30
+  - ANDROID_BUILD_TOOLS_VERSION=30.0.0
   - ANDROID_ABI=armeabi-v7a
   - secure: G2YDTHTLZ/Em/IypX44zPoUUgYI7JgOhT7pbvQtLt6hZahdzD31EnLFa94RrU9yrMpGpSs+bAtTQRG8w9Ngtfm3UaDnkSCo/EH6jtU5FUbg6O9nkaDAVl2d8cKWENWEqQJdWafZINV7H4Jnk0FwNolO7GL0BjendETBH8RfS8WJiUYPVRFprM6Pjasa9XPgmte1i6hpsG9r5jB+0CEK6rE4b6vK5ig+MnJ3QU2UEIp5cLmR/s1MYXVxFaJCflQ/rZj72oZfbr3IbjLDoGZo4geDWN1WIy6Ut6nqv8omRHISs84UXCkGjB1Pu6sk8UlA84gL2HZE3sZ+itwRWgRepYvdOSnUxPZu8Bk9RuYCP+dMx6jOf4nGqw16rwbI5Y+YbvfAfEgS7yK2Cpzd7ulxKpEp9DmEnUedbbAhv+V3NW6FEcvGJOn5siTZFUlfgcF6sUl7UkHbhzA7tF8dqEkbhi0e2BPZ0sNytz0sCmJs/j4AgUSwYavbbTsZ9bDGeeuF8UKqv1CaM1wd796ItkNGNyFk0VwiPRaLG+Xd4MnjUFGOVXbtz1VWEfCxZkcW0LN5QciDxWkfiCpcp7SG7z0/Xq8LTpIfVQ3dabf7gtpp7wHuIL8PsVh1kGp/6kgNWXVMUQon2BUKWnjgJCWEHjfDFXbaNyuvPRsedpudYHEyq1KI=
 
@@ -26,8 +26,8 @@ android:
   - google-gdk-license-.+
 before_install:
 - touch $HOME/.android/repositories.cfg
-- yes | sdkmanager "platforms;android-29"
-- yes | sdkmanager "build-tools;29.0.1"
+- yes | sdkmanager "platforms;android-30"
+- yes | sdkmanager "build-tools;30.0.0"
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
