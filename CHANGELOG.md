@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.8.4
+*   some phones show the permission dialog in the screenshot. Added a delay to avoid it
 ## 1.8.3
 *   gradle.properties: android.useAndroidX=true
 ## 1.8.2
