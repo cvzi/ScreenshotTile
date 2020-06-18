@@ -30,7 +30,7 @@
         <item>@string/setting_file_format_entry_default</item>
         <item>@string/setting_file_format_entry_webp</item>
         <item>@string/setting_file_format_entry_webp_95</item>
-        <item>@string/setting_file_format_entry_webp_90</item>
+        <item>@string/setting_file_format_entry_webp_70</item>
         <item>@string/setting_file_format_entry_jpg_100</item>
         <item>@string/setting_file_format_entry_jpg_90</item>
         <item>@string/setting_file_format_entry_jpg_70</item>
@@ -39,7 +39,7 @@
         <item>@string/setting_file_format_value_default</item>
         <item>webp</item>
         <item>webp_95</item>
-        <item>webp_90</item>
+        <item>webp_70</item>
         <item>jpg_100</item>
         <item>jpg_90</item>
         <item>jpg_70</item>
@@ -47,7 +47,7 @@
     <string name="setting_file_format_entry_default" translatable="false">PNG</string>
     <string name="setting_file_format_entry_webp" translatable="false">WEBP (lossless)</string>
     <string name="setting_file_format_entry_webp_95" translatable="false">WEBP (95％)</string>
-    <string name="setting_file_format_entry_webp_90" translatable="false">WEBP (90％)</string>
+    <string name="setting_file_format_entry_webp_70" translatable="false">WEBP (70％)</string>
     <string name="setting_file_format_entry_jpg_100" translatable="false">JPG (100％)</string>
     <string name="setting_file_format_entry_jpg_90" translatable="false">JPG (90％)</string>
     <string name="setting_file_format_entry_jpg_70" translatable="false">JPG (70％)</string>
