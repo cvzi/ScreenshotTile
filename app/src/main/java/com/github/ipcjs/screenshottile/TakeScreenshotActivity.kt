@@ -18,7 +18,6 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Surface
 import android.view.Window
-import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID
