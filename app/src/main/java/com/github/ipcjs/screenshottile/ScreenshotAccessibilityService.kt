@@ -29,6 +29,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         return performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)
     }
 
-    override fun onAccessibilityEvent(event: AccessibilityEvent) {}
-    override fun onInterrupt() {}
+    override fun onAccessibilityEvent(event: AccessibilityEvent) {
+        // No op
+    }
+    override fun onInterrupt() {
+        // No op
+    }
 }
