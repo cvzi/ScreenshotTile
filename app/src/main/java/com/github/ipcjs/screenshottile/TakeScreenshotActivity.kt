@@ -18,6 +18,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Surface
 import android.view.Window
+import android.view.WindowInsetsController
 import android.view.WindowManager
 import android.widget.Toast
 import com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID
@@ -67,7 +68,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     private var imageReader: ImageReader? = null
     private var mediaProjection: MediaProjection? = null
     private var cutOutRect: Rect? = null
-    private var handler = SaveImageHandler(this)
+    private var handler = SaveImageHandler(this, Looper.getMainLooper())
     private var thread: Thread? = null
     private var saveImageResult: SaveImageResult? = null
     private var partial = false
@@ -85,7 +86,11 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         partial = intent?.getBooleanExtra(EXTRA_PARTIAL, false) ?: false
 
         with(DisplayMetrics()) {
-            windowManager.defaultDisplay.getRealMetrics(this)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                display?.getRealMetrics(this)
+            } else {
+                windowManager.defaultDisplay.getRealMetrics(this)
+            }
             screenDensity = densityDpi
             screenWidth = widthPixels
             screenHeight = heightPixels
@@ -160,8 +165,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         } else {
             if (isNewPermission) {
                 // Wait a little bit, so the permission dialog can fully hide itself
-                // TODO Handler() is deprecated
-                Handler().postDelayed({
+                Handler(Looper.getMainLooper()).postDelayed({
                     prepareForScreenSharing()
                 }, 300)
             } else {
@@ -271,7 +275,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     /**
      * Handle messages from/to activity/thread
      */
-    class SaveImageHandler(takeScreenshotActivity: TakeScreenshotActivity) : Handler() {
+    class SaveImageHandler(takeScreenshotActivity: TakeScreenshotActivity, looper: Looper) : Handler(looper) {
         private var activity: WeakReference<TakeScreenshotActivity> =
             WeakReference(takeScreenshotActivity)
 

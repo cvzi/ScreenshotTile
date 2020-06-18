@@ -8,6 +8,7 @@ import android.graphics.Point
 import android.graphics.Rect
 import android.media.Image
 import android.net.Uri
+import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
 import android.view.WindowManager
@@ -235,6 +236,7 @@ fun appUsableScreenSize(context: Context): Point {
     val windowManager =
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
     return Point().apply {
+        // TODO Deprecated https://developer.android.com/reference/android/view/WindowMetrics#getBounds()
         windowManager.defaultDisplay.getSize(this)
     }
 }
@@ -243,6 +245,10 @@ fun realScreenSize(context: Context): Point {
     val windowManager =
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
     return Point().apply {
-        windowManager.defaultDisplay.getRealSize(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            context.display?.getRealSize(this)
+        } else {
+            windowManager.defaultDisplay.getRealSize(this)
+        }
     }
 }

@@ -71,7 +71,18 @@ fun createImageFile(context: Context, filename: String): File {
 class CompressionOptions(var fileExtension: String = "png", val quality: Int = 100) {
     val format = when (fileExtension) {
         "jpg" -> Bitmap.CompressFormat.JPEG
-        "webp" -> Bitmap.CompressFormat.WEBP
+        "webp" -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (quality == 100) {
+                    Bitmap.CompressFormat.WEBP_LOSSLESS
+                } else {
+                    Bitmap.CompressFormat.WEBP_LOSSY
+                }
+            }
+            else {
+                Bitmap.CompressFormat.WEBP
+            }
+        }
         else -> {
             fileExtension = "png"
             Bitmap.CompressFormat.PNG
