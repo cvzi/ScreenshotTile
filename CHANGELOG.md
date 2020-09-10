@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.8.5
+*   Improvements for Android Q and 11
 ## 1.8.4
 *   some phones show the permission dialog in the screenshot. Added a delay to avoid it
 ## 1.8.3
