@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.8.6
+*   Update Kotlin
 ## 1.8.5
 *   Improvements for Android Q and 11
 ## 1.8.4
