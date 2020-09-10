@@ -78,8 +78,7 @@ class CompressionOptions(var fileExtension: String = "png", val quality: Int = 1
                 } else {
                     Bitmap.CompressFormat.WEBP_LOSSY
                 }
-            }
-            else {
+            } else {
                 Bitmap.CompressFormat.WEBP
             }
         }
@@ -478,8 +477,17 @@ fun saveImageToFile(
 
 fun getCacheMaxFreeSpace(context: Context): File? {
     val cacheDirs = context.externalCacheDirs
+    if (cacheDirs.isNullOrEmpty()) {
+        return null
+    }
     val maxIndex =
-        cacheDirs.indices.maxBy { index -> StatFs(cacheDirs[index].path).availableBytes } ?: -1
+        cacheDirs.indices.maxBy { index ->
+            if (cacheDirs[index] == null) {
+                0
+            } else {
+                StatFs(cacheDirs[index].path).availableBytes
+            }
+        } ?: -1
     if (maxIndex == -1) {
         return null
     }

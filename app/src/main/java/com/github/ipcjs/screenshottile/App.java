@@ -41,6 +41,8 @@ public class App extends Application {
         return instance;
     }
 
+    public static Intent getScreenshotPermission() { return screenshotPermission; }
+
     public static MediaProjectionManager getMediaProjectionManager() {
         return mediaProjectionManager;
     }
@@ -74,8 +76,11 @@ public class App extends Application {
     @SuppressWarnings("UnusedReturnValue")
     protected static MediaProjection createMediaProjection() {
         if (mediaProjection == null) {
-            if (screenshotPermission == null && ScreenshotTileService.Companion.getInstance() != null) {
-                screenshotPermission = ScreenshotTileService.Companion.getInstance().getScreenshotPermission();
+            if (screenshotPermission == null) {
+                screenshotPermission = ScreenshotTileService.Companion.getScreenshotPermission();
+            }
+            if (screenshotPermission == null) {
+                screenshotPermission = ScreenshotAccessibilityService.Companion.getScreenshotPermission();
             }
             if (screenshotPermission == null) {
                 return null;
@@ -95,8 +100,11 @@ public class App extends Application {
         onAcquireScreenshotPermissionListener = myOnAcquireScreenshotPermissionListener;
         ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
 
-        if (screenshotPermission == null && screenshotTileService != null) {
-            screenshotPermission = screenshotTileService.getScreenshotPermission();
+        if (screenshotPermission == null) {
+            screenshotPermission = ScreenshotTileService.Companion.getScreenshotPermission();
+        }
+        if (screenshotPermission == null) {
+            screenshotPermission = ScreenshotAccessibilityService.Companion.getScreenshotPermission();
         }
 
         Log.v(TAG, "acquireScreenshotPermission() screenshotPermission=" + screenshotPermission);
@@ -139,9 +147,8 @@ public class App extends Application {
      */
     protected static void setScreenshotPermission(final Intent permissionIntent) {
         screenshotPermission = permissionIntent;
-        if (ScreenshotTileService.Companion.getInstance() != null) {
-            ScreenshotTileService.Companion.getInstance().setScreenshotPermission(screenshotPermission);
-        }
+        ScreenshotTileService.Companion.setScreenshotPermission(screenshotPermission);
+        ScreenshotAccessibilityService.Companion.setScreenshotPermission(permissionIntent);
         if (onAcquireScreenshotPermissionListener != null) {
             onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission(true);
             onAcquireScreenshotPermissionListener = null;

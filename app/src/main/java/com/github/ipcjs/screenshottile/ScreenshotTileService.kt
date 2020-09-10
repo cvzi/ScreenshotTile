@@ -22,9 +22,9 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         private const val TAG = "ScreenshotTileService"
         const val FOREGROUND_NOTIFICATION_ID = 8139
         var instance: ScreenshotTileService? = null
+        var screenshotPermission: Intent? = null
     }
 
-    var screenshotPermission: Intent? = null
     var takeScreenshotOnStopListening = false
 
     private fun setState(newState: Int) {
@@ -45,6 +45,9 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         instance = this
+        if (screenshotPermission == null && App.getInstance() != null) {
+            screenshotPermission = App.getScreenshotPermission()
+        }
     }
 
     override fun onTileAdded() {
@@ -121,5 +124,10 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         stopForeground(true)
     }
 
-
+    fun kill() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            stopForeground(true)
+        }
+        stopSelf()
+    }
 }

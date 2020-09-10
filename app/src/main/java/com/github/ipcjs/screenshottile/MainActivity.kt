@@ -123,7 +123,7 @@ class MainActivity : Activity() {
         }
     }
 
-    private inner class ClickableImageView(context: Context?) : AppCompatImageView(context) {
+    private inner class ClickableImageView(context: Context) : AppCompatImageView(context) {
         init {
             setOnClickListener {
                 viewPager.setCurrentItem((viewPager.currentItem + 1) % images.size, true)

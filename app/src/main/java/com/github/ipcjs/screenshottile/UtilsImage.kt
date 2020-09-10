@@ -1,5 +1,6 @@
 package com.github.ipcjs.screenshottile
 
+import android.app.Activity
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
@@ -241,14 +242,23 @@ fun appUsableScreenSize(context: Context): Point {
     }
 }
 
-fun realScreenSize(context: Context): Point {
+fun realScreenSize(activity: Activity): Point {
     val windowManager =
-        context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        activity.getSystemService(Context.WINDOW_SERVICE) as WindowManager
     return Point().apply {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            context.display?.getRealSize(this)
+            activity.display?.getRealSize(this)
         } else {
             windowManager.defaultDisplay.getRealSize(this)
         }
     }
 }
+
+fun realScreenSize(context: Context): Point {
+    val windowManager =
+        context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    return Point().apply {
+            windowManager.defaultDisplay.getRealSize(this)
+    }
+}
+
