@@ -1,6 +1,6 @@
 language: android
 sudo: required
-jdk: oraclejdk11
+jdk: oraclejdk9
 env:
   global:
   - ANDROID_API_LEVEL=30
