@@ -1,6 +1,7 @@
 package com.github.ipcjs.screenshottile
 
 import android.accessibilityservice.AccessibilityService
+import android.content.Intent
 
 import android.os.Build
 import android.view.accessibility.AccessibilityEvent
@@ -12,6 +13,7 @@ import android.view.accessibility.AccessibilityEvent
 class ScreenshotAccessibilityService : AccessibilityService() {
     companion object {
         var instance: ScreenshotAccessibilityService? = null
+        var screenshotPermission: Intent? = null
     }
 
     override fun onServiceConnected() {
