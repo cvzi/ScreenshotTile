@@ -3,6 +3,7 @@
     <string name="tile_label">Screenshot</string>
     <string name="title_delay">Delay</string>
     <string name="more_setting">More Settings</string>
+    <string name="open_settings">Open settings</string>
     <string name="partial_screenshot">Select area</string>
     <string name="file_format">File format</string>
     <string name="setting_delay_entry_default">Instant</string>
