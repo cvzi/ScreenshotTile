@@ -1,0 +1,3 @@
+☆ Improvements for Android Q and 11
+☆ Translations improved
+☆ Added widgets

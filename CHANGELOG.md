@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.9.0
+*   Added widgets
+*   Improvements for Android Q and 11. Start foreground service earlier
 ## 1.8.6
 *   Update Kotlin
 ## 1.8.5
