@@ -30,7 +30,6 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         context?.apply {
-            Log.v(TAG, "onReceive() action=${intent?.action}")
             when (intent?.action) {
                 NOTIFICATION_ACTION_SHARE -> {
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))

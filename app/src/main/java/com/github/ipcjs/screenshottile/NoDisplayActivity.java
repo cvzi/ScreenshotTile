@@ -61,7 +61,6 @@ public class NoDisplayActivity extends Activity {
             String action = intent.getAction();
 
             if (intent.getBooleanExtra(EXTRA_PARTIAL, false)) {
-                Log.v(TAG, "onCreate() EXTRA_PARTIAL=true");
                 // make sure that a foreground service runs
                 ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
                 if (screenshotTileService != null) {
@@ -73,8 +72,6 @@ public class NoDisplayActivity extends Activity {
                 }
                 screenshot(this, true);
             } else if (intent.getBooleanExtra(EXTRA_SCREENSHOT, false) || (action != null && action.equals(EXTRA_SCREENSHOT))) {
-                Log.v(TAG, ".onCreate() EXTRA_SCREENSHOT=true");
-
                 // make sure that a foreground service runs
                 ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
                 if (screenshotTileService != null) {
@@ -86,7 +83,7 @@ public class NoDisplayActivity extends Activity {
                 }
                 screenshot(this, false);
             } else {
-                Log.v(TAG, "onCreate() EXTRA_SCREENSHOT=false");
+                Log.i(TAG, "onCreate() EXTRA_SCREENSHOT=false");
             }
         }
         finish();

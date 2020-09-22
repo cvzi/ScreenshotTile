@@ -110,7 +110,6 @@ public class App extends Application {
             screenshotPermission = ScreenshotAccessibilityService.Companion.getScreenshotPermission();
         }
 
-        Log.v(TAG, "acquireScreenshotPermission() screenshotPermission=" + screenshotPermission);
         if (screenshotPermission != null) {
             if (null != mediaProjection) {
                 mediaProjection.stop();
@@ -119,13 +118,11 @@ public class App extends Application {
             if (screenshotTileService != null) {
                 screenshotTileService.foreground();
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                Log.v(TAG, "startForegroundService");
                 Intent serviceIntent = new Intent(context, ScreenshotTileService.class);
                 serviceIntent.setAction(ScreenshotTileService.FOREGROUND_ON_START);
                 context.startForegroundService(serviceIntent);
             }
             mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
-            Log.v(TAG, "acquireScreenshotPermission() mediaProjection=" + mediaProjection);
             if (onAcquireScreenshotPermissionListener != null) {
                 onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission(false);
             }
@@ -291,7 +288,7 @@ public class App extends Application {
                     tileService.startActivityAndCollapse(intent);
                     startActivityAndCollapseSucceeded = true;
                 } catch (NullPointerException e) {
-                    Log.v(TAG, "screenshotHiddenCountdown() tileService was null");
+                    Log.e(TAG, "screenshotHiddenCountdown() tileService was null");
                 }
             }
 
@@ -333,14 +330,11 @@ public class App extends Application {
      * @param context Context
      */
     protected void takeScreenshotFromTileService(TileService context) {
-        Log.v(TAG,"takeScreenshotFromTileService()");
         boolean done = tryNativeScreenshot();
         if (!done) {
             // Use app's screenshot function
-            Log.v(TAG,"takeScreenshotFromTileService() NoDisplayActivity.newIntent()");
             Intent intent = NoDisplayActivity.newIntent(context, true);
             intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-            Log.v(TAG,"takeScreenshotFromTileService() intent=" + intent);
             context.startActivity(intent);
         } else if (ScreenshotTileService.Companion.getInstance() != null) {
             ScreenshotTileService.Companion.getInstance().background();

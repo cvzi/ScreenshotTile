@@ -46,9 +46,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         instance = this
-        Log.v(TAG, "onStartCommand() action = ${intent?.action}")
         if(intent?.action == FOREGROUND_ON_START) {
-            Log.v(TAG, "onStartCommand() --> foreground()")
             foreground()
         }
         return START_STICKY
@@ -88,7 +86,6 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         Log.v(TAG, "onStopListening()")
 
         // Here we can be sure that the notification panel has fully collapsed
-        Log.v(TAG, "takeScreenshotOnStopListening = $takeScreenshotOnStopListening")
         if (takeScreenshotOnStopListening) {
             takeScreenshotOnStopListening = false
             App.getInstance().takeScreenshotFromTileService(this)
@@ -109,13 +106,11 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     }
 
     fun foreground() {
-        Log.v(TAG, "foreground()")
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return
         }
 
         val context = this
-        Log.v(TAG, "foreground() building notification")
         val builder = Notification.Builder(this, createNotificationForegroundServiceChannel(this))
         builder.apply {
             setShowWhen(false)
@@ -123,42 +118,29 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
             setContentText(getString(R.string.notification_foreground_body))
             setAutoCancel(true)
             setSmallIcon(R.drawable.transparent_icon)
-            /*
-            setContentIntent(PendingIntent.getBroadcast(context, 1, Intent().apply {
-                action = NOTIFICATION_ACTION_STOP
-                putExtra(NOTIFICATION_ACTION_ID, FOREGROUND_NOTIFICATION_ID)
-            }, 0))
-
-*/
             val notificationIntent = Intent().apply {
                 action = NOTIFICATION_ACTION_STOP
                 putExtra(NOTIFICATION_ACTION_ID, FOREGROUND_NOTIFICATION_ID)
             }
-            val pendingIntent = PendingIntent.getService(
+            val pendingIntent = PendingIntent.getBroadcast(
                 context,
                 8456,
                 notificationIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT
             )
             setContentIntent(pendingIntent)
-
-
-
         }
-        Log.v(TAG, "startForeground() ...")
         startForeground(
             TakeScreenshotActivity.FOREGROUND_SERVICE_ID,
             builder.build(),
             ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
         )
-        Log.v(TAG, "startForeground() Done")
     }
 
     fun background() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return
         }
-        Log.v(TAG, "background()")
         stopForeground(true)
     }
 

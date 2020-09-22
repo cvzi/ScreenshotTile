@@ -93,9 +93,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         val screenshotTileService = ScreenshotTileService.instance
         if (screenshotTileService != null) {
             screenshotTileService.foreground()
-            Log.v(TAG, "foreground()")
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            Log.v(TAG, "startForegroundService")
             val serviceIntent = Intent(this, ScreenshotTileService::class.java)
             serviceIntent.action = ScreenshotTileService.FOREGROUND_ON_START
             startForegroundService(serviceIntent)
@@ -124,17 +122,16 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                 packageName
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            Log.v(TAG, "onCreate() missing WRITE_EXTERNAL_STORAGE permission")
+            Log.w(TAG, "onCreate() missing WRITE_EXTERNAL_STORAGE permission")
             App.requestStoragePermission(this)
             return
         }
 
         if (!askedForPermission) {
             askedForPermission = true
-            Log.v(TAG, "TakeScreenshotActivity.onCreate() -> App.acquireScreenshotPermission()")
             App.acquireScreenshotPermission(this, this)
         } else {
-            Log.v(TAG, "onCreate() else")
+            Log.i(TAG, "onCreate() else")
         }
 
     }
@@ -271,7 +268,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
     private fun saveImage() {
         if (imageReader == null) {
-            Log.v(TAG, "saveImage() imageReader == null")
+            Log.w(TAG, "saveImage() imageReader == null")
             stopScreenSharing()
             screenShotFailedToast("Could not start screen capture")
             finish()
@@ -283,14 +280,14 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             imageReader?.acquireNextImage()
         } catch (e: UnsupportedOperationException) {
             stopScreenSharing()
-            Log.v(TAG, "saveImage() acquireNextImage() UnsupportedOperationException", e)
+            Log.e(TAG, "saveImage() acquireNextImage() UnsupportedOperationException", e)
             screenShotFailedToast("Could not acquire image.\nUnsupportedOperationException\nThis device is not supported.")
             finish()
             return
         }
         stopScreenSharing()
         if (image == null) {
-            Log.v(TAG, "saveImage() image == null")
+            Log.e(TAG, "saveImage() image == null")
             screenShotFailedToast("Could not acquire image")
             finish()
             return
@@ -358,8 +355,6 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             }
             result.uri != null -> {
                 // Android Q+ works with MediaStore content:// URI
-                Log.v(TAG, "onFileSaved() URI=${result.uri}")
-
                 var dummyPath =
                     "${Environment.DIRECTORY_PICTURES}/$SCREENSHOT_DIRECTORY/${result.fileTitle}"
                 if (result.dummyPath.isNotEmpty()) {
@@ -382,8 +377,6 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                 // Legacy behaviour until Android P, works with the real file path
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
-
-                Log.v(TAG, "onFileSaved() imageFile.absolutePath=$path")
 
                 Toast.makeText(
                     this,
