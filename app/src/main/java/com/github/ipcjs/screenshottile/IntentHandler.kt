@@ -18,7 +18,9 @@ class IntentHandler : BroadcastReceiver() {
                 return
             }
 
-            if (expected.isEmpty() || expected == App.getInstance().getString(R.string.setting_broadcast_secret_value_default)) {
+            if (expected.isEmpty() || expected == App.getInstance()
+                    .getString(R.string.setting_broadcast_secret_value_default)
+            ) {
                 Log.e("ScreenshotReceiver", "Secret was not set in the app settings.")
                 return
             }

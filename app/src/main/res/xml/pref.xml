@@ -30,13 +30,13 @@
     <androidx.preference.SwitchPreference
         android:defaultValue="false"
         android:key="@string/pref_key_use_native"
-        android:title="@string/use_native_screenshot"
-        android:summary="@string/use_native_screenshot_summary"/>
+        android:summary="@string/use_native_screenshot_summary"
+        android:title="@string/use_native_screenshot" />
 
     <androidx.preference.EditTextPreference
         android:defaultValue="@string/setting_broadcast_secret_value_default"
-        android:key="@string/pref_key_broadcast_secret"
         android:inputType="textVisiblePassword"
+        android:key="@string/pref_key_broadcast_secret"
         android:summary="@string/setting_broadcast_secret_description"
         android:title="@string/setting_broadcast_secret" />
 

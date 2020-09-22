@@ -3,43 +3,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_stat_name"
-            android:contentDescription="@string/take_screenshot" />
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/take_screenshot"
+        android:src="@drawable/ic_stat_name" />
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/linear"
-            android:layout_width="match_parent"
+            android:id="@+id/leftSide"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_centerInParent="true"
-            android:baselineAligned="false">
-            <LinearLayout
-                android:id="@+id/leftSide"
-                android:contentDescription="@string/take_screenshot"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/background_left"
-                android:layout_weight="1">
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/rightSide"
-                android:contentDescription="@string/open_settings"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/background_right"
-                android:layout_weight="1">
-
-            </LinearLayout>
+            android:layout_weight="1"
+            android:background="@drawable/background_left"
+            android:contentDescription="@string/take_screenshot"
+            android:orientation="vertical">
 
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rightSide"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/background_right"
+            android:contentDescription="@string/open_settings"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </RelativeLayout>

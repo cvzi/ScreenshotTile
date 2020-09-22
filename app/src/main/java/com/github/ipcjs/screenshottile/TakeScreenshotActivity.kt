@@ -131,7 +131,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             askedForPermission = true
             App.acquireScreenshotPermission(this, this)
         } else {
-            Log.v(TAG, "onCreate() else")
+            if (BuildConfig.DEBUG) Log.v(TAG, "onCreate() else")
         }
 
     }
@@ -216,16 +216,19 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             null
         }
         if (surface == null) {
-            Log.v(TAG, "prepareForScreenSharing(): surface == null")
+            if (BuildConfig.DEBUG) Log.v(TAG, "prepareForScreenSharing(): surface == null")
             screenShotFailedToast("Failed to create ImageReader surface")
             finish()
             return
         }
         if (mediaProjection == null) {
-            Log.v(TAG, "prepareForScreenSharing() mediaProjection == null")
+            if (BuildConfig.DEBUG) Log.v(TAG, "prepareForScreenSharing() mediaProjection == null")
             if (!askedForPermission) {
                 askedForPermission = true
-                Log.v(TAG, "prepareForScreenSharing() -> App.acquireScreenshotPermission()")
+                if (BuildConfig.DEBUG) Log.v(
+                    TAG,
+                    "prepareForScreenSharing() -> App.acquireScreenshotPermission()"
+                )
                 try {
                     App.acquireScreenshotPermission(this, this)
                 } catch (e: SecurityException) {
@@ -258,7 +261,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     private fun startVirtualDisplay() {
         virtualDisplay = createVirtualDisplay()
         imageReader?.setOnImageAvailableListener({
-            Log.v(TAG, "startVirtualDisplay:onImageAvailable()")
+            if (BuildConfig.DEBUG) Log.v(TAG, "startVirtualDisplay:onImageAvailable()")
             // Remove listener, after first image
             it.setOnImageAvailableListener(null, null)
             // Read and save image

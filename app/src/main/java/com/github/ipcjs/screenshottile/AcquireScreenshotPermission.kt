@@ -69,7 +69,10 @@ class AcquireScreenshotPermission : Activity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (SCREENSHOT_REQUEST_CODE == requestCode) {
             if (RESULT_OK == resultCode) {
-                Log.v(TAG, "onActivityResult() RESULT_OK")
+                if (BuildConfig.DEBUG) Log.v(
+                    TAG,
+                    "onActivityResult() RESULT_OK"
+                )
                 data?.run {
                     (data.clone() as? Intent)?.apply {
                         setScreenshotPermission(this)
@@ -101,7 +104,7 @@ class AcquireScreenshotPermission : Activity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (WRITE_REQUEST_CODE == requestCode) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.v(
+                if (BuildConfig.DEBUG) Log.v(
                     TAG,
                     "onRequestPermissionsResult() WRITE_EXTERNAL_STORAGE is PERMISSION_GRANTED"
                 )

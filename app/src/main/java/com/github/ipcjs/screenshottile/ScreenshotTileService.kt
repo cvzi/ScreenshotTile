@@ -46,7 +46,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         instance = this
-        if(intent?.action == FOREGROUND_ON_START) {
+        if (intent?.action == FOREGROUND_ON_START) {
             foreground()
         }
         return START_STICKY
@@ -62,7 +62,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
 
     override fun onTileAdded() {
         super.onTileAdded()
-        Log.v(TAG, "onTileAdded()")
+        if (BuildConfig.DEBUG) Log.v(TAG, "onTileAdded()")
 
         App.acquireScreenshotPermission(this, this)
 
@@ -70,20 +70,20 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     }
 
     override fun onAcquireScreenshotPermission(isNewPermission: Boolean) {
-        Log.v(TAG, "onAcquireScreenshotPermission()")
+        if (BuildConfig.DEBUG) Log.v(TAG, "onAcquireScreenshotPermission()")
         setState(Tile.STATE_INACTIVE)
         foreground()
     }
 
     override fun onStartListening() {
         super.onStopListening()
-        Log.v(TAG, "onStartListening()")
+        if (BuildConfig.DEBUG) Log.v(TAG, "onStartListening()")
         setState(Tile.STATE_INACTIVE)
     }
 
     override fun onStopListening() {
         super.onStopListening()
-        Log.v(TAG, "onStopListening()")
+        if (BuildConfig.DEBUG) Log.v(TAG, "onStopListening()")
 
         // Here we can be sure that the notification panel has fully collapsed
         if (takeScreenshotOnStopListening) {
@@ -97,7 +97,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
 
     override fun onClick() {
         super.onClick()
-        Log.v(TAG, "onClick()")
+        if (BuildConfig.DEBUG) Log.v(TAG, "onClick()")
 
         foreground()
         setState(Tile.STATE_ACTIVE)

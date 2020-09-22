@@ -66,4 +66,4 @@
     <string name="about_license_title">Lizenz</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">Diese App hat noch einige kleine Fehler und wird noch entwickelt.\nWenn du root Zugriff hast, kann du die originale Version von ipcjs benutzen. Sie ist schneller und stabiler.</string>
-    </resources>
+</resources>

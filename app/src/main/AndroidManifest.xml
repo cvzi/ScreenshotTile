@@ -93,7 +93,9 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".SimpleWidgetBoth" android:label="@string/left_screenshot_right_menu">
+        <receiver
+            android:name=".SimpleWidgetBoth"
+            android:label="@string/left_screenshot_right_menu">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -102,7 +104,9 @@
                 android:resource="@xml/simple_widget" />
         </receiver>
 
-        <receiver android:name=".SimpleWidgetScreenshot" android:label="@string/take_screenshot">
+        <receiver
+            android:name=".SimpleWidgetScreenshot"
+            android:label="@string/take_screenshot">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -111,7 +115,9 @@
                 android:resource="@xml/simple_widget" />
         </receiver>
 
-        <receiver android:name=".SimpleWidgetSettings" android:label="@string/open_settings">
+        <receiver
+            android:name=".SimpleWidgetSettings"
+            android:label="@string/open_settings">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

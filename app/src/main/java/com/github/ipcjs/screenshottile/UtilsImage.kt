@@ -153,7 +153,7 @@ fun deleteDocumentFile(context: Context, uri: Uri): Boolean {
         return try {
             docDir.delete()
         } catch (e: SecurityException) {
-            Log.v(
+            if (BuildConfig.DEBUG) Log.v(
                 UTILSIMAGEKT,
                 "SecurityException in deleteDocumentFile($context, $uri)"
             )
@@ -183,7 +183,7 @@ fun deleteContentResolver(context: Context, uri: Uri): Boolean {
         }
         0
     }
-    Log.v(
+    if (BuildConfig.DEBUG) Log.v(
         UTILSIMAGEKT,
         "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"
     )
@@ -205,7 +205,10 @@ fun deleteFileSystem(context: Context, file: File): Boolean {
     }
 
     if (file.delete()) {
-        Log.v(UTILSIMAGEKT, "deleteImage() File deleted from storage: ${file.absoluteFile}")
+        if (BuildConfig.DEBUG) Log.v(
+            UTILSIMAGEKT,
+            "deleteImage() File deleted from storage: ${file.absoluteFile}"
+        )
         val externalContentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         val projection = arrayOf(MediaStore.Images.Media._ID)
 
@@ -226,7 +229,7 @@ fun deleteFileSystem(context: Context, file: File): Boolean {
                     id
                 )
                 context.contentResolver.delete(contentUri, null, null)
-                Log.v(
+                if (BuildConfig.DEBUG) Log.v(
                     UTILSIMAGEKT,
                     "deleteImage() File deleted from MediaStore: $contentUri"
                 )
@@ -300,7 +303,7 @@ fun realScreenSize(context: Context): Point {
     val windowManager =
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
     return Point().apply {
-            windowManager.defaultDisplay.getRealSize(this)
+        windowManager.defaultDisplay.getRealSize(this)
     }
 }
 
