@@ -13,4 +13,16 @@
             android:targetClass="com.github.ipcjs.screenshottile.NoDisplayActivity"
             android:targetPackage="com.github.cvzi.screenshottile" />
     </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="openSettings"
+        android:shortcutLongLabel="@string/open_settings"
+        android:shortcutShortLabel="@string/open_settings"
+        tools:targetApi="N_MR1">
+        <intent
+            android:action="com.github.cvzi.screenshottile.SettingDialogActivity.START_SERVICE"
+            android:targetClass="com.github.ipcjs.screenshottile.SettingDialogActivity"
+            android:targetPackage="com.github.cvzi.screenshottile" />
+    </shortcut>
 </shortcuts>
