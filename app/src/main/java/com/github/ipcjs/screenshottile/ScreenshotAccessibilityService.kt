@@ -34,6 +34,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
         // No op
     }
+
     override fun onInterrupt() {
         // No op
     }

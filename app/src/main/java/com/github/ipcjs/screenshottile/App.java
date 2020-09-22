@@ -45,6 +45,21 @@ public class App extends Application {
         return screenshotPermission;
     }
 
+    /**
+     * Store screenshot permission.
+     *
+     * @param permissionIntent Permission
+     */
+    protected static void setScreenshotPermission(final Intent permissionIntent) {
+        screenshotPermission = permissionIntent;
+        ScreenshotTileService.Companion.setScreenshotPermission(screenshotPermission);
+        ScreenshotAccessibilityService.Companion.setScreenshotPermission(permissionIntent);
+        if (onAcquireScreenshotPermissionListener != null) {
+            onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission(true);
+            onAcquireScreenshotPermissionListener = null;
+        }
+    }
+
     public static void setMediaProjectionManager(MediaProjectionManager mediaProjectionManager) {
         App.mediaProjectionManager = mediaProjectionManager;
     }
@@ -73,7 +88,7 @@ public class App extends Application {
      */
     @SuppressWarnings("UnusedReturnValue")
     protected static MediaProjection createMediaProjection() {
-        Log.v(TAG, "createMediaProjection()");
+        if (BuildConfig.DEBUG) Log.v(TAG, "createMediaProjection()");
         ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
         if (screenshotTileService != null) {
             screenshotTileService.foreground();
@@ -128,7 +143,8 @@ public class App extends Application {
             }
 
         } else {
-            Log.v(TAG, "acquireScreenshotPermission() -> openScreenshotPermissionRequester(context)");
+            if (BuildConfig.DEBUG)
+                Log.v(TAG, "acquireScreenshotPermission() -> openScreenshotPermissionRequester(context)");
             openScreenshotPermissionRequester(context);
         }
     }
@@ -143,21 +159,6 @@ public class App extends Application {
         intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(AcquireScreenshotPermission.EXTRA_REQUEST_PERMISSION_SCREENSHOT, true);
         context.startActivity(intent);
-    }
-
-    /**
-     * Store screenshot permission.
-     *
-     * @param permissionIntent Permission
-     */
-    protected static void setScreenshotPermission(final Intent permissionIntent) {
-        screenshotPermission = permissionIntent;
-        ScreenshotTileService.Companion.setScreenshotPermission(screenshotPermission);
-        ScreenshotAccessibilityService.Companion.setScreenshotPermission(permissionIntent);
-        if (onAcquireScreenshotPermissionListener != null) {
-            onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission(true);
-            onAcquireScreenshotPermissionListener = null;
-        }
     }
 
     /**
@@ -343,8 +344,8 @@ public class App extends Application {
 
     private class CountDownRunnable implements Runnable {
         private final Context ctx;
-        private int count;
         private final boolean alreadyCollapsed;
+        private int count;
 
         CountDownRunnable(Context context, int mCount, boolean mAlreadyCollapsed) {
             count = mCount;
