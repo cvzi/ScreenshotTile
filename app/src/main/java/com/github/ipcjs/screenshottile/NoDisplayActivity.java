@@ -3,10 +3,12 @@ package com.github.ipcjs.screenshottile;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
 import static com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID;
+import static com.github.ipcjs.screenshottile.ScreenshotTileService.FOREGROUND_ON_START;
 import static com.github.ipcjs.screenshottile.UtilsKt.screenshot;
 
 public class NoDisplayActivity extends Activity {
@@ -25,6 +27,9 @@ public class NoDisplayActivity extends Activity {
     public static Intent newIntent(Context context, boolean screenshot) {
         Intent intent = new Intent(context, NoDisplayActivity.class);
         intent.putExtra(EXTRA_SCREENSHOT, screenshot);
+        if (screenshot) {
+            intent.setAction(EXTRA_SCREENSHOT);
+        }
         return intent;
     }
 
@@ -41,6 +46,14 @@ public class NoDisplayActivity extends Activity {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        /* If the activity is already open, we need to update the intent,
+        otherwise getIntent() returns the old intent in onCreate() */
+        setIntent(intent);
+        super.onNewIntent(intent);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
@@ -49,6 +62,15 @@ public class NoDisplayActivity extends Activity {
 
             if (intent.getBooleanExtra(EXTRA_PARTIAL, false)) {
                 Log.v(TAG, "onCreate() EXTRA_PARTIAL=true");
+                // make sure that a foreground service runs
+                ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
+                if (screenshotTileService != null) {
+                    screenshotTileService.foreground();
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    Intent serviceIntent = new Intent(this, ScreenshotTileService.class);
+                    serviceIntent.setAction(FOREGROUND_ON_START);
+                    startService(serviceIntent);
+                }
                 screenshot(this, true);
             } else if (intent.getBooleanExtra(EXTRA_SCREENSHOT, false) || (action != null && action.equals(EXTRA_SCREENSHOT))) {
                 Log.v(TAG, ".onCreate() EXTRA_SCREENSHOT=true");
@@ -57,8 +79,11 @@ public class NoDisplayActivity extends Activity {
                 ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
                 if (screenshotTileService != null) {
                     screenshotTileService.foreground();
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    Intent serviceIntent = new Intent(this, ScreenshotTileService.class);
+                    serviceIntent.setAction(FOREGROUND_ON_START);
+                    startForegroundService(serviceIntent);
                 }
-
                 screenshot(this, false);
             } else {
                 Log.v(TAG, "onCreate() EXTRA_SCREENSHOT=false");

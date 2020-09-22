@@ -28,6 +28,13 @@ class AcquireScreenshotPermission : Activity() {
 
     private var askedForStoragePermission = false
 
+    override fun onNewIntent(intent: Intent?) {
+        /* If the activity is already open, we need to update the intent,
+        otherwise getIntent() returns the old intent in onCreate() */
+        setIntent(intent)
+        super.onNewIntent(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

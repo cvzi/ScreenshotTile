@@ -34,17 +34,15 @@ public class App extends Application {
     private static volatile boolean receiverRegistered = false;
     private static NotificationActionReceiver notificationActionReceiver;
     private final Handler handler = new Handler(Looper.getMainLooper());
-    public PrefManager prefManager;
+    private PrefManager prefManager;
     private Runnable screenshotRunnable;
 
     public static App getInstance() {
         return instance;
     }
 
-    public static Intent getScreenshotPermission() { return screenshotPermission; }
-
-    public static MediaProjectionManager getMediaProjectionManager() {
-        return mediaProjectionManager;
+    public static Intent getScreenshotPermission() {
+        return screenshotPermission;
     }
 
     public static void setMediaProjectionManager(MediaProjectionManager mediaProjectionManager) {
@@ -75,6 +73,11 @@ public class App extends Application {
      */
     @SuppressWarnings("UnusedReturnValue")
     protected static MediaProjection createMediaProjection() {
+        Log.v(TAG, "createMediaProjection()");
+        ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
+        if (screenshotTileService != null) {
+            screenshotTileService.foreground();
+        }
         if (mediaProjection == null) {
             if (screenshotPermission == null) {
                 screenshotPermission = ScreenshotTileService.Companion.getScreenshotPermission();
@@ -115,6 +118,11 @@ public class App extends Application {
             }
             if (screenshotTileService != null) {
                 screenshotTileService.foreground();
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                Log.v(TAG, "startForegroundService");
+                Intent serviceIntent = new Intent(context, ScreenshotTileService.class);
+                serviceIntent.setAction(ScreenshotTileService.FOREGROUND_ON_START);
+                context.startForegroundService(serviceIntent);
             }
             mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
             Log.v(TAG, "acquireScreenshotPermission() mediaProjection=" + mediaProjection);
@@ -133,7 +141,7 @@ public class App extends Application {
      *
      * @param context Context
      */
-    private static void openScreenshotPermissionRequester(Context context) {
+    public static void openScreenshotPermissionRequester(Context context) {
         final Intent intent = new Intent(context, AcquireScreenshotPermission.class);
         intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(AcquireScreenshotPermission.EXTRA_REQUEST_PERMISSION_SCREENSHOT, true);
@@ -198,6 +206,10 @@ public class App extends Application {
         prefManager = new PrefManager(this);
     }
 
+    public PrefManager getPrefManager() {
+        return prefManager;
+    }
+
     /**
      * Take a screenshot.
      * If called from other activity: take a screenshot
@@ -256,7 +268,7 @@ public class App extends Application {
                 context.startActivity(intent);
             } else {
                 if (!tryNativeScreenshot()) {
-                    intent = NoDisplayActivity.newIntent(context, false);
+                    intent = NoDisplayActivity.newIntent(context, true);
                     context.startActivity(intent);
                 }
             }
@@ -321,11 +333,14 @@ public class App extends Application {
      * @param context Context
      */
     protected void takeScreenshotFromTileService(TileService context) {
+        Log.v(TAG,"takeScreenshotFromTileService()");
         boolean done = tryNativeScreenshot();
         if (!done) {
             // Use app's screenshot function
+            Log.v(TAG,"takeScreenshotFromTileService() NoDisplayActivity.newIntent()");
             Intent intent = NoDisplayActivity.newIntent(context, true);
             intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+            Log.v(TAG,"takeScreenshotFromTileService() intent=" + intent);
             context.startActivity(intent);
         } else if (ScreenshotTileService.Companion.getInstance() != null) {
             ScreenshotTileService.Companion.getInstance().background();
@@ -335,11 +350,11 @@ public class App extends Application {
     private class CountDownRunnable implements Runnable {
         private final Context ctx;
         private int count;
-        private boolean alreadyCollapsed;
+        private final boolean alreadyCollapsed;
 
-        CountDownRunnable(Context context, int count, boolean alreadyCollapsed) {
-            this.count = count;
-            this.alreadyCollapsed = alreadyCollapsed;
+        CountDownRunnable(Context context, int mCount, boolean mAlreadyCollapsed) {
+            count = mCount;
+            alreadyCollapsed = mAlreadyCollapsed;
             ctx = context;
         }
 

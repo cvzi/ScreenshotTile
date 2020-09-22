@@ -9,6 +9,7 @@ import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
+import com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID
 
 
 /**
@@ -21,6 +22,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     companion object {
         private const val TAG = "ScreenshotTileService"
         const val FOREGROUND_NOTIFICATION_ID = 8139
+        const val FOREGROUND_ON_START = APPLICATION_ID + "ScreenshotTileService.FOREGROUND_ON_START"
         var instance: ScreenshotTileService? = null
         var screenshotPermission: Intent? = null
     }
@@ -40,6 +42,16 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         } catch (e: IllegalArgumentException) {
             Log.e(TAG, "setState: IllegalArgumentException", e)
         }
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        instance = this
+        Log.v(TAG, "onStartCommand() action = ${intent?.action}")
+        if(intent?.action == FOREGROUND_ON_START) {
+            Log.v(TAG, "onStartCommand() --> foreground()")
+            foreground()
+        }
+        return START_STICKY
     }
 
     override fun attachBaseContext(base: Context?) {
@@ -62,6 +74,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     override fun onAcquireScreenshotPermission(isNewPermission: Boolean) {
         Log.v(TAG, "onAcquireScreenshotPermission()")
         setState(Tile.STATE_INACTIVE)
+        foreground()
     }
 
     override fun onStartListening() {
@@ -75,9 +88,12 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
         Log.v(TAG, "onStopListening()")
 
         // Here we can be sure that the notification panel has fully collapsed
+        Log.v(TAG, "takeScreenshotOnStopListening = $takeScreenshotOnStopListening")
         if (takeScreenshotOnStopListening) {
             takeScreenshotOnStopListening = false
             App.getInstance().takeScreenshotFromTileService(this)
+        } else {
+            background()
         }
         setState(Tile.STATE_INACTIVE)
     }
@@ -93,11 +109,13 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     }
 
     fun foreground() {
+        Log.v(TAG, "foreground()")
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return
         }
-        val context = this
 
+        val context = this
+        Log.v(TAG, "foreground() building notification")
         val builder = Notification.Builder(this, createNotificationForegroundServiceChannel(this))
         builder.apply {
             setShowWhen(false)
@@ -105,29 +123,47 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
             setContentText(getString(R.string.notification_foreground_body))
             setAutoCancel(true)
             setSmallIcon(R.drawable.transparent_icon)
+            /*
             setContentIntent(PendingIntent.getBroadcast(context, 1, Intent().apply {
                 action = NOTIFICATION_ACTION_STOP
                 putExtra(NOTIFICATION_ACTION_ID, FOREGROUND_NOTIFICATION_ID)
             }, 0))
+
+*/
+            val notificationIntent = Intent().apply {
+                action = NOTIFICATION_ACTION_STOP
+                putExtra(NOTIFICATION_ACTION_ID, FOREGROUND_NOTIFICATION_ID)
+            }
+            val pendingIntent = PendingIntent.getService(
+                context,
+                8456,
+                notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
+            setContentIntent(pendingIntent)
+
+
+
         }
+        Log.v(TAG, "startForeground() ...")
         startForeground(
             TakeScreenshotActivity.FOREGROUND_SERVICE_ID,
             builder.build(),
             ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
         )
+        Log.v(TAG, "startForeground() Done")
     }
 
     fun background() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return
         }
+        Log.v(TAG, "background()")
         stopForeground(true)
     }
 
     fun kill() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            stopForeground(true)
-        }
+        background()
         stopSelf()
     }
 }

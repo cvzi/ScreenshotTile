@@ -43,6 +43,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         const val THREAD_START = 1
         const val THREAD_FINISHED = 2
         const val EXTRA_PARTIAL = "$APPLICATION_ID.TakeScreenshotActivity.EXTRA_PARTIAL"
+
         /**
          * Start activity.
          */
@@ -74,6 +75,13 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
     private var askedForPermission = false
 
+    override fun onNewIntent(intent: Intent?) {
+        /* If the activity is already open, we need to update the intent,
+        otherwise getIntent() returns the old intent in onCreate() */
+        setIntent(intent)
+        super.onNewIntent(intent)
+    }
+
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -81,6 +89,17 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
         val builder = StrictMode.VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
         builder.detectFileUriExposure()
+
+        val screenshotTileService = ScreenshotTileService.instance
+        if (screenshotTileService != null) {
+            screenshotTileService.foreground()
+            Log.v(TAG, "foreground()")
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            Log.v(TAG, "startForegroundService")
+            val serviceIntent = Intent(this, ScreenshotTileService::class.java)
+            serviceIntent.action = ScreenshotTileService.FOREGROUND_ON_START
+            startForegroundService(serviceIntent)
+        }
 
         partial = intent?.getBooleanExtra(EXTRA_PARTIAL, false) ?: false
 
@@ -116,7 +135,6 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             App.acquireScreenshotPermission(this, this)
         } else {
             Log.v(TAG, "onCreate() else")
-
         }
 
     }
@@ -126,6 +144,8 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
      * Show partial screenshot selector
      */
     private fun partialScreenshot() {
+        val screenshotTileService = ScreenshotTileService.instance
+
         // Go fullscreen without status bar and without display notch/cutout
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(
@@ -148,6 +168,14 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             prepareForScreenSharing()
         }
 
+        // make sure that a foreground service runs
+        if (screenshotTileService != null) {
+            screenshotTileService.foreground()
+        } else {
+            val serviceIntent = Intent(this, ScreenshotTileService::class.java)
+            serviceIntent.action = ScreenshotTileService.FOREGROUND_ON_START
+            startService(serviceIntent)
+        }
     }
 
     override fun onAcquireScreenshotPermission(isNewPermission: Boolean) {
@@ -158,7 +186,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
          }, 350)
         */
         ScreenshotTileService.instance?.onAcquireScreenshotPermission(isNewPermission)
-
+        ScreenshotTileService.instance?.foreground()
         if (partial) {
             partialScreenshot()
         } else {
@@ -184,7 +212,12 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
     private fun prepareForScreenSharing() {
         saveImageResult = null
         screenSharing = true
-        mediaProjection = App.createMediaProjection()
+        mediaProjection = try {
+            App.createMediaProjection()
+        } catch (e: SecurityException) {
+            Log.e(TAG, "prepareForScreenSharing(): SecurityException 1")
+            null
+        }
         if (surface == null) {
             Log.v(TAG, "prepareForScreenSharing(): surface == null")
             screenShotFailedToast("Failed to create ImageReader surface")
@@ -196,17 +229,33 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             if (!askedForPermission) {
                 askedForPermission = true
                 Log.v(TAG, "prepareForScreenSharing() -> App.acquireScreenshotPermission()")
-                App.acquireScreenshotPermission(this, this)
+                try {
+                    App.acquireScreenshotPermission(this, this)
+                } catch (e: SecurityException) {
+                    Log.e(TAG, "prepareForScreenSharing(): SecurityException 2")
+                }
             }
-            mediaProjection = App.createMediaProjection()
+            mediaProjection = try {
+                App.createMediaProjection()
+            } catch (e: SecurityException) {
+                Log.e(TAG, "prepareForScreenSharing(): SecurityException 3")
+                null
+            }
             if (mediaProjection == null) {
                 screenShotFailedToast("Failed to create MediaProjection")
-                Log.v(TAG, "prepareForScreenSharing() mediaProjection == null")
+                // Something went wrong, restart everything
                 finish()
+                App.getInstance().screenshot(this)
                 return
             }
         }
-        startVirtualDisplay()
+        try {
+            startVirtualDisplay()
+        } catch (e: SecurityException) {
+            Log.e(TAG, "startVirtualDisplay() SecurityException: $e")
+            screenShotFailedToast("Failed to start virtual display: ${e.localizedMessage}")
+            finish()
+        }
     }
 
     private fun startVirtualDisplay() {
@@ -256,7 +305,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
 
         val compressionOptions = compressionPreference(applicationContext)
 
-        thread = Thread(Runnable {
+        thread = Thread {
             saveImageResult = saveImageToFile(
                 applicationContext,
                 image,
@@ -267,14 +316,15 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             image.close()
 
             handler.sendEmptyMessage(THREAD_FINISHED)
-        })
+        }
         handler.sendEmptyMessage(THREAD_START)
     }
 
     /**
      * Handle messages from/to activity/thread
      */
-    class SaveImageHandler(takeScreenshotActivity: TakeScreenshotActivity, looper: Looper) : Handler(looper) {
+    class SaveImageHandler(takeScreenshotActivity: TakeScreenshotActivity, looper: Looper) :
+        Handler(looper) {
         private var activity: WeakReference<TakeScreenshotActivity> =
             WeakReference(takeScreenshotActivity)
 
