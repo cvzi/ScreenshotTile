@@ -25,6 +25,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.content.res.ResourcesCompat
 import com.github.ipcjs.screenshottile.BuildConfig
 import kotlin.math.max
 import kotlin.math.min
@@ -110,7 +111,7 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
             if (showShutter) {
                 shutter?.run {
                     // Show image on dark rounded rect
-                    resources.getDrawable(this, null).apply {
+                    ResourcesCompat.getDrawable(resources, this, null)?.apply {
                         if (rect.width() > intrinsicWidth || rect.height() > intrinsicHeight) {
                             val m0 = min(intrinsicWidth / 2, intrinsicHeight / 2)
                             setBounds(

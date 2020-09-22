@@ -119,23 +119,7 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
     uri.normalizeScheme()
     when (uri.scheme) {
         "content" -> { // Android Q+
-            val deletedRows = try {
-                context.contentResolver.delete(uri, null, null)
-            } catch (e: UnsupportedOperationException) {
-                // Try to delete DocumentFile in custom directory
-                if (App.getInstance().prefManager.screenshotDirectory != null) {
-                    val docDir = DocumentFile.fromSingleUri(context, uri)
-                    if (docDir != null) {
-                        return docDir.delete()
-                    }
-                }
-                0
-            }
-            Log.v(
-                UTILSIMAGEKT,
-                "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"
-            )
-            return deletedRows > 0
+            return deleteContentResolver(context, uri)
         }
 
         "file" -> { // until Android P
@@ -147,48 +131,7 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
 
             val file = File(path)
 
-            if (!file.exists()) {
-                Log.w(UTILSIMAGEKT, "deleteImage() File does not exist: ${file.absoluteFile}")
-                return false
-            }
-
-            if (!file.canWrite()) {
-                Log.w(UTILSIMAGEKT, "deleteImage() File is not writable: ${file.absoluteFile}")
-                return false
-            }
-
-            if (file.delete()) {
-                Log.v(UTILSIMAGEKT, "deleteImage() File deleted from storage: ${file.absoluteFile}")
-                val externalContentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                val projection = arrayOf(MediaStore.Images.Media._ID)
-                @Suppress("DEPRECATION")
-                val selection = MediaStore.Images.Media.DATA + " = ?"
-                val queryArgs = arrayOf(file.absolutePath)
-                context.contentResolver.query(
-                    externalContentUri,
-                    projection,
-                    selection,
-                    queryArgs,
-                    null
-                )?.apply {
-                    if (moveToFirst()) {
-                        val id = getLong(getColumnIndexOrThrow(MediaStore.Images.Media._ID))
-                        val contentUri = ContentUris.withAppendedId(
-                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                            id
-                        )
-                        context.contentResolver.delete(contentUri, null, null)
-                        Log.v(
-                            UTILSIMAGEKT,
-                            "deleteImage() File deleted from MediaStore: $contentUri"
-                        )
-                    }
-                    close()
-                }
-            } else {
-                Log.w(UTILSIMAGEKT, "deleteImage() Could not delete file: ${file.absoluteFile}")
-                return false
-            }
+            return deleteFileSystem(context, file)
         }
         else -> {
             Log.e(UTILSIMAGEKT, "deleteImage() Could not delete file. Unknown error. uri=$uri")
@@ -196,9 +139,107 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
         }
 
     }
-
-    return true
 }
+
+/**
+ * Delete file via DocumentFile
+ */
+fun deleteDocumentFile(context: Context, uri: Uri): Boolean {
+    val docDir = DocumentFile.fromSingleUri(context, uri)
+    if (docDir != null) {
+        if (!docDir.isFile) {
+            return false
+        }
+        return try {
+            docDir.delete()
+        } catch (e: SecurityException) {
+            Log.v(
+                UTILSIMAGEKT,
+                "SecurityException in deleteDocumentFile($context, $uri)"
+            )
+            false
+        }
+    } else {
+        return false
+    }
+}
+
+/**
+ * Delete file via contentResolver
+ */
+fun deleteContentResolver(context: Context, uri: Uri): Boolean {
+    val deletedRows = try {
+        context.contentResolver.delete(uri, null, null)
+    } catch (e: UnsupportedOperationException) {
+        // Try to delete DocumentFile in custom directory
+        if (App.getInstance().prefManager.screenshotDirectory != null) {
+            return deleteDocumentFile(context, uri)
+        }
+        0
+    } catch (e: SecurityException) {
+        // Try to delete DocumentFile in custom directory
+        if (App.getInstance().prefManager.screenshotDirectory != null) {
+            return deleteDocumentFile(context, uri)
+        }
+        0
+    }
+    Log.v(
+        UTILSIMAGEKT,
+        "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"
+    )
+    return deletedRows > 0
+}
+
+/**
+ * Delete file from file system and MediaStore
+ */
+fun deleteFileSystem(context: Context, file: File): Boolean {
+    if (!file.exists()) {
+        Log.w(UTILSIMAGEKT, "deleteImage() File does not exist: ${file.absoluteFile}")
+        return false
+    }
+
+    if (!file.canWrite()) {
+        Log.w(UTILSIMAGEKT, "deleteImage() File is not writable: ${file.absoluteFile}")
+        return false
+    }
+
+    if (file.delete()) {
+        Log.v(UTILSIMAGEKT, "deleteImage() File deleted from storage: ${file.absoluteFile}")
+        val externalContentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        val projection = arrayOf(MediaStore.Images.Media._ID)
+
+        @Suppress("DEPRECATION")
+        val selection = MediaStore.Images.Media.DATA + " = ?"
+        val queryArgs = arrayOf(file.absolutePath)
+        context.contentResolver.query(
+            externalContentUri,
+            projection,
+            selection,
+            queryArgs,
+            null
+        )?.apply {
+            if (moveToFirst()) {
+                val id = getLong(getColumnIndexOrThrow(MediaStore.Images.Media._ID))
+                val contentUri = ContentUris.withAppendedId(
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                    id
+                )
+                context.contentResolver.delete(contentUri, null, null)
+                Log.v(
+                    UTILSIMAGEKT,
+                    "deleteImage() File deleted from MediaStore: $contentUri"
+                )
+            }
+            close()
+        }
+        return true
+    } else {
+        Log.w(UTILSIMAGEKT, "deleteImage() Could not delete file: ${file.absoluteFile}")
+        return false
+    }
+}
+
 
 fun statusBarHeight(context: Context): Int {
     val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
@@ -249,6 +290,7 @@ fun realScreenSize(activity: Activity): Point {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             activity.display?.getRealSize(this)
         } else {
+            @Suppress("DEPRECATION")
             windowManager.defaultDisplay.getRealSize(this)
         }
     }

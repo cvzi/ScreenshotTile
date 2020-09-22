@@ -301,11 +301,9 @@ class SettingFragment : PreferenceFragmentCompat() {
             val uri = intent.data
             val takeFlags: Int = intent.flags and
                     (FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION)
-            if (uri != null) {
-                if (activity != null && activity?.contentResolver != null) {
-                    prefManager.screenshotDirectory = uri.toString()
-                    activity?.contentResolver?.takePersistableUriPermission(uri, takeFlags)
-                }
+            if (uri != null && activity != null && activity?.contentResolver != null) {
+                prefManager.screenshotDirectory = uri.toString()
+                activity?.contentResolver?.takePersistableUriPermission(uri, takeFlags)
             }
         }
     }

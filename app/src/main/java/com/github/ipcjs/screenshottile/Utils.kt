@@ -481,7 +481,7 @@ fun getCacheMaxFreeSpace(context: Context): File? {
         return null
     }
     val maxIndex =
-        cacheDirs.indices.maxBy { index ->
+        cacheDirs.indices.maxByOrNull { index ->
             if (cacheDirs[index] == null) {
                 0
             } else {
