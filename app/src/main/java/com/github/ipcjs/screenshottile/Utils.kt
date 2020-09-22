@@ -79,6 +79,7 @@ class CompressionOptions(var fileExtension: String = "png", val quality: Int = 1
                     Bitmap.CompressFormat.WEBP_LOSSY
                 }
             } else {
+                @Suppress("DEPRECATION")
                 Bitmap.CompressFormat.WEBP
             }
         }
