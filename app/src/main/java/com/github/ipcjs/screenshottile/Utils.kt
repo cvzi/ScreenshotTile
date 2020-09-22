@@ -214,7 +214,7 @@ fun createOutputStreamLegacy(
         try {
             directory?.mkdirs()
             imageFile.createNewFile()
-            Log.i(
+            Log.v(
                 UTILSKT,
                 "createOutputStreamLegacy() Fallback to getExternalFilesDir ${imageFile.absolutePath}"
             )

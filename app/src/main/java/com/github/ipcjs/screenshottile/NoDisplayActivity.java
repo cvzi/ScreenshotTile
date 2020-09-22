@@ -83,7 +83,7 @@ public class NoDisplayActivity extends Activity {
                 }
                 screenshot(this, false);
             } else {
-                Log.i(TAG, "onCreate() EXTRA_SCREENSHOT=false");
+                Log.v(TAG, "onCreate() EXTRA_SCREENSHOT=false");
             }
         }
         finish();

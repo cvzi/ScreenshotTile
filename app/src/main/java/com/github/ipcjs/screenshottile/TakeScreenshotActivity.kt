@@ -131,7 +131,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
             askedForPermission = true
             App.acquireScreenshotPermission(this, this)
         } else {
-            Log.i(TAG, "onCreate() else")
+            Log.v(TAG, "onCreate() else")
         }
 
     }
