@@ -19,6 +19,14 @@ Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTil
 
 [Changelog](CHANGELOG.md)
 
+## Languages
+
+To help translate this app, please visit [crowdin.com](https://crwd.in/screenshottile?utm_source=badge&utm_medium=referral&utm_campaign=badge-add-on), where the localizations are managed. If you like to add a new language, please open an issue or email me and I will add it.
+
+<a href="https://crwd.in/screenshottile?utm_source=badge&utm_medium=referral&utm_campaign=badge-add-on" rel="nofollow"><img style="width:140;height:40px" src="https://badges.crowdin.net/badge/dark/crowdin-on-light.png" srcset="https://badges.crowdin.net/badge/dark/crowdin-on-light.png 1x,https://badges.crowdin.net/badge/crowdin-on-light@2x.png 2x"  alt="Crowdin | Agile localization for tech companies" /></a>
+
+You may translate the resource files directly and open a pull request. The English source is in [/app/src/main/res/values/strings.xml](/app/src/main/res/values/strings.xml) and the translated files are stored in [/app/src/main/res/values-XX/strings.xml](/app/src/main/res/) (XX = language code)
+
 ## <a name="icon">Cast icon:</a> ![cast icon](/docs/imgs/casticon.png)
 
 If you don't want to see the cast icon in the status bar on every screenshot, you can turn
