@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">Captura da tela</string>
+    <string name="title_delay">Tempo de atraso</string>
+    <string name="more_setting">Mais configurações</string>
+    <string name="open_settings">Abrir as configurações</string>
+    <string name="left_screenshot_right_menu">À esquerda: Captura da tela, À direita: Configurações</string>
+    <string name="partial_screenshot">Selecione a área</string>
+    <string name="file_format">Formato do arquivo</string>
+    <string name="setting_delay_entry_default">De imediato</string>
+    <string name="setting_delay_entry_1s">1s</string>
+    <string name="setting_delay_entry_2s">2s</string>
+    <string name="setting_delay_entry_5s">5s</string>
+    <string name="show_count_down">Mostrar a contagem regressiva</string>
+    <string name="use_native_screenshot">Usar o método de Captura da tela do Android</string>
+    <string name="use_native_screenshot_summary">Imitar combinação 'botão de ligar+início'</string>
+    <string name="use_native_screenshot_unsupported">Exige Android 9 Pie</string>
+    <string name="use_native_screenshot_unavailable">O serviço de acessibilidade está desativado</string>
+    <string name="use_native_screenshot_option_default">Método nativo usa o padrão do sistema</string>
+    <string name="accessibility_service_description">Se este serviço estiver ativado, o aplicativo pode imitar combinação do 'botão de ligar+início' para fazer a Captura da tela.\nEm alguns dispositivos, este método pode ser mais estável ou mais rápido que o método alternativo.\nSe você ativar a opção aqui, você precisará ativar o "método nativo" nas configurações do aplicativo.</string>
+    <string name="setting_broadcast_secret">Mostrar a senha</string>
+    <string name="setting_broadcast_secret_description">Uma frase secreta para permitir que outros aplicativos (como MacroDroid ou Tasker) efectuam a captura da tela</string>
+    <string name="setting_storage_directory">Salvar local</string>
+    <string name="setting_storage_directory_description">Pasta para salvar as Capturas da tela</string>
+    <string name="notification_settings">Notificações</string>
+    <string name="notification_settings_on">Ativado</string>
+    <string name="notification_settings_off">Desativado</string>
+    <string name="file_title">Captura da tela</string>
+    <string name="file_description">Captura da tela realizada em %1$s</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
+    <string name="notification_title">Captura feita!</string>
+    <string name="notification_body">Toque para ver a Captura</string>
+    <string name="notification_channel_description">Mostrar uma notificação quando foi feita uma Captura da tela</string>
+    <string name="notification_foreground_title">Realizando uma Captura da tela…</string>
+    <string name="notification_foreground_body">Processando a Captura da tela… Toque para cancelar</string>
+    <string name="notification_foreground_channel_description">Mostrar uma notificação quando está fazendo uma Captura da tela. Impede que o aplicativo seja encerrado pela otimização da bateria enquanto uma captura da tela está sendo feita</string>
+    <string name="notification_app_chooser_share">Compartilhar o arquivo com…</string>
+    <string name="notification_app_chooser_edit">Editar o arquivo com…</string>
+    <string name="screenshot_failed">Captura da tela falhou, por favor tente de novo</string>
+    <string name="screenshot_file_saved">Captura da tela salva %1$s</string>
+    <string name="notification_delete_screenshot">Excluir</string>
+    <string name="notification_share_screenshot">Compartilhar</string>
+    <string name="notification_edit_screenshot">Editar</string>
+    <string name="screenshot_deleted">Captura foi excluída</string>
+    <string name="screenshot_delete_failed">Não foi possível excluir o arquivo</string>
+    <string name="permission_missing_external_storage">Não foi possível obter a permissão do armazenamento</string>
+    <string name="permission_missing_screen_capture">Não foi possível obter a permissão para gravar a Captura da tela</string>
+    <string name="hide_app_from_launcher">Ocultar o ícone do aplicativo do lançador</string>
+    <string name="hide_app_unsupported">Não suportado no Android 10+</string>
+    <string name="toggle_app_icon_failed">Não foi possível mostrar/ocultar o ícone do aplicativo</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="tutorial_tap_for_next_step">Toque para o próximo passo</string>
+    <string name="tutorial_step2">Deslize a área de notificações para baixo</string>
+    <string name="tutorial_step3">Deslize para baixo os ajustes rápidos</string>
+    <string name="tutorial_step4">Toque no botão editar</string>
+    <string name="tutorial_step5">Encontre o novo botão de Captura da tela</string>
+    <string name="tutorial_step6">Arraste o botão para os ajustes</string>
+    <string name="tutorial_step8">Fechar os ajustes rápidos</string>
+    <string name="tutorial_step10">Deslize para cima a área de notificações</string>
+    <string name="tutorial_step11">Aceitar as permissões</string>
+    <string name="tutorial_step16">Realize as Capturas da tela com o novo botão</string>
+    <string name="take_screenshot">Faça uma Captura da tela</string>
+
+    <!-- About -->
+    <string name="about_app_title">Sobre</string>
+    <string name="about_app_1">Este é um fork de\ngithub.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_3">Para mais informações e relatórios de problemas visite:\ngithub.com/cvzi/ScreenshotTile</string>
+    <string name="about_license_title">Licença</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Versão 3</string>
+    <string name="about_app_2">Este aplicativo ainda tem alguns problemas e está em desenvolvimento contínuo.\nSe você tem acesso Root no seu telefone, use a versão ipcjs\', é mais rápido e mais estável.</string>
+    <string name="about_privacy_title" translatable="false">Política de Privacidade</string>
+    <string name="about_open_source_title" translatable="false">Código aberto utilizado</string>
+</resources>
