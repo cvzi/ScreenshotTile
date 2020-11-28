@@ -13,11 +13,11 @@
     <string name="setting_delay_entry_5s">5s</string>
     <string name="show_count_down">Mostrar a contagem regressiva</string>
     <string name="use_native_screenshot">Usar o método de Captura da tela do Android</string>
-    <string name="use_native_screenshot_summary">Imitar combinação 'botão de ligar+início'</string>
+    <string name="use_native_screenshot_summary">Imitar combinação \'botão de ligar+início\'</string>
     <string name="use_native_screenshot_unsupported">Exige Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">O serviço de acessibilidade está desativado</string>
     <string name="use_native_screenshot_option_default">Método nativo usa o padrão do sistema</string>
-    <string name="accessibility_service_description">Se este serviço estiver ativado, o aplicativo pode imitar combinação do 'botão de ligar+início' para fazer a Captura da tela.\nEm alguns dispositivos, este método pode ser mais estável ou mais rápido que o método alternativo.\nSe você ativar a opção aqui, você precisará ativar o "método nativo" nas configurações do aplicativo.</string>
+    <string name="accessibility_service_description">Se este serviço estiver ativado, o aplicativo pode imitar combinação do \'botão de ligar+início\' para fazer a Captura da tela.\nEm alguns dispositivos, este método pode ser mais estável ou mais rápido que o método alternativo.\nSe você ativar a opção aqui, você precisará ativar o "método nativo" nas configurações do aplicativo.</string>
     <string name="setting_broadcast_secret">Mostrar a senha</string>
     <string name="setting_broadcast_secret_description">Uma frase secreta para permitir que outros aplicativos (como MacroDroid ou Tasker) efectuam a captura da tela</string>
     <string name="setting_storage_directory">Salvar local</string>
