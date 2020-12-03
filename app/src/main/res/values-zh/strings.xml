@@ -15,6 +15,8 @@
     <string name="use_native_screenshot_unsupported">需要 Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">无障碍服务已禁用</string>
     <string name="use_native_screenshot_option_default">原生方式使用系统默认</string>
+    <string name="setting_floating_button_unavailable">需要 Android 9 Pie</string>
+    <string name="setting_floating_button_unsupported">无障碍服务已禁用</string>
     <string name="accessibility_service_description">如果启用此服务，应用可以模拟电源 + home 键按压截取屏幕截图\n在一些设备上此方式可能比默认方式更加稳定快速。\n\n如果你启用此服务，你还需要在应用设置中启用“原生方式”。</string>
     <string name="setting_broadcast_secret">广播消息密码</string>
     <string name="setting_broadcast_secret_description">允许其他应用 (如 MacroDroid 或 Tasker) 启动屏幕截图的秘密短语</string>
@@ -65,4 +67,8 @@
     <string name="about_license_title">许可证</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">此应用仍然存在一些问题并且正在开发中。\n如果你的设备拥有 root 权限，请使用 ipcjs 的版本，更快速可靠。</string>
+
+    <!-- First activity -->
+    <string name="main_accessibility_settings">无障碍设置</string>
+
 </resources>

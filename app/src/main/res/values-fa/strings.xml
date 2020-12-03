@@ -22,4 +22,8 @@
     <string name="notification_settings">اعلان ها</string>
     <string name="notification_settings_off">اعلان ها غیرفعال شدند</string>
     <string name="notification_settings_on">روشن</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">تنظیمات دسترس‌پذیری</string>
+
 </resources>

@@ -23,4 +23,8 @@
     <string name="notification_settings_off">نا اہل بنادیا</string>
     <string name="notification_settings_on">آن کردیا</string>
     <string name="partial_screenshot">کراپ کریں</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">ایکسیسبیلٹی ترتیبات</string>
+
 </resources>

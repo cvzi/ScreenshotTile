@@ -30,4 +30,8 @@
     <string name="notification_app_chooser_edit">تەھرىرلەش</string>
     <string name="more_setting">تەڭشەك</string>
     <string name="partial_screenshot">كېسىش</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">قوشۇمچە ئىقتىدار تەڭشىكى</string>
+
 </resources>

@@ -27,4 +27,8 @@
     <string name="notification_foreground_title">جارٍ حفظ لقطة الشاشة…</string>
     <string name="notification_foreground_body">جارٍ حفظ لقطة الشاشة… انقر للخروج</string>
     <string name="partial_screenshot">قص</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">إعدادات إمكانية الدخول</string>
+
 </resources>

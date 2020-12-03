@@ -25,4 +25,8 @@
     <string name="more_setting">Cài đặt</string>
     <string name="setting_storage_directory">Vị trí lưu</string>
     <string name="setting_storage_directory_description">Thư mục lưu tệp tin</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">Cài đặt trợ năng</string>
+
 </resources>

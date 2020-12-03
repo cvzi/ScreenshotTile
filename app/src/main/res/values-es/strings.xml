@@ -51,4 +51,8 @@
     <string name="about_app_3">Para obtener más información e informes de errores, visite:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Licencia</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">Configuración de accesibilidad</string>
+
 </resources>

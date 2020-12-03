@@ -24,4 +24,8 @@
     <string name="notification_settings">通知</string>
     <string name="setting_storage_directory">保存場所</string>
     <string name="setting_storage_directory_description">写真を保存するフォルダを決めます</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">ユーザー補助の設定</string>
+
 </resources>
