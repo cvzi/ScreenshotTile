@@ -63,6 +63,17 @@
     <string name="tutorial_step11">Akzeptiere die Berechtigungen</string>
     <string name="tutorial_step16">Jetzt kannst du Screenshots aufnehmen</string>
     <string name="take_screenshot">Screenshot aufnehmen</string>
+    <string name="tile_floating_label">Schwebender</string>
+    <string name="tile_floating_subtitle">Screenshot</string>
+    <string name="setting_floating_button">Schwebender Screenshot Auslöser</string>
+    <string name="setting_floating_button_summary">Kann auch durch ein Schnelleinstellungskachel an/aus geschaltet werden</string>
+    <string name="setting_floating_button_scale">Größe des schwebenden Auslösers</string>
+    <string name="setting_floating_button_scale_summary">Pass die Größe des schwebenden Auslösers an</string>
+    <string name="setting_floating_button_hide_after">Verstecke schwebenden Auslöser nach Screenshot</string>
+    <string name="setting_floating_button_hide_after_summary">Nach einer Aufnahme wird der Auslöser automatisch deaktiviert</string>
+    <string name="setting_floating_button_show_close">Zeige [x]/Schließen neben dem schwebenden Button</string>
+    <string name="setting_floating_button_show_close_summary">Damit kannst du den schwebenden Auslöser deaktivieren ohne die Schnelleinstellungen zu öffnen</string>
+
     <!-- About -->
     <string name="about_app_title">Info</string>
     <string name="about_app_1">Dies ist ein fork von\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -70,4 +81,18 @@
     <string name="about_license_title">Lizenz</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">Diese App hat noch einige kleine Fehler und wird noch entwickelt.\nWenn du root Zugriff hast, kann du die originale Version von ipcjs benutzen. Sie ist schneller und stabiler.</string>
+    <string name="about_privacy_title">Datenschutzerklärung</string>
+    <string name="about_open_source_title">Benutze Open Source Software</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">Bedienungshilfen Einstellungen</string>
+    <string name="main_floating_button_title">Schwebender Auslöser</string>
+    <string name="main_general_text">Bevor du diese App nutzen kannst, musst du die Kachel/Button zu den Schnelleinstellungen hinzufügen. Wenn du nicht weißt wie das geht, schau dir das [Tutorial,.TutorialActivity] an.\n\nDiese App unterstützt zwei unterschiedliche Methoden um Screenshots zu erstellen:</string>
+    <string name="main_legacy_method_title">Ursprüngliche Methode</string>
+    <string name="main_legacy_method_text">Die ursprüngliche Methode um Screenshots zu erstellen benutzt die Bildschirmaufnahmefunktion von Android.\nWenn du einen Screenshot machst, wird kein Ton abgespielt und nur eine lautlose Benachrichtigung zum Teilen, Bearbeiten und Öffnen angezeigt. Die Benachrichtigung kann in den Einstellungen deaktiviert werden.\nBevor du einen Screenshot erstellen kannst, musst du die Kachel zu den Schnelleinstellungen hinzufügen, die Berechtigungen für die Bildschirmaufnahme und die Berechtigung um auf den Telefonspeicher zuzugreifen akzeptieren.\nSchau das Tutorial an wenn du Hilfe brauchst.\n\nAuf manchen Geräten ist diese Methode instabil vor allem bei neuen Android (Adnroid 9.0+) kann es sein, dass vor jedem Screenshot erneut die Berechtigung erfragt wird. In diesem Fall kann die Native Methode (siehe unten) benutzt werden.</string>
+    <string name="main_native_method_title">Native Methode</string>
+    <string name="main_native_method_text">Die native Screenshotmethode simuliert einen Tastendruck von Power und Home button und benutzt die standard Bildschirmaufnahme des Gerätes.\nWenn ein Screenshot aufgenommen wird, kann es sein, dass ein Ton abgespielt wird oder ein Editor sich öffnet. Das hängt vom Gerät ab und kann von dieser App nicht beeinflusst werden. Es kann eventuell in den Telefoneinstellungen geändert werden.\n\nBevor du Screenshots aufnehmen kannst, musst du diese App in den Bedienungshilfen Einstellungen aktivieren. Drück den Knopf unten um die Bedienungshilfen Einstellungen zu öffnen.</string>
+    <string name="main_floating_button_text">Wenn du die native Methode aktiviert hast, kannst du auch mit einem schwebenden Auslöser (ähnlich wie eine Chat bubble) Screenshots aufnehmen.\nDer schwebende Auslöser kann mit einer separaten Kacheln in den Schnelleinstellungen aktiviert werden und dann frei auf dem Bildschirm plaziert werden.</string>
+    <string name="main_long_press_title">Langes Drücken</string>
+    <string name="main_long_press_text">Durch langes Drücken auf die Kachel/Button in den Schnelleinstellungen wird ein Menü geöffnet. Dort kann eine Verzögerung ausgewählt werden oder ein Rechteck aus dem Bildschirm ausgeschnitten werden.</string>
 </resources>
