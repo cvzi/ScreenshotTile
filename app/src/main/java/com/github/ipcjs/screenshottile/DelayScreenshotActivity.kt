@@ -4,11 +4,12 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import kotlinx.android.synthetic.main.activity_delay.*
-
+import com.github.ipcjs.screenshottile.databinding.ActivityDelayBinding
 /**
  * Created by ipcjs on 2017/8/15.
+ * Changes by cuzi@openmail.cc
  */
 
 class DelayScreenshotActivity : Activity() {
@@ -24,39 +25,41 @@ class DelayScreenshotActivity : Activity() {
             return intent
         }
     }
-
+    private lateinit var binding: ActivityDelayBinding
     private var count: Int = 3
 
     private val countDownRunnable = object : Runnable {
         override fun run() {
-            view.text = count--.toString()
+            binding.view.text = count--.toString()
             when {
                 count < 0 -> postScreenshotAndFinish()  // 此时界面显示0
-                else -> view.postDelayed(this, 1000)
+                else -> binding.view.postDelayed(this, 1000)
             }
         }
     }
 
     private fun postScreenshotAndFinish() {
-        view.visibility = View.GONE
-        view.post {
+        binding.view.visibility = View.GONE
+        binding.view.post {
             screenshotAndFinish()
         }
     }
 
     private fun screenshotAndFinish() {
         screenshot(this)
-        view.removeCallbacks(countDownRunnable)
+        binding.view.removeCallbacks(countDownRunnable)
         finish()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_delay)
+        binding = ActivityDelayBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
+
         count = intent.getIntExtra(EXTRA_DELAY, count)
-        view.setOnClickListener {
+        binding.view.setOnClickListener {
             postScreenshotAndFinish()
         }
-        view.post(countDownRunnable)
+        binding.view.post(countDownRunnable)
     }
 }
