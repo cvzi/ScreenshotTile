@@ -48,9 +48,9 @@ Now you can **add a macro** to MacroDroid:
 *   Open MacroDroid and tap on *Macros* and then *Add Macro* or the ➕ Symbol
 *   Tab ➕ on *Triggers* and add your desired trigger
 *   Tab ➕ on *Actions* and go to *Connectivity* -> *Send Intent*
-*   Under *Target* select *Broadcast* and fill out the fields:
-    *   Action: `com.github.screenshottile.SCREENSHOT`
-    *   Package: `com.github.screenshottile`
+*   Under *Target* select **Broadcast** and fill out the fields:
+    *   Action: `com.github.cvzi.screenshottile.SCREENSHOT`
+    *   Package: `com.github.cvzi.screenshottile`
     *   Data (class name): `com.github.ipcjs.screenshottile.IntentHandler`
     *   Extra 1 parameter: `secret`
     *   Extra 1 value: `yourPasswordFromEarlier`
