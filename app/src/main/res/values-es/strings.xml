@@ -54,5 +54,7 @@
 
     <!-- First screen -->
     <string name="main_accessibility_settings">Configuración de accesibilidad</string>
+    <string name="open_settings">Abrir ajustes</string>
+    <string name="left_screenshot_right_menu">Captura de pantalla | Ajustes</string>
 
 </resources>
