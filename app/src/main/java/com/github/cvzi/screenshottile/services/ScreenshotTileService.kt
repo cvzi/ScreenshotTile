@@ -1,7 +1,5 @@
 package com.github.cvzi.screenshottile.services
 
-import android.app.Notification
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
@@ -9,11 +7,12 @@ import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
-import com.github.cvzi.screenshottile.*
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
-import com.github.cvzi.screenshottile.utils.createNotificationForegroundServiceChannel
+import com.github.cvzi.screenshottile.utils.foregroundNotification
 
 
 /**
@@ -115,32 +114,13 @@ class ScreenshotTileService : TileService(),
             return
         }
 
-        val context = this
-        val builder = Notification.Builder(this, createNotificationForegroundServiceChannel(this))
-        builder.apply {
-            setShowWhen(false)
-            setContentTitle(getString(R.string.notification_foreground_title))
-            setContentText(getString(R.string.notification_foreground_body))
-            setAutoCancel(true)
-            setSmallIcon(R.drawable.transparent_icon)
-            val notificationIntent = Intent().apply {
-                action = NOTIFICATION_ACTION_STOP
-                putExtra(NOTIFICATION_ACTION_ID, FOREGROUND_NOTIFICATION_ID)
-            }
-            val pendingIntent = PendingIntent.getBroadcast(
-                context,
-                8456,
-                notificationIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
-            )
-            setContentIntent(pendingIntent)
-        }
         startForeground(
             TakeScreenshotActivity.FOREGROUND_SERVICE_ID,
-            builder.build(),
+            foregroundNotification(this, FOREGROUND_NOTIFICATION_ID).build(),
             ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
         )
     }
+
 
     fun background() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {

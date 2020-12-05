@@ -6,7 +6,7 @@ import android.content.Intent
 import android.content.Intent.EXTRA_COMPONENT_NAME
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.fragments.SettingDialogFragment
@@ -19,7 +19,7 @@ import com.github.cvzi.screenshottile.services.ScreenshotTileService
  * Changes by cuzi (cuzi@openmail.cc)
  */
 
-class SettingDialogActivity : FragmentActivity() {
+class SettingDialogActivity : AppCompatActivity() {
     companion object {
         private const val START_SERVICE =
             BuildConfig.APPLICATION_ID + "SettingDialogActivity.START_SERVICE"

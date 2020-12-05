@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.graphics.PixelFormat
 import android.graphics.Rect
 import android.hardware.display.DisplayManager
@@ -18,6 +19,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.Surface
 import android.view.Window
+import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import com.github.cvzi.screenshottile.App
@@ -112,6 +114,7 @@ class TakeScreenshotActivity : Activity(),
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 display?.getRealMetrics(this)
             } else {
+                @Suppress("DEPRECATION")
                 windowManager.defaultDisplay.getRealMetrics(this)
             }
             screenDensity = densityDpi
@@ -151,18 +154,35 @@ class TakeScreenshotActivity : Activity(),
         val screenshotTileService = ScreenshotTileService.instance
 
         // Go fullscreen without status bar and without display notch/cutout
+        // (must be called before content)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+
+        // Load layout (must be done before the window* calls)
+        setContentView(R.layout.partial_screenshot)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.hide(WindowInsets.Type.statusBars())
+        } else {
+            @Suppress("DEPRECATION")
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.statusBarColor = Color.TRANSPARENT
+            window.setDecorFitsSystemWindows(true)
+        } else {
+            @Suppress("DEPRECATION")
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             window.attributes.layoutInDisplayCutoutMode =
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
         }
-        // Load layout
-        setContentView(R.layout.partial_screenshot)
+
         val mScreenshotSelectorView =
             findViewById<ScreenshotSelectorView>(R.id.global_screenshot_selector)
         mScreenshotSelectorView.text = getString(R.string.take_screenshot)
@@ -261,6 +281,7 @@ class TakeScreenshotActivity : Activity(),
         } catch (e: SecurityException) {
             Log.e(TAG, "startVirtualDisplay() SecurityException: $e")
             screenShotFailedToast("Failed to start virtual display: ${e.localizedMessage}")
+            stopScreenSharing()
             finish()
         }
     }

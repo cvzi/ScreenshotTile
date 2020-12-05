@@ -14,6 +14,7 @@ import android.os.Build
 import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat
 import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
@@ -318,4 +319,27 @@ fun notificationSettingsIntent(packageName: String, channelId: String? = null): 
             }
         }
     }
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun foregroundNotification(context: Context, notificationId: Int): Notification.Builder {
+    return Notification.Builder(context, createNotificationForegroundServiceChannel(context))
+        .apply {
+            setShowWhen(false)
+            setContentTitle(context.getString(R.string.notification_foreground_title))
+            setContentText(context.getString(R.string.notification_foreground_body))
+            setAutoCancel(true)
+            setSmallIcon(R.drawable.transparent_icon)
+            val notificationIntent = Intent().apply {
+                action = NOTIFICATION_ACTION_STOP
+                putExtra(NOTIFICATION_ACTION_ID, notificationId)
+            }
+            val pendingIntent = PendingIntent.getBroadcast(
+                context,
+                8456,
+                notificationIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
+            setContentIntent(pendingIntent)
+        }
 }

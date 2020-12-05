@@ -1,6 +1,5 @@
 package com.github.cvzi.screenshottile.utils
 
-import android.app.Activity
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
@@ -283,21 +282,16 @@ fun navigationBarSize(context: Context): Point {
 fun appUsableScreenSize(context: Context): Point {
     val windowManager =
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-    return Point().apply {
-        // TODO Deprecated https://developer.android.com/reference/android/view/WindowMetrics#getBounds()
-        windowManager.defaultDisplay.getSize(this)
-    }
-}
-
-fun realScreenSize(activity: Activity): Point {
-    val windowManager =
-        activity.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-    return Point().apply {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            activity.display?.getRealSize(this)
-        } else {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        val bounds = windowManager.currentWindowMetrics.bounds
+        Point(
+            bounds.width(),
+            bounds.height()
+        )
+    } else {
+        Point().apply {
             @Suppress("DEPRECATION")
-            windowManager.defaultDisplay.getRealSize(this)
+            windowManager.defaultDisplay.getSize(this)
         }
     }
 }
@@ -305,8 +299,13 @@ fun realScreenSize(activity: Activity): Point {
 fun realScreenSize(context: Context): Point {
     val windowManager =
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+
     return Point().apply {
-        windowManager.defaultDisplay.getRealSize(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            context.display?.getRealSize(this)
+        } else {
+            @Suppress("DEPRECATION")
+            windowManager.defaultDisplay.getRealSize(this)
+        }
     }
 }
-

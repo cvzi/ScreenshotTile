@@ -19,9 +19,9 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.activities.ContainerActivity
 import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
-import com.github.cvzi.screenshottile.activities.ContainerActivity
 import com.github.cvzi.screenshottile.fragments.SettingFragment
 import com.github.cvzi.screenshottile.utils.fillTextHeight
 
