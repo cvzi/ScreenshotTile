@@ -204,7 +204,7 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent()
                     intent.setClassName(
                         this@MainActivity,
-                        "com.github.cvzi.screenshottile$activityName"
+                        "com.github.cvzi.screenshottile.activities$activityName"
                     )
                     startActivity(intent)
                 }
