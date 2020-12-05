@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.github.ipcjs.screenshottile"
+    package="com.github.cvzi.screenshottile"
     android:installLocation="internalOnly">
 
     <uses-permission
@@ -48,7 +48,7 @@
     </queries>
 
     <application
-        android:name=".App"
+        android:name="com.github.cvzi.screenshottile.App"
         android:allowBackup="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -58,7 +58,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".activities.MainActivity"
+            android:name="com.github.cvzi.screenshottile.activities.MainActivity"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme">
@@ -72,40 +72,40 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name=".activities.TutorialActivity"
-            android:parentActivityName=".activities.MainActivity"
+            android:name="com.github.cvzi.screenshottile.activities.TutorialActivity"
+            android:parentActivityName="com.github.cvzi.screenshottile.activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.NoDisplayActivity"
+            android:name="com.github.cvzi.screenshottile.activities.NoDisplayActivity"
             android:theme="@android:style/Theme.NoDisplay" />
         <activity
-            android:name=".activities.DelayScreenshotActivity"
+            android:name="com.github.cvzi.screenshottile.activities.DelayScreenshotActivity"
             android:excludeFromRecents="true" />
         <activity
-            android:name=".dialog.TransparentContainerActivity"
+            android:name="com.github.cvzi.screenshottile.dialog.TransparentContainerActivity"
             android:excludeFromRecents="true" />
         <activity
-            android:name=".dialog.ContainerActivity"
+            android:name="com.github.cvzi.screenshottile.dialog.ContainerActivity"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.SettingDialogActivity"
+            android:name="com.github.cvzi.screenshottile.activities.SettingDialogActivity"
             android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.AcquireScreenshotPermission"
+            android:name="com.github.cvzi.screenshottile.activities.AcquireScreenshotPermission"
             android:excludeFromRecents="true" />
         <activity
-            android:name=".activities.TakeScreenshotActivity"
+            android:name="com.github.cvzi.screenshottile.activities.TakeScreenshotActivity"
             android:excludeFromRecents="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <service
-            android:name=".services.ScreenshotTileService"
+            android:name="com.github.cvzi.screenshottile.services.ScreenshotTileService"
             android:foregroundServiceType="mediaProjection"
             android:icon="@drawable/ic_stat_name"
             android:label="@string/tile_label"
@@ -116,7 +116,7 @@
             </intent-filter>
         </service>
         <service
-            android:name=".services.FloatingTileService"
+            android:name="com.github.cvzi.screenshottile.services.FloatingTileService"
             android:description="@string/tile_floating_subtitle"
             android:enabled="@bool/accessibility_service_enabled"
             android:icon="@drawable/ic_tile_float"
@@ -128,7 +128,7 @@
             </intent-filter>
         </service>
         <service
-            android:name=".services.ScreenshotAccessibilityService"
+            android:name="com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService"
             android:enabled="@bool/accessibility_service_enabled"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
@@ -143,7 +143,7 @@
         </service>
 
         <receiver
-            android:name=".IntentHandler"
+            android:name="com.github.cvzi.screenshottile.IntentHandler"
             android:enabled="true"
             android:exported="true"
             android:label="@string/app_name"
@@ -153,7 +153,7 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".SimpleWidgetBoth"
+            android:name="com.github.cvzi.screenshottile.SimpleWidgetBoth"
             android:label="@string/left_screenshot_right_menu">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -164,7 +164,7 @@
                 android:resource="@xml/simple_widget" />
         </receiver>
         <receiver
-            android:name=".SimpleWidgetScreenshot"
+            android:name="com.github.cvzi.screenshottile.SimpleWidgetScreenshot"
             android:label="@string/take_screenshot">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -175,7 +175,7 @@
                 android:resource="@xml/simple_widget" />
         </receiver>
         <receiver
-            android:name=".SimpleWidgetSettings"
+            android:name="com.github.cvzi.screenshottile.SimpleWidgetSettings"
             android:label="@string/open_settings">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

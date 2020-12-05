@@ -51,7 +51,7 @@ Now you can **add a macro** to MacroDroid:
 *   Under *Target* select **Broadcast** and fill out the fields:
     *   Action: `com.github.cvzi.screenshottile.SCREENSHOT`
     *   Package: `com.github.cvzi.screenshottile`
-    *   Data (class name): `com.github.ipcjs.screenshottile.IntentHandler`
+    *   Data (class name): `com.github.cvzi.screenshottile.IntentHandler`
     *   Extra 1 parameter: `secret`
     *   Extra 1 value: `yourPasswordFromEarlier`
     *   (Optional: Extra 2 parameter `partial`, value `true` to open the area selector for a partial screenshot instead of taking a screenshot)
