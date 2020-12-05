@@ -27,4 +27,8 @@
     <string name="partial_screenshot">Обрезка</string>
     <string name="setting_storage_directory">Папка сохранения</string>
     <string name="setting_storage_directory_description">папки для сохранения фото</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">Настройки специальных возможностей</string>
+
 </resources>

@@ -1,8 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">屏幕截图磁贴 (NoRoot)</string>
     <string name="tile_label">屏幕截图</string>
+    <string name="tile_floating_label">浮动</string>
+    <string name="tile_floating_subtitle">屏幕截图按钮</string>
     <string name="title_delay">延时</string>
     <string name="more_setting">更多设置</string>
+    <string name="open_settings">打开设置</string>
+    <string name="left_screenshot_right_menu">左：屏幕截图，右：设置</string>
     <string name="partial_screenshot">选择区域</string>
     <string name="file_format">文件格式</string>
     <string name="setting_delay_entry_default">立即</string>
@@ -16,6 +21,16 @@
     <string name="use_native_screenshot_unavailable">无障碍服务已禁用</string>
     <string name="use_native_screenshot_option_default">原生方式使用系统默认</string>
     <string name="accessibility_service_description">如果启用此服务，应用可以模拟电源 + home 键按压截取屏幕截图\n在一些设备上此方式可能比默认方式更加稳定快速。\n\n如果你启用此服务，你还需要在应用设置中启用“原生方式”。</string>
+    <string name="setting_floating_button">浮动按钮</string>
+    <string name="setting_floating_button_summary">您也可以从快速设置图块打开/关闭它。</string>
+    <string name="setting_floating_button_unavailable">无障碍服务已禁用</string>
+    <string name="setting_floating_button_unsupported">需要 Android 9 Pie</string>
+    <string name="setting_floating_button_scale">浮动按钮大小</string>
+    <string name="setting_floating_button_scale_summary">调整浮动按钮大小</string>
+    <string name="setting_floating_button_hide_after">屏幕截图后隐藏浮动按钮</string>
+    <string name="setting_floating_button_hide_after_summary">在您截取屏幕截图后自动移除浮动按钮</string>
+    <string name="setting_floating_button_show_close">在浮动按钮旁显示 [X]/关闭按钮</string>
+    <string name="setting_floating_button_show_close_summary">使您可以不必打开快速设置即可移除浮动按钮</string>
     <string name="setting_broadcast_secret">广播消息密码</string>
     <string name="setting_broadcast_secret_description">允许其他应用 (如 MacroDroid 或 Tasker) 启动屏幕截图的秘密短语</string>
     <string name="setting_storage_directory">保存位置</string>
@@ -23,8 +38,8 @@
     <string name="notification_settings">通知</string>
     <string name="notification_settings_on">已启用</string>
     <string name="notification_settings_off">已禁用</string>
-    <string name="file_title">Screenshot</string>
-    <string name="file_description">Screenshot taken on %1$s</string>
+    <string name="file_title">屏幕截图</string>
+    <string name="file_description">屏幕截图完成 %1$s</string>
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">已保存屏幕截图</string>
     <string name="notification_body">点按即可查看您的屏幕截图</string>
@@ -44,6 +59,7 @@
     <string name="permission_missing_external_storage">获取存储空间权限失败</string>
     <string name="permission_missing_screen_capture">获取录制屏幕截图权限失败</string>
     <string name="hide_app_from_launcher">从启动器隐藏应用图标</string>
+    <string name="hide_app_unsupported">不支持 Android 10+ 系统</string>
     <string name="toggle_app_icon_failed">显示/隐藏应用图标失败</string>
     <string name="tutorial">教程</string>
     <string name="tutorial_tap_for_next_step">点按进入下一步</string>
@@ -57,12 +73,22 @@
     <string name="tutorial_step11">接受权限</string>
     <string name="tutorial_step16">使用新按钮截取屏幕截图</string>
     <string name="take_screenshot">截取屏幕截图</string>
-
     <!-- About -->
     <string name="about_app_title">关于</string>
     <string name="about_app_1">这是\ngithub.com/ipcjs/ScreenshotTile 的一个分支</string>
     <string name="about_app_3">获取更多信息及错误报告请访问：\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">许可证</string>
-    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="about_license_1">GNU 通用公共许可证 第 3 版</string>
     <string name="about_app_2">此应用仍然存在一些问题并且正在开发中。\n如果你的设备拥有 root 权限，请使用 ipcjs 的版本，更快速可靠。</string>
+    <!-- First screen -->
+    <string name="main_accessibility_settings">无障碍设置</string>
+    <string name="main_floating_button_title">浮动按钮</string>
+    <string name="main_general_text">在您使用此应用前，您需要将图块/按钮添加到快速设置。如果您不知道怎么做，请看看[教程,.TutorialActivity].\n\n此应用支持两种不同的屏幕截图方式：</string>
+    <string name="main_legacy_method_title">传统方式</string>
+    <string name="main_legacy_method_text">传统的屏幕截图方式使用 Android 的屏幕录制功能。\n当您截取屏幕截图时不会播放声音。将显示静音通知以打开，分享或编辑屏幕截图。通知可在应用设置中禁用。\n在您截取屏幕截图前您需要将图块添加到快速设置，接受权限以录制屏幕并访问内部存储以保存图片。\n参见关于如何做的教程。\n\n在一些设备上此方式无法工作，特别是较新的 Android 版本 (9.0+) 它不稳定且可能在每次截图时请求权限。如果发生此情况您应使用下述原生方式。</string>
+    <string name="main_native_method_title">原生方式</string>
+    <string name="main_native_method_text">原生屏幕截图方式模拟按压 Home + 电源键并使用您设备的屏幕截图方式。\n当您截取屏幕截图时，可能会播放声音或显示屏幕截图编辑器。这取决与您的设备并且无法由此应用更改。您或许可以在您的设备设置中更改此行为。\n\n在您截取屏幕截图前您需要在设备设置中启用无障碍服务。点按下方按钮打开无障碍设置。</string>
+    <string name="main_floating_button_text">如果您已启用原生方式，您也可以使用浮动按钮（类似聊天气泡）截取屏幕截图。\n您可以使用快速设置中的另一个图块/按钮启用它，然后在屏幕上移动它。</string>
+    <string name="main_long_press_title">长按</string>
+    <string name="main_long_press_text">长按图块/按钮打开菜单。您可以指定屏幕截图延迟或从屏幕截取矩形区域。</string>
 </resources>

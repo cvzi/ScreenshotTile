@@ -2,7 +2,7 @@ ScreenshotTile (NoRoot)
 =======================
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Build Status](https://travis-ci.org/cvzi/ScreenshotTile.svg?branch=master)](https://travis-ci.org/cvzi/ScreenshotTile)
+[![Build status](https://github.com/cvzi/ScreenshotTile/workflows/gradleCI/badge.svg)](https://github.com/cvzi/ScreenshotTile/actions?query=workflow%3AgradleCI)
 [![F-Droid](https://img.shields.io/f-droid/v/com.github.cvzi.screenshottile.svg)](https://f-droid.org/packages/com.github.cvzi.screenshottile/)
 [![Play Store](https://img.shields.io/endpoint?color=green&label=Store&logo=google-play&logoColor=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.github.cvzi.screenshottile%26m%3D%24rating%2520%25E2%25AD%2590%2520v%24version%2520)](https://play.google.com/store/apps/details?id=com.github.cvzi.screenshottile)
 [![Download APK file](https://img.shields.io/github/release/cvzi/ScreenshotTile.svg?label=Download%20.apk&logo=android)](https://github.com/cvzi/ScreenshotTile/releases/latest)
@@ -18,6 +18,14 @@ Video:
 Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTile)
 
 [Changelog](CHANGELOG.md)
+
+## Languages
+
+To help translate this app, please visit [crowdin.com](https://crwd.in/screenshottile?utm_source=badge&utm_medium=referral&utm_campaign=badge-add-on), where the localizations are managed. If you like to add a new language, please open an issue or email me and I will add it.
+
+<a href="https://crwd.in/screenshottile?utm_source=badge&utm_medium=referral&utm_campaign=badge-add-on" rel="nofollow"><img style="width:140;height:40px" src="https://badges.crowdin.net/badge/dark/crowdin-on-light.png" srcset="https://badges.crowdin.net/badge/dark/crowdin-on-light.png 1x,https://badges.crowdin.net/badge/crowdin-on-light@2x.png 2x"  alt="Crowdin | Agile localization for tech companies" /></a>
+
+You may translate the resource files directly and open a pull request. The English source is in [/app/src/main/res/values/strings.xml](/app/src/main/res/values/strings.xml) and the translated files are stored in [/app/src/main/res/values-XX/strings.xml](/app/src/main/res/) (XX = language code)
 
 ## <a name="icon">Cast icon:</a> ![cast icon](/docs/imgs/casticon.png)
 
@@ -40,10 +48,10 @@ Now you can **add a macro** to MacroDroid:
 *   Open MacroDroid and tap on *Macros* and then *Add Macro* or the ➕ Symbol
 *   Tab ➕ on *Triggers* and add your desired trigger
 *   Tab ➕ on *Actions* and go to *Connectivity* -> *Send Intent*
-*   Under *Target* select *Broadcast* and fill out the fields:
-    *   Action: `com.github.screenshottile.SCREENSHOT`
-    *   Package: `com.github.screenshottile`
-    *   Data (class name): `com.github.ipcjs.screenshottile.IntentHandler`
+*   Under *Target* select **Broadcast** and fill out the fields:
+    *   Action: `com.github.cvzi.screenshottile.SCREENSHOT`
+    *   Package: `com.github.cvzi.screenshottile`
+    *   Data (class name): `com.github.cvzi.screenshottile.IntentHandler`
     *   Extra 1 parameter: `secret`
     *   Extra 1 value: `yourPasswordFromEarlier`
     *   (Optional: Extra 2 parameter `partial`, value `true` to open the area selector for a partial screenshot instead of taking a screenshot)

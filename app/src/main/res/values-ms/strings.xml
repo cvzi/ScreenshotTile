@@ -29,4 +29,8 @@
     <string name="notification_foreground_title">Menyimpan tangkapan skrin…</string>
     <string name="notification_foreground_body">Menyimpan tangkapan skrin… Klik untuk keluar</string>
     <string name="partial_screenshot">Potong</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">Tetapan kebolehaksesan</string>
+
 </resources>

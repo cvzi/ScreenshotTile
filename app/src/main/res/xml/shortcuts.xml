@@ -10,7 +10,7 @@
         tools:targetApi="N_MR1">
         <intent
             android:action="com.github.cvzi.screenshottile.NoDisplayActivity.EXTRA_SCREENSHOT"
-            android:targetClass="com.github.ipcjs.screenshottile.NoDisplayActivity"
+            android:targetClass="com.github.cvzi.screenshottile.activities.NoDisplayActivity"
             android:targetPackage="com.github.cvzi.screenshottile" />
     </shortcut>
     <shortcut
@@ -22,7 +22,7 @@
         tools:targetApi="N_MR1">
         <intent
             android:action="com.github.cvzi.screenshottile.SettingDialogActivity.START_SERVICE"
-            android:targetClass="com.github.ipcjs.screenshottile.SettingDialogActivity"
+            android:targetClass="com.github.cvzi.screenshottile.activities.SettingDialogActivity"
             android:targetPackage="com.github.cvzi.screenshottile" />
     </shortcut>
 </shortcuts>

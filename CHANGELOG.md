@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.10.0
+*   Added floating button to take screenshots
+*   Added initial activity with text explanation of features
+*   Added Portuguese pt-br translation. Thanks to [@mezysinc](https://github.com/mezysinc)
+*   Rename package
+## 1.9.0
+*   Added widgets
+*   Improvements for Android Q and 11. Start foreground service earlier
 ## 1.8.6
 *   Update Kotlin
 ## 1.8.5

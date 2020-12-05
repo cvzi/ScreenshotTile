@@ -24,4 +24,8 @@
     <string name="notification_settings">सूचनाएं</string>
     <string name="notification_settings_off">बंद</string>
     <string name="notification_settings_on">चालू</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">आसान तरीका सेटिंग</string>
+
 </resources>

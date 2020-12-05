@@ -31,6 +31,12 @@
     <string name="take_screenshot">Kumuha ng screenshot</string>
     <string name="notification_edit_screenshot">I-edi</string>
     <string name="notification_app_chooser_edit">Edit gamit ang…</string>
+    <string name="notification_foreground_body">"Sine-save ang screenshot… Mag-tap para kanselahin "</string>
+    <string name="notification_foreground_title">Sine-save ang screenshot…</string>
+    <string name="notification_settings">Mga Notification</string>
+    <string name="notification_settings_on">Naka-on</string>
+    <string name="notification_settings_off">Naka-off</string>
+    <string name="partial_screenshot">Pumili ng parihaba</string>
 
     <!-- About -->
     <string name="about_app_title">Tungkol sa App</string>
@@ -39,10 +45,8 @@
     <string name="about_app_3">Upang magbigay ng feedback:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Lisensyang</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\n(Ang Pangkaraniwang Lisensyang Publiko ng GNU Bersyon 3)</string>
-    <string name="notification_foreground_body">"Sine-save ang screenshot… Mag-tap para kanselahin "</string>
-    <string name="notification_foreground_title">Sine-save ang screenshot…</string>
-    <string name="notification_settings">Mga Notification</string>
-    <string name="notification_settings_on">Naka-on</string>
-    <string name="notification_settings_off">Naka-off</string>
-    <string name="partial_screenshot">Pumili ng parihaba</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">Mga setting ng pagiging maa-access</string>
+
 </resources>

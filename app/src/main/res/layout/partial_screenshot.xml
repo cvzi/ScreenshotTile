@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.github.ipcjs.screenshottile.TakeScreenshotActivity">
+    tools:context="com.github.cvzi.screenshottile.activities.TakeScreenshotActivity">
 
-    <com.github.ipcjs.screenshottile.partial.ScreenshotSelectorView
+    <com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
         android:id="@+id/global_screenshot_selector"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -23,4 +23,8 @@
     <string name="more_setting">การตั้งค่า</string>
     <string name="notification_foreground_title">กำลังบันทึกภาพหน้าจอ…</string>
     <string name="notification_foreground_body">กำลังบันทึกภาพหน้าจอ… แตะเพื่อออก</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">การตั้งค่าการเข้าถึง</string>
+
 </resources>

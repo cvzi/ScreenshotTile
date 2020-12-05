@@ -45,4 +45,8 @@
     <string name="about_app_title">O app</string>
     <string name="about_license_title">Licencja</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">Ustawienia ułatwień dostępu</string>
+
 </resources>

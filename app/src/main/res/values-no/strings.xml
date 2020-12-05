@@ -43,4 +43,8 @@
     <string name="notification_foreground_title">Lagrer skjermbildet…</string>
     <string name="setting_storage_directory">Lagringsplasseringen</string>
     <string name="setting_storage_directory_description">Mappen som bildene skal lagres i</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">Tilgjengelighetsinnstillinger</string>
+
 </resources>

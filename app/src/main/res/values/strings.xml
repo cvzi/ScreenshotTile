@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Screenshot</string>
+    <string name="tile_floating_label">Floating</string>
+    <string name="tile_floating_subtitle">Screenshot Button</string>
     <string name="title_delay">Delay</string>
     <string name="more_setting">More Settings</string>
     <string name="open_settings">Open settings</string>
@@ -18,6 +20,16 @@
     <string name="use_native_screenshot_unavailable">Accessibility service is disabled</string>
     <string name="use_native_screenshot_option_default">Native method uses system\'s default</string>
     <string name="accessibility_service_description">If this service is enabled, the app can simulate a power+home button press to take screenshots.\nOn some devices enabling this method may be more stable or faster than the default method.\n\nIf you enable the service here, you also need to enable the "native method" in the app settings.</string>
+    <string name="setting_floating_button">Floating button</string>
+    <string name="setting_floating_button_summary">You can also switch it on/off from the quick settings tile</string>
+    <string name="setting_floating_button_unavailable">Accessibility service is disabled</string>
+    <string name="setting_floating_button_unsupported">Requires Android 9 Pie</string>
+    <string name="setting_floating_button_scale">Floating button size</string>
+    <string name="setting_floating_button_scale_summary">Adjust size of floating button</string>
+    <string name="setting_floating_button_hide_after">Hide floating button after screenshot</string>
+    <string name="setting_floating_button_hide_after_summary">Automatically remove the floating button after you took a screenshot</string>
+    <string name="setting_floating_button_show_close">Show a [X]/close button next to floating button</string>
+    <string name="setting_floating_button_show_close_summary">Let\'s you remove the floating button without opening the quick settings</string>
     <string name="setting_broadcast_secret">Broadcast intent password</string>
     <string name="setting_broadcast_secret_description">A secret phrase to allow other applications (like MacroDroid or Tasker) to initiate screenshots</string>
     <string name="setting_storage_directory">Save location</string>
@@ -68,6 +80,19 @@
     <string name="about_license_title">License</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">This app still has some problems and is under development.\nIf you have root access on your phone, please use ipcjs\' version, it\'s faster and more reliant.</string>
-    <string name="about_privacy_title" translatable="false">Privacy Policy</string>
-    <string name="about_open_source_title" translatable="false">Open source used</string>
+    <string name="about_privacy_title">Privacy Policy</string>
+    <string name="about_open_source_title">Open source used</string>
+
+    <!-- First screen -->
+    <string name="main_accessibility_settings">Accessibility settings</string>
+    <string name="main_floating_button_title">Floating button</string>
+    <string name="main_general_text">Before you can use this app, you need to add the tile/button to the quick settings. If you don\'t know how to do this, take a look at the [Tutorial,.TutorialActivity].\n\nThis app supports two different methods to take screenshots:</string>
+    <string name="main_legacy_method_title">Legacy Method</string>
+    <string name="main_legacy_method_text">The legacy method to take screenshots uses the screen recording features of Android\nWhen you take a screenshot, no sound is played. A silent notification is shown to open, share or edit the screenshot. The notification can be disabled in the app settings.\nBefore you can take a screenshot you need to add the tile to the quick settings, accept the permission to record the screen and the permission to access the internal storage to save the image file.\nSee the tutorial on how to do it.\n\nOn some phones this method does not work, especially on newer Androids (9.0+) it is unstable and it may ask for permission on every single screenshot. If that happens you should use the native method below.</string>
+    <string name="main_native_method_title">Native Method</string>
+    <string name="main_native_method_text">The native method to take screenshots simulates a press of Home+Power button and uses the screenshot method of your device.\nWhen you take a screenshot, it may play a sound or show a screenshot editor. Screenshots are stored in the standard folder for pictures. This depends on your phone and cannot be changed by this app. You might be able to change the behavior in your phone\'s settings.\n\nBefore you can take a screenshot you need to enable the accessibility service in the phone settings. Press the button below to open the accessibility settings.</string>
+    <string name="main_floating_button_text">If you have enabled the native method, you can also use a floating button (similar to a chat bubble) to take screenshots.\nYou can enable it with a separate tile/button in the quick settings and then move it around on the screen.</string>
+    <string name="main_long_press_title">Long Press</string>
+    <string name="main_long_press_text">Long pressing the tile/button opens a menu. You can specify a delay for the screenshot or cut out a rectangle from the screen.</string>
+
 </resources>
