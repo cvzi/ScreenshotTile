@@ -4,8 +4,48 @@
     package="com.github.ipcjs.screenshottile"
     android:installLocation="internalOnly">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <queries>
+        <intent>
+            <action android:name="android.settings.APPLICATION_DETAILS_SETTINGS" />
+        </intent>
+        <intent>
+            <action android:name="android.settings.APP_NOTIFICATION_SETTINGS" />
+        </intent>
+        <intent>
+            <action android:name="android.settings.CHANNEL_NOTIFICATION_SETTINGS" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
+        </intent>
+        <intent>
+            <action android:name="android.settings.ACCESSIBILITY_SETTINGS" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <data android:mimeType="image/*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+
+            <data android:mimeType="image/*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.EDIT" />
+
+            <data android:mimeType="image/*" />
+        </intent>
+    </queries>
 
     <application
         android:name=".App"
@@ -16,8 +56,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Transparent"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme">
@@ -25,15 +66,20 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name=".NoDisplayActivity"
+            android:name=".activities.TutorialActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.NoDisplayActivity"
             android:theme="@android:style/Theme.NoDisplay" />
         <activity
-            android:name=".DelayScreenshotActivity"
+            android:name=".activities.DelayScreenshotActivity"
             android:excludeFromRecents="true" />
         <activity
             android:name=".dialog.TransparentContainerActivity"
@@ -44,22 +90,22 @@
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".SettingDialogActivity"
+            android:name=".activities.SettingDialogActivity"
             android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".AcquireScreenshotPermission"
+            android:name=".activities.AcquireScreenshotPermission"
             android:excludeFromRecents="true" />
         <activity
-            android:name=".TakeScreenshotActivity"
+            android:name=".activities.TakeScreenshotActivity"
             android:excludeFromRecents="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <service
-            android:name=".ScreenshotTileService"
+            android:name=".services.ScreenshotTileService"
             android:foregroundServiceType="mediaProjection"
             android:icon="@drawable/ic_stat_name"
             android:label="@string/tile_label"
@@ -70,10 +116,23 @@
             </intent-filter>
         </service>
         <service
-            android:name=".ScreenshotAccessibilityService"
+            android:name=".services.FloatingTileService"
+            android:description="@string/tile_floating_subtitle"
+            android:enabled="@bool/accessibility_service_enabled"
+            android:icon="@drawable/ic_tile_float"
+            android:label="@string/tile_floating_label"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            tools:targetApi="p">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".services.ScreenshotAccessibilityService"
             android:enabled="@bool/accessibility_service_enabled"
             android:label="@string/app_name"
-            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            tools:targetApi="p">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
@@ -87,45 +146,45 @@
             android:name=".IntentHandler"
             android:enabled="true"
             android:exported="true"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            tools:ignore="ExportedReceiver">
             <intent-filter>
                 <action android:name="com.github.cvzi.screenshottile.SCREENSHOT" />
             </intent-filter>
         </receiver>
-
         <receiver
             android:name=".SimpleWidgetBoth"
             android:label="@string/left_screenshot_right_menu">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/simple_widget" />
         </receiver>
-
         <receiver
             android:name=".SimpleWidgetScreenshot"
             android:label="@string/take_screenshot">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/simple_widget" />
         </receiver>
-
         <receiver
             android:name=".SimpleWidgetSettings"
             android:label="@string/open_settings">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/simple_widget" />
         </receiver>
-
     </application>
 
 </manifest>

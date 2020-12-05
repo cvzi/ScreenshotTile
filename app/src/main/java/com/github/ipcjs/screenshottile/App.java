@@ -15,8 +15,16 @@ import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
+import com.github.ipcjs.screenshottile.activities.AcquireScreenshotPermission;
+import com.github.ipcjs.screenshottile.activities.DelayScreenshotActivity;
+import com.github.ipcjs.screenshottile.activities.NoDisplayActivity;
+import com.github.ipcjs.screenshottile.interfaces.OnAcquireScreenshotPermissionListener;
+import com.github.ipcjs.screenshottile.services.ScreenshotAccessibilityService;
+import com.github.ipcjs.screenshottile.services.ScreenshotTileService;
+import com.github.ipcjs.screenshottile.utils.PrefManager;
+
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.github.ipcjs.screenshottile.UtilsKt.tryNativeScreenshot;
+import static com.github.ipcjs.screenshottile.utils.UtilsKt.tryNativeScreenshot;
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -50,10 +58,12 @@ public class App extends Application {
      *
      * @param permissionIntent Permission
      */
-    protected static void setScreenshotPermission(final Intent permissionIntent) {
+    public static void setScreenshotPermission(final Intent permissionIntent) {
         screenshotPermission = permissionIntent;
         ScreenshotTileService.Companion.setScreenshotPermission(screenshotPermission);
-        ScreenshotAccessibilityService.Companion.setScreenshotPermission(permissionIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            ScreenshotAccessibilityService.Companion.setScreenshotPermission(permissionIntent);
+        }
         if (onAcquireScreenshotPermissionListener != null) {
             onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission(true);
             onAcquireScreenshotPermissionListener = null;
@@ -70,7 +80,7 @@ public class App extends Application {
         }
     }
 
-    protected static void registerNotificationReceiver() {
+    public static void registerNotificationReceiver() {
         if (receiverRegistered) {
             return;
         }
@@ -87,7 +97,7 @@ public class App extends Application {
      * @return MediaProjection if permission was granted or null
      */
     @SuppressWarnings("UnusedReturnValue")
-    protected static MediaProjection createMediaProjection() {
+    public static MediaProjection createMediaProjection() {
         if (BuildConfig.DEBUG) Log.v(TAG, "createMediaProjection()");
         ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
         if (screenshotTileService != null) {
@@ -97,7 +107,7 @@ public class App extends Application {
             if (screenshotPermission == null) {
                 screenshotPermission = ScreenshotTileService.Companion.getScreenshotPermission();
             }
-            if (screenshotPermission == null) {
+            if (screenshotPermission == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 screenshotPermission = ScreenshotAccessibilityService.Companion.getScreenshotPermission();
             }
             if (screenshotPermission == null) {
@@ -114,14 +124,14 @@ public class App extends Application {
      * @param context                                 Context
      * @param myOnAcquireScreenshotPermissionListener Callback object
      */
-    protected static void acquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener myOnAcquireScreenshotPermissionListener) {
+    public static void acquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener myOnAcquireScreenshotPermissionListener) {
         onAcquireScreenshotPermissionListener = myOnAcquireScreenshotPermissionListener;
         ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
 
         if (screenshotPermission == null) {
             screenshotPermission = ScreenshotTileService.Companion.getScreenshotPermission();
         }
-        if (screenshotPermission == null) {
+        if (screenshotPermission == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             screenshotPermission = ScreenshotAccessibilityService.Companion.getScreenshotPermission();
         }
 
@@ -330,7 +340,7 @@ public class App extends Application {
      *
      * @param context Context
      */
-    protected void takeScreenshotFromTileService(TileService context) {
+    public void takeScreenshotFromTileService(TileService context) {
         boolean done = tryNativeScreenshot();
         if (!done) {
             // Use app's screenshot function

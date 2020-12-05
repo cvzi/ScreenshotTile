@@ -1,8 +1,9 @@
-package com.github.ipcjs.screenshottile
+package com.github.ipcjs.screenshottile.utils
 
 import android.content.ContentValues
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Paint
 import android.graphics.Rect
 import android.icu.text.SimpleDateFormat
 import android.media.Image
@@ -13,7 +14,14 @@ import android.os.Environment.getExternalStoragePublicDirectory
 import android.os.StatFs
 import android.provider.MediaStore.Images
 import android.util.Log
+import android.util.TypedValue
+import android.widget.TextView
 import androidx.documentfile.provider.DocumentFile
+import com.github.ipcjs.screenshottile.App
+import com.github.ipcjs.screenshottile.BuildConfig
+import com.github.ipcjs.screenshottile.R
+import com.github.ipcjs.screenshottile.activities.TakeScreenshotActivity
+import com.github.ipcjs.screenshottile.services.ScreenshotAccessibilityService
 import java.io.*
 import java.net.URLDecoder
 import java.util.*
@@ -517,4 +525,23 @@ fun nicePathFromUri(str: String?): String {
         path = path.substring(8)
     }
     return path
+}
+
+fun fillTextHeight(textView: TextView, maxHeight: Int, startSize: Float? = null) {
+    var currentTextSize: Float = startSize ?: textView.textSize
+    val text = textView.text.toString()
+    val bounds = Rect()
+    val paint = Paint().apply {
+        textView.typeface
+        textSize = currentTextSize
+        getTextBounds(text, 0, text.length, bounds)
+    }
+    while (bounds.height() > maxHeight) {
+        currentTextSize--
+        paint.run {
+            textSize = currentTextSize
+            getTextBounds(text, 0, text.length, bounds)
+        }
+    }
+    textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, currentTextSize)
 }

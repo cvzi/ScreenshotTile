@@ -1,4 +1,4 @@
-package com.github.ipcjs.screenshottile
+package com.github.ipcjs.screenshottile.utils
 
 import android.app.Activity
 import android.content.ContentUris
@@ -14,6 +14,9 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.WindowManager
 import androidx.documentfile.provider.DocumentFile
+import com.github.ipcjs.screenshottile.App
+import com.github.ipcjs.screenshottile.BuildConfig
+import com.github.ipcjs.screenshottile.activities.TakeScreenshotActivity
 import java.io.File
 import java.util.*
 import kotlin.math.ceil

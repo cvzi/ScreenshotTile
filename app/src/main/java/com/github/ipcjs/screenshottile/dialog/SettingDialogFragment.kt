@@ -10,8 +10,8 @@ import android.util.Log
 import androidx.fragment.app.DialogFragment
 import com.github.ipcjs.screenshottile.App
 import com.github.ipcjs.screenshottile.R
-import com.github.ipcjs.screenshottile.ScreenshotTileService
-import com.github.ipcjs.screenshottile.screenshot
+import com.github.ipcjs.screenshottile.services.ScreenshotTileService
+import com.github.ipcjs.screenshottile.utils.screenshot
 
 /**
  * Settings dialog appears on long press on the screenshot tile.

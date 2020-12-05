@@ -1,4 +1,4 @@
-package com.github.ipcjs.screenshottile;
+package com.github.ipcjs.screenshottile.activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,9 +7,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.github.ipcjs.screenshottile.BuildConfig;
+import com.github.ipcjs.screenshottile.services.ScreenshotTileService;
+
 import static com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID;
-import static com.github.ipcjs.screenshottile.ScreenshotTileService.FOREGROUND_ON_START;
-import static com.github.ipcjs.screenshottile.UtilsKt.screenshot;
+import static com.github.ipcjs.screenshottile.services.ScreenshotTileService.FOREGROUND_ON_START;
+import static com.github.ipcjs.screenshottile.utils.UtilsKt.screenshot;
 
 public class NoDisplayActivity extends Activity {
 

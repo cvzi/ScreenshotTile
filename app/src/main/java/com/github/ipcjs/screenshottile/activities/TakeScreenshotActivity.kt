@@ -1,4 +1,4 @@
-package com.github.ipcjs.screenshottile
+package com.github.ipcjs.screenshottile.activities
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -20,8 +20,12 @@ import android.view.Surface
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
+import com.github.ipcjs.screenshottile.*
 import com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID
+import com.github.ipcjs.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.ipcjs.screenshottile.partial.ScreenshotSelectorView
+import com.github.ipcjs.screenshottile.services.ScreenshotTileService
+import com.github.ipcjs.screenshottile.utils.*
 import java.lang.ref.WeakReference
 
 /**
@@ -29,7 +33,8 @@ import java.lang.ref.WeakReference
  */
 
 
-class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener {
+class TakeScreenshotActivity : Activity(),
+    OnAcquireScreenshotPermissionListener {
 
     companion object {
         private const val TAG = "TakeScreenshotActivity"
@@ -375,6 +380,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                     screenDensity,
                     result.mimeType
                 )
+                App.getInstance().prefManager.screenshotCount++
             }
             result.file != null -> {
                 // Legacy behaviour until Android P, works with the real file path
@@ -393,6 +399,7 @@ class TakeScreenshotActivity : Activity(), OnAcquireScreenshotPermissionListener
                     screenDensity,
                     result.mimeType
                 )
+                App.getInstance().prefManager.screenshotCount++
             }
             else -> {
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")

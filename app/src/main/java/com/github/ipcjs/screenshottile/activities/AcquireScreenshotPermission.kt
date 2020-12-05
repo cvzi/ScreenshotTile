@@ -1,4 +1,4 @@
-package com.github.ipcjs.screenshottile
+package com.github.ipcjs.screenshottile.activities
 
 import android.Manifest
 import android.app.Activity
@@ -9,8 +9,11 @@ import android.media.projection.MediaProjectionManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.github.ipcjs.screenshottile.App
 
 import com.github.ipcjs.screenshottile.App.setScreenshotPermission
+import com.github.ipcjs.screenshottile.BuildConfig
+import com.github.ipcjs.screenshottile.R
 
 
 /**

@@ -1,6 +1,18 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar" />
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/primaryLightColor</item>
+
+        <item name="colorPrimary">@color/primaryColor</item>
+
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
+
+        <item name="colorSecondaryVariant">@color/secondaryLightColor</item>
+
+        <item name="colorAccent">@color/secondaryDarkColor</item>
+        <item name="colorSecondary">@color/secondaryDarkColor</item>
+    </style>
 
     <style name="AppTheme.Transparent">
         <item name="android:windowIsTranslucent">true</item>
@@ -10,6 +22,25 @@
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="CardViewBase" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">5dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="CardViewPrimary" parent="CardViewBase">
+        <item name="cardBackgroundColor">@color/primaryCardColor</item>
+    </style>
+
+    <style name="CardViewSecondary" parent="CardViewBase">
+        <item name="cardBackgroundColor">@color/secondaryCardColor</item>
+    </style>
+
+    <style name="SmallButton" parent="@android:style/Widget.Holo.Button">
+        <item name="android:minHeight">30dp</item>
     </style>
 
 </resources>

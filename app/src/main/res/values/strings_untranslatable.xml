@@ -22,8 +22,16 @@
     <string name="pref_key_file_format" translatable="false">file_format</string>
     <string name="pref_key_broadcast_secret" translatable="false">broadcast_secret</string>
     <string name="pref_key_storage_directory" translatable="false">storage_directory</string>
+    <string name="pref_key_screenshot_count" translatable="false">screenshot_count</string>
+    <string name="pref_key_floating_button" translatable="false">floating_button</string>
+    <string name="pref_key_floating_button_scale" translatable="false">floating_button_scale</string>
+    <string name="pref_key_floating_button_position" translatable="false">floating_button_position</string>
+    <string name="pref_key_floating_button_hide_after" translatable="false">floating_button_hide_after</string>
+    <string name="pref_key_floating_button_show_close" translatable="false">floating_button_show_close</string>
+    <string name="pref_key_return_if_accessibility" translatable="false">return_if_accessibility</string>
     <string name="setting_broadcast_secret_value_default" translatable="false">(unset)</string>
     <string name="setting_storage_directory_value_default" translatable="false">(default)</string>
+
 
     <string name="setting_file_format_value_default" translatable="false">png</string>
     <string-array name="setting_file_format_entries" translatable="false">
@@ -56,6 +64,12 @@
 
     <string name="tutorial_step_one" translatable="false">1</string>
 
+    <string name="emoji_warning" translatable="false">&#x26a0;&#xfe0f; %s</string>
+    <string name="emoji_forbidden" translatable="false">&#x1f6ab; %s</string>
+    <string name="emoji_close" translatable="false">&#x274c;</string>
+
+    <string name="unavailable_on_debug" translatable="false">Unavailable in DEBUG</string>
+
     <!-- About in settings -->
     <string name="pref_static_field_key_about_app_1" translatable="false">pref_static_field_key_about_app_1</string>
     <string name="pref_static_field_key_about_app_2" translatable="false">pref_static_field_key_about_app_2</string>
@@ -71,4 +85,16 @@
 
     <string name="about_open_source" translatable="false">Kotlin\ngradle\nMaterial Design Icons by Google</string>
     <string name="about_privacy_summary" translatable="false">cvzi.github.io/ScreenshotTile/privacy.html</string>
+
+    <!-- First screen -->
+    <string name="translate_this_app" translatable="false">Help translate this app!</string>
+    <string name="translate_this_app_text" translatable="false"><![CDATA[Do you who speak a different language than English and would you like to help translating?<br>
+Contribute on <a href="https://crwd.in/screenshottile">crwd.in/screenshottile</a> or <a href="mailto:cuzi-android@openmail.cc?subject=Translate%20ScreenshotTile%20app">write me an email</a>.
+<br>
+<br>
+&#x1f1e8;&#x1f1f3; provided by <a href="https://github.com/linsui">linsui</a> and <a href="https://crowdin.com/profile/Felixljj">Felixljj</a><br>
+&#x1f1e7;&#x1f1f7; provided by <a href="https://github.com/mezysinc">mezysinc</a><br>
+&#x1f1ee;&#x1f1e9; provided by <a href="https://github.com/alexschenider">alexschenider</a> and <a href="https://github.com/thecrazyblack">thecrazyblack</a><br><br>
+Currently we have two complete translations: &#x1f1e8;&#x1f1f3; &#x1f1e9;&#x1f1ea;]]></string>
+
 </resources>

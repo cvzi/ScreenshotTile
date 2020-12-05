@@ -1,4 +1,4 @@
-package com.github.ipcjs.screenshottile
+package com.github.ipcjs.screenshottile.services
 
 import android.app.Notification
 import android.app.PendingIntent
@@ -9,7 +9,11 @@ import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
+import com.github.ipcjs.screenshottile.*
 import com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID
+import com.github.ipcjs.screenshottile.activities.TakeScreenshotActivity
+import com.github.ipcjs.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
+import com.github.ipcjs.screenshottile.utils.createNotificationForegroundServiceChannel
 
 
 /**
@@ -18,7 +22,8 @@ import com.github.ipcjs.screenshottile.BuildConfig.APPLICATION_ID
  */
 
 
-class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListener {
+class ScreenshotTileService : TileService(),
+    OnAcquireScreenshotPermissionListener {
     companion object {
         private const val TAG = "ScreenshotTileService"
         const val FOREGROUND_NOTIFICATION_ID = 8139
@@ -76,7 +81,7 @@ class ScreenshotTileService : TileService(), OnAcquireScreenshotPermissionListen
     }
 
     override fun onStartListening() {
-        super.onStopListening()
+        super.onStartListening()
         if (BuildConfig.DEBUG) Log.v(TAG, "onStartListening()")
         setState(Tile.STATE_INACTIVE)
     }

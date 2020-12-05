@@ -9,15 +9,19 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.DocumentsContract
-import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
-import androidx.preference.ListPreference
-import androidx.preference.Preference
+import androidx.preference.*
 import androidx.preference.Preference.OnPreferenceClickListener
-import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.SwitchPreference
 import com.github.ipcjs.screenshottile.*
+import com.github.ipcjs.screenshottile.R
+import com.github.ipcjs.screenshottile.activities.TutorialActivity
+import com.github.ipcjs.screenshottile.services.ScreenshotAccessibilityService
+import com.github.ipcjs.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
+import com.github.ipcjs.screenshottile.utils.createNotificationScreenshotTakenChannel
+import com.github.ipcjs.screenshottile.utils.nicePathFromUri
+import com.github.ipcjs.screenshottile.utils.notificationScreenshotTakenChannelEnabled
+import com.github.ipcjs.screenshottile.utils.notificationSettingsIntent
 
 
 /**
@@ -26,7 +30,7 @@ import com.github.ipcjs.screenshottile.*
  */
 class SettingFragment : PreferenceFragmentCompat() {
     companion object {
-        private const val TAG = "SettingFragment.kt"
+        const val TAG = "SettingFragment.kt"
         private const val DIRECTORY_CHOOSER_REQUEST_CODE = 8912
     }
 
@@ -34,8 +38,13 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var delayPref: ListPreference? = null
     private var fileFormatPref: ListPreference? = null
     private var useNativePref: SwitchPreference? = null
+    private var floatingButtonPref: SwitchPreference? = null
+    private var floatingButtonScalePref: EditTextPreference? = null
+    private var floatingButtonHideAfterPref: SwitchPreference? = null
+    private var floatingButtonHideShowClosePref: SwitchPreference? = null
     private var hideAppPref: SwitchPreference? = null
     private var storageDirectoryPref: Preference? = null
+    private var broadcastSecretPref: EditTextPreference? = null
     private lateinit var pref: SharedPreferences
     private val prefManager = App.getInstance().prefManager
 
@@ -46,6 +55,9 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_hide_app) -> onHideApp(prefManager.hideApp)
                 getString(R.string.pref_key_file_format) -> updateFileFormatSummary(prefManager.fileFormat)
                 getString(R.string.pref_key_use_native) -> updateUseNative()
+                getString(R.string.pref_key_floating_button) -> updateFloatingButton()
+                getString(R.string.pref_key_floating_button_scale) -> updateFloatingButton(true)
+                getString(R.string.pref_key_floating_button_show_close) -> updateFloatingButton(true)
             }
         }
 
@@ -59,14 +71,25 @@ class SettingFragment : PreferenceFragmentCompat() {
         delayPref = findPreference(getString(R.string.pref_key_delay)) as ListPreference?
         fileFormatPref = findPreference(getString(R.string.pref_key_file_format)) as ListPreference?
         useNativePref = findPreference(getString(R.string.pref_key_use_native)) as SwitchPreference?
+        floatingButtonPref =
+            findPreference(getString(R.string.pref_key_floating_button)) as SwitchPreference?
+        floatingButtonScalePref =
+            findPreference(getString(R.string.pref_key_floating_button_scale)) as EditTextPreference?
+        floatingButtonHideAfterPref =
+            findPreference(getString(R.string.pref_key_floating_button_hide_after)) as SwitchPreference?
+        floatingButtonHideShowClosePref =
+            findPreference(getString(R.string.pref_key_floating_button_show_close)) as SwitchPreference?
         hideAppPref = findPreference(getString(R.string.pref_key_hide_app)) as SwitchPreference?
         storageDirectoryPref = findPreference(getString(R.string.pref_key_storage_directory))
+        broadcastSecretPref =
+            findPreference(getString(R.string.pref_key_broadcast_secret)) as EditTextPreference?
 
         pref.registerOnSharedPreferenceChangeListener(prefListener)
         delayPref?.run { updateDelaySummary(value) }
         fileFormatPref?.run { updateFileFormatSummary(value) }
         updateNotificationSummary()
         updateUseNative()
+        updateFloatingButton()
         updateStorageDirectory()
         updateHideApp(true)
 
@@ -103,7 +126,12 @@ class SettingFragment : PreferenceFragmentCompat() {
 
         updateNotificationSummary()
         updateUseNative()
+        updateFloatingButton()
         updateStorageDirectory()
+
+        if (BuildConfig.DEBUG) {
+            broadcastSecretPref?.summary = getString(R.string.unavailable_on_debug)
+        }
     }
 
     private fun makeLink(name: Int, link: Int) {
@@ -143,20 +171,22 @@ class SettingFragment : PreferenceFragmentCompat() {
     }
 
     private fun makeAccessibilitySettingsLink() {
-        useNativePref?.setOnPreferenceClickListener {
+        val preferenceClickListener = OnPreferenceClickListener {
+            /*
+            Open accessibility settings if accessibility service is not running
+             */
             val myActivity = activity
             myActivity?.apply {
                 if ((it as? SwitchPreference)?.isChecked == true && ScreenshotAccessibilityService.instance == null) {
                     // Accessibility service is not running -> Open settings so user can enable it
-                    Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).apply {
-                        if (resolveActivity(myActivity.packageManager) != null) {
-                            startActivity(this)
-                        }
-                    }
+                    openAccessibilitySettings(this, TAG)
                 }
             }
             true
         }
+
+        useNativePref?.onPreferenceClickListener = preferenceClickListener
+        floatingButtonPref?.onPreferenceClickListener = preferenceClickListener
     }
 
     private fun makeStorageDirectoryLink() {
@@ -228,7 +258,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private fun onHideApp(hide: Boolean): Boolean {
         val myActivity = activity
         return myActivity?.let {
-            val componentName = ComponentName(myActivity, MainActivity::class.java)
+            val componentName = ComponentName(myActivity, TutorialActivity::class.java)
             try {
                 myActivity.packageManager.setComponentEnabledSetting(
                     componentName,
@@ -260,7 +290,10 @@ class SettingFragment : PreferenceFragmentCompat() {
                 }
                 isChecked -> {
                     if (ScreenshotAccessibilityService.instance == null) {
-                        summary = getString(R.string.use_native_screenshot_unavailable)
+                        summary = getString(
+                            R.string.emoji_warning,
+                            getString(R.string.use_native_screenshot_unavailable)
+                        )
                     } else {
                         prefManager.screenshotDirectory = null  // Reset screenshot directory
                         summary = getString(R.string.use_native_screenshot_summary)
@@ -281,6 +314,40 @@ class SettingFragment : PreferenceFragmentCompat() {
             }
         }
     }
+
+    private fun updateFloatingButton(forceRedraw: Boolean = false) {
+        floatingButtonPref?.run {
+            summary = when {
+                Build.VERSION.SDK_INT < Build.VERSION_CODES.P -> {
+                    isChecked = false
+                    isEnabled = false
+                    val unsupported = getString(R.string.setting_floating_button_unsupported)
+                    floatingButtonScalePref?.isVisible = false
+                    floatingButtonHideAfterPref?.isVisible = false
+                    floatingButtonHideShowClosePref?.isVisible = false
+                    unsupported
+                }
+                isChecked -> {
+                    updateUseNative()
+                    if (ScreenshotAccessibilityService.instance == null) {
+                        getString(
+                            R.string.emoji_warning,
+                            getString(R.string.setting_floating_button_unavailable)
+                        )
+                    } else {
+                        getString(R.string.setting_floating_button_summary)
+                    }
+                }
+                else -> {
+                    getString(R.string.setting_floating_button_summary)
+                }
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(forceRedraw)
+        }
+    }
+
 
     private fun updateStorageDirectory() {
         storageDirectoryPref?.run {

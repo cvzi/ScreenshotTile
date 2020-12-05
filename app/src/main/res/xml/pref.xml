@@ -33,6 +33,31 @@
         android:summary="@string/use_native_screenshot_summary"
         android:title="@string/use_native_screenshot" />
 
+    <androidx.preference.SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_key_floating_button"
+        android:summary="@string/setting_floating_button_summary"
+        android:title="@string/setting_floating_button" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="200"
+        android:dialogMessage="@string/setting_floating_button_scale_summary"
+        android:key="@string/pref_key_floating_button_scale"
+        android:summary="@string/setting_floating_button_scale_summary"
+        android:title="@string/setting_floating_button_scale" />
+
+    <androidx.preference.SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_key_floating_button_hide_after"
+        android:summary="@string/setting_floating_button_hide_after_summary"
+        android:title="@string/setting_floating_button_hide_after" />
+
+    <androidx.preference.SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_key_floating_button_show_close"
+        android:summary="@string/setting_floating_button_show_close_summary"
+        android:title="@string/setting_floating_button_show_close" />
+
     <androidx.preference.EditTextPreference
         android:defaultValue="@string/setting_broadcast_secret_value_default"
         android:inputType="textVisiblePassword"

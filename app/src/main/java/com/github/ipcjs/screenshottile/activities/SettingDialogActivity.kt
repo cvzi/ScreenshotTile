@@ -1,11 +1,18 @@
-package com.github.ipcjs.screenshottile
+package com.github.ipcjs.screenshottile.activities
 
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.EXTRA_COMPONENT_NAME
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
+import com.github.ipcjs.screenshottile.App
+import com.github.ipcjs.screenshottile.BuildConfig
 import com.github.ipcjs.screenshottile.dialog.SettingDialogFragment
+import com.github.ipcjs.screenshottile.services.ScreenshotAccessibilityService
+import com.github.ipcjs.screenshottile.services.ScreenshotTileService
+
 
 /**
  * Created by ipcjs on 2017/8/16.
@@ -31,6 +38,12 @@ class SettingDialogActivity : FragmentActivity() {
             SettingDialogFragment.newInstance()
                 .show(supportFragmentManager, SettingDialogFragment::class.java.name)
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Detect which tile was long pressed
+            val componentName: ComponentName? = intent?.getParcelableExtra(EXTRA_COMPONENT_NAME)
+        }
+
 
         if (intent?.action == START_SERVICE) {
             // make sure that a foreground service runs

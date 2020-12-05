@@ -1,8 +1,10 @@
-package com.github.ipcjs.screenshottile
+package com.github.ipcjs.screenshottile.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Point
 import androidx.preference.PreferenceManager
+import com.github.ipcjs.screenshottile.R
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -43,6 +45,13 @@ class PrefManager {
         get() = pref.getBoolean(context.getString(R.string.pref_key_use_native), false)
         set(value) = pref.edit().putBoolean(
             context.getString(R.string.pref_key_use_native),
+            value
+        ).apply()
+
+    var floatingButton: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button), false)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button),
             value
         ).apply()
 
@@ -97,6 +106,78 @@ class PrefManager {
             } else {
                 value
             }
+        ).apply()
+
+    var screenshotCount: Int
+        get() = pref.getString(
+            context.getString(R.string.pref_key_screenshot_count),
+            "0"
+        )?.toIntOrNull() ?: 0
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_screenshot_count),
+            value.toString()
+        ).apply()
+
+    var returnIfAccessibilityServiceEnabled: String?
+        get() = pref.getString(
+            context.getString(R.string.pref_key_return_if_accessibility),
+            null
+        )
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_return_if_accessibility),
+            value
+        ).apply()
+
+    var floatingButtonHideAfter: Boolean
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_floating_button_hide_after),
+            false
+        )
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button_hide_after),
+            value
+        ).apply()
+
+    var floatingButtonShowClose: Boolean
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_floating_button_show_close),
+            false
+        )
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button_show_close),
+            value
+        ).apply()
+
+    var floatingButtonScale: Int
+        get() {
+            val d = pref.getString(
+                context.getString(R.string.pref_key_floating_button_scale),
+                "200"
+            )?.toIntOrNull() ?: 200
+            return if (d > 0) d else 1
+        }
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_floating_button_scale),
+            value.toString()
+        ).apply()
+
+    var floatingButtonPosition: Point
+        get() {
+            val s = pref.getString(
+                context.getString(R.string.pref_key_floating_button_position),
+                "0,0"
+            ) ?: "0,0"
+            val parts = s.split(",")
+            if (parts.size != 2) {
+                return Point(0, 0)
+            }
+            val x = parts[0].toIntOrNull() ?: 0
+            val y = parts[1].toIntOrNull() ?: 0
+            return Point(x, y)
+        }
+        set(point) = pref.edit().putString(
+            context.getString(R.string.pref_key_floating_button_position),
+            "${point.x},${point.y}"
         ).apply()
 
 }

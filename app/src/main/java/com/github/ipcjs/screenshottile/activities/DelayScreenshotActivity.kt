@@ -1,4 +1,4 @@
-package com.github.ipcjs.screenshottile
+package com.github.ipcjs.screenshottile.activities
 
 import android.app.Activity
 import android.content.Context
@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import com.github.ipcjs.screenshottile.databinding.ActivityDelayBinding
+import com.github.ipcjs.screenshottile.utils.screenshot
+
 /**
  * Created by ipcjs on 2017/8/15.
  * Changes by cuzi@openmail.cc
@@ -25,6 +27,7 @@ class DelayScreenshotActivity : Activity() {
             return intent
         }
     }
+
     private lateinit var binding: ActivityDelayBinding
     private var count: Int = 3
 

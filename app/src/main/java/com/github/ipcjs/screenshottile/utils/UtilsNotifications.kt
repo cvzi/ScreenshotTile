@@ -1,4 +1,4 @@
-package com.github.ipcjs.screenshottile
+package com.github.ipcjs.screenshottile.utils
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -15,6 +15,8 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import androidx.core.app.NotificationManagerCompat
+import com.github.ipcjs.screenshottile.*
+import com.github.ipcjs.screenshottile.activities.TakeScreenshotActivity
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2019/08/23.
