@@ -1,0 +1,3 @@
+☆ Added a floating button to take screenshots (similiar to chat bubbles)
+☆ Design improvements
+☆ Translations improved
