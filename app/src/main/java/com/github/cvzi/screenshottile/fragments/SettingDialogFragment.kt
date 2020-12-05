@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.dialog
+package com.github.cvzi.screenshottile.fragments
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -10,6 +10,7 @@ import android.util.Log
 import androidx.fragment.app.DialogFragment
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.activities.ContainerActivity
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.screenshot
 

@@ -20,9 +20,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.dialog.ContainerActivity
-import com.github.cvzi.screenshottile.dialog.SettingFragment
-import com.github.cvzi.screenshottile.dialog.TransparentContainerActivity
+import com.github.cvzi.screenshottile.fragments.SettingFragment
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.google.android.material.switchmaterial.SwitchMaterial
 

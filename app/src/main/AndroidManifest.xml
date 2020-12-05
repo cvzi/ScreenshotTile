@@ -82,10 +82,10 @@
             android:name="com.github.cvzi.screenshottile.activities.DelayScreenshotActivity"
             android:excludeFromRecents="true" />
         <activity
-            android:name="com.github.cvzi.screenshottile.dialog.TransparentContainerActivity"
+            android:name="com.github.cvzi.screenshottile.activities.TransparentContainerActivity"
             android:excludeFromRecents="true" />
         <activity
-            android:name="com.github.cvzi.screenshottile.dialog.ContainerActivity"
+            android:name="com.github.cvzi.screenshottile.activities.ContainerActivity"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme" />

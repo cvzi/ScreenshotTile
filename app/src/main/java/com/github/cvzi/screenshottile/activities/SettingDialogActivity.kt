@@ -9,7 +9,7 @@ import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
-import com.github.cvzi.screenshottile.dialog.SettingDialogFragment
+import com.github.cvzi.screenshottile.fragments.SettingDialogFragment
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 

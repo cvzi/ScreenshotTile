@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.dialog
+package com.github.cvzi.screenshottile.fragments
 
 import android.content.ComponentName
 import android.content.Intent
