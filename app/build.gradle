@@ -39,7 +39,7 @@ android {
         }
     }
 
-    buildToolsVersion '30.0.2'
+    buildToolsVersion '30.0.3'
     productFlavors {
     }
     buildFeatures {
