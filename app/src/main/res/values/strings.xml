@@ -49,6 +49,7 @@
     <string name="notification_app_chooser_share">Share file with…</string>
     <string name="notification_app_chooser_edit">Edit file with…</string>
     <string name="screenshot_failed">Failed to take screenshot, please try again</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
     <string name="screenshot_file_saved">Screenshot saved %1$s</string>
     <string name="notification_delete_screenshot">Delete</string>
     <string name="notification_share_screenshot">Share</string>
