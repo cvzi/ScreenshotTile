@@ -50,6 +50,7 @@
     <string name="notification_app_chooser_share">Teilen mit…</string>
     <string name="notification_app_chooser_edit">Bearbeiten mit…</string>
     <string name="screenshot_failed">Screenshot konnte nicht aufgenommen werden, versuche es bitte nochmal</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
     <string name="screenshot_file_saved">Screenshot gespeichert unter %1$s</string>
     <string name="notification_delete_screenshot">Löschen</string>
     <string name="notification_share_screenshot">Teilen</string>
