@@ -11,7 +11,6 @@ import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -22,8 +21,12 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.fragments.SettingFragment
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
+import com.github.cvzi.screenshottile.utils.isNewAppInstallation
 import com.google.android.material.switchmaterial.SwitchMaterial
 
+/**
+ * Launcher activity. Explanations and selector for legacy/native method
+ */
 class MainActivity : AppCompatActivity() {
     companion object {
         const val TAG = "MainActivity.kt"
@@ -45,6 +48,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.screenshotCount == 0 && isNewAppInstallation(this)) {
+            // On Android Pie and higher, enable native method on first start
+            App.getInstance().prefManager.screenshotCount++
+            App.getInstance().prefManager.useNative = true
+        }
 
         val textDescTranslate = findViewById<TextView>(R.id.textDescTranslate)
         textDescTranslate.movementMethod = LinkMovementMethod()
@@ -137,7 +146,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Log.v(TAG, "onResume()")
         updateSwitches()
     }
 

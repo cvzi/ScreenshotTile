@@ -2,6 +2,7 @@ package com.github.cvzi.screenshottile.utils
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Paint
 import android.graphics.Rect
@@ -559,4 +560,25 @@ fun fillTextHeight(textView: TextView, maxHeight: Int, startSize: Float? = null)
         }
     }
     textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, currentTextSize)
+}
+
+/**
+ * Was the app updated or newly installed
+ */
+fun isNewAppInstallation(context: Context): Boolean {
+    return try {
+        context.packageManager.getPackageInfo(
+            context.packageName,
+            0
+        ).firstInstallTime == context.packageManager.getPackageInfo(
+            context.packageName,
+            0
+        ).lastUpdateTime
+    } catch (e: PackageManager.NameNotFoundException) {
+        Log.e(UTILSKT, "Package not found", e)
+        true
+    } catch (e: java.lang.Exception) {
+        Log.e(UTILSKT, "Unexpected error in isNewAppInstallation()", e)
+        false
+    }
 }
