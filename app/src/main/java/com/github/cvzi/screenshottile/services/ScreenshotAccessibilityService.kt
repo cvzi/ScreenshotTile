@@ -7,12 +7,15 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
 import android.graphics.Point
+import android.hardware.display.DisplayManager
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.service.quicksettings.TileService
 import android.view.*
+import android.view.Display.DEFAULT_DISPLAY
+import android.view.WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
 import android.view.accessibility.AccessibilityEvent
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -67,13 +70,18 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     }
 
+    private lateinit var windowContext: Context
     private lateinit var windowManager: WindowManager
     private var floatingButtonShown = false
     private var binding: AccessibilityBarBinding? = null
 
     override fun onServiceConnected() {
         instance = this
-        windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+
+        val dm: DisplayManager = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
+        val primaryDisplay = dm.getDisplay(DEFAULT_DISPLAY)
+        windowContext = createDisplayContext(primaryDisplay)
+        windowManager = windowContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
         if (App.getInstance().prefManager.returnIfAccessibilityServiceEnabled == SettingFragment.TAG) {
             // Return to settings
@@ -105,7 +113,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     private fun showFloatingButton() {
         floatingButtonShown = true
-        binding = AccessibilityBarBinding.inflate(LayoutInflater.from(this))
+
+        binding = AccessibilityBarBinding.inflate(LayoutInflater.from(windowContext))
 
         binding?.root?.let { root ->
             configureFloatingButton(root)
@@ -145,7 +154,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
 
         if (App.getInstance().prefManager.floatingButtonShowClose) {
-            buttonClose = TextView(this)
+            buttonClose = TextView(windowContext)
             buttonClose.text = getString(R.string.emoji_close)
             val linearLayout = root.findViewById<LinearLayout>(R.id.linearLayoutOuter)
             linearLayout.addView(buttonClose)
@@ -157,7 +166,6 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 hideFloatingButton()
             }
         }
-
         buttonScreenshot.setOnClickListener {
             root.visibility = View.GONE
             Handler(Looper.getMainLooper()).postDelayed({
@@ -221,7 +229,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     private fun windowViewAbsoluteLayoutParams(x: Int, y: Int): WindowManager.LayoutParams {
         return WindowManager.LayoutParams().apply {
-            type = WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
+            type = TYPE_ACCESSIBILITY_OVERLAY
             format = PixelFormat.TRANSLUCENT
             flags = flags or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
             width = WindowManager.LayoutParams.WRAP_CONTENT
