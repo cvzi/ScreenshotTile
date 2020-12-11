@@ -84,6 +84,7 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
                     ContainerActivity.start(myActivity, SettingFragment::class.java)
                 }
                 DialogInterface.BUTTON_NEGATIVE -> {
+                    // no-op
                 }
             }
         }
