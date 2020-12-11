@@ -49,6 +49,7 @@
     <string name="notification_app_chooser_share">分享文件…</string>
     <string name="notification_app_chooser_edit">编辑文件…</string>
     <string name="screenshot_failed">屏幕截图失败，请重试</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
     <string name="screenshot_file_saved">屏幕截图已保存至 %1$s</string>
     <string name="notification_delete_screenshot">删除</string>
     <string name="notification_share_screenshot">分享</string>
