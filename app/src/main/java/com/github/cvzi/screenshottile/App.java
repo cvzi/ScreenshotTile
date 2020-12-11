@@ -38,6 +38,7 @@ public class App extends Application {
     private static App instance;
     private static Intent screenshotPermission = null;
     private static OnAcquireScreenshotPermissionListener onAcquireScreenshotPermissionListener = null;
+    private static Boolean checkAccessibilityServiceOnCollapse = true;
     private static MediaProjection mediaProjection = null;
     private static volatile boolean receiverRegistered = false;
     private static NotificationActionReceiver notificationActionReceiver;
@@ -203,11 +204,13 @@ public class App extends Application {
                     .penaltyLog()
                     .penaltyDialog()
                     .build());
+            /*
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
                     .penaltyDeath()
                     .build());
+             */
         }
 
         PreferenceManager.setDefaultValues(this, R.xml.pref, false);
@@ -375,4 +378,11 @@ public class App extends Application {
         }
     }
 
+    public static Boolean checkAccessibilityServiceOnCollapse() {
+        return checkAccessibilityServiceOnCollapse;
+    }
+
+    public static void checkAccessibilityServiceOnCollapse(Boolean checkAccessibilityServiceOnCollapse) {
+        App.checkAccessibilityServiceOnCollapse = checkAccessibilityServiceOnCollapse;
+    }
 }

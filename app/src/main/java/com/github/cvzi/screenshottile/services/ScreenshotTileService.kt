@@ -68,7 +68,13 @@ class ScreenshotTileService : TileService(),
         super.onTileAdded()
         if (BuildConfig.DEBUG) Log.v(TAG, "onTileAdded()")
 
-        App.acquireScreenshotPermission(this, this)
+        if(App.getInstance().prefManager.useNative) {
+            // Check if accessibility service is active on closing the panel
+            App.checkAccessibilityServiceOnCollapse(true)
+        } else {
+            // Ask for permission
+            App.acquireScreenshotPermission(this, this)
+        }
 
         setState(Tile.STATE_INACTIVE)
     }
@@ -88,6 +94,14 @@ class ScreenshotTileService : TileService(),
     override fun onStopListening() {
         super.onStopListening()
         if (BuildConfig.DEBUG) Log.v(TAG, "onStopListening()")
+
+        if (App.checkAccessibilityServiceOnCollapse()) {
+            // Open accessibility settings if service is not running
+            App.checkAccessibilityServiceOnCollapse(false)
+            if (App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance == null) {
+                ScreenshotAccessibilityService.openAccessibilitySettings(this)
+            }
+        }
 
         // Here we can be sure that the notification panel has fully collapsed
         if (takeScreenshotOnStopListening) {
@@ -109,6 +123,9 @@ class ScreenshotTileService : TileService(),
         App.getInstance().screenshot(this)
     }
 
+    /**
+     * Start foreground with sticky notification, necessary for MediaProjection
+     */
     fun foreground() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return
@@ -121,7 +138,9 @@ class ScreenshotTileService : TileService(),
         )
     }
 
-
+    /**
+     * Stop foreground and remove sticky notification
+     */
     fun background() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return
@@ -129,6 +148,9 @@ class ScreenshotTileService : TileService(),
         stopForeground(true)
     }
 
+    /**
+     * Background and stop
+     */
     fun kill() {
         background()
         stopSelf()

@@ -14,6 +14,8 @@ import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Co
 
 
 /**
+ * Quick settings tile to switch the floating button on/off
+ *
  * Created by cuzi (cuzi@openmail.cc).
  */
 
@@ -44,6 +46,7 @@ class FloatingTileService : TileService() {
     override fun onTileAdded() {
         super.onTileAdded()
         if (BuildConfig.DEBUG) Log.v(TAG, "onTileAdded()")
+        App.checkAccessibilityServiceOnCollapse(true)
         updateTileState()
     }
 
@@ -53,6 +56,16 @@ class FloatingTileService : TileService() {
         updateTileState()
     }
 
+    override fun onStopListening() {
+        super.onStopListening()
+
+        if (App.checkAccessibilityServiceOnCollapse()) {
+            App.checkAccessibilityServiceOnCollapse(false)
+            if (App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance == null) {
+                openAccessibilitySettings(this)
+            }
+        }
+    }
 
     override fun onClick() {
         super.onClick()
@@ -73,10 +86,8 @@ class FloatingTileService : TileService() {
         updateTileState()
     }
 
-    /**
-     * Set tile state according to settings and check if accessibility service is running
-     */
     private fun updateTileState() {
+        // Set tile state according to settings and check if accessibility service is running
         setState(
             if (App.getInstance().prefManager.floatingButton && ScreenshotAccessibilityService.instance != null) {
                 Tile.STATE_ACTIVE
