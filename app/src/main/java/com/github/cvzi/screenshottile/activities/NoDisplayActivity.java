@@ -14,6 +14,9 @@ import static com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID;
 import static com.github.cvzi.screenshottile.services.ScreenshotTileService.FOREGROUND_ON_START;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.screenshot;
 
+/**
+ * Empty activity that is used to collapse the quick settings panel, finishes itself in onCreate
+ */
 public class NoDisplayActivity extends Activity {
 
     private static final String TAG = "NoDisplayActivity.java";

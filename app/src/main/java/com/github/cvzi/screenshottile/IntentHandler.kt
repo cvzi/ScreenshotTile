@@ -6,7 +6,9 @@ import android.content.Intent
 import android.util.Log
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 
-
+/**
+ * Handle broadcast intents from automation apps like Tasker or MacroDroid
+ */
 class IntentHandler : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
 

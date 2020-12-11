@@ -15,6 +15,8 @@ import com.github.cvzi.screenshottile.services.ScreenshotTileService
 
 
 /**
+ * Holds the dialog fragment for delaying the screenshot
+ *
  * Created by ipcjs on 2017/8/16.
  * Changes by cuzi (cuzi@openmail.cc)
  */
@@ -24,6 +26,9 @@ class SettingDialogActivity : AppCompatActivity() {
         private const val START_SERVICE =
             BuildConfig.APPLICATION_ID + "SettingDialogActivity.START_SERVICE"
 
+        /**
+         * Get intent
+         */
         fun newIntent(context: Context, startService: Boolean = false): Intent {
             return Intent(context, SettingDialogActivity::class.java).apply {
                 if (startService) {

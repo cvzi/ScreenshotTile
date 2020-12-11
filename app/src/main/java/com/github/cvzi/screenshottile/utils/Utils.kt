@@ -484,6 +484,9 @@ fun saveImageToFile(
     }
 }
 
+/**
+ * Find the cache directory with maximum free space
+ */
 fun getCacheMaxFreeSpace(context: Context): File? {
     val cacheDirs = context.externalCacheDirs
     if (cacheDirs.isNullOrEmpty()) {
@@ -503,6 +506,9 @@ fun getCacheMaxFreeSpace(context: Context): File? {
     return cacheDirs[maxIndex]
 }
 
+/**
+ * Try to generate a path that can be understood by humans
+ */
 fun nicePathFromUri(documentFile: DocumentFile): String {
     return if (documentFile.name.isNullOrEmpty()) {
         nicePathFromUri(documentFile.uri)
@@ -511,10 +517,16 @@ fun nicePathFromUri(documentFile: DocumentFile): String {
     }
 }
 
+/**
+ * Try to generate a path that can be understood by humans
+ */
 fun nicePathFromUri(uri: Uri): String {
     return nicePathFromUri(uri.toString())
 }
 
+/**
+ * Try to generate a path that can be understood by humans
+ */
 fun nicePathFromUri(str: String?): String {
     if (str == null) {
         return "null"
@@ -527,6 +539,9 @@ fun nicePathFromUri(str: String?): String {
     return path
 }
 
+/**
+ * Adjust font size to fill the available space of a text view
+ */
 fun fillTextHeight(textView: TextView, maxHeight: Int, startSize: Float? = null) {
     var currentTextSize: Float = startSize ?: textView.textSize
     val text = textView.text.toString()

@@ -8,9 +8,19 @@ import android.widget.RemoteViews
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.SettingDialogActivity
 
-
+/**
+ * Widget with settings (right) and screenshot (left) button
+ */
 class SimpleWidgetBoth : SimpleWidget()
+
+/**
+ * Widget as screenshot button
+ */
 class SimpleWidgetScreenshot : SimpleWidget()
+
+/**
+ * Widget as settings button
+ */
 class SimpleWidgetSettings : SimpleWidget()
 
 /**

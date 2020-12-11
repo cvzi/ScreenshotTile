@@ -147,10 +147,10 @@ class TakeScreenshotActivity : Activity(),
     }
 
 
-    /**
-     * Show partial screenshot selector
-     */
     private fun partialScreenshot() {
+        /**
+         * Show partial screenshot selector
+         */
         val screenshotTileService = ScreenshotTileService.instance
 
         // Go fullscreen without status bar and without display notch/cutout

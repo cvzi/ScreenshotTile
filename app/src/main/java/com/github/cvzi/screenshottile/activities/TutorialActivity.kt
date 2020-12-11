@@ -119,12 +119,15 @@ class TutorialActivity : AppCompatActivity() {
             viewPager.setCurrentItem(viewPager.currentItem + 1 % images.size, true)
         }
         viewPager.addOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {}
+            override fun onPageScrollStateChanged(state: Int) {
+                // no-op
+            }
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
+                // no-op
             }
 
             override fun onPageSelected(position: Int) {

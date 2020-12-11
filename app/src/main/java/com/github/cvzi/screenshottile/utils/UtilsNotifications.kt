@@ -321,6 +321,9 @@ fun notificationSettingsIntent(packageName: String, channelId: String? = null): 
     }
 }
 
+/**
+ * Get a builder for the foreground notification
+ */
 @RequiresApi(Build.VERSION_CODES.O)
 fun foregroundNotification(context: Context, notificationId: Int): Notification.Builder {
     return Notification.Builder(context, createNotificationForegroundServiceChannel(context))

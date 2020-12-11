@@ -155,7 +155,7 @@ fun deleteDocumentFile(context: Context, uri: Uri): Boolean {
         return try {
             docDir.delete()
         } catch (e: SecurityException) {
-            if (BuildConfig.DEBUG) Log.v(
+            Log.e(
                 UTILSIMAGEKT,
                 "SecurityException in deleteDocumentFile($context, $uri)"
             )
@@ -185,7 +185,7 @@ fun deleteContentResolver(context: Context, uri: Uri): Boolean {
         }
         0
     }
-    if (BuildConfig.DEBUG) Log.v(
+    Log.e(
         UTILSIMAGEKT,
         "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"
     )
@@ -245,7 +245,9 @@ fun deleteFileSystem(context: Context, file: File): Boolean {
     }
 }
 
-
+/**
+ * Try to get the height of the status bar or return a fallback approximation
+ */
 fun statusBarHeight(context: Context): Int {
     val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
     return if (resourceId > 0) {
@@ -279,6 +281,9 @@ fun navigationBarSize(context: Context): Point {
     }
 }
 
+/**
+ * Screen size that can be used by windows
+ */
 fun appUsableScreenSize(context: Context): Point {
     val windowManager =
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
@@ -296,6 +301,9 @@ fun appUsableScreenSize(context: Context): Point {
     }
 }
 
+/**
+ * Full screen size including cutouts
+ */
 fun realScreenSize(context: Context): Point {
     val windowManager =
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
