@@ -1,0 +1,220 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+    <aapt:attr name="android:drawable">
+        <vector
+            android:name="vector"
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="318"
+            android:viewportHeight="318">
+            <path
+                android:name="circle"
+                android:fillColor="#BB000000"
+                android:pathData="M 159 159 M 139 159 C 139 154.777 140.337 150.661 142.82 147.244 C 145.302 143.828 148.803 141.284 152.82 139.979 C 156.836 138.674 161.164 138.674 165.18 139.979 C 169.197 141.284 172.698 143.828 175.18 147.244 C 177.663 150.661 179 154.777 179 159 C 179 163.223 177.663 167.339 175.18 170.756 C 172.698 174.172 169.197 176.716 165.18 178.021 C 161.164 179.326 156.836 179.326 152.82 178.021 C 148.803 176.716 145.302 174.172 142.82 170.756 C 140.337 167.339 139 163.223 139 159" />
+            <group
+                android:name="blades"
+                android:pivotX="159"
+                android:pivotY="159">
+                <path
+                    android:name="blade_0"
+                    android:fillColor="#DDeeeeee"
+                    android:pathData="M 99.37 127.995 C 99.37 127.995 175.54 6.675 173.51 4.655 C 145.88 -5.455 79.15 8.705 49.5 43.745 C 48.15 48.465 99.37 127.995 99.37 127.995 Z"
+                    android:strokeWidth="1"
+                    android:strokeColor="#000000" />
+                <path
+                    android:name="blade_1"
+                    android:fillColor="#DDeeeeee"
+                    android:pathData="M 153.068 93.437 C 153.068 93.437 296.197 99.305 296.943 96.54 C 291.997 67.537 246.569 16.648 201.431 8.313 C 196.664 9.485 153.068 93.437 153.068 93.437 Z"
+                    android:strokeWidth="1"
+                    android:strokeColor="#000000" />
+                <path
+                    android:name="blade_2"
+                    android:fillColor="#DDeeeeee"
+                    android:pathData="M 209.57 122.434 C 209.57 122.434 276.81 248.922 279.573 248.168 C 302.105 229.248 323.074 164.336 307.465 121.169 C 304.046 117.647 209.57 122.434 209.57 122.434 Z"
+                    android:strokeWidth="1"
+                    android:strokeColor="#000000" />
+                <path
+                    android:name="blade_3"
+                    android:fillColor="#DDeeeeee"
+                    android:pathData="M 212.177 186.054 C 212.177 186.054 136.263 307.534 138.297 309.55 C 165.949 319.601 232.649 305.301 262.225 270.198 C 263.565 265.475 212.177 186.054 212.177 186.054 Z"
+                    android:strokeWidth="1"
+                    android:strokeColor="#000000" />
+                <path
+                    android:name="blade_4"
+                    android:fillColor="#DDeeeeee"
+                    android:pathData="M 162.307 220.256 C 162.307 220.256 19.142 215.332 18.415 218.102 C 23.552 247.072 69.314 297.66 114.508 305.699 C 119.267 304.495 162.307 220.256 162.307 220.256 Z"
+                    android:strokeWidth="1"
+                    android:strokeColor="#000000" />
+                <path
+                    android:name="blade_5"
+                    android:fillColor="#DDeeeeee"
+                    android:pathData="M 105.586 193.797 C 105.586 193.797 38.36 67.302 35.597 68.055 C 13.064 86.972 -7.913 151.883 7.691 195.05 C 11.11 198.573 105.586 193.797 105.586 193.797 Z"
+                    android:strokeWidth="1"
+                    android:strokeColor="#000000" />
+            </group>
+        </vector>
+    </aapt:attr>
+    <target android:name="blade_0">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="500"
+                android:interpolator="@android:anim/overshoot_interpolator"
+                android:propertyName="pathData"
+                android:valueFrom="M 99.37 127.995 C 99.37 127.995 175.54 6.675 173.51 4.655 C 145.88 -5.455 79.15 8.705 49.5 43.745 C 48.15 48.465 99.37 127.995 99.37 127.995 Z"
+                android:valueTo="M 120.656 129.347 C 120.656 129.347 247.281 62.366 246.533 59.601 C 227.66 37.031 162.79 15.929 119.592 31.449 C 116.063 34.862 120.656 129.347 120.656 129.347 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blade_1">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="500"
+                android:interpolator="@android:anim/overshoot_interpolator"
+                android:propertyName="pathData"
+                android:valueFrom="M 153.068 93.437 C 153.068 93.437 296.197 99.305 296.943 96.54 C 291.997 67.537 246.569 16.648 201.431 8.313 C 196.664 9.485 153.068 93.437 153.068 93.437 Z"
+                android:valueTo="M 162.087 109.139 C 162.087 109.139 283.106 185.786 285.134 183.764 C 295.353 156.174 281.456 89.389 246.533 59.601 C 241.818 58.233 162.087 109.139 162.087 109.139 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blade_2">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="500"
+                android:interpolator="@android:anim/overshoot_interpolator"
+                android:propertyName="pathData"
+                android:valueFrom="M 209.57 122.434 C 209.57 122.434 276.81 248.922 279.573 248.168 C 302.105 229.248 323.074 164.336 307.465 121.169 C 304.046 117.647 209.57 122.434 209.57 122.434 Z"
+                android:valueTo="M 199.721 135.912 C 199.721 135.912 194.709 279.073 197.479 279.802 C 226.452 274.683 277.068 228.952 285.134 183.764 C 283.933 179.004 199.721 135.912 199.721 135.912 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blade_3">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="500"
+                android:interpolator="@android:anim/overshoot_interpolator"
+                android:propertyName="pathData"
+                android:valueFrom="M 212.177 186.054 C 212.177 186.054 136.263 307.534 138.297 309.55 C 165.949 319.601 232.649 305.301 262.225 270.198 C 263.565 265.475 212.177 186.054 212.177 186.054 Z"
+                android:valueTo="M 196.209 181.907 C 196.209 181.907 69.725 249.155 70.479 251.918 C 89.4 274.449 154.314 295.414 197.479 279.802 C 201.001 276.382 196.209 181.907 196.209 181.907 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blade_4">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="500"
+                android:interpolator="@android:anim/overshoot_interpolator"
+                android:propertyName="pathData"
+                android:valueFrom="M 162.307 220.256 C 162.307 220.256 19.142 215.332 18.415 218.102 C 23.552 247.072 69.314 297.66 114.508 305.699 C 119.267 304.495 162.307 220.256 162.307 220.256 Z"
+                android:valueTo="M 154.596 201.822 C 154.596 201.822 33.073 125.975 31.059 128.011 C 21.022 155.667 35.36 222.359 70.479 251.918 C 75.202 253.255 154.596 201.822 154.596 201.822 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blade_5">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="500"
+                android:interpolator="@android:anim/overshoot_interpolator"
+                android:propertyName="pathData"
+                android:valueFrom="M 105.586 193.797 C 105.586 193.797 38.36 67.302 35.597 68.055 C 13.064 86.972 -7.913 151.883 7.691 195.05 C 11.11 198.573 105.586 193.797 105.586 193.797 Z"
+                android:valueTo="M 117.333 175.339 C 117.333 175.339 122.361 32.178 119.592 31.449 C 90.619 36.565 39.997 82.291 31.927 127.477 C 33.127 132.237 117.333 175.339 117.333 175.339 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blades">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="500"
+                android:interpolator="@android:anim/overshoot_interpolator"
+                android:propertyName="rotation"
+                android:valueFrom="90"
+                android:valueTo="0"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+
+    <target android:name="blade_0">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="300"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="pathData"
+                android:startOffset="500"
+                android:valueFrom="M 120.656 129.347 C 120.656 129.347 247.281 62.366 246.533 59.601 C 227.66 37.031 162.79 15.929 119.592 31.449 C 116.063 34.862 120.656 129.347 120.656 129.347 Z"
+                android:valueTo="M 99.37 127.995 C 99.37 127.995 175.54 6.675 173.51 4.655 C 145.88 -5.455 79.15 8.705 49.5 43.745 C 48.15 48.465 99.37 127.995 99.37 127.995 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blade_1">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="300"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="pathData"
+                android:startOffset="500"
+                android:valueFrom="M 162.087 109.139 C 162.087 109.139 283.106 185.786 285.134 183.764 C 295.353 156.174 281.456 89.389 246.533 59.601 C 241.818 58.233 162.087 109.139 162.087 109.139 Z"
+                android:valueTo="M 153.068 93.437 C 153.068 93.437 296.197 99.305 296.943 96.54 C 291.997 67.537 246.569 16.648 201.431 8.313 C 196.664 9.485 153.068 93.437 153.068 93.437 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blade_2">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="300"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="pathData"
+                android:startOffset="500"
+                android:valueFrom="M 199.721 135.912 C 199.721 135.912 194.709 279.073 197.479 279.802 C 226.452 274.683 277.068 228.952 285.134 183.764 C 283.933 179.004 199.721 135.912 199.721 135.912 Z"
+                android:valueTo="M 209.57 122.434 C 209.57 122.434 276.81 248.922 279.573 248.168 C 302.105 229.248 323.074 164.336 307.465 121.169 C 304.046 117.647 209.57 122.434 209.57 122.434 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blade_3">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="300"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="pathData"
+                android:startOffset="500"
+                android:valueFrom="M 196.209 181.907 C 196.209 181.907 69.725 249.155 70.479 251.918 C 89.4 274.449 154.314 295.414 197.479 279.802 C 201.001 276.382 196.209 181.907 196.209 181.907 Z"
+                android:valueTo="M 212.177 186.054 C 212.177 186.054 136.263 307.534 138.297 309.55 C 165.949 319.601 232.649 305.301 262.225 270.198 C 263.565 265.475 212.177 186.054 212.177 186.054 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blade_4">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="300"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="pathData"
+                android:startOffset="500"
+                android:valueFrom="M 154.596 201.822 C 154.596 201.822 33.073 125.975 31.059 128.011 C 21.022 155.667 35.36 222.359 70.479 251.918 C 75.202 253.255 154.596 201.822 154.596 201.822 Z"
+                android:valueTo="M 162.307 220.256 C 162.307 220.256 19.142 215.332 18.415 218.102 C 23.552 247.072 69.314 297.66 114.508 305.699 C 119.267 304.495 162.307 220.256 162.307 220.256 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blade_5">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="300"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="pathData"
+                android:startOffset="500"
+                android:valueFrom="M 117.333 175.339 C 117.333 175.339 122.361 32.178 119.592 31.449 C 90.619 36.565 39.997 82.291 31.927 127.477 C 33.127 132.237 117.333 175.339 117.333 175.339 Z"
+                android:valueTo="M 105.586 193.797 C 105.586 193.797 38.36 67.302 35.597 68.055 C 13.064 86.972 -7.913 151.883 7.691 195.05 C 11.11 198.573 105.586 193.797 105.586 193.797 Z"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+    <target android:name="blades">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="300"
+                android:interpolator="@android:anim/linear_interpolator"
+                android:propertyName="rotation"
+                android:startOffset="500"
+                android:valueFrom="0"
+                android:valueTo="90"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+</animated-vector>
+

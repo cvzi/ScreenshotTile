@@ -122,6 +122,7 @@ class TutorialActivity : AppCompatActivity() {
             override fun onPageScrollStateChanged(state: Int) {
                 // no-op
             }
+
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,

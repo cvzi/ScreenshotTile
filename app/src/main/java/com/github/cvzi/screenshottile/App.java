@@ -184,6 +184,13 @@ public class App extends Application {
         context.startActivity(intent);
     }
 
+    public static Boolean checkAccessibilityServiceOnCollapse() {
+        return checkAccessibilityServiceOnCollapse;
+    }
+
+    public static void checkAccessibilityServiceOnCollapse(Boolean checkAccessibilityServiceOnCollapse) {
+        App.checkAccessibilityServiceOnCollapse = checkAccessibilityServiceOnCollapse;
+    }
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -249,7 +256,6 @@ public class App extends Application {
         }
         context.startActivity(intent);
     }
-
 
     private void screenshotShowCountdown(Context context) {
         int delay = prefManager.getDelay();
@@ -376,13 +382,5 @@ public class App extends Application {
                 handler.postDelayed(this, 1000);
             }
         }
-    }
-
-    public static Boolean checkAccessibilityServiceOnCollapse() {
-        return checkAccessibilityServiceOnCollapse;
-    }
-
-    public static void checkAccessibilityServiceOnCollapse(Boolean checkAccessibilityServiceOnCollapse) {
-        App.checkAccessibilityServiceOnCollapse = checkAccessibilityServiceOnCollapse;
     }
 }

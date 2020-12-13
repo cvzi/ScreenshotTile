@@ -488,6 +488,7 @@ fun saveImageToFile(
 /**
  * Find the cache directory with maximum free space
  */
+@Suppress("unused")
 fun getCacheMaxFreeSpace(context: Context): File? {
     val cacheDirs = context.externalCacheDirs
     if (cacheDirs.isNullOrEmpty()) {

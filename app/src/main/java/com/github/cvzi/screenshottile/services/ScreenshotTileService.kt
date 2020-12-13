@@ -68,7 +68,7 @@ class ScreenshotTileService : TileService(),
         super.onTileAdded()
         if (BuildConfig.DEBUG) Log.v(TAG, "onTileAdded()")
 
-        if(App.getInstance().prefManager.useNative) {
+        if (App.getInstance().prefManager.useNative) {
             // Check if accessibility service is active on closing the panel
             App.checkAccessibilityServiceOnCollapse(true)
         } else {

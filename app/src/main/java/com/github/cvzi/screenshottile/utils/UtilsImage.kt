@@ -248,6 +248,7 @@ fun deleteFileSystem(context: Context, file: File): Boolean {
 /**
  * Try to get the height of the status bar or return a fallback approximation
  */
+@Suppress("unused")
 fun statusBarHeight(context: Context): Int {
     val resourceId = context.resources.getIdentifier("status_bar_height", "dimen", "android")
     return if (resourceId > 0) {
@@ -262,6 +263,7 @@ fun statusBarHeight(context: Context): Int {
  * From: https://stackoverflow.com/a/29609679/
  *
  */
+@Suppress("unused")
 fun navigationBarSize(context: Context): Point {
     val appUsableSize: Point = appUsableScreenSize(context)
     val realScreenSize: Point = realScreenSize(context)

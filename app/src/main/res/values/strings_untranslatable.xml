@@ -71,17 +71,16 @@
 
     <string name="unavailable_on_debug" translatable="false">Unavailable in DEBUG</string>
 
-    <!-- Animations -->
+    <!-- Shutters -->
     <integer-array name="shutter_black_dot">
-        <item>@drawable/ic_black_dot</item>
         <item>@drawable/ic_black_dot_animate_shutter</item>
         <item>@drawable/ic_black_dot_animate_move</item>
     </integer-array>
     <integer-array name="shutter_round_shutter">
-        <item>@drawable/ic_round_shutter</item>
         <item>@drawable/ic_round_shutter_animate_shutter</item>
         <item>@drawable/ic_round_shutter_animate_move</item>
     </integer-array>
+
     <integer-array name="shutters">
         <item>@array/shutter_black_dot</item>
         <item>@array/shutter_round_shutter</item>
