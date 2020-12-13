@@ -6,8 +6,12 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.github.cvzi.screenshottile.App;
 import com.github.cvzi.screenshottile.BuildConfig;
+import com.github.cvzi.screenshottile.R;
+import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
 
 import static com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID;
@@ -19,9 +23,22 @@ import static com.github.cvzi.screenshottile.utils.UtilsKt.screenshot;
  */
 public class NoDisplayActivity extends Activity {
 
-    private static final String TAG = "NoDisplayActivity.java";
+    public static final String TAG = "NoDisplayActivity.java";
     private static final String EXTRA_SCREENSHOT = APPLICATION_ID + ".NoDisplayActivity.EXTRA_SCREENSHOT";
     private static final String EXTRA_PARTIAL = APPLICATION_ID + ".NoDisplayActivity.EXTRA_PARTIAL";
+    private static final String EXTRA_FLOATING_BUTTON = APPLICATION_ID + ".NoDisplayActivity.EXTRA_FLOATING_BUTTON";
+
+    /**
+     * Open from service
+     *
+     * @param context    Context
+     * @param screenshot Immediately start taking a screenshot
+     */
+    public static void startNewTask(Context context, boolean screenshot) {
+        Intent intent = newIntent(context, screenshot);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
 
     /**
      * New Intent that takes a screenshot immediately if screenshot is true.
@@ -88,8 +105,30 @@ public class NoDisplayActivity extends Activity {
                     startForegroundService(serviceIntent);
                 }
                 screenshot(this, false);
+            } else if ((action != null && action.equals(EXTRA_FLOATING_BUTTON)) || intent.getBooleanExtra(EXTRA_FLOATING_BUTTON, false)) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    // Toggle floating button from shortcuts.xml
+                    ScreenshotAccessibilityService screenshotAccessibilityService = ScreenshotAccessibilityService.Companion.getInstance();
+                    if (App.getInstance().getPrefManager().getFloatingButton()) {
+                        if (screenshotAccessibilityService != null) {
+                            screenshotAccessibilityService.updateFloatingButton(false);
+                            App.getInstance().getPrefManager().setFloatingButton(false);
+                        } else {
+                            ScreenshotAccessibilityService.Companion.openAccessibilitySettings(this, NoDisplayActivity.TAG);
+                        }
+                    } else {
+                        App.getInstance().getPrefManager().setFloatingButton(true);
+                        if (screenshotAccessibilityService != null) {
+                            screenshotAccessibilityService.updateFloatingButton(false);
+                        } else {
+                            ScreenshotAccessibilityService.Companion.openAccessibilitySettings(this, NoDisplayActivity.TAG);
+                        }
+                    }
+                } else {
+                    Toast.makeText(this, R.string.setting_floating_button_unsupported, Toast.LENGTH_LONG).show();
+                }
             } else {
-                if (BuildConfig.DEBUG) Log.v(TAG, "onCreate() EXTRA_SCREENSHOT=false");
+                if (BuildConfig.DEBUG) Log.v(TAG, "onCreate() no valid action or EXTRA_* found");
             }
         }
         finish();

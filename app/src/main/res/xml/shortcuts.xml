@@ -25,4 +25,16 @@
             android:targetClass="com.github.cvzi.screenshottile.activities.SettingDialogActivity"
             android:targetPackage="com.github.cvzi.screenshottile" />
     </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutId="toggleFloatingButton"
+        android:shortcutLongLabel="@string/setting_floating_button"
+        android:shortcutShortLabel="@string/setting_floating_button"
+        tools:targetApi="N_MR1">
+        <intent
+            android:action="com.github.cvzi.screenshottile.NoDisplayActivity.EXTRA_FLOATING_BUTTON"
+            android:targetClass="com.github.cvzi.screenshottile.activities.NoDisplayActivity"
+            android:targetPackage="com.github.cvzi.screenshottile" />
+    </shortcut>
 </shortcuts>
