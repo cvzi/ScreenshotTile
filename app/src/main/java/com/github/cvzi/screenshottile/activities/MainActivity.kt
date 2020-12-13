@@ -49,7 +49,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.screenshotCount == 0 && isNewAppInstallation(this)) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.screenshotCount == 0 && isNewAppInstallation(
+                this
+            )
+        ) {
             // On Android Pie and higher, enable native method on first start
             App.getInstance().prefManager.screenshotCount++
             App.getInstance().prefManager.useNative = true
