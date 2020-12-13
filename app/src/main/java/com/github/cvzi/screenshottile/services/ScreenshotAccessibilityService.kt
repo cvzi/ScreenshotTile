@@ -7,25 +7,31 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
 import android.graphics.Point
+import android.graphics.drawable.Animatable
 import android.hardware.display.DisplayManager
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.service.quicksettings.TileService
+import android.util.Log
 import android.view.*
 import android.view.Display.DEFAULT_DISPLAY
 import android.view.WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
 import android.view.accessibility.AccessibilityEvent
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.ContainerActivity
 import com.github.cvzi.screenshottile.activities.MainActivity
+import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
+import com.github.cvzi.screenshottile.utils.ShutterCollection
 import com.github.cvzi.screenshottile.utils.fillTextHeight
 
 
@@ -70,30 +76,45 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     }
 
-    private lateinit var windowContext: Context
-    private lateinit var windowManager: WindowManager
     private var floatingButtonShown = false
     private var binding: AccessibilityBarBinding? = null
+    private var useThis = false
 
     override fun onServiceConnected() {
         instance = this
-
-        val dm: DisplayManager = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
-        val primaryDisplay = dm.getDisplay(DEFAULT_DISPLAY)
-        windowContext = createDisplayContext(primaryDisplay)
-        windowManager = windowContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-
-        if (App.getInstance().prefManager.returnIfAccessibilityServiceEnabled == SettingFragment.TAG) {
-            // Return to settings
-            App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = null
-            ContainerActivity.startNewTask(this, SettingFragment::class.java)
-        } else if (App.getInstance().prefManager.returnIfAccessibilityServiceEnabled == MainActivity.TAG) {
-            // Return to main activity
-            App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = null
-            MainActivity.startNewTask(this)
+        when (App.getInstance().prefManager.returnIfAccessibilityServiceEnabled) {
+            SettingFragment.TAG -> {
+                // Return to settings
+                App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = null
+                ContainerActivity.startNewTask(this, SettingFragment::class.java)
+            }
+            MainActivity.TAG -> {
+                // Return to main activity
+                App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = null
+                MainActivity.startNewTask(this)
+            }
+            NoDisplayActivity.TAG -> {
+                // Return to NoDisplayActivity activity i.e. finish()
+                App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = null
+                NoDisplayActivity.startNewTask(this, false)
+            }
         }
 
         updateFloatingButton()
+    }
+
+    private fun getWinContext(): Context {
+        var windowContext: Context = this
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !useThis) {
+            val dm: DisplayManager = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
+            val primaryDisplay = dm.getDisplay(DEFAULT_DISPLAY)
+            windowContext = createDisplayContext(primaryDisplay)
+        }
+        return windowContext
+    }
+
+    private fun getWinManager(): WindowManager {
+        return getWinContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager
     }
 
     /**
@@ -114,7 +135,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     private fun showFloatingButton() {
         floatingButtonShown = true
 
-        binding = AccessibilityBarBinding.inflate(LayoutInflater.from(windowContext))
+        binding =
+            AccessibilityBarBinding.inflate(getWinContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
 
         binding?.root?.let { root ->
             configureFloatingButton(root)
@@ -122,12 +144,19 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
     private fun configureFloatingButton(root: ViewGroup) {
-
         val position = App.getInstance().prefManager.floatingButtonPosition
+
+        val shutterCollection = ShutterCollection(this, R.array.shutters, R.array.shutter_names)
 
         addWindowViewAt(root, position.x, position.y)
 
-        val buttonScreenshot = root.findViewById<View>(R.id.buttonScreenshot)
+        val buttonScreenshot = root.findViewById<ImageView>(R.id.buttonScreenshot)
+        buttonScreenshot.setImageDrawable(
+            ContextCompat.getDrawable(
+                this,
+                shutterCollection.current().normal
+            )
+        )
         var buttonClose: TextView? = null
 
         val scale = App.getInstance().prefManager.floatingButtonScale
@@ -148,13 +177,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     }
                 }
             }
-            buttonScreenshot.post {
-                //buttonClose.textSize = buttonScreenshot.measuredHeight / 2f
-            }
         }
 
         if (App.getInstance().prefManager.floatingButtonShowClose) {
-            buttonClose = TextView(windowContext)
+            buttonClose = TextView(getWinContext())
             buttonClose.text = getString(R.string.emoji_close)
             val linearLayout = root.findViewById<LinearLayout>(R.id.linearLayoutOuter)
             linearLayout.addView(buttonClose)
@@ -167,6 +193,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }
         }
         buttonScreenshot.setOnClickListener {
+            (buttonScreenshot.drawable as? Animatable)?.start()
             root.visibility = View.GONE
             Handler(Looper.getMainLooper()).postDelayed({
                 simulateScreenshotButton()
@@ -178,17 +205,35 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                         root.visibility = View.VISIBLE
                     }, 1000)
                 }
-            }, 20)
+            }, 5)
         }
 
+        var dragDone = false
         buttonScreenshot.setOnDragListener { v, event ->
             when (event.action) {
-                DragEvent.ACTION_DRAG_ENDED -> {
-                    val x = (event.x - v.measuredWidth / 2.0).toInt()
-                    val y = (event.y - v.measuredHeight).toInt()
+                DragEvent.ACTION_DROP, DragEvent.ACTION_DRAG_ENDED -> {
+                    var x = (event.x - v.measuredWidth / 2.0).toInt()
+                    var y = (event.y - v.measuredHeight).toInt()
+                    if (event.action == DragEvent.ACTION_DROP) {
+                        // x and y are relative to the inside of the view's bounding box
+                        x =
+                            (App.getInstance().prefManager.floatingButtonPosition.x - v.measuredWidth / 2.0 + event.x).toInt()
+                        y =
+                            (App.getInstance().prefManager.floatingButtonPosition.y - v.measuredHeight / 2.0 + event.y).toInt()
+                    }
                     root.let {
-                        updateWindowViewPosition(it, x, y)
-                        App.getInstance().prefManager.floatingButtonPosition = Point(x, y)
+                        if (!dragDone) {
+                            dragDone = true
+                            updateWindowViewPosition(it, x, y)
+                            App.getInstance().prefManager.floatingButtonPosition =
+                                Point(x, y)
+                        }
+                        buttonScreenshot.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                this,
+                                shutterCollection.current().normal
+                            )
+                        )
                     }
                     true
                 }
@@ -197,9 +242,18 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
 
         buttonScreenshot.setOnLongClickListener {
+            dragDone = false
+            (buttonScreenshot as ImageView).setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    shutterCollection.current().move
+                )
+            )
+            (buttonScreenshot.drawable as Animatable).start()
             it.startDragAndDrop(null, View.DragShadowBuilder(root), null, 0)
         }
 
+        (buttonScreenshot.drawable as? Animatable)?.start()
     }
 
     /**
@@ -208,20 +262,38 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     private fun hideFloatingButton() {
         floatingButtonShown = false
         binding?.root?.let {
-            windowManager.removeView(it)
+            getWinManager().removeView(it)
         }
         binding = null
     }
 
-    private fun addWindowViewAt(view: View, x: Int = 0, y: Int = 0) {
-        windowManager.addView(
-            view,
-            windowViewAbsoluteLayoutParams(x, y)
-        )
+    private fun addWindowViewAt(
+        view: View,
+        x: Int = 0,
+        y: Int = 0,
+        tryAgainOnFailure: Boolean = true
+    ) {
+        try {
+            getWinManager().addView(
+                view,
+                windowViewAbsoluteLayoutParams(x, y)
+            )
+        } catch (e: WindowManager.BadTokenException) {
+            Log.e(TAG, "windowManager.addView failed for invalid token:", e)
+            if (tryAgainOnFailure) {
+                try {
+                    getWinManager().removeView(view)
+                } catch (e: Exception) {
+                    Log.e(TAG, "windowManager.removeView failed as well:", e)
+                }
+                useThis = true
+                addWindowViewAt(view, x, y, false)
+            }
+        }
     }
 
     private fun updateWindowViewPosition(view: View, x: Int, y: Int) {
-        windowManager.updateViewLayout(
+        getWinManager().updateViewLayout(
             view,
             windowViewAbsoluteLayoutParams(x, y)
         )

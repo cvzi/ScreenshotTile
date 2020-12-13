@@ -181,4 +181,13 @@ class PrefManager {
             "${point.x},${point.y}"
         ).apply()
 
+    var floatingButtonShutter: Int
+        get() = pref.getString(
+            context.getString(R.string.pref_key_floating_button_shutter),
+            "0"
+        )?.toIntOrNull() ?: 0
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_floating_button_shutter),
+            value.toString()
+        ).apply()
 }

@@ -58,6 +58,12 @@
         android:summary="@string/setting_floating_button_show_close_summary"
         android:title="@string/setting_floating_button_show_close" />
 
+    <com.github.cvzi.screenshottile.utils.DrawableListPreference
+        android:defaultValue="0"
+        android:key="@string/pref_key_floating_button_shutter"
+        android:summary=""
+        android:title="@string/setting_floating_button_shutter" />
+
     <androidx.preference.EditTextPreference
         android:defaultValue="@string/setting_broadcast_secret_value_default"
         android:inputType="textVisiblePassword"

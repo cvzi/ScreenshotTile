@@ -19,10 +19,7 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.TutorialActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
-import com.github.cvzi.screenshottile.utils.createNotificationScreenshotTakenChannel
-import com.github.cvzi.screenshottile.utils.nicePathFromUri
-import com.github.cvzi.screenshottile.utils.notificationScreenshotTakenChannelEnabled
-import com.github.cvzi.screenshottile.utils.notificationSettingsIntent
+import com.github.cvzi.screenshottile.utils.*
 
 
 /**
@@ -43,6 +40,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var floatingButtonScalePref: EditTextPreference? = null
     private var floatingButtonHideAfterPref: SwitchPreference? = null
     private var floatingButtonHideShowClosePref: SwitchPreference? = null
+    private var floatingButtonShutter: ListPreference? = null
     private var hideAppPref: SwitchPreference? = null
     private var storageDirectoryPref: Preference? = null
     private var broadcastSecretPref: EditTextPreference? = null
@@ -59,6 +57,9 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_floating_button) -> updateFloatingButton()
                 getString(R.string.pref_key_floating_button_scale) -> updateFloatingButton(true)
                 getString(R.string.pref_key_floating_button_show_close) -> updateFloatingButton(true)
+                getString(R.string.pref_key_floating_button_shutter) -> updateFloatingButtonShutterSummary(
+                    true
+                )
             }
         }
 
@@ -84,6 +85,8 @@ class SettingFragment : PreferenceFragmentCompat() {
         storageDirectoryPref = findPreference(getString(R.string.pref_key_storage_directory))
         broadcastSecretPref =
             findPreference(getString(R.string.pref_key_broadcast_secret)) as EditTextPreference?
+        floatingButtonShutter =
+            findPreference(getString(R.string.pref_key_floating_button_shutter)) as ListPreference?
 
         pref.registerOnSharedPreferenceChangeListener(prefListener)
         delayPref?.run { updateDelaySummary(value) }
@@ -93,7 +96,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         updateFloatingButton()
         updateStorageDirectory()
         updateHideApp(true)
-
+        updateFloatingButtonShutterSummary()
 
         makeLink(
             R.string.pref_static_field_key_about_app_1,
@@ -129,6 +132,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         updateUseNative()
         updateFloatingButton()
         updateStorageDirectory()
+        updateFloatingButtonShutterSummary()
 
         if (BuildConfig.DEBUG) {
             broadcastSecretPref?.summary = getString(R.string.unavailable_on_debug)
@@ -241,6 +245,16 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
     }
 
+    private fun updateFloatingButtonShutterSummary(updateFloatingButton: Boolean = false) {
+        floatingButtonShutter?.apply {
+            summary =
+                ShutterCollection(context, R.array.shutters, R.array.shutter_names).current().name
+        }
+        if (updateFloatingButton) {
+            updateFloatingButton(true)
+        }
+    }
+
     private fun updateHideApp(hideOptionCompletely: Boolean = false) {
         /* Do not show "hide_app_from_launcher" setting, it's no longer possible on Android 10+
           If the icon is already hidden, show the option anyway, to restore it
@@ -326,6 +340,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     floatingButtonScalePref?.isVisible = false
                     floatingButtonHideAfterPref?.isVisible = false
                     floatingButtonHideShowClosePref?.isVisible = false
+                    floatingButtonShutter?.isVisible = false
                     unsupported
                 }
                 isChecked -> {
