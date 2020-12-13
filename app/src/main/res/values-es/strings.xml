@@ -31,6 +31,7 @@
     <string name="setting_floating_button_hide_after_summary">Desactive automáticamente el botón flotante después de tomar una captura de pantalla</string>
     <string name="setting_floating_button_show_close">Mostrar un botón [X]/\"cerrar\" junto al botón flotante</string>
     <string name="setting_floating_button_show_close_summary">Permite quitar el botón flotante sin abrir la configuraciónes rápidas</string>
+    <string name="setting_floating_button_shutter">Apariencia del botón flotante</string>
     <string name="setting_broadcast_secret">Contraseña de Broadcast intent</string>
     <string name="setting_broadcast_secret_description">Una frase secreta para permitir que otras aplicaciones (como MacroDroid o Tasker) pueden iniciar capturas de pantalla</string>
     <string name="setting_storage_directory">Carpeta de almacenamiento</string>

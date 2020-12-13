@@ -28,6 +28,7 @@
     <string name="pref_key_floating_button_position" translatable="false">floating_button_position</string>
     <string name="pref_key_floating_button_hide_after" translatable="false">floating_button_hide_after</string>
     <string name="pref_key_floating_button_show_close" translatable="false">floating_button_show_close</string>
+    <string name="pref_key_floating_button_shutter" translatable="false">floating_button_shutter</string>
     <string name="pref_key_return_if_accessibility" translatable="false">return_if_accessibility</string>
     <string name="setting_broadcast_secret_value_default" translatable="false">(unset)</string>
     <string name="setting_storage_directory_value_default" translatable="false">(default)</string>
@@ -69,6 +70,26 @@
     <string name="emoji_close" translatable="false">&#x274c;</string>
 
     <string name="unavailable_on_debug" translatable="false">Unavailable in DEBUG</string>
+
+    <!-- Animations -->
+    <integer-array name="shutter_black_dot">
+        <item>@drawable/ic_black_dot</item>
+        <item>@drawable/ic_black_dot_animate_shutter</item>
+        <item>@drawable/ic_black_dot_animate_move</item>
+    </integer-array>
+    <integer-array name="shutter_round_shutter">
+        <item>@drawable/ic_round_shutter</item>
+        <item>@drawable/ic_round_shutter_animate_shutter</item>
+        <item>@drawable/ic_round_shutter_animate_move</item>
+    </integer-array>
+    <integer-array name="shutters">
+        <item>@array/shutter_black_dot</item>
+        <item>@array/shutter_round_shutter</item>
+    </integer-array>
+    <array name="shutter_names">
+        <item>square</item>
+        <item>round</item>
+    </array>
 
     <!-- About in settings -->
     <string name="pref_static_field_key_about_app_1" translatable="false">pref_static_field_key_about_app_1</string>
