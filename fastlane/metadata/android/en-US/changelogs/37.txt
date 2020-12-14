@@ -1,0 +1,5 @@
+☆ Floating button square and round design
+☆ Hide floating button before taking a screenshot
+☆ Completely translated to Portuguese. Thanks to mezysinc
+☆ Russian translation improved
+☆ "Hide app icon" fixed

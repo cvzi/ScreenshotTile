@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.11.0
+*   Enable native method on new installs
+*   Permissions management improved
+*   Shortcut to toggle floating button
+*   Square or round shutter for floating button with animations
+*   Completely translated to Portuguese. Thanks to [@mezysinc](https://github.com/mezysinc)
+*   Russian translation improved
+*   Fix "hide app icon"
+*   Add dimension metadata to MediaStore
+*   Hide floating button before taking a screenshot
+*   Wait longer for quick settings panel to collapse on native method
 ## 1.10.0
 *   Added floating button to take screenshots
 *   Added initial activity with text explanation of features
