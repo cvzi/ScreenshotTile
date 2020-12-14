@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
@@ -106,7 +108,15 @@ class ScreenshotTileService : TileService(),
         // Here we can be sure that the notification panel has fully collapsed
         if (takeScreenshotOnStopListening) {
             takeScreenshotOnStopListening = false
-            App.getInstance().takeScreenshotFromTileService(this)
+            if (App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance != null) {
+                // Except if the panel was pulled down completely, then we still need a delay. This
+                // only matters for native method because it's too fast.
+                Handler(Looper.getMainLooper()).postDelayed({
+                    App.getInstance().takeScreenshotFromTileService(this)
+                }, 700)
+            } else {
+                App.getInstance().takeScreenshotFromTileService(this)
+            }
         } else {
             background()
         }
