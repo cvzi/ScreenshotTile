@@ -16,6 +16,7 @@ import androidx.preference.Preference.OnPreferenceClickListener
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.activities.TutorialActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
@@ -273,7 +274,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private fun onHideApp(hide: Boolean): Boolean {
         val myActivity = activity
         return myActivity?.let {
-            val componentName = ComponentName(myActivity, TutorialActivity::class.java)
+            val componentName = ComponentName(myActivity, MainActivity::class.java)
             try {
                 myActivity.packageManager.setComponentEnabledSetting(
                     componentName,
