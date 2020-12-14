@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Paint
+import android.graphics.Point
 import android.graphics.Rect
 import android.icu.text.SimpleDateFormat
 import android.media.Image
@@ -174,12 +175,13 @@ fun createOutputStream(
     context: Context,
     fileTitle: String,
     compressionOptions: CompressionOptions,
-    date: Date
+    date: Date,
+    dim: Point
 ): OutputStreamResult {
     return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-        createOutputStreamLegacy(context, fileTitle, compressionOptions, date)
+        createOutputStreamLegacy(context, fileTitle, compressionOptions, date, dim)
     } else {
-        createOutputStreamMediaStore(context, fileTitle, compressionOptions, date)
+        createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim)
     }
 }
 
@@ -190,7 +192,8 @@ fun createOutputStreamLegacy(
     context: Context,
     fileTitle: String,
     compressionOptions: CompressionOptions,
-    date: Date
+    date: Date,
+    dim: Point
 ): OutputStreamResult {
 
     val filename = "$fileTitle.${compressionOptions.fileExtension}"
@@ -200,7 +203,7 @@ fun createOutputStreamLegacy(
     var imageFile: File? = null
     if (customDirectory != null) {
         if (customDirectory.startsWith("content://")) {
-            return createOutputStreamMediaStore(context, fileTitle, compressionOptions, date)
+            return createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim)
         } else if (customDirectory.startsWith("file://")) {
             imageFile = File(customDirectory.substring(7), filename)
         }
@@ -281,7 +284,8 @@ fun createOutputStreamMediaStore(
     context: Context,
     fileTitle: String,
     compressionOptions: CompressionOptions,
-    date: Date
+    date: Date,
+    dim: Point
 ): OutputStreamResult {
     val filename = "$fileTitle.${compressionOptions.fileExtension}"
     var relativePath =
@@ -325,6 +329,13 @@ fun createOutputStreamMediaStore(
         put(Images.ImageColumns.DATE_ADDED, dateSeconds)
         put(Images.ImageColumns.DATE_MODIFIED, dateSeconds)
         put(Images.ImageColumns.MIME_TYPE, compressionOptions.mimeType)
+        if (dim.x > 0 && dim.y > 0) {
+            put(Images.ImageColumns.WIDTH, 0)
+            put(Images.ImageColumns.HEIGHT, 0)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                put(Images.ImageColumns.RESOLUTION, "${dim.x}\u00d7${dim.y}")
+            }
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             put(Images.ImageColumns.DATE_TAKEN, dateMilliseconds)
             if (relativePath.isNotEmpty()) {
@@ -368,7 +379,7 @@ fun saveImageToFile(
     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.US).format(date)
     val filename = "$prefix$timeStamp"
 
-    val outputStreamResult = createOutputStream(context, filename, compressionOptions, date)
+    val outputStreamResult = createOutputStream(context, filename, compressionOptions, date, Point(image.width, image.height))
 
     if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
         Log.e(UTILSKT, "saveImageToFile() outputStreamResult.success is false")
@@ -440,7 +451,8 @@ fun saveImageToFile(
                     )
                 ),
                 compressionOptions.mimeType,
-                date
+                date,
+                Point(bitmap.width, bitmap.height)
             )
             SaveImageResultSuccess(bitmap, compressionOptions.mimeType, result.imageFile)
         }
@@ -467,7 +479,8 @@ fun saveImageToFile(
                                 )
                             ),
                             compressionOptions.mimeType,
-                            date
+                            date,
+                            Point(bitmap.width, bitmap.height)
                         )
                     }
                 }

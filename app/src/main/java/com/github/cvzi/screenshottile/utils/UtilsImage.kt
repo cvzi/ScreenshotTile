@@ -91,7 +91,8 @@ fun addImageToGallery(
     title: String,
     description: String,
     mimeType: String = "image/jpeg",
-    date: Date? = null
+    date: Date,
+    dim: Point
 ): Uri? {
     val dateSeconds = (date?.time ?: System.currentTimeMillis()) / 1000
     val values = ContentValues().apply {
@@ -100,6 +101,10 @@ fun addImageToGallery(
         put(MediaStore.Images.Media.MIME_TYPE, mimeType)
         put(MediaStore.Images.ImageColumns.DATE_ADDED, dateSeconds)
         put(MediaStore.Images.ImageColumns.DATE_MODIFIED, dateSeconds)
+        if (dim.x > 0 && dim.y > 0) {
+            put(MediaStore.Images.ImageColumns.WIDTH, dim.x)
+            put(MediaStore.Images.ImageColumns.HEIGHT, dim.y)
+        }
         @Suppress("DEPRECATION")
         put(MediaStore.MediaColumns.DATA, filepath)
     }
