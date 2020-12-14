@@ -379,7 +379,13 @@ fun saveImageToFile(
     val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.US).format(date)
     val filename = "$prefix$timeStamp"
 
-    val outputStreamResult = createOutputStream(context, filename, compressionOptions, date, Point(image.width, image.height))
+    val outputStreamResult = createOutputStream(
+        context,
+        filename,
+        compressionOptions,
+        date,
+        Point(image.width, image.height)
+    )
 
     if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
         Log.e(UTILSKT, "saveImageToFile() outputStreamResult.success is false")

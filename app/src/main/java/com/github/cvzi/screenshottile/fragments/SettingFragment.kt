@@ -17,7 +17,6 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.MainActivity
-import com.github.cvzi.screenshottile.activities.TutorialActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
 import com.github.cvzi.screenshottile.utils.*

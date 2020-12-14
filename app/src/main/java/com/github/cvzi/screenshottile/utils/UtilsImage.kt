@@ -94,7 +94,7 @@ fun addImageToGallery(
     date: Date,
     dim: Point
 ): Uri? {
-    val dateSeconds = (date?.time ?: System.currentTimeMillis()) / 1000
+    val dateSeconds = date.time / 1000
     val values = ContentValues().apply {
         put(MediaStore.Images.Media.TITLE, title)
         put(MediaStore.Images.Media.DESCRIPTION, description)

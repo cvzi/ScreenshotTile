@@ -31,14 +31,17 @@ class DrawableListPreference : ListPreference {
         attrs,
         defStyleAttr
     )
+
     @Suppress("unused")
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context,
         attrs,
         defStyleAttr
     )
+
     @Suppress("unused")
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
+
     @Suppress("unused")
     constructor(context: Context?) : super(context)
 

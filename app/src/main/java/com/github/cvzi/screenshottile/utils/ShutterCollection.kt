@@ -42,8 +42,10 @@ class ShutterCollection(
         for (i in 0 until availableShutters.length()) {
             val currentShutters =
                 context.resources.obtainTypedArray(availableShutters.getResourceId(i, -1))
+
             @Suppress("USELESS_CAST")
             val normal = currentShutters.getResourceId(0, -1)
+
             @Suppress("USELESS_CAST")
             val move = currentShutters.getResourceId(1 as @DrawableRes Int, -1)
             val name = context.resources.getStringArray(namesArrayResourceId)[i]
