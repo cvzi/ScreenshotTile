@@ -28,6 +28,7 @@ import com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
+import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.*
 import java.lang.ref.WeakReference
@@ -106,6 +107,12 @@ class TakeScreenshotActivity : Activity(),
             val serviceIntent = Intent(this, ScreenshotTileService::class.java)
             serviceIntent.action = ScreenshotTileService.FOREGROUND_ON_START
             startForegroundService(serviceIntent)
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.floatingButton && ScreenshotAccessibilityService.instance != null) {
+            ScreenshotAccessibilityService.instance?.run {
+                temporaryHideFloatingButton()
+            }
         }
 
         partial = intent?.getBooleanExtra(EXTRA_PARTIAL, false) ?: false
@@ -322,6 +329,12 @@ class TakeScreenshotActivity : Activity(),
             screenShotFailedToast("Could not acquire image")
             finish()
             return
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.floatingButton && ScreenshotAccessibilityService.instance != null) {
+            ScreenshotAccessibilityService.instance?.run {
+                showTemporaryHiddenFloatingButton()
+            }
         }
 
         if (image.width == 0 || image.height == 0) {

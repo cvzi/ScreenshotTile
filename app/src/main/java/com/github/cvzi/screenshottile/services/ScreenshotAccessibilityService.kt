@@ -195,14 +195,15 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         buttonScreenshot.setOnClickListener {
             (buttonScreenshot.drawable as? Animatable)?.start()
             root.visibility = View.GONE
-            Handler(Looper.getMainLooper()).postDelayed({
-                simulateScreenshotButton()
+            root.invalidate()
+            root.postDelayed({
+                simulateScreenshotButton(autoHideButton = false, autoUnHideButton = false)
                 if (App.getInstance().prefManager.floatingButtonHideAfter) {
                     App.getInstance().prefManager.floatingButton = false
                     hideFloatingButton()
                 } else {
-                    root.postDelayed({
-                        root.visibility = View.VISIBLE
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        showTemporaryHiddenFloatingButton()
                     }, 1000)
                 }
             }, 5)
@@ -267,6 +268,30 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         binding = null
     }
 
+    /**
+     * Temporary hide floating button to take a screenshot
+     */
+    fun temporaryHideFloatingButton(maxHiddenTime: Long = 10000L) {
+        binding?.root?.apply {
+            visibility = View.GONE
+            invalidate()
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding?.root?.apply {
+                    visibility = View.VISIBLE
+                }
+            }, maxHiddenTime)
+        }
+    }
+
+    /**
+     * Reverse temporaryHideFloatingButton()
+     */
+    fun showTemporaryHiddenFloatingButton() {
+        binding?.root?.apply {
+            visibility = View.VISIBLE
+        }
+    }
+
     private fun addWindowViewAt(
         view: View,
         x: Int = 0,
@@ -318,14 +343,26 @@ class ScreenshotAccessibilityService : AccessibilityService() {
      * Simulate screenshot button (home+power) press
      * Return true on success
      */
-    fun simulateScreenshotButton(): Boolean {
+    fun simulateScreenshotButton(
+        autoHideButton: Boolean = true,
+        autoUnHideButton: Boolean = true
+    ): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             return false
+        }
+        if (autoHideButton) {
+            temporaryHideFloatingButton()
         }
         val success = performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)
         if (success) {
             App.getInstance().prefManager.screenshotCount++
         }
+        if (autoUnHideButton) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                showTemporaryHiddenFloatingButton()
+            }, 1000)
+        }
+
         return success
     }
 
