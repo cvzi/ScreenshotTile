@@ -177,10 +177,11 @@ public class App extends Application {
      *
      * @param context Context
      */
-    public static void requestStoragePermission(Context context) {
+    public static void requestStoragePermission(Context context, Boolean screenshot) {
         final Intent intent = new Intent(context, AcquireScreenshotPermission.class);
         intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(AcquireScreenshotPermission.EXTRA_REQUEST_PERMISSION_STORAGE, true);
+        intent.putExtra(AcquireScreenshotPermission.EXTRA_TAKE_SCREENSHOT_AFTER, screenshot);
         context.startActivity(intent);
     }
 
@@ -211,13 +212,13 @@ public class App extends Application {
                     .penaltyLog()
                     .penaltyDialog()
                     .build());
-            /*
+
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
-                    .penaltyDeath()
+                    //.penaltyDeath()
                     .build());
-             */
+
         }
 
         PreferenceManager.setDefaultValues(this, R.xml.pref, false);
