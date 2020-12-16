@@ -25,6 +25,7 @@ class AcquireScreenshotPermission : Activity() {
         private const val TAG = "AcquireScreenshotPrmssn"
         const val EXTRA_REQUEST_PERMISSION_SCREENSHOT = "extra_request_permission_screenshot"
         const val EXTRA_REQUEST_PERMISSION_STORAGE = "extra_request_permission_storage"
+        const val EXTRA_TAKE_SCREENSHOT_AFTER = "extra_take_screenshot_after"
         private const val SCREENSHOT_REQUEST_CODE = 4552
         private const val WRITE_REQUEST_CODE = 12345
     }
@@ -42,7 +43,8 @@ class AcquireScreenshotPermission : Activity() {
         super.onCreate(savedInstanceState)
 
         // If asked for storage permission, start taking a screenshot on success
-        if (intent.getBooleanExtra(EXTRA_REQUEST_PERMISSION_STORAGE, false)) {
+        if (intent.getBooleanExtra(EXTRA_REQUEST_PERMISSION_STORAGE, false) && intent.getBooleanExtra(
+                EXTRA_TAKE_SCREENSHOT_AFTER, true)) {
             askedForStoragePermission = true
         }
 

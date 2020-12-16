@@ -47,6 +47,7 @@ class TakeScreenshotActivity : Activity(),
         const val NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN = "notification_channel_screenshot_taken"
         const val NOTIFICATION_CHANNEL_FOREGROUND = "notification_channel_foreground"
         const val SCREENSHOT_DIRECTORY = "Screenshots"
+        const val FILE_PREFIX = "Screenshot_"
         const val NOTIFICATION_PREVIEW_MIN_SIZE = 50
         const val NOTIFICATION_PREVIEW_MAX_SIZE = 400
         const val NOTIFICATION_BIG_PICTURE_MAX_HEIGHT = 1024
@@ -140,7 +141,7 @@ class TakeScreenshotActivity : Activity(),
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             Log.w(TAG, "onCreate() missing WRITE_EXTERNAL_STORAGE permission")
-            App.requestStoragePermission(this)
+            App.requestStoragePermission(this, true)
             return
         }
 
@@ -350,7 +351,7 @@ class TakeScreenshotActivity : Activity(),
             saveImageResult = saveImageToFile(
                 applicationContext,
                 image,
-                "Screenshot_",
+                FILE_PREFIX,
                 compressionOptions,
                 cutOutRect
             )
