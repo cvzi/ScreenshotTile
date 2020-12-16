@@ -5,8 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.content.IntentFilter
+import android.hardware.display.DisplayManager
 import android.net.Uri
+import android.os.Build
 import android.util.Log
+import android.view.Display
 import android.widget.Toast
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.deleteImage
@@ -35,6 +38,14 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         context?.apply {
+
+            var windowContext: Context = context
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                val dm: DisplayManager = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
+                val defaultDisplay = dm.getDisplay(Display.DEFAULT_DISPLAY)
+                windowContext = createDisplayContext(defaultDisplay)
+            }
+
             when (intent?.action) {
                 NOTIFICATION_ACTION_SHARE -> {
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
@@ -46,7 +57,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     val shareIntent = shareImageChooserIntent(this, path, mimeType)
                     shareIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
 
-                    if (shareIntent.resolveActivity(context.packageManager) != null) {
+                    if (shareIntent.resolveActivity(packageManager) != null) {
                         if (ScreenshotTileService.instance != null) {
                             ScreenshotTileService.instance?.startActivityAndCollapse(shareIntent)
                         } else {
@@ -63,13 +74,13 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
                     if (path != null && deleteImage(this, path)) {
                         Toast.makeText(
-                            this,
+                            windowContext,
                             context.getString(R.string.screenshot_deleted),
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
                         Toast.makeText(
-                            this,
+                            windowContext,
                             context.getString(R.string.screenshot_delete_failed),
                             Toast.LENGTH_LONG
                         )
