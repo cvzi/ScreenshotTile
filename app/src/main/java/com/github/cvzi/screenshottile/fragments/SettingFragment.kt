@@ -223,8 +223,10 @@ class SettingFragment : PreferenceFragmentCompat() {
         myActivity?.let {
             notificationPref?.summary =
                 when {
-                    prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults ->
+                    prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R ->
                         getString(R.string.use_native_screenshot_option_default)
+                    prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults ->
+                        getString(R.string.use_native_screenshot_option_android11)
                     notificationScreenshotTakenChannelEnabled(myActivity) ->
                         getString(R.string.notification_settings_on)
                     else ->
@@ -312,10 +314,12 @@ class SettingFragment : PreferenceFragmentCompat() {
                     } else {
                         summary = getString(R.string.use_native_screenshot_summary)
                         if (prefManager.useSystemDefaults) {
-                            prefManager.screenshotDirectory = null  // Reset screenshot directory
                             fileFormatPref?.isEnabled = false
-                            fileFormatPref?.summary =
-                                getString(R.string.use_native_screenshot_option_default)
+                            fileFormatPref?.summary = getString(if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                                R.string.use_native_screenshot_option_default
+                            } else {
+                                R.string.use_native_screenshot_option_android11
+                            })
                         }
                     }
                     updateNotificationSummary()
@@ -399,9 +403,11 @@ class SettingFragment : PreferenceFragmentCompat() {
     private fun updateStorageDirectory() {
         storageDirectoryPref?.run {
             summary =
-                if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
+                if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                     getString(R.string.use_native_screenshot_option_default)
-                } else if (prefManager.screenshotDirectory != null) {
+                } else if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
+                    getString(R.string.use_native_screenshot_option_android11)
+                }  else if (prefManager.screenshotDirectory != null) {
                     nicePathFromUri(prefManager.screenshotDirectory)
                 } else {
                     getString(R.string.setting_storage_directory_description)
