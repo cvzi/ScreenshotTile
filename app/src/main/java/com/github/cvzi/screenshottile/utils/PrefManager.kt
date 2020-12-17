@@ -49,6 +49,13 @@ class PrefManager {
             value
         ).apply()
 
+    var useSystemDefaults: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_use_system_defaults), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_use_system_defaults),
+            value
+        ).apply()
+
     var floatingButton: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button), false)
         set(value) = pref.edit().putBoolean(

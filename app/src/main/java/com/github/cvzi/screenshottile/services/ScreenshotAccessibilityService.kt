@@ -1,19 +1,25 @@
 package com.github.cvzi.screenshottile.services
 
+import android.Manifest
 import android.accessibilityservice.AccessibilityService
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.PixelFormat
 import android.graphics.Point
 import android.graphics.drawable.Animatable
 import android.hardware.display.DisplayManager
+import android.net.Uri
 import android.os.Build
+import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.service.quicksettings.TileService
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
 import android.view.Display.DEFAULT_DISPLAY
@@ -22,6 +28,7 @@ import android.view.accessibility.AccessibilityEvent
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.github.cvzi.screenshottile.App
@@ -29,10 +36,11 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.ContainerActivity
 import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
+import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
+import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity.Companion.FILE_PREFIX
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
-import com.github.cvzi.screenshottile.utils.ShutterCollection
-import com.github.cvzi.screenshottile.utils.fillTextHeight
+import com.github.cvzi.screenshottile.utils.*
 
 
 /**
@@ -76,6 +84,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     }
 
+    private var screenDensity: Int = 0
     private var floatingButtonShown = false
     private var binding: AccessibilityBarBinding? = null
     private var useThis = false
@@ -107,8 +116,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         var windowContext: Context = this
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !useThis) {
             val dm: DisplayManager = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
-            val primaryDisplay = dm.getDisplay(DEFAULT_DISPLAY)
-            windowContext = createDisplayContext(primaryDisplay)
+            val defaultDisplay = dm.getDisplay(DEFAULT_DISPLAY)
+            windowContext = createDisplayContext(defaultDisplay)
         }
         return windowContext
     }
@@ -344,8 +353,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
      * Return true on success
      */
     fun simulateScreenshotButton(
-        autoHideButton: Boolean = true,
-        autoUnHideButton: Boolean = true
+        autoHideButton: Boolean,
+        autoUnHideButton: Boolean,
+        useTakeScreenshotMethod: Boolean = true
     ): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             return false
@@ -353,17 +363,177 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         if (autoHideButton) {
             temporaryHideFloatingButton()
         }
-        val success = performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)
-        if (success) {
-            App.getInstance().prefManager.screenshotCount++
-        }
-        if (autoUnHideButton) {
-            Handler(Looper.getMainLooper()).postDelayed({
-                showTemporaryHiddenFloatingButton()
-            }, 1000)
+        var success = false
+        var askForStoragePermissionAfter = false
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && useTakeScreenshotMethod && !App.getInstance().prefManager.useSystemDefaults) {
+            if (packageManager.checkPermission(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    packageName
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                // Storage permission is missing
+                askForStoragePermissionAfter = true
+                success = fallbackToSimulateScreenshotButton()
+            } else {
+                takeScreenshot()
+                success = true
+            }
+        } else {
+            success = performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)
+            if (success) {
+                App.getInstance().prefManager.screenshotCount++
+            }
+            if (autoUnHideButton) {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    showTemporaryHiddenFloatingButton()
+                }, 1000)
+            }
         }
 
+        if (askForStoragePermissionAfter) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                App.requestStoragePermission(this, false)
+            }, 1000)
+        }
         return success
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    fun takeScreenshot() {
+        super.takeScreenshot(
+            DEFAULT_DISPLAY,
+            { r -> Thread(r).start() },
+            object : TakeScreenshotCallback {
+                override fun onSuccess(screenshot: ScreenshotResult) {
+                    Log.v(TAG, "onSuccess()")
+
+                    val bitmap = Bitmap.wrapHardwareBuffer(
+                        screenshot.hardwareBuffer,
+                        screenshot.colorSpace
+                    )?.copy(Bitmap.Config.ARGB_8888, false)
+                    screenshot.hardwareBuffer.close()
+
+                    if (bitmap == null) {
+                        Log.e(
+                            TAG,
+                            "takeScreenshot() bitmap == null, falling back to GLOBAL_ACTION_TAKE_SCREENSHOT"
+                        )
+                        Handler(Looper.getMainLooper()).post {
+                            fallbackToSimulateScreenshotButton()
+                        }
+                    } else {
+                        val saveImageResult = saveBitmapToFile(
+                            this@ScreenshotAccessibilityService,
+                            bitmap,
+                            FILE_PREFIX,
+                            compressionPreference(applicationContext),
+                            null
+                        )
+                        Handler(Looper.getMainLooper()).post {
+                            onFileSaved(saveImageResult)
+                        }
+                    }
+                }
+
+                override fun onFailure(errorCode: Int) {
+                    Log.e(
+                        TAG,
+                        "takeScreenshot() -> onFailure($errorCode), falling back to GLOBAL_ACTION_TAKE_SCREENSHOT"
+                    )
+                    Handler(Looper.getMainLooper()).post {
+                        fallbackToSimulateScreenshotButton()
+                    }
+                }
+            })
+    }
+
+    private fun fallbackToSimulateScreenshotButton(): Boolean {
+        return simulateScreenshotButton(
+            autoHideButton = false,
+            autoUnHideButton = true,
+            useTakeScreenshotMethod = false
+        )
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    private fun onFileSaved(saveImageResult: SaveImageResult?) {
+        if (saveImageResult == null) {
+            screenShotFailedToast("saveImageResult is null")
+            return
+        }
+        if (!saveImageResult.success) {
+            screenShotFailedToast(saveImageResult.errorMessage)
+            return
+        }
+
+        val dm: DisplayManager = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
+        val defaultDisplay = dm.getDisplay(DEFAULT_DISPLAY)
+        with(DisplayMetrics()) {
+            defaultDisplay.getRealMetrics(this)
+            screenDensity = densityDpi
+        }
+
+
+        val result = saveImageResult as? SaveImageResultSuccess?
+
+        when {
+            result == null -> {
+                screenShotFailedToast("Failed to cast SaveImageResult")
+            }
+            result.uri != null -> {
+                // Android Q+ works with MediaStore content:// URI
+                var dummyPath =
+                    "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}/${result.fileTitle}"
+                if (result.dummyPath.isNotEmpty()) {
+                    dummyPath = result.dummyPath
+                }
+                Toast.makeText(
+                    getWinContext(),
+                    getString(R.string.screenshot_file_saved, dummyPath), Toast.LENGTH_LONG
+                ).show()
+
+                createNotification(
+                    this,
+                    result.uri,
+                    result.bitmap,
+                    screenDensity,
+                    result.mimeType
+                )
+                App.getInstance().prefManager.screenshotCount++
+            }
+            result.file != null -> {
+                // Legacy behaviour until Android P, works with the real file path
+                val uri = Uri.fromFile(result.file)
+                val path = result.file.absolutePath
+
+                Toast.makeText(
+                    getWinContext(),
+                    getString(R.string.screenshot_file_saved, path), Toast.LENGTH_LONG
+                ).show()
+
+                createNotification(
+                    this,
+                    uri,
+                    result.bitmap,
+                    screenDensity,
+                    result.mimeType
+                )
+                App.getInstance().prefManager.screenshotCount++
+            }
+            else -> {
+                screenShotFailedToast("Failed to cast SaveImageResult path/uri")
+            }
+        }
+    }
+
+    private fun screenShotFailedToast(errorMessage: String? = null) {
+        val message = getString(R.string.screenshot_failed) + if (errorMessage != null) {
+            "\n$errorMessage"
+        } else {
+            ""
+        }
+        Toast.makeText(getWinContext(), message, Toast.LENGTH_LONG).show()
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {

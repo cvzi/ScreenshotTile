@@ -1,5 +1,6 @@
 package com.github.cvzi.screenshottile.fragments
 
+import android.Manifest
 import android.content.ComponentName
 import android.content.Intent
 import android.content.Intent.*
@@ -36,6 +37,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var delayPref: ListPreference? = null
     private var fileFormatPref: ListPreference? = null
     private var useNativePref: SwitchPreference? = null
+    private var useSystemDefaultsPref: SwitchPreference? = null
     private var floatingButtonPref: SwitchPreference? = null
     private var floatingButtonScalePref: EditTextPreference? = null
     private var floatingButtonHideAfterPref: SwitchPreference? = null
@@ -60,6 +62,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_floating_button_shutter) -> updateFloatingButtonShutterSummary(
                     true
                 )
+                getString(R.string.pref_key_use_system_defaults) -> updateUseNative()
             }
         }
 
@@ -73,6 +76,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         delayPref = findPreference(getString(R.string.pref_key_delay)) as ListPreference?
         fileFormatPref = findPreference(getString(R.string.pref_key_file_format)) as ListPreference?
         useNativePref = findPreference(getString(R.string.pref_key_use_native)) as SwitchPreference?
+        useSystemDefaultsPref = findPreference(getString(R.string.pref_key_use_system_defaults)) as SwitchPreference?
         floatingButtonPref =
             findPreference(getString(R.string.pref_key_floating_button)) as SwitchPreference?
         floatingButtonScalePref =
@@ -89,14 +93,6 @@ class SettingFragment : PreferenceFragmentCompat() {
             findPreference(getString(R.string.pref_key_floating_button_shutter)) as ListPreference?
 
         pref.registerOnSharedPreferenceChangeListener(prefListener)
-        delayPref?.run { updateDelaySummary(value) }
-        fileFormatPref?.run { updateFileFormatSummary(value) }
-        updateNotificationSummary()
-        updateUseNative()
-        updateFloatingButton()
-        updateStorageDirectory()
-        updateHideApp(true)
-        updateFloatingButtonShutterSummary()
 
         makeLink(
             R.string.pref_static_field_key_about_app_1,
@@ -128,10 +124,14 @@ class SettingFragment : PreferenceFragmentCompat() {
     override fun onResume() {
         super.onResume()
 
+        delayPref?.run { updateDelaySummary(value) }
+        fileFormatPref?.run { updateFileFormatSummary(value) }
+
         updateNotificationSummary()
         updateUseNative()
         updateFloatingButton()
         updateStorageDirectory()
+        updateHideApp(true)
         updateFloatingButtonShutterSummary()
 
         if (BuildConfig.DEBUG) {
@@ -223,7 +223,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         myActivity?.let {
             notificationPref?.summary =
                 when {
-                    prefManager.useNative && ScreenshotAccessibilityService.instance != null ->
+                    prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults ->
                         getString(R.string.use_native_screenshot_option_default)
                     notificationScreenshotTakenChannelEnabled(myActivity) ->
                         getString(R.string.notification_settings_on)
@@ -310,11 +310,13 @@ class SettingFragment : PreferenceFragmentCompat() {
                             getString(R.string.use_native_screenshot_unavailable)
                         )
                     } else {
-                        prefManager.screenshotDirectory = null  // Reset screenshot directory
                         summary = getString(R.string.use_native_screenshot_summary)
-                        fileFormatPref?.isEnabled = false
-                        fileFormatPref?.summary =
-                            getString(R.string.use_native_screenshot_option_default)
+                        if (prefManager.useSystemDefaults) {
+                            prefManager.screenshotDirectory = null  // Reset screenshot directory
+                            fileFormatPref?.isEnabled = false
+                            fileFormatPref?.summary =
+                                getString(R.string.use_native_screenshot_option_default)
+                        }
                     }
                     updateNotificationSummary()
                     updateStorageDirectory()
@@ -325,6 +327,35 @@ class SettingFragment : PreferenceFragmentCompat() {
                     updateFileFormatSummary(prefManager.fileFormat)
                     updateNotificationSummary()
                     updateStorageDirectory()
+                }
+            }
+        }
+        updateUseSystemDefaults()
+    }
+
+    private fun updateUseSystemDefaults() {
+        useSystemDefaultsPref?.apply {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R || !prefManager.useNative) {
+                summary = getString(R.string.use_system_defaults_summary)
+                isEnabled = false
+                isVisible = false
+            } else if(useNativePref?.isChecked == true && isChecked) {
+                summary = getString(R.string.use_system_defaults_summary_on)
+                isEnabled = true
+                isVisible = true
+            } else if(useNativePref?.isChecked == true && !isChecked) {
+                summary = getString(R.string.use_system_defaults_summary_off)
+                isEnabled = true
+                isVisible = true
+                activity?.run {
+                    // Check storage permission
+                    if (packageManager.checkPermission(
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            packageName
+                        ) != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        App.requestStoragePermission(this, false)
+                    }
                 }
             }
         }
@@ -368,7 +399,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private fun updateStorageDirectory() {
         storageDirectoryPref?.run {
             summary =
-                if (prefManager.useNative && ScreenshotAccessibilityService.instance != null) {
+                if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
                     getString(R.string.use_native_screenshot_option_default)
                 } else if (prefManager.screenshotDirectory != null) {
                     nicePathFromUri(prefManager.screenshotDirectory)

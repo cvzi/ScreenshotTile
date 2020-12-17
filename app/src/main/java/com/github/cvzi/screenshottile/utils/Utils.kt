@@ -50,7 +50,7 @@ fun screenshot(context: Context, partial: Boolean = false) {
  */
 fun tryNativeScreenshot(): Boolean {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.useNative) {
-        return ScreenshotAccessibilityService.instance?.simulateScreenshotButton() ?: false
+        return ScreenshotAccessibilityService.instance?.simulateScreenshotButton(autoHideButton = true, autoUnHideButton = true) ?: false
     }
     return false
 }
@@ -368,9 +368,9 @@ fun createOutputStreamMediaStore(
 /**
  * Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss".
  */
-fun saveImageToFile(
+fun saveBitmapToFile(
     context: Context,
-    image: Image,
+    bitmap: Bitmap,
     prefix: String,
     compressionOptions: CompressionOptions = CompressionOptions(),
     cutOutRect: Rect?
@@ -384,7 +384,7 @@ fun saveImageToFile(
         filename,
         compressionOptions,
         date,
-        Point(image.width, image.height)
+        Point(bitmap.width, bitmap.height)
     )
 
     if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
@@ -399,10 +399,6 @@ fun saveImageToFile(
     val outputStream: OutputStream = result.fileOutputStream
 
     // Save image
-
-    val bitmap = imageToBitmap(image, cutOutRect)
-    image.close()
-
     if (bitmap.width == 0 || bitmap.height == 0) {
         Log.e(UTILSKT, "saveImageToFile() Bitmap width or height is 0")
         return SaveImageResult("Bitmap is empty")
@@ -503,6 +499,24 @@ fun saveImageToFile(
         else -> SaveImageResult("Could not save image file, no URI")
     }
 }
+
+/**
+ * Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss".
+ */
+fun saveImageToFile(
+    context: Context,
+    image: Image,
+    prefix: String,
+    compressionOptions: CompressionOptions = CompressionOptions(),
+    cutOutRect: Rect?
+): SaveImageResult {
+
+    val bitmap = imageToBitmap(image, cutOutRect)
+    image.close()
+
+    return saveBitmapToFile(context, bitmap, "Screenshot_", compressionOptions, cutOutRect)
+}
+
 
 /**
  * Find the cache directory with maximum free space

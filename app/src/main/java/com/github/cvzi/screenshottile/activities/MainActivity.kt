@@ -87,6 +87,21 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+        findViewById<TextView>(R.id.textDescNative)?.run {
+            text =
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    getString(R.string.main_native_method_text).replace(
+                        "{main_native_method_text_android_version}",
+                        getString(R.string.main_native_method_text_android_pre_11)
+                    )
+
+                } else {
+                    getString(R.string.main_native_method_text).replace(
+                        "{main_native_method_text_android_version}",
+                        getString(R.string.main_native_method_text_android_since_11)
+                    )
+                }
+        }
 
         updateSwitches()
 
