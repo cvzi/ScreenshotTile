@@ -20,7 +20,12 @@
     <string name="use_native_screenshot_unsupported">需要 Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">无障碍服务已禁用</string>
     <string name="use_native_screenshot_option_default">原生方式使用系统默认</string>
+    <string name="use_native_screenshot_option_android11">禁用‘使用系统默认值’来使用这项功能</string>
     <string name="accessibility_service_description">如果启用此服务，应用可以模拟电源 + home 键按压截取屏幕截图\n在一些设备上此方式可能比默认方式更加稳定快速。\n\n如果你启用此服务，你还需要在应用设置中启用“原生方式”。</string>
+    <string name="use_system_defaults">使用系统默认值</string>
+    <string name="use_system_defaults_summary">需要 Android 11</string>
+    <string name="use_system_defaults_summary_on">使用默认存储目录、格式、截图编辑器和通知</string>
+    <string name="use_system_defaults_summary_off">使用应用设置</string>
     <string name="setting_floating_button">浮动按钮</string>
     <string name="setting_floating_button_summary">您也可以从快速设置图块打开/关闭它。</string>
     <string name="setting_floating_button_unavailable">无障碍服务已禁用</string>
@@ -51,6 +56,7 @@
     <string name="notification_app_chooser_share">分享文件…</string>
     <string name="notification_app_chooser_edit">编辑文件…</string>
     <string name="screenshot_failed">屏幕截图失败，请重试</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
     <string name="screenshot_file_saved">屏幕截图已保存至 %1$s</string>
     <string name="notification_delete_screenshot">删除</string>
     <string name="notification_share_screenshot">分享</string>
@@ -88,8 +94,9 @@
     <string name="main_legacy_method_title">传统方式</string>
     <string name="main_legacy_method_text">传统的屏幕截图方式使用 Android 的屏幕录制功能。\n当您截取屏幕截图时不会播放声音。将显示静音通知以打开，分享或编辑屏幕截图。通知可在应用设置中禁用。\n在您截取屏幕截图前您需要将图块添加到快速设置，接受权限以录制屏幕并访问内部存储以保存图片。\n参见关于如何做的教程。\n\n在一些设备上此方式无法工作，特别是较新的 Android 版本 (9.0+) 它不稳定且可能在每次截图时请求权限。如果发生此情况您应使用下述原生方式。</string>
     <string name="main_native_method_title">原生方式</string>
-    <string name="main_native_method_text">原生屏幕截图方式模拟按压 Home + 电源键并使用您设备的屏幕截图方式。\n{main_native_method_text_android_version}\n\n在您截取屏幕截图前您需要在设备设置中启用无障碍服务。点按下方按钮打开无障碍设置。</string>
-    <string name="main_native_method_text_android_pre_11">当您截取屏幕截图时，可能会播放声音或显示屏幕截图编辑器。这取决与您的设备并且无法由此应用更改。您或许可以在您的设备设置中更改此行为。</string>
+    <string name="main_native_method_text">原生截图方式是模拟按下 Home+Power 键，并使用设备截图方式。\n{main_native_method_text_android_version}\n\n在截屏之前，需在手机设置中启用无障碍服务。按下下面按钮，打开无障碍设置。</string>
+    <string name="main_native_method_text_android_pre_11">截图时，可能会发出截图声音或显示截图编辑器。截图存储在标准照片文件夹中。这取决于您的手机设置，此应用无法对此进行更改。可能可以在手机设置中更改截图方式。</string>
+    <string name="main_native_method_text_android_since_11">可在应用设置（“使用系统默认值”项下）中更改是否想要手机的默认系统行为（通知、截图编辑器、标准图片文件夹），是否想要使用应用设置（该程序的自定义存储文件夹和通知）。</string>
     <string name="main_floating_button_text">如果您已启用原生方式，您也可以使用浮动按钮（类似聊天气泡）截取屏幕截图。\n您可以使用快速设置中的另一个图块/按钮启用它，然后在屏幕上移动它。</string>
     <string name="main_long_press_title">长按</string>
     <string name="main_long_press_text">长按图块/按钮打开菜单。您可以指定屏幕截图延迟或从屏幕截取矩形区域。</string>
