@@ -20,7 +20,12 @@
     <string name="use_native_screenshot_unsupported">需要 Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">无障碍服务已禁用</string>
     <string name="use_native_screenshot_option_default">原生方式使用系统默认</string>
+    <string name="use_native_screenshot_option_android11">禁用‘使用系統默認值’來使用這項功能</string>
     <string name="accessibility_service_description">如果启用此服务，应用可以模拟电源 + home 键按压截取屏幕截图\n在一些设备上此方式可能比默认方式更加稳定快速。\n\n如果你启用此服务，你还需要在应用设置中启用“原生方式”。</string>
+    <string name="use_system_defaults">使用系統默認值</string>
+    <string name="use_system_defaults_summary">需要 Android 11</string>
+    <string name="use_system_defaults_summary_on">使用默認存儲目錄、格式、截圖編輯器和通知</string>
+    <string name="use_system_defaults_summary_off">使用應用設置</string>
     <string name="setting_floating_button">浮動按鈕</string>
     <string name="setting_floating_button_summary">您也可以從快速設置圖塊打開/關閉它</string>
     <string name="setting_floating_button_unavailable">無障礙服務已禁用</string>
@@ -88,8 +93,9 @@
     <string name="main_legacy_method_title">傳統方式</string>
     <string name="main_legacy_method_text">傳統的屏幕截圖方式使用 Android 的屏幕錄製功能。\n當您截取屏幕截圖時不會播放聲音。將顯示靜音通知以打開，分享或編輯屏幕截圖。通知可在應用設置中禁用。\n在您截取屏幕截圖前您需要將圖塊添加到快速設置，接受權限以錄製屏幕並訪問內部存儲以保存圖片。\n參見關於如何做的教程。\n\n在一些設備上此方式無法工作，特別是較新的 Android 版本 (9.0+) 它不穩定且可能在每次截圖時請求權限。如果發生此情況您應使用下述原生方式。</string>
     <string name="main_native_method_title">原生方式</string>
-    <string name="main_native_method_text">原生屏幕截圖方式模擬按壓 Home + 電源鍵並使用您設備的屏幕截圖方式。\n{main_native_method_text_android_version}\n\n在您截取屏幕截圖前您需要在設備設置中啟用無障礙服務。點按下方按鈕打開無障礙設置。</string>
-    <string name="main_native_method_text_android_pre_11">當您截取屏幕截圖時，可能會播放聲音或顯示屏幕截圖編輯器。這取決與您的設備並且無法由此應用更改。您或許可以在您的設備設置中更改此行為。</string>
+    <string name="main_native_method_text">>原生截圖方式是模擬按下 Home+Power 鍵，並使用設備截圖方式。\n{main_native_method_text_android_version}\n\n在截屏之前，需在手機設置中啟用無障礙服務。按下下面按鈕，打開無障礙設置。</string>
+    <string name="main_native_method_text_android_pre_11">截圖時，可能會發出截圖聲音或顯示截圖編輯器。截圖存儲在標準照片文件夾中。這取決於您的手機設置，此應用無法對此進行更改。可能可以在手機設置中更改截圖方式。</string>
+    <string name="main_native_method_text_android_since_11">可在應用設置（“使用系統默認值”項下）中更改是否想要手機的默認系統行為（通知、截圖編輯器、標準圖片文件夾），是否想要使用應用設置（該程序的自定義存儲文件夾和通知）。</string>
     <string name="main_floating_button_text">如果您已啟用原生方式，您也可以使用浮動按鈕（類似聊天氣泡）截取屏幕截圖。\n您可以使用快速設置中的另一個圖塊/按鈕啟用它，然後在屏幕上移動它。</string>
     <string name="main_long_press_title">長按</string>
     <string name="main_long_press_text">長按圖塊/按鈕打開菜單。您可以指定屏幕截圖延遲或從屏幕截取矩形區域。</string>
