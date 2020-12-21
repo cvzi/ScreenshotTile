@@ -7,7 +7,7 @@ Falls es zu Abstürzen bei Androi 9 Pie oder 10 kommt, aktiviere die Funktion "N
 <h2>Features:</h2>✓ Screenshots direkt aus den Schnelleinstellungen
 ✓ Kein Root benötigt
 ✓ Nach den Screenshot wird eine Benachrichtigung angezeigt
-✓ Teilen, Bearbeiten oder Löschen direkt aus der Benachrichtigung
+✓ Nach den Screenshot wird eine Benachrichtigung angezeigt ✓ Teilen, Bearbeiten oder Löschen direkt aus der Benachrichtigung
 ✓ Schwebender Auslöseknopf (ähnlich wie eine Chat bubble)
 ✓ Aufnehmen von bestimmten Bereichen des Bildschirms (lange auf die Kachel drücken)
 ✓ Screenshotaufnahme verzögern
@@ -19,18 +19,18 @@ Falls es zu Abstürzen bei Androi 9 Pie oder 10 kommt, aktiviere die Funktion "N
 Diese App ist ein Fork von "Screenshot Tile [Root]", aber dieser Fork benötigt kein Root. Falls du Root Zugriff hast, solltest du die <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">originale App</a> verwenden. Sie ist schneller und zuverlässiger.
 
 Source code: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
-Original app: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
-Open Source license is GNU GPLv3
+Original App: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Open Source Lizenz ist GNU GPLv3
 
-<u>Google Cast icon:</u>
-🎦 Wenn ein Screenshot aufgenommen wird, erscheint das "Google Cast" Icon in der Statuszeile und es ist auf dem Screenshot dann auch sichtbar.
+<u> Hinweis</u>
+<u>Google Cast icon:</u> 🎦 Wenn ein Screenshot aufgenommen wird, erscheint das "Google Cast" Icon in der Statuszeile und es ist auf dem Screenshot dann auch sichtbar.
 Es ist möglich das Icon zu verstecken, dazu gibt es hier eine Anleitung: https://github.com/cvzi/ScreenshotTile#icon
 
 <h2>Berechtigungen:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE</i> "Fotos/Medien/Dateien und Speicher"
 Diese Berechtigung wird benötigt um die Screenshots auf dem internen Speicher abzulegen.
 
 ❏ <i>android.permission.FOREGROUND_SERVICE</i>
-Seit Android 9/Pie wird diese Berechtigung benötigt, wenn eine App im Hintergrund ausgeführt wird. Sie wird benötigt um Screenshots von anderen Apps (die dann im Vordergrund sind) machen zu können.
+Seit Android 9/Pie wird diese Berechtigung benötigt, wenn eine App im Hintergrund ausgeführt wird. Sie wird benötigt um Screenshots von anderen Apps (die dann im Vordergrund sind) machen zu können. Es wird dann eine Benachrichtigung angezeigt, wenn die App aktiv ist.
 
 <h2>Automatische Screenshots:</h2>In Verbindung mit einer anderen App wie MacroDroid oder Tasker können auch automatisch Screenshots aufgenommen werden, dazu gibt es hier eine Anleitung:
 https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents
