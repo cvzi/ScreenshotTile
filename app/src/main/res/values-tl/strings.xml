@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Screenshot</string>
-    <string name="more_setting">Opsyon</string>>
+    <string name="more_setting">Opsyon</string>
     <string name="file_title">Screenshot</string>
     <string name="file_description_simple_date_format">MM-dd-yyyy HH:mm:ss</string>
     <string name="notification_body">I-tap upang tingnan ang iyong screenshot</string>
