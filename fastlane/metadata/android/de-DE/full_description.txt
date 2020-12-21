@@ -24,7 +24,7 @@ Source code: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/Sc
 Original App: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
 Open Source Lizenz ist GNU GPLv3
 
-<u> Hinweis</u>
+<u>Hinweis</u>
 <u>Google Cast icon:</u> 🎦 Wenn ein Screenshot aufgenommen wird, erscheint das "Google Cast" Icon in der Statuszeile und es ist auf dem Screenshot dann auch sichtbar.
 Es ist möglich das Icon zu verstecken, dazu gibt es hier eine Anleitung: https://github.com/cvzi/ScreenshotTile#icon
 
