@@ -4,10 +4,12 @@ Nach der Installation muss die Kachel noch zu den Schnelleinstellungen hinzugef�
 
 Falls es zu Abstürzen bei Androi 9 Pie oder 10 kommt, aktiviere die Funktion "Native Screenshotaufnahme" in den App-Einstellungen
 
-<h2>Features:</h2>✓ Screenshots direkt aus den Schnelleinstellungen
+<h2>Features:</h2>
+✓ Screenshots direkt aus den Schnelleinstellungen
 ✓ Kein Root benötigt
 ✓ Nach den Screenshot wird eine Benachrichtigung angezeigt
-✓ Nach den Screenshot wird eine Benachrichtigung angezeigt ✓ Teilen, Bearbeiten oder Löschen direkt aus der Benachrichtigung
+✓ Nach den Screenshot wird eine Benachrichtigung angezeigt 
+✓ Teilen, Bearbeiten oder Löschen direkt aus der Benachrichtigung
 ✓ Schwebender Auslöseknopf (ähnlich wie eine Chat bubble)
 ✓ Aufnehmen von bestimmten Bereichen des Bildschirms (lange auf die Kachel drücken)
 ✓ Screenshotaufnahme verzögern
