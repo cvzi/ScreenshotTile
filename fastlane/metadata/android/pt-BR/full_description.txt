@@ -4,8 +4,7 @@ Após a instalação, você precisa adicionar o botão ao menu de ajustes rápid
 
 Se o aplicativo apresentar problemas no Android 9/Pie ou 10, você pode tentar ativar o método "Integrado" de Captura da tela em configurações do App.
 
-<h2>Funcionalidades:</h2>
-✓ Capturas da tela diretamente dos ajustes rápidos
+<h2>Funcionalidades:</h2> ✓ Capturas da tela diretamente dos ajustes rápidos
 ✓ Não é necessário acesso Root
 ✓ Notificação após cada Captura da tela (pode ser desativada)
 ✓ Pode imediatamente compartilhar, editar ou excluir a Captura da tela via notificação
@@ -24,7 +23,8 @@ App original: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs
 Sob a licença de código livre GNU GPLv3
 
 <u>Aviso:</u>
-🎦 Quando for fazer uma Captura da tela, o ícone de <b>"Google Cast"</b> aparecerá na barra superior do SO e será visível na imagem da tela capturada. Se você quiser esconder o ícone, há uma dica aqui: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+🎦 Quando for fazer uma Captura da tela, o ícone de <b>"Google Cast"</b> aparecerá na barra superior do SO e será visível na imagem da tela capturada.
+Se você quiser esconder o ícone, há uma dica aqui: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
 
 <h2>Permissões:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Fotos/Mídia/Arquivos e Armazenamento"</i>
 Isto é necessário para salvar os arquivos de Captura da tela no armazenamento interno do seu dispositivo.
@@ -32,11 +32,10 @@ Isto é necessário para salvar os arquivos de Captura da tela no armazenamento 
 ❏ <i>android.permission.FOREGROUND_SERVICE</i>
 Desde o Android 9/Pie, esta permissão é necessária para fazer as Capturas. Isso basicamente significa que este aplicativo pode estar ativo em segundo plano. Entretanto, o aplicativo sempre mostrará uma notificação quando estiver sendo executado.
 
-<h2>Capturas automáticas:</h2>
+<h2>Capturas automáticas:</h2>Se você quiser automatizar as Capturas através de outro aplicativo, por exemplo, MacroDroid ou Tasker, você pode encontrar um tutorial passo-a-passo aqui:
 Se você quiser automatizar as Capturas através de outro aplicativo, por exemplo, MacroDroid ou Tasker, você pode encontrar um tutorial passo-a-passo aqui: <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
 
-<h2>Ocultar o ícone do aplicativo:</h2> 
-Em configurações do App, você pode retirar o ícone do aplicativo de lançador. No entanto pode acessar o App pressionando e segurando o botão em ajustes rápidos. Infelizmente, o Android 10 não permite mais ocultar nenhum aplicativo.
+<h2>Ocultar o ícone do aplicativo:</h2> Em configurações do App, você pode retirar o ícone do aplicativo de lançador. No entanto pode acessar o App pressionando e segurando o botão em ajustes rápidos. Infelizmente, o Android 10 não permite mais ocultar nenhum aplicativo.
 
 <h2>🌎 Suporte e traduções</h2>
 Se houver algum problema ou se quiser ajudar a traduzir este App para seu idioma, entre em contato comigo no
