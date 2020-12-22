@@ -40,4 +40,4 @@ Desde o Android 9/Pie, esta permissão é necessária para fazer as Capturas. Is
 
 <h2>🌎 Suporte e traduções</h2>
 Se houver algum problema ou se quiser ajudar a traduzir este App para seu idioma, entre em contato comigo no
-<a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> ou contribuir com uma tradução em <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+<a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> ou para contribuir com uma tradução visite o site <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
