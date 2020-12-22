@@ -1,0 +1,36 @@
+Ezarpen azkarreko lauza pantaila-argazkietarako
+
+Instalatu ondoren, botoia / fitxa gehitu behar dituzu zure ezarpen azkarrei eta, ondoren, baimenak eman pantailako kapturak grabatzeko eta irudiak barne biltegian gordetzeko.
+
+<h2>Ezaugarriak:</h2>✓ Hartu pantailak ezarpen azkarretatik
+✓ Ez da erro beharrik
+✓ Pantaila bat hartu ondoren jakinarazpena (desgaitu daiteke)
+✓ Berehala partekatu pantailako argazkia editatu edo ezabatu jakinarazpenetik
+✓ Pantailaren eremu jakin bateko pantaila bakarra atera (luze sakatu fitxa)
+✓ Botoi mugikorra (chat bubble antzekoa)
+✓ Atzerapena pantaila-argazkia ateratzea
+✓ Biltegiratu fitxategi formatu desberdinetan: png, jpg edo webp
+✓ Hartu pantaila automatikoak Tasker edo MacroDroid bezalako aplikazioekin
+✓ Doako eta irekia, publizitaterik ez
+
+Hau da "Pantaila fitxategia [erroa]" forkatua, baina ez du root beharrik. Root sarbidea baduzu, <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">jatorrizko aplikazioa</a> erabili beharko zenuke, sardexka hau baino azkarragoa eta fidagarriagoa da.
+
+Iturburu kodea: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Jatorrizko aplikazioa: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Iturburu irekiko lizentzia GNU GPLv3 da
+
+<u>Ohar:</u>
+🎦 A Pantaila bat hartzen duzunean, "Google Cast" ikonoa egoera-barran agertuko da eta pantailaren irudian ikusgai egongo da.
+Ikonoa ezkutatu nahi baduzu, hemen azalpen bat dago: https://github.com/cvzi/ScreenshotTile#icon
+
+<h2>Baimenak:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE</i> "Argazkiak / Media / Fitxategiak eta biltegia"
+Eskatu behar da pantaila-argazkia fitxategiak gailuaren barne biltegian gordetzeko.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Android 9 / Pie geroztik baimen hau beharrezkoa da pantaila-argazkia egiteko. Funtsean esan nahi du aplikazio honek bere burua erakutsi gabe funtziona dezakeela. Hala ere, aplikazioak beti exekutatzen duenean jakinarazpen bat erakutsiko du.
+
+<h2>Pantaila-pantaila automatikoak:</h2>Pantailako argazkiak beste aplikazio batetik automatizatu nahi badituzu, adib. MacroDroid edo Tasker, urratsez urrats duen gida aurki dezakezu hemen:
+https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents
+
+<h2>🌎 Support and translations</h2>A Arazoren bat izanez gero edo aplikazio hau zure hizkuntzara itzultzen lagundu nahi baduzu, jar zaitez harremanetan nirekin <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a> edo <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> helbidean.
+You can help to translate this app into your language on crowdin: <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>

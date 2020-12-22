@@ -1,0 +1,43 @@
+Agrega un botón a la configuración rápida.
+
+Después de la instalación hay que agregar el botón a la configuración rápida, simplemente despliegue la barra de notificaciones, presione el ícono Editar/lápiz y mueve el nuevo mosaico en la configuración rápida. Después la aplicación solicitará los permisos necesarios.
+
+Si la aplicación falla en Android 9 / Pie o 10, puede intentar habilitar "Use native screenshot method" en la configuración de la aplicación.
+
+<h2>Caracteristicas:</h2>✓ Tome capturas de pantalla de la configuración rápida
+✓ No se requiere root
+✓ Notificación después de que se tomó una captura de pantalla (se puede deshabilitar)
+✓ Comparta, edite o elimine inmediatamente una captura de pantalla de la notificación
+✓ Botón Flotante (similar a una burbuja de chat)
+✓ Solo tome una captura de pantalla de un área específica de la pantalla (mantenga presionado el mosaico)
+✓ Demora en tomar una captura de pantalla
+✓ Almacenar en cualquier lugar (tarjeta SD, ...)
+✓ Almacenar en diferentes formatos de archivo: png, jpg o webp
+
+✓ Tome capturas de pantalla automáticas con aplicaciones como Tasker o MacroDroid
+✓ Gratis, de código abierto, sin publicidad
+
+Esta aplicación es un fork de "Screenshot Tile [Root]", pero no necesita root. Si tienes acceso root, puedes usar <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">la aplicación original</a>. Es más rápido y más fiable.
+
+Código fuente: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Aplicación original: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Open Source license is GNU GPLv3
+
+<u>Nota:</u>
+🎦 Cuando tome una captura de pantalla, el icono "Google Cast" aparecerá en la barra de estado y será visible en la imagen de la captura de pantalla.
+Si desea ocultar el icono, hay una explicación aquí: https://github.com/cvzi/ScreenshotTile#icon
+
+<h2>Permisos:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE</i> "Fotos / Medios / Archivos y almacenamiento"
+Esto es necesario para guardar los archivos de captura de pantalla en el almacenamiento interno de su dispositivo.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Desde Android 9 / Pie, este permiso es necesario para tomar capturas de pantalla. Básicamente significa que esta aplicación puede ejecutarse sin mostrarse. Sin embargo, la aplicación siempre mostrará una notificación cuando se esté ejecutando.
+
+<h2>Capturas de pantalla automáticas:</h2>
+Si desea automatizar capturas de pantalla de otra aplicación, p. MacroDroid o Tasker, puede encontrar una guía paso a paso aquí:
+https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents
+
+<h2> Ocultar el icono de la app:</h2>En la configuración de la app, puede ocultar el icono desde su launcher. Todavía puede acceder a la aplicación presionando prolongadamente en su configuración rápida. Desafortunadamente, Android 10 ya no permite ocultar una aplicación.
+
+<h2>🌎 Support and translations</h2>Si hay un problema o desea ayudar a traducir esta aplicación a su idioma, contácteme en <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a> o <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a>
+You can help to translate this app into your language on crowdin: <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>

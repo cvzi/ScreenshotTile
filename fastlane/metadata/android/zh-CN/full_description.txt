@@ -1,0 +1,43 @@
+在快速配置中添加一个按钮。
+
+安装完成后您必须将按钮添加到快速配置 。
+只需向下滑动通知栏, 按编辑图标/铅笔 然后在快速配置中移动新图块。应用程序请求必要的权限。
+
+如果应用在Android 9 / Pie或10上崩溃，则可以尝试在应用设置中启用“使用原生屏幕截图方式”。
+
+<h2>特征：</h2>✓ 从快速设置中获取屏幕截图
+✓ 无需root
+✓ 截图后的通知（可以禁用）
+✓ 立即共享，编辑或删除通知中的屏幕截图
+✓ 浮动屏幕截图按钮 （类似聊天气泡）
+✓ 仅截取屏幕特定区域的屏幕截图（长按图块）
+✓ 延迟截图
+✓ 存储在任何位置, 比如在SD卡上
+✓ 以不同的文件格式存储：png，jpg或webp
+✓ 使用Tasker或MacroDroid等应用自动截屏
+✓ 免费，开源，无广告
+
+此应用程序是“Screenshot Tile/截屏瓷贴 [Root]”的分支(fork)，但不需要root。 如果您具有root访问权限，则可以使用 <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">原始应用程序</a>。 它更快，更可靠。
+
+源代码： <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+原始申请： <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Open Source license is GNU GPLv3
+
+<u>注意：</u>
+🎦 截屏时，“Google Cast” 图标将出现在状态栏中，并且在截屏图像中将可见。
+如果要隐藏图标，请在此处进行说明： https://github.com/cvzi/ScreenshotTile#icon
+
+
+<h2>权限：</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE</i> “照片/媒体/文件和存储”
+要将屏幕快照文件保存在设备的内部存储器中，这是必需的。
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+由于Android 9 / Pie，此权限才需要截图。基本上，这意味着该应用可以在不显示自身的情况下运行。但是，该应用在运行时将始终显示通知。
+
+<h2>自动截图：</h2>如果您要自动执行其他应用的屏幕截图，例如MacroDroid或Tasker，您可以在此处找到分步指南：
+https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents
+
+<h2>隐藏应用程序图标：</ h2>在应用程序设置中，您可以从启动器中隐藏应用程序图标。您仍然可以通过长按快速设置中的图块来访问该应用程序。不幸的是，Android 10不允许再隐藏应用程序。
+
+<h2>🌎 Support and translations</h2>如果有问题或需要帮助将该应用程序翻译成您的语言，请通过 <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a> 或 <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> 与我联系
+You can help to translate this app into your language on crowdin: <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
