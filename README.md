@@ -17,7 +17,7 @@ Video:
 
 Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTile)
 
-[Changelog](CHANGELOG.md)
+[Changelog](CHANGELOG.md) • [View older releases](https://keybase.pub/cuzi/ScreenshotTileNoRoot_bin/)
 
 ## Languages
 
