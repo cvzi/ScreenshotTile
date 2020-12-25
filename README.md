@@ -1,4 +1,4 @@
-ScreenshotTile (NoRoot)
+[![app icon](app/src/main/res/mipmap-hdpi/ic_launcher.png)](https://github.com/cvzi/ScreenshotTile) ScreenshotTile (NoRoot)
 =======================
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -27,7 +27,54 @@ To help translate this app, please visit [crowdin.com](https://crwd.in/screensho
 
 You may translate the resource files directly and open a pull request. The English source is in [/app/src/main/res/values/strings.xml](/app/src/main/res/values/strings.xml) and the translated files are stored in [/app/src/main/res/values-XX/strings.xml](/app/src/main/res/) (XX = language code)
 
-## <a name="icon">Cast icon:</a> ![cast icon](/docs/imgs/casticon.png)
+## Technical details
+
+This app supports three different methods to take screenshots
+
+### Legacy/Original method <img src="/docs/imgs/SwitchLegacyMethod.png" alt="Legacy method switch on" height="25"/>
+This method uses the screen recording/screen cast capabilities of Android to record a single frame.
+
+Requirements:
+*   Android 7 Nougat
+*   Storage permission
+*   [ScreenCaptureIntent/MediaProjection permission](https://developer.android.com/reference/android/media/projection/MediaProjectionManager.html#createScreenCaptureIntent())
+*   <img src="/docs/imgs/StoragePermission.png" alt="Storage permission screenshot" height="90"/>
+*   <img src="/docs/imgs/ScreenCaptureIntent.png" alt="MediaProjection permission screenshot" height="130"/>
+
+Properties:
+*   Custom storage location
+*   Custom format
+*   Custom notification
+*   Before Android 9 the ScreenCaptureIntent/MediaProjection permission was only asked once when adding the tile (with option "Don't show again"). Since Android 9 it needs to be granted frequently before taking a screenshot
+
+### Native method with system defaults enabled <img src="/docs/imgs/SwitchNativeMethod.png" alt="Native method switch on" height="25"/>
+This method uses the screenshot function of the device. It's exactly the same as pressing the Home+Power button or whichever key combination is used for screenshots on that phone.
+
+Requirements:
+*   Android 9 Pie
+*   Accessibility service needs to be started in the system settings
+*   <img src="/docs/imgs/AccessibilityServicePermission.png" alt="Accessibility service screenshot" height="230"/>
+
+Properties:
+*   No permissions needed, only activating the accessibility service once
+*   Functions like long screenshots, screenshot editor, notifications, thumbnail etc., which the device manufacturer may have added, can be used
+
+### Native method with custom settings <img src="/docs/imgs/SwitchNativeMethod.png" alt="Native method switch on" height="25"/> <img src="/docs/imgs/SwitchSystemDefaultsOff.png" alt="Use system defaults switch off" height="25"/>
+This method uses [AccessibilityService#takeScreenshot](https://developer.android.com/reference/android/accessibilityservice/AccessibilityService#takeScreenshot%28int,%20java.util.concurrent.Executor,%20android.accessibilityservice.AccessibilityService.TakeScreenshotCallback%29) which outputs a bitmap that can be compressed and stored on disk.
+
+Requirements:
+*   Android 11 R
+*   Accessibility service needs to be started in the system settings
+*   Storage permission
+*   <img src="/docs/imgs/AccessibilityServicePermission.png" alt="Accessibility service screenshot" height="230"/>
+*   <img src="/docs/imgs/StoragePermission.png" alt="Storage permission screenshot" height="90"/>
+
+Properties:
+*   Custom storage location
+*   Custom format
+*   Custom notification
+
+## <a name="icon">Cast icon:</a> ![cast icon](/docs/imgs/casticon.png) (only Legacy method)
 
 If you don't want to see the cast icon in the status bar on every screenshot, you can turn
 it off on most phones. I do not recommend turning it off, as it is generally
