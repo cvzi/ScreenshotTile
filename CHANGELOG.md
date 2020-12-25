@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.12.0
+*   Android 11: native method with custom storage folder [#43](https://github.com/cvzi/ScreenshotTile/issues/43)
+*   Icon color changed
 ## 1.11.0
 *   Enable native method on new installs
 *   Permissions management improved
