@@ -46,7 +46,7 @@
     <string name="notification_settings_off">Disabilitato</string>
     <string name="file_title">Screenshot</string>
     <string name="file_description">Screenshot scattato il %1$s</string>
-    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
+    <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
     <string name="notification_title">Screenshot catturato</string>
     <string name="notification_body">Tocca per vedere l\'immagine</string>
     <string name="notification_channel_description">Mostra una notifica quando hai effettuato uno screenshot</string>
@@ -87,8 +87,6 @@
     <string name="about_license_title">Licenza</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Versione 3</string>
     <string name="about_app_2">Questa app ha ancora alcuni problemi ed è in fase di sviluppo.\nSe hai permessi di root sul tuo telefono, usa la versione di ipcjs, è più veloce e più affidabile.</string>
-    <string name="about_privacy_title">Privacy Policy</string>
-    <string name="about_open_source_title">Open source used</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Impostazioni di accessibilità</string>
     <string name="main_floating_button_title">Pulsante fluttuante</string>
