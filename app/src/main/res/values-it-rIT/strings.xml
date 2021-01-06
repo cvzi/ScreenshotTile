@@ -46,7 +46,6 @@
     <string name="notification_settings_off">Disabilitato</string>
     <string name="file_title">Screenshot</string>
     <string name="file_description">Screenshot scattato il %1$s</string>
-    <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
     <string name="notification_title">Screenshot catturato</string>
     <string name="notification_body">Tocca per vedere l\'immagine</string>
     <string name="notification_channel_description">Mostra una notifica quando hai effettuato uno screenshot</string>
