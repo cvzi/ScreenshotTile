@@ -89,7 +89,7 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">Impostazioni di accessibilità</string>
     <string name="main_floating_button_title">Pulsante fluttuante</string>
-    <string name="main_general_text">Prima di poter utilizzare questa app, è necessario aggiungere il tile/button alle impostazioni rapide. Se non sai come farlo, dai un\'occhiata al [Tutorial,. TutorialActivity].\n\nQuesta app supporta due metodi diversi per scattare screenshot:</string>
+    <string name="main_general_text">Prima di poter utilizzare questa app, è necessario aggiungere il tile/button alle impostazioni rapide. Se non sai come farlo, dai un\'occhiata al [Tutorial,.TutorialActivity].\n\nQuesta app supporta due metodi diversi per scattare screenshot:</string>
     <string name="main_legacy_method_title">Metodo Legacy</string>
     <string name="main_legacy_method_text">Il metodo legacy per scattare screenshot utilizza le funzioni di registrazione dello schermo di Android\nQuando si prende uno screenshot, nessun suono viene riprodotto. Viene mostrata una notifica silenziosa per aprire, condividere o modificare lo screenshot. La notifica può essere disabilitata nelle impostazioni dell\'app.\nPrima di poter scattare uno screenshot è necessario aggiungere il tile alle impostazioni rapide, accettare il permesso di registrare lo schermo e il permesso di accedere alla memoria interna per salvare il file immagine.\nVedi il tutorial su come farlo.\n\nSu alcuni telefoni questo metodo non funziona, soprattutto su Android più recenti (9. +) è instabile e potrebbe chiedere il permesso su ogni singolo screenshot. Se ciò accade, dovresti usare il metodo nativo qui sotto.</string>
     <string name="main_native_method_title">Metodo Nativo</string>
