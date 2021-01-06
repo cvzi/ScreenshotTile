@@ -100,9 +100,11 @@ class ScreenshotTileService : TileService(),
         if (App.checkAccessibilityServiceOnCollapse()) {
             // Open accessibility settings if service is not running
             App.checkAccessibilityServiceOnCollapse(false)
-            if (App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance == null) {
-                ScreenshotAccessibilityService.openAccessibilitySettings(this)
-            }
+            Handler(Looper.getMainLooper()).postDelayed({
+                if (App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance == null) {
+                    ScreenshotAccessibilityService.openAccessibilitySettings(this)
+                }
+            }, 5000)
         }
 
         // Here we can be sure that the notification panel has fully collapsed

@@ -2,6 +2,8 @@ package com.github.cvzi.screenshottile.services
 
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
@@ -58,12 +60,14 @@ class FloatingTileService : TileService() {
 
     override fun onStopListening() {
         super.onStopListening()
-
+        if (BuildConfig.DEBUG) Log.v(TAG, "onStopListening()")
         if (App.checkAccessibilityServiceOnCollapse()) {
             App.checkAccessibilityServiceOnCollapse(false)
-            if (App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance == null) {
-                openAccessibilitySettings(this)
-            }
+            Handler(Looper.getMainLooper()).postDelayed({
+                if (App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance == null) {
+                    openAccessibilitySettings(this)
+                }
+            }, 5000)
         }
     }
 

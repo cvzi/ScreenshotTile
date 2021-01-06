@@ -1,0 +1,40 @@
+Ekran görüntüleri için hızlı ayar kutusu
+
+Yüklemeden sonra düğmeyi / kutucuğu hızlı ayarlarınıza eklemeniz ve ardından ekran görüntülerini kaydetme ve görüntüleri dahili depolama birimine kaydetme izinleri vermeniz gerekir.
+
+If the app crashes on Android 9/Pie or 10, you can try to enable "Use native screenshot method" in the app settings.
+
+<h2>Özellikleri:</h2>✓ Settings Hızlı ayarlardan ekran görüntüsü alın
+✓ Root Kök gerekmez
+✓ Screenshot Ekran görüntüsü alındıktan sonra bildirim (devre dışı bırakılabilir)
+✓ Bildirimdeki ekran görüntüsünü hemen paylaşın, düzenleyin veya silin
+✓ Sohbet balonu gibi kayan düğme / Yer paylaşımlı düğme
+✓ Sadece ekranın belirli bir alanının ekran görüntüsünü al (döşemeye uzun bas)
+✓ Screenshot Ekran görüntüsü alarak Gecikme
+✓ File Farklı dosya formatlarında saklayın: png, jpg veya webp
+✓ Tasker veya MacroDroid gibi uygulamalarla otomatik ekran görüntüsü alın
+✓ Ücretsiz, açık kaynaklı, reklamsız
+
+Bu, "Screenshot Tile [Root]" adlı bir çatal. Ancak kök gerektirmiyor. Kök erişiminiz varsa, <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">orijinal uygulamayı</a> kullanmanız gerekir, bu çataldan daha hızlı ve daha dayanıklıdır.
+
+Kaynak kodu: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Orijinal uygulama: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Açık Kaynak lisansı GNU GPLv3'tür
+
+<u>Not:</u>
+🎦 Screenshot Bir ekran görüntüsü aldığınızda, durum çubuğunda "Google Cast" simgesi görünecek ve ekran görüntüsünde görünecektir.
+Simgeyi gizlemek istiyorsanız, burada bir açıklama var: https://github.com/cvzi/ScreenshotTile#icon
+
+<h2>İzinler:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE</i> "Fotoğraflar / Medya / Dosyalar ve Depolama"
+Ekran görüntüsü dosyalarını cihazınızın dahili depolama alanına kaydetmek için bu gereklidir.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Android 9 / Pie'ten bu yana ekran görüntüsü almak için bu izin gereklidir. Temelde bu uygulama kendini göstermeden çalışabileceği anlamına gelir. Ancak uygulama çalışırken her zaman bir bildirim gösterecektir.
+
+<h2>Otomatik ekran görüntüleri:</h2>Ekran görüntülerini başka bir uygulamadan otomatikleştirmek istiyorsanız, ör. MacroDroid veya Tasker, burada adım adım rehber bulabilirsiniz:
+https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents
+
+<h2>Hiding the app icon:</h2>In the app settings you can hide the app icon from your launcher. You can still access the app by long pressing the tile in your quick settings. Unfortunately, Android 10 does not allow hiding an app anymore.
+
+<h2>🌎 Support and translations</h2>A Bir sorun varsa veya bu uygulamanın dilinize çevrilmesine yardımcı olmak istiyorsanız, lütfen <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a> veya <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> adresinden benimle iletişime geçin.
+You can help to translate this app into your language on crowdin: <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>

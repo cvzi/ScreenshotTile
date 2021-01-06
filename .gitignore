@@ -10,3 +10,4 @@ TODO.txt
 .externalNativeBuild
 /.idea/
 /projectFilesBackup/
+fastlane/Appfile

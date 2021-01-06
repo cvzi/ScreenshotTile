@@ -76,7 +76,8 @@ class SettingFragment : PreferenceFragmentCompat() {
         delayPref = findPreference(getString(R.string.pref_key_delay)) as ListPreference?
         fileFormatPref = findPreference(getString(R.string.pref_key_file_format)) as ListPreference?
         useNativePref = findPreference(getString(R.string.pref_key_use_native)) as SwitchPreference?
-        useSystemDefaultsPref = findPreference(getString(R.string.pref_key_use_system_defaults)) as SwitchPreference?
+        useSystemDefaultsPref =
+            findPreference(getString(R.string.pref_key_use_system_defaults)) as SwitchPreference?
         floatingButtonPref =
             findPreference(getString(R.string.pref_key_floating_button)) as SwitchPreference?
         floatingButtonScalePref =
@@ -315,11 +316,13 @@ class SettingFragment : PreferenceFragmentCompat() {
                         summary = getString(R.string.use_native_screenshot_summary)
                         if (prefManager.useSystemDefaults) {
                             fileFormatPref?.isEnabled = false
-                            fileFormatPref?.summary = getString(if(Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                                R.string.use_native_screenshot_option_default
-                            } else {
-                                R.string.use_native_screenshot_option_android11
-                            })
+                            fileFormatPref?.summary = getString(
+                                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                                    R.string.use_native_screenshot_option_default
+                                } else {
+                                    R.string.use_native_screenshot_option_android11
+                                }
+                            )
                         }
                     }
                     updateNotificationSummary()
@@ -343,11 +346,11 @@ class SettingFragment : PreferenceFragmentCompat() {
                 summary = getString(R.string.use_system_defaults_summary)
                 isEnabled = false
                 isVisible = false
-            } else if(useNativePref?.isChecked == true && isChecked) {
+            } else if (useNativePref?.isChecked == true && isChecked) {
                 summary = getString(R.string.use_system_defaults_summary_on)
                 isEnabled = true
                 isVisible = true
-            } else if(useNativePref?.isChecked == true && !isChecked) {
+            } else if (useNativePref?.isChecked == true && !isChecked) {
                 summary = getString(R.string.use_system_defaults_summary_off)
                 isEnabled = true
                 isVisible = true
@@ -407,7 +410,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     getString(R.string.use_native_screenshot_option_default)
                 } else if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
                     getString(R.string.use_native_screenshot_option_android11)
-                }  else if (prefManager.screenshotDirectory != null) {
+                } else if (prefManager.screenshotDirectory != null) {
                     nicePathFromUri(prefManager.screenshotDirectory)
                 } else {
                     getString(R.string.setting_storage_directory_description)
