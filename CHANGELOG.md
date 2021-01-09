@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.12.1
+*   Added Italian translation. Thanks to [Filippo "Tecnophil" Cervellera](https://twitter.com/Tecnophil)
+*   Improved Arabic translation
+*   Improved Ukrainian translation
 ## 1.12.0
 *   Android 11: native method with custom storage folder [#43](https://github.com/cvzi/ScreenshotTile/issues/43)
 *   Icon color changed
