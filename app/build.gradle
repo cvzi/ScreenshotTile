@@ -22,8 +22,8 @@ android {
         applicationId "com.github.cvzi.screenshottile"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 38
-        versionName "1.12.0"
+        versionCode 39
+        versionName "1.12.1"
     }
     buildTypes {
         release {
@@ -31,7 +31,9 @@ android {
             shrinkResources true
             signingConfig signingConfigs.release
             debuggable false
-            proguardFiles 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
         debug {
             applicationIdSuffix '.debug'
