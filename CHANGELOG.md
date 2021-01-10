@@ -1,5 +1,7 @@
 # Changelog
 
+## 1.12.2
+*   Updated Chinese app store translation. Thanks to [@linsui](https://github.com/linsui)
 ## 1.12.1
 *   Added Italian translation. Thanks to [Filippo "Tecnophil" Cervellera](https://twitter.com/Tecnophil)
 *   Improved Arabic translation
