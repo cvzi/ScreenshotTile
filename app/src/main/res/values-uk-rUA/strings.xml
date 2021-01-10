@@ -22,7 +22,11 @@
     <string name="use_native_screenshot_option_android11">Для використання вимкніть \"Використовувати параметри системи\"</string>
     <string name="use_system_defaults">Використовувати параметри системи</string>
     <string name="use_system_defaults_summary">Необхідний Android 11</string>
+    <string name="use_system_defaults_summary_on">Поважає початкові налаштування додатку для каталогу, сповіщень та формату файлу</string>
+    <string name="use_system_defaults_summary_off">Поважає початкові налаштування додатку для каталогу, сповіщень та формату файлу</string>
     <string name="setting_floating_button">Рухома точка</string>
+    <string name="setting_floating_button_summary">Ви також можете увімкнути або вимкнути його з плитки швидких налаштувань</string>
+    <string name="setting_floating_button_unavailable">Служба спеціальних можливостей неактивна</string>
     <string name="setting_floating_button_unsupported">Необхідний Android 9 Pie</string>
     <string name="setting_floating_button_scale">Розмір рухомої кнопки</string>
     <string name="setting_floating_button_scale_summary">Налаштуйте розмір рухомої кнопки</string>
@@ -43,6 +47,40 @@
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Скріншот збережений</string>
     <string name="notification_body">Натисніть, щоб побачити скріншот</string>
-    <string name="notification_channel_description">Показувати сповіщення, коли ви зробили знімок екрана</string>
+    <string name="notification_channel_description">Показує сповіщення, коли ви зробили знімок екрана</string>
     <string name="notification_foreground_title">Збереження…</string>
+    <string name="notification_foreground_body">Обробка скріншоту… Натисніть, щоб скасувати</string>
+    <string name="notification_foreground_channel_description">Коли робиться скріншот показує сповіщення, щоб додаток не закривався у фоновому режимі для економії енергії</string>
+    <string name="notification_app_chooser_share">Поділитися файлом з…</string>
+    <string name="notification_app_chooser_edit">Редагувати файл через…</string>
+    <string name="screenshot_failed">Не вдалося зробити скріншот, спробуйте ще раз</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="screenshot_file_saved">Скріншот збережений в %1$s</string>
+    <string name="notification_delete_screenshot">Видалити</string>
+    <string name="notification_share_screenshot">Поділитися</string>
+    <string name="notification_edit_screenshot">Редагувати</string>
+    <string name="screenshot_deleted">Скріншот видалено</string>
+    <string name="screenshot_delete_failed">Не вдалося видалити файл</string>
+    <string name="permission_missing_external_storage">Немає необхідного дозволу. Для збереження записаних файлів програма вимагає доступу до пам\'яті пристрою</string>
+    <string name="permission_missing_screen_capture">Немає необхідного дозволу. Додаток вимагає дозволу для знімання екрана</string>
+    <string name="hide_app_from_launcher">Сховати значок з меню програм</string>
+    <string name="hide_app_unsupported">Не підтримується на Android 10+</string>
+    <string name="toggle_app_icon_failed">Не вдалося показати/приховати значок додатка</string>
+    <string name="tutorial">Посібник</string>
+    <string name="tutorial_tap_for_next_step">Торкніться, щоб перейти до наступного кроку</string>
+    <string name="tutorial_step2">Потягніть вниз область сповіщень</string>
+    <string name="tutorial_step3">Потягніть вниз швидкі налаштування</string>
+    <string name="tutorial_step4">Натисніть кнопку редагування</string>
+    <string name="tutorial_step5">Знайти нову кнопку скріншоту</string>
+    <string name="tutorial_step6">Перетягніть кнопку в свої налаштування</string>
+    <string name="tutorial_step8">Закрийте панель швидких налаштувань</string>
+    <string name="tutorial_step10">Потягніть вгору область сповіщень</string>
+    <string name="take_screenshot">Скріншот</string>
+    <!-- About -->
+    <string name="about_app_title">Про додаток</string>
+    <string name="about_app_1">Це форк з\ngithub.com/ipcjs/ScreenshotTile</string>
+    <string name="about_license_title">Ліцензія</string>
+    <!-- First screen -->
+    <string name="main_long_press_title">Тривале натискання</string>
+    <string name="main_long_press_text">Тривале натискання на плитку/кнопку відкриває меню. Ви можете вказати затримку скріншота або вирізати прямокутник з екрана.</string>
 </resources>
