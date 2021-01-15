@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Плитка снимка экрана (без прав суперпользователя)</string>
-    <string name="tile_label">Скриншот</string>
+    <string name="tile_label">Снимок экрана</string>
     <string name="tile_floating_label">Плавающая</string>
-    <string name="tile_floating_subtitle">Кнопка Скриншота</string>
-    <string name="title_delay">Отсрочка</string>
-    <string name="more_setting">Настройки</string>
-    <string name="open_settings">Настройки</string>
-    <string name="left_screenshot_right_menu">Слева: Скриншот, Справа: Настройки</string>
-    <string name="partial_screenshot">Обрезка</string>
+    <string name="tile_floating_subtitle">Кнопка снимка экрана</string>
+    <string name="title_delay">Задержка</string>
+    <string name="more_setting">Больше настроек</string>
+    <string name="open_settings">Открыть настройки</string>
+    <string name="left_screenshot_right_menu">Слева: Снимок экрана, справа: Настройки</string>
+    <string name="partial_screenshot">Выбрать область</string>
     <string name="file_format">Формат файла</string>
-    <string name="setting_delay_entry_default">Сразу</string>
+    <string name="setting_delay_entry_default">Мгновенно</string>
     <string name="setting_delay_entry_1s">1 сек.</string>
     <string name="setting_delay_entry_2s">2 сек.</string>
     <string name="setting_delay_entry_5s">5 сек.</string>
-    <string name="show_count_down">Отображать отсчет</string>
-    <string name="use_native_screenshot">Используйте нативный метод скриншота</string>
-    <string name="use_native_screenshot_summary">Имитация нажатия кнопки домашнего + питания</string>
-    <string name="use_native_screenshot_unsupported">Требуется Android 9 Pie</string>
-    <string name="use_native_screenshot_unavailable">Служба специальных возможностей неактивна</string>
+    <string name="show_count_down">Отображать отсчёт</string>
+    <string name="use_native_screenshot">Использовать встроенный метод снимка экрана</string>
+    <string name="use_native_screenshot_summary">Имитация нажатия кнопки домой + питания</string>
+    <string name="use_native_screenshot_unsupported">Требуется Андроид 9</string>
+    <string name="use_native_screenshot_unavailable">Служба специальных возможностей отключена</string>
     <string name="use_native_screenshot_option_default">Нативный метод скриншота экрана использует настройки по умолчанию</string>
     <string name="use_native_screenshot_option_android11">Отключите \'Использовать системные установки\', чтобы использовать это</string>
     <string name="accessibility_service_description">Если эта служба включена, приложение может симулировать нажатие комбинации кнопок питания+домой, чтобы сделать снимок экрана.\nНа некоторых устройствах этот метод может быть более стабильным или быстрее, чем метод по умолчанию.\n\nЕсли Вы включите службу здесь, Вам также нужно включить \"родной метод\" в настройках приложения.</string>
@@ -88,7 +88,7 @@
     <string name="about_license_1">Универсальная общественная лицензия GNU версии 3</string>
     <string name="about_app_2">Это приложение всё еще имеет некоторые проблемы и находится в разработке.\nЕсли у вас есть права суперпользователя на телефоне, пожалуйста, используйте версию ipcj, она быстрее и надежнее.</string>
     <!-- First screen -->
-    <string name="main_accessibility_settings">Настройки Спец. возможностей</string>
+    <string name="main_accessibility_settings">Настройки специальных возможностей</string>
     <string name="main_floating_button_title">Всплывающая кнопка</string>
     <string name="main_general_text">Прежде чем использовать это приложение, Вам нужно добавить плитку/кнопку в быстрые настройки. Если вы не знаете, как это сделать, посмотрите на [Руководство,.TutorialActivity].\n\nЭто приложение поддерживает два различных метода создания снимков экрана:</string>
     <string name="main_legacy_method_title">Устаревший метод</string>
