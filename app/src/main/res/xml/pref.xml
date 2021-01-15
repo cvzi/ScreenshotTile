@@ -3,16 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.preference.SwitchPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="false"
         android:key="@string/pref_key_hide_app"
         android:title="@string/hide_app_from_launcher" />
 
     <androidx.preference.SwitchPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="true"
         android:key="@string/pref_key_show_count_down"
         android:title="@string/show_count_down" />
 
     <androidx.preference.ListPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="@string/setting_delay_value_default"
         android:entries="@array/setting_delay_entries"
         android:entryValues="@array/setting_delay_values"
@@ -21,6 +24,7 @@
         android:title="@string/title_delay" />
 
     <androidx.preference.ListPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="@string/setting_file_format_value_default"
         android:entries="@array/setting_file_format_entries"
         android:entryValues="@array/setting_file_format_values"
@@ -29,12 +33,14 @@
         android:title="@string/file_format" />
 
     <androidx.preference.SwitchPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="false"
         android:key="@string/pref_key_use_native"
         android:summary="@string/use_native_screenshot_summary"
         android:title="@string/use_native_screenshot" />
 
     <androidx.preference.SwitchPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="true"
         android:key="@string/pref_key_use_system_defaults"
         android:summary="@string/use_system_defaults_summary"
@@ -42,12 +48,14 @@
         app:isPreferenceVisible="false" />
 
     <androidx.preference.SwitchPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="false"
         android:key="@string/pref_key_floating_button"
         android:summary="@string/setting_floating_button_summary"
         android:title="@string/setting_floating_button" />
 
     <androidx.preference.EditTextPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="200"
         android:dialogMessage="@string/setting_floating_button_scale_summary"
         android:key="@string/pref_key_floating_button_scale"
@@ -55,24 +63,28 @@
         android:title="@string/setting_floating_button_scale" />
 
     <androidx.preference.SwitchPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="false"
         android:key="@string/pref_key_floating_button_hide_after"
         android:summary="@string/setting_floating_button_hide_after_summary"
         android:title="@string/setting_floating_button_hide_after" />
 
     <androidx.preference.SwitchPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="false"
         android:key="@string/pref_key_floating_button_show_close"
         android:summary="@string/setting_floating_button_show_close_summary"
         android:title="@string/setting_floating_button_show_close" />
 
     <com.github.cvzi.screenshottile.utils.DrawableListPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="0"
         android:key="@string/pref_key_floating_button_shutter"
         android:summary=""
         android:title="@string/setting_floating_button_shutter" />
 
     <androidx.preference.EditTextPreference
+        app:iconSpaceReserved="false"
         android:defaultValue="@string/setting_broadcast_secret_value_default"
         android:inputType="textVisiblePassword"
         android:key="@string/pref_key_broadcast_secret"
@@ -80,6 +92,7 @@
         android:title="@string/setting_broadcast_secret" />
 
     <androidx.preference.Preference
+        app:iconSpaceReserved="false"
         android:key="@string/pref_static_field_key_notification_settings"
         android:persistent="false"
         android:selectable="true"
@@ -87,6 +100,7 @@
         android:title="@string/notification_settings" />
 
     <androidx.preference.Preference
+        app:iconSpaceReserved="false"
         android:defaultValue="@string/setting_broadcast_secret_value_default"
         android:key="@string/pref_key_storage_directory"
         android:summary="@string/setting_storage_directory_description"
@@ -97,9 +111,11 @@
         android:persistent="false"
         android:selectable="true"
         android:summary="@string/about_app_1"
-        android:title="@string/about_app_title" />
+        android:title="@string/about_app_title"
+        app:icon="@android:drawable/ic_menu_info_details" />
 
     <androidx.preference.Preference
+        app:iconSpaceReserved="false"
         android:key="@string/pref_static_field_key_about_app_2"
         android:persistent="false"
         android:selectable="false"
@@ -107,6 +123,7 @@
         android:title="" />
 
     <androidx.preference.Preference
+        app:icon="@android:drawable/sym_action_email"
         android:key="@string/pref_static_field_key_about_app_3"
         android:persistent="false"
         android:selectable="true"
@@ -118,9 +135,11 @@
         android:persistent="false"
         android:selectable="true"
         android:summary="@string/about_license_1"
-        android:title="@string/about_license_title" />
+        android:title="@string/about_license_title"
+        app:iconSpaceReserved="false" />
 
     <androidx.preference.Preference
+        app:iconSpaceReserved="false"
         android:key="@string/pref_static_field_key_about_open_source"
         android:persistent="false"
         android:selectable="true"
@@ -128,6 +147,7 @@
         android:title="@string/about_open_source_title" />
 
     <androidx.preference.Preference
+        app:iconSpaceReserved="false"
         android:key="@string/pref_static_field_key_about_privacy"
         android:persistent="false"
         android:selectable="true"
