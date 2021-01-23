@@ -1,0 +1,40 @@
+Adjon gombot/csempét a gyorsbeállítások panelhez képernyőképek készítéséhez.
+
+A telepítés után hozzá kell adnia a gombot/csempét a gyorsbeállításokhoz, majd meg kell adnia az engedélyeket a képernyőfelvételek rögzítésére és a képek belső tárhelyére történő mentésére.
+
+Ha az alkalmazás összeomlik Android 9/Pie vagy 10 operációs rendszeren, akkor megpróbálhatja engedélyezni a "Natív képernyőkép módszert" az alkalmazás beállításaiban.
+
+<h2>Funkciók:</h2> ✓ Készítsen képernyőképeket a gyorsbeállításokból
+✓ Nincs szükség root-ra
+✓ Értesítés képernyőkép készítése után (letiltható)
+✓ Rögtön megoszthatja, szerkesztheti vagy törölheti a képernyőképet az értesítésből
+✓ Lebegő gomb/Fedő gomb, mint egy csevegő buborék (Android 9+)
+✓ Képernyőképet készíthet a képernyő egy adott területéről (nyomja meg hosszan a csempét)
+✓ Késleltesse a képernyőkép készítését
+✓ Bármelyik mappában tárolhatja, pl.  SD-kártya
+✓ Különböző fájlformátumokban tárolhatja: png, jpg vagy webp
+✓ Készítsen automatikus képernyőképeket olyan alkalmazásokkal, mint a Tasker vagy a MacroDroid
+✓ Ingyenes, nyílt forráskódú, nincs hirdetés
+
+Ez a "Screenshot Tile [Root]" mellékprojektje, de nem igényel root-ot. Ha root hozzáféréssel rendelkezik, használja az ipcjs <a href = "https://play.google.com/store/apps/details?Id=com.github.ipcjs.screenshottile">eredeti alkalmazását</a>, ez gyorsabb és megbízhatóbb ennél a projektnél.
+
+Forráskód: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Eredeti alkalmazás: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+A nyílt forráskódú licenc a GNU GPLv3
+
+<u>Megjegyzés:</u>
+🎦 Ha képernyőképet készít, akkor az állapotsoron megjelenik <b>"'Google Cast" ikon</b> ami látható lesz a képernyőképen.
+Ha el akarja rejteni az ikont, itt van egy leírás: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Engedélyek:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Fotók/Média/Fájlok és tárhely"</i>
+Erre azért van szükség, hogy a képernyőképeket a készülék belső tárhelyére mentse.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Az Android 9/Pie óta ez az engedély szükséges a képernyőképek készítéséhez. Ez alapvetően azt jelenti, hogy ez az alkalmazás anélkül is futtatható, hogy látható lenne. Az alkalmazás azonban mindig értesítést jelenít meg, amikor fut.
+
+<h2>Automatikus képernyőképek:</h2>Ha automatizálni szeretné a képernyőrögzítést egy másik alkalmazásból, pl. MacroDroid vagy Tasker, itt talál részletes útmutatást:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Az alkalmazás ikonjának elrejtése:</h2>Az alkalmazás beállításaiban elrejtheti az alkalmazásikont az indítóból. A gyorsbeállításokban a csempét hosszan megnyomva továbbra is hozzáférhet az alkalmazáshoz. Sajnos az Android 10 már nem teszi lehetővé az alkalmazás elrejtését.
+
+<h2>🌎 Támogatás és fordítások</h2>Ha probléma merül fel, vagy segíteni szeretne az alkalmazás nyelvének lefordításában, kérjük, lépjen kapcsolatba velem <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> vagy hozzájárulhat a fordításhoz <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
