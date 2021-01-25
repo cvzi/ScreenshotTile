@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.12.3
+*   Hungarian translation by Stefi68
+*   Russian translation by rikishi0071
+*   Preference layout moved to the left
 ## 1.12.2
 *   Updated Chinese app store translation. Thanks to [@linsui](https://github.com/linsui)
 ## 1.12.1
