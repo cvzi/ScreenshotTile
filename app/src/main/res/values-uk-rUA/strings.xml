@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Скріншот</string>
     <string name="tile_floating_label">Рухома</string>
     <string name="tile_floating_subtitle">Кнопка скріншоту</string>
@@ -14,12 +15,13 @@
     <string name="setting_delay_entry_2s">2 сек</string>
     <string name="setting_delay_entry_5s">5 сек</string>
     <string name="show_count_down">Показувати відлік</string>
-    <string name="use_native_screenshot">Використовувати рідний метод зняття скріншота</string>
+    <string name="use_native_screenshot">Використовувати вбудований метод зняття скріншота</string>
     <string name="use_native_screenshot_summary">Імітація натискання кнопок додому + живлення</string>
     <string name="use_native_screenshot_unsupported">Необхідний Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">Служба спеціальних можливостей неактивна</string>
-    <string name="use_native_screenshot_option_default">Рідний метод використовуватиме стандартні параметри системи</string>
+    <string name="use_native_screenshot_option_default">Вбудований метод використовуватиме параметри системи</string>
     <string name="use_native_screenshot_option_android11">Для використання вимкніть \"Використовувати параметри системи\"</string>
+    <string name="accessibility_service_description">Якщо цю службу ввімкнено, щоб зробити скріншот додаток може симулювати натискання кнопок \"живлення\" + \"додому\".\nНа деяких пристроях цей метод може бути стабільнішим або швидшим, ніж метод за замовчуванням.\n\nЯкщо ви зараз увімкнете сервіс, вам також потрібно буде увімкнути \"Вбудований метод\" в налаштуваннях додатку.</string>
     <string name="use_system_defaults">Використовувати параметри системи</string>
     <string name="use_system_defaults_summary">Необхідний Android 11</string>
     <string name="use_system_defaults_summary_on">Поважає початкові налаштування додатку для каталогу, сповіщень та формату файлу</string>
@@ -44,7 +46,6 @@
     <string name="notification_settings_off">Вимкнені</string>
     <string name="file_title">Скріншот</string>
     <string name="file_description">Скріншот зроблено %1$s</string>
-    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Скріншот збережений</string>
     <string name="notification_body">Натисніть, щоб побачити скріншот</string>
     <string name="notification_channel_description">Показує сповіщення, коли ви зробили знімок екрана</string>
@@ -75,12 +76,27 @@
     <string name="tutorial_step6">Перетягніть кнопку в свої налаштування</string>
     <string name="tutorial_step8">Закрийте панель швидких налаштувань</string>
     <string name="tutorial_step10">Потягніть вгору область сповіщень</string>
+    <string name="tutorial_step11">Надайте дозволи</string>
+    <string name="tutorial_step16">Зробіть знімки екрану за допомогою нової кнопки</string>
     <string name="take_screenshot">Скріншот</string>
     <!-- About -->
     <string name="about_app_title">Про додаток</string>
     <string name="about_app_1">Це форк з\ngithub.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_3">Для отримання додаткової інформації, або якщо ви хочете повідомити про помилку, перейдіть: \ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Ліцензія</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="about_app_2">Цей додаток все ще має деякі проблеми і перебуває в розробці.\nЯкщо у вас є root-доступ до вашого телефону, будь ласка, використовуйте версію ipcjs, вона швидша та надійніша.</string>
     <!-- First screen -->
+    <string name="main_accessibility_settings">Налаштування спеціальних можливостей</string>
+    <string name="main_floating_button_title">Рухома кнопка</string>
+    <string name="main_general_text">Перш ніж користуватися цим додатком, потрібно додати плитку/кнопку до швидких налаштувань. Якщо ви не знаєте, як це зробити, прочитайте посібник [Tutorial,.TutorialActivity].\n\nЦей додаток підтримує два різні методи зняття знімка екрана:</string>
+    <string name="main_legacy_method_title">Оригінальний метод</string>
+    <string name="main_legacy_method_text">Оригінальний метод зняття скріншотів використовує вбудовані функції запису екрану Android\nКоли ви робите знімок екрана, звук не відтворюється. Показується беззвучне сповіщення, з можливістю відкрити, поділитися або редагувати знімок екрана. Сповіщення можна вимкнути в налаштуваннях додатка.\nПерш ніж ви зможете зробити знімок екрана, необхідно додати плитку до швидких налаштувань, надати дозвіл на запис екрану та дозвіл на доступ до внутрішньої пам\'яті для збереження файлу зображення.\nПерегляньте посібник, щоб дізнатися як це зробити.\n\nНа деяких телефонах цей метод не працює, особливо на пристроях з версією Android (9.0+). На даних пристроях метод стає нестабільним і може запитувати дозволу на кожен окремий знімок екрана. Якщо це станеться, ви повинні використовувати \"Вбудований метод\".</string>
+    <string name="main_native_method_title">Вбудований метод</string>
+    <string name="main_native_method_text">Вбудований метод створення знімків екрану симулює натискання кнопки Додому + Живлення і використовує метод знімка екрана вашого пристрою.\n{main_native_method_text_android_version}\n\nПерш ніж ви зможете зробити знімок екрана, вам потрібно включити службу спеціальних можливостей в налаштуваннях телефону. Натисніть кнопку нижче, щоб відкрити налаштування спеціальних можливостей.</string>
+    <string name="main_native_method_text_android_pre_11">Коли ви робите знімок екрана, телефон може відтворити звук або показати редактор знімків екрана. Знімки екрану зберігаються в стандартній теці для зображень. Це залежить від вашого телефону і не може бути змінено цим додатком. Можливо, ви зможете змінити поведінку в налаштуваннях вашого телефону.</string>
+    <string name="main_native_method_text_android_since_11">Ви можете змінити в налаштуваннях додатка (в розділі \"Використовувати параметри системи\"), чи застосовувати стандартну поведінку вашого телефону (сповіщення, редактор знімків екрану, стандартна тека для фотографій) або ж ви хочете використовувати налаштування додатка (іншу теку для зберігання та сповіщення за допомогою цього додатка).</string>
+    <string name="main_floating_button_text">Якщо ви увімкнули вбудований метод, Ви також можете використовувати рухому кнопку (схожу на бульбашку чату), щоб робити знімки екрану. \n Ви можете увімкнути її за допомогою окремої плитки/кнопки у швидких налаштуваннях, а потім переміщати по екрану.</string>
     <string name="main_long_press_title">Тривале натискання</string>
     <string name="main_long_press_text">Тривале натискання на плитку/кнопку відкриває меню. Ви можете вказати затримку скріншота або вирізати прямокутник з екрана.</string>
 </resources>
