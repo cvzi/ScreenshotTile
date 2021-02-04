@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
-    <string name="tile_label">Скріншот</string>
+    <string name="tile_label">Знімок екрана</string>
     <string name="tile_floating_label">Рухома</string>
-    <string name="tile_floating_subtitle">Кнопка скріншоту</string>
+    <string name="tile_floating_subtitle">Кнопка знімку екрана</string>
     <string name="title_delay">Затримка</string>
     <string name="more_setting">Налаштування</string>
     <string name="open_settings">Налаштування</string>
-    <string name="left_screenshot_right_menu">Ліворуч: Скріншот, Праворуч: Налаштування</string>
+    <string name="left_screenshot_right_menu">Ліворуч: Знімок екрану, праворуч: Налаштування</string>
     <string name="partial_screenshot">Обрати ділянку</string>
     <string name="file_format">Формат файлу</string>
     <string name="setting_delay_entry_default">Без затримки</string>
@@ -15,25 +15,25 @@
     <string name="setting_delay_entry_2s">2 сек</string>
     <string name="setting_delay_entry_5s">5 сек</string>
     <string name="show_count_down">Показувати відлік</string>
-    <string name="use_native_screenshot">Використовувати вбудований метод зняття скріншота</string>
+    <string name="use_native_screenshot">Використовувати вбудований метод знімка екрану</string>
     <string name="use_native_screenshot_summary">Імітація натискання кнопок додому + живлення</string>
     <string name="use_native_screenshot_unsupported">Необхідний Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">Служба спеціальних можливостей неактивна</string>
     <string name="use_native_screenshot_option_default">Вбудований метод використовуватиме параметри системи</string>
     <string name="use_native_screenshot_option_android11">Для використання вимкніть \"Використовувати параметри системи\"</string>
-    <string name="accessibility_service_description">Якщо цю службу ввімкнено, щоб зробити скріншот додаток може симулювати натискання кнопок \"живлення\" + \"додому\".\nНа деяких пристроях цей метод може бути стабільнішим або швидшим, ніж метод за замовчуванням.\n\nЯкщо ви зараз увімкнете сервіс, вам також потрібно буде увімкнути \"Вбудований метод\" в налаштуваннях додатку.</string>
+    <string name="accessibility_service_description">Якщо цю службу ввімкнено, щоб зробити знімок екрану додаток може симулювати натискання кнопок \"живлення\" + \"додому\".\nНа деяких пристроях цей метод може бути стабільнішим або швидшим, ніж метод за замовчуванням.\n\nЯкщо ви зараз увімкнете службу, вам також потрібно буде увімкнути «Вбудований метод» в налаштуваннях додатку.</string>
     <string name="use_system_defaults">Використовувати параметри системи</string>
     <string name="use_system_defaults_summary">Необхідний Android 11</string>
     <string name="use_system_defaults_summary_on">Поважає початкові налаштування додатку для каталогу, сповіщень та формату файлу</string>
     <string name="use_system_defaults_summary_off">Поважає початкові налаштування додатку для каталогу, сповіщень та формату файлу</string>
-    <string name="setting_floating_button">Рухома точка</string>
+    <string name="setting_floating_button">Рухома кнопка</string>
     <string name="setting_floating_button_summary">Ви також можете увімкнути або вимкнути його з плитки швидких налаштувань</string>
     <string name="setting_floating_button_unavailable">Служба спеціальних можливостей неактивна</string>
     <string name="setting_floating_button_unsupported">Необхідний Android 9 Pie</string>
     <string name="setting_floating_button_scale">Розмір рухомої кнопки</string>
     <string name="setting_floating_button_scale_summary">Налаштуйте розмір рухомої кнопки</string>
-    <string name="setting_floating_button_hide_after">Приховувати рухому кнопку після скріншота</string>
-    <string name="setting_floating_button_hide_after_summary">Після зняття скріншота автоматично видаляти рухому кнопку</string>
+    <string name="setting_floating_button_hide_after">Приховати рухому кнопку після знімка екрана</string>
+    <string name="setting_floating_button_hide_after_summary">Після зняття знімку екрана автоматично ховати рухому кнопку</string>
     <string name="setting_floating_button_show_close">Показувати кнопку [X]/закриття поруч з рухомою кнопкою</string>
     <string name="setting_floating_button_show_close_summary">Дозволяє видалити рухому кнопку, не відкриваючи швидкі налаштування</string>
     <string name="setting_floating_button_shutter">Зовнішній вигляд рухомої кнопки</string>
@@ -44,23 +44,23 @@
     <string name="notification_settings">Сповіщення</string>
     <string name="notification_settings_on">Увімкнені</string>
     <string name="notification_settings_off">Вимкнені</string>
-    <string name="file_title">Скріншот</string>
-    <string name="file_description">Скріншот зроблено %1$s</string>
-    <string name="notification_title">Скріншот збережений</string>
-    <string name="notification_body">Натисніть, щоб побачити скріншот</string>
+    <string name="file_title">Знімок екрана</string>
+    <string name="file_description">Знімок екрана зроблено %1$s</string>
+    <string name="notification_title">Знімок екрана збережено</string>
+    <string name="notification_body">Натисніть, щоб побачити зображення</string>
     <string name="notification_channel_description">Показує сповіщення, коли ви зробили знімок екрана</string>
     <string name="notification_foreground_title">Збереження…</string>
-    <string name="notification_foreground_body">Обробка скріншоту… Натисніть, щоб скасувати</string>
-    <string name="notification_foreground_channel_description">Коли робиться скріншот показує сповіщення, щоб додаток не закривався у фоновому режимі для економії енергії</string>
+    <string name="notification_foreground_body">Обробка знімка… Натисніть, щоб скасувати</string>
+    <string name="notification_foreground_channel_description">Показує сповіщення коли ви робите знімок екрана. Запобігає закриттю додатка у фоновому режимі для економії енергії</string>
     <string name="notification_app_chooser_share">Поділитися файлом з…</string>
     <string name="notification_app_chooser_edit">Редагувати файл через…</string>
-    <string name="screenshot_failed">Не вдалося зробити скріншот, спробуйте ще раз</string>
+    <string name="screenshot_failed">Не вдалося зробити знімок екрана, спробуйте ще раз</string>
     <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
-    <string name="screenshot_file_saved">Скріншот збережений в %1$s</string>
+    <string name="screenshot_file_saved">Знімок екрана збережено в: %1$s</string>
     <string name="notification_delete_screenshot">Видалити</string>
     <string name="notification_share_screenshot">Поділитися</string>
     <string name="notification_edit_screenshot">Редагувати</string>
-    <string name="screenshot_deleted">Скріншот видалено</string>
+    <string name="screenshot_deleted">Знімок екрана видалено</string>
     <string name="screenshot_delete_failed">Не вдалося видалити файл</string>
     <string name="permission_missing_external_storage">Немає необхідного дозволу. Для збереження записаних файлів програма вимагає доступу до пам\'яті пристрою</string>
     <string name="permission_missing_screen_capture">Немає необхідного дозволу. Додаток вимагає дозволу для знімання екрана</string>
@@ -72,13 +72,13 @@
     <string name="tutorial_step2">Потягніть вниз область сповіщень</string>
     <string name="tutorial_step3">Потягніть вниз швидкі налаштування</string>
     <string name="tutorial_step4">Натисніть кнопку редагування</string>
-    <string name="tutorial_step5">Знайти нову кнопку скріншоту</string>
+    <string name="tutorial_step5">Знайти нову кнопку зняття екрана</string>
     <string name="tutorial_step6">Перетягніть кнопку в свої налаштування</string>
     <string name="tutorial_step8">Закрийте панель швидких налаштувань</string>
     <string name="tutorial_step10">Потягніть вгору область сповіщень</string>
     <string name="tutorial_step11">Надайте дозволи</string>
     <string name="tutorial_step16">Зробіть знімки екрану за допомогою нової кнопки</string>
-    <string name="take_screenshot">Скріншот</string>
+    <string name="take_screenshot">Зробити знімок екрана</string>
     <!-- About -->
     <string name="about_app_title">Про додаток</string>
     <string name="about_app_1">Це форк з\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -98,5 +98,5 @@
     <string name="main_native_method_text_android_since_11">Ви можете змінити в налаштуваннях додатка (в розділі \"Використовувати параметри системи\"), чи застосовувати стандартну поведінку вашого телефону (сповіщення, редактор знімків екрану, стандартна тека для фотографій) або ж ви хочете використовувати налаштування додатка (іншу теку для зберігання та сповіщення за допомогою цього додатка).</string>
     <string name="main_floating_button_text">Якщо ви увімкнули вбудований метод, Ви також можете використовувати рухому кнопку (схожу на бульбашку чату), щоб робити знімки екрану. \n Ви можете увімкнути її за допомогою окремої плитки/кнопки у швидких налаштуваннях, а потім переміщати по екрану.</string>
     <string name="main_long_press_title">Тривале натискання</string>
-    <string name="main_long_press_text">Тривале натискання на плитку/кнопку відкриває меню. Ви можете вказати затримку скріншота або вирізати прямокутник з екрана.</string>
+    <string name="main_long_press_text">Тривале натискання на плитку/кнопку відкриває меню. Ви можете вказати затримку перед зняттям екрана або вирізати прямокутник з екрана.</string>
 </resources>
