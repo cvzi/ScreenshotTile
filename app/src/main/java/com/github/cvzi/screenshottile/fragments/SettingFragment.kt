@@ -71,7 +71,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_use_native) -> updateUseNative()
                 getString(R.string.pref_key_floating_button) -> updateFloatingButton()
                 getString(R.string.pref_key_floating_button_scale) -> updateFloatingButton(true)
-                getString(R.string.pref_key_floating_button_show_close) -> onFloatingButtonClose()
+                getString(R.string.pref_key_floating_button_show_close) -> updateFloatingButtonClose()
                 getString(R.string.pref_key_floating_button_shutter) -> updateFloatingButtonShutterSummary(
                     true
                 )
@@ -422,7 +422,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         updateFloatingButton()
     }
 
-    private fun onFloatingButtonClose() {
+    private fun updateFloatingButtonClose() {
         if (floatingButtonHideShowClosePref?.isChecked == true && !floatingButtonHideShowClosePreventRecursion) {
             var alertDialog: AlertDialog? = null
             val relativeLayout = LayoutInflater.from(context)
