@@ -1,7 +1,9 @@
 package com.github.cvzi.screenshottile.fragments
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.ComponentName
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.content.Intent.*
 import android.content.SharedPreferences
@@ -11,7 +13,12 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.DocumentsContract
 import android.util.Log
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.*
+import androidx.core.widget.addTextChangedListener
 import androidx.preference.*
 import androidx.preference.Preference.OnPreferenceClickListener
 import com.github.cvzi.screenshottile.App
@@ -21,6 +28,7 @@ import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
 import com.github.cvzi.screenshottile.utils.*
+import java.lang.ref.WeakReference
 
 
 /**
@@ -31,6 +39,10 @@ class SettingFragment : PreferenceFragmentCompat() {
     companion object {
         const val TAG = "SettingFragment.kt"
         private const val DIRECTORY_CHOOSER_REQUEST_CODE = 8912
+        var instance: WeakReference<SettingFragment>? = null
+    }
+    init {
+        instance = WeakReference<SettingFragment>(this)
     }
 
     private var notificationPref: Preference? = null
@@ -46,6 +58,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var hideAppPref: SwitchPreference? = null
     private var storageDirectoryPref: Preference? = null
     private var broadcastSecretPref: EditTextPreference? = null
+    private var floatingButtonHideShowClosePreventRecursion = false
     private lateinit var pref: SharedPreferences
     private val prefManager = App.getInstance().prefManager
 
@@ -58,7 +71,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_use_native) -> updateUseNative()
                 getString(R.string.pref_key_floating_button) -> updateFloatingButton()
                 getString(R.string.pref_key_floating_button_scale) -> updateFloatingButton(true)
-                getString(R.string.pref_key_floating_button_show_close) -> updateFloatingButton(true)
+                getString(R.string.pref_key_floating_button_show_close) -> onFloatingButtonClose()
                 getString(R.string.pref_key_floating_button_shutter) -> updateFloatingButtonShutterSummary(
                     true
                 )
@@ -127,6 +140,8 @@ class SettingFragment : PreferenceFragmentCompat() {
 
         delayPref?.run { updateDelaySummary(value) }
         fileFormatPref?.run { updateFileFormatSummary(value) }
+
+        floatingButtonHideShowClosePreventRecursion = false
 
         updateNotificationSummary()
         updateUseNative()
@@ -400,6 +415,74 @@ class SettingFragment : PreferenceFragmentCompat() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             ScreenshotAccessibilityService.instance?.updateFloatingButton(forceRedraw)
         }
+    }
+
+    fun updateFloatingButtonFromService() {
+        floatingButtonPref?.isChecked = prefManager.floatingButton
+        updateFloatingButton()
+    }
+
+    private fun onFloatingButtonClose() {
+        if (floatingButtonHideShowClosePref?.isChecked == true && !floatingButtonHideShowClosePreventRecursion) {
+            var alertDialog: AlertDialog? = null
+            val relativeLayout = LayoutInflater.from(context)
+                .inflate(R.layout.dialog_close_button, null) as ViewGroup
+            val closeButtonEmojiInput =
+                relativeLayout.findViewById<AutoCompleteTextView>(R.id.closeButtonEmojiInput)
+            closeButtonEmojiInput.setText(prefManager.floatingButtonCloseEmoji)
+            closeButtonEmojiInput.setOnEditorActionListener { _, actionId, _ ->
+                return@setOnEditorActionListener when (actionId) {
+                    EditorInfo.IME_ACTION_DONE -> {
+                        saveFloatingButton(closeButtonEmojiInput.text.trim().toString())
+                        alertDialog?.dismiss()
+                        true
+                    }
+                    else -> false
+                }
+            }
+            closeButtonEmojiInput.addTextChangedListener { v ->
+                if (closeButtonEmojiInput.text.isBlank()) {
+                    (requireActivity().getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager?)?.hideSoftInputFromWindow(
+                        closeButtonEmojiInput.windowToken,
+                        0
+                    )
+                    closeButtonEmojiInput.postDelayed({
+                        closeButtonEmojiInput.showDropDown()
+                    }, 30)
+                }
+            }
+            val closeButtonSuggestions: Array<out String> = resources.getStringArray(R.array.close_buttons)
+            ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_list_item_1,
+                closeButtonSuggestions
+            ).also { adapter ->
+                closeButtonEmojiInput.setAdapter(adapter)
+            }
+            alertDialog = AlertDialog.Builder(context)
+                .setTitle(R.string.setting_floating_button_show_close_dialog_title)
+                .setMessage(R.string.setting_floating_button_show_close_dialog_description)
+                .setView(relativeLayout)
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    saveFloatingButton(closeButtonEmojiInput.text.trim().toString())
+                    dialog.dismiss()
+                }
+                .setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.dismiss() }
+                .show()
+            closeButtonEmojiInput.postDelayed({
+                closeButtonEmojiInput.showDropDown()
+            }, 30)
+
+            floatingButtonHideShowClosePreventRecursion = true
+        } else {
+            floatingButtonHideShowClosePreventRecursion = false
+        }
+        updateFloatingButton(true)
+    }
+
+    private fun saveFloatingButton(emoji: String) {
+        prefManager.floatingButtonCloseEmoji = emoji
+        updateFloatingButton(true)
     }
 
 

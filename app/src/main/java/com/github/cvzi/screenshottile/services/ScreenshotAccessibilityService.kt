@@ -188,9 +188,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }
         }
 
-        if (App.getInstance().prefManager.floatingButtonShowClose) {
+        if (App.getInstance().prefManager.floatingButtonShowClose && App.getInstance().prefManager.floatingButtonCloseEmoji.isNotBlank()) {
             buttonClose = TextView(getWinContext())
-            buttonClose.text = getString(R.string.emoji_close)
+            buttonClose.text = App.getInstance().prefManager.floatingButtonCloseEmoji
             val linearLayout = root.findViewById<LinearLayout>(R.id.linearLayoutOuter)
             linearLayout.addView(buttonClose)
             buttonClose.layoutParams = LinearLayout.LayoutParams(buttonClose.layoutParams).apply {
@@ -199,6 +199,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             buttonClose.setOnClickListener {
                 App.getInstance().prefManager.floatingButton = false
                 hideFloatingButton()
+                SettingFragment.instance?.get()?.updateFloatingButtonFromService()
             }
         }
         buttonScreenshot.setOnClickListener {

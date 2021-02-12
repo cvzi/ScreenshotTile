@@ -156,6 +156,16 @@ class PrefManager {
             value
         ).apply()
 
+    var floatingButtonCloseEmoji: String
+        get() = pref.getString(
+            context.getString(R.string.pref_key_floating_button_close_emoji),
+            context.getString(R.string.close_buttons_default)
+        ) ?: context.getString(R.string.close_buttons_default)
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_floating_button_close_emoji),
+            value
+        ).apply()
+
     var floatingButtonScale: Int
         get() {
             val d = pref.getString(
