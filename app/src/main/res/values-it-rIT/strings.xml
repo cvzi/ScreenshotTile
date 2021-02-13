@@ -36,6 +36,8 @@
     <string name="setting_floating_button_hide_after_summary">Rimuovere automaticamente il pulsante fluttuante dopo aver preso uno screenshot</string>
     <string name="setting_floating_button_show_close">Mostra un pulsante [X]/chiudi accanto al pulsante fluttuante</string>
     <string name="setting_floating_button_show_close_summary">Consente di rimuovere il pulsante fluttuante senza aprire le impostazioni rapide</string>
+    <string name="setting_floating_button_show_close_dialog_title">Emoji del pulsante di chiusura</string>
+    <string name="setting_floating_button_show_close_dialog_description">Scrivi un testo o un emoji che appare come pulsante di chiusura</string>
     <string name="setting_floating_button_shutter">Tema del pulsante fluttuante</string>
     <string name="setting_broadcast_secret">Password dell\'intento di trasmissione</string>
     <string name="setting_broadcast_secret_description">Una frase segreta per consentire ad altre applicazioni (come MacroDroid o Tasker) di effettuare screenshot</string>
