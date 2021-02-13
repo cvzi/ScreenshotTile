@@ -36,6 +36,8 @@
     <string name="setting_floating_button_hide_after_summary">Retirar automaticamente o botão flutuante após a Captura</string>
     <string name="setting_floating_button_show_close">Mostrar o botão [X]/fechar ao lado do botão flutuante</string>
     <string name="setting_floating_button_show_close_summary">Permite remover o botão flutuante sem abrir os ajustes rápidos</string>
+    <string name="setting_floating_button_show_close_dialog_title">Defina Emoji para o botão de Fechar</string>
+    <string name="setting_floating_button_show_close_dialog_description">Digite um texto ou escolha um Emoji que aparecerá como o botão de Fechar</string>
     <string name="setting_floating_button_shutter">Aparência do botão flutuante</string>
     <string name="setting_broadcast_secret">Mostrar a senha</string>
     <string name="setting_broadcast_secret_description">Uma frase secreta que permita aos outros apps (como MacroDroid ou Tasker) fazer a Captura da tela</string>
