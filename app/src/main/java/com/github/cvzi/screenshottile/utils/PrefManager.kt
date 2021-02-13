@@ -11,19 +11,12 @@ import com.github.cvzi.screenshottile.R
  * Changes by cuzi (cuzi@openmail.cc)
  */
 
-class PrefManager {
-    val context: Context
-    private val pref: SharedPreferences
+class PrefManager(private val context: Context, private val pref: SharedPreferences) {
 
     constructor(context: Context) : this(
         context,
         PreferenceManager.getDefaultSharedPreferences(context)
     )
-
-    constructor(context: Context, pref: SharedPreferences) {
-        this.context = context
-        this.pref = pref
-    }
 
     var delay: Int
         get() = pref.getString(
