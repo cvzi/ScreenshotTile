@@ -36,6 +36,8 @@
     <string name="setting_floating_button_hide_after_summary">在您截取屏幕截图后自动移除浮动按钮</string>
     <string name="setting_floating_button_show_close">在浮动按钮旁显示 [X]/关闭按钮</string>
     <string name="setting_floating_button_show_close_summary">使您可以不必打开快速设置即可移除浮动按钮</string>
+    <string name="setting_floating_button_show_close_dialog_title">关闭按钮表情符号</string>
+    <string name="setting_floating_button_show_close_dialog_description">输入显示为关闭按钮的文本或表情符号</string>
     <string name="setting_floating_button_shutter">浮动按钮主题</string>
     <string name="setting_broadcast_secret">广播消息密码</string>
     <string name="setting_broadcast_secret_description">允许其他应用 (如 MacroDroid 或 Tasker) 启动屏幕截图的秘密短语</string>
