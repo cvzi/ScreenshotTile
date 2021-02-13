@@ -52,7 +52,7 @@
     <string name="notification_body">Érintse meg a kép megtekintéséhez</string>
     <string name="notification_channel_description">Értesítést jelenít meg, amikor képernyőképet készített</string>
     <string name="notification_foreground_title">Képernyőkép készítése…</string>
-    <string name="notification_foreground_body">Képernyőkép feldolgozása... Érintse meg a megszakításhoz</string>
+    <string name="notification_foreground_body">Képernyőkép feldolgozása… Érintse meg a megszakításhoz</string>
     <string name="notification_foreground_channel_description">Értesítést jelenít meg, amikor képernyőképet készít. Megakadályozza, hogy az alkalmazást az akkumulátor optimalizálása leállítsa, miközben a képernyőkép folyamatban van</string>
     <string name="notification_app_chooser_share">Fájlmegosztás…</string>
     <string name="notification_app_chooser_edit">Fájl szerkesztése…</string>
