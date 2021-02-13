@@ -36,6 +36,8 @@
     <string name="setting_floating_button_hide_after_summary">Після зняття знімку екрана автоматично ховати рухому кнопку</string>
     <string name="setting_floating_button_show_close">Показувати кнопку [X]/закриття поруч з рухомою кнопкою</string>
     <string name="setting_floating_button_show_close_summary">Дозволяє видалити рухому кнопку, не відкриваючи швидкі налаштування</string>
+    <string name="setting_floating_button_show_close_dialog_title">Оберіть іконку кнопки закриття</string>
+    <string name="setting_floating_button_show_close_dialog_description">Введіть текст або емоджі, які будуть відображатися в якості кнопки закриття</string>
     <string name="setting_floating_button_shutter">Зовнішній вигляд рухомої кнопки</string>
     <string name="setting_broadcast_secret">Пароль до Broadcast intents</string>
     <string name="setting_broadcast_secret_description">Секретна фраза, яка дозволяє іншим програмам (наприклад, MacroDroid або Tasker) ініціювати знімки екрана</string>
