@@ -36,6 +36,8 @@
     <string name="setting_floating_button_hide_after_summary">Nach einer Aufnahme wird der Auslöser automatisch deaktiviert</string>
     <string name="setting_floating_button_show_close">Zeige [x]/Schließen neben dem schwebenden Button</string>
     <string name="setting_floating_button_show_close_summary">Damit kannst du den schwebenden Auslöser deaktivieren ohne die Schnelleinstellungen zu öffnen</string>
+    <string name="setting_floating_button_show_close_dialog_title">Emoji des \"Schließen\" Buttons</string>
+    <string name="setting_floating_button_show_close_dialog_description">Gib einen Text oder einen Emoji ein, dieser wird als \"Schließen\" Button angezeigt</string>
     <string name="setting_floating_button_shutter">Look des schwebenden Auslösers</string>
     <string name="setting_broadcast_secret">Passwort für Broadcast intents</string>
     <string name="setting_broadcast_secret_description">Mit dem Passwort können andere Apps (z.B.  MacroDroid oder Tasker) automatisch Screenshots erstellen</string>
