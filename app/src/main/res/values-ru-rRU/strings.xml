@@ -36,6 +36,8 @@
     <string name="setting_floating_button_hide_after_summary">Автоматически удалять плавающую кнопку после того, как вы сделали снимок экрана</string>
     <string name="setting_floating_button_show_close">Показывать кнопку [X]/закрытия рядом с плавающей кнопкой</string>
     <string name="setting_floating_button_show_close_summary">Позволяет удалить плавающую кнопку без открытия быстрых настроек</string>
+    <string name="setting_floating_button_show_close_dialog_title">Эмодзи кнопки закрытия</string>
+    <string name="setting_floating_button_show_close_dialog_description">Введите текст или эмодзи, который будет отображаться как кнопка закрытия</string>
     <string name="setting_floating_button_shutter">Внешний вид плавающей кнопки</string>
     <string name="setting_broadcast_secret">Пароль намерения трансляции</string>
     <string name="setting_broadcast_secret_description">Секретная фраза, позволяющая другим приложениям (например, MacroDroid или Tasker) инициировать снимки экрана</string>
