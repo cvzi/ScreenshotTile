@@ -215,6 +215,10 @@ class TakeScreenshotActivity : Activity(),
         mScreenshotSelectorView.text = getString(R.string.take_screenshot)
         mScreenshotSelectorView.shutter = R.drawable.ic_stat_name
         mScreenshotSelectorView.onShutter = {
+            // If there is a cutout or status bars, the view might have a offset
+            val selectorViewOffset = intArrayOf(0,0)
+            mScreenshotSelectorView.getLocationOnScreen(selectorViewOffset)
+            it.offset(selectorViewOffset[0], selectorViewOffset[1])
             cutOutRect = it
             prepareForScreenSharing()
         }
