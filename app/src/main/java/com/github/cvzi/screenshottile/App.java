@@ -244,9 +244,9 @@ public class App extends Application {
         }
         int mode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
         String setting = prefManager.getDarkTheme();
-        if(setting.equals(getString(R.string.setting_dark_theme_value_on))) {
+        if (setting.equals(getString(R.string.setting_dark_theme_value_on))) {
             mode = AppCompatDelegate.MODE_NIGHT_YES;
-        } else if(setting.equals(getString(R.string.setting_dark_theme_value_off))) {
+        } else if (setting.equals(getString(R.string.setting_dark_theme_value_off))) {
             mode = AppCompatDelegate.MODE_NIGHT_NO;
         }
         AppCompatDelegate.setDefaultNightMode(mode);
