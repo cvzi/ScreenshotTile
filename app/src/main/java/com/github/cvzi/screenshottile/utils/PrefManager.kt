@@ -210,4 +210,14 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             context.getString(R.string.pref_key_tile_action),
             value
         ).apply()
+
+    var darkTheme: String
+        get() = pref.getString(
+            context.getString(R.string.pref_key_dark_theme),
+            context.getString(R.string.setting_dark_theme_value_default)
+        ) ?: context.getString(R.string.setting_dark_theme_value_default)
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_dark_theme),
+            value
+        ).apply()
 }

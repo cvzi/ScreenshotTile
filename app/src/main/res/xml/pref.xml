@@ -115,6 +115,15 @@
         android:title="@string/setting_tile_action"
         app:iconSpaceReserved="false" />
 
+    <androidx.preference.ListPreference
+        android:defaultValue="@string/setting_dark_theme_value_default"
+        android:entries="@array/setting_dark_theme_entries"
+        android:entryValues="@array/setting_dark_theme_values"
+        android:key="@string/pref_key_dark_theme"
+        android:summary="@string/setting_dark_theme_system"
+        android:title="@string/setting_dark_theme"
+        app:iconSpaceReserved="false" />
+
     <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_app_1"
         android:persistent="false"

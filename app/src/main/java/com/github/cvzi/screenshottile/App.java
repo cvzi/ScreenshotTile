@@ -13,6 +13,7 @@ import android.os.StrictMode;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
 import com.github.cvzi.screenshottile.activities.AcquireScreenshotPermission;
@@ -233,6 +234,22 @@ public class App extends Application {
 
         PreferenceManager.setDefaultValues(this, R.xml.pref, false);
         prefManager = new PrefManager(this);
+
+        applyDayNightMode();
+    }
+
+    public void applyDayNightMode() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            return;
+        }
+        int mode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
+        String setting = prefManager.getDarkTheme();
+        if(setting.equals(getString(R.string.setting_dark_theme_value_on))) {
+            mode = AppCompatDelegate.MODE_NIGHT_YES;
+        } else if(setting.equals(getString(R.string.setting_dark_theme_value_off))) {
+            mode = AppCompatDelegate.MODE_NIGHT_NO;
+        }
+        AppCompatDelegate.setDefaultNightMode(mode);
     }
 
     public PrefManager getPrefManager() {

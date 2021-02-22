@@ -18,12 +18,14 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.widget.addTextChangedListener
 import androidx.preference.*
 import androidx.preference.Preference.OnPreferenceClickListener
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.activities.ContainerActivity
 import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
@@ -60,6 +62,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var storageDirectoryPref: Preference? = null
     private var broadcastSecretPref: EditTextPreference? = null
     private var tileActionPref: ListPreference? = null
+    private var darkThemePref: ListPreference? = null
     private var floatingButtonHideShowClosePreventRecursion = false
     private lateinit var pref: SharedPreferences
     private val prefManager = App.getInstance().prefManager
@@ -79,6 +82,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 )
                 getString(R.string.pref_key_use_system_defaults) -> updateUseNative()
                 getString(R.string.pref_key_tile_action) -> updateTileActionSummary(prefManager.tileAction)
+                getString(R.string.pref_key_dark_theme) -> updateDarkTheme()
             }
         }
 
@@ -109,6 +113,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         floatingButtonShutter =
             findPreference(getString(R.string.pref_key_floating_button_shutter)) as ListPreference?
         tileActionPref = findPreference(getString(R.string.pref_key_tile_action)) as ListPreference?
+        darkThemePref = findPreference(getString(R.string.pref_key_dark_theme)) as ListPreference?
 
         pref.registerOnSharedPreferenceChangeListener(prefListener)
 
@@ -154,6 +159,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         updateStorageDirectory()
         updateHideApp(true)
         updateFloatingButtonShutterSummary()
+        updateDarkTheme()
 
         if (BuildConfig.DEBUG) {
             broadcastSecretPref?.summary = getString(R.string.unavailable_on_debug)
@@ -510,6 +516,19 @@ class SettingFragment : PreferenceFragmentCompat() {
                 } else {
                     getString(R.string.setting_storage_directory_description)
                 }
+        }
+    }
+
+    private fun updateDarkTheme() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            darkThemePref?.apply {
+                isVisible = false
+            }
+        } else {
+            darkThemePref?.apply {
+                summary = entries[findIndexOfValue(value)]
+            }
+            App.getInstance().applyDayNightMode()
         }
     }
 
