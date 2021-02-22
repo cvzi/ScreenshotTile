@@ -151,7 +151,7 @@ public class App extends Application {
             }
             if (basicForegroundService != null) {
                 basicForegroundService.foreground();
-            }  else if (screenshotTileService != null) {
+            } else if (screenshotTileService != null) {
                 screenshotTileService.foreground();
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 BasicForegroundService.Companion.startForegroundService(context);
@@ -212,7 +212,7 @@ public class App extends Application {
         super.onCreate();
 
         if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-/*
+
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectNetwork()
                     .detectCustomSlowCalls()
@@ -221,7 +221,7 @@ public class App extends Application {
                     .penaltyLog()
                     .penaltyDialog()
                     .build());
-
+/*
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
                     .detectAll()
                     .penaltyLog()

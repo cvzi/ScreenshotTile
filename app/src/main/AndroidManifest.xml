@@ -146,8 +146,7 @@
             android:foregroundServiceType="mediaProjection"
             android:icon="@drawable/ic_stat_name"
             android:label="@string/tile_label"
-            tools:targetApi="q">
-        </service>
+            tools:targetApi="q" />
 
         <receiver
             android:name="com.github.cvzi.screenshottile.IntentHandler"

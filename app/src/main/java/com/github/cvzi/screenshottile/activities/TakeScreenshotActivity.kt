@@ -17,10 +17,7 @@ import android.net.Uri
 import android.os.*
 import android.util.DisplayMetrics
 import android.util.Log
-import android.view.Surface
-import android.view.Window
-import android.view.WindowInsets
-import android.view.WindowManager
+import android.view.*
 import android.widget.Toast
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.App.resetMediaProjection
@@ -172,6 +169,7 @@ class TakeScreenshotActivity : Activity(),
                 prepareForScreenSharing()
             } else {
                 // nothing selected -> reset the view
+                mScreenshotSelectorView.visibility = View.VISIBLE
                 mScreenshotSelectorView.invalidate()
             }
             return
@@ -216,10 +214,11 @@ class TakeScreenshotActivity : Activity(),
         mScreenshotSelectorView.shutter = R.drawable.ic_stat_name
         mScreenshotSelectorView.onShutter = {
             // If there is a cutout or status bars, the view might have a offset
-            val selectorViewOffset = intArrayOf(0,0)
+            val selectorViewOffset = intArrayOf(0, 0)
             mScreenshotSelectorView.getLocationOnScreen(selectorViewOffset)
             it.offset(selectorViewOffset[0], selectorViewOffset[1])
             cutOutRect = it
+            mScreenshotSelectorView.visibility = View.GONE
             prepareForScreenSharing()
         }
 

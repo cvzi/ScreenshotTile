@@ -36,6 +36,7 @@ class BasicForegroundService : Service() {
             serviceIntent.action = FOREGROUND_ON_START
             return context.startForegroundService(serviceIntent)
         }
+
         /**
          * Start this service in the foreground, request screenshot permission with a
          * callback to TakeScreenshotActivity

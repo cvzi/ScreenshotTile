@@ -43,8 +43,13 @@ class AcquireScreenshotPermission : Activity() {
         super.onCreate(savedInstanceState)
 
         // If asked for storage permission, start taking a screenshot on success
-        if (intent.getBooleanExtra(EXTRA_REQUEST_PERMISSION_STORAGE, false) && intent.getBooleanExtra(
-                EXTRA_TAKE_SCREENSHOT_AFTER, true)) {
+        if (intent.getBooleanExtra(
+                EXTRA_REQUEST_PERMISSION_STORAGE,
+                false
+            ) && intent.getBooleanExtra(
+                EXTRA_TAKE_SCREENSHOT_AFTER, true
+            )
+        ) {
             askedForStoragePermission = true
         }
 

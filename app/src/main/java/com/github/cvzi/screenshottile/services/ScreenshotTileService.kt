@@ -13,7 +13,6 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.utils.foregroundNotification
 
@@ -30,7 +29,8 @@ class ScreenshotTileService : TileService(),
         private const val TAG = "ScreenshotTileService"
         private const val FOREGROUND_SERVICE_ID = 7593
         const val FOREGROUND_NOTIFICATION_ID = 8139
-        private const val FOREGROUND_ON_START = APPLICATION_ID + "ScreenshotTileService.FOREGROUND_ON_START"
+        private const val FOREGROUND_ON_START =
+            APPLICATION_ID + "ScreenshotTileService.FOREGROUND_ON_START"
         var instance: ScreenshotTileService? = null
         var screenshotPermission: Intent? = null
     }

@@ -41,6 +41,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         private const val DIRECTORY_CHOOSER_REQUEST_CODE = 8912
         var instance: WeakReference<SettingFragment>? = null
     }
+
     init {
         instance = WeakReference<SettingFragment>(this)
     }
@@ -260,6 +261,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             summary = entries[findIndexOfValue(value)]
         }
     }
+
     private fun updateTileActionSummary(value: String) {
         tileActionPref?.apply {
             summary = entries[findIndexOfValue(value)]
@@ -460,7 +462,8 @@ class SettingFragment : PreferenceFragmentCompat() {
                     }, 30)
                 }
             }
-            val closeButtonSuggestions: Array<out String> = resources.getStringArray(R.array.close_buttons)
+            val closeButtonSuggestions: Array<out String> =
+                resources.getStringArray(R.array.close_buttons)
             ArrayAdapter(
                 requireContext(),
                 android.R.layout.simple_list_item_1,

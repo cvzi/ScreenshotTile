@@ -50,7 +50,10 @@ fun screenshot(context: Context, partial: Boolean = false) {
  */
 fun tryNativeScreenshot(): Boolean {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.useNative) {
-        return ScreenshotAccessibilityService.instance?.simulateScreenshotButton(autoHideButton = true, autoUnHideButton = true) ?: false
+        return ScreenshotAccessibilityService.instance?.simulateScreenshotButton(
+            autoHideButton = true,
+            autoUnHideButton = true
+        ) ?: false
     }
     return false
 }

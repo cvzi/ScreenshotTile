@@ -3,7 +3,6 @@ package com.github.cvzi.screenshottile.fragments
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -41,7 +40,9 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
             when {
                 BasicForegroundService.instance != null -> BasicForegroundService.instance?.foreground()
                 ScreenshotTileService.instance != null -> ScreenshotTileService.instance?.foreground()
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> BasicForegroundService.startForegroundService(requireContext())
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> BasicForegroundService.startForegroundService(
+                    requireContext()
+                )
             }
 
             val entries = myActivity.resources.getTextArray(R.array.setting_delay_entries)
@@ -63,7 +64,10 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
                         Log.e(TAG, "AlertDialog.dismiss: IllegalStateException", e)
                     }
                 }
-                .setPositiveButton(if (pref.tileAction == getString(R.string.setting_tile_action_value_screenshot)) R.string.partial_screenshot else R.string.take_screenshot, this)
+                .setPositiveButton(
+                    if (pref.tileAction == getString(R.string.setting_tile_action_value_screenshot)) R.string.partial_screenshot else R.string.take_screenshot,
+                    this
+                )
                 .setNeutralButton(R.string.more_setting, this)
                 .setNegativeButton(android.R.string.cancel, this)
                 .setTitle(R.string.title_delay)
