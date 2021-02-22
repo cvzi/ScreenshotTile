@@ -16,6 +16,10 @@
     <string name="notification_settings">Notifikasi</string>
     <string name="notification_settings_on">Diaktifkan</string>
     <string name="notification_settings_off">Nonaktifkan</string>
+    <string name="setting_dark_theme">Mode Malam</string>
+    <string name="setting_dark_theme_system">Ikuti Sistem</string>
+    <string name="setting_dark_theme_on">Diaktifkan</string>
+    <string name="setting_dark_theme_off">Nonaktifkan</string>>
     <string name="file_title">Tangkapan layar</string>
     <string name="file_description">Tangkapan layar diambil pada %1$s</string>
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>

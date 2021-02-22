@@ -41,6 +41,8 @@
     <string name="setting_broadcast_secret_description">允许其他应用 (如 MacroDroid 或 Tasker) 启动屏幕截图的秘密短语</string>
     <string name="setting_storage_directory">保存位置</string>
     <string name="setting_storage_directory_description">用来保存文件的文件夹</string>
+    <string name="setting_dark_theme">夜間模式</string>
+    <string name="setting_dark_theme_system">遵循系統</string>
     <string name="notification_settings">通知</string>
     <string name="notification_settings_on">已启用</string>
     <string name="notification_settings_off">已禁用</string>

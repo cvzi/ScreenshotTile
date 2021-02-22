@@ -43,6 +43,8 @@
     <string name="setting_broadcast_secret_description">Секретная фраза, позволяющая другим приложениям (например, MacroDroid или Tasker) инициировать снимки экрана</string>
     <string name="setting_storage_directory">Место сохранения</string>
     <string name="setting_storage_directory_description">Папка для сохранения снимков экрана</string>
+    <string name="setting_dark_theme">Ночной режим</string>
+    <string name="setting_dark_theme_system">Как в системе</string>
     <string name="notification_settings">Уведомления</string>
     <string name="notification_settings_on">Включены</string>
     <string name="notification_settings_off">Отключены</string>

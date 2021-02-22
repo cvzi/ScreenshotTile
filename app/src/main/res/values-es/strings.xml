@@ -94,4 +94,8 @@
     <string name="main_floating_button_text">Si has habilitado el método nativo, también puedes usar un botón flotante (similar a una burbuja de chat) para tomar capturas de pantalla.\nPuedes habilitarlo con un mosaico/botón separado en las configuraciónes rápidas y luego moverlo por la pantalla.</string>
     <string name="main_long_press_title">Mantenga presionada el mosaico</string>
     <string name="main_long_press_text">Al presionar prolongadamente el mosaico/botón se abre un menú. En el menú puedes especificar un retraso para la captura de pantalla o recortar un rectángulo de la pantalla.</string>
+    <string name="setting_dark_theme">Modo nocturno</string>
+    <string name="setting_dark_theme_system">System</string>
+    <string name="setting_dark_theme_off">Desactivado</string>
+    <string name="setting_dark_theme_on">Activado</string>
 </resources>

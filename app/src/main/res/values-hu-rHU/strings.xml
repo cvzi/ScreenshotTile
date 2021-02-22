@@ -42,6 +42,10 @@
     <string name="setting_broadcast_secret_description">Titkos kifejezés, amely lehetővé teszi más alkalmazások (például a MacroDroid vagy a Tasker) számára a képernyőképek indítását</string>
     <string name="setting_storage_directory">Mentés helye</string>
     <string name="setting_storage_directory_description">Mappa a képernyőképek mentéséhez</string>
+    <string name="setting_dark_theme">Éjszakai mód</string>
+    <string name="setting_dark_theme_system">Rendszer</string>
+    <string name="setting_dark_theme_on">Engedélyezve</string>
+    <string name="setting_dark_theme_off">Letiltva</string>
     <string name="notification_settings">Értesítések</string>
     <string name="notification_settings_on">Engedélyezve</string>
     <string name="notification_settings_off">Letiltva</string>
