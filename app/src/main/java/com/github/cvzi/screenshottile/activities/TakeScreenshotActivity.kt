@@ -23,11 +23,14 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.App.resetMediaProjection
+import com.github.cvzi.screenshottile.App.setScreenshotPermission
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
+import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.*
@@ -43,7 +46,7 @@ class TakeScreenshotActivity : Activity(),
 
     companion object {
         private const val TAG = "TakeScreenshotActivity"
-        const val FOREGROUND_SERVICE_ID = 7593
+        var instance: TakeScreenshotActivity? = null
         const val NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN = "notification_channel_screenshot_taken"
         const val NOTIFICATION_CHANNEL_FOREGROUND = "notification_channel_foreground"
         const val SCREENSHOT_DIRECTORY = "Screenshots"
@@ -83,6 +86,7 @@ class TakeScreenshotActivity : Activity(),
     private var thread: Thread? = null
     private var saveImageResult: SaveImageResult? = null
     private var partial = false
+    private var isFullscreen = false
 
     private var askedForPermission = false
 
@@ -95,19 +99,19 @@ class TakeScreenshotActivity : Activity(),
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        instance = this
 
         // Avoid android.os.FileUriExposedException:
         val builder = StrictMode.VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
         builder.detectFileUriExposure()
 
-        val screenshotTileService = ScreenshotTileService.instance
-        if (screenshotTileService != null) {
-            screenshotTileService.foreground()
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            val serviceIntent = Intent(this, ScreenshotTileService::class.java)
-            serviceIntent.action = ScreenshotTileService.FOREGROUND_ON_START
-            startForegroundService(serviceIntent)
+        when {
+            BasicForegroundService.instance != null -> BasicForegroundService.instance?.foreground()
+            ScreenshotTileService.instance != null -> ScreenshotTileService.instance?.foreground()
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> BasicForegroundService.startForegroundService(
+                this
+            )
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.floatingButton && ScreenshotAccessibilityService.instance != null) {
@@ -154,16 +158,31 @@ class TakeScreenshotActivity : Activity(),
 
     }
 
-
     private fun partialScreenshot() {
         /**
          * Show partial screenshot selector
          */
-        val screenshotTileService = ScreenshotTileService.instance
+
+        var mScreenshotSelectorView =
+            findViewById<ScreenshotSelectorView?>(R.id.global_screenshot_selector)
+        if (mScreenshotSelectorView != null) {
+            // View is already loaded, stop here
+            if (cutOutRect != null) {
+                // rectangle is already selected -> start screenshot
+                prepareForScreenSharing()
+            } else {
+                // nothing selected -> reset the view
+                mScreenshotSelectorView.invalidate()
+            }
+            return
+        }
 
         // Go fullscreen without status bar and without display notch/cutout
         // (must be called before content)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        if (!isFullscreen) {
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            isFullscreen = true
+        }
 
         // Load layout (must be done before the window* calls)
         setContentView(R.layout.partial_screenshot)
@@ -191,7 +210,7 @@ class TakeScreenshotActivity : Activity(),
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
         }
 
-        val mScreenshotSelectorView =
+        mScreenshotSelectorView =
             findViewById<ScreenshotSelectorView>(R.id.global_screenshot_selector)
         mScreenshotSelectorView.text = getString(R.string.take_screenshot)
         mScreenshotSelectorView.shutter = R.drawable.ic_stat_name
@@ -201,12 +220,12 @@ class TakeScreenshotActivity : Activity(),
         }
 
         // make sure that a foreground service runs
-        if (screenshotTileService != null) {
-            screenshotTileService.foreground()
-        } else {
-            val serviceIntent = Intent(this, ScreenshotTileService::class.java)
-            serviceIntent.action = ScreenshotTileService.FOREGROUND_ON_START
-            startService(serviceIntent)
+        when {
+            BasicForegroundService.instance != null -> BasicForegroundService.instance?.foreground()
+            ScreenshotTileService.instance != null -> ScreenshotTileService.instance?.foreground()
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> BasicForegroundService.startForegroundService(
+                this
+            )
         }
     }
 
@@ -219,6 +238,7 @@ class TakeScreenshotActivity : Activity(),
         */
         ScreenshotTileService.instance?.onAcquireScreenshotPermission(isNewPermission)
         ScreenshotTileService.instance?.foreground()
+        BasicForegroundService.instance?.foreground()
         if (partial) {
             partialScreenshot()
         } else {
@@ -288,9 +308,17 @@ class TakeScreenshotActivity : Activity(),
             startVirtualDisplay()
         } catch (e: SecurityException) {
             Log.e(TAG, "startVirtualDisplay() SecurityException: $e")
+            setScreenshotPermission(null)
             screenShotFailedToast("Failed to start virtual display: ${e.localizedMessage}")
             stopScreenSharing()
-            finish()
+
+            // Start the foreground service and get a new media projection
+            resetMediaProjection()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                BasicForegroundService.resumeScreenshot(this)
+            } else {
+                App.acquireScreenshotPermission(this, this)
+            }
         }
     }
 
@@ -445,10 +473,9 @@ class TakeScreenshotActivity : Activity(),
 
         saveImageResult = null
 
-        ScreenshotTileService.instance?.run {
-            // Stop foreground service for Android Q+
-            background()
-        }
+        // Stop foreground service for Android Q+
+        ScreenshotTileService.instance?.background()
+        BasicForegroundService.instance?.background()
 
         finish()
     }
@@ -478,6 +505,3 @@ class TakeScreenshotActivity : Activity(),
     }
 
 }
-
-
-

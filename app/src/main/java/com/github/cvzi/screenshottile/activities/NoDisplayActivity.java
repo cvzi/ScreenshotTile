@@ -11,11 +11,11 @@ import android.widget.Toast;
 import com.github.cvzi.screenshottile.App;
 import com.github.cvzi.screenshottile.BuildConfig;
 import com.github.cvzi.screenshottile.R;
+import com.github.cvzi.screenshottile.services.BasicForegroundService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
 
 import static com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID;
-import static com.github.cvzi.screenshottile.services.ScreenshotTileService.FOREGROUND_ON_START;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.screenshot;
 
 /**
@@ -86,23 +86,25 @@ public class NoDisplayActivity extends Activity {
             if (intent.getBooleanExtra(EXTRA_PARTIAL, false)) {
                 // make sure that a foreground service runs
                 ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
-                if (screenshotTileService != null) {
+                BasicForegroundService basicForegroundService = BasicForegroundService.Companion.getInstance();
+                if (basicForegroundService != null) {
+                    basicForegroundService.foreground();
+                } else if (screenshotTileService != null) {
                     screenshotTileService.foreground();
                 } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    Intent serviceIntent = new Intent(this, ScreenshotTileService.class);
-                    serviceIntent.setAction(FOREGROUND_ON_START);
-                    startService(serviceIntent);
+                    BasicForegroundService.Companion.startForegroundService(this);
                 }
                 screenshot(this, true);
             } else if (intent.getBooleanExtra(EXTRA_SCREENSHOT, false) || (action != null && action.equals(EXTRA_SCREENSHOT))) {
                 // make sure that a foreground service runs
                 ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
-                if (screenshotTileService != null) {
+                BasicForegroundService basicForegroundService = BasicForegroundService.Companion.getInstance();
+                if (basicForegroundService != null) {
+                    basicForegroundService.foreground();
+                } else if (screenshotTileService != null) {
                     screenshotTileService.foreground();
                 } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    Intent serviceIntent = new Intent(this, ScreenshotTileService.class);
-                    serviceIntent.setAction(FOREGROUND_ON_START);
-                    startForegroundService(serviceIntent);
+                    BasicForegroundService.Companion.startForegroundService(this);
                 }
                 screenshot(this, false);
             } else if ((action != null && action.equals(EXTRA_FLOATING_BUTTON)) || intent.getBooleanExtra(EXTRA_FLOATING_BUTTON, false)) {

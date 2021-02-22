@@ -141,6 +141,13 @@
                 android:name="android.accessibilityservice"
                 android:resource="@xml/accessibility" />
         </service>
+        <service
+            android:name="com.github.cvzi.screenshottile.services.BasicForegroundService"
+            android:foregroundServiceType="mediaProjection"
+            android:icon="@drawable/ic_stat_name"
+            android:label="@string/tile_label"
+            tools:targetApi="q">
+        </service>
 
         <receiver
             android:name="com.github.cvzi.screenshottile.IntentHandler"

@@ -11,6 +11,7 @@ import android.os.Build
 import android.util.Log
 import android.view.Display
 import android.widget.Toast
+import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.deleteImage
 import com.github.cvzi.screenshottile.utils.editImageChooserIntent
@@ -109,7 +110,9 @@ class NotificationActionReceiver : BroadcastReceiver() {
                 }
                 NOTIFICATION_ACTION_STOP -> {
                     ScreenshotTileService.instance?.kill()
+                    BasicForegroundService.instance?.background()
                     hideNotification(this, ScreenshotTileService.FOREGROUND_NOTIFICATION_ID)
+                    hideNotification(this, BasicForegroundService.FOREGROUND_NOTIFICATION_ID)
                 }
 
             }

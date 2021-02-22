@@ -19,6 +19,7 @@ import com.github.cvzi.screenshottile.activities.AcquireScreenshotPermission;
 import com.github.cvzi.screenshottile.activities.DelayScreenshotActivity;
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity;
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener;
+import com.github.cvzi.screenshottile.services.BasicForegroundService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
 import com.github.cvzi.screenshottile.utils.PrefManager;
@@ -92,6 +93,10 @@ public class App extends Application {
         receiverRegistered = true;
     }
 
+    public static void resetMediaProjection() {
+        mediaProjection = null;
+    }
+
     /**
      * Create and return MediaProjection from stored permission.
      *
@@ -100,8 +105,11 @@ public class App extends Application {
     @SuppressWarnings("UnusedReturnValue")
     public static MediaProjection createMediaProjection() {
         if (BuildConfig.DEBUG) Log.v(TAG, "createMediaProjection()");
+        BasicForegroundService basicForegroundService = BasicForegroundService.Companion.getInstance();
         ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
-        if (screenshotTileService != null) {
+        if (basicForegroundService != null) {
+            basicForegroundService.foreground();
+        } else if (screenshotTileService != null) {
             screenshotTileService.foreground();
         }
         if (mediaProjection == null) {
@@ -128,7 +136,7 @@ public class App extends Application {
     public static void acquireScreenshotPermission(Context context, OnAcquireScreenshotPermissionListener myOnAcquireScreenshotPermissionListener) {
         onAcquireScreenshotPermissionListener = myOnAcquireScreenshotPermissionListener;
         ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
-
+        BasicForegroundService basicForegroundService = BasicForegroundService.Companion.getInstance();
         if (screenshotPermission == null) {
             screenshotPermission = ScreenshotTileService.Companion.getScreenshotPermission();
         }
@@ -141,12 +149,12 @@ public class App extends Application {
                 mediaProjection.stop();
                 mediaProjection = null;
             }
-            if (screenshotTileService != null) {
+            if (basicForegroundService != null) {
+                basicForegroundService.foreground();
+            }  else if (screenshotTileService != null) {
                 screenshotTileService.foreground();
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                Intent serviceIntent = new Intent(context, ScreenshotTileService.class);
-                serviceIntent.setAction(ScreenshotTileService.FOREGROUND_ON_START);
-                context.startForegroundService(serviceIntent);
+                BasicForegroundService.Companion.startForegroundService(context);
             }
             mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
             if (onAcquireScreenshotPermissionListener != null) {

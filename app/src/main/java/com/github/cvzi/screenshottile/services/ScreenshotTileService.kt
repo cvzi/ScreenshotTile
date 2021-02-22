@@ -28,8 +28,9 @@ class ScreenshotTileService : TileService(),
     OnAcquireScreenshotPermissionListener {
     companion object {
         private const val TAG = "ScreenshotTileService"
+        private const val FOREGROUND_SERVICE_ID = 7593
         const val FOREGROUND_NOTIFICATION_ID = 8139
-        const val FOREGROUND_ON_START = APPLICATION_ID + "ScreenshotTileService.FOREGROUND_ON_START"
+        private const val FOREGROUND_ON_START = APPLICATION_ID + "ScreenshotTileService.FOREGROUND_ON_START"
         var instance: ScreenshotTileService? = null
         var screenshotPermission: Intent? = null
     }
@@ -149,7 +150,7 @@ class ScreenshotTileService : TileService(),
         }
 
         startForeground(
-            TakeScreenshotActivity.FOREGROUND_SERVICE_ID,
+            FOREGROUND_SERVICE_ID,
             foregroundNotification(this, FOREGROUND_NOTIFICATION_ID).build(),
             ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
         )

@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.fragments.SettingDialogFragment
+import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 
@@ -53,13 +54,12 @@ class SettingDialogActivity : AppCompatActivity() {
 
         if (intent?.action == START_SERVICE) {
             // make sure that a foreground service runs
-            val screenshotTileService = ScreenshotTileService.instance
-            if (screenshotTileService != null) {
-                screenshotTileService.foreground()
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                val serviceIntent = Intent(this, ScreenshotTileService::class.java)
-                serviceIntent.action = ScreenshotTileService.FOREGROUND_ON_START
-                startForegroundService(serviceIntent)
+            when {
+                BasicForegroundService.instance != null -> BasicForegroundService.instance?.foreground()
+                ScreenshotTileService.instance != null -> ScreenshotTileService.instance?.foreground()
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> BasicForegroundService.startForegroundService(
+                    this
+                )
             }
         }
 

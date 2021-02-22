@@ -11,6 +11,7 @@ import androidx.fragment.app.DialogFragment
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.ContainerActivity
+import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.screenshot
 
@@ -37,13 +38,10 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
 
         return myActivity?.let {
             // make sure that a foreground service runs
-            val screenshotTileService = ScreenshotTileService.instance
-            if (screenshotTileService != null) {
-                screenshotTileService.foreground()
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                val serviceIntent = Intent(myActivity, ScreenshotTileService::class.java)
-                serviceIntent.action = ScreenshotTileService.FOREGROUND_ON_START
-                myActivity.startForegroundService(serviceIntent)
+            when {
+                BasicForegroundService.instance != null -> BasicForegroundService.instance?.foreground()
+                ScreenshotTileService.instance != null -> ScreenshotTileService.instance?.foreground()
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> BasicForegroundService.startForegroundService(requireContext())
             }
 
             val entries = myActivity.resources.getTextArray(R.array.setting_delay_entries)
