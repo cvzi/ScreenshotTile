@@ -65,7 +65,7 @@ public class App extends Application {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             ScreenshotAccessibilityService.Companion.setScreenshotPermission(permissionIntent);
         }
-        if (onAcquireScreenshotPermissionListener != null) {
+        if (onAcquireScreenshotPermissionListener != null && permissionIntent != null) {
             onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission(true);
             onAcquireScreenshotPermissionListener = null;
         }
@@ -204,6 +204,7 @@ public class App extends Application {
         super.onCreate();
 
         if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+/*
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectNetwork()
                     .detectCustomSlowCalls()
@@ -219,6 +220,7 @@ public class App extends Application {
                     //.penaltyDeath()
                     .build());
 
+*/
         }
 
         PreferenceManager.setDefaultValues(this, R.xml.pref, false);
@@ -257,6 +259,18 @@ public class App extends Application {
         }
         context.startActivity(intent);
     }
+
+    /**
+     * Take a partial screenshot and collapse quick settings panel.
+     *
+     * @param context Context
+     */
+    public void screenshotPartial(TileService context) {
+        Intent intent = NoDisplayActivity.newPartialIntent(context);
+        intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+        context.startActivityAndCollapse(intent);
+    }
+
 
     private void screenshotShowCountdown(Context context) {
         int delay = prefManager.getDelay();

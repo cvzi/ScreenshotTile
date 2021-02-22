@@ -65,7 +65,7 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
                         Log.e(TAG, "AlertDialog.dismiss: IllegalStateException", e)
                     }
                 }
-                .setPositiveButton(R.string.partial_screenshot, this)
+                .setPositiveButton(if (pref.tileAction == getString(R.string.setting_tile_action_value_screenshot)) R.string.partial_screenshot else R.string.take_screenshot, this)
                 .setNeutralButton(R.string.more_setting, this)
                 .setNegativeButton(android.R.string.cancel, this)
                 .setTitle(R.string.title_delay)
@@ -78,7 +78,11 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
         myActivity?.let {
             when (which) {
                 DialogInterface.BUTTON_POSITIVE -> {
-                    App.getInstance().screenshotPartial(context)
+                    if (pref.tileAction == getString(R.string.setting_tile_action_value_screenshot)) {
+                        App.getInstance().screenshotPartial(context)
+                    } else {
+                        App.getInstance().screenshot(context)
+                    }
                 }
                 DialogInterface.BUTTON_NEUTRAL -> {
                     ContainerActivity.start(myActivity, SettingFragment::class.java)

@@ -200,4 +200,14 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             context.getString(R.string.pref_key_floating_button_shutter),
             value.toString()
         ).apply()
+
+    var tileAction: String
+        get() = pref.getString(
+            context.getString(R.string.pref_key_tile_action),
+            context.getString(R.string.setting_tile_action_value_screenshot)
+        ) ?: context.getString(R.string.setting_tile_action_value_screenshot)
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_tile_action),
+            value
+        ).apply()
 }

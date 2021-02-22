@@ -58,6 +58,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var hideAppPref: SwitchPreference? = null
     private var storageDirectoryPref: Preference? = null
     private var broadcastSecretPref: EditTextPreference? = null
+    private var tileActionPref: ListPreference? = null
     private var floatingButtonHideShowClosePreventRecursion = false
     private lateinit var pref: SharedPreferences
     private val prefManager = App.getInstance().prefManager
@@ -76,6 +77,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     true
                 )
                 getString(R.string.pref_key_use_system_defaults) -> updateUseNative()
+                getString(R.string.pref_key_tile_action) -> updateTileActionSummary(prefManager.tileAction)
             }
         }
 
@@ -105,6 +107,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             findPreference(getString(R.string.pref_key_broadcast_secret)) as EditTextPreference?
         floatingButtonShutter =
             findPreference(getString(R.string.pref_key_floating_button_shutter)) as ListPreference?
+        tileActionPref = findPreference(getString(R.string.pref_key_tile_action)) as ListPreference?
 
         pref.registerOnSharedPreferenceChangeListener(prefListener)
 
@@ -139,6 +142,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         super.onResume()
 
         delayPref?.run { updateDelaySummary(value) }
+        tileActionPref?.run { updateTileActionSummary(value) }
         fileFormatPref?.run { updateFileFormatSummary(value) }
 
         floatingButtonHideShowClosePreventRecursion = false
@@ -253,6 +257,11 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     private fun updateDelaySummary(value: String) {
         delayPref?.apply {
+            summary = entries[findIndexOfValue(value)]
+        }
+    }
+    private fun updateTileActionSummary(value: String) {
+        tileActionPref?.apply {
             summary = entries[findIndexOfValue(value)]
         }
     }

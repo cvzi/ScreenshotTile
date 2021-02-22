@@ -42,6 +42,7 @@
     <string name="setting_broadcast_secret_description">A secret phrase to allow other applications (like MacroDroid or Tasker) to initiate screenshots</string>
     <string name="setting_storage_directory">Save location</string>
     <string name="setting_storage_directory_description">Folder to save screenshots in</string>
+    <string name="setting_tile_action">Tile action</string>
     <string name="notification_settings">Notifications</string>
     <string name="notification_settings_on">Enabled</string>
     <string name="notification_settings_off">Disabled</string>

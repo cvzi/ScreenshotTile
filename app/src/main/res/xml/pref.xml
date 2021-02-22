@@ -106,6 +106,15 @@
         android:summary="@string/setting_storage_directory_description"
         android:title="@string/setting_storage_directory" />
 
+    <androidx.preference.ListPreference
+        app:iconSpaceReserved="false"
+        android:defaultValue="@string/setting_tile_action_value_screenshot"
+        android:entries="@array/setting_tile_action_entries"
+        android:entryValues="@array/setting_tile_action_values"
+        android:key="@string/pref_key_tile_action"
+        android:summary="@string/take_screenshot"
+        android:title="@string/setting_tile_action" />
+
     <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_app_1"
         android:persistent="false"

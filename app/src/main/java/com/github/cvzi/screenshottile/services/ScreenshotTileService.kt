@@ -12,6 +12,7 @@ import android.util.Log
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID
+import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.utils.foregroundNotification
@@ -132,7 +133,11 @@ class ScreenshotTileService : TileService(),
         foreground()
         setState(Tile.STATE_ACTIVE)
 
-        App.getInstance().screenshot(this)
+        if (App.getInstance().prefManager.tileAction == getString(R.string.setting_tile_action_value_screenshot)) {
+            App.getInstance().screenshot(this)
+        } else {
+            App.getInstance().screenshotPartial(this)
+        }
     }
 
     /**

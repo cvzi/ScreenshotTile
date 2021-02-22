@@ -102,6 +102,18 @@
         <item>&#10006;</item>
     </string-array>
 
+    <string name="setting_tile_action_value_screenshot" translatable="false">screenshot</string>
+    <string name="setting_tile_action_value_partial" translatable="false">partial</string>
+    <string-array name="setting_tile_action_values" translatable="false">
+        <item>@string/setting_tile_action_value_screenshot</item>
+        <item>@string/setting_tile_action_value_partial</item>
+    </string-array>
+    <string name="pref_key_tile_action" translatable="false">tile_action</string>
+    <string-array name="setting_tile_action_entries" translatable="false">
+        <item>@string/take_screenshot</item>
+        <item>@string/partial_screenshot</item>
+    </string-array>
+
     <!-- About in settings -->
     <string name="pref_static_field_key_about_app_1" translatable="false">pref_static_field_key_about_app_1</string>
     <string name="pref_static_field_key_about_app_2" translatable="false">pref_static_field_key_about_app_2</string>
@@ -131,6 +143,7 @@ Contribute on <a href="https://crwd.in/screenshottile">crwd.in/screenshottile</a
 &#127479;&#127482; provided by <a href="https://github.com/rikishi0071/">RIKISHI</a><br>
 &#127469;&#127482; provided by <a href="https://crowdin.com/profile/Stefi68">Stefi68</a><br>
 &#127482;&#127462; provided by <a href="https://nyan-sub.in.ua/">Sensetivity</a><br>
+&#x1f1eb;&#x1f1f7; provided by <a href="https://hugo-mechiche.com/">UncleReaton</a><br>
 ]]></string>
 
 </resources>
