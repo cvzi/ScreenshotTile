@@ -9,7 +9,7 @@ import android.util.Log
 import androidx.fragment.app.DialogFragment
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.activities.ContainerActivity
+import com.github.cvzi.screenshottile.activities.SettingsActivity
 import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.screenshot
@@ -87,7 +87,7 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
                     }
                 }
                 DialogInterface.BUTTON_NEUTRAL -> {
-                    ContainerActivity.start(myActivity, SettingFragment::class.java)
+                    SettingsActivity.start(myActivity)
                 }
                 DialogInterface.BUTTON_NEGATIVE -> {
                     // no-op

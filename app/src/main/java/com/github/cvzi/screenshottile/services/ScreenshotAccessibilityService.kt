@@ -33,9 +33,9 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.activities.ContainerActivity
 import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
+import com.github.cvzi.screenshottile.activities.SettingsActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity.Companion.FILE_PREFIX
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
@@ -95,7 +95,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             SettingFragment.TAG -> {
                 // Return to settings
                 App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = null
-                ContainerActivity.startNewTask(this, SettingFragment::class.java)
+                SettingsActivity.startNewTask(this)
             }
             MainActivity.TAG -> {
                 // Return to main activity

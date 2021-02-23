@@ -19,7 +19,6 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.fragments.SettingFragment
 
 
 /**
@@ -142,7 +141,7 @@ class TutorialActivity : AppCompatActivity() {
         })
 
         findViewById<Button>(R.id.buttonSettings)?.setOnClickListener {
-            ContainerActivity.start(this, SettingFragment::class.java)
+            SettingsActivity.start(this)
         }
     }
 

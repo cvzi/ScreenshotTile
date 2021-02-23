@@ -85,7 +85,7 @@
             android:name="com.github.cvzi.screenshottile.activities.TransparentContainerActivity"
             android:excludeFromRecents="true" />
         <activity
-            android:name="com.github.cvzi.screenshottile.activities.ContainerActivity"
+            android:name="com.github.cvzi.screenshottile.activities.SettingsActivity"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme" />

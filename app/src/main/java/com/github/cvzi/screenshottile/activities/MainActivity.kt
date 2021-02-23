@@ -19,7 +19,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.fragments.SettingFragment
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.isNewAppInstallation
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -106,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         updateSwitches()
 
         findViewById<Button>(R.id.buttonSettings)?.setOnClickListener {
-            ContainerActivity.start(this, SettingFragment::class.java)
+            SettingsActivity.start(this)
         }
         findViewById<Button>(R.id.buttonTutorial)?.setOnClickListener {
             TutorialActivity.start(this)
