@@ -80,7 +80,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 )
                 getString(R.string.pref_key_use_system_defaults) -> updateUseNative()
                 getString(R.string.pref_key_tile_action) -> updateTileActionSummary(prefManager.tileAction)
-                getString(R.string.pref_key_dark_theme) -> updateDarkTheme()
+                getString(R.string.pref_key_dark_theme) -> updateDarkTheme(true)
             }
         }
 
@@ -517,7 +517,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
     }
 
-    private fun updateDarkTheme() {
+    private fun updateDarkTheme(switched: Boolean = false) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             darkThemePref?.apply {
                 isVisible = false
@@ -526,7 +526,9 @@ class SettingFragment : PreferenceFragmentCompat() {
             darkThemePref?.apply {
                 summary = entries[findIndexOfValue(value)]
             }
-            App.getInstance().applyDayNightMode()
+            if (switched) {
+                App.getInstance().applyDayNightMode()
+            }
         }
     }
 

@@ -238,6 +238,9 @@ public class App extends Application {
         applyDayNightMode();
     }
 
+    /**
+     * Apply the current MODE_NIGHT_FOLLOW_SYSTEM mode from the preferences
+     */
     public void applyDayNightMode() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return;
