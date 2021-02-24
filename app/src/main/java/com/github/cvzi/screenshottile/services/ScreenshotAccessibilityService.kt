@@ -49,6 +49,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         var instance: ScreenshotAccessibilityService? = null
         var screenshotPermission: Intent? = null
         private const val TAG = "ScreenshotAccessService"
+        private const val SETTINGS_BUTTON_TAG = "SettingsButton"
 
         /**
          * Open accessibility settings from activity
@@ -312,19 +313,20 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     private fun showSettingsButton(root: ViewGroup, buttonScreenshot: View) {
         val linearLayout = root.findViewById<LinearLayout>(R.id.linearLayoutOuter)
-        linearLayout.findViewWithTag<View>("settingsButton")?.let {
-            linearLayout.removeView(it)
+        if (linearLayout.findViewWithTag<View>(SETTINGS_BUTTON_TAG) != null) {
+            return
         }
         val textView = TextView(root.context)
-        textView.tag = "settingsButton"
+        textView.tag = SETTINGS_BUTTON_TAG
+        @SuppressLint("SetTextI18n")
         textView.text = "\u2699\uFE0F"
         linearLayout.addView(textView)
         textView.layoutParams = LinearLayout.LayoutParams(textView.layoutParams).apply {
             height = ViewGroup.LayoutParams.MATCH_PARENT
         }
         textView.setOnClickListener {
+            textView.text = "\u23F3"
             SettingsActivity.startNewTask(it.context)
-            linearLayout.removeView(it)
         }
         buttonScreenshot.post {
             textView.run {
