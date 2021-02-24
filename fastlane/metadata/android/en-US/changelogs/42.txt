@@ -1,0 +1,10 @@
+☆ Delay for the floating button.
+☆ Switch to dark theme in settings.
+☆ Close button can be any emoji e.g. ❌ ✅ ❎ ✓ ✔ ⛌ ✖
+☆ Tile action configurable (take screenshot or select rectangle).
+☆ After long pressing the floating button a settings button appears.
+🇺🇦 Ukrainian translation. Thanks to Sensetivity.
+🇫🇷 French translation. Thanks to UncleReaton.
+🐛 Bugfix: White font on white background was bad.
+🐛 Bugfix: Selected rectangle did not match with screen.
+🐛 Bugfix: Screenshot failed when no service was in the foreground.
