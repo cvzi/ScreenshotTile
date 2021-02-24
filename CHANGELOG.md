@@ -1,15 +1,15 @@
 # Changelog
 
 ## 1.13.0
-*   Close button can be any emoji e.g. ❌ ✅ ❎ ✓ ✔ ⛌ ✖ #56
+*   Close button can be any emoji e.g. ❌ ✅ ❎ ✓ ✔ ⛌ ✖ [#56](https://github.com/cvzi/ScreenshotTile/issues/56)
 *   Ukrainian translation by [@Sensetivity](https://github.com/Sensetivity)
 *   French translation by [@UncleReaton](https://github.com/UncleReaton)
 *   Fix: white font on Android 24-28
-*   Tile action: screenshot or partial screenshot #55
+*   Tile action: screenshot or partial screenshot [#55](https://github.com/cvzi/ScreenshotTile/issues/55)
 *   Use dedicated foreground service for media projection if tile service is not in foreground
 *   Fix: partial screenshot rectangle was not correct if there was a cutout or visible status bar
-*   Switch dark theme in settings #65
-*   Extra delay for floating buttton #59
+*   Switch dark theme in settings [#65](https://github.com/cvzi/ScreenshotTile/issues/65)
+*   Extra delay for floating buttton [#59](https://github.com/cvzi/ScreenshotTile/issues/59)
 *   Show a settings button for 2s after drag & drop of floating button
 ## 1.12.3
 *   Hungarian translation by Stefi68
