@@ -251,19 +251,27 @@ class SettingFragment : PreferenceFragmentCompat() {
     }
 
     private fun updateNotificationSummary() {
-        val myActivity = activity
-        myActivity?.let {
-            notificationPref?.summary =
+        activity?.let { myActivity ->
+            notificationPref?.apply {
                 when {
-                    prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R ->
-                        getString(R.string.use_native_screenshot_option_default)
-                    prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults ->
-                        getString(R.string.use_native_screenshot_option_android11)
-                    notificationScreenshotTakenChannelEnabled(myActivity) ->
-                        getString(R.string.notification_settings_on)
-                    else ->
-                        getString(R.string.notification_settings_off)
+                    prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R -> {
+                        isEnabled = false
+                        summary = getString(R.string.use_native_screenshot_option_default)
+                    }
+                    prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults -> {
+                        isEnabled = false
+                        summary = getString(R.string.use_native_screenshot_option_android11)
+                    }
+                    notificationScreenshotTakenChannelEnabled(myActivity) -> {
+                        isEnabled = true
+                        summary = getString(R.string.notification_settings_on)
+                    }
+                    else -> {
+                        isEnabled = true
+                        summary = getString(R.string.notification_settings_off)
+                    }
                 }
+            }
         }
     }
 
@@ -287,7 +295,19 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     private fun updateFileFormatSummary(value: String) {
         fileFormatPref?.apply {
-            summary = entries[findIndexOfValue(value)]
+            if (prefManager.useSystemDefaults && prefManager.useNative) {
+                isEnabled = false
+                summary = getString(
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                        R.string.use_native_screenshot_option_default
+                    } else {
+                        R.string.use_native_screenshot_option_android11
+                    }
+                )
+            } else {
+                isEnabled = true
+                summary = entries[findIndexOfValue(value)]
+            }
         }
     }
 
@@ -350,26 +370,17 @@ class SettingFragment : PreferenceFragmentCompat() {
                     summary = getString(R.string.use_native_screenshot_unsupported)
                 }
                 isChecked -> {
-                    if (ScreenshotAccessibilityService.instance == null) {
-                        summary = getString(
+                    summary = if (ScreenshotAccessibilityService.instance == null) {
+                        getString(
                             R.string.emoji_warning,
                             getString(R.string.use_native_screenshot_unavailable)
                         )
                     } else {
-                        summary = getString(R.string.use_native_screenshot_summary)
-                        if (prefManager.useSystemDefaults) {
-                            fileFormatPref?.isEnabled = false
-                            fileFormatPref?.summary = getString(
-                                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                                    R.string.use_native_screenshot_option_default
-                                } else {
-                                    R.string.use_native_screenshot_option_android11
-                                }
-                            )
-                        }
+                        getString(R.string.use_native_screenshot_summary)
                     }
                     updateNotificationSummary()
                     updateStorageDirectory()
+                    updateFileFormatSummary(prefManager.fileFormat)
                 }
                 else -> {
                     summary = getString(R.string.use_native_screenshot_summary)
@@ -518,16 +529,19 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     private fun updateStorageDirectory() {
         storageDirectoryPref?.run {
-            summary =
-                if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                    getString(R.string.use_native_screenshot_option_default)
-                } else if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
-                    getString(R.string.use_native_screenshot_option_android11)
-                } else if (prefManager.screenshotDirectory != null) {
-                    nicePathFromUri(prefManager.screenshotDirectory)
-                } else {
-                    getString(R.string.setting_storage_directory_description)
-                }
+            if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                summary = getString(R.string.use_native_screenshot_option_default)
+                isEnabled = false
+            } else if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
+                summary = getString(R.string.use_native_screenshot_option_android11)
+                isEnabled = false
+            } else if (prefManager.screenshotDirectory != null) {
+                summary = nicePathFromUri(prefManager.screenshotDirectory)
+                isEnabled = true
+            } else {
+                summary = getString(R.string.setting_storage_directory_description)
+                isEnabled = true
+            }
         }
     }
 
