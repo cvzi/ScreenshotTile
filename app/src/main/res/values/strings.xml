@@ -38,6 +38,7 @@
     <string name="setting_floating_button_show_close_dialog_title">Close button emoji</string>
     <string name="setting_floating_button_show_close_dialog_description">Type a text or an emoji that will appear as the close button</string>
     <string name="setting_floating_button_shutter">Floating button theme</string>
+    <string name="setting_floating_button_delay">Delay (Floating button)</string>
     <string name="setting_broadcast_secret">Broadcast intent password</string>
     <string name="setting_broadcast_secret_description">A secret phrase to allow other applications (like MacroDroid or Tasker) to initiate screenshots</string>
     <string name="setting_storage_directory">Save location</string>

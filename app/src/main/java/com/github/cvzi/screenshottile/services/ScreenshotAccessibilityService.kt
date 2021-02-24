@@ -25,10 +25,7 @@ import android.view.*
 import android.view.Display.DEFAULT_DISPLAY
 import android.view.WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
 import android.view.accessibility.AccessibilityEvent
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.github.cvzi.screenshottile.App
@@ -152,6 +149,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
     }
 
+
     private fun configureFloatingButton(root: ViewGroup) {
         val position = App.getInstance().prefManager.floatingButtonPosition
 
@@ -203,9 +201,23 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }
         }
         buttonScreenshot.setOnClickListener {
-            (buttonScreenshot.drawable as? Animatable)?.start()
-            root.visibility = View.GONE
-            root.invalidate()
+            val delayInSeconds = App.getInstance().prefManager.floatingButtonDelay.toLong()
+            val delayInMilliSeconds = if (delayInSeconds > 0) {
+                1000L * delayInSeconds
+            } else {
+                5L
+            }
+            var countDownTextView: TextView? = null
+            if (delayInMilliSeconds >= 1000L) {
+                countDownTextView = showCountDown(root, buttonScreenshot, delayInSeconds)
+                root.postDelayed({
+                    root.visibility = View.GONE
+                    root.invalidate()
+                }, delayInMilliSeconds - 20L)
+            } else {
+                root.visibility = View.GONE
+                root.invalidate()
+            }
             root.postDelayed({
                 simulateScreenshotButton(autoHideButton = false, autoUnHideButton = false)
                 if (App.getInstance().prefManager.floatingButtonHideAfter) {
@@ -213,10 +225,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     hideFloatingButton()
                 } else {
                     Handler(Looper.getMainLooper()).postDelayed({
-                        showTemporaryHiddenFloatingButton()
-                    }, 1000)
+                        showTemporaryHiddenFloatingButton(root, countDownTextView, buttonScreenshot)
+                    }, 1000L)
                 }
-            }, 5)
+            }, delayInMilliSeconds)
         }
 
         var dragDone = false
@@ -267,6 +279,37 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         (buttonScreenshot.drawable as? Animatable)?.start()
     }
 
+    private fun showCountDown(
+        root: ViewGroup,
+        buttonScreenshot: View,
+        delayInSeconds: Long
+    ): TextView {
+        buttonScreenshot.visibility = View.GONE
+        val textView = TextView(getWinContext())
+        @SuppressLint("SetTextI18n")
+        textView.text = delayInSeconds.toString() + "\uFE0F\u20E3"
+        root.findViewById<LinearLayout>(R.id.linearLayoutOuter).addView(textView, 0)
+        textView.layoutParams = LinearLayout.LayoutParams(textView.layoutParams).apply {
+            height = ViewGroup.LayoutParams.MATCH_PARENT
+        }
+        buttonScreenshot.post {
+            textView.run {
+                fillTextHeight(
+                    this,
+                    buttonScreenshot.measuredHeight * 3 / 4,
+                    buttonScreenshot.measuredHeight * 0.8f
+                )
+            }
+        }
+        for (i in 1..delayInSeconds) {
+            root.postDelayed({
+                @SuppressLint("SetTextI18n")
+                textView.text = "${delayInSeconds - i}\uFE0F\u20E3"
+            }, i * 1000L)
+        }
+        return textView
+    }
+
     /**
      * Remove view if it exists
      */
@@ -300,6 +343,22 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         binding?.root?.apply {
             visibility = View.VISIBLE
         }
+    }
+
+    /**
+     * Reverse temporaryHideFloatingButton(), hide count down and start shutter animation
+     */
+    private fun showTemporaryHiddenFloatingButton(
+        root: ViewGroup,
+        countDownTextView: View?,
+        buttonScreenshot: ImageView
+    ) {
+        root.visibility = View.VISIBLE
+        countDownTextView?.let {
+            root.findViewById<LinearLayout>(R.id.linearLayoutOuter).removeView(it)
+            buttonScreenshot.visibility = View.VISIBLE
+        }
+        (buttonScreenshot.drawable as? Animatable)?.start()
     }
 
     private fun addWindowViewAt(
@@ -364,9 +423,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         if (autoHideButton) {
             temporaryHideFloatingButton()
         }
-        var success = false
-        var askForStoragePermissionAfter = false
 
+        var askForStoragePermissionAfter = false
+        val success: Boolean
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && useTakeScreenshotMethod && !App.getInstance().prefManager.useSystemDefaults) {
             if (packageManager.checkPermission(
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -407,8 +466,6 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             { r -> Thread(r).start() },
             object : TakeScreenshotCallback {
                 override fun onSuccess(screenshot: ScreenshotResult) {
-                    Log.v(TAG, "onSuccess()")
-
                     val bitmap = Bitmap.wrapHardwareBuffer(
                         screenshot.hardwareBuffer,
                         screenshot.colorSpace

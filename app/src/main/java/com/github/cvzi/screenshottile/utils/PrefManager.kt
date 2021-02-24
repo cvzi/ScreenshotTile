@@ -201,6 +201,16 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value.toString()
         ).apply()
 
+    var floatingButtonDelay: Int
+        get() = pref.getString(
+            context.getString(R.string.pref_key_floating_button_delay),
+            context.getString(R.string.setting_delay_value_default)
+        )?.toIntOrNull() ?: 0
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_floating_button_delay),
+            value.toString()
+        ).apply()
+
     var tileAction: String
         get() = pref.getString(
             context.getString(R.string.pref_key_tile_action),

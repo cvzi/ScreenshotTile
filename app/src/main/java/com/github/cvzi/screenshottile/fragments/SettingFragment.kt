@@ -56,6 +56,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var floatingButtonHideAfterPref: SwitchPreference? = null
     private var floatingButtonHideShowClosePref: SwitchPreference? = null
     private var floatingButtonShutter: ListPreference? = null
+    private var floatingButtonDelay: ListPreference? = null
     private var hideAppPref: SwitchPreference? = null
     private var storageDirectoryPref: Preference? = null
     private var broadcastSecretPref: EditTextPreference? = null
@@ -78,6 +79,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_floating_button_shutter) -> updateFloatingButtonShutterSummary(
                     true
                 )
+                getString(R.string.pref_key_floating_button_delay) -> updateFloatingButtonDelaySummary(prefManager.floatingButtonDelay.toString())
                 getString(R.string.pref_key_use_system_defaults) -> updateUseNative()
                 getString(R.string.pref_key_tile_action) -> updateTileActionSummary(prefManager.tileAction)
                 getString(R.string.pref_key_dark_theme) -> updateDarkTheme(true)
@@ -110,6 +112,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             findPreference(getString(R.string.pref_key_broadcast_secret)) as EditTextPreference?
         floatingButtonShutter =
             findPreference(getString(R.string.pref_key_floating_button_shutter)) as ListPreference?
+        floatingButtonDelay = findPreference(getString(R.string.pref_key_floating_button_delay)) as ListPreference?
         tileActionPref = findPreference(getString(R.string.pref_key_tile_action)) as ListPreference?
         darkThemePref = findPreference(getString(R.string.pref_key_dark_theme)) as ListPreference?
 
@@ -148,6 +151,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         delayPref?.run { updateDelaySummary(value) }
         tileActionPref?.run { updateTileActionSummary(value) }
         fileFormatPref?.run { updateFileFormatSummary(value) }
+        floatingButtonDelay?.run { updateFloatingButtonDelaySummary(value) }
 
         floatingButtonHideShowClosePreventRecursion = false
 
@@ -262,6 +266,11 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     private fun updateDelaySummary(value: String) {
         delayPref?.apply {
+            summary = entries[findIndexOfValue(value)]
+        }
+    }
+    private fun updateFloatingButtonDelaySummary(value: String) {
+        floatingButtonDelay?.apply {
             summary = entries[findIndexOfValue(value)]
         }
     }
@@ -409,6 +418,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     floatingButtonHideAfterPref?.isVisible = false
                     floatingButtonHideShowClosePref?.isVisible = false
                     floatingButtonShutter?.isVisible = false
+                    floatingButtonDelay?.isVisible = false
                     unsupported
                 }
                 isChecked -> {
