@@ -149,7 +149,6 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
     }
 
-
     private fun configureFloatingButton(root: ViewGroup) {
         val position = App.getInstance().prefManager.floatingButtonPosition
 
@@ -187,7 +186,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
 
         if (App.getInstance().prefManager.floatingButtonShowClose && App.getInstance().prefManager.floatingButtonCloseEmoji.isNotBlank()) {
-            buttonClose = TextView(getWinContext())
+            buttonClose = TextView(root.context)
             buttonClose.text = App.getInstance().prefManager.floatingButtonCloseEmoji
             val linearLayout = root.findViewById<LinearLayout>(R.id.linearLayoutOuter)
             linearLayout.addView(buttonClose)
@@ -258,6 +257,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             )
                         )
                     }
+                    showSettingsButton(root, buttonScreenshot)
                     true
                 }
                 else -> true
@@ -285,7 +285,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         delayInSeconds: Long
     ): TextView {
         buttonScreenshot.visibility = View.GONE
-        val textView = TextView(getWinContext())
+        val textView = TextView(root.context)
         @SuppressLint("SetTextI18n")
         textView.text = delayInSeconds.toString() + "\uFE0F\u20E3"
         root.findViewById<LinearLayout>(R.id.linearLayoutOuter).addView(textView, 0)
@@ -308,6 +308,37 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }, i * 1000L)
         }
         return textView
+    }
+
+    private fun showSettingsButton(root: ViewGroup, buttonScreenshot: View) {
+        val linearLayout = root.findViewById<LinearLayout>(R.id.linearLayoutOuter)
+        linearLayout.findViewWithTag<View>("settingsButton")?.let {
+            linearLayout.removeView(it)
+        }
+        val textView = TextView(root.context)
+        textView.tag = "settingsButton"
+        textView.text = "\u2699\uFE0F"
+        linearLayout.addView(textView)
+        textView.layoutParams = LinearLayout.LayoutParams(textView.layoutParams).apply {
+            height = ViewGroup.LayoutParams.MATCH_PARENT
+        }
+        textView.setOnClickListener {
+            SettingsActivity.startNewTask(it.context)
+            linearLayout.removeView(it)
+        }
+        buttonScreenshot.post {
+            textView.run {
+                fillTextHeight(
+                    this,
+                    buttonScreenshot.measuredHeight * 3 / 4,
+                    buttonScreenshot.measuredHeight * 0.8f
+                )
+            }
+        }
+        textView.postDelayed({
+            linearLayout.removeView(textView)
+        }, 2000)
+
     }
 
     /**
