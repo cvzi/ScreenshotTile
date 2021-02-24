@@ -208,8 +208,7 @@ class TakeScreenshotActivity : Activity(),
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
         }
 
-        mScreenshotSelectorView =
-            findViewById<ScreenshotSelectorView>(R.id.global_screenshot_selector)
+        mScreenshotSelectorView = findViewById(R.id.global_screenshot_selector)
         mScreenshotSelectorView.text = getString(R.string.take_screenshot)
         mScreenshotSelectorView.shutter = R.drawable.ic_stat_name
         mScreenshotSelectorView.onShutter = {

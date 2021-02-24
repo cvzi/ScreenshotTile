@@ -79,7 +79,9 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_floating_button_shutter) -> updateFloatingButtonShutterSummary(
                     true
                 )
-                getString(R.string.pref_key_floating_button_delay) -> updateFloatingButtonDelaySummary(prefManager.floatingButtonDelay.toString())
+                getString(R.string.pref_key_floating_button_delay) -> updateFloatingButtonDelaySummary(
+                    prefManager.floatingButtonDelay.toString()
+                )
                 getString(R.string.pref_key_use_system_defaults) -> updateUseNative()
                 getString(R.string.pref_key_tile_action) -> updateTileActionSummary(prefManager.tileAction)
                 getString(R.string.pref_key_dark_theme) -> updateDarkTheme(true)
@@ -112,7 +114,8 @@ class SettingFragment : PreferenceFragmentCompat() {
             findPreference(getString(R.string.pref_key_broadcast_secret)) as EditTextPreference?
         floatingButtonShutter =
             findPreference(getString(R.string.pref_key_floating_button_shutter)) as ListPreference?
-        floatingButtonDelay = findPreference(getString(R.string.pref_key_floating_button_delay)) as ListPreference?
+        floatingButtonDelay =
+            findPreference(getString(R.string.pref_key_floating_button_delay)) as ListPreference?
         tileActionPref = findPreference(getString(R.string.pref_key_tile_action)) as ListPreference?
         darkThemePref = findPreference(getString(R.string.pref_key_dark_theme)) as ListPreference?
 
@@ -269,6 +272,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             summary = entries[findIndexOfValue(value)]
         }
     }
+
     private fun updateFloatingButtonDelaySummary(value: String) {
         floatingButtonDelay?.apply {
             summary = entries[findIndexOfValue(value)]
