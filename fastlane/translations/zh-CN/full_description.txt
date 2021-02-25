@@ -30,7 +30,7 @@
 这是在您设备的内部存储中保存屏幕截图文件所必需的。
 
 ❏ <i>android.permission.FOREGROUND_SERVICE</i>
-从 Android 9/Pie 起需要此权限进行屏幕截图。 这基本上意味着这个应用可以在不显示自己的情况下运行。 然而，应用将在运行时始终显示通知。 这基本上意味着这个应用可以在不显示自己的情况下运行。 然而，应用将在运行时始终显示通知。
+从 Android 9/Pie 起需要此权限进行屏幕截图。 这基本上意味着这个应用可以在不显示自己的情况下运行。 然而，应用将在运行时始终显示通知。
 
 <h2>自动屏幕截图：</h2>如果你想要从另一个应用自动进行屏幕截图，如 MacroDroid 或 Tasker，你可以在这里找到一个分步指南：
 <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-ints</a>
