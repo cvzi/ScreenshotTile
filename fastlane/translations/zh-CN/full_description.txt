@@ -11,15 +11,15 @@
 ✓ 浮动按钮/叠加按钮，类似聊天气泡 (Android 9+)
 ✓ 只对屏幕上的某个特定区域进行屏幕截图（长按图块）
 ✓ 延迟屏幕截图
-✓ 存储在任何存储中的任何文件夹，例如： SD 卡 SD 卡
+✓ 存储在任何存储中的任何文件夹，例如： SD 卡
 ✓ 以不同的文件格式存储：png、jpg 或 webp
 ✓ 使用 Tasker 或 MacroDroid 等应用自动截图
 ✓ 免费，开源，没有广告
 
-这是一个 "Screenshot Tile [Root]" 的分叉但不需要 root 权限。 如果您有 root 权限，您应该使用 ipcjs 的 <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">原应用</a> ，它比这个分叉更快更可靠。 原应用： <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+这是一个 "Screenshot Tile [Root]" 的分叉但不需要 root 权限。 如果您有 root 权限，您应该使用 ipcjs 的 <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">原应用</a> ，它比这个分叉更快更可靠。
 
 源代码：<a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
-<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-ints</a>
+原应用： <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
 开源许可证是 GNU GPLv3
 
 <u>注意：</u>
@@ -35,6 +35,6 @@
 <h2>自动屏幕截图：</h2>如果你想要从另一个应用自动进行屏幕截图，如 MacroDroid 或 Tasker，你可以在这里找到一个分步指南：
 <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-ints</a>
 
-<h2>隐藏应用图标：</h2>在应用设置中，您可以从启动器中隐藏应用图标。 您仍然可以在快速设置中长按图块访问应用。 不幸的是，Android 10 不再允许隐藏一个应用。 您仍然可以在快速设置中长按图块访问应用。 不幸的是，Android 10 不再允许隐藏一个应用。
+<h2>隐藏应用图标：</h2>在应用设置中，您可以从启动器中隐藏应用图标。 您仍然可以在快速设置中长按图块访问应用。 不幸的是，Android 10 不再允许隐藏一个应用。
 
 <h2>🌎 支持和翻译</h2>如果有问题或想要帮助将此应用翻译成你的语言，请在 <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> 上联系我或在 <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a> 上贡献翻译
