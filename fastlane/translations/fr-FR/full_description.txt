@@ -11,7 +11,7 @@ Si l'application plante sous Android 9/Pie ou 10, vous pouvez essayer d'activer 
 ✓ Bouton flottant / bouton "superposé" similaire à une bulle de discussion (Android 9+)
 ✓ Ne prenez en capture d'écran qu'une zone spécifique de l'écran (appuyez longuement sur la tuile)
 ✓ Retarder la prise d'une capture d'écran
-✓ Stocker dans n'importe quel dossier sur n'importe quel support, par exemple : carte SD : carte SD
+✓ Stocker dans n'importe quel dossier sur n'importe quel support, par exemple : carte SD
 ✓ Enregistrer dans différents formats: png, jpg ou webp
 ✓ Prendre automatiquement des captures d'écran avec des applications comme Tasker ou MacroDroid
 ✓ Gratuit, libre, open-source, sans publicité
