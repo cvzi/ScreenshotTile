@@ -4,7 +4,7 @@
     <string name="tile_label">屏幕截图</string>
     <string name="tile_floating_label">浮动</string>
     <string name="tile_floating_subtitle">屏幕截图按钮</string>
-    <string name="title_delay">延时</string>
+    <string name="title_delay">延迟</string>
     <string name="more_setting">更多设置</string>
     <string name="open_settings">打开设置</string>
     <string name="left_screenshot_right_menu">左：屏幕截图，右：设置</string>
