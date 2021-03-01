@@ -4,7 +4,7 @@
     <string name="tile_label">屏幕截图</string>
     <string name="tile_floating_label">浮动</string>
     <string name="tile_floating_subtitle">屏幕截图按钮</string>
-    <string name="title_delay">延时</string>
+    <string name="title_delay">延迟</string>
     <string name="more_setting">更多设置</string>
     <string name="open_settings">打开设置</string>
     <string name="left_screenshot_right_menu">左：屏幕截图，右：设置</string>
@@ -39,12 +39,16 @@
     <string name="setting_floating_button_show_close_dialog_title">关闭按钮表情符号</string>
     <string name="setting_floating_button_show_close_dialog_description">输入显示为关闭按钮的文本或表情符号</string>
     <string name="setting_floating_button_shutter">浮动按钮主题</string>
+    <string name="setting_floating_button_delay">延迟(悬浮按钮)</string>
     <string name="setting_broadcast_secret">广播消息密码</string>
     <string name="setting_broadcast_secret_description">允许其他应用 (如 MacroDroid 或 Tasker) 启动屏幕截图的秘密短语</string>
     <string name="setting_storage_directory">保存位置</string>
     <string name="setting_storage_directory_description">用来保存文件的文件夹</string>
-    <string name="setting_dark_theme_system">按照系统</string>
+    <string name="setting_tile_action">磁贴操作</string>
     <string name="setting_dark_theme">夜间模式</string>
+    <string name="setting_dark_theme_system">按照系统</string>
+    <string name="setting_dark_theme_off">已禁用</string>
+    <string name="setting_dark_theme_on">已启用</string>
     <string name="notification_settings">通知</string>
     <string name="notification_settings_on">已启用</string>
     <string name="notification_settings_off">已禁用</string>
