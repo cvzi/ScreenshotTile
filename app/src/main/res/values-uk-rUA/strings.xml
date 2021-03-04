@@ -24,8 +24,8 @@
     <string name="accessibility_service_description">Якщо цю службу ввімкнено, застосунок може симулювати натискання кнопок \"живлення\" + \"додому\", щоб зробити знімок екрана.\nНа деяких пристроях цей метод може бути стабільнішим або швидшим, ніж усталений метод.\n\nЯкщо ви зараз увімкнете службу, вам також потрібно буде ввімкнути «Вбудований метод» в налаштуваннях застосунку.</string>
     <string name="use_system_defaults">Використовувати параметри системи</string>
     <string name="use_system_defaults_summary">Необхідний Android 11</string>
-    <string name="use_system_defaults_summary_on">Поважає початкові налаштування застосунку для каталогу, сповіщень та формату файлу</string>
-    <string name="use_system_defaults_summary_off">Поважає початкові налаштування застосунку для каталогу, сповіщень та формату файлу</string>
+    <string name="use_system_defaults_summary_on">Застосунок використовує налаштування телефону за замовчуванням для каталогу, сповіщень та формату файлу</string>
+    <string name="use_system_defaults_summary_off">Використання налаштувань застосунку</string>
     <string name="setting_floating_button">Рухома кнопка</string>
     <string name="setting_floating_button_summary">Ви також можете увімкнути або вимкнути його з плитки швидких налаштувань</string>
     <string name="setting_floating_button_unavailable">Служба спеціальних можливостей неактивна</string>
