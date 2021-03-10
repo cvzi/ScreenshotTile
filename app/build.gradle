@@ -40,15 +40,15 @@ android {
             versionNameSuffix '.debug'
         }
     }
-
     buildToolsVersion '30.0.3'
     productFlavors {
     }
     buildFeatures {
         viewBinding true
     }
-
-
+    kotlinOptions {
+        useIR = true
+    }
     lintOptions {
         // For travis-ci:
         disable 'MissingTranslation'
