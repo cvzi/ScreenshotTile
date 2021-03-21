@@ -1,0 +1,40 @@
+Προσθέτει ένα κουμπί στον πίνακα γρήγορων ρυθμίσεων για τη λήψη στιγμιοτύπων οθόνης.
+
+Μετά την εγκατάσταση, θα χρειαστεί η προσθήκη του κουμπιού στις γρήγορες ρυθμίσεις σας κι ακολούθως η παραχώρηση των αδειών καταγραφής οθόνης και αποθήκευσης εικόνων στον εσωτερικό αποθηκευτικό χώρο.
+
+Εάν η εφαρμογή καταρρεύσει, σε Android 9/Pie ή 10, μπορείτε να ενεργοποιήσετε τη «Χρήση τοπικής μεθόδου στιγμιοτύπου οθόνης» στις ρυθμίσεις της εφαρμογής.
+
+<h2>Χαρακτηριστικά:</h2>✓ Λήψη στιγμιοτύπων από τις γρήγορες ρυθμίσεις
+✓ Δε χρειάζεται να είστε υπερχρήστης (root)
+✓ Ειδοποίηση μετά τη λήψη στιγμιοτύπου οθόνης (μπορεί να απενεργοποιηθεί)
+✓ Άμεση κοινοποίηση, επεξεργασία ή διαγραφή από την ειδοποίηση
+✓ Αιωρούμενο κουμπί/Κουμπί επικάλυψης σαν εικόνα συνομιλίας (Android 9+)
+✓ Λήψη στιγμιότυπου ενός συγκεκριμένου μέρος της οθόνης (παρατεταμένο πάτημα κουμπιού)
+✓ Καθυστέρηση λήψης στιγμιοτύπου οθόνης
+✓ Αποθήκευση σε οποιονδήποτε φάκελο σε οποιαδήποτε αποθηκευτικό χώρο π.χ. κάρτα sd
+✓ Αποθήκευση σε ποικιλία μορφών αρχείων: png, jpg ή webp
+✓ Αυτόματη λήψη στιγμιοτύπων οθόνης με εφαρμογές όπως η Tasker ή η MacroDroid
+✓ Δωρεάν, ανοιχτού κώδικα, καθόλου διαφημίσεις
+
+Η εφαρμογή είναι fork του «Screenshot Tile [Root]» αλλά δε χρειάζεται να είστε υπερχρήστης (root). Εάν είστε υπερχρήστης, χρησιμοποιείστε την <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">πρωτότυπη εφαρμογή</a> από τον ipcjs. Είναι ταχύτερη και πιο αξιόπιστη.
+
+Πηγαίος κώδικας: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Πρωτότυπη εφαρμογή: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Η άδεια Ανοιχτού Κώδικα είναι GNU GPLv3
+
+<u>Υποσημείωση:</u>
+🎦 Κατά τη λήψη ενός στιγμιοτύπου οθόνης, το <b>εικονίδιο «Google Cast»</b> θα εμφανίζεται στη γραμμή κατάστασης και θα είναι ορατό στην εικόνα του στιγμιοτύπου.
+Εάν επιθυμείτε να αποκρύψετε το εικονίδιο, θα βρείτε μία επεξήγηση εδώ: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Άδειες:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Photos/Media/Files and Storage"</i>
+Αυτό χρειάζεται για την αποθήκευση των αρχείων στιγμιοτύπου οθόνης στον εσωτερικό αποθηκευτικό χώρο της συσκευής σας.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Από το Android 9/Pie κι έπειτα, αυτή η άδεια απαιτείται για τη λήψη στιγμιοτύπων οθόνης. Ουσιαστικά, σημαίνει ότι αυτή η εφαρμογή μπορεί να εκτελείται χωρίς να εμφανίζεται. Ωστόσο, η εφαρμογή θα εμφανίζει πάντα μία ειδοποίηση όταν εκτελείται.
+
+<h2>Αυτόματα στιγμιότυπα οθόνης:</h2>Εάν θέλετε να αυτοματοποιήσετε τα στιγμιότυπα οθόνης από άλλη εφαρμογή, π.χ. την MacroDroid ή την Tasker, μπορείτε να βρείτε έναν αναλυτικό οδηγό εδώ:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Απόκρυψη εικονιδίου εφαρμογής:</h2>Στις ρυθμίσεις της εφαρμογής μπορείτε να αποκρύψετε το εικονίδιο της εφαρμογής από τον εκκινητή (launcher) σας. Μπορείτε ακόμα να έχετε πρόσβαση στην εφαρμογή πατώντας παρατεταμένα το κουμπί στις γρήγορες ρυθμίσεις σας. Δυστυχώς, το Android 10 δεν επιτρέπει πλέον την απόκρυψη μίας εφαρμογής.
+
+<h2>🌎 Support and translations</h2>If there is a problem or want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
