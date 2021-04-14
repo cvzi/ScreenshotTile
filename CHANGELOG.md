@@ -3,6 +3,7 @@
 ## 1.13.1
 *   Correctly enable/disable settings according to "use native method" status
 *   Dutch translation by Hendrik Maryns ([@hamaryns](https://github.com/hamaryns))
+*   Greek translation by [fresh](https://crowdin.com/profile/fresh1)
 
 ## 1.13.0
 *   Close button can be any emoji e.g. ❌ ✅ ❎ ✓ ✔ ⛌ ✖ [#56](https://github.com/cvzi/ScreenshotTile/issues/56)
