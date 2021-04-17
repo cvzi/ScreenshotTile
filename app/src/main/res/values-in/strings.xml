@@ -60,7 +60,7 @@
     <string name="notification_channel_description">Memperlihatkan pemberitahuan saat menangkap layar</string>
     <string name="notification_foreground_title">Mengambil tangkapan layar</string>
     <string name="notification_foreground_body">Memproses tangkapan layar. Sentuh untuk membatalkan</string>
-    <string name="notification_foreground_channel_description">Memperlihatkan pemberitahuan saat mengambil tangkapan layar.  Mencegah aplikasi dihentikan oleh optimalisasi baterai saat tangkapan layar sedang dalam proses</string>
+    <string name="notification_foreground_channel_description">Memperlihatkan pemberitahuan saat mengambil tangkapan layar. Mencegah aplikasi dihentikan oleh optimalisasi baterai saat tangkapan layar sedang dalam proses</string>
     <string name="notification_app_chooser_share">Bagikan dengan</string>
     <string name="notification_app_chooser_edit">Sunting dengan</string>
     <string name="screenshot_failed">Gagal mengambil tangkapan layar. Silakan ulangi</string>
