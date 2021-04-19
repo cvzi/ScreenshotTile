@@ -5,11 +5,11 @@
     <string name="tile_floating_label">Nổi</string>
     <string name="tile_floating_subtitle">Nút chụp màn hình</string>
     <string name="title_delay">Độ trễ</string>
-    <string name="more_setting">Cài đặt</string>
+    <string name="more_setting">Thêm cài đặt</string>
     <string name="open_settings">Mở cài đặt</string>
     <string name="left_screenshot_right_menu">Trái: Chụp màn hình, phải: Cài đặt</string>
-    <string name="partial_screenshot">Chọn phần</string>
-    <string name="file_format">Định dạng tập tin</string>
+    <string name="partial_screenshot">Chọn khu vực</string>
+    <string name="file_format">Định dạng tệp</string>
     <string name="setting_delay_entry_default">Ngay lập tức</string>
     <string name="setting_delay_entry_1s">1 giây</string>
     <string name="setting_delay_entry_2s">2 giây</string>
@@ -43,7 +43,7 @@
     <string name="setting_broadcast_secret">Mật khẩu intent truyền phát</string>
     <string name="setting_broadcast_secret_description">Một cụm từ bí mật để cho phép các ứng dụng khác (như MacroDroid hoặc Tasker) chụp màn hình</string>
     <string name="setting_storage_directory">Vị trí lưu</string>
-    <string name="setting_storage_directory_description">Thư mục lưu tệp tin</string>
+    <string name="setting_storage_directory_description">Thư mục lưu ảnh chụp màn hình</string>
     <string name="setting_tile_action">Hành động của ô</string>
     <string name="setting_dark_theme">Chủ đề tối</string>
     <string name="setting_dark_theme_system">Hệ thống</string>
@@ -55,14 +55,14 @@
     <string name="file_title">Ảnh chụp màn hình</string>
     <string name="file_description">Đã chụp ảnh màn hình vào %1$s</string>
     <string name="notification_title">Đã chụp ảnh màn hình</string>
-    <string name="notification_body">Chạm để xem ảnh chụp màn hình của bạn</string>
+    <string name="notification_body">Nhấn để xem hình ảnh</string>
     <string name="notification_channel_description">Hiện một thông báo khi bạn đã chụp ảnh màn hình</string>
     <string name="notification_foreground_title">Đang chụp ảnh màn hình…</string>
-    <string name="notification_foreground_body">Đang lưu ảnh chụp màn hình… Nhấn để hủy bỏ</string>
+    <string name="notification_foreground_body">Đang xử lý ảnh chụp màn hình… Nhấn để hủy</string>
     <string name="notification_foreground_channel_description">Hiện một thông báo khi bạn đang chụp ảnh màn hình. Ngăn chặn ứng dụng khỏi việc bị tối ưu hoá pin chấm dứt khi đang chụp màn hình</string>
     <string name="notification_app_chooser_share">Chia sẻ tệp bằng…</string>
     <string name="notification_app_chooser_edit">Chỉnh sửa tệp bằng…</string>
-    <string name="screenshot_failed">Không thể chụp ảnh màn hình</string>
+    <string name="screenshot_failed">Chụp ảnh màn hình thất bại, vui lòng thử lại</string>
     <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
     <string name="screenshot_file_saved">Đã lưu ảnh chụp màn hình %1$s</string>
     <string name="notification_delete_screenshot">Xóa</string>
@@ -72,7 +72,7 @@
     <string name="screenshot_delete_failed">Không thể xoá tệp</string>
     <string name="permission_missing_external_storage">Nhận quyền bộ nhớ thất bại</string>
     <string name="permission_missing_screen_capture">Nhận quyền ghi lại chụp màn hình thất bại</string>
-    <string name="hide_app_from_launcher">Ẩn khỏi ngăn chứa ứng dụng</string>
+    <string name="hide_app_from_launcher">Ẩn biểu tượng ứng dụng khỏi launcher</string>
     <string name="hide_app_unsupported">Không được hỗ trợ trên Android 10+</string>
     <string name="toggle_app_icon_failed">Hiện/ẩn biểu tượng ứng dụng thất bại</string>
     <string name="tutorial">Hướng dẫn</string>
@@ -97,7 +97,7 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">Cài đặt hỗ trợ tiếp cận</string>
     <string name="main_floating_button_title">Nút nổi</string>
-    <string name="main_general_text">Trước khi bạn có thể sử dụng ứng dụng này, bạn cần phải thêm ô/nút vào cài đặt nhanh. Nếu bạn không biết cách làm việc đó, hãy xem [Tutorial,.TutorialActivity].\n\nỨng dụng này hỗ trợ hai phương pháp chụp ảnh màn hình khác nhau:</string>
+    <string name="main_general_text">Trước khi bạn có thể sử dụng ứng dụng này, bạn cần phải thêm ô/nút vào cài đặt nhanh. Nếu bạn không biết cách làm việc đó, hãy xem [Hướng dẫn,.TutorialActivity].\n\nỨng dụng này hỗ trợ hai phương pháp chụp ảnh màn hình khác nhau:</string>
     <string name="main_legacy_method_title">Phương pháp cũ</string>
     <string name="main_legacy_method_text">Phương pháp chụp ảnh màn hình cũ sử dụng tính năng quay màn hình của Android.\nKhi bạn chụp ảnh màn hình, không có tiếng động nào sẽ được phát ra. Một thông báo im lặng được hiện để mở, chia sẻ và chỉnh sửa ảnh chụp màn hình. Thông báo đó có thể được tắt trong cài đặt ứng dụng.\nTrước khi bạn chụp ảnh màn hình bạn cần thêm ô vào cài đặt nhanh, chấp nhận quyền ghi lại màn hình và quyền truy cập bộ nhớ trong để lưu tệp hình ảnh.\nHãy xem hướng dẫn để biết cách làm.\n\nTrên một số điện thoại phương pháp này không hoạt động, đặc biệt là trên các phiên bản Android mới hơn (9.0+) nó không ổn định và nó có thể sẽ hỏi xin quyền ở mọi ảnh chụp màn hình. Nếu điều đó xảy ra, bạn nên sử dụng phương pháp của hệ thống ở duới.</string>
     <string name="main_native_method_title">Phương pháp của hệ thống</string>
