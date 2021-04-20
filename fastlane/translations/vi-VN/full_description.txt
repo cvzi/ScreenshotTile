@@ -1,0 +1,40 @@
+Thêm một nút/ô vào cài đặt nhanh để chụp ảnh màn hình.
+
+Sau khi cài đặt, bạn cần phải thêm nút/ô vào cài đặt nhanh và sau đó là cấp các quyền để ghi lại chụp màn hình và lưu hình ảnh vào bộ nhớ trong.
+
+Nếu ứng dụng bị crash (văng ra) trên Android 9/Pie hoặc 10, bạn có thể thử bật "Sử dụng phương pháp chụp màn hình của hệ thống" trong cài đặt ứng dụng.
+
+<h2>Tính năng:</h2>✓ Chụp ảnh màn hình từ cài đặt nhanh
+✓ Không yêu cầu root
+✓ Thông báo sau khi chụp màn hình (có thể được tắt)
+✓ Ngay lập tức chia sẻ, chỉnh sửa hoặc xoá ảnh chụp màn hình từ thông báo
+✓ Nút nổi/Nút trên ứng dụng khác như bong bóng chat (Android 9+)
+✓ Chỉ chụp ảnh màn hình một khu vực cụ thể của màn hình (nhấn giữ ô)
+✓ Độ trễ khi chụp màn hình
+✓ Lưu trữ trong bất kỳ thư mục nào trên bất kỳ kho lưu trữ nào, vd: thẻ sd
+✓ Lưu trữ dưới các định dạng tệp khác nhau: png, jpg hoặc webp
+✓ Tự động chụp ảnh màn hình bằng các ứng dụng như Tasker hoặc MacroDroid
+✓ Tự do, mã nguồn mở, không có quảng cáo
+
+Đây là một fork của "Screenshot Tile [Root]" nhưng nó không yêu cầu root. Nếu bạn có quyền truy cập root, bạn nên sử dụng <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">ứng dụng gốc</a> bởi ipcjs, nó nhanh hơn và đáng tin cậy hơn fork này.
+
+Mã nguồn: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Ứng dụng gốc: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Giấy phép mã nguồn mở là GNU GPLv3
+
+<u>Lưu ý:</u>
+🎦 Khi bạn chụp ảnh màn hình, <b>biểu tượng "Google Cast"</b> sẽ hiện lên trong thanh trạng thái và nó sẽ có thể nhìn thấy được trong ảnh chụp màn hình.
+Nếu bạn muốn ẩn biểu tượng đó, ở đây có một lời giải thích: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Quyền:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Ảnh/Phương tiện/Tệp và Bộ nhớ"</i>
+Quyền này được yêu cầu để lưu tệp ảnh chụp màn hình trong bộ nhớ trong của thiết bị.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Từ Android 9/Pie quyền này được yêu cầu để chụp ảnh màn hình. Về cơ bản, nó có nghĩa là ứng dụng này có thể chạy mà không hiện chính nó. Tuy nhiên, ứng dụng sẽ luôn hiện một thông báo khi nó đang chạy.
+
+<h2>Tự động chụp màn hình:</h2>Nếu bạn muốn tự động hoá việc chụp màn hình từ một ứng dụng khác, vd: MacroDroid hoặc Tasker, bạn có thể tìm thấy hướng dẫn từng bước ở đây:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Ẩn biểu tượng ứng dụng:</h2>Trong cài đặt ứng dụng bạn có thể ẩn biểu tượng ứng dụng khỏi launcher. Bạn vẫn có thể truy cập ứng dụng bằng cách nhấn giữ ô trong cài đặt nhanh. Không may mắn là Android 10 không cho phép ẩn ứng dụng nữa.
+
+<h2>🌎 Hỗ trợ và phiên dịch</h2>Nếu bạn gặp một vấn đề hoặc muốn giúp dịch ứng dụng này thành ngôn ngữ của bạn, vui lòng liên hệ với tôi tại <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> hoặc đóng góp một bản dịch trên <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
