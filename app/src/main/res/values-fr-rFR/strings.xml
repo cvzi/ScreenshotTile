@@ -39,14 +39,16 @@
     <string name="setting_floating_button_show_close_dialog_title">Bouton Fermer en emoji</string>
     <string name="setting_floating_button_show_close_dialog_description">Tapez un texte ou un emoji qui apparaîtra en tant que bouton de fermeture</string>
     <string name="setting_floating_button_shutter">Thème du bouton flottant</string>
+    <string name="setting_floating_button_delay">Temporisation (bouton flottant)</string>
     <string name="setting_broadcast_secret">Mot de passe pour l\'autorisation de diffusion</string>
     <string name="setting_broadcast_secret_description">Une phrase secrète pour permettre à d\'autres applications (comme MacroDroid ou Tasker) d\'initier des captures d\'écran</string>
     <string name="setting_storage_directory">Dossier de stockage</string>
     <string name="setting_storage_directory_description">Dossier où sont stockés les fichiers</string>
+    <string name="setting_tile_action">Action de la tuile/du bouton</string>
     <string name="setting_dark_theme">Mode nuit</string>
     <string name="setting_dark_theme_system">Système</string>
-    <string name="setting_dark_theme_on">Activé</string>
     <string name="setting_dark_theme_off">Désactivé</string>
+    <string name="setting_dark_theme_on">Activé</string>
     <string name="notification_settings">Notifications</string>
     <string name="notification_settings_on">Activé</string>
     <string name="notification_settings_off">Désactivé</string>
