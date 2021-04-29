@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.13.2
+*   Portuguese translation by [@laralem](https://github.com/laralem)
+*   Vietnamese translation by [bruhwut](https://crowdin.com/profile/bruhwut)
+*   Various translations improved
+
 ## 1.13.1
 *   Correctly enable/disable settings according to "use native method" status
 *   Dutch translation by Hendrik Maryns ([@hamaryns](https://github.com/hamaryns))
