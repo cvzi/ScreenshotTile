@@ -7,7 +7,7 @@
 [![Play Store](https://img.shields.io/endpoint?color=green&label=Store&logo=google-play&logoColor=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.github.cvzi.screenshottile%26m%3D%24rating%2520%25E2%25AD%2590%2520v%24version%2520)](https://play.google.com/store/apps/details?id=com.github.cvzi.screenshottile)
 [![Download APK file](https://img.shields.io/github/release/cvzi/ScreenshotTile.svg?label=Download%20.apk&logo=android)](https://github.com/cvzi/ScreenshotTile/releases/latest)
 
-[<img src="/docs/imgs/get-it-on-f-droid.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.github.cvzi.screenshottile/) [<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=com.github.cvzi.screenshottile)
+[<img src="/docs/imgs/get-it-on-f-droid.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.github.cvzi.screenshottile/)            Consider [donating to F-Droid](https://f-droid.org/donate/)
 
 Screenshot Tile for Android 7.0+ without requiring root access
 
@@ -17,7 +17,7 @@ Video:
 
 Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTile)
 
-[Changelog](CHANGELOG.md) • [View older releases](https://keybase.pub/cuzi/ScreenshotTileNoRoot_bin/)
+[Changelog](CHANGELOG.md) • [View older releases](https://keybase.pub/cuzi/ScreenshotTileNoRoot_bin/) • [Google store](https://play.google.com/store/apps/details?id=com.github.cvzi.screenshottile)
 
 ## Languages
 
