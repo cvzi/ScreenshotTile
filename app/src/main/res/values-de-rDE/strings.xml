@@ -39,13 +39,13 @@
     <string name="setting_floating_button_show_close_dialog_title">Emoji des \"Schließen\" Buttons</string>
     <string name="setting_floating_button_show_close_dialog_description">Gib einen Text oder einen Emoji ein, dieser wird als \"Schließen\" Button angezeigt</string>
     <string name="setting_floating_button_shutter">Look des schwebenden Auslösers</string>
-    <string name="setting_floating_button_delay">Verzögerung (Schwebender Auslöser)</string>
+    <string name="setting_floating_button_delay">Verzögerung (Schwebende Schaltfläche)</string>
     <string name="setting_broadcast_secret">Passwort für Broadcast intents</string>
     <string name="setting_broadcast_secret_description">Mit dem Passwort können andere Apps (z.B. MacroDroid oder Tasker) automatisch Screenshots erstellen</string>
     <string name="setting_storage_directory">Speicherort</string>
     <string name="setting_storage_directory_description">Ordner, wo Screenshots gespeichert werden</string>
-    <string name="setting_tile_action">Kachel Aktion</string>
-    <string name="setting_dark_theme">Nachtmodus</string>
+    <string name="setting_tile_action">Kachelaktion</string>
+    <string name="setting_dark_theme">Dunkles Farbschema</string>
     <string name="setting_dark_theme_system">System</string>
     <string name="setting_dark_theme_off">Deaktiviert</string>
     <string name="setting_dark_theme_on">Aktiviert</string>
