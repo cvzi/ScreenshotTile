@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_label">スクリーンショット</string>
+    <string name="file_format">フォーマット</string>
+    <string name="setting_delay_entry_default">すぐ</string>
+    <string name="setting_delay_entry_1s">1秒</string>
+    <string name="setting_delay_entry_2s">2秒</string>
+    <string name="setting_delay_entry_5s">5秒</string>
+    <string name="setting_storage_directory">保存場所</string>
+    <string name="setting_storage_directory_description">写真を保存するフォルダを決めます</string>
+    <string name="setting_dark_theme_off">OFF</string>
+    <string name="setting_dark_theme_on">ON</string>
+    <string name="notification_settings">通知</string>
+    <string name="notification_settings_on">ON</string>
+    <string name="notification_settings_off">OFF</string>
+    <string name="file_title">スクリーンショット</string>
+    <string name="notification_title">スクリーンショットを保存しました</string>
+    <string name="notification_body">タップするとスクリーンショットが表示されます</string>
+    <string name="notification_foreground_title">スクリーンショットを保存中…</string>
+    <string name="notification_foreground_body">スクリーンショットを保存中… タップして終了する</string>
+    <string name="screenshot_failed">スクリーンショット保存エラー</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">削除</string>
+    <string name="notification_share_screenshot">シェア</string>
+    <string name="notification_edit_screenshot">編集</string>
+    <string name="hide_app_from_launcher">ドロワーからアプリを非表示にする</string>
+    <string name="tutorial">チュートリアル</string>
+    <!-- About -->
+    <string name="about_license_title">ライセンス</string>
+    <!-- First screen -->
+</resources>
