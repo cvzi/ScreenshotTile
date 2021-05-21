@@ -10,10 +10,10 @@ Se a aplicação falhar no Android 9/Pie ou 10, pode tentar ativar a opçã "Usa
 ✓ Partilhe imediatamente, edite ou elimine uma captura de ecrã na notificação
 ✓ Botão flutuante, como uma bolha de bate-papo (Android 9+)
 ✓ Faça uma captura de ecrã de uma área específica do ecrã (toque longo no botão)
-✓ Atraso para tirar uma captura de tela (ideal nos casos que é impossível usar a captura do ecrã do Android porque o que se quer desaparece ao ativar)
-✓ Armazene em qualquer pasta em qualquer armazenamento, por exemplo no cartão SD externo
-✓ Armazene em diferentes formatos de ficheiros: png, jpg ou webp
 ✓ Tire capturas de ecrã automáticas com aplicações como o Tasker ou o MacroDroid
+✓ Armazene em qualquer pasta em qualquer armazenamento, por exemplo no cartão SD externo no cartão SD externo
+✓ Armazene em diferentes formatos de ficheiros: png, jpg ou webp
+<h2>Capturas de ecrã automáticas:</h2> se quer automatizar capturas de ecrã de outra aplicação, por exemplo, MacroDroid ou Tasker, pode encontrar um guia passo-a-passo aqui:
 ✓ Gratuito, com código aberto e sem publicidade
 
 Isto é uma bifurcação (fork) de "Screenshot Tile [Root]", mas não requer acesso root. Se tem acesso root, deve usar a <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">aplicação original</a> por ipcjs, é mais rápida e mais estável do que este fork.
