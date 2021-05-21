@@ -1,50 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="title_delay">Forsinkelsestid</string>
+    <string name="more_setting">Flere innstillinger</string>
+    <string name="open_settings">Åpne innstillinger</string>
+    <string name="left_screenshot_right_menu">Venstre: Screenshot, høyre: Innstillinger</string>
+    <string name="file_format">Filformat</string>
+    <string name="setting_delay_entry_default">Øyeblikkelig</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
-    <string name="file_description_simple_date_format">dd.MM.yyyy HH:mm:ss</string>
-    <string name="tile_label">Screenshot</string>
-    <string name="file_title">Screenshot</string>
+    <string name="show_count_down">Vis countdown</string>
+    <string name="use_native_screenshot_unsupported">Krever Android 9 Pie</string>
+    <string name="use_system_defaults_summary">Krever Android 11</string>
+    <string name="setting_floating_button_unsupported">Krever Android 9 Pie</string>
+    <string name="setting_storage_directory">Lagringsplasseringen</string>
+    <string name="setting_storage_directory_description">Mappen som bildene skal lagres i</string>
+    <string name="setting_dark_theme">Mørkt tema</string>
+    <string name="setting_dark_theme_system">System</string>
+    <string name="setting_dark_theme_off">Deaktivert</string>
+    <string name="setting_dark_theme_on">Aktivert</string>
+    <string name="notification_settings">Varslinger</string>
+    <string name="notification_settings_on">Aktivert</string>
+    <string name="notification_settings_off">Deaktivert</string>
     <string name="file_description">Skjermbilde fra %1$s</string>
+    <string name="file_description_simple_date_format">dd.MM.yyyy HH:mm:ss</string>
     <string name="notification_title">Skjermbilde tatt</string>
     <string name="notification_body">Trykk for å åpne skjermbilde</string>
     <string name="notification_channel_description">Viser varsling hvis en skjermbilde var tatt</string>
-    <string name="screenshot_file_saved">Skjermbilde lagret i %1$s</string>
+    <string name="notification_foreground_title">Lagrer skjermbildet…</string>
+    <string name="notification_app_chooser_share">Del med…</string>
+    <string name="notification_app_chooser_edit">Endre med…</string>
     <string name="screenshot_failed">Kunne ikke ta skjermbilde, prøv igjen</string>
-    <string name="setting_delay_entry_default">Øyeblikkelig</string>
-    <string name="more_setting">Flere innstillinger</string>
-    <string name="file_format">Filformat</string>
-    <string name="title_delay">Forsinkelsestid</string>
-    <string name="show_count_down">Vis countdown</string>
-    <string name="permission_missing_external_storage">Mislyktes å skaffe tillatelse for Lagring</string>
-    <string name="permission_missing_screen_capture">Mislyktes å skaffe tillatelse for å lage skjermbilder</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="screenshot_file_saved">Skjermbilde lagret i %1$s</string>
     <string name="notification_delete_screenshot">Slett</string>
     <string name="notification_share_screenshot">Del</string>
-    <string name="notification_app_chooser_share">Del med…</string>
     <string name="notification_edit_screenshot">Endre</string>
-    <string name="notification_app_chooser_edit">Endre med…</string>
     <string name="screenshot_deleted">Skjermbildet slettet</string>
     <string name="screenshot_delete_failed">Mislyktes å slette bildet</string>
+    <string name="permission_missing_external_storage">Mislyktes å skaffe tillatelse for Lagring</string>
+    <string name="permission_missing_screen_capture">Mislyktes å skaffe tillatelse for å lage skjermbilder</string>
     <string name="hide_app_from_launcher">Skjul app ikonet</string>
     <string name="toggle_app_icon_failed">Mislyktes å vise/skjule app ikonet</string>
     <string name="tutorial">Undervisning</string>
     <string name="tutorial_tap_for_next_step">Trykk for neste trinnet</string>
     <string name="take_screenshot">Ta et skjermbilde</string>
-
     <!-- About -->
     <string name="about_app_title">Om denne appen</string>
     <string name="about_app_1">Denne er et fork av\ngithub.com/ipcjs/ScreenshotTile</string>
-    <string name="about_app_2">Denne app er fortsatt utviklet.\nHvis du har root access, kan du bruke versjonen av ipcjs, den er raskere og mer pålitelig.</string>
-    <string name="about_app_3">For more information and bug reports visit:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Lisens</string>
-    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="notification_foreground_title">Lagrer skjermbildet…</string>
-    <string name="setting_storage_directory">Lagringsplasseringen</string>
-    <string name="setting_storage_directory_description">Mappen som bildene skal lagres i</string>
-
+    <string name="about_app_2">Denne app er fortsatt utviklet.\nHvis du har root access, kan du bruke versjonen av ipcjs, den er raskere og mer pålitelig.</string>
     <!-- First screen -->
-    <string name="main_accessibility_settings">Tilgjengelighetsinnstillinger</string>
-
 </resources>

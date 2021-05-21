@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">स्क्रीनशॉट</string>
-    <string name="notification_title">स्क्रीनशॉट सेव्ह केला</string>
-    <string name="notification_body">तुमचा स्क्रीनशॉट पाहण्यासाठी टॅप करा</string>
-    <string name="screenshot_failed">स्क्रीनशॉट सेव्ह करू शकलो नाही</string>
-    <string name="notification_share_screenshot">सामायिक करा</string>
-    <string name="notification_delete_screenshot">हटवा</string>
-    <string name="notification_edit_screenshot">संपादित करा</string>
+    <string name="partial_screenshot">कापा</string>
     <string name="file_format">प्रतिमा फॉरमॅट</string>
     <string name="setting_delay_entry_default">तत्काळ</string>
     <string name="setting_delay_entry_1s">1 सेकंद</string>
     <string name="setting_delay_entry_2s">2 सेकंद</string>
     <string name="setting_delay_entry_5s">5 सेकंद</string>
-    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="tutorial">ट्युटोरियल</string>
-    <string name="about_license_title">परवाना</string>
+    <string name="setting_dark_theme_off">बंद</string>
+    <string name="setting_dark_theme_on">चालू</string>
+    <string name="notification_settings">सूचना</string>
+    <string name="notification_settings_on">चालू</string>
+    <string name="notification_settings_off">बंद</string>
+    <string name="file_title">स्क्रीनशॉट</string>
+    <string name="notification_title">स्क्रीनशॉट सेव्ह केला</string>
+    <string name="notification_body">तुमचा स्क्रीनशॉट पाहण्यासाठी टॅप करा</string>
     <string name="notification_foreground_title">स्क्रीनशॉट सेव्ह करत आहे…</string>
     <string name="notification_foreground_body">स्क्रीनशॉट सेव्ह करत आहे… बाहेर पडण्यासाठी टॅप करा</string>
-    <string name="partial_screenshot">कापा</string>
-    <string name="notification_settings">सूचना</string>
-    <string name="notification_settings_off">बंद</string>
-    <string name="notification_settings_on">चालू</string>
+    <string name="screenshot_failed">स्क्रीनशॉट सेव्ह करू शकलो नाही</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">हटवा</string>
+    <string name="notification_share_screenshot">सामायिक करा</string>
+    <string name="notification_edit_screenshot">संपादित करा</string>
+    <string name="tutorial">ट्युटोरियल</string>
+    <!-- About -->
+    <string name="about_license_title">परवाना</string>
+    <!-- First screen -->
 </resources>

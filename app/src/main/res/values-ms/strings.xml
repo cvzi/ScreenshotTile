@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
-    <string name="tile_label">Screenshot</string>
-    <string name="notification_title">Tangkapan skrin disimpan</string>
-    <string name="notification_body">Ketik untuk melihat tangkapan skrin anda</string>
-    <string name="screenshot_failed">Tidak dapat menyimpan tangkapan skrin</string>
-    <string name="notification_share_screenshot">Kongsi</string>
-    <string name="notification_delete_screenshot">Padam</string>
-    <string name="notification_edit_screenshot">Edit</string>
+    <string name="more_setting">Pengaturan</string>
+    <string name="partial_screenshot">Potong</string>
     <string name="file_format">Format gambar</string>
     <string name="setting_delay_entry_default">Serta-merta</string>
-    <string name="setting_delay_entry_5s">5 saat</string>
-    <string name="setting_delay_entry_2s">2 saat</string>
     <string name="setting_delay_entry_1s">1 saat</string>
-    <string name="hide_app_from_launcher">Sembunyikan aplikasi dari laci aplikasi</string>
-    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
+    <string name="setting_delay_entry_2s">2 saat</string>
+    <string name="setting_delay_entry_5s">5 saat</string>
+    <string name="setting_dark_theme_off">Dimatikan</string>
+    <string name="setting_dark_theme_on">Dihidupkan</string>
     <string name="notification_settings">Pemberitahuan</string>
     <string name="notification_settings_on">Dihidupkan</string>
     <string name="notification_settings_off">Dimatikan</string>
-    <string name="tutorial">Tutorial</string>
-    <string name="about_license_title">Lesen</string>
-    <string name="notification_app_chooser_edit">Edit melalui…</string>
-    <string name="notification_app_chooser_share">Kongsi dengan…</string>
-    <string name="more_setting">Pengaturan</string>
     <string name="file_description">Tangkapan skrin diambil pada %1$s</string>
     <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
-    <string name="file_title">Screenshot</string>
+    <string name="notification_title">Tangkapan skrin disimpan</string>
+    <string name="notification_body">Ketik untuk melihat tangkapan skrin anda</string>
     <string name="notification_foreground_title">Menyimpan tangkapan skrin…</string>
     <string name="notification_foreground_body">Menyimpan tangkapan skrin… Klik untuk keluar</string>
-    <string name="partial_screenshot">Potong</string>
-
+    <string name="notification_app_chooser_share">Kongsi dengan…</string>
+    <string name="notification_app_chooser_edit">Edit melalui…</string>
+    <string name="screenshot_failed">Tidak dapat menyimpan tangkapan skrin</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">Padam</string>
+    <string name="notification_share_screenshot">Kongsi</string>
+    <string name="hide_app_from_launcher">Sembunyikan aplikasi dari laci aplikasi</string>
+    <!-- About -->
+    <string name="about_license_title">Lesen</string>
     <!-- First screen -->
-    <string name="main_accessibility_settings">Tetapan kebolehaksesan</string>
-
 </resources>
