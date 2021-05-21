@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.13.3
+*   Romanian translation by [Simona Iacob](https://crowdin.com/profile/simonaiacob)
+*   Various translations improved
+
 ## 1.13.2
 *   Portuguese translation by [@laralem](https://github.com/laralem)
 *   Vietnamese translation by [bruhwut](https://crowdin.com/profile/bruhwut)
