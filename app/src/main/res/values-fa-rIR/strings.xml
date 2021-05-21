@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_label">عکس صفحه‌نمایش</string>
+    <string name="partial_screenshot">برش</string>
+    <string name="file_format">فرمت تصویر</string>
+    <string name="setting_delay_entry_default">فوری</string>
+    <string name="setting_delay_entry_1s">۱ ثانیه</string>
+    <string name="setting_delay_entry_2s">۲ ثانیه</string>
+    <string name="setting_delay_entry_5s">۵ ثانیه</string>
+    <string name="setting_dark_theme_off">اعلان ها غیرفعال شدند</string>
+    <string name="setting_dark_theme_on">روشن</string>
+    <string name="notification_settings">اعلان ها</string>
+    <string name="notification_settings_on">روشن</string>
+    <string name="notification_settings_off">اعلان ها غیرفعال شدند</string>
+    <string name="file_title">عکس صفحه‌نمایش</string>
+    <string name="notification_title">عکس صفحه‌نمایش ذخیره شد</string>
+    <string name="notification_body">برای مشاهده عکس صفحه‌نمایشتان ضربه بزنید</string>
+    <string name="notification_foreground_title">در حال ذخیره عکس صفحه‌نمایش…</string>
+    <string name="notification_foreground_body">در حال ذخیره عکس صفحه‌نمایش… برای لغو ضربه بزنید</string>
+    <string name="screenshot_failed">عکس صفحه‌نمایش ذخیره نشد</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">حذف</string>
+    <string name="notification_share_screenshot">اشتراک گذاری</string>
+    <string name="notification_edit_screenshot">ویرایش</string>
+    <string name="hide_app_from_launcher">مخفی کردن برنامه از کشوی برنامه ها</string>
+    <string name="tutorial">آموزش گام‌به‌گام</string>
+    <!-- About -->
+    <!-- First screen -->
+</resources>
