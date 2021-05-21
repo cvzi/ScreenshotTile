@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_delay">Pagkaantala bago</string>
+    <string name="more_setting">Opsyon</string>
+    <string name="partial_screenshot">Pumili ng parihaba</string>
+    <string name="setting_delay_entry_default">Kaagad</string>
+    <string name="show_count_down">Ipakita countdown</string>
+    <string name="setting_dark_theme_off">Naka-off</string>
+    <string name="setting_dark_theme_on">Naka-on</string>
+    <string name="notification_settings">Mga Notification</string>
+    <string name="notification_settings_on">Naka-on</string>
+    <string name="notification_settings_off">Naka-off</string>
+    <string name="file_description">Screenshot na kinuha noong %1$s</string>
+    <string name="file_description_simple_date_format">MM-dd-yyyy HH:mm:ss</string>
+    <string name="notification_title">Na-save ang screenshot</string>
+    <string name="notification_body">I-tap upang tingnan ang iyong screenshot</string>
+    <string name="notification_foreground_title">Sine-save ang screenshot…</string>
+    <string name="notification_foreground_body">Sine-save ang screenshot… Mag-tap para kanselahin </string>
+    <string name="notification_app_chooser_share">Ibahagi…</string>
+    <string name="notification_app_chooser_edit">Edit gamit ang…</string>
+    <string name="screenshot_failed">Hindi ma-save ang screenshot, pakisubukang muli</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="screenshot_file_saved">Kinuha ang screenshot: %1$s</string>
+    <string name="notification_delete_screenshot">Tanggalin</string>
+    <string name="notification_share_screenshot">Ibahagi</string>
+    <string name="notification_edit_screenshot">I-edi</string>
+    <string name="screenshot_deleted">Tinanggal na ang screenshot</string>
+    <string name="screenshot_delete_failed">Nabigong tanggalin ang screenshot</string>
+    <string name="hide_app_from_launcher">Itago ang icon ng app mula sa launcher.</string>
+    <string name="toggle_app_icon_failed">Nabigong ipakita/itago ang application</string>
+    <string name="tutorial">Pagtuturo</string>
+    <string name="tutorial_tap_for_next_step">Tapikin para sa\nsusunod na hakbang</string>
+    <string name="take_screenshot">Kumuha ng screenshot</string>
+    <!-- About -->
+    <string name="about_app_title">Tungkol sa App</string>
+    <string name="about_app_3">Upang magbigay ng feedback:\ngithub.com/cvzi/ScreenshotTile</string>
+    <string name="about_license_title">Lisensyang</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\n(Ang Pangkaraniwang Lisensyang Publiko ng GNU Bersyon 3)</string>
+    <string name="about_app_2">Ang app na ito ay pa rin sa pag-unlad.\nTandaan na ang na app na ito ay hindi gaanong matatag kumpara sa orihinal.\nSubukan ang orihinal na app kung mayroon kang root access.</string>
+    <!-- First screen -->
+</resources>
