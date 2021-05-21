@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">स्क्रीनशॉट टाइल (नो रुट)</string>
+    <string name="tile_label">ਸਕ੍ਰੀਨਸ਼ਾਟ</string>
+    <string name="tile_floating_label">फ्लोटिंग</string>
+    <string name="tile_floating_subtitle">स्क्रीनशॉट बटन</string>
+    <string name="title_delay">विलंब</string>
+    <string name="more_setting">अधिक सेटिंग</string>
+    <string name="open_settings">सेटिंग्स खोलें</string>
+    <string name="left_screenshot_right_menu">बाएँ: स्क्रीनशॉट, दाएँ: सेटिंग्स</string>
+    <string name="partial_screenshot">क्रॉप</string>
+    <string name="file_format">छवि स्वरूप</string>
+    <string name="setting_delay_entry_default">तत्‍काल</string>
+    <string name="setting_delay_entry_1s">1 सेकंड</string>
+    <string name="setting_delay_entry_2s">2 सेकंड</string>
+    <string name="setting_delay_entry_5s">5 सेकंड</string>
+    <string name="show_count_down">उलटी गिनती दिखाओ</string>
+    <string name="use_native_screenshot">देशी स्क्रीनशॉट विधि का उपयोग करें</string>
+    <string name="use_native_screenshot_summary">होम + पावर बटन प्रेस का अनुकरण करें</string>
+    <string name="use_native_screenshot_unsupported">एंड्राइड 9 पाई की आवश्यकता है</string>
+    <string name="use_native_screenshot_unavailable">एक्सेसिबिलिटी सर्विस अक्षम है</string>
+    <string name="setting_floating_button_unavailable">एक्सेसिबिलिटी सर्विस अक्षम है</string>
+    <string name="setting_floating_button_unsupported">एंड्राइड 9 पाई की आवश्यकता है</string>
+    <string name="setting_dark_theme_off">बंद</string>
+    <string name="setting_dark_theme_on">चालू</string>
+    <string name="notification_settings">सूचनाएं</string>
+    <string name="notification_settings_on">चालू</string>
+    <string name="notification_settings_off">बंद</string>
+    <string name="file_title">ਸਕ੍ਰੀਨਸ਼ਾਟ</string>
+    <string name="notification_title">स्क्रीनशॉट सेव किया गया</string>
+    <string name="notification_body">अपना स्क्रीनशॉट देखने के लिए टैप करें</string>
+    <string name="notification_foreground_title">स्क्रीनशॉट सहेजा जा रहा है…</string>
+    <string name="notification_foreground_body">स्क्रीनशॉट सहेजा जा रहा है… बाहर निकलने के लिए टैप करें</string>
+    <string name="screenshot_failed">स्क्रीनशॉट सेव नहीं किया जा सका</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">हटाएं</string>
+    <string name="notification_share_screenshot">साझा करें</string>
+    <string name="notification_edit_screenshot">संपादित करें</string>
+    <string name="screenshot_deleted">फ़ाइल सफलतापूर्वक नष्ट कर दिया</string>
+    <string name="hide_app_from_launcher">एप्लिकेशन ड्रॉअर से ऐप छुपाए</string>
+    <string name="tutorial">ट्यूटोरियल</string>
+    <!-- About -->
+    <string name="about_license_title">लाइसेंस</string>
+    <!-- First screen -->
+</resources>
