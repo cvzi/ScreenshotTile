@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">إشعار لقطة شاشة (بدون روت)</string>
     <string name="tile_label">لقطة شاشة</string>
     <string name="tile_floating_label">عائمة</string>
     <string name="tile_floating_subtitle">زر لقطة الشاشة</string>
@@ -27,14 +28,16 @@
     <string name="setting_floating_button_show_close">أظهر زر [X] / زر إغلاق بجانب الزر العائم</string>
     <string name="setting_floating_button_show_close_summary">تتيح لك إزالة الزر العائم دون فتح الإعدادات السريعة</string>
     <string name="setting_floating_button_shutter">تخصيص تنسيق الزر العائم</string>
+    <string name="setting_floating_button_delay">تأخير (زر عائم)</string>
     <string name="setting_storage_directory">حفظ الموقع</string>
     <string name="setting_storage_directory_description">مكان المجلد لحفظ لقطات الشاشة فيه</string>
+    <string name="setting_dark_theme_off">تم إيقاف</string>
+    <string name="setting_dark_theme_on">‏‏تم تشغيل</string>
     <string name="notification_settings">الإشعارات</string>
     <string name="notification_settings_on">‏‏تم تشغيل</string>
     <string name="notification_settings_off">تم إيقاف</string>
     <string name="file_title">لقطة شاشة</string>
     <string name="file_description">تم التقاط لقطة شاشة في %1$s</string>
-    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">تم حفظ لقطة الشاشة.</string>
     <string name="notification_body">انقر لعرض لقطة الشاشة.</string>
     <string name="notification_channel_description">أظهر إشعار عندما تأخذ لقطة شاشة</string>
@@ -59,10 +62,9 @@
     <string name="tutorial_tap_for_next_step">تبع الخطوات التالية</string>
     <string name="tutorial_step2">إسحب منطقة الإخطارات السريعة للأسفل</string>
     <string name="tutorial_step3">اسحب الإعدادات السريعة للأسفل</string>
-    <string name="tutorial_step4">اضغط على زر التعديل</string>
     <string name="tutorial_step5">ابحث عن المكان الجديد لزر التقاط الشاشة</string>
     <string name="tutorial_step6">إسحب الزر لإعداداتك</string>
+    <!-- About -->
     <!-- First screen -->
-    <string name="main_accessibility_settings">إعدادات إمكانية الدخول</string>
-
+    <string name="main_floating_button_title">زر عائم</string>
 </resources>

@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">اسکرین شاٹ</string>
-    <string name="notification_title">"اسکرین شاٹ محفوظ ہو گیا"</string>
-    <string name="notification_body">"اپنا اسکرین شاٹ دیکھنے کیلئے تھپتھپائیں"ं</string>
-    <string name="screenshot_failed">"اسکرین شاٹ کو محفوظ نہیں کیا جا سکا"</string>
-    <string name="notification_delete_screenshot">حذف کریں</string>
-    <string name="notification_share_screenshot">شیئر</string>
-    <string name="notification_edit_screenshot">ترمیم کریں</string>
+    <string name="more_setting">سیٹنگز</string>
+    <string name="partial_screenshot">کراپ کریں</string>
     <string name="setting_delay_entry_default">فوری طور پر</string>
     <string name="setting_delay_entry_1s">1 سیکنڈ</string>
     <string name="setting_delay_entry_2s">2 سیکنڈ</string>
     <string name="setting_delay_entry_5s">5 سیکنڈ</string>
-    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="tutorial">ٹیوٹوریل</string>
-    <string name="about_license_title">لائسنس</string>
+    <string name="setting_dark_theme_off">نا اہل بنادیا</string>
+    <string name="setting_dark_theme_on">آن کردیا</string>
+    <string name="notification_settings">اعلانات</string>
+    <string name="notification_settings_on">آن کردیا</string>
+    <string name="notification_settings_off">نا اہل بنادیا</string>
     <string name="file_title">اسکرین شاٹ</string>
+    <string name="notification_title">اسکرین شاٹ محفوظ ہو گیا</string>
+    <string name="notification_body">\"اپنا اسکرین شاٹ دیکھنے کیلئے تھپتھپائیں\"ं</string>
     <string name="notification_foreground_title">اسکرین شاٹ محفوظ ہو رہا ہے…</string>
     <string name="notification_foreground_body">اسکرین شاٹ محفوظ ہو رہا ہے…</string>
-    <string name="more_setting">سیٹنگز</string>
-    <string name="notification_settings">اعلانات</string>
-    <string name="notification_settings_off">نا اہل بنادیا</string>
-    <string name="notification_settings_on">آن کردیا</string>
-    <string name="partial_screenshot">کراپ کریں</string>
-
+    <string name="screenshot_failed">اسکرین شاٹ کو محفوظ نہیں کیا جا سکا</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">حذف کریں</string>
+    <string name="notification_share_screenshot">شیئر</string>
+    <string name="notification_edit_screenshot">ترمیم کریں</string>
+    <string name="tutorial">ٹیوٹوریل</string>
+    <!-- About -->
+    <string name="about_license_title">لائسنس</string>
     <!-- First screen -->
-    <string name="main_accessibility_settings">ایکسیسبیلٹی ترتیبات</string>
-
 </resources>
