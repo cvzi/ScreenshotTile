@@ -1,0 +1,40 @@
+Adaugă în panoul de setări rapide un buton/un panou pentru a face capturi de ecran.
+
+După instalare, trebuie să adăugați butonul/țigla la setările rapide și apoi să acordați permisiunile de înregistrare a capturilor de ecran și de salvare a imaginilor în memoria internă.
+
+Dacă aplicația se blochează pe Android 9/Pie sau 10, puteți încerca să activați "Utilizați metoda nativă de captură de ecran" în setările aplicației.
+
+<h2>Caracteristici:</h2>✓ Faceți capturi de ecran din setările rapide
+✓ Nu este nevoie de root
+✓ Notificare după ce a fost făcută o captură de ecran (poate fi dezactivată)
+✓ Partajați, editați sau ștergeți o captură de ecran pe loc din notificare
+✓ Buton flotant / buton de suprapunere ca un balon de chat (Android 9+)
+✓ Efectuați capturi de ecran numai într-o anumită zonă a ecranului (apăsați lung pe dală)
+✓ Întârzierea efectuării unei capturi de ecran
+✓ Salvați în orice director de pe orice mediu de stocare, de ex. card sd
+✓ Salvare în diferite formate de fișiere: png, jpg sau webp
+✓ Efectuați capturi de ecran automate cu aplicații precum Tasker sau MacroDroid
+✓ Gratuit, open-source, fără reclame
+
+Aceasta este o variantă a "Screenshot Tile [Root]", dar care nu necesită root. Dacă aveți acces root, puteți folosi <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">aplicația originală</a> de ipcjs, care este mai rapidă și mai fiabilă decât versiunea aceasta.
+
+Cod sursă: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Aplicația originală: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Licența Open Source este GNU GPLv3
+
+<u>Notă:</u>
+🎦 Când faci o captură de ecran; iconița <b>"Google Cast"</b> va apărea în bara de stare şi va fi vizibilă în imaginea capturii de ecran.
+Dacă doriţi să ascundeţi iconiţa, există o îndrumare aici: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Permisiuni:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE " Fotografii/Media/Fișiere și stocare"</i>
+Această permisiune este necesară pentru a salva fișierele de captură ecran în memoria internă a dispozitivului dumneavoastră.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Începând cu Android 9/Pie această permisiune este necesară pentru a face capturi de ecran. Practic, înseamnă că această aplicație poate rula fără a se înfățișa pe ecran. Cu toate acestea, aplicația va afișa întotdeauna o notificare atunci când rulează.
+
+<h2>Capturi de ecran automate:</h2>Dacă doriți să automatizați capturile de ecran din alte aplicații, de ex. MacroDroid sau Tasker, puteți găsi un ghid pas cu pas aici:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Ascunderea iconiței aplicației:</h2>Din setările aplicației poți ascunde iconița aplicației din lansator. Chiar daca e ascunsa puteți accesa aplicația apăsând lung pe dală în setările rapide. Din păcate, lansatorul din Android 10 nu mai permite ascunderea unei aplicații. Folositi un lansator alternativ.
+
+<h2>🌎 Support and translations</h2>If there is a problem or want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
