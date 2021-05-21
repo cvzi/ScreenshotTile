@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_label">ਯਾਤਰਾ ਦੇ ਵੇਰਵੇ</string>
+    <string name="setting_dark_theme_off">ਬੰਦ</string>
+    <string name="setting_dark_theme_on">ਚਾਲੂ</string>
+    <string name="notification_settings">ਸੂਚਨਾਵਾਂ</string>
+    <string name="notification_settings_on">ਚਾਲੂ</string>
+    <string name="notification_settings_off">ਬੰਦ</string>
+    <string name="file_title">ਯਾਤਰਾ ਦੇ ਵੇਰਵੇ</string>
+    <string name="notification_title">ਸਕ੍ਰੀਨਸ਼ਾਟ ਰੱਖਿਅਤ ਕੀਤਾ ਗਿਆ</string>
+    <string name="notification_body">ਆਪਣਾ ਸਕ੍ਰੀਨਸ਼ਾਟ ਦੇਖਣ ਲਈ ਟੈਪ ਕਰੋ</string>
+    <string name="notification_foreground_title">ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ…</string>
+    <string name="notification_foreground_body">ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ… ਬਾਹਰ ਜਾਣ ਲਈ ਟੈਪ ਕਰੋ</string>
+    <string name="screenshot_failed">ਸਕ੍ਰੀਨਸ਼ਾਟ ਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">ਹਟਾਓ</string>
+    <string name="notification_share_screenshot">ਸਾਂਝਾ ਕਰੋ</string>
+    <string name="notification_edit_screenshot">ਸੰਪਾਦਨ ਕਰੋ</string>
+    <string name="tutorial">ਟਿਊਟੋਰੀਅਲ</string>
+    <!-- About -->
+    <string name="about_license_title">ਲਾਇਸੰਸ</string>
+    <!-- First screen -->
+</resources>
