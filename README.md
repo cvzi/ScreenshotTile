@@ -30,6 +30,7 @@ You may translate the resource files directly and open a pull request. The Engli
 ## Contributors
 
 [![Contributors](https://contrib.rocks/image?repo=cvzi/ScreenshotTile)](https://github.com/cvzi/ScreenshotTile/graphs/contributors)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcvzi%2FScreenshotTile.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcvzi%2FScreenshotTile?ref=badge_shield)
 
 ## Technical details
 
@@ -126,3 +127,7 @@ Since Android 9/Pie this permission is required to take screenshots. It basicall
 >   ScreenshotTile will start capturing everything that's displayed on your screen.
 
 This is a special permission that is requested before you take a screenshot or when you add the tile to you quick settings. It allows the app to record the screen. In this case, for a screenshot, the recording is only one image/frame.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcvzi%2FScreenshotTile.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcvzi%2FScreenshotTile?ref=badge_large)
