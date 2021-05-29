@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.13.4
+*   Arabic translation by Rex_sa (rex07) and Yousef Khaled Elsayed Espetan (yousef10)
+
 ## 1.13.3
 *   Romanian translation by [Simona Iacob](https://crowdin.com/profile/simonaiacob)
 *   Various translations improved
