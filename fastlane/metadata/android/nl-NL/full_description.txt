@@ -1,0 +1,40 @@
+Voegt een knop/tegel toe aan het snelle-instellingenpaneel om schermafbeeldingen te maken.
+
+Na installatie moet u de knop/tegel toevoegen aan uw snelle instellingen en vervolgens de machtiging geven om schermafdrukken te maken en afbeeldingen op te slaan in de interne opslag.
+
+Als de app crasht op Android 9/Pie of 10, kunt u proberen “Gebruik ingebouwde methode” te activeren in de app-instellingen.
+
+<h2>Functies:</h2>✓ Schermafdrukken maken vanuit de snelle instellingen
+✓ Geen root nodig
+✓ Melding nadat een schermafdruk is genomen (kan worden uitgeschakeld)
+✓ Onmiddellijk delen, bewerken of verwijderen van een schermafdruk vanuit de melding
+✓ Zwevende knop/Overlay-knop zoals een chatbubbel (Android 9+)
+✓ Alleen een schermafdruk maken van een specifiek gebied van het scherm (lang indrukken van de tegel)
+✓ Schermafdruk uitstellen
+✓ Bewaren in een willekeurige map op elke opslagplaats, bijv. SD-kaart
+✓ Opslaan in verschillende bestandsindelingen: png, jpg of webp
+✓ Automatische schermafdrukken maken met apps als Tasker of MacroDroid
+✓ Gratis, open-source, geen advertenties
+
+Dit is een vork van “Screenshot Tile [Root]” maar heeft geen root nodig. Als je root-toegang hebt, kan je beter de <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">originele app</a> van ipcjs gebruiken, deze is sneller en betrouwbaarder dan deze vork.
+
+Broncode: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Originele app: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Opensource-licentie is GNU GPLv3
+
+<u>Opmerking:</u>
+🎦 Wanneer je een schermafdruk maakt, zal het <b>“Google Cast”-pictogram</b> verschijnen in de statusbalk en zichtbaar zijn in de schermafdruk.
+Als je het pictogram wilt verbergen, is er hier een uitleg: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Toestemmingen:</h2>½ <i>android.permission.WRITE_EXTERNAL_STORAGE "Foto’s/Media/Bestanden en Opslag"</i>
+Dit is vereist om de schermafdrukbestanden op de interne opslag van je apparaat op te slaan.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Sinds Android 9/Pie is deze toestemming vereist voor het maken van screenshots. Het betekent in feite dat deze app kan draaien zonder zichzelf te laten zien. De app zal echter altijd een melding weergeven wanneer deze wordt uitgevoerd.
+
+<h2>Automatische schermafdrukken:</h2>Als je schermafdrukken wilt automatiseren vanuit een andere app, bijvoorbeeld MacroDroid of Tasker, kan je hier een stapsgewijze handleiding vinden:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Het app-pictogram verbergen:</h2>In de instellingen van de app kan je het app-pictogram verbergen van je launcher. Je hebt nog steeds toegang tot de app door lang op de tegel te drukken in je snelle instellingen. Helaas staat Android 10 het verbergen van een app niet meer toe.
+
+<h2>🌎 Ondersteuning en vertalingen</h2>Als er een probleem is of je wil helpen deze app te vertalen in jouw taal, neem contact met me op via <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> of draag een vertaling bij op <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
