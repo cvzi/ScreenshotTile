@@ -1,0 +1,40 @@
+Dodaje przycisk/kafelek do panelu szybkich ustawień, aby wykonywać zrzuty ekranu.
+
+Po zainstalowaniu musisz dodać kafelek/przycisk do szybkich ustawień, a następnie przydzielić uprawnienia do nagrywania ekranu i zapisywania obrazów do pamięci wewnętrznej.
+
+Jeśli aplikacja zawiesza się w systemie Android 9/Pie lub 10, możesz spróbować włączyć opcję "Użyj natywnej metody wykonywania zrzutów ekranu" w ustawieniach aplikacji.
+
+<h2>Funkcje:</h2>✓ Wykonywanie zrzutów ekranu z panelu szybkich ustawień
+✓ Nie wymaga root'a
+✓ Powiadomienie po wykonaniu zrzutu ekranu (może zostać wyłączone)
+✓ Natychmiast udostępniaj, edytuj lub usuń zrzut ekranu bezpośrednio z powiadomienia
+✓ Pływający przycisk/Nakładka podobna do dymka czatu (Android 9+)
+✓ Wykonywanie zrzutu tylko określonego fragmentu ekranu (długie naciśnięcie kafelka)
+✓ Opóźnienie wykonania zrzutu ekranu
+✓ Przechowywanie w dowolnym folderze lub pamięci np. karcie pamięci
+✓ Przechowywanie w różnych formatach plików: png, jpg lub webp
+✓ Wykonywanie automatycznych zrzutów ekranu, za pomocą aplikacji takich jak Tasker lub MacroDroid
+✓ Darmowy, open-source, bez reklam
+
+To jest fork aplikacji "Screenshot Tile [Root]", z tym że nie wymaga root'a. Jeśli masz dostęp do roota, powinieneś użyć <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">oryginalnej aplikacji</a> od ipcjs, jest szybsza i bardziej niezawodna niż ten fork.
+
+Kod źródłowy: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Oryginalna aplikacja: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Licencja Open Source to GNU GPLv3
+
+<u>Uwaga:</u>
+🎦 Podczas robienia zrzutu ekranu <b>ikona "Google Cast"</b> pojawi się na pasku stanu i będzie widoczna na obrazie zrzutu ekranu.
+Jeśli chcesz ukryć ikonę, wyjaśnienie znajduje się tutaj: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Uprawnienia:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Zdjęcia/Media/Pliki i pamięć"</i>
+To jest wymagane do zapisu zrzutu ekranu w wewnętrznej pamięci urządzenia.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Od systemu Android 9/Pie to uprawnienie jest wymagane do wykonywania zrzutów ekranu. Oznacza to, że aplikacja może działać bez pokazywania się. Jednakże aplikacja zawsze wyświetli powiadomienie, gdy jest uruchomiona.
+
+<h2>Automatyczne zrzuty ekranu:</h2>Jeśli chcesz zautomatyzować zrzuty ekranu z innej aplikacji, np. MacroDroid lub Tasker, poradnik znajdziesz tutaj:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Ukrywanie ikony aplikacji:</h2>W ustawienia aplikacji możesz ukryć ikonę tej aplikacji z ekranu wszystkich aplikacji. Nadal możesz uzyskać dostęp do aplikacji poprzez długie naciśniecie kafelka w szybkich ustawieniach. Niestety, system Android 10 nie pozwala na ukrywanie aplikacji.
+
+<h2>🌎 Wsparcie i tłumaczenia</h2>Jeśli wystąpił problem lub chcesz pomóc w tłumaczeniu tej aplikacji na swój język, skontaktuj się ze mną na <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> lub weź udział w tłumaczeniu na <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
