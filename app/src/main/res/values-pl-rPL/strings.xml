@@ -58,14 +58,14 @@
     <string name="notification_title">Wykonano zrzut ekranu</string>
     <string name="notification_body">Dotknij, aby wyświetlić zrzut ekranu</string>
     <string name="notification_channel_description">Pokazuje powiadomienie, po wykonaniu zrzutu ekranu</string>
-    <string name="notification_foreground_title">Zapisywanie zrzutu ekranu…</string>
+    <string name="notification_foreground_title">Wykonywanie zrzutu ekranu…</string>
     <string name="notification_foreground_body">Zapisywanie zrzutu ekranu… Stuknij, aby anulować</string>
     <string name="notification_foreground_channel_description">Pokazuje powiadomienie podczas wykonywania zrzutu ekranu. Zapobiega to zatrzymaniu aplikacji przez optymalizację baterii w toku wykonywania zrzutu ekranu</string>
     <string name="notification_app_chooser_share">Udostępnij przez…</string>
     <string name="notification_app_chooser_edit">Edytuj w aplikacji…</string>
     <string name="screenshot_failed">Nie udało się wykonać zrzutu ekranu</string>
     <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
-    <string name="screenshot_file_saved">Wykonano zrzut ekranu: %1$s</string>
+    <string name="screenshot_file_saved">Zrzut ekranu został zapisany: %1$s</string>
     <string name="notification_delete_screenshot">Usuń</string>
     <string name="notification_share_screenshot">Udostępnij</string>
     <string name="notification_edit_screenshot">Edytuj</string>
