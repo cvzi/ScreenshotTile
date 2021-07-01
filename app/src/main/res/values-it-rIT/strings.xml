@@ -44,7 +44,10 @@
     <string name="setting_broadcast_secret_description">Una frase segreta per consentire ad altre applicazioni (come MacroDroid o Tasker) di effettuare screenshot</string>
     <string name="setting_storage_directory">Salva posizione</string>
     <string name="setting_storage_directory_description">Cartella in cui salvare gli screenshot</string>
+    <string name="setting_file_name_pattern">Nome del file</string>
+    <string name="setting_file_name_placeholders_title">Usa le seguenti variabili nel nome del file</string>
     <string name="setting_tile_action">Azione del pulsante/tile</string>
+    <string name="setting_floating_action">Azione del pulsante fluttuante</string>
     <string name="setting_dark_theme">Modalità notturna</string>
     <string name="setting_dark_theme_system">Sistema</string>
     <string name="setting_dark_theme_off">Disabilitato</string>
