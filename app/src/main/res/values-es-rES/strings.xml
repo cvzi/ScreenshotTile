@@ -44,7 +44,10 @@
     <string name="setting_broadcast_secret_description">Una frase secreta para permitir que otras aplicaciones (como MacroDroid o Tasker) pueden iniciar capturas de pantalla</string>
     <string name="setting_storage_directory">Carpeta de almacenamiento</string>
     <string name="setting_storage_directory_description">Carpeta para guardar screenshots</string>
+    <string name="setting_file_name_pattern">Nombre del archivo</string>
+    <string name="setting_file_name_placeholders_title">Usa las siguientes variables en el nombre del archivo</string>
     <string name="setting_tile_action">Acción del mosaico</string>
+    <string name="setting_floating_action">Acción del botón flotante</string>
     <string name="setting_dark_theme">Tema oscuro</string>
     <string name="setting_dark_theme_system">Sistema</string>
     <string name="setting_dark_theme_off">Desactivado</string>
