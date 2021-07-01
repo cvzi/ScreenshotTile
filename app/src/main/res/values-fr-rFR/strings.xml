@@ -44,7 +44,10 @@
     <string name="setting_broadcast_secret_description">Une phrase secrète pour permettre à d\'autres applications (comme MacroDroid ou Tasker) d\'initier des captures d\'écran</string>
     <string name="setting_storage_directory">Dossier de stockage</string>
     <string name="setting_storage_directory_description">Dossier où sont stockés les fichiers</string>
+    <string name="setting_file_name_pattern">Nom du fichier</string>
+    <string name="setting_file_name_placeholders_title">Utiliser les variables suivantes dans le nom du fichier</string>
     <string name="setting_tile_action">Action de la tuile/du bouton</string>
+    <string name="setting_floating_action">Action du bouton flottant</string>
     <string name="setting_dark_theme">Mode nuit</string>
     <string name="setting_dark_theme_system">Système</string>
     <string name="setting_dark_theme_off">Désactivé</string>
