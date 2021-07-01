@@ -43,7 +43,11 @@
     <string name="setting_broadcast_secret_description">A secret phrase to allow other applications (like MacroDroid or Tasker) to initiate screenshots</string>
     <string name="setting_storage_directory">Save location</string>
     <string name="setting_storage_directory_description">Folder to save screenshots in</string>
+    <string name="setting_file_name_pattern">Filename</string>
+    <string name="setting_file_name_placeholders_title">Filename placeholders</string>
+    <string name="setting_file_name_placeholders">%timestamp% - time as yyyy-MM-dd_HH-mm-ss\n%counter% - counts the number of screenshots\n%random% - a random UUID\n%randint% - a random number</string>
     <string name="setting_tile_action">Tile action</string>
+    <string name="setting_floating_action">Floating button action</string>
     <string name="setting_dark_theme">Dark theme</string>
     <string name="setting_dark_theme_system">System</string>
     <string name="setting_dark_theme_off">Disabled</string>
