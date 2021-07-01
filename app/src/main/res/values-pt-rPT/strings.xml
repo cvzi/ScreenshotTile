@@ -44,7 +44,10 @@
     <string name="setting_broadcast_secret_description">Uma frase secreta que permite que outras aplicações (como MacroDroid ou Tasker) tirem capturas de ecrã</string>
     <string name="setting_storage_directory">Local de armazenamento</string>
     <string name="setting_storage_directory_description">Pasta para guardar os ficheiros</string>
+    <string name="setting_file_name_pattern">Nome do ficheiro</string>
+    <string name="setting_file_name_placeholders_title">Use as seguintes variáveis no nome do ficheiro</string>
     <string name="setting_tile_action">Ação do botão</string>
+    <string name="setting_floating_action">Ação do botão flutuante</string>
     <string name="setting_dark_theme">Tema escuro</string>
     <string name="setting_dark_theme_system">Sistema</string>
     <string name="setting_dark_theme_off">Desativado</string>
