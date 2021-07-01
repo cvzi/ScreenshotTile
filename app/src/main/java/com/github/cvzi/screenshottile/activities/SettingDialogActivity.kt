@@ -1,9 +1,7 @@
 package com.github.cvzi.screenshottile.activities
 
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.Intent.EXTRA_COMPONENT_NAME
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -46,11 +44,12 @@ class SettingDialogActivity : AppCompatActivity() {
                 .show(supportFragmentManager, SettingDialogFragment::class.java.name)
         }
 
+        /*
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Detect which tile was long pressed
             val componentName: ComponentName? = intent?.getParcelableExtra(EXTRA_COMPONENT_NAME)
         }
-
+        */
 
         if (intent?.action == START_SERVICE) {
             // make sure that a foreground service runs
