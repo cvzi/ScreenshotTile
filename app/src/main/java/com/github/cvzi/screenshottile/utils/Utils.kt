@@ -27,6 +27,8 @@ import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import java.io.*
 import java.net.URLDecoder
 import java.util.*
+import kotlin.math.max
+import kotlin.random.Random
 
 
 /**
@@ -198,8 +200,11 @@ fun createOutputStreamLegacy(
     date: Date,
     dim: Point
 ): OutputStreamResult {
-
-    val filename = "$fileTitle.${compressionOptions.fileExtension}"
+    val filename = if (fileTitle.endsWith(
+            ".${compressionOptions.fileExtension}",
+            true
+        )
+    ) fileTitle else "$fileTitle.${compressionOptions.fileExtension}"
 
     val customDirectory = App.getInstance().prefManager.screenshotDirectory
 
@@ -290,7 +295,12 @@ fun createOutputStreamMediaStore(
     date: Date,
     dim: Point
 ): OutputStreamResult {
-    val filename = "$fileTitle.${compressionOptions.fileExtension}"
+    val filename = if (fileTitle.endsWith(
+            ".${compressionOptions.fileExtension}",
+            true
+        )
+    ) fileTitle else "$fileTitle.${compressionOptions.fileExtension}"
+
     var relativePath =
         "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}"
     var storageUri = Images.Media.EXTERNAL_CONTENT_URI
@@ -369,18 +379,38 @@ fun createOutputStreamMediaStore(
 }
 
 /**
- * Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss".
+ * Format the filename
+ */
+fun formatFileName(fileNamePattern: String, date: Date): String {
+    val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.US).format(date)
+    val counter = App.getInstance().prefManager.screenshotCount.toString()
+
+    var fileName = fileNamePattern.replace("%timestamp%", timeStamp)
+    fileName = fileName.replace("%counter%", counter.padStart(max(5, counter.length), '0'))
+    while (fileName.contains("%randint%")) {
+        val randInt = Random.Default.nextInt(0, Int.MAX_VALUE).toString()
+            .padStart(Int.MAX_VALUE.toString().length, '0')
+        fileName = fileName.replaceFirst("%randint%", randInt)
+    }
+    while (fileName.contains("%random%")) {
+        fileName.replaceFirst("%random%", UUID.randomUUID().toString())
+    }
+    return fileName
+}
+
+/**
+ * Save image to jpg file in default "Picture" storage.
  */
 fun saveBitmapToFile(
     context: Context,
     bitmap: Bitmap,
-    prefix: String,
+    fileNamePattern: String,
     compressionOptions: CompressionOptions = CompressionOptions(),
     cutOutRect: Rect?
 ): SaveImageResult {
     val date = Date()
-    val timeStamp: String = SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.US).format(date)
-    val filename = "$prefix$timeStamp"
+
+    val filename = formatFileName(fileNamePattern, date)
 
     val outputStreamResult = createOutputStream(
         context,
@@ -504,12 +534,12 @@ fun saveBitmapToFile(
 }
 
 /**
- * Save image to jpg file in default "Picture" storage with filename="{$prefix}yyyyMMdd_HHmmss".
+ * Save image to jpg file in default "Picture" storage.
  */
 fun saveImageToFile(
     context: Context,
     image: Image,
-    prefix: String,
+    fileNamePattern: String,
     compressionOptions: CompressionOptions = CompressionOptions(),
     cutOutRect: Rect?
 ): SaveImageResult {
@@ -517,7 +547,7 @@ fun saveImageToFile(
     val bitmap = imageToBitmap(image, cutOutRect)
     image.close()
 
-    return saveBitmapToFile(context, bitmap, "Screenshot_", compressionOptions, cutOutRect)
+    return saveBitmapToFile(context, bitmap, fileNamePattern, compressionOptions, cutOutRect)
 }
 
 

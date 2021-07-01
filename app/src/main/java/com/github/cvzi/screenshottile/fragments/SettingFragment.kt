@@ -57,8 +57,11 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var floatingButtonHideShowClosePref: SwitchPreference? = null
     private var floatingButtonShutter: ListPreference? = null
     private var floatingButtonDelay: ListPreference? = null
+    private var floatingButtonActionPref: ListPreference? = null
     private var hideAppPref: SwitchPreference? = null
     private var storageDirectoryPref: Preference? = null
+    private var fileNamePatternPref: EditTextPreference? = null
+    private var fileNamePlaceholders: Preference? = null
     private var broadcastSecretPref: EditTextPreference? = null
     private var tileActionPref: ListPreference? = null
     private var darkThemePref: ListPreference? = null
@@ -72,6 +75,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_delay) -> updateDelaySummary(prefManager.delay.toString())
                 getString(R.string.pref_key_hide_app) -> onHideApp(prefManager.hideApp)
                 getString(R.string.pref_key_file_format) -> updateFileFormatSummary(prefManager.fileFormat)
+                getString(R.string.pref_key_file_name_pattern) -> updateFileNamePatternSummary()
                 getString(R.string.pref_key_use_native) -> updateUseNative()
                 getString(R.string.pref_key_floating_button) -> updateFloatingButton()
                 getString(R.string.pref_key_floating_button_scale) -> updateFloatingButton(true)
@@ -84,6 +88,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 )
                 getString(R.string.pref_key_use_system_defaults) -> updateUseNative()
                 getString(R.string.pref_key_tile_action) -> updateTileActionSummary(prefManager.tileAction)
+                getString(R.string.pref_key_floating_action) -> updateFloatingActionSummary(prefManager.floatingButtonAction)
                 getString(R.string.pref_key_dark_theme) -> updateDarkTheme(true)
             }
         }
@@ -117,7 +122,11 @@ class SettingFragment : PreferenceFragmentCompat() {
         floatingButtonDelay =
             findPreference(getString(R.string.pref_key_floating_button_delay)) as ListPreference?
         tileActionPref = findPreference(getString(R.string.pref_key_tile_action)) as ListPreference?
+        floatingButtonActionPref =  findPreference(getString(R.string.pref_key_floating_action)) as ListPreference?
         darkThemePref = findPreference(getString(R.string.pref_key_dark_theme)) as ListPreference?
+        fileNamePatternPref =
+            findPreference(getString(R.string.pref_key_file_name_pattern)) as EditTextPreference?
+        fileNamePlaceholders = findPreference(getString(R.string.pref_static_field_key_file_name_placeholders)) as Preference?
 
         pref.registerOnSharedPreferenceChangeListener(prefListener)
 
@@ -153,8 +162,10 @@ class SettingFragment : PreferenceFragmentCompat() {
 
         delayPref?.run { updateDelaySummary(value) }
         tileActionPref?.run { updateTileActionSummary(value) }
+        floatingButtonActionPref?.run { updateFloatingActionSummary(value) }
         fileFormatPref?.run { updateFileFormatSummary(value) }
         floatingButtonDelay?.run { updateFloatingButtonDelaySummary(value) }
+        fileNamePatternPref?.run { updateFileNamePatternSummary() }
 
         floatingButtonHideShowClosePreventRecursion = false
 
@@ -293,6 +304,12 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
     }
 
+    private fun updateFloatingActionSummary(value: String) {
+        floatingButtonActionPref?.apply {
+            summary = entries[findIndexOfValue(value)]
+        }
+    }
+
     private fun updateFileFormatSummary(value: String) {
         fileFormatPref?.apply {
             if (prefManager.useSystemDefaults && prefManager.useNative) {
@@ -307,6 +324,26 @@ class SettingFragment : PreferenceFragmentCompat() {
             } else {
                 isEnabled = true
                 summary = entries[findIndexOfValue(value)]
+            }
+        }
+    }
+
+    private fun updateFileNamePatternSummary() {
+        fileNamePatternPref?.apply {
+            if (prefManager.useSystemDefaults && prefManager.useNative) {
+                isEnabled = false
+                summary = getString(
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                        R.string.use_native_screenshot_option_default
+                    } else {
+                        R.string.use_native_screenshot_option_android11
+                    }
+                )
+                fileNamePlaceholders?.isVisible = false
+            } else {
+                isEnabled = true
+                summary = prefManager.fileNamePattern
+                fileNamePlaceholders?.isVisible = true
             }
         }
     }
@@ -381,11 +418,14 @@ class SettingFragment : PreferenceFragmentCompat() {
                     updateNotificationSummary()
                     updateStorageDirectory()
                     updateFileFormatSummary(prefManager.fileFormat)
+                    updateFileNamePatternSummary()
                 }
                 else -> {
                     summary = getString(R.string.use_native_screenshot_summary)
                     fileFormatPref?.isEnabled = true
+                    fileNamePatternPref?.isEnabled = true
                     updateFileFormatSummary(prefManager.fileFormat)
+                    updateFileNamePatternSummary()
                     updateNotificationSummary()
                     updateStorageDirectory()
                 }
@@ -434,6 +474,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     floatingButtonHideShowClosePref?.isVisible = false
                     floatingButtonShutter?.isVisible = false
                     floatingButtonDelay?.isVisible = false
+                    floatingButtonActionPref?.isVisible = false
                     unsupported
                 }
                 isChecked -> {

@@ -92,6 +92,15 @@
         android:title="@string/setting_floating_button_delay"
         app:iconSpaceReserved="false" />
 
+    <androidx.preference.ListPreference
+        android:defaultValue="@string/setting_floating_action_value_screenshot"
+        android:entries="@array/setting_floating_action_entries"
+        android:entryValues="@array/setting_floating_action_values"
+        android:key="@string/pref_key_floating_action"
+        android:summary="@string/take_screenshot"
+        android:title="@string/setting_floating_action"
+        app:iconSpaceReserved="false" />
+
     <androidx.preference.EditTextPreference
         android:defaultValue="@string/setting_broadcast_secret_value_default"
         android:inputType="textVisiblePassword"
@@ -113,6 +122,22 @@
         android:key="@string/pref_key_storage_directory"
         android:summary="@string/setting_storage_directory_description"
         android:title="@string/setting_storage_directory"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/setting_file_name_pattern_value_default"
+        android:inputType="textNoSuggestions"
+        android:key="@string/pref_key_file_name_pattern"
+        android:summary="Empty"
+        android:title="@string/setting_file_name_pattern"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_file_name_placeholders"
+        android:persistent="false"
+        android:selectable="false"
+        android:summary="@string/setting_file_name_placeholders"
+        android:title="@string/setting_file_name_placeholders_title"
         app:iconSpaceReserved="false" />
 
     <androidx.preference.ListPreference

@@ -23,6 +23,8 @@
     <string name="pref_key_file_format" translatable="false">file_format</string>
     <string name="pref_key_broadcast_secret" translatable="false">broadcast_secret</string>
     <string name="pref_key_storage_directory" translatable="false">storage_directory</string>
+    <string name="pref_key_file_name_pattern" translatable="false">file_name_pattern</string>
+    <string name="pref_static_field_key_file_name_placeholders" translatable="false">pref_static_field_key_file_name_placeholders</string>
     <string name="pref_key_screenshot_count" translatable="false">screenshot_count</string>
     <string name="pref_key_floating_button" translatable="false">floating_button</string>
     <string name="pref_key_floating_button_scale" translatable="false">floating_button_scale</string>
@@ -35,6 +37,7 @@
     <string name="pref_key_return_if_accessibility" translatable="false">return_if_accessibility</string>
     <string name="setting_broadcast_secret_value_default" translatable="false">(unset)</string>
     <string name="setting_storage_directory_value_default" translatable="false">(default)</string>
+    <string name="setting_file_name_pattern_value_default" translatable="false">Screenshot_%timestamp%</string>
 
 
     <string name="setting_file_format_value_default" translatable="false">png</string>
@@ -115,6 +118,18 @@
         <item>@string/partial_screenshot</item>
     </string-array>
 
+    <string name="setting_floating_action_value_screenshot" translatable="false">screenshot</string>
+    <string name="setting_floating_action_value_partial" translatable="false">partial</string>
+    <string-array name="setting_floating_action_values" translatable="false">
+        <item>@string/setting_floating_action_value_screenshot</item>
+        <item>@string/setting_floating_action_value_partial</item>
+    </string-array>
+    <string name="pref_key_floating_action" translatable="false">floating_action</string>
+    <string-array name="setting_floating_action_entries" translatable="false">
+        <item>@string/take_screenshot</item>
+        <item>@string/partial_screenshot</item>
+    </string-array>
+
     <string name="setting_dark_theme_value_default" translatable="false">-1</string>
     <string name="setting_dark_theme_value_on" translatable="false">2</string>
     <string name="setting_dark_theme_value_off" translatable="false">1</string>
@@ -166,6 +181,7 @@ Contribute on <a href="https://crwd.in/screenshottile">crwd.in/screenshottile</a
 &#127483;&#127475; provided by <a href="https://crowdin.com/profile/bruhwut">bruhwut</a><br>
 &#127479;&#127476; provided by <a href="https://crowdin.com/profile/simonaiacob">Simona</a><br>
 &#127480;&#127462; provided by <a href="https://crowdin.com/profile/rex07">Rex_sa</a><br>
+&#127477;&#127473; provided by <a href="https://github.com/ChuckMichael">ChuckMichael</a> and <a href="https://github.com/gnu-ewm">gnu-ewm</a><br>
 
 
 ]]></string>

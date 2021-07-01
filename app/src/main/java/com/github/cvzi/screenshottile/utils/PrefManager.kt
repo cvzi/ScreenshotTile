@@ -102,8 +102,31 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         }
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_storage_directory),
-            if (value == null || value.trim().isEmpty()) {
+            if (value.isNullOrBlank()) {
                 context.getString(R.string.setting_storage_directory_value_default)
+            } else {
+                value
+            }
+        ).apply()
+
+    var fileNamePattern: String
+        get() {
+            val defaultValue = context.getString(R.string.setting_file_name_pattern_value_default)
+            val value = pref.getString(
+                context.getString(R.string.pref_key_file_name_pattern),
+                defaultValue
+            )
+            return if (value.isNullOrBlank()) {
+                this.fileNamePattern = defaultValue
+                defaultValue
+            } else {
+                value
+            }
+        }
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_file_name_pattern),
+            if (value.isBlank()) {
+                context.getString(R.string.setting_file_name_pattern_value_default)
             } else {
                 value
             }
@@ -209,6 +232,16 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_floating_button_delay),
             value.toString()
+        ).apply()
+
+    var floatingButtonAction: String
+        get() = pref.getString(
+            context.getString(R.string.pref_key_floating_action),
+            context.getString(R.string.setting_floating_action_value_screenshot)
+        ) ?: context.getString(R.string.setting_floating_action_value_screenshot)
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_floating_action),
+            value
         ).apply()
 
     var tileAction: String

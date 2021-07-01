@@ -34,7 +34,6 @@ import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.SettingsActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
-import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity.Companion.FILE_PREFIX
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
 import com.github.cvzi.screenshottile.utils.*
@@ -201,6 +200,11 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }
         }
         buttonScreenshot.setOnClickListener {
+            if (App.getInstance().prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_partial)) {
+                App.getInstance().screenshotPartial(this)
+                return@setOnClickListener
+            }
+
             val delayInSeconds = App.getInstance().prefManager.floatingButtonDelay.toLong()
             val delayInMilliSeconds = if (delayInSeconds > 0) {
                 1000L * delayInSeconds
@@ -517,7 +521,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                         val saveImageResult = saveBitmapToFile(
                             this@ScreenshotAccessibilityService,
                             bitmap,
-                            FILE_PREFIX,
+                            App.getInstance().prefManager.fileNamePattern,
                             compressionPreference(applicationContext),
                             null
                         )
