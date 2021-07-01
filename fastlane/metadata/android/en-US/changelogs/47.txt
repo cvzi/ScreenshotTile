@@ -1,0 +1,3 @@
+☆ Custom file name for screenshots
+☆ Floating button action can be set to "select area"
+🇵🇱 Polish translation by gnu-ewm and ChuckMichael

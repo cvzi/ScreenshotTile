@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.14.0
+*   Polish translation by [@gnu-ewm](https://github.com/gnu-ewm) and [@chuckmichael](https://github.com/chuckmichael)
+*   Select area from floating button [#81](https://github.com/cvzi/ScreenshotTile/issues/81)
+*   Custom file name [#83](https://github.com/cvzi/ScreenshotTile/issues/83)
+
 ## 1.13.4
 *   Arabic translation by Rex_sa (rex07) and Yousef Khaled Elsayed Espetan (yousef10)
 
