@@ -44,7 +44,10 @@
     <string name="setting_broadcast_secret_description">Mit dem Passwort können andere Apps (z.B. MacroDroid oder Tasker) automatisch Screenshots erstellen</string>
     <string name="setting_storage_directory">Speicherort</string>
     <string name="setting_storage_directory_description">Ordner, wo Screenshots gespeichert werden</string>
+    <string name="setting_file_name_pattern">Dateiname</string>
+    <string name="setting_file_name_placeholders_title">Verwende diese Platzhalter im Dateinamen</string>
     <string name="setting_tile_action">Kachelaktion</string>
+    <string name="setting_floating_action">Aktion des schwebenden Screenshot Auslösers</string>
     <string name="setting_dark_theme">Dunkles Farbschema</string>
     <string name="setting_dark_theme_system">System</string>
     <string name="setting_dark_theme_off">Deaktiviert</string>
