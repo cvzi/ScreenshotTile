@@ -4,7 +4,6 @@ Após a instalação, você precisa adicionar o botão ao menu de ajustes rápid
 
 Se o aplicativo apresentar problemas no Android 9/Pie ou 10, você pode tentar ativar o método "Integrado" de Captura da tela em configurações do App.
 
-<h2>Funcionalidades:</h2> 
 ✓ Capturas da tela diretamente dos ajustes rápidos
 ✓ Não é necessário acesso Root
 ✓ Notificação após cada Captura da tela (pode ser desativada)
@@ -12,7 +11,7 @@ Se o aplicativo apresentar problemas no Android 9/Pie ou 10, você pode tentar a
 ✓ Botão flutuante, tipo uma bolinha de bate-papo (Android 9+)
 ✓ Capturas de uma área específica da tela (pressione e segure o botão)
 ✓ Pode definir um atraso para cada Captura da tela
-✓ Salvar em qualquer pasta ou em qualquer tipo de armazenamento, por exemplo, cartãoSD
+✓ Salvar em qualquer pasta ou em qualquer tipo de armazenamento, por exemplo, cartãoSD cartãoSD
 ✓ Salvar em diferentes formatos de arquivo: png, jpg ou webp
 ✓ Fazer as Capturas automáticas via aplicativos como Tasker ou MacroDroid
 ✓ Gratuito, de código livre e sem anúncios
@@ -31,7 +30,7 @@ Se você quiser esconder o ícone, há uma dica aqui: <a href="https://github.co
 Isto é necessário para salvar os arquivos de Captura da tela no armazenamento interno do seu dispositivo.
 
 ❏ <i>android.permission.FOREGROUND_SERVICE</i>
-Desde o Android 9/Pie, esta permissão é necessária para fazer as Capturas. Isso basicamente significa que este aplicativo pode estar ativo em segundo plano. Entretanto, o aplicativo sempre mostrará uma notificação quando estiver sendo executado.
+Desde o Android 9/Pie, esta permissão é necessária para fazer as Capturas. Isso basicamente significa que este aplicativo pode estar ativo em segundo plano. Entretanto, o aplicativo sempre mostrará uma notificação quando estiver sendo executado. Entretanto, o aplicativo sempre mostrará uma notificação quando estiver sendo executado.
 
 <h2>Capturas automáticas:</h2>Se você quiser automatizar as Capturas através de outro aplicativo, por exemplo, MacroDroid ou Tasker, você pode encontrar um tutorial passo-a-passo aqui:
 <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
