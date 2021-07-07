@@ -44,7 +44,10 @@
     <string name="setting_broadcast_secret_description">Секретна фраза, яка дозволяє іншим програмам (наприклад, MacroDroid або Tasker) ініціювати знімки екрана</string>
     <string name="setting_storage_directory">Тека збереження</string>
     <string name="setting_storage_directory_description">Тека для збереження знімків екрана</string>
+    <string name="setting_file_name_pattern">Назва файлу</string>
+    <string name="setting_file_name_placeholders_title">У назва файлу доступні наступні заповнювачі</string>
     <string name="setting_tile_action">Дія плитки</string>
+    <string name="setting_floating_action">Дія для рухомої кнопки</string>
     <string name="setting_dark_theme">Нічний режим</string>
     <string name="setting_dark_theme_system">Система</string>
     <string name="setting_dark_theme_off">Вимкнено</string>
