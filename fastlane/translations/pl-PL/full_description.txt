@@ -32,7 +32,7 @@ To jest wymagane do zapisu zrzutu ekranu w wewnętrznej pamięci urządzenia.
 ❏ <i>android.permission.FOREGROUND_SERVICE</i>
 Od systemu Android 9/Pie to uprawnienie jest wymagane do wykonywania zrzutów ekranu. Oznacza to, że aplikacja może działać bez pokazywania się. Jednakże aplikacja zawsze wyświetli powiadomienie, gdy jest uruchomiona.
 
-<h2>Automatyczne zrzuty ekranu:</h2>Jeśli chcesz zautomatyzować zrzuty ekranu z innej aplikacji, np. MacroDroid lub Tasker, poradnik znajdziesz tutaj:
+<h2>Automatyczne zrzuty ekranu:</h2>Jeśli chcesz zautomatyzować zrzuty ekranu z innej aplikacji, np.
 <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
 
 <h2>Ukrywanie ikony aplikacji:</h2>W ustawienia aplikacji możesz ukryć ikonę tej aplikacji z ekranu wszystkich aplikacji. Nadal możesz uzyskać dostęp do aplikacji poprzez długie naciśniecie kafelka w szybkich ustawieniach. Niestety, system Android 10 nie pozwala na ukrywanie aplikacji.
