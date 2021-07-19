@@ -44,7 +44,10 @@
     <string name="setting_broadcast_secret_description">O frază secretă pentru a permite altor aplicații (precum MacroDroid sau Tasker) să inițieze capturi de ecran</string>
     <string name="setting_storage_directory">Selectați locația de salvare</string>
     <string name="setting_storage_directory_description">Director pentru salvarea capturilor de ecran</string>
+    <string name="setting_file_name_pattern">Numele fișierului</string>
+    <string name="setting_file_name_placeholders_title">Utilizați aceste caractere de poziție în numele fișierului</string>
     <string name="setting_tile_action">Acțiunea plăcutei</string>
+    <string name="setting_floating_action">Acțiunea butonului flotant</string>
     <string name="setting_dark_theme">Temă sumbră</string>
     <string name="setting_dark_theme_system">Sistem</string>
     <string name="setting_dark_theme_off">Inactivă</string>
