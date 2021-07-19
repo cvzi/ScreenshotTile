@@ -4,13 +4,13 @@
     <string name="tile_label">Zrzut ekranu</string>
     <string name="tile_floating_label">Pływający</string>
     <string name="tile_floating_subtitle">Przycisk zrzutu ekranu</string>
-    <string name="title_delay">Opóźnienie wykonania</string>
-    <string name="more_setting">Ustawienia</string>
+    <string name="title_delay">Opóźnienie</string>
+    <string name="more_setting">Więcej ustawień</string>
     <string name="open_settings">Otwórz ustawienia</string>
     <string name="left_screenshot_right_menu">Lewo: zrzut ekranu, prawo: ustawienia</string>
     <string name="partial_screenshot">Wybierz obszar</string>
     <string name="file_format">Format pliku</string>
-    <string name="setting_delay_entry_default">Błyskawiczne</string>
+    <string name="setting_delay_entry_default">Bez opóźnienia</string>
     <string name="setting_delay_entry_1s">1 sekunda</string>
     <string name="setting_delay_entry_2s">2 sekundy</string>
     <string name="setting_delay_entry_5s">5 sekund</string>
