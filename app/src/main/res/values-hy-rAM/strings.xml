@@ -45,7 +45,10 @@
     <string name="setting_broadcast_secret_description">Գաղտնի արտահայտություն, որը թույլ կտա այլ հավելվածներին (օրինակ՝ MacroDroid կամ Tasker) կադրահանել</string>
     <string name="setting_storage_directory">Կադրահանումների տեղադրություն</string>
     <string name="setting_storage_directory_description">Պանակ, որում կպահպանվեն կադրահանումները</string>
+    <string name="setting_file_name_pattern">Ֆայլի անվանում</string>
+    <string name="setting_file_name_placeholders_title">Օգտագործել այս փոփոխականները ֆայլի անվանման մեջ</string>
     <string name="setting_tile_action">Կոճգամի գործողություն</string>
+    <string name="setting_floating_action">Թռչող կոճակի գործողություն</string>
     <string name="setting_dark_theme">Գիշերային ռեժիմ</string>
     <string name="setting_dark_theme_system">Սահմանված համակարգի կողմից</string>
     <string name="setting_dark_theme_off">Անջատել</string>
