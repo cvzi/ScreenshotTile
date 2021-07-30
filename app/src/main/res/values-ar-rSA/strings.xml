@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">إشعار لقطة شاشة (بدون روت)</string>
+    <string name="app_name">مربع لقطة الشاشة (NoRot)</string>
     <string name="tile_label">لقطة شاشة</string>
     <string name="tile_floating_label">عائمة</string>
     <string name="tile_floating_subtitle">زر لقطة الشاشة</string>
@@ -44,7 +44,11 @@
     <string name="setting_broadcast_secret_description">عبارة سرية للسماح بالتطبيقات الأخرى (مثل MacroDroid أو Tasker) لبدء لقطات شاشة</string>
     <string name="setting_storage_directory">حفظ الموقع</string>
     <string name="setting_storage_directory_description">مكان المجلد لحفظ لقطات الشاشة فيه</string>
+    <string name="setting_file_name_pattern">اسم الملف</string>
+    <string name="setting_file_name_placeholders_title">استخدم هذه العناصر النائبة في اسم الملف</string>
+    <string name="setting_file_name_placeholders">%timestamp% - وقت yyy-MM-dd_HH-mm-ss\n%counter% - يحسب عدد لقطات الشاشة\n%random% - مستخدم عشوائي\n%randint% - رقم عشوائي</string>
     <string name="setting_tile_action">إجراءات البلاط</string>
+    <string name="setting_floating_action">إجراء الزر العائم</string>
     <string name="setting_dark_theme">نمط داكن</string>
     <string name="setting_dark_theme_system">النظام</string>
     <string name="setting_dark_theme_off">تم إيقاف</string>
@@ -54,6 +58,7 @@
     <string name="notification_settings_off">تم إيقاف</string>
     <string name="file_title">لقطة شاشة</string>
     <string name="file_description">تم التقاط لقطة شاشة في %1$s</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">تم حفظ لقطة الشاشة.</string>
     <string name="notification_body">انقر لعرض لقطة الشاشة.</string>
     <string name="notification_channel_description">أظهر إشعار عندما تأخذ لقطة شاشة</string>
@@ -94,6 +99,8 @@
     <string name="about_license_title">الترخيص</string>
     <string name="about_license_1">رخصة جنو العمومية الإصدار٣</string>
     <string name="about_app_2">لا يزال هذا التطبيق يواجه بعض المشكلات وهو قيد التطوير. \n إذا كان لديك حق الوصول إلى الجذر على هاتفك ، فالرجاء استخدام إصدار ipcjs ، فهو أسرع وأكثر اعتمادًا.</string>
+    <string name="about_privacy_title">سياسة الخصوصية</string>
+    <string name="about_open_source_title">المصادر المفتوحة المستخدمة</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">إعدادات إمكانية الدخول</string>
     <string name="main_floating_button_title">زر عائم</string>
