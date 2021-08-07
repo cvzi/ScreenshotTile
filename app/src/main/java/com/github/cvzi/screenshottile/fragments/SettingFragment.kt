@@ -1,6 +1,7 @@
 package com.github.cvzi.screenshottile.fragments
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.ComponentName
 import android.content.Context.INPUT_METHOD_SERVICE
@@ -607,6 +608,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             val uri = intent.data
             val takeFlags: Int = intent.flags and
                     (FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION)
+            @SuppressLint("WrongConstant")
             if (uri != null && activity != null && activity?.contentResolver != null) {
                 prefManager.screenshotDirectory = uri.toString()
                 activity?.contentResolver?.takePersistableUriPermission(uri, takeFlags)
