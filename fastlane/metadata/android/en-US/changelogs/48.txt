@@ -1,0 +1,2 @@
+🐛 Bugfix: Unnecessary empty folder Pictures was created
+🇦🇲 Armenian translation by tigrank08

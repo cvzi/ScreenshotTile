@@ -1,4 +1,7 @@
 # Changelog
+## 1.14.1
+*   Armenian translation by [tigrank08](https://crowdin.com/profile/tigrank08)
+*   Unnecessary empty folder Pictures was created [#94](https://github.com/cvzi/ScreenshotTile/issues/94)
 
 ## 1.14.0
 *   Polish translation by [@gnu-ewm](https://github.com/gnu-ewm) and [@chuckmichael](https://github.com/chuckmichael)
