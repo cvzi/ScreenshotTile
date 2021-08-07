@@ -301,8 +301,7 @@ fun createOutputStreamMediaStore(
         )
     ) fileTitle else "$fileTitle.${compressionOptions.fileExtension}"
 
-    var relativePath =
-        "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}"
+    var relativePath: String? = null
     var storageUri = Images.Media.EXTERNAL_CONTENT_URI
     var outputStream: OutputStream? = null
     var dummyPath = ""
@@ -321,6 +320,10 @@ fun createOutputStreamMediaStore(
                 }
             }
         }
+    }
+    if (relativePath == null) {
+        relativePath =
+            "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}"
     }
 
     val resolver = context.contentResolver
@@ -351,7 +354,7 @@ fun createOutputStreamMediaStore(
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             put(Images.ImageColumns.DATE_TAKEN, dateMilliseconds)
-            if (relativePath.isNotEmpty()) {
+            if (!relativePath.isNullOrBlank()) {
                 put(Images.ImageColumns.RELATIVE_PATH, relativePath)
                 dummyPath = "$relativePath/$filename"
             }
@@ -500,6 +503,8 @@ fun saveBitmapToFile(
                         context.contentResolver.update(result.uri, this, null, null)
                     } catch (e: UnsupportedOperationException) {
                         // This happens if the file was created with DocumentFile instead of the contentResolver
+                        /*
+                        // Seems like this is not necessary and causes issue cvzi/ScreenshotTile#94
                         addImageToGallery(
                             context,
                             result.uri.toString(),
@@ -517,6 +522,7 @@ fun saveBitmapToFile(
                             date,
                             Point(bitmap.width, bitmap.height)
                         )
+                        */
                     }
                 }
             }
