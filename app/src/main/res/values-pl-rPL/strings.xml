@@ -44,9 +44,12 @@
     <string name="setting_broadcast_secret_description">Sekretna fraza umożliwiająca innym aplikacjom (takim jak MacroDroid lub Tasker) wykonanie zrzutu ekranu</string>
     <string name="setting_storage_directory">Lokalizacja zapisu</string>
     <string name="setting_storage_directory_description">Folder do którego będą zapisywane pliki</string>
+    <string name="setting_file_name_pattern">Nazwa pliku</string>
+    <string name="setting_file_name_placeholders_title">Użyj tych symboli zastępczych w nazwie pliku</string>
     <string name="setting_tile_action">Akcja kafelka</string>
+    <string name="setting_floating_action">Działanie pływającego przycisku</string>
     <string name="setting_dark_theme">Ciemny motyw</string>
-    <string name="setting_dark_theme_system">Systemu</string>
+    <string name="setting_dark_theme_system">Systemowy</string>
     <string name="setting_dark_theme_off">Wyłączony</string>
     <string name="setting_dark_theme_on">Włączony</string>
     <string name="notification_settings">Powiadomienia</string>
