@@ -17,13 +17,13 @@ android {
             }
         }
     }
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.github.cvzi.screenshottile"
         minSdkVersion 24
-        targetSdkVersion 30
-        versionCode 48
-        versionName "1.14.1"
+        targetSdkVersion 31
+        versionCode 49
+        versionName "1.14.2"
     }
     buildTypes {
         release {
@@ -40,7 +40,7 @@ android {
             versionNameSuffix '.debug'
         }
     }
-    buildToolsVersion '30.0.3'
+    buildToolsVersion '31.0.0'
     productFlavors {
     }
     buildFeatures {

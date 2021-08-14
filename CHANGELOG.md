@@ -1,4 +1,8 @@
 # Changelog
+
+## 1.14.2
+*   Android 12 bugfix: [Notification icons crash app](https://github.com/cvzi/ScreenshotTile/commit/0c42cb7d2a2a360bf077c52b1a3874aedb4ab96d)
+
 ## 1.14.1
 *   Armenian translation by [tigrank08](https://crowdin.com/profile/tigrank08)
 *   Unnecessary empty folder Pictures was created [#94](https://github.com/cvzi/ScreenshotTile/issues/94)
