@@ -59,6 +59,7 @@
 
         <activity
             android:name="com.github.cvzi.screenshottile.activities.MainActivity"
+            android:exported="true"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme">
@@ -73,40 +74,49 @@
         </activity>
         <activity
             android:name="com.github.cvzi.screenshottile.activities.TutorialActivity"
+            android:exported="true"
             android:parentActivityName="com.github.cvzi.screenshottile.activities.MainActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.github.cvzi.screenshottile.activities.NoDisplayActivity"
             android:excludeFromRecents="true"
+            android:exported="true"
             android:theme="@android:style/Theme.NoDisplay" />
         <activity
             android:name="com.github.cvzi.screenshottile.activities.DelayScreenshotActivity"
-            android:excludeFromRecents="true" />
+            android:excludeFromRecents="true"
+            android:exported="true" />
         <activity
             android:name="com.github.cvzi.screenshottile.activities.TransparentContainerActivity"
-            android:excludeFromRecents="true" />
+            android:excludeFromRecents="true"
+            android:exported="true" />
         <activity
             android:name="com.github.cvzi.screenshottile.activities.SettingsActivity"
+            android:exported="true"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.github.cvzi.screenshottile.activities.SettingDialogActivity"
-            android:excludeFromRecents="true">
+            android:excludeFromRecents="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.github.cvzi.screenshottile.activities.AcquireScreenshotPermission"
-            android:excludeFromRecents="true" />
+            android:excludeFromRecents="true"
+            android:exported="false" />
         <activity
             android:name="com.github.cvzi.screenshottile.activities.TakeScreenshotActivity"
             android:excludeFromRecents="true"
+            android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <service
             android:name="com.github.cvzi.screenshottile.services.ScreenshotTileService"
+            android:exported="true"
             android:foregroundServiceType="mediaProjection"
             android:icon="@drawable/ic_stat_name"
             android:label="@string/tile_label"
@@ -120,6 +130,7 @@
             android:name="com.github.cvzi.screenshottile.services.FloatingTileService"
             android:description="@string/tile_floating_subtitle"
             android:enabled="@bool/accessibility_service_enabled"
+            android:exported="true"
             android:icon="@drawable/ic_tile_float"
             android:label="@string/tile_floating_label"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
@@ -131,6 +142,7 @@
         <service
             android:name="com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService"
             android:enabled="@bool/accessibility_service_enabled"
+            android:exported="true"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
             tools:targetApi="p">
@@ -144,6 +156,7 @@
         </service>
         <service
             android:name="com.github.cvzi.screenshottile.services.BasicForegroundService"
+            android:exported="false"
             android:foregroundServiceType="mediaProjection"
             android:icon="@drawable/ic_stat_name"
             android:label="@string/tile_label"
@@ -161,6 +174,7 @@
         </receiver>
         <receiver
             android:name="com.github.cvzi.screenshottile.SimpleWidgetBoth"
+            android:exported="true"
             android:label="@string/left_screenshot_right_menu">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -172,6 +186,7 @@
         </receiver>
         <receiver
             android:name="com.github.cvzi.screenshottile.SimpleWidgetScreenshot"
+            android:exported="true"
             android:label="@string/take_screenshot">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -183,6 +198,7 @@
         </receiver>
         <receiver
             android:name="com.github.cvzi.screenshottile.SimpleWidgetSettings"
+            android:exported="true"
             android:label="@string/open_settings">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
