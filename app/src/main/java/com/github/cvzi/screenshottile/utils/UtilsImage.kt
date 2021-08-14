@@ -190,7 +190,7 @@ fun deleteContentResolver(context: Context, uri: Uri): Boolean {
         }
         0
     }
-    Log.e(
+    Log.v(
         UTILSIMAGEKT,
         "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"
     )
