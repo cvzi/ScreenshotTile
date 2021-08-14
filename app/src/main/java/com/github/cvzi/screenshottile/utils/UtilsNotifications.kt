@@ -143,7 +143,11 @@ fun createNotification(
         setShowWhen(true)
         setContentTitle(appContext.getString(R.string.notification_title))
         setContentText(appContext.getString(R.string.notification_body))
-        setSmallIcon(R.drawable.stat_notify_image)
+        if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) { // TODO why is this crashing on Android S?
+            setSmallIcon(R.drawable.stat_notify_image)
+        } else {
+            setSmallIcon(android.R.drawable.ic_menu_gallery)
+        }
         setLargeIcon(largeIcon)
         setAutoCancel(true)
         style = Notification.BigPictureStyle().bigPicture(bigPicture).bigLargeIcon(null as? Icon?)
@@ -332,7 +336,11 @@ fun foregroundNotification(context: Context, notificationId: Int): Notification.
             setContentTitle(context.getString(R.string.notification_foreground_title))
             setContentText(context.getString(R.string.notification_foreground_body))
             setAutoCancel(true)
-            setSmallIcon(R.drawable.transparent_icon)
+            if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) { // TODO why is this crashing on Android S?
+                setSmallIcon(R.drawable.transparent_icon)
+            } else {
+                setSmallIcon(android.R.drawable.status_bar_item_app_background)
+            }
             val notificationIntent = Intent().apply {
                 action = NOTIFICATION_ACTION_STOP
                 putExtra(NOTIFICATION_ACTION_ID, notificationId)
