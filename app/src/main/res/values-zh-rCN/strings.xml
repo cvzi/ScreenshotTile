@@ -44,7 +44,10 @@
     <string name="setting_broadcast_secret_description">允许其他应用 (如 MacroDroid 或 Tasker) 启动屏幕截图的秘密短语</string>
     <string name="setting_storage_directory">保存位置</string>
     <string name="setting_storage_directory_description">用来保存文件的文件夹</string>
+    <string name="setting_file_name_pattern">文件名</string>
+    <string name="setting_file_name_placeholders_title">在文件名中使用这些占位符</string>
     <string name="setting_tile_action">磁贴操作</string>
+    <string name="setting_floating_action">浮动按钮操作</string>
     <string name="setting_dark_theme">夜间模式</string>
     <string name="setting_dark_theme_system">按照系统</string>
     <string name="setting_dark_theme_off">已禁用</string>
