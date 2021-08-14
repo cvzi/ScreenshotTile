@@ -47,10 +47,10 @@ open class SimpleWidget : AppWidgetProvider() {
         val views = RemoteViews(context.packageName, R.layout.simple_widget)
 
         val settingsIntent = SettingDialogActivity.newIntent(context, true)
-        val settingsPendingIntent = PendingIntent.getActivity(context, 0, settingsIntent, 0)
+        val settingsPendingIntent = PendingIntent.getActivity(context, 0, settingsIntent, PendingIntent.FLAG_IMMUTABLE)
 
         val screenshotIntent = NoDisplayActivity.newIntent(context, true)
-        val screenshotPendingIntent = PendingIntent.getActivity(context, 0, screenshotIntent, 0)
+        val screenshotPendingIntent = PendingIntent.getActivity(context, 0, screenshotIntent, PendingIntent.FLAG_IMMUTABLE)
 
         when (this) {
             is SimpleWidgetScreenshot -> {

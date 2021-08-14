@@ -129,7 +129,7 @@ fun createNotification(
 
     val openImageIntent = openImageIntent(path, mimeType)
     val contentPendingIntent =
-        PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent, 0)
+        PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent, PendingIntent.FLAG_IMMUTABLE)
 
     // Create notification
     val builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -163,7 +163,7 @@ fun createNotification(
     ) // This is not shown on Android 7+ anyways so let's just use the app icon
 
     val shareIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_SHARE)
-    val pendingIntentShare = PendingIntent.getBroadcast(appContext, uniqueId + 3, shareIntent, 0)
+    val pendingIntentShare = PendingIntent.getBroadcast(appContext, uniqueId + 3, shareIntent, PendingIntent.FLAG_IMMUTABLE)
     builder.addAction(
         Notification.Action.Builder(
             icon,
@@ -178,7 +178,7 @@ fun createNotification(
         ).resolveActivity(context.applicationContext.packageManager) != null
     ) {
         val editIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_EDIT)
-        val pendingIntentEdit = PendingIntent.getBroadcast(appContext, uniqueId + 4, editIntent, 0)
+        val pendingIntentEdit = PendingIntent.getBroadcast(appContext, uniqueId + 4, editIntent, PendingIntent.FLAG_IMMUTABLE)
         builder.addAction(
             Notification.Action.Builder(
                 icon,
@@ -189,7 +189,7 @@ fun createNotification(
     }
 
     val deleteIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_DELETE)
-    val pendingIntentDelete = PendingIntent.getBroadcast(appContext, uniqueId + 2, deleteIntent, 0)
+    val pendingIntentDelete = PendingIntent.getBroadcast(appContext, uniqueId + 2, deleteIntent, PendingIntent.FLAG_IMMUTABLE)
     builder.addAction(
         Notification.Action.Builder(
             icon,
@@ -341,7 +341,7 @@ fun foregroundNotification(context: Context, notificationId: Int): Notification.
                 context,
                 8456,
                 notificationIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
             )
             setContentIntent(pendingIntent)
         }
