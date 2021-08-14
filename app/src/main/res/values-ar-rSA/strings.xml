@@ -46,7 +46,7 @@
     <string name="setting_storage_directory_description">مكان المجلد لحفظ لقطات الشاشة فيه</string>
     <string name="setting_file_name_pattern">اسم الملف</string>
     <string name="setting_file_name_placeholders_title">استخدم هذه العناصر النائبة في اسم الملف</string>
-    <string name="setting_file_name_placeholders">%timestamp% - وقت yyy-MM-dd_HH-mm-ss\n%counter% - يحسب عدد لقطات الشاشة\n%random% - مستخدم عشوائي\n%randint% - رقم عشوائي</string>
+    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - وقت yyy-MM-dd_HH-mm-ss\n%counter% - يحسب عدد لقطات الشاشة\n%random% - مستخدم عشوائي\n%randint% - رقم عشوائي</string>
     <string name="setting_tile_action">إجراءات البلاط</string>
     <string name="setting_floating_action">إجراء الزر العائم</string>
     <string name="setting_dark_theme">نمط داكن</string>

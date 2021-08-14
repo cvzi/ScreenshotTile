@@ -37,7 +37,7 @@
     <string name="pref_key_return_if_accessibility" translatable="false">return_if_accessibility</string>
     <string name="setting_broadcast_secret_value_default" translatable="false">(unset)</string>
     <string name="setting_storage_directory_value_default" translatable="false">(default)</string>
-    <string name="setting_file_name_pattern_value_default" translatable="false">Screenshot_%timestamp%</string>
+    <string name="setting_file_name_pattern_value_default" translatable="false" formatted="false">Screenshot_%timestamp%</string>
 
 
     <string name="setting_file_format_value_default" translatable="false">png</string>
