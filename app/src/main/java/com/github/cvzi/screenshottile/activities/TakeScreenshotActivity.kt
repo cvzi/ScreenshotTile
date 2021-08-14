@@ -120,9 +120,7 @@ class TakeScreenshotActivity : Activity(),
 
         with(DisplayMetrics()) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                densityDpi = resources.configuration.densityDpi
-                widthPixels = windowManager.maximumWindowMetrics.bounds.width()
-                heightPixels = windowManager.maximumWindowMetrics.bounds.height()
+                display?.getRealMetrics(this)
             } else {
                 @Suppress("DEPRECATION")
                 windowManager.defaultDisplay.getRealMetrics(this)
