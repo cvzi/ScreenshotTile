@@ -339,7 +339,7 @@ fun foregroundNotification(context: Context, notificationId: Int): Notification.
             if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) { // TODO why is this crashing on Android S?
                 setSmallIcon(R.drawable.transparent_icon)
             } else {
-                setSmallIcon(android.R.drawable.status_bar_item_app_background)
+                setSmallIcon(android.R.drawable.divider_horizontal_dark)
             }
             val notificationIntent = Intent().apply {
                 action = NOTIFICATION_ACTION_STOP
