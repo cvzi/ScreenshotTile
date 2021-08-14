@@ -58,10 +58,10 @@
     <string name="notification_body">Resmi görmek için tıkla</string>
     <string name="notification_channel_description">Ekran görüntüsü alındığında bildirim gösterilir</string>
     <string name="notification_foreground_title">Ekran görüntüsü alınıyor</string>
-    <string name="notification_foreground_body">Ekran görüntüsü işleniyor... İptal etmek için dokun</string>
+    <string name="notification_foreground_body">Ekran görüntüsü işleniyor… İptal etmek için dokun</string>
     <string name="notification_foreground_channel_description">Ekran görüntüsü alındığında bildirim gösterir. Ekran görüntüsü alınırken Pil iyileştirme tarafından Uygulamayı sonladırlmaktan önler</string>
-    <string name="notification_app_chooser_share">Dosyayı bununla paylaş...</string>
-    <string name="notification_app_chooser_edit">Dosyayı bununla düzenle...</string>
+    <string name="notification_app_chooser_share">Dosyayı bununla paylaş…</string>
+    <string name="notification_app_chooser_edit">Dosyayı bununla düzenle…</string>
     <string name="screenshot_failed">Ekran resim çekilemedildi, lütfen tekrar deneyiniz</string>
     <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
     <string name="screenshot_file_saved">Ekran görüntüsü kaydedildi %1$s</string>
