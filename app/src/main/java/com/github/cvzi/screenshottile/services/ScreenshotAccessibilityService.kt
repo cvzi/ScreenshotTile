@@ -562,13 +562,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             return
         }
 
-        val dm: DisplayManager = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
-        val defaultDisplay = dm.getDisplay(DEFAULT_DISPLAY)
-        with(DisplayMetrics()) {
-            defaultDisplay.getRealMetrics(this)
-            screenDensity = densityDpi
-        }
-
+        screenDensity = resources.configuration.densityDpi
 
         val result = saveImageResult as? SaveImageResultSuccess?
 
