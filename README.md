@@ -91,6 +91,8 @@ Here's an explanation on how to turn it off:
 You can automate taking screenshots with apps like [MacroDroid](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid) or [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm).
 This works via [Broadcast intents](https://developer.android.com/guide/components/broadcasts).
 
+Tutorial video on youtube: [https://youtu.be/q5hQF1nzOzk](https://www.youtube.com/watch?v=q5hQF1nzOzk)
+
 ![Macro intent screenshot](/docs/imgs/MacroDroid_overview.png)
 
 First you have to activate this feature by setting a password in the app settings.
