@@ -2,6 +2,7 @@ package com.github.cvzi.screenshottile.utils
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Paint
@@ -15,8 +16,13 @@ import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
 import android.os.StatFs
 import android.provider.MediaStore.Images
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.ClickableSpan
 import android.util.Log
 import android.util.TypedValue
+import android.view.View
 import android.widget.TextView
 import androidx.documentfile.provider.DocumentFile
 import com.github.cvzi.screenshottile.App
@@ -654,4 +660,55 @@ fun isNewAppInstallation(context: Context): Boolean {
         Log.e(UTILSKT, "Unexpected error in isNewAppInstallation()", e)
         false
     }
+}
+
+data class ClickableStringResult(
+    val builder: SpannableStringBuilder,
+    val activities: List<String>
+    )
+
+/**
+ * Make activity links clickable. Example: "This is a link [Tutorial,.TutorialActivity] to the tutorial"
+ */
+fun makeActivityClickableFromText(text: String, context: Context): ClickableStringResult {
+    val builder = SpannableStringBuilder("")
+    val activities = ArrayList<String>()
+    for (content in text.split("]")) {
+        val startIndex = content.indexOf("[")
+        if (startIndex == -1) {
+            builder.append(content)
+            continue
+        }
+        // TODO somewhere here:
+        //  Caused by: java.lang.StringIndexOutOfBoundsException:
+        //  at java.lang.String.substring (String.java:2064)
+        //  at java.lang.String.subSequence (String.java:2107)
+        val value = content.subSequence(startIndex, content.length).trim()
+        val labelEnd = value.indexOf(',')
+        val activityName = value.subSequence(labelEnd + 1, value.length).trim()
+        activities.add("com.github.cvzi.screenshottile.activities$activityName")
+        val label = value.subSequence(1, labelEnd).trim()
+        var newContent = content.subSequence(0, startIndex).toString()
+        newContent += label
+        val clickableSpan = object : ClickableSpan() {
+            override fun onClick(textView: View) {
+                val intent = Intent()
+                intent.setClassName(
+                    context,
+                    "com.github.cvzi.screenshottile.activities$activityName"
+                )
+                context.startActivity(intent)
+            }
+        }
+
+        val spannableString = SpannableString(newContent)
+        spannableString.setSpan(
+            clickableSpan,
+            startIndex,
+            startIndex + label.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        builder.append(spannableString)
+    }
+    return ClickableStringResult(builder, activities)
 }

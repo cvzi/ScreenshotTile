@@ -6,11 +6,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.Spanned
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -21,6 +17,7 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.isNewAppInstallation
+import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 /**
@@ -209,43 +206,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun makeActivityClickable(textView: TextView) {
-        val text = textView.text.toString()
-
-        val builder = SpannableStringBuilder("")
-        for (content in text.split("]")) {
-            val startIndex = content.indexOf("[")
-            if (startIndex == -1) {
-                builder.append(content)
-                continue
-            }
-            val value = content.subSequence(startIndex, content.length).trim()
-            val labelEnd = value.indexOf(',')
-            val activityName = value.subSequence(labelEnd + 1, value.length).trim()
-            val label = value.subSequence(1, labelEnd).trim()
-            var newContent = content.subSequence(0, startIndex).toString()
-            newContent += label
-            val clickableSpan = object : ClickableSpan() {
-                override fun onClick(textView: View) {
-                    val intent = Intent()
-                    intent.setClassName(
-                        this@MainActivity,
-                        "com.github.cvzi.screenshottile.activities$activityName"
-                    )
-                    startActivity(intent)
-                }
-            }
-
-            val spannableString = SpannableString(newContent)
-            spannableString.setSpan(
-                clickableSpan,
-                startIndex,
-                startIndex + label.length,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-            )
-            builder.append(spannableString)
-        }
         textView.apply {
-            setText(builder)
+            text = makeActivityClickableFromText(text.toString(), this@MainActivity).builder
             movementMethod = LinkMovementMethod()
             highlightColor = Color.BLUE
         }
