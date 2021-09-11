@@ -35,5 +35,5 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v2
       with:
-        name: testDebugUnitTest.html
-        path: app/build/reports/tests/testDebugUnitTest/index.html
+        name: reports-tests
+        path: app/build/reports/tests/

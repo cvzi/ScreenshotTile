@@ -59,7 +59,6 @@ android {
             includeAndroidResources = true
         }
         unitTests.all {
-            useJUnitPlatform()
             testLogging {
                 showStandardStreams = true
             }
