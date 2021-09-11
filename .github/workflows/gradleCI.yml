@@ -21,5 +21,7 @@ jobs:
         check-latest: true
     - name: Add exec permission
       run: chmod +x gradlew
+    - name: Add gradle.properties files
+      run: echo -e "\norg.gradle.jvmargs=-Xmx4096m\n" >> gradle.properties
     - name: Build
       run: ./gradlew build
