@@ -17,11 +17,23 @@ jobs:
       uses: actions/setup-java@v2
       with:
         distribution: 'adopt'
-        java-version: '11'
+        java-version: '15'
         check-latest: true
     - name: Add exec permission
       run: chmod +x gradlew
     - name: Add gradle.properties files
-      run: echo -e "\norg.gradle.jvmargs=-Xmx4096m\n" >> gradle.properties
+      run: echo -e "\norg.gradle.jvmargs=-Xmx8192m\n" >> gradle.properties
     - name: Build
       run: ./gradlew build
+    - name: Upload Lint report
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: lint-results.html
+        path: app/build/reports/lint-results*.html
+    - name: Upload tests report
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: testDebugUnitTest.html
+        path: app/build/reports/tests/testDebugUnitTest/index.html
