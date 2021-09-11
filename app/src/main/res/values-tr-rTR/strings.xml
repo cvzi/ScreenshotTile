@@ -94,7 +94,7 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">Erişilebilirlik ayarları</string>
     <string name="main_floating_button_title">Yüzen buton</string>
-    <string name="main_general_text">Bu uygulamayı kullanmadan önce, karo/butonu hızlı ayarlardan kullanman lazım. Eğer bunu nasıl yapılacağını bilmiyorsan, şuna bak [ öğretici aktife, öğreticiaktife] . Bu uygulama ekran resmi almak için iki farklı metodu destekliyor.</string>
+    <string name="main_general_text">Bu uygulamayı kullanmadan önce, karo/butonu hızlı ayarlardan kullanman lazım. Eğer bunu nasıl yapılacağını bilmiyorsan, şuna bak [ öğretici aktife,.TutorialActivity] . Bu uygulama ekran resmi almak için iki farklı metodu destekliyor.</string>
     <string name="main_legacy_method_title">Eski metod</string>
     <string name="main_native_method_title">Doğal metod</string>
     <string name="main_native_method_text_android_pre_11">Ekran resmi çektiğinde, belki ses veye ekran editör gösterir. Ekran resimleri standart dosya kaydeliyor. Bu senin telefonuna bağlı ve değiştirilemez . belki bunu telefon ayarlaranızdan değiştirebilirsiniz.</string>
