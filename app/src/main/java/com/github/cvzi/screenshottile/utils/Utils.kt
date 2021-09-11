@@ -679,10 +679,6 @@ fun makeActivityClickableFromText(text: String, context: Context): ClickableStri
             builder.append(content)
             continue
         }
-        // TODO somewhere here:
-        //  Caused by: java.lang.StringIndexOutOfBoundsException:
-        //  at java.lang.String.substring (String.java:2064)
-        //  at java.lang.String.subSequence (String.java:2107)
         val value = content.subSequence(startIndex, content.length).trim()
         val labelEnd = value.indexOf(',')
         val activityName = value.subSequence(labelEnd + 1, value.length).trim()
