@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.14.4
+*   Minor bugfixes
+*   Unit test for activity links
+
 ## 1.14.3
 *   Change notification for all versions [Notification icons crash app](https://github.com/cvzi/ScreenshotTile/commit/0c42cb7d2a2a360bf077c52b1a3874aedb4ab96d)
 
