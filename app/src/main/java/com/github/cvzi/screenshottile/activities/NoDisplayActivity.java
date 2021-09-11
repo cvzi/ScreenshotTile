@@ -1,5 +1,8 @@
 package com.github.cvzi.screenshottile.activities;
 
+import static com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID;
+import static com.github.cvzi.screenshottile.utils.UtilsKt.screenshot;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,9 +17,6 @@ import com.github.cvzi.screenshottile.R;
 import com.github.cvzi.screenshottile.services.BasicForegroundService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
-
-import static com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID;
-import static com.github.cvzi.screenshottile.utils.UtilsKt.screenshot;
 
 /**
  * Empty activity that is used to collapse the quick settings panel, finishes itself in onCreate

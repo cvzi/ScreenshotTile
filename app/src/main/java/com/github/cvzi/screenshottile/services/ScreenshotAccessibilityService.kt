@@ -19,7 +19,6 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
 import android.service.quicksettings.TileService
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
 import android.view.Display.DEFAULT_DISPLAY
@@ -552,7 +551,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
-    private fun onFileSaved(saveImageResult: SaveImageResult?) {
+    fun onFileSaved(saveImageResult: SaveImageResult?) {
         if (saveImageResult == null) {
             screenShotFailedToast("saveImageResult is null")
             return

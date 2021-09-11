@@ -1,5 +1,8 @@
 package com.github.cvzi.screenshottile;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static com.github.cvzi.screenshottile.utils.UtilsKt.tryNativeScreenshot;
+
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -24,9 +27,6 @@ import com.github.cvzi.screenshottile.services.BasicForegroundService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
 import com.github.cvzi.screenshottile.utils.PrefManager;
-
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.github.cvzi.screenshottile.utils.UtilsKt.tryNativeScreenshot;
 
 /**
  * Created by ipcjs on 2017/8/17.
