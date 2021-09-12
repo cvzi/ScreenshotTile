@@ -1,9 +1,10 @@
 name: instrumentTests
 
-on:  
+on:
+  workflow_dispatch:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*'
 
 jobs:
   test:
