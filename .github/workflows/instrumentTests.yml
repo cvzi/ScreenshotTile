@@ -12,8 +12,26 @@ jobs:
       matrix:
         api-level: [29]
         locale:
-            - "fr-FR"
+            - "en-US"
+            - "ar-SA"
             - "de-DE"
+            - "el-GR"
+            - "es-ES"
+            - "fr-FR"
+            - "hi-IN"
+            - "hu-HU"
+            - "hy-AM"
+            - "it-IT"
+            - "nl-NL"
+            - "pl-PL"
+            - "pt-BR"
+            - "pt-PT"
+            - "ro-RO"
+            - "ru-RU"
+            - "tr-TR"
+            - "uk-UA"
+            - "vi-VN"
+            - "zh-CN"
     steps:
       - name: checkout
         uses: actions/checkout@v2
