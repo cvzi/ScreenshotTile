@@ -10,29 +10,30 @@ jobs:
   test:
     runs-on: macos-latest
     strategy:
+      max-parallel: 1
       matrix:
         api-level: [29]
         locale:
             - "en-US"
             - "ar-SA"
             - "de-DE"
-            - "el-GR"
-            - "es-ES"
-            - "fr-FR"
-            - "hi-IN"
-            - "hu-HU"
-            - "hy-AM"
-            - "it-IT"
-            - "nl-NL"
-            - "pl-PL"
-            - "pt-BR"
-            - "pt-PT"
-            - "ro-RO"
-            - "ru-RU"
-            - "tr-TR"
-            - "uk-UA"
-            - "vi-VN"
-            - "zh-CN"
+            #- "el-GR"
+            #- "es-ES"
+            #- "fr-FR"
+            #- "hi-IN"
+            #- "hu-HU"
+            #- "hy-AM"
+            #- "it-IT"
+            #- "nl-NL"
+            #- "pl-PL"
+            #- "pt-BR"
+            #- "pt-PT"
+            #- "ro-RO"
+            #- "ru-RU"
+            #- "tr-TR"
+            #- "uk-UA"
+            #- "vi-VN"
+            #- "zh-CN"
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -50,31 +51,28 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
 
-      - name: AVD cache
+      - name: Retrieve app build from cache
         uses: actions/cache@v2
-        id: avd-cache
+        id: build-cache
         with:
           path: |
-            ~/.android/avd/*
-            ~/.android/adb*
-          key: avd-${{ matrix.api-level }}-${{ matrix.locale }}
+            build
+            app/build
+          key: build-cache-${{ github.sha }}
 
-      - name: create AVD and generate snapshot for caching
-        if: steps.avd-cache.outputs.cache-hit != 'true'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: ${{ matrix.api-level }}
-          force-avd-creation: false
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale ${{ matrix.locale }}
-          disable-animations: false
-          script: echo "Generated AVD snapshot for caching."
+      - name: Build app for caching
+        if: steps.build-cache.outputs.cache-hit != 'true'
+        run: |
+          chmod +x gradlew
+          echo -e "\norg.gradle.jvmargs=-Xmx8192m\n" >> gradle.properties
+          ./gradlew build
 
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
           force-avd-creation: false
-          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale ${{ matrix.locale }}
           disable-animations: true
           script: |
             chmod +x gradlew
@@ -85,5 +83,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: reports-androidTests
+          name: reports-androidTests-${{ matrix.api-level }}-${{ matrix.locale }}
           path: app/build/reports/androidTests/
