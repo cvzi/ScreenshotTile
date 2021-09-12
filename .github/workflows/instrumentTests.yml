@@ -78,13 +78,13 @@ jobs:
             build
             app/build
             !app/build/reports/androidTests/
-          key: build-cache-${{ runner.os }}-${{ github.sha }}
+          key: build-cache-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
 
       - name: Add exec permission
         run: chmod +x gradlew
 
       - name: Remove old reports
-        run: rm -R app/build/reports/androidTests/
+        run: rm -rf app/build/reports/androidTests/
 
       - name: Add gradle.properties files
         run: |
