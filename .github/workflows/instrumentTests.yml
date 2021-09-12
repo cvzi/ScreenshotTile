@@ -10,31 +10,29 @@ jobs:
   test:
     runs-on: macos-latest
     strategy:
-      max-parallel: 1
-      fail-fast: false
       matrix:
         api-level: [29]
         locale:
             - "en-US"
             - "ar-SA"
             - "de-DE"
-            #- "el-GR"
-            #- "es-ES"
-            #- "fr-FR"
-            #- "hi-IN"
-            #- "hu-HU"
-            #- "hy-AM"
-            #- "it-IT"
-            #- "nl-NL"
-            #- "pl-PL"
-            #- "pt-BR"
-            #- "pt-PT"
-            #- "ro-RO"
-            #- "ru-RU"
-            #- "tr-TR"
-            #- "uk-UA"
-            #- "vi-VN"
-            #- "zh-CN"
+            - "el-GR"
+            - "es-ES"
+            - "fr-FR"
+            - "hi-IN"
+            - "hu-HU"
+            - "hy-AM"
+            - "it-IT"
+            - "nl-NL"
+            - "pl-PL"
+            - "pt-BR"
+            - "pt-PT"
+            - "ro-RO"
+            - "ru-RU"
+            - "tr-TR"
+            - "uk-UA"
+            - "vi-VN"
+            - "zh-CN"
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -79,11 +77,14 @@ jobs:
           path: |
             build
             app/build
-            !app/build/reports
+            !app/build/reports/androidTests/
           key: build-cache-${{ runner.os }}-${{ github.sha }}
 
       - name: Add exec permission
         run: chmod +x gradlew
+
+      - name: Remove old reports
+        run: rm -R app/build/reports/androidTests/
 
       - name: Add gradle.properties files
         run: |
