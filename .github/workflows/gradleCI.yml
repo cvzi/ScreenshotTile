@@ -13,12 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: JDK
+    - name: Setup JDK
       uses: actions/setup-java@v2
       with:
         distribution: 'adopt'
         java-version: '15'
-        check-latest: true
     - name: Add exec permission
       run: chmod +x gradlew
     - name: Add gradle.properties files

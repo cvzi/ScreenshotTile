@@ -37,12 +37,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: JDK
+
+      - name: Setup JDK
         uses: actions/setup-java@v2
         with:
             distribution: 'adopt'
-            java-version: '15'
-            check-latest: true
+            java-version: '16'
+
       - name: Gradle cache
         uses: actions/cache@v2
         with:
@@ -51,33 +52,30 @@ jobs:
             ~/.gradle/wrapper
           key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
 
-      - name: Retrieve app build from cache
+      - name: App build cache
         uses: actions/cache@v2
         id: build-cache
         with:
           path: |
             build
             app/build
+            !app/build/reports
           key: build-cache-${{ github.sha }}
 
-      - name: Build app for caching
-        if: steps.build-cache.outputs.cache-hit != 'true'
-        run: |
-          chmod +x gradlew
-          echo -e "\norg.gradle.jvmargs=-Xmx8192m\n" >> gradle.properties
-          ./gradlew build
+      - name: Add exec permission
+        run: chmod +x gradlew
 
-      - name: run tests
+      - name: Add gradle.properties files
+        run: echo -e "\norg.gradle.jvmargs=-Xmx8192m\n" >> gradle.properties
+
+      - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale ${{ matrix.locale }}
           disable-animations: true
-          script: |
-            chmod +x gradlew
-            echo -e "\norg.gradle.jvmargs=-Xmx8192m\n" >> gradle.properties
-            ./gradlew connectedCheck
+          script: ./gradlew connectedCheck
 
       - name: Upload androidTests report
         if: always()
