@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /* Disabled because of Google Play accessibility policy
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.screenshotCount == 0 && isNewAppInstallation(
                 this
             )
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             App.getInstance().prefManager.screenshotCount++
             App.getInstance().prefManager.useNative = true
         }
+        */
 
         val textDescTranslate = findViewById<TextView>(R.id.textDescTranslate)
         textDescTranslate.movementMethod = LinkMovementMethod()
