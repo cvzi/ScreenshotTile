@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.14.5
+*   Prominent disclosure of the Accessibility Services API's usage according to Google's requirements
+
 ## 1.14.4
 *   Minor bugfixes
 *   Unit test for activity links
