@@ -4,6 +4,7 @@ package com.github.cvzi.screenshottile.utils
  * Created by cuzi (cuzi@openmail.cc) on 2020/12/13.
  */
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.annotation.ArrayRes
 import androidx.annotation.DrawableRes
@@ -46,8 +47,8 @@ class ShutterCollection(
             @Suppress("USELESS_CAST")
             val normal = currentShutters.getResourceId(0, -1)
 
-            @Suppress("USELESS_CAST")
-            val move = currentShutters.getResourceId(1 as @DrawableRes Int, -1)
+            @SuppressLint("ResourceType")
+            val move = currentShutters.getResourceId(1, -1)
             val name = context.resources.getStringArray(namesArrayResourceId)[i]
             list.add(Shutter(name, normal, move))
             currentShutters.recycle()
