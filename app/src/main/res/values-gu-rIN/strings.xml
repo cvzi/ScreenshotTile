@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_label">સ્ક્રીનશૉટ</string>
+    <string name="partial_screenshot">કાપો</string>
+    <string name="file_format">ઇમેજ ફૉર્મૅટ</string>
+    <string name="setting_delay_entry_default">તાત્કાલિક</string>
+    <string name="setting_delay_entry_1s">1 સેકંડ</string>
+    <string name="setting_delay_entry_2s">2 સેકંડ</string>
+    <string name="setting_delay_entry_5s">5 સેકંડ</string>
+    <string name="setting_dark_theme_off">બંધ</string>
+    <string name="setting_dark_theme_on">ચાલુ</string>
+    <string name="notification_settings">નોટિફિકેશનો</string>
+    <string name="notification_settings_on">ચાલુ</string>
+    <string name="notification_settings_off">બંધ</string>
+    <string name="file_title">સ્ક્રીનશૉટ</string>
+    <string name="notification_title">સ્ક્રીનશૉટ સાચવ્યો</string>
+    <string name="notification_body">તમારા સ્ક્રીનશૉટને જોવા માટે ટૅપ કરો</string>
+    <string name="notification_foreground_title">સ્ક્રીનશોટ સાચવી રહ્યું છે…</string>
+    <string name="notification_foreground_body">સ્ક્રીનશોટ સાચવી રહ્યું છે… બહાર નીકળવા ટૅપ કરો</string>
+    <string name="screenshot_failed">સ્ક્રીનશૉટ સાચવી શક્યાં નથી</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">હટાવો</string>
+    <string name="notification_share_screenshot">શેર કરો</string>
+    <string name="notification_edit_screenshot">સંપાદિત કરો</string>
+    <string name="hide_app_from_launcher">એપ્લિકેશન ડ્રોઅરથી એપ્લિકેશન છુપાવો </string>
+    <string name="tutorial">ટ્યૂટૉરિઅલ</string>
+    <!-- About -->
+    <string name="about_license_title">લાઇસન્સ</string>
+    <!-- First screen -->
+</resources>
