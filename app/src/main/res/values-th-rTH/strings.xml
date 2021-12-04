@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_label">ภาพหน้าจอ</string>
+    <string name="more_setting">การตั้งค่า</string>
+    <string name="partial_screenshot">ตัดภาพ</string>
+    <string name="file_format">ประเภทของไฟล์</string>
+    <string name="setting_delay_entry_default">ทันที</string>
+    <string name="setting_delay_entry_1s">1 วินาที</string>
+    <string name="setting_delay_entry_2s">2 วินาที</string>
+    <string name="setting_delay_entry_5s">5 วินาที</string>
+    <string name="setting_dark_theme_off">ปิด</string>
+    <string name="setting_dark_theme_on">เปิด</string>
+    <string name="notification_settings">การแจ้งเตือน</string>
+    <string name="notification_settings_on">เปิด</string>
+    <string name="notification_settings_off">ปิด</string>
+    <string name="file_title">ภาพหน้าจอ</string>
+    <string name="notification_title">บันทึกภาพหน้าจอแล้ว</string>
+    <string name="notification_body">แตะเพื่อดูภาพหน้าจอ</string>
+    <string name="notification_foreground_title">กำลังบันทึกภาพหน้าจอ…</string>
+    <string name="notification_foreground_body">กำลังบันทึกภาพหน้าจอ… แตะเพื่อออก</string>
+    <string name="screenshot_failed">บันทึกภาพหน้าจอไม่ได้</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">ลบ</string>
+    <string name="notification_share_screenshot">แบ่งปัน</string>
+    <string name="notification_edit_screenshot">แก้ไข</string>
+    <string name="hide_app_from_launcher">ซ่อนแอป จากรายการแอพ</string>
+    <string name="tutorial">บทแนะนำ</string>
+    <!-- About -->
+    <!-- First screen -->
+</resources>
