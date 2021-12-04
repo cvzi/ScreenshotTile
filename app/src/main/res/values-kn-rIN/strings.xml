@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_label">ಸ್ಕ್ರೀನ್‌ಶಾಟ್</string>
+    <string name="partial_screenshot">ಕ್ರಾಪ್‌</string>
+    <string name="file_format">ಇಮೇಜ್ ಸ್ವರೂಪ</string>
+    <string name="setting_delay_entry_default">ತಕ್ಷಣವೇ</string>
+    <string name="setting_delay_entry_1s">1 ಸೆಕೆಂಡ್</string>
+    <string name="setting_delay_entry_2s">2 ಸೆಕೆಂಡುಗಳು</string>
+    <string name="setting_delay_entry_5s">5 ಸೆಕೆಂಡುಗಳು</string>
+    <string name="setting_dark_theme_off">ಆಫ್</string>
+    <string name="setting_dark_theme_on">ಆನ್</string>
+    <string name="notification_settings">ಅಧಿಸೂಚನೆಗಳು</string>
+    <string name="notification_settings_on">ಆನ್</string>
+    <string name="notification_settings_off">ಆಫ್</string>
+    <string name="file_title">ಸ್ಕ್ರೀನ್‌ಶಾಟ್</string>
+    <string name="notification_title">ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ ಅನ್ನು ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="notification_body">ನಿಮ್ಮ ಸ್ಕ್ರೀನ್‌ಶಾಟ್‌ ವೀಕ್ಷಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="notification_foreground_title">ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಉಳಿಸಲಾಗುತ್ತಿದೆ…</string>
+    <string name="notification_foreground_body">ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಉಳಿಸಲಾಗುತ್ತಿದೆ… ನಿರ್ಗಮಿಸಲು ಟ್ಯಾಪ್‌ ಮಾಡಿ</string>
+    <string name="screenshot_failed">ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಅನ್ನು ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">ಅಳಿಸಿ</string>
+    <string name="notification_share_screenshot">ಹಂಚಿ</string>
+    <string name="notification_edit_screenshot">ಸಂಪಾದಿಸಿ</string>
+    <string name="tutorial">ಟ್ಯುಟೋರಿಯಲ್</string>
+    <!-- About -->
+    <string name="about_license_title">ಪರವಾನಗಿ</string>
+    <!-- First screen -->
+</resources>
