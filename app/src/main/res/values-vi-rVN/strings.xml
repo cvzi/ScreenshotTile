@@ -44,7 +44,10 @@
     <string name="setting_broadcast_secret_description">Một cụm từ bí mật để cho phép các ứng dụng khác (như MacroDroid hoặc Tasker) chụp màn hình</string>
     <string name="setting_storage_directory">Vị trí lưu</string>
     <string name="setting_storage_directory_description">Thư mục lưu ảnh chụp màn hình</string>
+    <string name="setting_file_name_pattern">Tên tệp</string>
+    <string name="setting_file_name_placeholders_title">Sử dụng các chỗ giữ chỗ này trong tên tệp</string>
     <string name="setting_tile_action">Hành động của ô</string>
+    <string name="setting_floating_action">Hành động nút nổi</string>
     <string name="setting_dark_theme">Chủ đề tối</string>
     <string name="setting_dark_theme_system">Hệ thống</string>
     <string name="setting_dark_theme_off">Tắt</string>
