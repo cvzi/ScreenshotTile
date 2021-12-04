@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">کاشیِ نَماگِرِفت (نابُن)</string>
+    <string name="tile_label">نَماگِرِفت</string>
+    <string name="tile_floating_subtitle">دُکمِہ‌یِ نَماگِرِفت</string>
+    <string name="more_setting">ساماندَهیِ بیشتَر</string>
+    <string name="open_settings">گُشودَنِ ساماندَهی</string>
+    <string name="left_screenshot_right_menu">چَپ: نَماگِرِفت، راست: ساماندَهی</string>
+    <string name="partial_screenshot">گُزینِشِ جای</string>
+    <string name="file_format">فرمت تصویر</string>
+    <string name="setting_delay_entry_default">فوری</string>
+    <string name="setting_delay_entry_1s">۱ ثانیه</string>
+    <string name="setting_delay_entry_2s">۲ ثانیه</string>
+    <string name="setting_delay_entry_5s">۵ ثانیه</string>
+    <string name="use_native_screenshot">بِکارگیریِ شیوِه‌یِ بُنیادین</string>
+    <string name="use_system_defaults">بِکارگیریِ پیشگُزیدِه‌ی سامانِہ</string>
+    <string name="use_system_defaults_summary">نیازمَندِ اَندرویدِ ۱۱ اَست</string>
+    <string name="use_system_defaults_summary_off">بِکارگیریِ سازمانِ بَرنامِہ</string>
+    <string name="setting_tile_action">کُنِشِ کاشی</string>
+    <string name="setting_dark_theme_system">سامانِہ</string>
+    <string name="setting_dark_theme_off">خاموش</string>
+    <string name="setting_dark_theme_on">روشَن</string>
+    <string name="notification_settings">آگَهداد</string>
+    <string name="notification_settings_on">روشَن</string>
+    <string name="notification_settings_off">خاموش</string>
+    <string name="file_title">نَماگِرِفت</string>
+    <string name="notification_title">عکس صفحه‌نمایش ذخیره شد</string>
+    <string name="notification_body">برای مشاهده عکس صفحه‌نمایشتان ضربه بزنید</string>
+    <string name="notification_foreground_title">در حال ذخیره عکس صفحه‌نمایش…</string>
+    <string name="notification_foreground_body">در حال ذخیره عکس صفحه‌نمایش… برای لغو ضربه بزنید</string>
+    <string name="notification_app_chooser_share">هَمرِسانیِ پَروَندِه با…</string>
+    <string name="notification_app_chooser_edit">ویرایِشِ پَروَندِه با…</string>
+    <string name="screenshot_failed">عکس صفحه‌نمایش ذخیره نشد</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">زُدودَن</string>
+    <string name="notification_share_screenshot">هَمرِسانی</string>
+    <string name="notification_edit_screenshot">ویرایِش</string>
+    <string name="screenshot_deleted">نَماگِرِفت زُدودِه شُد</string>
+    <string name="screenshot_delete_failed">زُدایِشِ پَروَندِه شُدَنی نیست</string>
+    <string name="hide_app_from_launcher">مخفی کردن برنامه از کشوی برنامه ها</string>
+    <string name="hide_app_unsupported">دَر اَندرویدِ ۱۰+ پُشتیبانی نِمےشَوَد</string>
+    <string name="tutorial">آموزش گام‌به‌گام</string>
+    <string name="take_screenshot">اَنداختَنِ یِک نَماگِرِفت</string>
+    <!-- About -->
+    <string name="about_app_title">دَربارِه</string>
+    <string name="about_license_title">گُواهےنامِہ</string>
+    <string name="about_license_1">گُواهےنامِہ‌یِ فَراگیرِ هَمِگانیِ گنو ویرایِشِ ۳</string>
+    <!-- First screen -->
+    <string name="main_native_method_title">شیوِه‌یِ بُنیادین</string>
+</resources>

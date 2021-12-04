@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_label">צילום מסך</string>
+    <string name="title_delay">השהיית</string>
+    <string name="more_setting">הגדרות נוספות</string>
+    <string name="partial_screenshot">חיתוך</string>
+    <string name="file_format">תבנית קובץ</string>
+    <string name="setting_delay_entry_default">מיד</string>
+    <string name="setting_delay_entry_1s">שנייה 1</string>
+    <string name="setting_delay_entry_2s">2 שניות</string>
+    <string name="setting_delay_entry_5s">5 שניות</string>
+    <string name="show_count_down">מציג ספירה לאחור</string>
+    <string name="setting_dark_theme_off">כבוי</string>
+    <string name="setting_dark_theme_on">פועל</string>
+    <string name="notification_settings">התראות</string>
+    <string name="notification_settings_on">פועל</string>
+    <string name="notification_settings_off">כבוי</string>
+    <string name="file_title">צילום מסך</string>
+    <string name="file_description">%1$s צילום מסך</string>
+    <string name="notification_title">צילום המסך נשמר</string>
+    <string name="notification_body">אפשר להקיש כדי להציג את צילום המסך</string>
+    <string name="notification_channel_description">מציג התראות לאחר צילום מסך</string>
+    <string name="notification_foreground_title">שומר צילום מסך…</string>
+    <string name="notification_foreground_body">שומר צילום מסך… לחץ ליציאה</string>
+    <string name="notification_app_chooser_share">שתף עם</string>
+    <string name="notification_app_chooser_edit">לערוך עם</string>
+    <string name="screenshot_failed">לא ניתן היה לשמור צילום מסך</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="screenshot_file_saved">הצילום מסך נשמרה בתו %1$s</string>
+    <string name="notification_delete_screenshot">מחיקה</string>
+    <string name="notification_share_screenshot">שיתוף</string>
+    <string name="notification_edit_screenshot">עריכת</string>
+    <string name="screenshot_deleted">צילום מסך נמחק</string>
+    <string name="screenshot_delete_failed">לא ניתן למחוק את הקובץ</string>
+    <string name="permission_missing_external_storage">אירעה שגיאה הרשאה שטח האחסון</string>
+    <string name="permission_missing_screen_capture">אירעה שגיאה בעת קבלת הרשאה לתפוס את המסך</string>
+    <string name="hide_app_from_launcher">הסתר את סמל היישום</string>
+    <string name="toggle_app_icon_failed">אירעה שגיאה להציג/להסתיר את סמל</string>
+    <string name="tutorial">הדרכה</string>
+    <string name="tutorial_tap_for_next_step">הקש כדי לנווט קדימה</string>
+    <string name="take_screenshot">קח תמונת מסך</string>
+    <!-- About -->
+    <string name="about_app_title">אודות</string>
+    <string name="about_app_3">For more information and bug reports visit: github.com/cvzi/ScreenshotTile</string>
+    <string name="about_license_title">רישיון</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\n שיון הציבורי הכללי של גנו גרסה   3 </string>
+    <!-- First screen -->
+</resources>

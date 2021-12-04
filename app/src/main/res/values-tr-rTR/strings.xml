@@ -79,6 +79,7 @@
     <string name="tutorial_tap_for_next_step">Sonraki adım için dokunun</string>
     <string name="tutorial_step2">Bildirim alanı aşağa çek</string>
     <string name="tutorial_step3">Hızlı ayarları aşağa çek</string>
+    <string name="tutorial_step4">Düzenle butonuna tıklayın</string>
     <string name="tutorial_step5">Yeni ekran resmi butonu bul</string>
     <string name="tutorial_step6">Bu butonu ayarlarda sürükle</string>
     <string name="tutorial_step8">Hızlı ayarları kapatın</string>
@@ -94,7 +95,7 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">Erişilebilirlik ayarları</string>
     <string name="main_floating_button_title">Yüzen buton</string>
-    <string name="main_general_text">Bu uygulamayı kullanmadan önce, karo/butonu hızlı ayarlardan kullanman lazım. Eğer bunu nasıl yapılacağını bilmiyorsan, şuna bak [ öğretici aktife,.TutorialActivity] . Bu uygulama ekran resmi almak için iki farklı metodu destekliyor.</string>
+    <string name="main_general_text">Bu uygulamayı kullanmadan önce, karo/butonu hızlı ayarlardan kullanman lazım. Eğer bunu nasıl yapılacağını bilmiyorsan, şuna bak [öğretici aktife,.TutorialActivity].\n\nBu uygulama ekran resmi almak için iki farklı metodu destekliyor:</string>
     <string name="main_legacy_method_title">Eski metod</string>
     <string name="main_native_method_title">Doğal metod</string>
     <string name="main_native_method_text_android_pre_11">Ekran resmi çektiğinde, belki ses veye ekran editör gösterir. Ekran resimleri standart dosya kaydeliyor. Bu senin telefonuna bağlı ve değiştirilemez . belki bunu telefon ayarlaranızdan değiştirebilirsiniz.</string>

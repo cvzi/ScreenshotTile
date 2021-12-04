@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_label">ئېكران كەسمىسى تۇت</string>
+    <string name="title_delay">ئېكران كۆرۈنۈشى كېچىكتۈر</string>
+    <string name="more_setting">تەڭشەك</string>
+    <string name="partial_screenshot">كېسىش</string>
+    <string name="file_format">خىلدىكى سۈرەت</string>
+    <string name="setting_delay_entry_default">دەرھال</string>
+    <string name="setting_delay_entry_1s">1 سېكۇنت</string>
+    <string name="setting_delay_entry_2s">2 سېكۇنت</string>
+    <string name="setting_delay_entry_5s">5 سېكۇنت</string>
+    <string name="setting_dark_theme_off">ياق</string>
+    <string name="setting_dark_theme_on">ھەئە</string>
+    <string name="notification_settings">ئۇقتۇرۇش</string>
+    <string name="notification_settings_on">ھەئە</string>
+    <string name="notification_settings_off">ياق</string>
+    <string name="file_title">ئېكران كېسىش</string>
+    <string name="file_description">ئېكران كۆرۈنۈشىنىڭ ئورنى\n%1$s</string>
+    <string name="notification_title">ئېكران كەسمىسىگە ئېرىشتى</string>
+    <string name="notification_body">چېكىلسە ئېكران كەسمىسىنى كۆرسىتىدۇ</string>
+    <string name="notification_foreground_title">بىرتەرەپ قىلىۋاتىدۇ…</string>
+    <string name="notification_foreground_body">ئېكران كەسمە رەسىمى ساقلىنىۋاتىدۇ…</string>
+    <string name="notification_app_chooser_share">ھەمبەھرلەش</string>
+    <string name="notification_app_chooser_edit">تەھرىرلەش</string>
+    <string name="screenshot_failed">ئېكران كەسمىسىگە ئېرىشەلمەيدۇ</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <string name="notification_delete_screenshot">ئۆچۈر</string>
+    <string name="notification_share_screenshot">ھەمبەھىر</string>
+    <string name="notification_edit_screenshot">تەھرىر</string>
+    <string name="screenshot_delete_failed">ئۆچۈرۈش مەغلۇپ بولدى</string>
+    <string name="tutorial">ياردەم</string>
+    <string name="take_screenshot">ئېكران كېسىش</string>
+    <!-- About -->
+    <string name="about_app_title">ئەپ ئۇچۇرى</string>
+    <!-- First screen -->
+</resources>
