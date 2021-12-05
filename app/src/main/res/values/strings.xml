@@ -92,6 +92,19 @@
     <string name="tutorial_step16">Take screenshots with the new button</string>
     <string name="take_screenshot">Take a screenshot</string>
 
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Google Play Prominent Disclosure &amp; Consent Requirement</string>
+    <string name="googleplay_consent_line_0">Google Play requires prominent disclosure of the Accessibility Services API’s use for an app that is not an accessibility tool.</string>
+    <string name="googleplay_consent_line_1">This app - “Screenshot Tile [No root]“ - is not an accessibility tool.</string>
+    <string name="googleplay_consent_line_2">Since users may not reasonably expect that their personal and sensitive user data will be required to provide or improve the policy compliant features or functionality within this app, a prominent disclosure of the usage of the Accessibility Services API by this app and a declaration of the data collection and data sharing within this app is required:</string>
+    <string name="googleplay_consent_line_3">This app requires access to Accessibility Services API in order to take a screenshot when the app is not in use.</string>
+    <string name="googleplay_consent_line_4">Access to Accessibility Services API will allow this app to record the screen.</string>
+    <string name="googleplay_consent_line_5">Screen recordings will be used to create screenshot images.</string>
+    <string name="googleplay_consent_line_6">Data is neither collected nor shared by this app using the accessibility capabilities.</string>
+    <string name="googleplay_consent_line_7">Do you agree to authorize this app to gain access to the Accessibility Services API and to use the accessibility capabilities to record the screen?</string>
+    <string name="googleplay_consent_yes">I agree</string>
+    <string name="googleplay_consent_no">I refuse</string>
+
     <!-- About -->
     <string name="about_app_title">About</string>
     <string name="about_app_1">This is a fork of\ngithub.com/ipcjs/ScreenshotTile</string>

@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
-import com.github.cvzi.screenshottile.utils.isNewAppInstallation
 import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
 import com.google.android.material.switchmaterial.SwitchMaterial
 
@@ -164,22 +163,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun askToEnableAccessibility() {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Google Play Prominent Disclosure & Consent Requirement")
-        builder.setMessage("Google Play requires prominent disclosure of the Accessibility Services API’s use for an app that is not an accessibility tool. " +
-                "This app - “Screenshot Tile [No root]“ - is not an accessibility tool. " +
-                "Since users may not reasonably expect that their personal and sensitive user data will be required to provide or improve the policy compliant features or functionality within this app, " +
-                "a prominent disclosure of the usage of the Accessibility Services API by this app and a declaration of the data collection and data sharing within this app is required:\n" +
-                "This app requires access to Accessibility Services API in order to take a screenshot when the app is not in use. " +
-                "Access to Accessibility Services API will allow this app to record the screen. Screen recordings will be used to create screenshot images. " +
-                "Data is neither collected nor shared by this app using the accessibility capabilities.\n" +
+        builder.setTitle(R.string.googleplay_consent_title)
+        builder.setMessage("${getString(R.string.googleplay_consent_line_0)} " +
+                "${getString(R.string.googleplay_consent_line_1)} " +
+                "${getString(R.string.googleplay_consent_line_2)}\n" +
+                "${getString(R.string.googleplay_consent_line_3)} " +
+                "${getString(R.string.googleplay_consent_line_4)} " +
+                "${getString(R.string.googleplay_consent_line_5)} " +
+                "${getString(R.string.googleplay_consent_line_6)}\n" +
                 "\n" +
-                "Do you agree to authorize this app to gain access to the Accessibility Services API and to use the accessibility capabilities to record the screen?")
-        builder.setPositiveButton("I agree") { _, _ ->
+                getString(R.string.googleplay_consent_line_7)
+        )
+        builder.setPositiveButton(getString(R.string.googleplay_consent_yes)) { _, _ ->
             accessibilityConsent = true
             val switchNative = findViewById<SwitchMaterial>(R.id.switchNative)
             switchNative.isChecked = true
         }
-        builder.setNegativeButton("I refuse") { _, _ ->
+        builder.setNegativeButton(R.string.googleplay_consent_no) { _, _ ->
             val switchLegacy = findViewById<SwitchMaterial>(R.id.switchLegacy)
             switchLegacy.isChecked = true
         }
