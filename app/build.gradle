@@ -22,8 +22,8 @@ android {
         applicationId "com.github.cvzi.screenshottile"
         minSdkVersion 24
         targetSdkVersion 31
-        versionCode 52
-        versionName "1.14.5"
+        versionCode 53
+        versionName "1.14.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

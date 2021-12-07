@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.14.6
+*   Translations updated from crowdin
+
 ## 1.14.5
 *   Prominent disclosure of the Accessibility Services API's usage according to Google's requirements
 
