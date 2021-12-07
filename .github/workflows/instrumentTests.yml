@@ -93,12 +93,24 @@ jobs:
 
       - name: Run tests
         uses: reactivecircus/android-emulator-runner@v2
+        id: runtests
+        continue-on-error: true
         with:
           api-level: ${{ matrix.api-level }}
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale ${{ matrix.locale }}
           disable-animations: true
           script: ./gradlew connectedCheck
+
+      - name: Raise error on test failure
+        if: steps.runtests.outcome != 'success'
+        run: |
+          if [ -z "$(ls -A app/build/reports/androidTests/)" ]; then
+             echo "Emulator failed to start tests"
+             exit 0
+          else
+             exit 1
+          fi
 
       - name: Upload androidTests report
         if: always()
