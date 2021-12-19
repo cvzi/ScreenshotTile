@@ -90,6 +90,9 @@
     <string name="tutorial_step11">Надайте дозволи</string>
     <string name="tutorial_step16">Зробіть знімки екрану за допомогою нової кнопки</string>
     <string name="take_screenshot">Зробити знімок екрана</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_yes">Я погоджуюся</string>
+    <string name="googleplay_consent_no">Я відмовляюся</string>
     <!-- About -->
     <string name="about_app_title">Про застосунок</string>
     <string name="about_app_1">Це форк з\ngithub.com/ipcjs/ScreenshotTile</string>
