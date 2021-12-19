@@ -46,6 +46,7 @@
     <string name="setting_storage_directory_description">Director pentru salvarea capturilor de ecran</string>
     <string name="setting_file_name_pattern">Numele fișierului</string>
     <string name="setting_file_name_placeholders_title">Utilizați aceste caractere de poziție în numele fișierului</string>
+    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - ora ca yyyy-MM-dd_HH-mm-ss\n%counter% - numără numărul de capturi de ecran\n%random% - un UUID aleatoriu\n%randint% - un număr aleatoriu</string>
     <string name="setting_tile_action">Acțiunea plăcutei</string>
     <string name="setting_floating_action">Acțiunea butonului flotant</string>
     <string name="setting_dark_theme">Temă sumbră</string>
@@ -57,6 +58,7 @@
     <string name="notification_settings_off">Dezactivat</string>
     <string name="file_title">Captură ecran</string>
     <string name="file_description">Captură de ecran efectuată pe %1$s</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Captură ecran făcută</string>
     <string name="notification_body">Apasă pentru a vedea imaginea</string>
     <string name="notification_channel_description">Afișează o notificare atunci când ați făcut o captură de ecran</string>
@@ -90,6 +92,18 @@
     <string name="tutorial_step11">Acceptă permisiunile</string>
     <string name="tutorial_step16">Faceți capturi de ecran cu noul buton</string>
     <string name="take_screenshot">Fă o captură ecran</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Google Play Dezvăluirea proeminentă &amp; Cerința de consimțământ</string>
+    <string name="googleplay_consent_line_0">Google Play necesită o dezvăluire proeminentă a utilizării API pentru servicii de accesibilitate pentru o aplicație care nu este un instrument de accesibilitate.</string>
+    <string name="googleplay_consent_line_1">Această aplicație - \"Screenshot Tile [No root]\" - nu este un instrument de accesibilitate.</string>
+    <string name="googleplay_consent_line_2">Deoarece este posibil ca utilizatorii să nu se aștepte în mod rezonabil ca datele lor personale și sensibile să fie necesare pentru a furniza sau a îmbunătăți caracteristicile sau funcționalitățile conforme cu politica din cadrul acestei aplicații, este necesară o dezvăluire proeminentă a utilizării API a serviciilor de accesibilitate de către această aplicație și o declarație privind colectarea și partajarea datelor în cadrul acestei aplicații:</string>
+    <string name="googleplay_consent_line_3">Această aplicație necesită acces la API pentru servicii de accesibilitate pentru a face o captură de ecran atunci când aplicația nu este utilizată.</string>
+    <string name="googleplay_consent_line_4">Accesul la Accessibility Services API va permite acestei aplicații să înregistreze ecranul.</string>
+    <string name="googleplay_consent_line_5">Înregistrările de pe ecran vor fi folosite pentru a crea imagini de captură de ecran.</string>
+    <string name="googleplay_consent_line_6">Datele nu sunt nici colectate, nici partajate de această aplicație care utilizează capacitățile de accesibilitate.</string>
+    <string name="googleplay_consent_line_7">Sunteți de acord să autorizați această aplicație să obțină acces la API pentru servicii de accesibilitate și să utilizeze capacitățile de accesibilitate pentru a înregistra ecranul?</string>
+    <string name="googleplay_consent_yes">Sunt de acord</string>
+    <string name="googleplay_consent_no">Refuz</string>
     <!-- About -->
     <string name="about_app_title">Despre</string>
     <string name="about_app_1">Aceasta este o ramură de la\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -97,6 +111,8 @@
     <string name="about_license_title">Licență</string>
     <string name="about_license_1">LICENȚĂ PUBLICĂ GENERALĂ GENERALĂ GNU Versiunea 3</string>
     <string name="about_app_2">Această aplicație are încă unele probleme și este în curs de dezvoltare.\nDacă aveți acces root pe telefon, vă rugăm să utilizați versiunea ipcjs\', este mai rapidă și mai fiabilă.</string>
+    <string name="about_privacy_title">Politică de confidenţialitate</string>
+    <string name="about_open_source_title">Sursă deschisă utilizată</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Setări de accesibilitate</string>
     <string name="main_floating_button_title">Buton flotant</string>
