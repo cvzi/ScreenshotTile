@@ -1,0 +1,2 @@
+*  Translations updated
+*  No accessibility consent dialog for F-Droid

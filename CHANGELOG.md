@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.14.8
+*   Enable native method on new installs from F-Droid and don't show the consent dialog
+
 ## 1.14.7
 *   Translations updated from crowdin
 

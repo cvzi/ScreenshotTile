@@ -665,7 +665,7 @@ fun isNewAppInstallation(context: Context): Boolean {
 data class ClickableStringResult(
     val builder: SpannableStringBuilder,
     val activities: List<String>
-    )
+)
 
 /**
  * Make activity links clickable. Example: "This is a link [Tutorial,.TutorialActivity] to the tutorial"
@@ -707,4 +707,23 @@ fun makeActivityClickableFromText(text: String, context: Context): ClickableStri
         builder.append(spannableString)
     }
     return ClickableStringResult(builder, activities)
+}
+
+/**
+ * Check if F-Droid client is installed
+ */
+fun hasFdroid(context: Context): Boolean {
+    val packageManager = context.packageManager
+    for (name in arrayOf(
+        "org.fdroid.fdroid",
+        "org.fdroid.basic"
+    )) {
+        try {
+            packageManager.getPackageInfo(name, 0)
+            return true
+        } catch (e: PackageManager.NameNotFoundException) {
+            Log.d(UTILSKT, e.toString())
+        }
+    }
+    return false
 }

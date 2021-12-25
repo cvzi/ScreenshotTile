@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
+import com.github.cvzi.screenshottile.utils.hasFdroid
+import com.github.cvzi.screenshottile.utils.isNewAppInstallation
 import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
 import com.google.android.material.switchmaterial.SwitchMaterial
 
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 })
         }
+
         var accessibilityConsent = false
     }
 
@@ -45,17 +48,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        /* Disabled because of Google Play accessibility policy
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.screenshotCount == 0 && isNewAppInstallation(
-                this
-            )
-        ) {
-            // On Android Pie and higher, enable native method on first start
-            App.getInstance().prefManager.screenshotCount++
-            App.getInstance().prefManager.useNative = true
+        if (!accessibilityConsent) {
+            accessibilityConsent = hasFdroid(this)
         }
-        */
+
+        if (accessibilityConsent) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+                && App.getInstance().prefManager.screenshotCount == 0
+                && isNewAppInstallation(this)
+            ) {
+                // On Android Pie and higher, enable native method on first start
+                App.getInstance().prefManager.screenshotCount++
+                App.getInstance().prefManager.useNative = true
+            }
+        }
 
         val textDescTranslate = findViewById<TextView>(R.id.textDescTranslate)
         textDescTranslate.movementMethod = LinkMovementMethod()
@@ -137,7 +143,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         switchNative?.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked && !accessibilityConsent) {
+            if (isChecked && !accessibilityConsent) {
                 switchNative.isChecked = false
                 askToEnableAccessibility()
                 return@setOnCheckedChangeListener
@@ -164,15 +170,16 @@ class MainActivity : AppCompatActivity() {
     private fun askToEnableAccessibility() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.googleplay_consent_title)
-        builder.setMessage("${getString(R.string.googleplay_consent_line_0)} " +
-                "${getString(R.string.googleplay_consent_line_1)} " +
-                "${getString(R.string.googleplay_consent_line_2)}\n" +
-                "${getString(R.string.googleplay_consent_line_3)} " +
-                "${getString(R.string.googleplay_consent_line_4)} " +
-                "${getString(R.string.googleplay_consent_line_5)} " +
-                "${getString(R.string.googleplay_consent_line_6)}\n" +
-                "\n" +
-                getString(R.string.googleplay_consent_line_7)
+        builder.setMessage(
+            "${getString(R.string.googleplay_consent_line_0)} " +
+                    "${getString(R.string.googleplay_consent_line_1)} " +
+                    "${getString(R.string.googleplay_consent_line_2)}\n" +
+                    "${getString(R.string.googleplay_consent_line_3)} " +
+                    "${getString(R.string.googleplay_consent_line_4)} " +
+                    "${getString(R.string.googleplay_consent_line_5)} " +
+                    "${getString(R.string.googleplay_consent_line_6)}\n" +
+                    "\n" +
+                    getString(R.string.googleplay_consent_line_7)
         )
         builder.setPositiveButton(getString(R.string.googleplay_consent_yes)) { _, _ ->
             accessibilityConsent = true
