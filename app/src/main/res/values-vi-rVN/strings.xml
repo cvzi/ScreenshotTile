@@ -90,6 +90,18 @@
     <string name="tutorial_step11">Chấp nhận các quyền</string>
     <string name="tutorial_step16">Chụp ảnh màn hình bằng nút mới</string>
     <string name="take_screenshot">Chụp ảnh màn hình</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Yêu cầu tiết lộ &amp; đồng ý của Google Play</string>
+    <string name="googleplay_consent_line_0">Google Play yêu cầu tiết lộ việc sử dụng API Dịch vụ hỗ trợ tiếp cận đối với ứng dụng không phải là công cụ hỗ trợ tiếp cận.</string>
+    <string name="googleplay_consent_line_1">Ứng dụng này - \"Ô chụp màn hình [Không cần root]\" - không phải là công cụ hỗ trợ tiếp cận.</string>
+    <string name="googleplay_consent_line_2">Vì người dùng có thể không mong đợi là dữ liệu cá nhân và nhạy cảm của người dùng sẽ là bắt buộc để cung cấp hoặc cải thiện các tính năng hoặc chức năng tuân thủ theo chính sách ở trong ứng dụng, việc tiết lộ mục đích sử dụng API Dịch vụ hỗ trợ tiếp cận của ứng dụng và việc tuyên bố sự thu thập và chia sẻ dữ liệu ở trong ứng dụng này là bắt buộc:</string>
+    <string name="googleplay_consent_line_3">Ứng dụng này yêu cầu quyền truy cập API Dịch vụ hỗ trợ tiếp cận để chụp màn hình khi ứng dụng đang không được dùng.</string>
+    <string name="googleplay_consent_line_4">Quyền truy cập API Dịch vụ hỗ trợ tiếp cận sẽ cho phép ứng dụng này quay màn hình.</string>
+    <string name="googleplay_consent_line_5">Các bản ghi màn hình sẽ được sử dụng để tạo ảnh chụp màn hình.</string>
+    <string name="googleplay_consent_line_6">Dữ liệu không được ứng dụng này thu thập hay chia sẻ bằng khả năng hỗ trợ tiếp cận này.</string>
+    <string name="googleplay_consent_line_7">Bạn có đồng ý uỷ quyền ứng dụng này để lấy quyền truy cập API Dịch vụ hỗ trợ tiếp cận và sử dụng khả năng hỗ trợ tiếp cận để quay màn hình không?</string>
+    <string name="googleplay_consent_yes">Tôi đồng ý</string>
+    <string name="googleplay_consent_no">Tôi từ chối</string>
     <!-- About -->
     <string name="about_app_title">Giới thiệu</string>
     <string name="about_app_1">Đây là một fork của\nngithub.com/ipcjs/ScreenshotTile</string>
