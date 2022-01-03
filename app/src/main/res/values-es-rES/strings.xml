@@ -91,6 +91,18 @@
     <string name="tutorial_step11">Acepta los permisos</string>
     <string name="tutorial_step16">Ahora puedes tomar capturas de pantalla con el botón nuevo</string>
     <string name="take_screenshot">Captura de pantalla</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Aviso &amp; solicitud de consentimiento destacados de Google Play</string>
+    <string name="googleplay_consent_line_0">Google Play requiere una aviso prominente del uso de la API de Servicios de Accesibilidad para una aplicación que no es una herramienta de accesibilidad.</string>
+    <string name="googleplay_consent_line_1">Esta aplicación - “Screenshot Tile [NoRoot]“ - no es una herramienta de accesibilidad.</string>
+    <string name="googleplay_consent_line_2">Puesto que los usuarios pueden no esperar razonablemente que sus datos personales y sensibles de usuario sean requeridos para proporcionar o mejorar las características o funcionalidad de la política dentro de esta aplicación, se requiere una divulgación destacada del uso de la API de Servicios de Accesibilidad por esta aplicación y una declaración de la recopilación de datos y el intercambio de datos dentro de esta aplicación:</string>
+    <string name="googleplay_consent_line_3">Esta aplicación requiere acceso a la API de Servicios de Accesibilidad para tomar una captura de pantalla cuando la aplicación no está en uso.</string>
+    <string name="googleplay_consent_line_4">El acceso a la API de Servicios de Accesibilidad permitirá a esta aplicación grabar la pantalla.</string>
+    <string name="googleplay_consent_line_5">Las grabaciones de pantalla se utilizarán para crear imágenes de captura de pantalla.</string>
+    <string name="googleplay_consent_line_6">Los datos no son recolectados ni compartidos por esta aplicación usando las capacidades de accesibilidad.</string>
+    <string name="googleplay_consent_line_7">¿Está de acuerdo en autorizar a esta aplicación a tener acceso a la API de Servicios de Accesibilidad y a utilizar las capacidades de accesibilidad para grabar la pantalla?</string>
+    <string name="googleplay_consent_yes">Aceptar</string>
+    <string name="googleplay_consent_no">Denegar</string>
     <!-- About -->
     <string name="about_app_title">Info de la app</string>
     <string name="about_app_1">Esta es un fork de\ngithub.com/ipcjs/ScreenshotTile</string>
