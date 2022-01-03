@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.14.10
+*   Translations updated from crowdin
+
 ## 1.14.9
 *   Translations updated from crowdin
 
