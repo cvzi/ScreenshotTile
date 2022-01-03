@@ -91,6 +91,18 @@
     <string name="tutorial_step11">接受权限</string>
     <string name="tutorial_step16">使用新按钮截取屏幕截图</string>
     <string name="take_screenshot">截取屏幕截图</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Google Play 醒目披露 &amp; 用户同意要求</string>
+    <string name="googleplay_consent_line_0">Google Play 要求非无障碍工具应用显着披露无障碍服务 API 的使用。</string>
+    <string name="googleplay_consent_line_1">这个应用 -\"Screenshot Tile [No root]” - 不是一个无障碍工具。</string>
+    <string name="googleplay_consent_line_2">因为用户可能无法合理地期望他们的个人和敏感用户数据将被要求提供或改进本应用中的政策兼容功能或功能， 此应用需要显著地披露无障碍服务 API 的使用情况，并在该应用内声明数据收集和数据共享：</string>
+    <string name="googleplay_consent_line_3">此应用程序需要访问无障碍服务 API，以便在不使用该应用程序时截取屏幕截图。</string>
+    <string name="googleplay_consent_line_4">访问无障碍服务 API 将允许此应用记录屏幕。</string>
+    <string name="googleplay_consent_line_5">屏幕录制将用于创建屏幕截图。</string>
+    <string name="googleplay_consent_line_6">此应用程序不使用无障碍功能收集和共享数据。</string>
+    <string name="googleplay_consent_line_7">您是否同意授权此应用访问无障碍服务 API 并使用无障碍功能来记录屏幕？</string>
+    <string name="googleplay_consent_yes">同意</string>
+    <string name="googleplay_consent_no">拒绝</string>
     <!-- About -->
     <string name="about_app_title">关于</string>
     <string name="about_app_1">这是\ngithub.com/ipcjs/ScreenshotTile 的一个分支</string>
