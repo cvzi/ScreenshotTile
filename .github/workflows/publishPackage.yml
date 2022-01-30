@@ -1,0 +1,29 @@
+name: Publish package to GitHub Packages
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v2
+      - name: JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '15'
+      - name: Add exec permission
+        run: chmod +x gradlew
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: Publish package
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
