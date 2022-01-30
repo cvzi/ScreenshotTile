@@ -22,7 +22,7 @@ import com.github.cvzi.screenshottile.R
 class DrawableListPreference : ListPreference {
     @Suppress("unused")
     constructor(
-        context: Context?,
+        context: Context,
         attrs: AttributeSet?,
         defStyleAttr: Int,
         @Suppress("unused") defStyleRes: Int
@@ -33,17 +33,17 @@ class DrawableListPreference : ListPreference {
     )
 
     @Suppress("unused")
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context,
         attrs,
         defStyleAttr
     )
 
     @Suppress("unused")
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
     @Suppress("unused")
-    constructor(context: Context?) : super(context)
+    constructor(context: Context) : super(context)
 
     private var selectedShutterIndex: Int = 0
     override fun onClick() {

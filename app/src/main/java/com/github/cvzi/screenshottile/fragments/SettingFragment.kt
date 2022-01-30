@@ -67,7 +67,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var tileActionPref: ListPreference? = null
     private var darkThemePref: ListPreference? = null
     private var floatingButtonHideShowClosePreventRecursion = false
-    private lateinit var pref: SharedPreferences
+    private var pref: SharedPreferences? = null
     private val prefManager = App.getInstance().prefManager
 
     private val prefListener =
@@ -129,7 +129,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             findPreference(getString(R.string.pref_key_file_name_pattern)) as EditTextPreference?
         fileNamePlaceholders = findPreference(getString(R.string.pref_static_field_key_file_name_placeholders)) as Preference?
 
-        pref.registerOnSharedPreferenceChangeListener(prefListener)
+        pref?.registerOnSharedPreferenceChangeListener(prefListener)
 
         makeLink(
             R.string.pref_static_field_key_about_app_1,
@@ -618,6 +618,6 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     override fun onDestroy() {
         super.onDestroy()
-        pref.unregisterOnSharedPreferenceChangeListener(prefListener)
+        pref?.unregisterOnSharedPreferenceChangeListener(prefListener)
     }
 }
