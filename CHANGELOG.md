@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.14.11
+*   Restore state in settings on rotation [#119](https://github.com/cvzi/ScreenshotTile/issues/119)
+
 ## 1.14.10
 *   Translations updated from crowdin
 
