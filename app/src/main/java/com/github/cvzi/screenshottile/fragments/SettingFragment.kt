@@ -40,6 +40,8 @@ class SettingFragment : PreferenceFragmentCompat() {
     companion object {
         const val TAG = "SettingFragment.kt"
         private const val DIRECTORY_CHOOSER_REQUEST_CODE = 8912
+        private const val FLOATING_BUTTON_SHOW_CLOSE_DIALOG_SHOWN = "closeAlertDialogShown"
+        private const val FLOATING_BUTTON_SHOW_CLOSE_DIALOG_VALUE = "closeAlertDialogValue"
         var instance: WeakReference<SettingFragment>? = null
     }
 
@@ -69,6 +71,8 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var floatingButtonHideShowClosePreventRecursion = false
     private var pref: SharedPreferences? = null
     private val prefManager = App.getInstance().prefManager
+    var floatingButtonShowCloseAlertDialog: AlertDialog? = null
+    var floatingButtonShowCloseTextValue = ""
 
     private val prefListener =
         SharedPreferences.OnSharedPreferenceChangeListener { _: SharedPreferences?, key: String? ->
@@ -155,6 +159,10 @@ class SettingFragment : PreferenceFragmentCompat() {
         makeNotificationSettingsLink()
         makeAccessibilitySettingsLink()
         makeStorageDirectoryLink()
+
+        if (savedInstanceState?.getBoolean(FLOATING_BUTTON_SHOW_CLOSE_DIALOG_SHOWN, false) == true) {
+            updateFloatingButtonClose(savedInstanceState.getString(FLOATING_BUTTON_SHOW_CLOSE_DIALOG_VALUE))
+        }
     }
 
 
@@ -504,25 +512,29 @@ class SettingFragment : PreferenceFragmentCompat() {
         updateFloatingButton()
     }
 
-    private fun updateFloatingButtonClose() {
-        if (floatingButtonHideShowClosePref?.isChecked == true && !floatingButtonHideShowClosePreventRecursion) {
-            var alertDialog: AlertDialog? = null
+    private fun updateFloatingButtonClose(openWithValue: String? = null) {
+        if ((floatingButtonHideShowClosePref?.isChecked == true && !floatingButtonHideShowClosePreventRecursion) || openWithValue != null) {
             val relativeLayout = LayoutInflater.from(context)
                 .inflate(R.layout.dialog_close_button, null) as ViewGroup
             val closeButtonEmojiInput =
                 relativeLayout.findViewById<AutoCompleteTextView>(R.id.closeButtonEmojiInput)
-            closeButtonEmojiInput.setText(prefManager.floatingButtonCloseEmoji)
+            if (openWithValue != null) {
+                closeButtonEmojiInput.setText(openWithValue)
+            } else {
+                closeButtonEmojiInput.setText(prefManager.floatingButtonCloseEmoji)
+            }
             closeButtonEmojiInput.setOnEditorActionListener { _, actionId, _ ->
                 return@setOnEditorActionListener when (actionId) {
                     EditorInfo.IME_ACTION_DONE -> {
                         saveFloatingButton(closeButtonEmojiInput.text.trim().toString())
-                        alertDialog?.dismiss()
+                        floatingButtonShowCloseAlertDialog?.dismiss()
                         true
                     }
                     else -> false
                 }
             }
             closeButtonEmojiInput.addTextChangedListener { v ->
+                floatingButtonShowCloseTextValue = closeButtonEmojiInput.text.toString()
                 if (closeButtonEmojiInput.text.isBlank()) {
                     (requireActivity().getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager?)?.hideSoftInputFromWindow(
                         closeButtonEmojiInput.windowToken,
@@ -542,7 +554,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             ).also { adapter ->
                 closeButtonEmojiInput.setAdapter(adapter)
             }
-            alertDialog = AlertDialog.Builder(context)
+            floatingButtonShowCloseAlertDialog = AlertDialog.Builder(context)
                 .setTitle(R.string.setting_floating_button_show_close_dialog_title)
                 .setMessage(R.string.setting_floating_button_show_close_dialog_description)
                 .setView(relativeLayout)
@@ -614,6 +626,14 @@ class SettingFragment : PreferenceFragmentCompat() {
                 activity?.contentResolver?.takePersistableUriPermission(uri, takeFlags)
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        if (floatingButtonShowCloseAlertDialog?.isShowing == true) {
+            outState.putBoolean(FLOATING_BUTTON_SHOW_CLOSE_DIALOG_SHOWN, true)
+            outState.putString(FLOATING_BUTTON_SHOW_CLOSE_DIALOG_VALUE, floatingButtonShowCloseTextValue)
+        }
+        super.onSaveInstanceState(outState)
     }
 
     override fun onDestroy() {

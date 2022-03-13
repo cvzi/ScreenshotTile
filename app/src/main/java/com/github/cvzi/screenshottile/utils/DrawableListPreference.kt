@@ -2,12 +2,15 @@ package com.github.cvzi.screenshottile.utils
 
 import android.app.AlertDialog
 import android.content.Context
+import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.preference.ListPreference
+import androidx.preference.Preference
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.R
@@ -46,6 +49,8 @@ class DrawableListPreference : ListPreference {
     constructor(context: Context) : super(context)
 
     private var selectedShutterIndex: Int = 0
+    private var alertDialog: AlertDialog? = null
+    private var openDialogOnStart = false
     override fun onClick() {
         val shutterCollection = ShutterCollection(context, R.array.shutters, R.array.shutter_names)
         selectedShutterIndex = value.toIntOrNull() ?: 0
@@ -59,6 +64,7 @@ class DrawableListPreference : ListPreference {
         }
 
         val dialog: AlertDialog = builder.create()
+        alertDialog = dialog
         val inflater: LayoutInflater = LayoutInflater.from(context)
         val dialogLayout: View = inflater.inflate(R.layout.drawable_list_preference, null)
         dialog.setView(dialogLayout)
@@ -84,5 +90,27 @@ class DrawableListPreference : ListPreference {
             constraintLayout.addView(recyclerView)
         }
         dialog.show()
+    }
+
+
+    inner class SavedState(superState: Parcelable?, var dialogIsOpen: Boolean = false) : Preference.BaseSavedState(superState)
+
+    override fun onRestoreInstanceState(state: Parcelable?) {
+        (state as? SavedState)?.let { savedState ->
+            openDialogOnStart = savedState.dialogIsOpen
+            super.onRestoreInstanceState(savedState.superState)
+        }
+    }
+
+    override fun onSaveInstanceState(): Parcelable {
+        return SavedState(super.onSaveInstanceState(), dialogIsOpen = alertDialog?.isShowing == true)
+    }
+
+    override fun onAttached() {
+        super.onAttached()
+        if (openDialogOnStart) {
+            openDialogOnStart = false
+            onClick()
+        }
     }
 }
