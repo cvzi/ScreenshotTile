@@ -24,6 +24,11 @@ class SimpleWidgetScreenshot : SimpleWidget()
 class SimpleWidgetSettings : SimpleWidget()
 
 /**
+ * Widget to toggle floating button
+ */
+class SimpleWidgetFloatingButton : SimpleWidget()
+
+/**
  * Implementation of App Widget functionality.
  */
 open class SimpleWidget : AppWidgetProvider() {
@@ -44,7 +49,12 @@ open class SimpleWidget : AppWidgetProvider() {
         appWidgetId: Int
     ) {
         // Construct the RemoteViews object
-        val views = RemoteViews(context.packageName, R.layout.simple_widget)
+        val layout = if (this is SimpleWidgetFloatingButton) {
+            R.layout.floating_button_widget
+        } else {
+            R.layout.simple_widget
+        }
+        val views = RemoteViews(context.packageName, layout)
 
         val settingsIntent = SettingDialogActivity.newIntent(context, true)
         val settingsPendingIntent = PendingIntent.getActivity(context, 0, settingsIntent, PendingIntent.FLAG_IMMUTABLE)
@@ -52,13 +62,23 @@ open class SimpleWidget : AppWidgetProvider() {
         val screenshotIntent = NoDisplayActivity.newIntent(context, true)
         val screenshotPendingIntent = PendingIntent.getActivity(context, 0, screenshotIntent, PendingIntent.FLAG_IMMUTABLE)
 
+        val floatingButtonIntent = NoDisplayActivity.newFloatingButtonIntent(context)
+        val floatingButtonPendingIntent = PendingIntent.getActivity(context, 0, floatingButtonIntent, PendingIntent.FLAG_IMMUTABLE)
+
         when (this) {
             is SimpleWidgetScreenshot -> {
                 views.setOnClickPendingIntent(R.id.image, screenshotPendingIntent)
+                views.setContentDescription(R.id.image, context.getString(R.string.take_screenshot))
                 views.removeAllViews(R.id.linear)
             }
             is SimpleWidgetSettings -> {
                 views.setOnClickPendingIntent(R.id.image, settingsPendingIntent)
+                views.setContentDescription(R.id.image, context.getString(R.string.open_settings))
+                views.removeAllViews(R.id.linear)
+            }
+            is SimpleWidgetFloatingButton -> {
+                views.setOnClickPendingIntent(R.id.image, floatingButtonPendingIntent)
+                views.setContentDescription(R.id.image, context.getString(R.string.setting_floating_button))
                 views.removeAllViews(R.id.linear)
             }
             else -> {

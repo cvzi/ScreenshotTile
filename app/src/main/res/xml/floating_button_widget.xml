@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:initialKeyguardLayout="@layout/simple_widget"
-    android:initialLayout="@layout/simple_widget"
+    android:initialKeyguardLayout="@layout/floating_button_widget"
+    android:initialLayout="@layout/floating_button_widget"
     android:minWidth="30dp"
     android:minHeight="30dp"
-    android:previewImage="@drawable/ic_launcher_foreground"
+    android:previewImage="@drawable/ic_tile_float_dark"
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="604800000"
     android:widgetCategory="home_screen|keyguard" />

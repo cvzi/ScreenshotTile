@@ -68,6 +68,18 @@ public class NoDisplayActivity extends Activity {
         return intent;
     }
 
+    /**
+     * New Intent that toggles the floating button
+     *
+     * @param context Context
+     * @return The intent
+     */
+    public static Intent newFloatingButtonIntent(Context context) {
+        Intent intent = new Intent(context, NoDisplayActivity.class);
+        intent.putExtra(EXTRA_FLOATING_BUTTON, true);
+        return intent;
+    }
+
     @Override
     protected void onNewIntent(Intent intent) {
         /* If the activity is already open, we need to update the intent,
@@ -113,8 +125,8 @@ public class NoDisplayActivity extends Activity {
                     ScreenshotAccessibilityService screenshotAccessibilityService = ScreenshotAccessibilityService.Companion.getInstance();
                     if (App.getInstance().getPrefManager().getFloatingButton()) {
                         if (screenshotAccessibilityService != null) {
-                            screenshotAccessibilityService.updateFloatingButton(false);
                             App.getInstance().getPrefManager().setFloatingButton(false);
+                            screenshotAccessibilityService.updateFloatingButton(false);
                         } else {
                             ScreenshotAccessibilityService.Companion.openAccessibilitySettings(this, NoDisplayActivity.TAG);
                         }
