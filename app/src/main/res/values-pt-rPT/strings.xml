@@ -110,4 +110,5 @@
     <string name="main_floating_button_text">Se ativou o método nativo, também pode usar um botão flutuante (semelhante a uma bolha de bate-papo) para fazer capturas de ecrã.\nPode ativá-lo com um botão nas configurações rápidas e então movê-lo no ecrã.</string>
     <string name="main_long_press_title">Toque longo</string>
     <string name="main_long_press_text">Pressionar e segurar o botão abre um menu. Pode especificar um atraso para a captura do ecrã ou recortar uma parte do ecrã.</string>
+    <string name="main_assist_app_title">App de assistência</string>
 </resources>

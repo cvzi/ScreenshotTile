@@ -19,5 +19,6 @@
     <string name="tutorial">ਟਿਊਟੋਰੀਅਲ</string>
     <!-- About -->
     <string name="about_license_title">ਲਾਇਸੰਸ</string>
+    <string name="main_assist_app_title">ਸਹਾਇਕ ਐਪ</string>
     <!-- First screen -->
 </resources>

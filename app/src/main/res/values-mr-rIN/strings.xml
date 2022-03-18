@@ -25,5 +25,6 @@
     <string name="tutorial">ट्युटोरियल</string>
     <!-- About -->
     <string name="about_license_title">परवाना</string>
+    <string name="main_assist_app_title">साहाय्य अ‍ॅप</string>
     <!-- First screen -->
 </resources>

@@ -48,6 +48,7 @@
     <string name="setting_file_name_placeholders" formatted="false">%timestamp% - time as yyyy-MM-dd_HH-mm-ss\n%counter% - counts the number of screenshots\n%random% - a random UUID\n%randint% - a random number</string>
     <string name="setting_tile_action">Tile action</string>
     <string name="setting_floating_action">Floating button action</string>
+    <string name="setting_voice_interaction_action">Assistant action</string>
     <string name="setting_dark_theme">Dark theme</string>
     <string name="setting_dark_theme_system">System</string>
     <string name="setting_dark_theme_off">Disabled</string>
@@ -128,5 +129,6 @@
     <string name="main_floating_button_text">If you have enabled the native method, you can also use a floating button (similar to a chat bubble) to take screenshots.\nYou can enable it with a separate tile/button in the quick settings and then move it around on the screen.</string>
     <string name="main_long_press_title">Long Press</string>
     <string name="main_long_press_text">Long pressing the tile/button opens a menu. You can specify a delay for the screenshot or cut out a rectangle from the screen.</string>
-
+    <string name="main_assist_app_title">Assist app</string>
+    <string name="main_assist_app_text">If you set this app as your assist app, you can long press the home button to take a screenshot. Enabling this app as your assist app will disable other assistants. You can change the action of the long home button press in the app settings.</string>
 </resources>

@@ -24,6 +24,7 @@
     <string name="notification_share_screenshot">భాగస్వామ్యం చేయండి</string>
     <string name="notification_edit_screenshot">సవరించు</string>
     <string name="tutorial">ట్యుటోరియల్</string>
+    <string name="main_assist_app_title">సహాయక యాప్</string>
     <!-- About -->
     <!-- First screen -->
 </resources>

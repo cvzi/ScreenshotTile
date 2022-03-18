@@ -114,4 +114,5 @@
     <string name="main_floating_button_text">إذا قمت بتمكين الطريقة الأصلية، يمكنك أيضًا استخدام زر عائم (شبيه بفقاعة الدردشة) لالتقاط لقطات الشاشة.\nيمكنك تفعيله مع سطر/زر منفصل في الإعدادات السريعة ثم تحريكه على الشاشة.</string>
     <string name="main_long_press_title">الضغط المطول</string>
     <string name="main_long_press_text">الضغط المطول على السطر/الزر يفتح قائمة. يمكنك تحديد تأخير لقطة الشاشة أو قطع المستطيل من الشاشة.</string>
+    <string name="main_assist_app_title">تطبيق المساعد</string>
 </resources>

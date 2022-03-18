@@ -24,6 +24,7 @@
     <string name="notification_edit_screenshot">ویرایش</string>
     <string name="hide_app_from_launcher">مخفی کردن برنامه از کشوی برنامه ها</string>
     <string name="tutorial">آموزش گام‌به‌گام</string>
+    <string name="main_assist_app_title">برنامه همیار</string>
     <!-- About -->
     <!-- First screen -->
 </resources>

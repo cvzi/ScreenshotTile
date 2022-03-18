@@ -44,5 +44,6 @@
     <string name="about_app_3">For more information and bug reports visit: github.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">רישיון</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\n שיון הציבורי הכללי של גנו גרסה   3 </string>
+    <string name="main_assist_app_title">אפליקציית עזרה</string>
     <!-- First screen -->
 </resources>

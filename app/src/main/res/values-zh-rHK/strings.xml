@@ -107,4 +107,5 @@
     <string name="main_floating_button_text">如果您已啟用原生方式，您也可以使用浮動按鈕（類似聊天氣泡）截取屏幕截圖。\n您可以使用快速設置中的另一個圖塊/按鈕啟用它，然後在屏幕上移動它。</string>
     <string name="main_long_press_title">長按</string>
     <string name="main_long_press_text">長按圖塊/按鈕打開菜單。您可以指定屏幕截圖延遲或從屏幕截取矩形區域。</string>
+    <string name="main_assist_app_title">小幫手應用程式</string>
 </resources>

@@ -111,4 +111,5 @@
     <string name="main_floating_button_text">Si vous avez activé la méthode native, vous pouvez également utiliser un bouton flottant (similaire à une bulle de discussion) pour prendre des captures d\'écran.\nVous pouvez l\'activer avec une tuile/bouton séparée dans les paramètres rapides puis le déplacer sur l\'écran.</string>
     <string name="main_long_press_title">Appui prolongé</string>
     <string name="main_long_press_text">Un appui prolongé sur la tuile/bouton ouvre un menu. Vous pouvez spécifier un délai pour la capture d\'écran ou sélectionner une zone de l\'écran à capturer.</string>
+    <string name="main_assist_app_title">Application d\'assistance</string>
 </resources>

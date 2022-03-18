@@ -27,5 +27,6 @@
 
     <!-- First screen -->
     <string name="main_accessibility_settings">आसान तरीका सेटिंग</string>
+    <string name="main_assist_app_title">सहायक ऐप</string>
 
 </resources>

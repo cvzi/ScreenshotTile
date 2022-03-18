@@ -47,4 +47,5 @@
     <string name="about_license_1">گُواهےنامِہ‌یِ فَراگیرِ هَمِگانیِ گنو ویرایِشِ ۳</string>
     <!-- First screen -->
     <string name="main_native_method_title">شیوِه‌یِ بُنیادین</string>
+    <string name="main_assist_app_title">برنامه همیار</string>
 </resources>

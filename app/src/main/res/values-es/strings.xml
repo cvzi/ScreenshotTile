@@ -98,4 +98,5 @@
     <string name="setting_dark_theme_system">System</string>
     <string name="setting_dark_theme_off">Desactivado</string>
     <string name="setting_dark_theme_on">Activado</string>
+    <string name="main_assist_app_title">Aplicación de asistencia</string>
 </resources>

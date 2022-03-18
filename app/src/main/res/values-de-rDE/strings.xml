@@ -123,4 +123,5 @@
     <string name="main_floating_button_text">Wenn du die native Methode aktiviert hast, kannst du auch mit einem schwebenden Auslöser (ähnlich wie eine Chat bubble) Screenshots aufnehmen.\nDer schwebende Auslöser kann mit einer separaten Kacheln in den Schnelleinstellungen aktiviert werden und dann frei auf dem Bildschirm plaziert werden.</string>
     <string name="main_long_press_title">Langes Drücken</string>
     <string name="main_long_press_text">Durch langes Drücken auf die Kachel/Button in den Schnelleinstellungen wird ein Menü geöffnet. Dort kann eine Verzögerung ausgewählt werden oder ein Rechteck aus dem Bildschirm ausgeschnitten werden.</string>
+    <string name="main_assist_app_title">Assistent-App</string>
 </resources>

@@ -28,5 +28,6 @@
     <string name="take_screenshot">স্ক্রিনশট</string>
     <!-- About -->
     <string name="about_license_title">লাইসেন্স</string>
+    <string name="main_assist_app_title">সহায়তা অ্যাপ</string>
     <!-- First screen -->
 </resources>

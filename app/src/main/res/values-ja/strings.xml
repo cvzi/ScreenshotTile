@@ -27,5 +27,6 @@
     <string name="tutorial">チュートリアル</string>
     <!-- About -->
     <string name="about_license_title">ライセンス</string>
+    <string name="main_assist_app_title">アシストアプリ</string>
     <!-- First screen -->
 </resources>

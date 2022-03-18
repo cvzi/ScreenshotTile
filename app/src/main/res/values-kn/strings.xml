@@ -25,5 +25,6 @@
     <string name="tutorial">ಟ್ಯುಟೋರಿಯಲ್</string>
     <!-- About -->
     <string name="about_license_title">ಪರವಾನಗಿ</string>
+    <string name="main_assist_app_title">ಸಹಾಯಕ ಆ್ಯಪ್</string>
     <!-- First screen -->
 </resources>

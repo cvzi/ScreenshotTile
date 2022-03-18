@@ -27,5 +27,6 @@
     <string name="hide_app_from_launcher">Sembunyikan aplikasi dari laci aplikasi</string>
     <!-- About -->
     <string name="about_license_title">Lesen</string>
+    <string name="main_assist_app_title">Apl bantuan</string>
     <!-- First screen -->
 </resources>

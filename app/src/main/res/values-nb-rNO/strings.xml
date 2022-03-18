@@ -50,5 +50,6 @@
     <string name="about_app_1">Denne er et fork av\ngithub.com/ipcjs/ScreenshotTile</string>
     <string name="about_license_title">Lisens</string>
     <string name="about_app_2">Denne app er fortsatt utviklet.\nHvis du har root access, kan du bruke versjonen av ipcjs, den er raskere og mer pålitelig.</string>
+    <string name="main_assist_app_title">Assistentapp</string>
     <!-- First screen -->
 </resources>

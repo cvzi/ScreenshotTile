@@ -25,5 +25,6 @@
     <string name="tutorial">ٹیوٹوریل</string>
     <!-- About -->
     <string name="about_license_title">لائسنس</string>
+    <string name="main_assist_app_title">معاون ایپ</string>
     <!-- First screen -->
 </resources>

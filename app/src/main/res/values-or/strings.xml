@@ -22,6 +22,7 @@
     <string name="notification_delete_screenshot">ଖାଲି</string>
     <string name="notification_share_screenshot">ଅଂଶୀଦାର</string>
     <string name="notification_edit_screenshot">ସମ୍ପାଦନ</string>
+    <string name="main_assist_app_title">ସହାୟକ ଆପ୍</string>
     <!-- About -->
     <!-- First screen -->
 </resources>

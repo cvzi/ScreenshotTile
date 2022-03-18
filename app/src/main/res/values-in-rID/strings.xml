@@ -96,4 +96,5 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">Setelan aksesibilitas</string>
     <string name="main_floating_button_title">Tombol apung</string>
+    <string name="main_assist_app_title">Aplikasi bantuan</string>
 </resources>

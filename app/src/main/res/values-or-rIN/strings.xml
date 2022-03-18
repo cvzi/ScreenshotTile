@@ -70,4 +70,5 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">ଅଭିଗମ୍ୟତା ସେଟିଂସ୍</string>
     <string name="main_floating_button_title">ଭାସମାନ ବଟନ୍</string>
+    <string name="main_assist_app_title">ସହାୟକ ଆପ୍</string>
 </resources>
