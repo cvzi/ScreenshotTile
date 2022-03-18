@@ -11,7 +11,7 @@ Se a aplicação falhar no Android 9/Pie ou 10, pode tentar ativar a opçã "Usa
 ✓ Botão flutuante, como uma bolha de bate-papo (Android 9+)
 ✓ Faça uma captura de ecrã de uma área específica do ecrã (toque longo no botão)
 ✓ Tire capturas de ecrã automáticas com aplicações como o Tasker ou o MacroDroid
-✓ Armazene em qualquer pasta em qualquer armazenamento, por exemplo no cartão SD externo
+✓ Armazene em qualquer pasta em qualquer armazenamento, por exemplo no cartão SD externo no cartão SD externo
 ✓ Armazene em diferentes formatos de ficheiros: png, jpg ou webp
 <h2>Capturas de ecrã automáticas:</h2> se quer automatizar capturas de ecrã de outra aplicação, por exemplo, MacroDroid ou Tasker, pode encontrar um guia passo-a-passo aqui:
 ✓ Gratuito, com código aberto e sem publicidade
