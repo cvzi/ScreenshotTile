@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.16.0
+*   Assist app: take screenshot via long press on home button [#118](https://github.com/cvzi/ScreenshotTile/issues/118)
+*   Partial screenshot: slide edges/corners
+*   Partial screenshot: *select full screen* button
+*   Partial screenshot: back button resets selection
+*   Advanced settings
+*   Cloud backup: [dataExtractionRules for Android 12](https://developer.android.com/guide/topics/data/autobackup#xml-syntax-android-12)
+
 ## 1.15.0
 *   Added widget to toggle floating button
 
