@@ -3,9 +3,7 @@ package com.github.cvzi.screenshottile.utils
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Point
-import android.graphics.Rect
+import android.graphics.*
 import android.media.Image
 import android.net.Uri
 import android.os.Build
@@ -323,4 +321,15 @@ fun realScreenSize(context: Context): Point {
             windowManager.defaultDisplay.getRealSize(this)
         }
     }
+}
+
+/**
+ * Tint image (for debugging)
+ */
+fun tintImage(bitmap: Bitmap, color: Long): Bitmap? {
+    val newBitmap = Bitmap.createBitmap(bitmap.width, bitmap.height, Bitmap.Config.ARGB_8888)
+    Canvas(newBitmap).drawBitmap(bitmap, 0f, 0f, Paint().apply {
+        colorFilter = PorterDuffColorFilter(color.toInt(), PorterDuff.Mode.ADD)
+    })
+    return newBitmap
 }

@@ -7,7 +7,6 @@ package com.github.cvzi.screenshottile.utils
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.annotation.ArrayRes
-import androidx.annotation.DrawableRes
 import com.github.cvzi.screenshottile.App
 
 /**

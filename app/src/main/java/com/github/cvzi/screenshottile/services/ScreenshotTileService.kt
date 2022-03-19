@@ -103,7 +103,7 @@ class ScreenshotTileService : TileService(),
             // Open accessibility settings if service is not running
             App.checkAccessibilityServiceOnCollapse(false)
             Handler(Looper.getMainLooper()).postDelayed({
-                if (App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance == null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance == null) {
                     ScreenshotAccessibilityService.openAccessibilitySettings(this)
                 }
             }, 5000)
@@ -112,7 +112,7 @@ class ScreenshotTileService : TileService(),
         // Here we can be sure that the notification panel has fully collapsed
         if (takeScreenshotOnStopListening) {
             takeScreenshotOnStopListening = false
-            if (App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.useNative && ScreenshotAccessibilityService.instance != null) {
                 // Except if the panel was pulled down completely, then we still need a delay. This
                 // only matters for native method because it's too fast.
                 Handler(Looper.getMainLooper()).postDelayed({

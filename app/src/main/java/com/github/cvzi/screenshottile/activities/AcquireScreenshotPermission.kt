@@ -8,12 +8,13 @@ import android.content.pm.PackageManager
 import android.media.projection.MediaProjectionManager
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.github.cvzi.screenshottile.App
 
 import com.github.cvzi.screenshottile.App.setScreenshotPermission
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.utils.ToastType
+import com.github.cvzi.screenshottile.utils.toastMessage
 
 
 /**
@@ -94,10 +95,7 @@ class AcquireScreenshotPermission : Activity() {
                     TAG,
                     "onActivityResult() No screen capture permission: resultCode==$resultCode"
                 )
-                Toast.makeText(
-                    this,
-                    getString(R.string.permission_missing_screen_capture), Toast.LENGTH_LONG
-                ).show()
+                toastMessage(getString(R.string.permission_missing_screen_capture), ToastType.ERROR)
             }
         }
         finish()
@@ -126,10 +124,7 @@ class AcquireScreenshotPermission : Activity() {
                     TAG,
                     "onRequestPermissionsResult() Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE"
                 )
-                Toast.makeText(
-                    this,
-                    getString(R.string.permission_missing_external_storage), Toast.LENGTH_LONG
-                ).show()
+                toastMessage(getString(R.string.permission_missing_external_storage), ToastType.ERROR)
             }
         }
         finish()

@@ -125,10 +125,8 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         }
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_file_name_pattern),
-            if (value.isBlank()) {
+            value.ifBlank {
                 context.getString(R.string.setting_file_name_pattern_value_default)
-            } else {
-                value
             }
         ).apply()
 
@@ -149,6 +147,16 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         )
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_return_if_accessibility),
+            value
+        ).apply()
+
+    var returnIfVoiceInteractionServiceEnabled: String?
+        get() = pref.getString(
+            context.getString(R.string.pref_key_return_if_voice_interaction),
+            null
+        )
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_return_if_voice_interaction),
             value
         ).apply()
 
@@ -244,6 +252,16 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value
         ).apply()
 
+    var voiceInteractionAction: String
+        get() = pref.getString(
+            context.getString(R.string.pref_key_voice_interaction_action),
+            context.getString(R.string.setting_voice_interaction_action_value_provided)
+        ) ?: context.getString(R.string.setting_voice_interaction_action_value_provided)
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_voice_interaction_action),
+            value
+        ).apply()
+
     var tileAction: String
         get() = pref.getString(
             context.getString(R.string.pref_key_tile_action),
@@ -262,5 +280,72 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_dark_theme),
             value
+        ).apply()
+
+    var toasts: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_toasts), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_toasts),
+            value
+        ).apply()
+
+    var naggingToasts: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_nagging_toasts), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_nagging_toasts),
+            value
+        ).apply()
+
+    var successToasts: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_success_toasts), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_success_toasts),
+            value
+        ).apply()
+
+    var errorToasts: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_error_toasts), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_error_toasts),
+            value
+        ).apply()
+
+    var selectAreaShutterDelay: Long
+        get() {
+            val d = pref.getString(
+                context.getString(R.string.pref_key_select_area_shutter_delay),
+                context.getString(R.string.pref_select_area_shutter_delay_default)
+            )?.toLongOrNull() ?: 0
+            return if (d >= 0) d else 0
+        }
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_select_area_shutter_delay),
+            value.toString()
+        ).apply()
+
+    var originalAfterPermissionDelay: Long
+        get() {
+            val d = pref.getString(
+                context.getString(R.string.pref_key_original_after_permission_delay),
+                context.getString(R.string.pref_original_after_permission_delay_default)
+            )?.toLongOrNull() ?: 300
+            return if (d >= 0) d else 0
+        }
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_original_after_permission_delay),
+            value.toString()
+        ).apply()
+
+    var failedVirtualDisplayDelay: Long
+        get() {
+            val d = pref.getString(
+                context.getString(R.string.pref_key_failed_virtual_display_delay),
+                context.getString(R.string.pref_failed_virtual_display_delay_default)
+            )?.toLongOrNull() ?: 0
+            return if (d >= 0) d else 0
+        }
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_failed_virtual_display_delay),
+            value.toString()
         ).apply()
 }

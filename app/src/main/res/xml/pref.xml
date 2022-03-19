@@ -101,6 +101,15 @@
         android:title="@string/setting_floating_action"
         app:iconSpaceReserved="false" />
 
+    <androidx.preference.ListPreference
+        android:defaultValue="@string/setting_voice_interaction_action_value_provided"
+        android:entries="@array/setting_voice_interaction_action_entries"
+        android:entryValues="@array/setting_voice_interaction_action_values"
+        android:key="@string/pref_key_voice_interaction_action"
+        android:summary="@string/take_screenshot"
+        android:title="@string/setting_voice_interaction_action"
+        app:iconSpaceReserved="false" />
+
     <androidx.preference.EditTextPreference
         android:defaultValue="@string/setting_broadcast_secret_value_default"
         android:inputType="textVisiblePassword"
@@ -205,4 +214,12 @@
         android:summary="@string/about_privacy_summary"
         android:title="@string/about_privacy_title"
         app:iconSpaceReserved="false" />
+
+    <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_advanced_settings"
+        android:persistent="false"
+        android:selectable="true"
+        android:title="@string/advanced_settings"
+        app:icon="@android:drawable/ic_menu_manage" />
+
 </androidx.preference.PreferenceScreen>

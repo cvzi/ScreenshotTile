@@ -212,8 +212,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        /*
         if (BuildConfig.DEBUG && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                     .detectNetwork()
                     .detectCustomSlowCalls()
@@ -222,14 +222,17 @@ public class App extends Application {
                     .penaltyLog()
                     .penaltyDialog()
                     .build());
-/*
+
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
                     .detectAll()
                     .penaltyLog()
                     //.penaltyDeath()
                     .build());
-
-*/
+        }
+        */
+        if(!BuildConfig.DEBUG) {
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
         }
 
         PreferenceManager.setDefaultValues(this, R.xml.pref, false);

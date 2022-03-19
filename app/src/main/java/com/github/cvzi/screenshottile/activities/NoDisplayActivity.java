@@ -2,6 +2,7 @@ package com.github.cvzi.screenshottile.activities;
 
 import static com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.screenshot;
+import static com.github.cvzi.screenshottile.utils.UtilsKt.toastMessage;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,6 +18,7 @@ import com.github.cvzi.screenshottile.R;
 import com.github.cvzi.screenshottile.services.BasicForegroundService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
+import com.github.cvzi.screenshottile.utils.ToastType;
 
 /**
  * Empty activity that is used to collapse the quick settings panel, finishes itself in onCreate
@@ -139,7 +141,7 @@ public class NoDisplayActivity extends Activity {
                         }
                     }
                 } else {
-                    Toast.makeText(this, R.string.setting_floating_button_unsupported, Toast.LENGTH_LONG).show();
+                    toastMessage(this, R.string.setting_floating_button_unsupported, ToastType.ERROR, Toast.LENGTH_LONG);
                 }
             } else {
                 if (BuildConfig.DEBUG) Log.v(TAG, "onCreate() no valid action or EXTRA_* found");

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.preference.SwitchPreference
+        android:defaultValue="@bool/pref_toasts_default"
+        android:key="@string/pref_key_toasts"
+        android:summary="@string/setting_toasts_summary"
+        android:title="@string/setting_toasts"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.SwitchPreference
+        android:defaultValue="@bool/pref_success_toasts_default"
+        android:key="@string/pref_key_success_toasts"
+        android:summary="@string/setting_success_toasts_summary"
+        android:title="@string/setting_success_toasts"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.SwitchPreference
+        android:defaultValue="@bool/pref_error_toasts_default"
+        android:key="@string/pref_key_error_toasts"
+        android:summary="@string/setting_error_toasts_summary"
+        android:title="@string/setting_error_toasts"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.SwitchPreference
+        android:defaultValue="@bool/pref_nagging_toasts_default"
+        android:key="@string/pref_key_nagging_toasts"
+        android:summary="@string/setting_nagging_toasts_summary"
+        android:title="@string/setting_nagging_toasts"
+        app:iconSpaceReserved="false"
+        app:isPreferenceVisible="false" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/pref_select_area_shutter_delay_default"
+        android:dialogMessage="@string/setting_select_area_shutter_delay_dialog"
+        android:key="@string/pref_key_select_area_shutter_delay"
+        android:summary="@string/setting_select_area_shutter_delay_summary"
+        android:title="@string/setting_select_area_shutter_delay"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/pref_original_after_permission_delay_default"
+        android:dialogMessage="@string/setting_original_after_permission_delay_dialog"
+        android:key="@string/pref_key_original_after_permission_delay"
+        android:summary="@string/setting_original_after_permission_delay_summary"
+        android:title="@string/setting_original_after_permission_delay"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/pref_failed_virtual_display_delay_default"
+        android:dialogMessage="@string/setting_failed_virtual_display_delay_dialog"
+        android:key="@string/pref_key_failed_virtual_display_delay"
+        android:summary="@string/setting_failed_virtual_display_delay_summary"
+        android:title="@string/setting_failed_virtual_display_delay"
+        app:iconSpaceReserved="false" />
+
+</androidx.preference.PreferenceScreen>

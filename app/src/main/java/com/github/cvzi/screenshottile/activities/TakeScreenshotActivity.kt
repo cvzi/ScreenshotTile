@@ -83,6 +83,7 @@ class TakeScreenshotActivity : Activity(),
     private var saveImageResult: SaveImageResult? = null
     private var partial = false
     private var isFullscreen = false
+    private var screenshotSelectorView: ScreenshotSelectorView? = null
 
     private var askedForPermission = false
 
@@ -91,6 +92,15 @@ class TakeScreenshotActivity : Activity(),
         otherwise getIntent() returns the old intent in onCreate() */
         setIntent(intent)
         super.onNewIntent(intent)
+    }
+
+    override fun onBackPressed() {
+        val selectorView = screenshotSelectorView
+        if (partial && selectorView != null && !selectorView.defaultState) {
+            selectorView.reset()
+        } else {
+            super.onBackPressed()
+        }
     }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
@@ -159,7 +169,7 @@ class TakeScreenshotActivity : Activity(),
          * Show partial screenshot selector
          */
 
-        var mScreenshotSelectorView =
+        val mScreenshotSelectorView =
             findViewById<ScreenshotSelectorView?>(R.id.global_screenshot_selector)
         if (mScreenshotSelectorView != null) {
             // View is already loaded, stop here
@@ -169,7 +179,7 @@ class TakeScreenshotActivity : Activity(),
             } else {
                 // nothing selected -> reset the view
                 mScreenshotSelectorView.visibility = View.VISIBLE
-                mScreenshotSelectorView.invalidate()
+                mScreenshotSelectorView.reset()
             }
             return
         }
@@ -207,17 +217,27 @@ class TakeScreenshotActivity : Activity(),
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
         }
 
-        mScreenshotSelectorView = findViewById(R.id.global_screenshot_selector)
-        mScreenshotSelectorView.text = getString(R.string.take_screenshot)
-        mScreenshotSelectorView.shutter = R.drawable.ic_stat_name
-        mScreenshotSelectorView.onShutter = {
-            // If there is a cutout or status bars, the view might have a offset
-            val selectorViewOffset = intArrayOf(0, 0)
-            mScreenshotSelectorView.getLocationOnScreen(selectorViewOffset)
-            it.offset(selectorViewOffset[0], selectorViewOffset[1])
-            cutOutRect = it
-            mScreenshotSelectorView.visibility = View.GONE
-            prepareForScreenSharing()
+        findViewById<ScreenshotSelectorView>(R.id.global_screenshot_selector).apply {
+            screenshotSelectorView = this
+            text = getString(R.string.take_screenshot)
+            shutter = R.drawable.ic_stat_name
+            fullScreenIcon = R.drawable.ic_fullscreen
+            onShutter = {
+                // If there is a cutout or status bars, the view might have a offset
+                val selectorViewOffset = intArrayOf(0, 0)
+                getLocationOnScreen(selectorViewOffset)
+                it.offset(selectorViewOffset[0], selectorViewOffset[1])
+                cutOutRect = it
+                visibility = View.GONE
+                if (App.getInstance().prefManager.selectAreaShutterDelay > 0) {
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        prepareForScreenSharing()
+                    }, App.getInstance().prefManager.selectAreaShutterDelay)
+                } else {
+                    prepareForScreenSharing()
+                }
+            }
+            reset()
         }
 
         // make sure that a foreground service runs
@@ -231,12 +251,6 @@ class TakeScreenshotActivity : Activity(),
     }
 
     override fun onAcquireScreenshotPermission(isNewPermission: Boolean) {
-        /*
-        Handler().postDelayed({
-            // Wait so the notification area is really collapsed
-            shareScreen()
-         }, 350)
-        */
         ScreenshotTileService.instance?.onAcquireScreenshotPermission(isNewPermission)
         ScreenshotTileService.instance?.foreground()
         BasicForegroundService.instance?.foreground()
@@ -247,7 +261,7 @@ class TakeScreenshotActivity : Activity(),
                 // Wait a little bit, so the permission dialog can fully hide itself
                 Handler(Looper.getMainLooper()).postDelayed({
                     prepareForScreenSharing()
-                }, 300)
+                }, App.getInstance().prefManager.originalAfterPermissionDelay)
             } else {
                 prepareForScreenSharing()
             }
@@ -298,7 +312,7 @@ class TakeScreenshotActivity : Activity(),
                 null
             }
             if (mediaProjection == null) {
-                screenShotFailedToast("Failed to create MediaProjection")
+                screenShotFailedToast("Failed to create MediaProjection", Toast.LENGTH_SHORT)
                 // Something went wrong, restart everything
                 finish()
                 App.getInstance().screenshot(this)
@@ -310,16 +324,19 @@ class TakeScreenshotActivity : Activity(),
         } catch (e: SecurityException) {
             Log.e(TAG, "startVirtualDisplay() SecurityException: $e")
             setScreenshotPermission(null)
-            screenShotFailedToast("Failed to start virtual display: ${e.localizedMessage}")
+            screenShotFailedToast("Failed to start virtual display: ${e.localizedMessage}", Toast.LENGTH_SHORT)
             stopScreenSharing()
 
             // Start the foreground service and get a new media projection
-            resetMediaProjection()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                BasicForegroundService.resumeScreenshot(this)
-            } else {
-                App.acquireScreenshotPermission(this, this)
-            }
+            Handler(Looper.getMainLooper()).postDelayed({
+                resetMediaProjection()
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    BasicForegroundService.resumeScreenshot(this)
+                } else {
+                    App.acquireScreenshotPermission(this, this)
+                }
+            }, App.getInstance().prefManager.failedVirtualDisplayDelay)
+
         }
     }
 
@@ -422,6 +439,8 @@ class TakeScreenshotActivity : Activity(),
             return
         }
 
+        aMessage(this)
+
         val result = saveImageResult as? SaveImageResultSuccess?
 
         when {
@@ -435,10 +454,7 @@ class TakeScreenshotActivity : Activity(),
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
-                Toast.makeText(
-                    this,
-                    getString(R.string.screenshot_file_saved, dummyPath), Toast.LENGTH_LONG
-                ).show()
+                toastMessage(getString(R.string.screenshot_file_saved, dummyPath), ToastType.SUCCESS)
 
                 createNotification(
                     this,
@@ -454,10 +470,7 @@ class TakeScreenshotActivity : Activity(),
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
-                Toast.makeText(
-                    this,
-                    getString(R.string.screenshot_file_saved, path), Toast.LENGTH_LONG
-                ).show()
+                toastMessage(getString(R.string.screenshot_file_saved, path), ToastType.SUCCESS)
 
                 createNotification(
                     this,
@@ -497,13 +510,13 @@ class TakeScreenshotActivity : Activity(),
         )
     }
 
-    private fun screenShotFailedToast(errorMessage: String? = null) {
+    private fun screenShotFailedToast(errorMessage: String? = null, duration: Int = Toast.LENGTH_LONG) {
         val message = getString(R.string.screenshot_failed) + if (errorMessage != null) {
             "\n$errorMessage"
         } else {
             ""
         }
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        toastMessage(message, ToastType.ERROR, duration)
     }
 
 }
