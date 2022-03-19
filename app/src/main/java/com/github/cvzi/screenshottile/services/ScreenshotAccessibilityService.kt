@@ -581,7 +581,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
-                getWinContext().toastMessage(getString(R.string.screenshot_file_saved, dummyPath), ToastType.SUCCESS)
+                getWinContext().toastMessage(
+                    getString(R.string.screenshot_file_saved, dummyPath),
+                    ToastType.SUCCESS
+                )
 
                 createNotification(
                     this,
@@ -597,7 +600,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
-                getWinContext().toastMessage(getString(R.string.screenshot_file_saved, path), ToastType.SUCCESS)
+                getWinContext().toastMessage(
+                    getString(R.string.screenshot_file_saved, path),
+                    ToastType.SUCCESS
+                )
 
                 createNotification(
                     this,

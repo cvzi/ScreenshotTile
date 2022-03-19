@@ -72,9 +72,16 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
 
                     if (path != null && deleteImage(this, path)) {
-                        windowContext.toastMessage(R.string.screenshot_deleted, ToastType.SUCCESS, Toast.LENGTH_SHORT)
+                        windowContext.toastMessage(
+                            R.string.screenshot_deleted,
+                            ToastType.SUCCESS,
+                            Toast.LENGTH_SHORT
+                        )
                     } else {
-                        windowContext.toastMessage(R.string.screenshot_delete_failed, ToastType.ERROR)
+                        windowContext.toastMessage(
+                            R.string.screenshot_delete_failed,
+                            ToastType.ERROR
+                        )
                     }
                 }
                 NOTIFICATION_ACTION_EDIT -> {

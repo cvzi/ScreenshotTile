@@ -57,13 +57,20 @@ open class SimpleWidget : AppWidgetProvider() {
         val views = RemoteViews(context.packageName, layout)
 
         val settingsIntent = SettingDialogActivity.newIntent(context, true)
-        val settingsPendingIntent = PendingIntent.getActivity(context, 0, settingsIntent, PendingIntent.FLAG_IMMUTABLE)
+        val settingsPendingIntent =
+            PendingIntent.getActivity(context, 0, settingsIntent, PendingIntent.FLAG_IMMUTABLE)
 
         val screenshotIntent = NoDisplayActivity.newIntent(context, true)
-        val screenshotPendingIntent = PendingIntent.getActivity(context, 0, screenshotIntent, PendingIntent.FLAG_IMMUTABLE)
+        val screenshotPendingIntent =
+            PendingIntent.getActivity(context, 0, screenshotIntent, PendingIntent.FLAG_IMMUTABLE)
 
         val floatingButtonIntent = NoDisplayActivity.newFloatingButtonIntent(context)
-        val floatingButtonPendingIntent = PendingIntent.getActivity(context, 0, floatingButtonIntent, PendingIntent.FLAG_IMMUTABLE)
+        val floatingButtonPendingIntent = PendingIntent.getActivity(
+            context,
+            0,
+            floatingButtonIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
 
         when (this) {
             is SimpleWidgetScreenshot -> {
@@ -78,7 +85,10 @@ open class SimpleWidget : AppWidgetProvider() {
             }
             is SimpleWidgetFloatingButton -> {
                 views.setOnClickPendingIntent(R.id.image, floatingButtonPendingIntent)
-                views.setContentDescription(R.id.image, context.getString(R.string.setting_floating_button))
+                views.setContentDescription(
+                    R.id.image,
+                    context.getString(R.string.setting_floating_button)
+                )
                 views.removeAllViews(R.id.linear)
             }
             else -> {

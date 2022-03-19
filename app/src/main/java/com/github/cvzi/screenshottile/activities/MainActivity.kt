@@ -166,7 +166,7 @@ class MainActivity : AppCompatActivity() {
                 updateFloatButton()
                 switchLegacy?.isChecked = !App.getInstance().prefManager.useNative
                 if (App.getInstance().prefManager.useNative) {
-                    if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && ScreenshotAccessibilityService.instance == null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && ScreenshotAccessibilityService.instance == null) {
                         // Open Accessibility settings ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
                     } else {
                         hintAccessibilityServiceUnavailable?.let {

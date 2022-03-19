@@ -230,7 +230,7 @@ public class App extends Application {
                     .build());
         }
         */
-        if(!BuildConfig.DEBUG) {
+        if (!BuildConfig.DEBUG) {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
         }
