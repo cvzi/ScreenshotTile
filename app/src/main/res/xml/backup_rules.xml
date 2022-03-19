@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<full-backup-content />
+<data-extraction-rules>
+    <cloud-backup disableIfNoEncryptionCapabilities="false"/>
+    <device-transfer disableIfNoEncryptionCapabilities="false" />
+</data-extraction-rules>

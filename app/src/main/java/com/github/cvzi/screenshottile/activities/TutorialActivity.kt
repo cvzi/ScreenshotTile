@@ -1,5 +1,6 @@
 package com.github.cvzi.screenshottile.activities
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -131,6 +132,7 @@ class TutorialActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
+                @SuppressLint("SetTextI18n")
                 textViewStep.text = (position + 1).toString()
                 textViewFooter.text = if (position >= 0 && position < descriptions.size) {
                     getString(descriptions[position])

@@ -24,7 +24,9 @@ import android.view.*
 import android.view.Display.DEFAULT_DISPLAY
 import android.view.WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
 import android.view.accessibility.AccessibilityEvent
-import android.widget.*
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.github.cvzi.screenshottile.App
@@ -485,6 +487,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     showTemporaryHiddenFloatingButton()
                 }, 1000)
             }
+            aMessage(getWinContext())
         }
 
         if (askForStoragePermissionAfter) {
@@ -561,6 +564,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             return
         }
 
+        aMessage(getWinContext())
+
         screenDensity = resources.configuration.densityDpi
 
         val result = saveImageResult as? SaveImageResultSuccess?
@@ -576,10 +581,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
-                Toast.makeText(
-                    getWinContext(),
-                    getString(R.string.screenshot_file_saved, dummyPath), Toast.LENGTH_LONG
-                ).show()
+                getWinContext().toastMessage(getString(R.string.screenshot_file_saved, dummyPath), ToastType.SUCCESS)
 
                 createNotification(
                     this,
@@ -595,10 +597,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
-                Toast.makeText(
-                    getWinContext(),
-                    getString(R.string.screenshot_file_saved, path), Toast.LENGTH_LONG
-                ).show()
+                getWinContext().toastMessage(getString(R.string.screenshot_file_saved, path), ToastType.SUCCESS)
 
                 createNotification(
                     this,
@@ -621,7 +620,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         } else {
             ""
         }
-        Toast.makeText(getWinContext(), message, Toast.LENGTH_LONG).show()
+        getWinContext().toastMessage(message, ToastType.ERROR)
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {

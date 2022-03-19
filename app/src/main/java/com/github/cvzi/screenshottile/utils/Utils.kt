@@ -11,10 +11,8 @@ import android.graphics.Rect
 import android.icu.text.SimpleDateFormat
 import android.media.Image
 import android.net.Uri
-import android.os.Build
-import android.os.Environment
+import android.os.*
 import android.os.Environment.getExternalStoragePublicDirectory
-import android.os.StatFs
 import android.provider.MediaStore.Images
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
@@ -24,6 +22,7 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.documentfile.provider.DocumentFile
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
@@ -412,11 +411,23 @@ fun formatFileName(fileNamePattern: String, date: Date): String {
  */
 fun saveBitmapToFile(
     context: Context,
-    bitmap: Bitmap,
+    fullBitmap: Bitmap,
     fileNamePattern: String,
     compressionOptions: CompressionOptions = CompressionOptions(),
     cutOutRect: Rect?
 ): SaveImageResult {
+    val bitmap = if (cutOutRect != null) {
+        Bitmap.createBitmap(
+            fullBitmap,
+            cutOutRect.left,
+            cutOutRect.top,
+            cutOutRect.width(),
+            cutOutRect.height()
+        )
+    } else {
+        fullBitmap
+    }
+
     val date = Date()
 
     val filename = formatFileName(fileNamePattern, date)
@@ -447,6 +458,7 @@ fun saveBitmapToFile(
     }
 
     val bytes = ByteArrayOutputStream()
+
     bitmap.compress(compressionOptions.format, compressionOptions.quality, bytes)
 
     var success = false
@@ -559,7 +571,7 @@ fun saveImageToFile(
     val bitmap = imageToBitmap(image, cutOutRect)
     image.close()
 
-    return saveBitmapToFile(context, bitmap, fileNamePattern, compressionOptions, cutOutRect)
+    return saveBitmapToFile(context, bitmap, fileNamePattern, compressionOptions, null)
 }
 
 
@@ -726,4 +738,62 @@ fun hasFdroid(context: Context): Boolean {
         }
     }
     return false
+}
+
+enum class ToastType {
+    SUCCESS, ERROR, NAGGING
+}
+
+/**
+ * Show a string as a Toast message
+ */
+fun Context?.toastMessage(text: String, toastType: ToastType, duration: Int = Toast.LENGTH_LONG) {
+    this?.run {
+        val prefManager = App.getInstance().prefManager
+        val showToast = prefManager.toasts && when (toastType) {
+            ToastType.SUCCESS -> prefManager.successToasts
+            ToastType.ERROR -> prefManager.errorToasts
+            ToastType.NAGGING -> prefManager.naggingToasts
+        }
+        if (showToast) {
+            Toast.makeText(this, text, duration).show()
+        } else if (BuildConfig.DEBUG) {
+            Log.v("SUPPRESSED_TOAST", text)
+        }
+    }
+}
+
+/**
+ * Show a string from a resource as a Toast message
+ */
+fun Context?.toastMessage(resource: Int, toastType: ToastType, duration: Int = Toast.LENGTH_LONG) {
+    this?.toastMessage(getString(resource), toastType, duration)
+}
+
+/**
+ * A message
+ */
+fun aMessage(context: Context) {
+    if (Locale.getDefault().country != "RU" ||
+        hasFdroid(context) ||
+        !App.getInstance().prefManager.naggingToasts ||
+        App.getInstance().prefManager.screenshotCount % 3 != 0
+    ) {
+        return
+    }
+    val m0 =
+        "\ud83c\uddf7\ud83c\uddfa \u0420\u043e\u0441\u0441\u0438\u044f\u043d\u0435\u003a \u0412\u0430\u0448\u0435 \u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u043b\u0436\u0435\u0442 \u0432\u0430\u043c \u043e\u0431 \u0423\u043a\u0440\u0430\u0438\u043d\u0435 \ud83c\uddfa\ud83c\udde6"
+    val m1 =
+        "\u0423\u0431\u0438\u0432\u0430\u044e\u0442 \u043d\u0435\u0432\u0438\u043d\u043d\u044b\u0445 \u043b\u044e\u0434\u0435\u0439 \u0438 \u0434\u0435\u0442\u0435\u0439"
+    val m2 =
+        "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430\u002c \u043d\u0430\u0439\u0434\u0438\u0442\u0435 \u0441\u043f\u043e\u0441\u043e\u0431 \u0443\u0437\u043d\u0430\u0442\u044c \u043f\u0440\u0430\u0432\u0434\u0443"
+    Handler(Looper.getMainLooper()).postDelayed({
+        context.toastMessage(m0, ToastType.NAGGING)
+    }, 4000)
+    Handler(Looper.getMainLooper()).postDelayed({
+        context.toastMessage(m1, ToastType.NAGGING)
+    }, 8000)
+    Handler(Looper.getMainLooper()).postDelayed({
+        context.toastMessage(m2, ToastType.NAGGING)
+    }, 12000)
 }

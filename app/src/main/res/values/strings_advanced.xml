@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_static_field_key_advanced_settings" translatable="false">pref_static_field_key_advanced_settings</string>
+    <string name="advanced_settings" translatable="false">Advanced settings</string>
+
+    <string name="pref_key_toasts" translatable="false">pref_key_toasts</string>
+    <bool name="pref_toasts_default">true</bool>
+    <string name="setting_toasts" translatable="false">Toast notifications</string>
+    <string name="setting_toasts_summary" translatable="false">Enable/Disable all toast notifications\nDefault: On</string>
+
+    <string name="pref_key_success_toasts" translatable="false">pref_key_success_toasts</string>
+    <bool name="pref_success_toasts_default">true</bool>
+    <string name="setting_success_toasts" translatable="false">Toast notifications for success</string>
+    <string name="setting_success_toasts_summary" translatable="false">Enable/Disable toast notifications for successful events\nDefault: On</string>
+
+    <string name="pref_key_error_toasts" translatable="false">pref_key_error_toasts</string>
+    <bool name="pref_error_toasts_default">true</bool>
+    <string name="setting_error_toasts" translatable="false">Toast notifications for errors</string>
+    <string name="setting_error_toasts_summary" translatable="false">Enable/Disable toast notifications for errors\nDefault: On</string>
+
+    <string name="pref_key_nagging_toasts" translatable="false">pref_key_nagging_toasts</string>
+    <bool name="pref_nagging_toasts_default">true</bool>
+    <string name="setting_nagging_toasts" translatable="false">&#x1f1fa;&#x1f1e6; Nagging toasts</string>
+    <string name="setting_nagging_toasts_summary" translatable="false">Nagging toast notifications\nDefault: On</string>
+
+    <string name="pref_key_select_area_shutter_delay" translatable="false">select_area_shutter_delay</string>
+    <string name="pref_select_area_shutter_delay_default" translatable="false">0</string>
+    <string name="setting_select_area_shutter_delay" translatable="false">Select area: Delay after shutter tap</string>
+    <string name="setting_select_area_shutter_delay_summary" translatable="false">Default: 0 (milliseconds)</string>
+    <string name="setting_select_area_shutter_delay_dialog" translatable="false">Waiting period between the time the shutter was tapped and the screenshot is taken. Use a higher value (e.g. 500 = half a second) if the shutter icon was visible on screenshots.\nDefault: 0 Unit: milliseconds</string>
+
+    <string name="pref_key_original_after_permission_delay" translatable="false">original_after_permission_delay</string>
+    <string name="pref_original_after_permission_delay_default" translatable="false">300</string>
+    <string name="setting_original_after_permission_delay" translatable="false">Original method: delay after screenshot permission was granted</string>
+    <string name="setting_original_after_permission_delay_summary" translatable="false">Default: 300 (milliseconds)</string>
+    <string name="setting_original_after_permission_delay_dialog" translatable="false">Waiting period between the time the permission was granted and the screenshot is taken. Use a higher value (e.g. 500 = half a second) if permission dialog was visible on screenshots.\nDefault: 300 Unit: milliseconds</string>
+
+    <string name="pref_key_failed_virtual_display_delay" translatable="false">failed_virtual_display_delay</string>
+    <string name="pref_failed_virtual_display_delay_default" translatable="false">0</string>
+    <string name="setting_failed_virtual_display_delay" translatable="false">Original method: delay after \'Failed to start virtual display\'</string>
+    <string name="setting_failed_virtual_display_delay_summary" translatable="false">Default: 0 (milliseconds)</string>
+    <string name="setting_failed_virtual_display_delay_dialog" translatable="false">Waiting period before trying again after the error \'Failed to start virtual display\'. Use a higher value (e.g. 500 = half a second) if the error message was visible on screenshots.\nDefault: 0 Unit: milliseconds</string>
+
+</resources>

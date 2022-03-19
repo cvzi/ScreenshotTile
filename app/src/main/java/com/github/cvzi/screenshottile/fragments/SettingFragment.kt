@@ -18,14 +18,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import androidx.preference.*
 import androidx.preference.Preference.OnPreferenceClickListener
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.MainActivity
+import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
 import com.github.cvzi.screenshottile.utils.*
@@ -61,6 +65,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var floatingButtonShutter: ListPreference? = null
     private var floatingButtonDelay: ListPreference? = null
     private var floatingButtonActionPref: ListPreference? = null
+    private var voiceInteractionActionPref: ListPreference? = null
     private var hideAppPref: SwitchPreference? = null
     private var storageDirectoryPref: Preference? = null
     private var fileNamePatternPref: EditTextPreference? = null
@@ -71,8 +76,8 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var floatingButtonHideShowClosePreventRecursion = false
     private var pref: SharedPreferences? = null
     private val prefManager = App.getInstance().prefManager
-    var floatingButtonShowCloseAlertDialog: AlertDialog? = null
-    var floatingButtonShowCloseTextValue = ""
+    private var floatingButtonShowCloseAlertDialog: AlertDialog? = null
+    private var floatingButtonShowCloseTextValue = ""
 
     private val prefListener =
         SharedPreferences.OnSharedPreferenceChangeListener { _: SharedPreferences?, key: String? ->
@@ -93,7 +98,12 @@ class SettingFragment : PreferenceFragmentCompat() {
                 )
                 getString(R.string.pref_key_use_system_defaults) -> updateUseNative()
                 getString(R.string.pref_key_tile_action) -> updateTileActionSummary(prefManager.tileAction)
-                getString(R.string.pref_key_floating_action) -> updateFloatingActionSummary(prefManager.floatingButtonAction)
+                getString(R.string.pref_key_floating_action) -> updateFloatingActionSummary(
+                    prefManager.floatingButtonAction
+                )
+                getString(R.string.pref_key_voice_interaction_action) -> updateVoiceInteractionActionSummary(
+                    prefManager.voiceInteractionAction
+                )
                 getString(R.string.pref_key_dark_theme) -> updateDarkTheme(true)
             }
         }
@@ -127,11 +137,15 @@ class SettingFragment : PreferenceFragmentCompat() {
         floatingButtonDelay =
             findPreference(getString(R.string.pref_key_floating_button_delay)) as ListPreference?
         tileActionPref = findPreference(getString(R.string.pref_key_tile_action)) as ListPreference?
-        floatingButtonActionPref =  findPreference(getString(R.string.pref_key_floating_action)) as ListPreference?
+        floatingButtonActionPref =
+            findPreference(getString(R.string.pref_key_floating_action)) as ListPreference?
+        voiceInteractionActionPref =
+            findPreference(getString(R.string.pref_key_voice_interaction_action)) as ListPreference?
         darkThemePref = findPreference(getString(R.string.pref_key_dark_theme)) as ListPreference?
         fileNamePatternPref =
             findPreference(getString(R.string.pref_key_file_name_pattern)) as EditTextPreference?
-        fileNamePlaceholders = findPreference(getString(R.string.pref_static_field_key_file_name_placeholders)) as Preference?
+        fileNamePlaceholders =
+            findPreference(getString(R.string.pref_static_field_key_file_name_placeholders)) as Preference?
 
         pref?.registerOnSharedPreferenceChangeListener(prefListener)
 
@@ -159,9 +173,18 @@ class SettingFragment : PreferenceFragmentCompat() {
         makeNotificationSettingsLink()
         makeAccessibilitySettingsLink()
         makeStorageDirectoryLink()
+        makeAdvancedSettingsLink()
 
-        if (savedInstanceState?.getBoolean(FLOATING_BUTTON_SHOW_CLOSE_DIALOG_SHOWN, false) == true) {
-            updateFloatingButtonClose(savedInstanceState.getString(FLOATING_BUTTON_SHOW_CLOSE_DIALOG_VALUE))
+        if (savedInstanceState?.getBoolean(
+                FLOATING_BUTTON_SHOW_CLOSE_DIALOG_SHOWN,
+                false
+            ) == true
+        ) {
+            updateFloatingButtonClose(
+                savedInstanceState.getString(
+                    FLOATING_BUTTON_SHOW_CLOSE_DIALOG_VALUE
+                )
+            )
         }
     }
 
@@ -172,6 +195,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         delayPref?.run { updateDelaySummary(value) }
         tileActionPref?.run { updateTileActionSummary(value) }
         floatingButtonActionPref?.run { updateFloatingActionSummary(value) }
+        voiceInteractionActionPref?.run { updateVoiceInteractionActionSummary(value) }
         fileFormatPref?.run { updateFileFormatSummary(value) }
         floatingButtonDelay?.run { updateFloatingButtonDelaySummary(value) }
         fileNamePatternPref?.run { updateFileNamePatternSummary() }
@@ -234,7 +258,7 @@ class SettingFragment : PreferenceFragmentCompat() {
              */
             val myActivity = activity
             myActivity?.apply {
-                if ((it as? SwitchPreference)?.isChecked == true && ScreenshotAccessibilityService.instance == null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && (it as? SwitchPreference)?.isChecked == true && ScreenshotAccessibilityService.instance == null) {
                     // Accessibility service is not running -> Open settings so user can enable it
                     openAccessibilitySettings(this, TAG)
                 }
@@ -270,15 +294,32 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
     }
 
+    private fun makeAdvancedSettingsLink() {
+        val myPref =
+            findPreference(getString(R.string.pref_static_field_key_advanced_settings)) as Preference?
+
+        myPref?.isSelectable = true
+        myPref?.onPreferenceClickListener = OnPreferenceClickListener {
+            activity?.apply {
+                supportFragmentManager.commit {
+                    replace<SettingAdvancedFragment>(android.R.id.content)
+                    setReorderingAllowed(true)
+                    addToBackStack(null)
+                }
+            }
+            true
+        }
+    }
+
     private fun updateNotificationSummary() {
         activity?.let { myActivity ->
             notificationPref?.apply {
                 when {
-                    prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R -> {
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R -> {
                         isEnabled = false
                         summary = getString(R.string.use_native_screenshot_option_default)
                     }
-                    prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults -> {
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults -> {
                         isEnabled = false
                         summary = getString(R.string.use_native_screenshot_option_android11)
                     }
@@ -316,6 +357,38 @@ class SettingFragment : PreferenceFragmentCompat() {
     private fun updateFloatingActionSummary(value: String) {
         floatingButtonActionPref?.apply {
             summary = entries[findIndexOfValue(value)]
+        }
+    }
+
+    private fun updateVoiceInteractionActionSummary(value: String) {
+        var newValue = value
+        if (value == getString(R.string.setting_voice_interaction_action_value_native)) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+                // Not Supported below Android 9
+                newValue = getString(R.string.setting_voice_interaction_action_value_provided)
+                context.toastMessage(
+                    getString(R.string.use_native_screenshot_unsupported),
+                    ToastType.ERROR
+                )
+            } else if (ScreenshotAccessibilityService.instance == null) {
+                // Open Accessibility settings if service not running
+                this.activity?.run { openAccessibilitySettings(this, TAG) }
+            }
+        } else if (MyVoiceInteractionService.instance != null) {
+            this.activity?.run {
+                if (packageManager.checkPermission(
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        packageName
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    App.requestStoragePermission(this, false)
+                }
+            }
+        }
+
+        prefManager.voiceInteractionAction = newValue
+        voiceInteractionActionPref?.apply {
+            summary = entries[findIndexOfValue(newValue)]
         }
     }
 
@@ -396,11 +469,10 @@ class SettingFragment : PreferenceFragmentCompat() {
                 true
             } catch (e: Exception) {
                 Log.e(TAG, "setComponentEnabledSetting", e)
-                Toast.makeText(
-                    context,
+                context.toastMessage(
                     myActivity.getString(R.string.toggle_app_icon_failed),
-                    Toast.LENGTH_LONG
-                ).show()
+                    ToastType.ERROR
+                )
                 prefManager.hideApp = !hide
                 false
             }
@@ -533,7 +605,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     else -> false
                 }
             }
-            closeButtonEmojiInput.addTextChangedListener { v ->
+            closeButtonEmojiInput.addTextChangedListener {
                 floatingButtonShowCloseTextValue = closeButtonEmojiInput.text.toString()
                 if (closeButtonEmojiInput.text.isBlank()) {
                     (requireActivity().getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager?)?.hideSoftInputFromWindow(
@@ -583,10 +655,10 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     private fun updateStorageDirectory() {
         storageDirectoryPref?.run {
-            if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 summary = getString(R.string.use_native_screenshot_option_default)
                 isEnabled = false
-            } else if (prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
                 summary = getString(R.string.use_native_screenshot_option_android11)
                 isEnabled = false
             } else if (prefManager.screenshotDirectory != null) {
@@ -631,7 +703,10 @@ class SettingFragment : PreferenceFragmentCompat() {
     override fun onSaveInstanceState(outState: Bundle) {
         if (floatingButtonShowCloseAlertDialog?.isShowing == true) {
             outState.putBoolean(FLOATING_BUTTON_SHOW_CLOSE_DIALOG_SHOWN, true)
-            outState.putString(FLOATING_BUTTON_SHOW_CLOSE_DIALOG_VALUE, floatingButtonShowCloseTextValue)
+            outState.putString(
+                FLOATING_BUTTON_SHOW_CLOSE_DIALOG_VALUE,
+                floatingButtonShowCloseTextValue
+            )
         }
         super.onSaveInstanceState(outState)
     }

@@ -13,10 +13,7 @@ import android.view.Display
 import android.widget.Toast
 import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
-import com.github.cvzi.screenshottile.utils.deleteImage
-import com.github.cvzi.screenshottile.utils.editImageChooserIntent
-import com.github.cvzi.screenshottile.utils.hideNotification
-import com.github.cvzi.screenshottile.utils.shareImageChooserIntent
+import com.github.cvzi.screenshottile.utils.*
 
 
 const val NOTIFICATION_ACTION_SHARE = "NOTIFICATION_ACTION_SHARE"
@@ -73,19 +70,11 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
 
+
                     if (path != null && deleteImage(this, path)) {
-                        Toast.makeText(
-                            windowContext,
-                            context.getString(R.string.screenshot_deleted),
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        windowContext.toastMessage(R.string.screenshot_deleted, ToastType.SUCCESS, Toast.LENGTH_SHORT)
                     } else {
-                        Toast.makeText(
-                            windowContext,
-                            context.getString(R.string.screenshot_delete_failed),
-                            Toast.LENGTH_LONG
-                        )
-                            .show()
+                        windowContext.toastMessage(R.string.screenshot_delete_failed, ToastType.ERROR)
                     }
                 }
                 NOTIFICATION_ACTION_EDIT -> {

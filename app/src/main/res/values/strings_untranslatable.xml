@@ -35,6 +35,7 @@
     <string name="pref_key_floating_button_shutter" translatable="false">floating_button_shutter</string>
     <string name="pref_key_floating_button_delay" translatable="false">floating_button_delay</string>
     <string name="pref_key_return_if_accessibility" translatable="false">return_if_accessibility</string>
+    <string name="pref_key_return_if_voice_interaction" translatable="false">return_if_voice_interaction</string>
     <string name="setting_broadcast_secret_value_default" translatable="false">(unset)</string>
     <string name="setting_storage_directory_value_default" translatable="false">(default)</string>
     <string name="setting_file_name_pattern_value_default" translatable="false" formatted="false">Screenshot_%timestamp%</string>
@@ -127,6 +128,21 @@
     <string name="pref_key_floating_action" translatable="false">floating_action</string>
     <string-array name="setting_floating_action_entries" translatable="false">
         <item>@string/take_screenshot</item>
+        <item>@string/partial_screenshot</item>
+    </string-array>
+
+    <string name="setting_voice_interaction_action_value_provided" translatable="false">provided</string>
+    <string name="setting_voice_interaction_action_value_native" translatable="false">native</string>
+    <string name="setting_voice_interaction_action_value_partial" translatable="false">partial</string>
+    <string-array name="setting_voice_interaction_action_values" translatable="false">
+        <item>@string/setting_voice_interaction_action_value_provided</item>
+        <item>@string/setting_voice_interaction_action_value_native</item>
+        <item>@string/setting_voice_interaction_action_value_partial</item>
+    </string-array>
+    <string name="pref_key_voice_interaction_action" translatable="false">voice_interaction_action</string>
+    <string-array name="setting_voice_interaction_action_entries" translatable="false">
+        <item>@string/take_screenshot</item>
+        <item>@string/use_native_screenshot</item>
         <item>@string/partial_screenshot</item>
     </string-array>
 

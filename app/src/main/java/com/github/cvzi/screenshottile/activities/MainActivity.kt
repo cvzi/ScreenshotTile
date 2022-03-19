@@ -1,7 +1,9 @@
 package com.github.cvzi.screenshottile.activities
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -16,6 +18,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.hasFdroid
 import com.github.cvzi.screenshottile.utils.isNewAppInstallation
@@ -72,6 +75,7 @@ class MainActivity : AppCompatActivity() {
 
         val switchLegacy = findViewById<SwitchMaterial>(R.id.switchLegacy)
         val switchNative = findViewById<SwitchMaterial>(R.id.switchNative)
+        val switchAssist = findViewById<SwitchMaterial>(R.id.switchAssist)
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             findViewById<LinearLayout>(R.id.linearLayoutNative)?.let {
@@ -119,7 +123,9 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.buttonAccessibilitySettings)?.setOnClickListener {
             // Open Accessibility settings
-            ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+            }
         }
 
         findViewById<TextView>(R.id.textDescGeneral)?.run {
@@ -139,6 +145,12 @@ class MainActivity : AppCompatActivity() {
                 hintAccessibilityServiceUnavailable?.let {
                     (it.parent as? ViewGroup)?.removeView(it)
                 }
+            } else if (packageManager.checkPermission(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    packageName
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                App.requestStoragePermission(this, false)
             }
 
         }
@@ -154,9 +166,8 @@ class MainActivity : AppCompatActivity() {
                 updateFloatButton()
                 switchLegacy?.isChecked = !App.getInstance().prefManager.useNative
                 if (App.getInstance().prefManager.useNative) {
-                    if (ScreenshotAccessibilityService.instance == null) {
-                        // Open Accessibility settings
-                        ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+                    if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && ScreenshotAccessibilityService.instance == null) {
+                        // Open Accessibility settings ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
                     } else {
                         hintAccessibilityServiceUnavailable?.let {
                             (it.parent as? ViewGroup)?.removeView(it)
@@ -164,6 +175,10 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        switchAssist?.setOnCheckedChangeListener { _, _ ->
+            MyVoiceInteractionService.openVoiceInteractionSettings(this, TAG)
         }
     }
 
@@ -216,11 +231,12 @@ class MainActivity : AppCompatActivity() {
     private fun updateSwitches() {
         val switchLegacy = findViewById<SwitchMaterial>(R.id.switchLegacy)
         val switchNative = findViewById<SwitchMaterial>(R.id.switchNative)
+        val switchAssist = findViewById<SwitchMaterial>(R.id.switchAssist)
 
         switchLegacy?.isChecked = !App.getInstance().prefManager.useNative
         switchNative?.isChecked = App.getInstance().prefManager.useNative
 
-        if (App.getInstance().prefManager.useNative) {
+        if (App.getInstance().prefManager.useNative && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             if (ScreenshotAccessibilityService.instance == null && hintAccessibilityServiceUnavailable == null) {
                 findViewById<LinearLayout>(R.id.linearLayoutNative)?.let {
                     hintAccessibilityServiceUnavailable = TextView(this)
@@ -244,6 +260,9 @@ class MainActivity : AppCompatActivity() {
                 hintAccessibilityServiceUnavailable = null
             }
         }
+
+        switchAssist?.isChecked = MyVoiceInteractionService.instance != null
+
     }
 
     private fun makeActivityClickable(textView: TextView) {

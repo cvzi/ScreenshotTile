@@ -190,6 +190,46 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutAssist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchAssist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/main_assist_app_title" />
+
+                        <TextView
+                            android:id="@+id/textTitleAssist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/main_assist_app_title"
+                            android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textDescAssist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/main_assist_app_text"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
 
                 <LinearLayout
