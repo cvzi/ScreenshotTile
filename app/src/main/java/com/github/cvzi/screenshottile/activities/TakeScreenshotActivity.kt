@@ -324,7 +324,10 @@ class TakeScreenshotActivity : Activity(),
         } catch (e: SecurityException) {
             Log.e(TAG, "startVirtualDisplay() SecurityException: $e")
             setScreenshotPermission(null)
-            screenShotFailedToast("Failed to start virtual display: ${e.localizedMessage}", Toast.LENGTH_SHORT)
+            screenShotFailedToast(
+                "Failed to start virtual display: ${e.localizedMessage}",
+                Toast.LENGTH_SHORT
+            )
             stopScreenSharing()
 
             // Start the foreground service and get a new media projection
@@ -454,7 +457,10 @@ class TakeScreenshotActivity : Activity(),
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
-                toastMessage(getString(R.string.screenshot_file_saved, dummyPath), ToastType.SUCCESS)
+                toastMessage(
+                    getString(R.string.screenshot_file_saved, dummyPath),
+                    ToastType.SUCCESS
+                )
 
                 createNotification(
                     this,
@@ -510,7 +516,10 @@ class TakeScreenshotActivity : Activity(),
         )
     }
 
-    private fun screenShotFailedToast(errorMessage: String? = null, duration: Int = Toast.LENGTH_LONG) {
+    private fun screenShotFailedToast(
+        errorMessage: String? = null,
+        duration: Int = Toast.LENGTH_LONG
+    ) {
         val message = getString(R.string.screenshot_failed) + if (errorMessage != null) {
             "\n$errorMessage"
         } else {

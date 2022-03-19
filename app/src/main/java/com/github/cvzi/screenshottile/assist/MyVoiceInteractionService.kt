@@ -13,6 +13,9 @@ import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.SettingsActivity
 import com.github.cvzi.screenshottile.fragments.SettingFragment
 
+/**
+ * Service that is started when the assist app is selected
+ */
 class MyVoiceInteractionService : VoiceInteractionService() {
     companion object {
         var instance: MyVoiceInteractionService? = null

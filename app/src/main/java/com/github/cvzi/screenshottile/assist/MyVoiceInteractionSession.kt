@@ -24,7 +24,9 @@ import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.*
 import java.lang.ref.WeakReference
 
-
+/**
+ * A session is started when the home button is long pressed
+ */
 class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(context) {
     companion object {
         private const val TAG = "MyVoiceInSession"
@@ -78,7 +80,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             ScreenshotAccessibilityService.instance != null &&
             (bitmap == null || prefManager.voiceInteractionAction == context.getString(R.string.setting_voice_interaction_action_value_native))
         ) {
-            if(BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: simulateScreenshotButton()")
+            if (BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: simulateScreenshotButton()")
             success = ScreenshotAccessibilityService.instance?.simulateScreenshotButton(
                 autoHideButton = true,
                 autoUnHideButton = true,
@@ -95,7 +97,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             context.startActivity(NoDisplayActivity.newIntent(context, true))
             hide()
         } else {
-            if(BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: storeBitmap(bitmap)")
+            if (BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: storeBitmap(bitmap)")
             storeBitmap(bitmap)
         }
     }
@@ -252,7 +254,10 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
-                context.toastMessage(context.getString(R.string.screenshot_file_saved, dummyPath), ToastType.SUCCESS)
+                context.toastMessage(
+                    context.getString(R.string.screenshot_file_saved, dummyPath),
+                    ToastType.SUCCESS
+                )
 
                 createNotification(
                     context,
@@ -268,7 +273,10 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
-                context.toastMessage(context.getString(R.string.screenshot_file_saved, path), ToastType.SUCCESS)
+                context.toastMessage(
+                    context.getString(R.string.screenshot_file_saved, path),
+                    ToastType.SUCCESS
+                )
 
                 createNotification(
                     context,

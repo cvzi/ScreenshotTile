@@ -124,7 +124,10 @@ class AcquireScreenshotPermission : Activity() {
                     TAG,
                     "onRequestPermissionsResult() Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE"
                 )
-                toastMessage(getString(R.string.permission_missing_external_storage), ToastType.ERROR)
+                toastMessage(
+                    getString(R.string.permission_missing_external_storage),
+                    ToastType.ERROR
+                )
             }
         }
         finish()

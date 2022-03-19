@@ -92,7 +92,8 @@ class DrawableListPreference : ListPreference {
     }
 
 
-    inner class SavedState(superState: Parcelable?, var dialogIsOpen: Boolean = false) : Preference.BaseSavedState(superState)
+    inner class SavedState(superState: Parcelable?, var dialogIsOpen: Boolean = false) :
+        Preference.BaseSavedState(superState)
 
     override fun onRestoreInstanceState(state: Parcelable?) {
         (state as? SavedState)?.let { savedState ->
@@ -102,7 +103,10 @@ class DrawableListPreference : ListPreference {
     }
 
     override fun onSaveInstanceState(): Parcelable {
-        return SavedState(super.onSaveInstanceState(), dialogIsOpen = alertDialog?.isShowing == true)
+        return SavedState(
+            super.onSaveInstanceState(),
+            dialogIsOpen = alertDialog?.isShowing == true
+        )
     }
 
     override fun onAttached() {

@@ -740,6 +740,9 @@ fun hasFdroid(context: Context): Boolean {
     return false
 }
 
+/**
+ * Category of a toast message, so messages can be hidden by category
+ */
 enum class ToastType {
     SUCCESS, ERROR, NAGGING
 }

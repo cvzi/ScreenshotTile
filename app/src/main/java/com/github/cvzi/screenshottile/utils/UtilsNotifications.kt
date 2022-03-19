@@ -129,7 +129,12 @@ fun createNotification(
 
     val openImageIntent = openImageIntent(path, mimeType)
     val contentPendingIntent =
-        PendingIntent.getActivity(appContext, uniqueId + 1, openImageIntent, PendingIntent.FLAG_IMMUTABLE)
+        PendingIntent.getActivity(
+            appContext,
+            uniqueId + 1,
+            openImageIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
 
     // Create notification
     val builder: Notification.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -146,7 +151,7 @@ fun createNotification(
         //if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) { // TODO why is this crashing
         //    setSmallIcon(R.drawable.stat_notify_image)
         //} else {
-            setSmallIcon(android.R.drawable.ic_menu_gallery)
+        setSmallIcon(android.R.drawable.ic_menu_gallery)
         //}
         setLargeIcon(largeIcon)
         setAutoCancel(true)
@@ -167,7 +172,12 @@ fun createNotification(
     ) // This is not shown on Android 7+ anyways so let's just use the app icon
 
     val shareIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_SHARE)
-    val pendingIntentShare = PendingIntent.getBroadcast(appContext, uniqueId + 3, shareIntent, PendingIntent.FLAG_IMMUTABLE)
+    val pendingIntentShare = PendingIntent.getBroadcast(
+        appContext,
+        uniqueId + 3,
+        shareIntent,
+        PendingIntent.FLAG_IMMUTABLE
+    )
     builder.addAction(
         Notification.Action.Builder(
             icon,
@@ -182,7 +192,12 @@ fun createNotification(
         ).resolveActivity(context.applicationContext.packageManager) != null
     ) {
         val editIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_EDIT)
-        val pendingIntentEdit = PendingIntent.getBroadcast(appContext, uniqueId + 4, editIntent, PendingIntent.FLAG_IMMUTABLE)
+        val pendingIntentEdit = PendingIntent.getBroadcast(
+            appContext,
+            uniqueId + 4,
+            editIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
         builder.addAction(
             Notification.Action.Builder(
                 icon,
@@ -193,7 +208,12 @@ fun createNotification(
     }
 
     val deleteIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_DELETE)
-    val pendingIntentDelete = PendingIntent.getBroadcast(appContext, uniqueId + 2, deleteIntent, PendingIntent.FLAG_IMMUTABLE)
+    val pendingIntentDelete = PendingIntent.getBroadcast(
+        appContext,
+        uniqueId + 2,
+        deleteIntent,
+        PendingIntent.FLAG_IMMUTABLE
+    )
     builder.addAction(
         Notification.Action.Builder(
             icon,
@@ -339,7 +359,7 @@ fun foregroundNotification(context: Context, notificationId: Int): Notification.
             //if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) { // TODO why is this crashing
             //    setSmallIcon(R.drawable.transparent_icon)
             //} else {
-                setSmallIcon(android.R.drawable.divider_horizontal_dark)
+            setSmallIcon(android.R.drawable.divider_horizontal_dark)
             //}
             val notificationIntent = Intent().apply {
                 action = NOTIFICATION_ACTION_STOP

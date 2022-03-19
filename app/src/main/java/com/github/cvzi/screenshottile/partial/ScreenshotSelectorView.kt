@@ -81,6 +81,9 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
         xfermode = PorterDuffXfermode(PorterDuff.Mode.XOR)
     }
 
+    /**
+     * Reset view to default state, i.e. no active selection
+     */
     fun reset() {
         defaultState = true
         showShutter = false
