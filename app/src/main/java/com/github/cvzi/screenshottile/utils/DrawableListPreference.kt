@@ -91,7 +91,10 @@ class DrawableListPreference : ListPreference {
         dialog.show()
     }
 
-
+    /**
+     * Manages the instance state of a DrawableListPreference:
+     * Stores if the dialog is currently opened or not
+     */
     inner class SavedState(superState: Parcelable?, var dialogIsOpen: Boolean = false) :
         Preference.BaseSavedState(superState)
 
