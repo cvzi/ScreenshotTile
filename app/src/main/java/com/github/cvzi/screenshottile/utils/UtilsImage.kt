@@ -314,11 +314,26 @@ fun realScreenSize(context: Context): Point {
         context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
     return Point().apply {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            context.display?.getRealSize(this)
-        } else {
-            @Suppress("DEPRECATION")
-            windowManager.defaultDisplay.getRealSize(this)
+        when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+                context.display?.mode?.let {
+                    x = it.physicalWidth
+                    y = it.physicalHeight
+                } ?: run {
+                    windowManager.currentWindowMetrics.bounds.let {
+                        x = it.width()
+                        y = it.height()
+                    }
+                }
+            }
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> {
+                @Suppress("DEPRECATION")
+                context.display?.getRealSize(this)
+            }
+            else -> {
+                @Suppress("DEPRECATION")
+                windowManager.defaultDisplay.getRealSize(this)
+            }
         }
     }
 }

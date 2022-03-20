@@ -127,17 +127,10 @@ class TakeScreenshotActivity : Activity(),
         }
 
         partial = intent?.getBooleanExtra(EXTRA_PARTIAL, false) ?: false
-
-        with(DisplayMetrics()) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                display?.getRealMetrics(this)
-            } else {
-                @Suppress("DEPRECATION")
-                windowManager.defaultDisplay.getRealMetrics(this)
-            }
-            screenDensity = densityDpi
-            screenWidth = widthPixels
-            screenHeight = heightPixels
+        screenDensity = resources.configuration.densityDpi
+        realScreenSize(this).run {
+            screenWidth = x
+            screenHeight = y
         }
 
         @SuppressLint("WrongConstant")
