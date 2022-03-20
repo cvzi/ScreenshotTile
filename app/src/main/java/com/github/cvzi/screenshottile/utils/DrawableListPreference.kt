@@ -1,5 +1,6 @@
 package com.github.cvzi.screenshottile.utils
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Parcelable
@@ -50,9 +51,15 @@ class DrawableListPreference : ListPreference {
     private var selectedShutterIndex: Int = 0
     private var alertDialog: AlertDialog? = null
     private var openDialogOnStart = false
+    private var restoreSelection = false
+    @SuppressLint("NotifyDataSetChanged")
     override fun onClick() {
         val shutterCollection = ShutterCollection(context, R.array.shutters, R.array.shutter_names)
-        selectedShutterIndex = value.toIntOrNull() ?: 0
+        if (restoreSelection) {
+            restoreSelection = false
+        } else {
+            selectedShutterIndex = value.toIntOrNull() ?: 0
+        }
         val builder = AlertDialog.Builder(context)
         builder.setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.dismiss() }
         builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
@@ -93,14 +100,17 @@ class DrawableListPreference : ListPreference {
 
     /**
      * Manages the instance state of a DrawableListPreference:
-     * Stores if the dialog is currently opened or not
+     * Stores if the dialog is currently opened or not and the selected value
      */
-    inner class SavedState(superState: Parcelable?, var dialogIsOpen: Boolean = false) :
+    inner class SavedState(superState: Parcelable?, var dialogIsOpen: Boolean = false, var selectedIndex: Int = 0) :
         Preference.BaseSavedState(superState)
 
     override fun onRestoreInstanceState(state: Parcelable?) {
+
         (state as? SavedState)?.let { savedState ->
             openDialogOnStart = savedState.dialogIsOpen
+            selectedShutterIndex = savedState.selectedIndex
+            restoreSelection = true
             super.onRestoreInstanceState(savedState.superState)
         }
     }
@@ -108,7 +118,8 @@ class DrawableListPreference : ListPreference {
     override fun onSaveInstanceState(): Parcelable {
         return SavedState(
             super.onSaveInstanceState(),
-            dialogIsOpen = alertDialog?.isShowing == true
+            dialogIsOpen = alertDialog?.isShowing == true,
+            selectedIndex = selectedShutterIndex
         )
     }
 

@@ -591,6 +591,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             val closeButtonEmojiInput =
                 relativeLayout.findViewById<AutoCompleteTextView>(R.id.closeButtonEmojiInput)
             if (openWithValue != null) {
+                floatingButtonShowCloseTextValue = openWithValue
                 closeButtonEmojiInput.setText(openWithValue)
             } else {
                 closeButtonEmojiInput.setText(prefManager.floatingButtonCloseEmoji)
@@ -712,6 +713,8 @@ class SettingFragment : PreferenceFragmentCompat() {
     }
 
     override fun onDestroy() {
+        floatingButtonShowCloseAlertDialog?.cancel()
+        floatingButtonShowCloseAlertDialog = null
         super.onDestroy()
         pref?.unregisterOnSharedPreferenceChangeListener(prefListener)
     }
