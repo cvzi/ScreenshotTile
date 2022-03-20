@@ -56,7 +56,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Transparent"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="s">
 
         <activity
             android:name="com.github.cvzi.screenshottile.activities.MainActivity"
@@ -236,7 +237,7 @@
         </service>
         <service
             android:name=".assist.MyVoiceInteractionSessionService"
-            android:permission="android.permission.BIND_VOICE_INTERACTION"></service>
+            android:permission="android.permission.BIND_VOICE_INTERACTION" />
 
     </application>
 
