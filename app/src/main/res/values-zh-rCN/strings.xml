@@ -48,6 +48,7 @@
     <string name="setting_file_name_placeholders_title">在文件名中使用这些占位符</string>
     <string name="setting_tile_action">磁贴操作</string>
     <string name="setting_floating_action">浮动按钮操作</string>
+    <string name="setting_voice_interaction_action">辅助操作</string>
     <string name="setting_dark_theme">夜间模式</string>
     <string name="setting_dark_theme_system">按照系统</string>
     <string name="setting_dark_theme_off">已禁用</string>
@@ -124,4 +125,5 @@
     <string name="main_long_press_title">长按</string>
     <string name="main_long_press_text">长按图块/按钮打开菜单。您可以指定屏幕截图延迟或从屏幕截取矩形区域。</string>
     <string name="main_assist_app_title">辅助应用</string>
+    <string name="main_assist_app_text">如果您将此应用程序设置为您的助手应用，您可以长按 home 按钮进行截图。启用此应用程序作为您的辅助应用程序将禁用其他助手。你可以在程序设置中更改长按 home 按钮的动作。</string>
 </resources>
