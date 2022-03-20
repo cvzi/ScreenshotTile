@@ -2,6 +2,7 @@ package com.github.cvzi.screenshottile.fragments
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.ComponentName
 import android.content.Context.INPUT_METHOD_SERVICE
@@ -20,6 +21,9 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -43,7 +47,6 @@ import java.lang.ref.WeakReference
 class SettingFragment : PreferenceFragmentCompat() {
     companion object {
         const val TAG = "SettingFragment.kt"
-        private const val DIRECTORY_CHOOSER_REQUEST_CODE = 8912
         private const val FLOATING_BUTTON_SHOW_CLOSE_DIALOG_SHOWN = "closeAlertDialogShown"
         private const val FLOATING_BUTTON_SHOW_CLOSE_DIALOG_VALUE = "closeAlertDialogValue"
         var instance: WeakReference<SettingFragment>? = null
@@ -53,6 +56,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         instance = WeakReference<SettingFragment>(this)
     }
 
+    private lateinit var startForPickFolder: ActivityResultLauncher<Intent>
     private var notificationPref: Preference? = null
     private var delayPref: ListPreference? = null
     private var fileFormatPref: ListPreference? = null
@@ -112,6 +116,22 @@ class SettingFragment : PreferenceFragmentCompat() {
         pref = preferenceManager.sharedPreferences
 
         addPreferencesFromResource(R.xml.pref)
+
+        startForPickFolder =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    result.data?.let { intent ->
+                        val uri = intent.data
+                        val takeFlags: Int = intent.flags and
+                                (FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION)
+                        @SuppressLint("WrongConstant")
+                        if (uri != null && activity != null && activity?.contentResolver != null) {
+                            prefManager.screenshotDirectory = uri.toString()
+                            activity?.contentResolver?.takePersistableUriPermission(uri, takeFlags)
+                        }
+                    }
+                }
+            }
 
         notificationPref =
             findPreference(getString(R.string.pref_static_field_key_notification_settings))
@@ -283,10 +303,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                         putExtra(DocumentsContract.EXTRA_INITIAL_URI, Uri.parse(currentDir))
                     }
                     if (resolveActivity(myActivity.packageManager) != null) {
-                        startActivityForResult(
-                            createChooser(this, "Choose directory"),
-                            DIRECTORY_CHOOSER_REQUEST_CODE
-                        )
+                        startForPickFolder.launch(createChooser(this, "Choose directory"))
                     }
                 }
             }
@@ -683,20 +700,6 @@ class SettingFragment : PreferenceFragmentCompat() {
             }
             if (switched) {
                 App.getInstance().applyDayNightMode()
-            }
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
-        super.onActivityResult(requestCode, resultCode, intent)
-        if (requestCode == DIRECTORY_CHOOSER_REQUEST_CODE && intent != null) {
-            val uri = intent.data
-            val takeFlags: Int = intent.flags and
-                    (FLAG_GRANT_READ_URI_PERMISSION or FLAG_GRANT_WRITE_URI_PERMISSION)
-            @SuppressLint("WrongConstant")
-            if (uri != null && activity != null && activity?.contentResolver != null) {
-                prefManager.screenshotDirectory = uri.toString()
-                activity?.contentResolver?.takePersistableUriPermission(uri, takeFlags)
             }
         }
     }
