@@ -52,6 +52,7 @@ class DrawableListPreference : ListPreference {
     private var alertDialog: AlertDialog? = null
     private var openDialogOnStart = false
     private var restoreSelection = false
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onClick() {
         val shutterCollection = ShutterCollection(context, R.array.shutters, R.array.shutter_names)
@@ -102,7 +103,11 @@ class DrawableListPreference : ListPreference {
      * Manages the instance state of a DrawableListPreference:
      * Stores if the dialog is currently opened or not and the selected value
      */
-    inner class SavedState(superState: Parcelable?, var dialogIsOpen: Boolean = false, var selectedIndex: Int = 0) :
+    inner class SavedState(
+        superState: Parcelable?,
+        var dialogIsOpen: Boolean = false,
+        var selectedIndex: Int = 0
+    ) :
         Preference.BaseSavedState(superState)
 
     override fun onRestoreInstanceState(state: Parcelable?) {

@@ -15,7 +15,6 @@ import android.media.ImageReader
 import android.media.projection.MediaProjection
 import android.net.Uri
 import android.os.*
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.*
 import android.widget.Toast

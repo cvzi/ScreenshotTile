@@ -33,7 +33,8 @@ class MainActivityTest {
 
         val materialButton = onView(
             allOf(
-                withId(R.id.buttonSettings), withText(mActivityTestRule.activity.getString(R.string.more_setting)),
+                withId(R.id.buttonSettings),
+                withText(mActivityTestRule.activity.getString(R.string.more_setting)),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.LinearLayout")),
@@ -50,7 +51,8 @@ class MainActivityTest {
 
         val materialButton2 = onView(
             allOf(
-                withId(R.id.buttonTutorial), withText(mActivityTestRule.activity.getString(R.string.tutorial)),
+                withId(R.id.buttonTutorial),
+                withText(mActivityTestRule.activity.getString(R.string.tutorial)),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("androidx.cardview.widget.CardView")),

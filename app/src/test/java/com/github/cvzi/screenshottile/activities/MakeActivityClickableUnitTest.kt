@@ -37,286 +37,286 @@ open class UnitTestClickableActivityLink {
 
 @RunWith(AndroidJUnit4::class)
 @Config(sdk = [30])
-class UnitTestClickableActivityLinkLocalized: UnitTestClickableActivityLink() {
+class UnitTestClickableActivityLinkLocalized : UnitTestClickableActivityLink() {
 
     @Test
-    @Config(qualifiers="ar")
+    @Config(qualifiers = "ar")
     fun ar() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="ar-rSA")
+    @Config(qualifiers = "ar-rSA")
     fun arSA() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="bn")
+    @Config(qualifiers = "bn")
     fun bn() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="de-rDE")
+    @Config(qualifiers = "de-rDE")
     fun deDE() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="el-rGR")
+    @Config(qualifiers = "el-rGR")
     fun elGR() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="es")
+    @Config(qualifiers = "es")
     fun es() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="es-rES")
+    @Config(qualifiers = "es-rES")
     fun esES() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="fa")
+    @Config(qualifiers = "fa")
     fun fa() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="fr-rFR")
+    @Config(qualifiers = "fr-rFR")
     fun frFR() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="gu")
+    @Config(qualifiers = "gu")
     fun gu() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="hi")
+    @Config(qualifiers = "hi")
     fun hi() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="hi-rIN")
+    @Config(qualifiers = "hi-rIN")
     fun hiIN() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="hu-rHU")
+    @Config(qualifiers = "hu-rHU")
     fun huHU() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="hy-rAM")
+    @Config(qualifiers = "hy-rAM")
     fun hyAM() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="in")
+    @Config(qualifiers = "in")
     fun in99() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="it-rIT")
+    @Config(qualifiers = "it-rIT")
     fun itIT() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="iw")
+    @Config(qualifiers = "iw")
     fun iw() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="ja")
+    @Config(qualifiers = "ja")
     fun ja() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="kn")
+    @Config(qualifiers = "kn")
     fun kn() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="mr")
+    @Config(qualifiers = "mr")
     fun mr() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="ms")
+    @Config(qualifiers = "ms")
     fun ms() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="nb")
+    @Config(qualifiers = "nb")
     fun nb() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="nl-rNL")
+    @Config(qualifiers = "nl-rNL")
     fun nlNL() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="no")
+    @Config(qualifiers = "no")
     fun no() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="or")
+    @Config(qualifiers = "or")
     fun or() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="pa")
+    @Config(qualifiers = "pa")
     fun pa() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="pl")
+    @Config(qualifiers = "pl")
     fun pl() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="pl-rPL")
+    @Config(qualifiers = "pl-rPL")
     fun plPL() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="pt-rBR")
+    @Config(qualifiers = "pt-rBR")
     fun ptBR() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="pt-rPT")
+    @Config(qualifiers = "pt-rPT")
     fun ptPT() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="ro-rRO")
+    @Config(qualifiers = "ro-rRO")
     fun roRO() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="ru")
+    @Config(qualifiers = "ru")
     fun ru() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="ru-rRU")
+    @Config(qualifiers = "ru-rRU")
     fun ruRU() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="sw")
+    @Config(qualifiers = "sw")
     fun sw() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="ta")
+    @Config(qualifiers = "ta")
     fun ta() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="te")
+    @Config(qualifiers = "te")
     fun te() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="th")
+    @Config(qualifiers = "th")
     fun th() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="tl")
+    @Config(qualifiers = "tl")
     fun tl() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="tr-rTR")
+    @Config(qualifiers = "tr-rTR")
     fun trTR() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="ug")
+    @Config(qualifiers = "ug")
     fun ug() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="uk-rUA")
+    @Config(qualifiers = "uk-rUA")
     fun ukUA() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="ur")
+    @Config(qualifiers = "ur")
     fun ur() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="vi-rVN")
+    @Config(qualifiers = "vi-rVN")
     fun viVN() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="zh")
+    @Config(qualifiers = "zh")
     fun zh() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="zh-rCN")
+    @Config(qualifiers = "zh-rCN")
     fun zhCN() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="zh-rHK")
+    @Config(qualifiers = "zh-rHK")
     fun zhHK() {
         makeClickableActivities_LocalizedString()
     }
 
     @Test
-    @Config(qualifiers="zh-rTW")
+    @Config(qualifiers = "zh-rTW")
     fun zhTW() {
         makeClickableActivities_LocalizedString()
     }
