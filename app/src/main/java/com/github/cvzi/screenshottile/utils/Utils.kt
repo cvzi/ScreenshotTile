@@ -778,7 +778,6 @@ fun Context?.toastMessage(resource: Int, toastType: ToastType, duration: Int = T
  */
 fun aMessage(context: Context) {
     if (Locale.getDefault().country != "RU" ||
-        hasFdroid(context) ||
         !App.getInstance().prefManager.naggingToasts ||
         App.getInstance().prefManager.screenshotCount % 3 != 0
     ) {
