@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ô chụp màn hình (Không cần Root)</string>
+    <string name="app_name" maxLength="30">Ô chụp màn hình (Không cần Root)</string>
     <string name="tile_label">Chụp màn hình</string>
     <string name="tile_floating_label">Nổi</string>
     <string name="tile_floating_subtitle">Nút chụp màn hình</string>
@@ -48,6 +48,7 @@
     <string name="setting_file_name_placeholders_title">Sử dụng các chỗ giữ chỗ này trong tên tệp</string>
     <string name="setting_tile_action">Hành động của ô</string>
     <string name="setting_floating_action">Hành động nút nổi</string>
+    <string name="setting_voice_interaction_action">Hành động trợ lý</string>
     <string name="setting_dark_theme">Chủ đề tối</string>
     <string name="setting_dark_theme_system">Hệ thống</string>
     <string name="setting_dark_theme_off">Tắt</string>
@@ -123,4 +124,5 @@
     <string name="main_long_press_title">Nhấn giữ</string>
     <string name="main_long_press_text">Nhấn giữ ô/nút để mở một menu. Bạn có thể chỉ định độ trễ chụp màn hình hoặc cắt một hình chữ nhật khỏi màn hình.</string>
     <string name="main_assist_app_title">Ứng dụng trợ lý</string>
+    <string name="main_assist_app_text">Nếu bạn đặt ứng dụng này làm ứng dụng trợ lý, bạn có thể nhấn giữ nút home để chụp màn hình. Việc bật ứng dụng này làm ứng dụng trợ lý sẽ tắt các ứng dụng trợ lý khác. Bạn có thể thay đổi hành động khi nhấn giữ nút home ở cài đặt ứng dụng.</string>
 </resources>
