@@ -10,6 +10,7 @@ Falls es zu Abstürzen bei Androi 9 Pie oder 10 kommt, aktiviere die Funktion "N
 ✓ Nach den Screenshot wird eine Benachrichtigung angezeigt (deaktivierbar)
 ✓ Teilen, Bearbeiten oder Löschen direkt aus der Benachrichtigung
 ✓ Schwebender Auslöseknopf (ähnlich wie eine Chat bubble)
+✓ Aktiviere als Assistent-App um Screenshots aufzunehmen (langes Drücken der Home-Taste)
 ✓ Aufnehmen von bestimmten Bereichen des Bildschirms (lange auf die Kachel drücken)
 ✓ Screenshotaufnahme verzögern
 ✓ Beliebiger Speicherort z.B. auf einer SD Karte
