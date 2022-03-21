@@ -9,6 +9,7 @@ Nếu ứng dụng bị crash (văng ra) trên Android 9/Pie hoặc 10, bạn c�
 ✓ Thông báo sau khi chụp màn hình (có thể được tắt)
 ✓ Ngay lập tức chia sẻ, chỉnh sửa hoặc xoá ảnh chụp màn hình từ thông báo
 ✓ Nút nổi/Nút trên ứng dụng khác như bong bóng chat (Android 9+)
+✓ Dùng làm ứng dụng trợ lý để chụp màn hình (nhấn giữ nút Home)
 ✓ Chỉ chụp ảnh màn hình một khu vực cụ thể của màn hình (nhấn giữ ô)
 ✓ Độ trễ khi chụp màn hình
 ✓ Lưu trữ trong bất kỳ thư mục nào trên bất kỳ kho lưu trữ nào, vd: thẻ sd

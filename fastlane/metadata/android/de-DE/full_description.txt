@@ -10,6 +10,7 @@ Falls es zu Abstürzen bei Androi 9 Pie oder 10 kommt, aktiviere die Funktion "N
 ✓ Nach den Screenshot wird eine Benachrichtigung angezeigt (deaktivierbar)
 ✓ Teilen, Bearbeiten oder Löschen direkt aus der Benachrichtigung
 ✓ Schwebender Auslöseknopf (ähnlich wie eine Chat bubble)
+✓ Aktiviere als Assistent-App um Screenshots aufzunehmen (langes Drücken der Home-Taste)
 ✓ Aufnehmen von bestimmten Bereichen des Bildschirms (lange auf die Kachel drücken)
 ✓ Screenshotaufnahme verzögern
 ✓ Beliebiger Speicherort z.B. auf einer SD Karte
@@ -38,4 +39,4 @@ Seit Android 9/Pie wird diese Berechtigung benötigt, wenn eine App im Hintergru
 
 <h2>App icon verstecken:</h2>In den App-Einstellungen kann man das Icon dieser App verstecken. Man kann die App weiterhin Öffnen indem man lange auf die Kachel in den Schnelleinstellungen drückt. Leider lassen sich ab Android 10 keine App-Icons mehr verstecken.
 
-<h2>🌎 Support and translations</h2>If there is a problem or want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+<h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
