@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.16.1
+*   Restore state in settings on rotation [#119](https://github.com/cvzi/ScreenshotTile/issues/119)
+*   Translations updated
+
 ## 1.16.0
 *   Assist app: take screenshot via long press on home button [#118](https://github.com/cvzi/ScreenshotTile/issues/118)
 *   Partial screenshot: slide edges/corners
