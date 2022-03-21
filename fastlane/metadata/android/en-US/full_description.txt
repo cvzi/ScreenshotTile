@@ -9,6 +9,7 @@ If the app crashes on Android 9/Pie or 10, you can try to enable "Use native scr
 ✓ Notification after a screenshot was taken (can be disabled)
 ✓ Immediately share, edit or delete a screenshot from the notification
 ✓ Floating button/Overlay button like a chat bubble (Android 9+)
+✓ Use as assist app to take a screenshot (long-press the Home button)
 ✓ Only take screenshot of a specific area of the screen (long-press the tile)
 ✓ Delay taking a screenshot
 ✓ Store in any folder on any storage e.g. sd card
