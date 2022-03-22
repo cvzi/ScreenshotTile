@@ -101,9 +101,9 @@ jobs:
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale ${{ matrix.locale }}
           disable-animations: true
           script: |
-            adb uninstall com.github.cvzi.screenshottile
-            adb uninstall com.github.cvzi.screenshottile.debug
-            adb uninstall com.github.cvzi.screenshottile.debug.test
+            adb uninstall com.github.cvzi.screenshottile || true
+            adb uninstall com.github.cvzi.screenshottile.debug || true
+            adb uninstall com.github.cvzi.screenshottile.debug.test || true
             ./gradlew connectedCheck
 
       - name: Raise error on test failure
