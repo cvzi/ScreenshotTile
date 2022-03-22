@@ -61,7 +61,7 @@ jobs:
           key: avd-${{ matrix.api-level }}
 
       - name: Create AVD and generate snapshot for caching
-        #if: steps.avd-cache.outputs.cache-hit != 'true'
+        if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
@@ -100,7 +100,11 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale ${{ matrix.locale }}
           disable-animations: true
-          script: ./gradlew connectedCheck
+          script: |
+            adb uninstall com.github.cvzi.screenshottile || true
+            adb uninstall com.github.cvzi.screenshottile.debug || true
+            adb uninstall com.github.cvzi.screenshottile.debug.test || true
+            ./gradlew connectedCheck
 
       - name: Raise error on test failure
         if: steps.runtests.outcome != 'success'
