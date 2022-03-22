@@ -100,7 +100,9 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale ${{ matrix.locale }}
           disable-animations: true
-          script: ./gradlew connectedCheck
+          script: |
+            adb uninstall com.github.cvzi.screenshottile.debug.test
+            ./gradlew connectedCheck
 
       - name: Raise error on test failure
         if: steps.runtests.outcome != 'success'
@@ -109,7 +111,6 @@ jobs:
              echo "Emulator failed to start tests"
              exit 0
           elif [ -f app/build/reports/androidTests/connected/index.html ]; then
-             brew install pcre2
              if pcre2grep -qM "<div class=\"infoBox\" id=\"tests\">\s*<div class=\"counter\">0</div>" app/build/reports/androidTests/connected/index.html; then
                 echo "No tests were run"
                 exit 0
