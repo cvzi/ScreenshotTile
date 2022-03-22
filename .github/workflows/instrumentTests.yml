@@ -108,6 +108,9 @@ jobs:
           if [ -z "$(ls -A app/build/reports/androidTests/)" ]; then
              echo "Emulator failed to start tests"
              exit 0
+          elif grep -Pzq "<div class=\"infoBox\" id=\"tests\">\s*<div class=\"counter\">0</div>" app/build/reports/androidTests/connected/index.html; then
+             echo "No tests were run"
+             exit 0
           else
              exit 1
           fi
