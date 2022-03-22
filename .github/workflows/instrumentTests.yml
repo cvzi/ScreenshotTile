@@ -11,7 +11,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        api-level: [29]
+        api-level: [28]
         locale:
             - "en-US"
             - "ar-SA"
@@ -100,11 +100,7 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -change-locale ${{ matrix.locale }}
           disable-animations: true
-          script: |
-            adb uninstall com.github.cvzi.screenshottile || true
-            adb uninstall com.github.cvzi.screenshottile.debug || true
-            adb uninstall com.github.cvzi.screenshottile.debug.test || true
-            ./gradlew connectedCheck
+          script: ./gradlew connectedCheck
 
       - name: Raise error on test failure
         if: steps.runtests.outcome != 'success'
