@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private var hintAccessibilityServiceUnavailable: TextView? = null
+    private var askedForStoragePermission = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -145,14 +146,15 @@ class MainActivity : AppCompatActivity() {
                 hintAccessibilityServiceUnavailable?.let {
                     (it.parent as? ViewGroup)?.removeView(it)
                 }
-            } else if (packageManager.checkPermission(
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    packageName
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                App.requestStoragePermission(this, false)
+                if (!askedForStoragePermission && packageManager.checkPermission(
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        packageName
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    askedForStoragePermission = true
+                    App.requestStoragePermission(this, false)
+                }
             }
-
         }
         switchNative?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked && !accessibilityConsent) {
@@ -216,6 +218,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        askedForStoragePermission = true // Don't ask again on resume
         updateSwitches()
     }
 
