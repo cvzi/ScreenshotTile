@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.16.2
+*   Allow legacy method from floating button and from assistant [#117](https://github.com/cvzi/ScreenshotTile/issues/117) [#118](https://github.com/cvzi/ScreenshotTile/issues/118)
+*   Minor bugfixes
+
 ## 1.16.1
 *   Restore state in settings on rotation [#119](https://github.com/cvzi/ScreenshotTile/issues/119)
 *   Translations updated
