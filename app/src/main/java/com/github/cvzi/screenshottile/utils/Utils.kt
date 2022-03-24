@@ -46,6 +46,13 @@ const val UTILSKT = "Utils.kt"
 /**
  * Start screenshot activity and take a screenshot
  */
+fun screenshotLegacyOnly(context: Context) {
+    TakeScreenshotActivity.start(context, false)
+}
+
+/**
+ * Start screenshot activity and take a screenshot
+ */
 fun screenshot(context: Context, partial: Boolean = false) {
     if (partial || !tryNativeScreenshot()) {
         TakeScreenshotActivity.start(context, partial)

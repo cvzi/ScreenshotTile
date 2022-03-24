@@ -68,10 +68,21 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         cutOutRect = null
         if (bitmap != null && prefManager.voiceInteractionAction == context.getString(R.string.setting_voice_interaction_action_value_partial)) {
             currentBitmap = bitmap
+            if (BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: showCropBitmapView")
             showCropBitmapView(bitmap)
             return
         } else {
             currentBitmap = null
+        }
+
+        if (prefManager.voiceInteractionAction == context.getString(R.string.setting_voice_interaction_action_value_legacy)) {
+            hide()
+            if (BuildConfig.DEBUG) Log.v(
+                TAG,
+                "onHandleScreenshot: Using legacy method by user request"
+            )
+            NoDisplayActivity.startNewTaskLegacyScreenshot(context)
+            return
         }
 
         // If action is native screenshot, try to take screenshot with accessibility service
@@ -93,9 +104,9 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         }
 
         if (bitmap == null) {
-            Log.w(TAG, "onHandleScreenshot: Trying original screenshot method as last resort")
-            context.startActivity(NoDisplayActivity.newIntent(context, true))
+            Log.w(TAG, "onHandleScreenshot: Trying legacy method as last resort")
             hide()
+            NoDisplayActivity.startNewTask(context, true)
         } else {
             if (BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: storeBitmap(bitmap)")
             storeBitmap(bitmap)
@@ -292,6 +303,15 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             }
         }
         hide()
+    }
+
+    override fun onHide() {
+        thread = null
+        currentBitmap = null
+        cutOutRect = null
+        saveImageResult = null
+        screenshotSelectorActive = false
+        super.onHide()
     }
 
     private fun screenShotFailedToast(errorMessage: String? = null) {

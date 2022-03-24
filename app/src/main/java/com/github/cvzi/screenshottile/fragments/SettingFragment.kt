@@ -57,6 +57,8 @@ class SettingFragment : PreferenceFragmentCompat() {
     }
 
     private lateinit var startForPickFolder: ActivityResultLauncher<Intent>
+    private var openedAccessibilitySetting = false
+    private var askedForStoragePermission = false
     private var notificationPref: Preference? = null
     private var delayPref: ListPreference? = null
     private var fileFormatPref: ListPreference? = null
@@ -90,9 +92,11 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_hide_app) -> onHideApp(prefManager.hideApp)
                 getString(R.string.pref_key_file_format) -> updateFileFormatSummary(prefManager.fileFormat)
                 getString(R.string.pref_key_file_name_pattern) -> updateFileNamePatternSummary()
-                getString(R.string.pref_key_use_native) -> updateUseNative()
-                getString(R.string.pref_key_floating_button) -> updateFloatingButton()
-                getString(R.string.pref_key_floating_button_scale) -> updateFloatingButton(true)
+                getString(R.string.pref_key_use_native) -> updateUseNative(switchEvent = true)
+                getString(R.string.pref_key_floating_button) -> updateFloatingButton(switchEvent = true)
+                getString(R.string.pref_key_floating_button_scale) -> updateFloatingButton(
+                    switchEvent = true
+                )
                 getString(R.string.pref_key_floating_button_show_close) -> updateFloatingButtonClose()
                 getString(R.string.pref_key_floating_button_shutter) -> updateFloatingButtonShutterSummary(
                     true
@@ -100,15 +104,15 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_floating_button_delay) -> updateFloatingButtonDelaySummary(
                     prefManager.floatingButtonDelay.toString()
                 )
-                getString(R.string.pref_key_use_system_defaults) -> updateUseNative()
+                getString(R.string.pref_key_use_system_defaults) -> updateUseNative(switchEvent = true)
                 getString(R.string.pref_key_tile_action) -> updateTileActionSummary(prefManager.tileAction)
                 getString(R.string.pref_key_floating_action) -> updateFloatingActionSummary(
                     prefManager.floatingButtonAction
                 )
                 getString(R.string.pref_key_voice_interaction_action) -> updateVoiceInteractionActionSummary(
-                    prefManager.voiceInteractionAction
+                    prefManager.voiceInteractionAction, switchEvent = true
                 )
-                getString(R.string.pref_key_dark_theme) -> updateDarkTheme(true)
+                getString(R.string.pref_key_dark_theme) -> updateDarkTheme(switchEvent = true)
             }
         }
 
@@ -276,11 +280,12 @@ class SettingFragment : PreferenceFragmentCompat() {
             /*
             Open accessibility settings if accessibility service is not running
              */
-            val myActivity = activity
-            myActivity?.apply {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && (it as? SwitchPreference)?.isChecked == true && ScreenshotAccessibilityService.instance == null) {
-                    // Accessibility service is not running -> Open settings so user can enable it
-                    openAccessibilitySettings(this, TAG)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && (it as? SwitchPreference)?.isChecked == true && ScreenshotAccessibilityService.instance == null) {
+                // Accessibility service is not running -> Open settings so user can enable it
+                if (!openedAccessibilitySetting) {
+                    // Only open the accessibility settings once, if not enabled, do not open again
+                    openedAccessibilitySetting = true
+                    this.activity?.run { openAccessibilitySettings(this, TAG) }
                 }
             }
             true
@@ -377,7 +382,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
     }
 
-    private fun updateVoiceInteractionActionSummary(value: String) {
+    private fun updateVoiceInteractionActionSummary(value: String, switchEvent: Boolean = false) {
         var newValue = value
         if (value == getString(R.string.setting_voice_interaction_action_value_native)) {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
@@ -387,17 +392,23 @@ class SettingFragment : PreferenceFragmentCompat() {
                     getString(R.string.use_native_screenshot_unsupported),
                     ToastType.ERROR
                 )
-            } else if (ScreenshotAccessibilityService.instance == null) {
-                // Open Accessibility settings if service not running
-                this.activity?.run { openAccessibilitySettings(this, TAG) }
+            } else if (ScreenshotAccessibilityService.instance == null && switchEvent) {
+                // Accessibility service is not running -> Open settings so user can enable it
+                if (!openedAccessibilitySetting) {
+                    // Only open the accessibility settings once, if not enabled, do not open again
+                    openedAccessibilitySetting = true
+                    this.activity?.run { openAccessibilitySettings(this, TAG) }
+                }
             }
-        } else if (MyVoiceInteractionService.instance != null) {
+        } else if (MyVoiceInteractionService.instance != null && switchEvent && !askedForStoragePermission) {
             this.activity?.run {
                 if (packageManager.checkPermission(
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         packageName
                     ) != PackageManager.PERMISSION_GRANTED
                 ) {
+                    // Only ask for storage permission once
+                    askedForStoragePermission = true
                     App.requestStoragePermission(this, false)
                 }
             }
@@ -453,7 +464,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 ShutterCollection(context, R.array.shutters, R.array.shutter_names).current().name
         }
         if (updateFloatingButton) {
-            updateFloatingButton(true)
+            updateFloatingButton(switchEvent = false, forceRedraw = true)
         }
     }
 
@@ -496,7 +507,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         } ?: false
     }
 
-    private fun updateUseNative() {
+    private fun updateUseNative(switchEvent: Boolean = false) {
         useNativePref?.run {
             when {
                 Build.VERSION.SDK_INT < Build.VERSION_CODES.P -> {
@@ -529,10 +540,10 @@ class SettingFragment : PreferenceFragmentCompat() {
                 }
             }
         }
-        updateUseSystemDefaults()
+        updateUseSystemDefaults(switchEvent)
     }
 
-    private fun updateUseSystemDefaults() {
+    private fun updateUseSystemDefaults(switchEvent: Boolean) {
         useSystemDefaultsPref?.apply {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R || !prefManager.useNative) {
                 summary = getString(R.string.use_system_defaults_summary)
@@ -546,21 +557,24 @@ class SettingFragment : PreferenceFragmentCompat() {
                 summary = getString(R.string.use_system_defaults_summary_off)
                 isEnabled = true
                 isVisible = true
-                activity?.run {
-                    // Check storage permission
-                    if (packageManager.checkPermission(
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            packageName
-                        ) != PackageManager.PERMISSION_GRANTED
-                    ) {
-                        App.requestStoragePermission(this, false)
+                if (switchEvent && !askedForStoragePermission) {
+                    activity?.run {
+                        // Check storage permission
+                        if (packageManager.checkPermission(
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                packageName
+                            ) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            askedForStoragePermission = true
+                            App.requestStoragePermission(this, false)
+                        }
                     }
                 }
             }
         }
     }
 
-    private fun updateFloatingButton(forceRedraw: Boolean = false) {
+    private fun updateFloatingButton(switchEvent: Boolean = false, forceRedraw: Boolean = false) {
         floatingButtonPref?.run {
             summary = when {
                 Build.VERSION.SDK_INT < Build.VERSION_CODES.P -> {
@@ -576,7 +590,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     unsupported
                 }
                 isChecked -> {
-                    updateUseNative()
+                    updateUseNative(switchEvent)
                     if (ScreenshotAccessibilityService.instance == null) {
                         getString(
                             R.string.emoji_warning,
@@ -598,7 +612,7 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     fun updateFloatingButtonFromService() {
         floatingButtonPref?.isChecked = prefManager.floatingButton
-        updateFloatingButton()
+        updateFloatingButton(switchEvent = false, forceRedraw = false)
     }
 
     private fun updateFloatingButtonClose(openWithValue: String? = null) {
@@ -662,12 +676,12 @@ class SettingFragment : PreferenceFragmentCompat() {
         } else {
             floatingButtonHideShowClosePreventRecursion = false
         }
-        updateFloatingButton(true)
+        updateFloatingButton(switchEvent = false, forceRedraw = true)
     }
 
     private fun saveFloatingButton(emoji: String) {
         prefManager.floatingButtonCloseEmoji = emoji
-        updateFloatingButton(true)
+        updateFloatingButton(switchEvent = false, forceRedraw = true)
     }
 
 
@@ -689,7 +703,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
     }
 
-    private fun updateDarkTheme(switched: Boolean = false) {
+    private fun updateDarkTheme(switchEvent: Boolean = false) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             darkThemePref?.apply {
                 isVisible = false
@@ -698,7 +712,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             darkThemePref?.apply {
                 summary = entries[findIndexOfValue(value)]
             }
-            if (switched) {
+            if (switchEvent) {
                 App.getInstance().applyDayNightMode()
             }
         }

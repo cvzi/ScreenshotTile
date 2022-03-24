@@ -224,11 +224,17 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 root.invalidate()
             }
             root.postDelayed({
-                simulateScreenshotButton(autoHideButton = false, autoUnHideButton = false)
+                val legacyMethod =
+                    App.getInstance().prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_legacy)
+                if (legacyMethod) {
+                    NoDisplayActivity.startNewTaskLegacyScreenshot(this)
+                } else {
+                    simulateScreenshotButton(autoHideButton = false, autoUnHideButton = false)
+                }
                 if (App.getInstance().prefManager.floatingButtonHideAfter) {
                     App.getInstance().prefManager.floatingButton = false
                     hideFloatingButton()
-                } else {
+                } else if (!legacyMethod) {
                     Handler(Looper.getMainLooper()).postDelayed({
                         showTemporaryHiddenFloatingButton(root, countDownTextView, buttonScreenshot)
                     }, 1000L)

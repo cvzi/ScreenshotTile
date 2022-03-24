@@ -121,28 +121,34 @@
 
     <string name="setting_floating_action_value_screenshot" translatable="false">screenshot</string>
     <string name="setting_floating_action_value_partial" translatable="false">partial</string>
+    <string name="setting_floating_action_value_legacy" translatable="false">legacy</string>
     <string-array name="setting_floating_action_values" translatable="false">
         <item>@string/setting_floating_action_value_screenshot</item>
         <item>@string/setting_floating_action_value_partial</item>
+        <item>@string/setting_floating_action_value_legacy</item>
     </string-array>
     <string name="pref_key_floating_action" translatable="false">floating_action</string>
     <string-array name="setting_floating_action_entries" translatable="false">
-        <item>@string/take_screenshot</item>
+        <item>@string/use_native_screenshot</item>
         <item>@string/partial_screenshot</item>
+        <item>@string/main_legacy_method_title</item>
     </string-array>
 
     <string name="setting_voice_interaction_action_value_provided" translatable="false">provided</string>
     <string name="setting_voice_interaction_action_value_native" translatable="false">native</string>
+    <string name="setting_voice_interaction_action_value_legacy" translatable="false">legacy</string>
     <string name="setting_voice_interaction_action_value_partial" translatable="false">partial</string>
     <string-array name="setting_voice_interaction_action_values" translatable="false">
         <item>@string/setting_voice_interaction_action_value_provided</item>
         <item>@string/setting_voice_interaction_action_value_native</item>
+        <item>@string/setting_voice_interaction_action_value_legacy</item>
         <item>@string/setting_voice_interaction_action_value_partial</item>
     </string-array>
     <string name="pref_key_voice_interaction_action" translatable="false">voice_interaction_action</string>
     <string-array name="setting_voice_interaction_action_entries" translatable="false">
         <item>@string/take_screenshot</item>
         <item>@string/use_native_screenshot</item>
+        <item>@string/main_legacy_method_title</item>
         <item>@string/partial_screenshot</item>
     </string-array>
 

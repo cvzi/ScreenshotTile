@@ -2,6 +2,7 @@ package com.github.cvzi.screenshottile.activities;
 
 import static com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.screenshot;
+import static com.github.cvzi.screenshottile.utils.UtilsKt.screenshotLegacyOnly;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.toastMessage;
 
 import android.app.Activity;
@@ -27,6 +28,7 @@ public class NoDisplayActivity extends Activity {
 
     public static final String TAG = "NoDisplayActivity.java";
     private static final String EXTRA_SCREENSHOT = APPLICATION_ID + ".NoDisplayActivity.EXTRA_SCREENSHOT";
+    private static final String EXTRA_LEGACY = APPLICATION_ID + ".NoDisplayActivity.EXTRA_LEGACY";
     private static final String EXTRA_PARTIAL = APPLICATION_ID + ".NoDisplayActivity.EXTRA_PARTIAL";
     private static final String EXTRA_FLOATING_BUTTON = APPLICATION_ID + ".NoDisplayActivity.EXTRA_FLOATING_BUTTON";
 
@@ -38,6 +40,17 @@ public class NoDisplayActivity extends Activity {
      */
     public static void startNewTask(Context context, boolean screenshot) {
         Intent intent = newIntent(context, screenshot);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+    /**
+     * Open from service, take screenshot with legacy method
+     *
+     * @param context Context
+     */
+    public static void startNewTaskLegacyScreenshot(Context context) {
+        Intent intent = newLegacyIntent(context);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
@@ -67,6 +80,18 @@ public class NoDisplayActivity extends Activity {
     public static Intent newPartialIntent(Context context) {
         Intent intent = new Intent(context, NoDisplayActivity.class);
         intent.putExtra(EXTRA_PARTIAL, true);
+        return intent;
+    }
+
+    /**
+     * New Intent that takes a screenshot with legacy method
+     *
+     * @param context Context
+     * @return The intent
+     */
+    public static Intent newLegacyIntent(Context context) {
+        Intent intent = new Intent(context, NoDisplayActivity.class);
+        intent.putExtra(EXTRA_LEGACY, true);
         return intent;
     }
 
@@ -109,7 +134,7 @@ public class NoDisplayActivity extends Activity {
                     BasicForegroundService.Companion.startForegroundService(this);
                 }
                 screenshot(this, true);
-            } else if (intent.getBooleanExtra(EXTRA_SCREENSHOT, false) || (action != null && action.equals(EXTRA_SCREENSHOT))) {
+            } else if (intent.getBooleanExtra(EXTRA_SCREENSHOT, false) || (action != null && action.equals(EXTRA_SCREENSHOT)) || intent.getBooleanExtra(EXTRA_LEGACY, false)) {
                 // make sure that a foreground service runs
                 ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
                 BasicForegroundService basicForegroundService = BasicForegroundService.Companion.getInstance();
@@ -120,7 +145,11 @@ public class NoDisplayActivity extends Activity {
                 } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     BasicForegroundService.Companion.startForegroundService(this);
                 }
-                screenshot(this, false);
+                if (intent.getBooleanExtra(EXTRA_LEGACY, false)) {
+                    screenshotLegacyOnly(this);
+                } else {
+                    screenshot(this, false);
+                }
             } else if ((action != null && action.equals(EXTRA_FLOATING_BUTTON)) || intent.getBooleanExtra(EXTRA_FLOATING_BUTTON, false)) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                     // Toggle floating button from shortcuts.xml
