@@ -220,12 +220,20 @@ class TakeScreenshotActivity : Activity(),
                 getLocationOnScreen(selectorViewOffset)
                 it.offset(selectorViewOffset[0], selectorViewOffset[1])
                 cutOutRect = it
-                visibility = View.GONE
-                if (App.getInstance().prefManager.selectAreaShutterDelay > 0) {
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        prepareForScreenSharing()
+                if (App.getInstance().prefManager.selectAreaShutterDelay > 0 || shutterIsVisible) {
+                    invalidate()
+                    postDelayed({
+                        visibility = View.GONE
+                        if (shutterIsVisible) {
+                            postDelayed({
+                                prepareForScreenSharing()
+                            }, App.getInstance().prefManager.selectAreaShutterDelay)
+                        } else {
+                            prepareForScreenSharing()
+                        }
                     }, App.getInstance().prefManager.selectAreaShutterDelay)
                 } else {
+                    visibility = View.GONE
                     prepareForScreenSharing()
                 }
             }

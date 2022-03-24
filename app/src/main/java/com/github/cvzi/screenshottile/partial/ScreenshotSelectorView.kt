@@ -52,6 +52,7 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
 
     var defaultState = true
     private var showShutter = false
+    var shutterIsVisible = false
     private var startPoint: Point? = null
     private var selectionRect: Rect? = null
     private var resultRect: Rect? = null
@@ -87,6 +88,7 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
     fun reset() {
         defaultState = true
         showShutter = false
+        shutterIsVisible = false
         startPoint = null
         selectionRect = null
         resultRect = null
@@ -361,10 +363,11 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
             drawEdges(canvas, rect)
 
             if (showShutter) {
+                shutterIsVisible = true
                 drawButtons(canvas, rect)
-
             } else {
                 shutterRect = null
+                shutterIsVisible = false
             }
         }
     }
