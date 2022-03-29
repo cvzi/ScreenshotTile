@@ -784,25 +784,5 @@ fun Context?.toastMessage(resource: Int, toastType: ToastType, duration: Int = T
  * A message
  */
 fun aMessage(context: Context) {
-    if (Locale.getDefault().country != "RU" ||
-        !App.getInstance().prefManager.naggingToasts ||
-        App.getInstance().prefManager.screenshotCount % 3 != 0
-    ) {
-        return
-    }
-    val m0 =
-        "\ud83c\uddf7\ud83c\uddfa \u0420\u043e\u0441\u0441\u0438\u044f\u043d\u0435\u003a \u0412\u0430\u0448\u0435 \u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u043b\u0436\u0435\u0442 \u0432\u0430\u043c \u043e\u0431 \u0423\u043a\u0440\u0430\u0438\u043d\u0435 \ud83c\uddfa\ud83c\udde6"
-    val m1 =
-        "\u0423\u0431\u0438\u0432\u0430\u044e\u0442 \u043d\u0435\u0432\u0438\u043d\u043d\u044b\u0445 \u043b\u044e\u0434\u0435\u0439 \u0438 \u0434\u0435\u0442\u0435\u0439"
-    val m2 =
-        "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430\u002c \u043d\u0430\u0439\u0434\u0438\u0442\u0435 \u0441\u043f\u043e\u0441\u043e\u0431 \u0443\u0437\u043d\u0430\u0442\u044c \u043f\u0440\u0430\u0432\u0434\u0443"
-    Handler(Looper.getMainLooper()).postDelayed({
-        context.toastMessage(m0, ToastType.NAGGING)
-    }, 4000)
-    Handler(Looper.getMainLooper()).postDelayed({
-        context.toastMessage(m1, ToastType.NAGGING)
-    }, 8000)
-    Handler(Looper.getMainLooper()).postDelayed({
-        context.toastMessage(m2, ToastType.NAGGING)
-    }, 12000)
+    return
 }
