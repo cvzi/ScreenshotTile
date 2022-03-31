@@ -8,6 +8,7 @@
     tools:context=".activities.MainActivity">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -115,7 +116,9 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/nativeCardView"
+                style="@style/CardViewSecondary">
 
                 <LinearLayout
                     android:id="@+id/linearLayoutNative"
@@ -173,13 +176,25 @@
                     android:orientation="vertical"
                     android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/textTitleFloatingButton"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/main_floating_button_title"
-                        android:textAppearance="@android:style/TextAppearance.Material.Title" />
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchFloatingButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/main_floating_button_title" />
+
+                        <TextView
+                            android:id="@+id/textTitleFloatingButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@string/main_floating_button_title"
+                            android:textAppearance="@android:style/TextAppearance.Material.Title" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/textDescFloatingButton"

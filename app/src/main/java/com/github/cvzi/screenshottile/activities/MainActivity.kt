@@ -13,7 +13,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
@@ -77,6 +79,12 @@ class MainActivity : AppCompatActivity() {
         val switchLegacy = findViewById<SwitchMaterial>(R.id.switchLegacy)
         val switchNative = findViewById<SwitchMaterial>(R.id.switchNative)
         val switchAssist = findViewById<SwitchMaterial>(R.id.switchAssist)
+        val switchFloatingButton = findViewById<SwitchMaterial>(R.id.switchFloatingButton)
+
+        toggleSwitchOnLabel(R.id.switchLegacy, R.id.textTitleLegacy)
+        toggleSwitchOnLabel(R.id.switchNative, R.id.textTitleNative)
+        toggleSwitchOnLabel(R.id.switchAssist, R.id.textTitleAssist)
+        toggleSwitchOnLabel(R.id.switchFloatingButton, R.id.textTitleFloatingButton)
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             findViewById<LinearLayout>(R.id.linearLayoutNative)?.let {
@@ -91,6 +99,7 @@ class MainActivity : AppCompatActivity() {
             switchNative?.isChecked = false
             switchLegacy?.isEnabled = false
             switchLegacy?.isChecked = true
+            switchFloatingButton?.isEnabled = false
 
             findViewById<View>(R.id.floatingButtonCardView).let {
                 (it.parent as ViewGroup).removeView(it)
@@ -157,7 +166,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         switchNative?.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked && !accessibilityConsent) {
+            if (isChecked && !accessibilityConsent && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 switchNative.isChecked = false
                 askToEnableAccessibility()
                 return@setOnCheckedChangeListener
@@ -169,7 +178,8 @@ class MainActivity : AppCompatActivity() {
                 switchLegacy?.isChecked = !App.getInstance().prefManager.useNative
                 if (App.getInstance().prefManager.useNative) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && ScreenshotAccessibilityService.instance == null) {
-                        // Open Accessibility settings ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+                        // Open Accessibility settings
+                        ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
                     } else {
                         hintAccessibilityServiceUnavailable?.let {
                             (it.parent as? ViewGroup)?.removeView(it)
@@ -182,8 +192,43 @@ class MainActivity : AppCompatActivity() {
         switchAssist?.setOnCheckedChangeListener { _, _ ->
             MyVoiceInteractionService.openVoiceInteractionSettings(this, TAG)
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            switchFloatingButton?.setOnCheckedChangeListener { _, isChecked ->
+                App.getInstance().prefManager.floatingButton = isChecked
+                if (isChecked && ScreenshotAccessibilityService.instance == null) {
+                    if (accessibilityConsent) {
+                        // Open Accessibility settings
+                        ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+                    } else {
+                        askToEnableAccessibility()
+                    }
+                } else if (ScreenshotAccessibilityService.instance != null) {
+                    ScreenshotAccessibilityService.instance!!.updateFloatingButton()
+                }
+            }
+            if (ScreenshotAccessibilityService.instance != null && !App.getInstance().prefManager.floatingButton) {
+                // Service is running and floating button is disabled ->  scroll to floating button
+                findViewById<ScrollView>(R.id.scrollView).postDelayed({
+                    findViewById<ScrollView>(R.id.scrollView).smoothScrollTo(
+                        0,
+                        findViewById<View>(R.id.nativeCardView).top
+                    )
+                }, 1000)
+            }
+        }
     }
 
+    private fun toggleSwitchOnLabel(switchId: Int, labelId: Int) {
+        findViewById<View?>(labelId)?.let { label ->
+            label.isClickable = true
+            label.setOnClickListener {
+                findViewById<SwitchMaterial?>(switchId)?.toggle()
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.P)
     private fun askToEnableAccessibility() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.googleplay_consent_title)
@@ -201,7 +246,11 @@ class MainActivity : AppCompatActivity() {
         builder.setPositiveButton(getString(R.string.googleplay_consent_yes)) { _, _ ->
             accessibilityConsent = true
             val switchNative = findViewById<SwitchMaterial>(R.id.switchNative)
-            switchNative.isChecked = true
+            if (switchNative.isChecked && ScreenshotAccessibilityService.instance == null) {
+                ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+            } else {
+                switchNative.isChecked = true
+            }
         }
         builder.setNegativeButton(R.string.googleplay_consent_no) { _, _ ->
             val switchLegacy = findViewById<SwitchMaterial>(R.id.switchLegacy)
@@ -235,6 +284,7 @@ class MainActivity : AppCompatActivity() {
         val switchLegacy = findViewById<SwitchMaterial>(R.id.switchLegacy)
         val switchNative = findViewById<SwitchMaterial>(R.id.switchNative)
         val switchAssist = findViewById<SwitchMaterial>(R.id.switchAssist)
+        val switchFloatingButton = findViewById<SwitchMaterial>(R.id.switchFloatingButton)
 
         switchLegacy?.isChecked = !App.getInstance().prefManager.useNative
         switchNative?.isChecked = App.getInstance().prefManager.useNative
@@ -266,6 +316,10 @@ class MainActivity : AppCompatActivity() {
 
         switchAssist?.isChecked = MyVoiceInteractionService.instance != null
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            switchFloatingButton?.isChecked =
+                ScreenshotAccessibilityService.instance != null && App.getInstance().prefManager.floatingButton
+        }
     }
 
     private fun makeActivityClickable(textView: TextView) {
