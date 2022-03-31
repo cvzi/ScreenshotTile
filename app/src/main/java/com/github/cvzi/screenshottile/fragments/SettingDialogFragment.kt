@@ -5,13 +5,13 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.DialogFragment
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.SettingsActivity
 import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
+import com.github.cvzi.screenshottile.utils.safeDismiss
 import com.github.cvzi.screenshottile.utils.screenshot
 
 /**
@@ -58,11 +58,7 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
                     } else {
                         App.getInstance().screenshot(context)
                     }
-                    try {
-                        dismiss()
-                    } catch (e: IllegalStateException) {
-                        Log.e(TAG, "AlertDialog.dismiss: IllegalStateException", e)
-                    }
+                    safeDismiss(TAG)
                 }
                 .setPositiveButton(
                     if (pref.tileAction == getString(R.string.setting_tile_action_value_screenshot)) R.string.partial_screenshot else R.string.take_screenshot,

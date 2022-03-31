@@ -14,6 +14,7 @@ import androidx.preference.Preference
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.R
+import java.lang.ref.WeakReference
 
 /*
  * Created by cuzi (cuzi@openmail.cc) on 2020/12/13.
@@ -49,7 +50,7 @@ class DrawableListPreference : ListPreference {
     constructor(context: Context) : super(context)
 
     private var selectedShutterIndex: Int = 0
-    private var alertDialog: AlertDialog? = null
+    private var alertDialog: WeakReference<AlertDialog?> = WeakReference(null)
     private var openDialogOnStart = false
     private var restoreSelection = false
 
@@ -62,16 +63,16 @@ class DrawableListPreference : ListPreference {
             selectedShutterIndex = value.toIntOrNull() ?: 0
         }
         val builder = AlertDialog.Builder(context)
-        builder.setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.dismiss() }
+        builder.setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.safeDismiss() }
         builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
             value = selectedShutterIndex.toString()
             shutterCollection.index = selectedShutterIndex
             summary = shutterCollection.current().name
-            dialog.dismiss()
+            dialog.safeDismiss()
         }
 
         val dialog: AlertDialog = builder.create()
-        alertDialog = dialog
+        alertDialog = WeakReference(dialog)
         val inflater: LayoutInflater = LayoutInflater.from(context)
         val dialogLayout: View = inflater.inflate(R.layout.drawable_list_preference, null)
         dialog.setView(dialogLayout)
@@ -123,7 +124,7 @@ class DrawableListPreference : ListPreference {
     override fun onSaveInstanceState(): Parcelable {
         return SavedState(
             super.onSaveInstanceState(),
-            dialogIsOpen = alertDialog?.isShowing == true,
+            dialogIsOpen = alertDialog.get()?.isShowing == true,
             selectedIndex = selectedShutterIndex
         )
     }

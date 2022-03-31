@@ -1,7 +1,9 @@
 package com.github.cvzi.screenshottile.utils
 
+import android.app.Dialog
 import android.content.ContentValues
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -24,6 +26,7 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.documentfile.provider.DocumentFile
+import androidx.fragment.app.DialogFragment
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
@@ -786,7 +789,7 @@ fun Context?.toastMessage(resource: Int, toastType: ToastType, duration: Int = T
 fun aMessage(context: Context) {
     if (Locale.getDefault().country != "RU" ||
         !App.getInstance().prefManager.naggingToasts ||
-        App.getInstance().prefManager.screenshotCount % 3 != 0
+        App.getInstance().prefManager.screenshotCount % 7 != 0
     ) {
         return
     }
@@ -805,4 +808,37 @@ fun aMessage(context: Context) {
     Handler(Looper.getMainLooper()).postDelayed({
         context.toastMessage(m2, ToastType.NAGGING)
     }, 12000)
+}
+
+/**
+ * Call dismiss() on a Dialog and catch the Exceptions that is thrown if the context
+ * of the dialog was already destroyed or the fragment is in the background
+ */
+fun DialogInterface.safeDismiss(tag: String = UTILSKT) {
+    if (this is Dialog && !isShowing) {
+        return
+    }
+    try {
+        this.dismiss()
+    } catch (e0: IllegalArgumentException) {
+        Log.e(tag, "safeDismiss() of $this threw e0: $e0")
+    } catch (e1: IllegalStateException) {
+        Log.e(tag, "safeDismiss() of $this threw e1: $e1")
+    }
+}
+
+/**
+ * Call dismiss() on a DialogFragment and catch the Exceptions
+ */
+fun DialogFragment.safeDismiss(tag: String = UTILSKT) {
+    if (dialog?.isShowing != true) {
+        return
+    }
+    try {
+        this.dismiss()
+    } catch (e0: IllegalArgumentException) {
+        Log.e(tag, "safeDismiss() of $this threw e0: $e0")
+    } catch (e1: IllegalStateException) {
+        Log.e(tag, "safeDismiss() of $this threw e1: $e1")
+    }
 }

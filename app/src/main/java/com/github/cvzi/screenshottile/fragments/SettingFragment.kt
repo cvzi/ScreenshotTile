@@ -95,7 +95,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_use_native) -> updateUseNative(switchEvent = true)
                 getString(R.string.pref_key_floating_button) -> updateFloatingButton(switchEvent = true)
                 getString(R.string.pref_key_floating_button_scale) -> updateFloatingButton(
-                    switchEvent = true
+                    switchEvent = true, forceRedraw = true // TODO does this redraw if the value has change from the text dialog?
                 )
                 getString(R.string.pref_key_floating_button_show_close) -> updateFloatingButtonClose()
                 getString(R.string.pref_key_floating_button_shutter) -> updateFloatingButtonShutterSummary(
@@ -631,7 +631,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 return@setOnEditorActionListener when (actionId) {
                     EditorInfo.IME_ACTION_DONE -> {
                         saveFloatingButton(closeButtonEmojiInput.text.trim().toString())
-                        floatingButtonShowCloseAlertDialog?.dismiss()
+                        floatingButtonShowCloseAlertDialog?.safeDismiss(TAG)
                         true
                     }
                     else -> false
@@ -664,9 +664,9 @@ class SettingFragment : PreferenceFragmentCompat() {
                 .setView(relativeLayout)
                 .setPositiveButton(android.R.string.ok) { dialog, _ ->
                     saveFloatingButton(closeButtonEmojiInput.text.trim().toString())
-                    dialog.dismiss()
+                    dialog.safeDismiss(TAG)
                 }
-                .setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.dismiss() }
+                .setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.safeDismiss(TAG) }
                 .show()
             closeButtonEmojiInput.postDelayed({
                 closeButtonEmojiInput.showDropDown()
