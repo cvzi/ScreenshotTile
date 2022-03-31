@@ -23,6 +23,7 @@ import android.text.style.ClickableSpan
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.documentfile.provider.DocumentFile
@@ -840,5 +841,16 @@ fun DialogFragment.safeDismiss(tag: String = UTILSKT) {
         Log.e(tag, "safeDismiss() of $this threw e0: $e0")
     } catch (e1: IllegalStateException) {
         Log.e(tag, "safeDismiss() of $this threw e1: $e1")
+    }
+}
+
+/**
+ * Call removeView() and catch Exceptions
+ */
+fun ViewManager.safeRemoveView(view: View, tag: String = UTILSKT) {
+    try {
+        this.removeView(view)
+    } catch (e:Exception) {
+        Log.e(tag, "removeView() of $this threw e: $e")
     }
 }

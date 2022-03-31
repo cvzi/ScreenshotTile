@@ -89,21 +89,23 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     override fun onServiceConnected() {
         instance = this
-        when (App.getInstance().prefManager.returnIfAccessibilityServiceEnabled) {
-            SettingFragment.TAG -> {
-                // Return to settings
-                App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = null
-                SettingsActivity.startNewTask(this)
-            }
-            MainActivity.TAG -> {
-                // Return to main activity
-                App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = null
-                MainActivity.startNewTask(this)
-            }
-            NoDisplayActivity.TAG -> {
-                // Return to NoDisplayActivity activity i.e. finish()
-                App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = null
-                NoDisplayActivity.startNewTask(this, false)
+        App.getInstance()?.let { appInstance ->
+            when (appInstance.prefManager.returnIfAccessibilityServiceEnabled) {
+                SettingFragment.TAG -> {
+                    // Return to settings
+                    appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
+                    SettingsActivity.startNewTask(this)
+                }
+                MainActivity.TAG -> {
+                    // Return to main activity
+                    appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
+                    MainActivity.startNewTask(this)
+                }
+                NoDisplayActivity.TAG -> {
+                    // Return to NoDisplayActivity activity i.e. finish()
+                    appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
+                    NoDisplayActivity.startNewTask(this, false)
+                }
             }
         }
 
@@ -349,7 +351,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }
         }
         textView.postDelayed({
-            linearLayout.removeView(textView)
+            linearLayout.safeRemoveView(textView, TAG)
         }, 2000)
 
     }
@@ -360,7 +362,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     private fun hideFloatingButton() {
         floatingButtonShown = false
         binding?.root?.let {
-            getWinManager().removeView(it)
+            getWinManager().safeRemoveView(it, TAG)
         }
         binding = null
     }
@@ -399,7 +401,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     ) {
         root.visibility = View.VISIBLE
         countDownTextView?.let {
-            root.findViewById<LinearLayout>(R.id.linearLayoutOuter).removeView(it)
+            root.findViewById<LinearLayout>(R.id.linearLayoutOuter).safeRemoveView(it, TAG)
             buttonScreenshot.visibility = View.VISIBLE
         }
         (buttonScreenshot.drawable as? Animatable)?.start()
