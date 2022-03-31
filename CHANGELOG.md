@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.16.3
+## 1.16.4
 *   Added a switch for the floating button in the MainActivity
 *   Minor UI improvements
 *   Minor bugfixes

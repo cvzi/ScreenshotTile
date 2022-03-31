@@ -1,0 +1,2 @@
+☆ Set as Assistant app to take screenshots with long press on home button
+☆ Move edges/corners to crop in the "select area" mode
