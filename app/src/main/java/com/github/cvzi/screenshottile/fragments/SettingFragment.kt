@@ -95,7 +95,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_use_native) -> updateUseNative(switchEvent = true)
                 getString(R.string.pref_key_floating_button) -> updateFloatingButton(switchEvent = true)
                 getString(R.string.pref_key_floating_button_scale) -> updateFloatingButton(
-                    switchEvent = true, forceRedraw = true // TODO does this redraw if the value has change from the text dialog?
+                    switchEvent = true, forceRedraw = true
                 )
                 getString(R.string.pref_key_floating_button_show_close) -> updateFloatingButtonClose()
                 getString(R.string.pref_key_floating_button_shutter) -> updateFloatingButtonShutterSummary(
@@ -576,6 +576,7 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     private fun updateFloatingButton(switchEvent: Boolean = false, forceRedraw: Boolean = false) {
         floatingButtonPref?.run {
+            isChecked = prefManager.floatingButton
             summary = when {
                 Build.VERSION.SDK_INT < Build.VERSION_CODES.P -> {
                     isChecked = false
@@ -604,6 +605,11 @@ class SettingFragment : PreferenceFragmentCompat() {
                     getString(R.string.setting_floating_button_summary)
                 }
             }
+        }
+        floatingButtonScalePref?.run {
+            text = prefManager.floatingButtonScale.toString()
+            summary =
+                "${getString(R.string.setting_floating_button_scale_summary)}\nCurrent size: ${prefManager.floatingButtonScale} (Default: 200)"
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             ScreenshotAccessibilityService.instance?.updateFloatingButton(forceRedraw)
