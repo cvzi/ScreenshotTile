@@ -611,6 +611,9 @@ class SettingFragment : PreferenceFragmentCompat() {
     }
 
     fun updateFloatingButtonFromService() {
+        if (!isResumed || isHidden) {
+            return
+        }
         floatingButtonPref?.isChecked = prefManager.floatingButton
         updateFloatingButton(switchEvent = false, forceRedraw = false)
     }
