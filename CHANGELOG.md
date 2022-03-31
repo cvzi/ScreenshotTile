@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.16.3
+*   Added a switch for the floating button in the MainActivity
+*   Minor UI improvements
+*   Minor bugfixes
+
 ## 1.16.2
 *   Allow legacy method from floating button and from assistant [#117](https://github.com/cvzi/ScreenshotTile/issues/117) [#118](https://github.com/cvzi/ScreenshotTile/issues/118)
 *   Minor bugfixes
