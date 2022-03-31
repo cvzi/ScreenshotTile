@@ -196,7 +196,7 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
                 context.getString(R.string.pref_key_floating_button_scale),
                 "200"
             )?.toIntOrNull() ?: 200
-            return if (d > 0) d else 1
+            return if (d > 0) d else 200
         }
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_floating_button_scale),
