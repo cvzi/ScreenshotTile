@@ -9,6 +9,7 @@ Dacă aplicația se blochează pe Android 9/Pie sau 10, puteți încerca să act
 ✓ Notificare după ce a fost făcută o captură de ecran (poate fi dezactivată)
 ✓ Partajați, editați sau ștergeți o captură de ecran pe loc din notificare
 ✓ Buton flotant / buton de suprapunere ca un balon de chat (Android 9+)
+✓ Utilizați ca aplicație de asistență pentru a face o captură de ecran (apăsați lung pe butonul Acasă)
 ✓ Efectuați capturi de ecran numai într-o anumită zonă a ecranului (apăsați lung pe dală)
 ✓ Întârzierea efectuării unei capturi de ecran
 ✓ Salvați în orice director de pe orice mediu de stocare, de ex. card sd
@@ -37,4 +38,4 @@ Această permisiune este necesară pentru a salva fișierele de captură ecran �
 
 <h2>Ascunderea iconiței aplicației:</h2>Din setările aplicației poți ascunde iconița aplicației din lansator. Chiar daca e ascunsa puteți accesa aplicația apăsând lung pe dală în setările rapide. Din păcate, lansatorul din Android 10 nu mai permite ascunderea unei aplicații. Folositi un lansator alternativ.
 
-<h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+<h2>🌎 Suport și traduceri</h2>Dacă există o problemă sau doriți să ajutați la traducerea acestei aplicații în limba dvs., vă rog să mă contactați pe <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> sau să contribuiți cu o traducere pe <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
