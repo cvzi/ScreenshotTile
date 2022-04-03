@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Decupator pentru capturi ecran (fără Root)</string>
+    <string name="app_name" maxLength="30">Decupator pentru capturi ecran (fără Root)</string>
     <string name="tile_label">Captură ecran</string>
     <string name="tile_floating_label">Plutind pe ecran</string>
     <string name="tile_floating_subtitle">Buton Captură ecran</string>
@@ -49,6 +49,7 @@
     <string name="setting_file_name_placeholders" formatted="false">%timestamp% - ora ca yyyy-MM-dd_HH-mm-ss\n%counter% - numără numărul de capturi de ecran\n%random% - un UUID aleatoriu\n%randint% - un număr aleatoriu</string>
     <string name="setting_tile_action">Acțiunea plăcutei</string>
     <string name="setting_floating_action">Acțiunea butonului flotant</string>
+    <string name="setting_voice_interaction_action">Asistent acțiune</string>
     <string name="setting_dark_theme">Temă sumbră</string>
     <string name="setting_dark_theme_system">Sistem</string>
     <string name="setting_dark_theme_off">Inactivă</string>
@@ -127,4 +128,5 @@
     <string name="main_long_press_title">Apăsare lungă</string>
     <string name="main_long_press_text">Apăsarea lungă a butonului deschide un meniu. Poți specifica o întârziere pentru captura de ecran sau poți tăia un dreptunghi de pe ecran.</string>
     <string name="main_assist_app_title">Aplicație asistent</string>
+    <string name="main_assist_app_text">Dacă ați setat această aplicație ca aplicație de asistență, puteți apăsa lung pe butonul de pornire pentru a face o captură de ecran. Activarea acestei aplicații ca aplicație de asistență va dezactiva alți asistenți. Puteți modifica acțiunea de apăsare lungă a butonului Home în setările aplicației.</string>
 </resources>
