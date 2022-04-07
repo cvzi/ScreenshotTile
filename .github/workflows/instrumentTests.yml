@@ -111,10 +111,12 @@ jobs:
         run: |
           if [ -z "$(ls -A app/build/reports/androidTests/)" ]; then
              echo "Emulator failed to start tests"
+             echo '::error:: Emulator failed to start tests.'
              exit 0
           elif [ -f app/build/reports/androidTests/connected/index.html ]; then
              if pcre2grep -qM "<div class=\"infoBox\" id=\"tests\">\s*<div class=\"counter\">0</div>" app/build/reports/androidTests/connected/index.html; then
                 echo "No tests were run"
+                echo '::error:: No tests were run.'
                 exit 0
              else
                 exit 1
