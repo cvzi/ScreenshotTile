@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Плитка снимка экрана (без прав суперпользователя)</string>
+    <string name="app_name" maxLength="30">Плитка снимка экрана (без прав суперпользователя)</string>
     <string name="tile_label">Снимок экрана</string>
     <string name="tile_floating_label">Плавающая</string>
     <string name="tile_floating_subtitle">Кнопка снимка экрана</string>
@@ -44,7 +44,11 @@
     <string name="setting_broadcast_secret_description">Секретная фраза, позволяющая другим приложениям (например, MacroDroid или Tasker) инициировать снимки экрана</string>
     <string name="setting_storage_directory">Место сохранения</string>
     <string name="setting_storage_directory_description">Папка для сохранения снимков экрана</string>
+    <string name="setting_file_name_pattern">Имя файла</string>
+    <string name="setting_file_name_placeholders_title">В имени файла используйте эти заполнители</string>
     <string name="setting_tile_action">Действие плитки</string>
+    <string name="setting_floating_action">Действие плавающей кнопки</string>
+    <string name="setting_voice_interaction_action">Действия помощника</string>
     <string name="setting_dark_theme">Ночной режим</string>
     <string name="setting_dark_theme_system">Как в системе</string>
     <string name="setting_dark_theme_off">Отключены</string>
@@ -88,6 +92,18 @@
     <string name="tutorial_step11">Примите разрешения</string>
     <string name="tutorial_step16">Сделайте снимки экрана с помощью новой кнопки</string>
     <string name="take_screenshot">Сделать снимок экрана</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Google Play Заметное раскрытие информации &amp; требование согласия</string>
+    <string name="googleplay_consent_line_0">Google Play требует заметного раскрытия информации об использовании Accessibility Services API для приложения, которое не является инструментом обеспечения доступности.</string>
+    <string name="googleplay_consent_line_1">Это приложение - “Screenshot Tile [No root]“ - не является инструментом доступности.</string>
+    <string name="googleplay_consent_line_2">Поскольку пользователи не могут обоснованно ожидать, что их личные и конфиденциальные пользовательские данные потребуются для предоставления или улучшения функций или функциональности этого приложения, отвечающих требованиям политики, необходимо открытое раскрытие информации об использовании API Accessibility Services в этом приложении и заявление о сборе данных и обмене данными в этом приложении:</string>
+    <string name="googleplay_consent_line_3">Это приложение требует доступа к Accessibility Services API, чтобы сделать снимок экрана, когда приложение не используется.</string>
+    <string name="googleplay_consent_line_4">Доступ к API Accessibility Services позволит этому приложению записывать экран.</string>
+    <string name="googleplay_consent_line_5">Записи экрана будут использоваться для создания скриншотов.</string>
+    <string name="googleplay_consent_line_6">Это приложение не собирает и не передает данные, используя возможности доступности.</string>
+    <string name="googleplay_consent_line_7">Согласны ли вы разрешить этому приложению получить доступ к API Accessibility Services и использовать возможности доступности для записи экрана?</string>
+    <string name="googleplay_consent_yes">Я согласен</string>
+    <string name="googleplay_consent_no">Я отказываюсь</string>
     <!-- About -->
     <string name="about_app_title">О программе</string>
     <string name="about_app_1">Это ответвление от\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -111,4 +127,5 @@
     <string name="main_long_press_title">Длительное нажатие</string>
     <string name="main_long_press_text">Длительное нажатие плитки/кнопки открывает меню. Вы можете указать задержку для снимка экрана или вырезать прямоугольник с экрана.</string>
     <string name="main_assist_app_title">Помощник</string>
+    <string name="main_assist_app_text">Если вы установите это приложение в качестве приложения-помощника, вы можете долго нажимать кнопку \"Домой\", чтобы сделать снимок экрана. Включение этого приложения в качестве приложения-помощника отключит других помощников. Действие длительного нажатия кнопки \"Домой\" можно изменить в настройках приложения.</string>
 </resources>
