@@ -93,8 +93,8 @@
     <string name="tutorial_step16">使用新按钮截取屏幕截图</string>
     <string name="take_screenshot">截取屏幕截图</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
-    <string name="googleplay_consent_title">Google Play 醒目披露 &amp; 用户同意要求</string>
-    <string name="googleplay_consent_line_0">Google Play 要求非无障碍工具应用显着披露无障碍服务 API 的使用。</string>
+    <string name="googleplay_consent_title">Google Play 关于醒目披露声明与征求用户同意的要求</string>
+    <string name="googleplay_consent_line_0">对于不是无障碍工具的应用，Google Play 要求醒目披露无障碍服务 API 的用途。</string>
     <string name="googleplay_consent_line_1">这个应用 -\"Screenshot Tile [No root]” - 不是一个无障碍工具。</string>
     <string name="googleplay_consent_line_2">因为用户可能无法合理地期望他们的个人和敏感用户数据将被要求提供或改进本应用中的政策兼容功能或功能， 此应用需要显著地披露无障碍服务 API 的使用情况，并在该应用内声明数据收集和数据共享：</string>
     <string name="googleplay_consent_line_3">此应用程序需要访问无障碍服务 API，以便在不使用该应用程序时截取屏幕截图。</string>
@@ -124,6 +124,6 @@
     <string name="main_floating_button_text">如果您已启用原生方式，您也可以使用浮动按钮（类似聊天气泡）截取屏幕截图。\n您可以使用快速设置中的另一个图块/按钮启用它，然后在屏幕上移动它。</string>
     <string name="main_long_press_title">长按</string>
     <string name="main_long_press_text">长按图块/按钮打开菜单。您可以指定屏幕截图延迟或从屏幕截取矩形区域。</string>
-    <string name="main_assist_app_title">辅助应用</string>
-    <string name="main_assist_app_text">如果您将此应用程序设置为您的助手应用，您可以长按 home 按钮进行截图。启用此应用程序作为您的辅助应用程序将禁用其他助手。你可以在程序设置中更改长按 home 按钮的动作。</string>
+    <string name="main_assist_app_title">助理应用</string>
+    <string name="main_assist_app_text">如果您将此应用设置为您的助理应用，您可以长按主页按钮进行截图。将此应用设为您的助理应用将禁用其他助理。您可以在应用设置中更改长按主页按钮的动作。</string>
 </resources>
