@@ -44,7 +44,7 @@ jobs:
             java-version: '16'
 
       - name: Gradle cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
@@ -52,7 +52,7 @@ jobs:
           key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*') }}-${{ hashFiles('**/gradle/wrapper/gradle-wrapper.properties') }}-${{ hashFiles('**/buildSrc/**/*.kt') }}
 
       - name: AVD cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: avd-cache
         with:
           path: |
@@ -71,7 +71,7 @@ jobs:
           script: echo "Generated AVD snapshot for caching."
 
       - name: App build cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         id: build-cache
         with:
           path: |
