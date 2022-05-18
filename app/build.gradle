@@ -93,6 +93,6 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.5.1'
     testImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha06'
     testImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
-    testImplementation 'androidx.test.ext:truth:1.5.0-alpha05'
+    testImplementation 'androidx.test.ext:truth:1.5.0-alpha06'
     androidTestImplementation 'androidx.test:rules:1.4.1-alpha05'
 }
