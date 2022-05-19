@@ -1,4 +1,4 @@
-name: instrumentTests
+name: 📱 Instrumented tests
 
 on:
   workflow_dispatch:
@@ -60,7 +60,7 @@ jobs:
             ~/.android/adb*
           key: avd-${{ matrix.api-level }}
 
-      - name: Create AVD and generate snapshot for caching
+      - name: 📱 Create AVD and generate snapshot for caching
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -70,7 +70,7 @@ jobs:
           disable-animations: false
           script: echo "Generated AVD snapshot for caching."
 
-      - name: App build cache
+      - name: 🔨 App build cache
         uses: actions/cache@v3
         id: build-cache
         with:
@@ -91,7 +91,7 @@ jobs:
           echo -e "\norg.gradle.jvmargs=-Xmx8192m\n" >> gradle.properties
           echo -e "\norg.gradle.caching=true\n" >> gradle.properties
 
-      - name: Run tests
+      - name: 🕵🏾‍♀️ Run tests
         uses: reactivecircus/android-emulator-runner@v2
         id: runtests
         continue-on-error: true
@@ -106,7 +106,7 @@ jobs:
             adb uninstall com.github.cvzi.screenshottile.debug.test || true
             ./gradlew connectedCheck
 
-      - name: Raise error on test failure
+      - name: 🚩 Raise error on test failure
         if: steps.runtests.outcome != 'success'
         run: |
           if [ -z "$(ls -A app/build/reports/androidTests/)" ]; then
@@ -125,7 +125,7 @@ jobs:
              exit 1
           fi
 
-      - name: Upload androidTests report
+      - name: 💬 Upload androidTests report
         if: always()
         uses: actions/upload-artifact@v3
         with:

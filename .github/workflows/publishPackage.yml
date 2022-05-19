@@ -1,4 +1,4 @@
-name: Publish package to GitHub Packages
+name: 📦 Publish package to GitHub Packages
 on:
   workflow_dispatch:
   release:
@@ -23,7 +23,7 @@ jobs:
         uses: gradle/wrapper-validation-action@v1
       - name: Append publish.gradle to build.gradle
         run: cat .github/workflows/publish.gradle >> app/build.gradle
-      - name: Publish package
+      - name: 🎁 Publish package
         uses: gradle/gradle-build-action@v2
         with:
           arguments: publish

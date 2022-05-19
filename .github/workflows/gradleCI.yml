@@ -1,10 +1,14 @@
-name: gradleCI
+name: 🔨 Gradle Build
 
 on:  
   push:
   pull_request:
     branches:
       - master
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -24,15 +28,15 @@ jobs:
       run: echo -e "\norg.gradle.jvmargs=-Xmx8192m\n" >> gradle.properties
     - name: Validate Gradle Wrapper
       uses: gradle/wrapper-validation-action@v1
-    - name: Build
+    - name: 🔨 Build
       run: ./gradlew build
-    - name: Upload Lint report
+    - name: 💬 Upload Lint report
       if: always()
       uses: actions/upload-artifact@v3
       with:
         name: lint-results.html
         path: app/build/reports/lint-results*.html
-    - name: Upload tests report
+    - name: 💬 Upload tests report
       if: always()
       uses: actions/upload-artifact@v3
       with:
