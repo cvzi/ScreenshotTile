@@ -442,8 +442,6 @@ class TakeScreenshotActivity : Activity(),
             return
         }
 
-        aMessage(this)
-
         val result = saveImageResult as? SaveImageResultSuccess?
 
         when {

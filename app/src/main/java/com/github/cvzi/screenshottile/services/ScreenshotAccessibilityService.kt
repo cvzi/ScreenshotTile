@@ -495,7 +495,6 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     showTemporaryHiddenFloatingButton()
                 }, 1000)
             }
-            aMessage(getWinContext())
         }
 
         if (askForStoragePermissionAfter) {
@@ -571,8 +570,6 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             screenShotFailedToast(saveImageResult.errorMessage)
             return
         }
-
-        aMessage(getWinContext())
 
         screenDensity = resources.configuration.densityDpi
 

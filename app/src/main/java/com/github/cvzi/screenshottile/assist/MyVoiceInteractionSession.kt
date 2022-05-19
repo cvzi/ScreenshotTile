@@ -248,8 +248,6 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             return
         }
 
-        aMessage(context)
-
         val screenDensity = context.resources.configuration.densityDpi
 
         val result = saveImageResult as? SaveImageResultSuccess?
