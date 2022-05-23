@@ -112,4 +112,6 @@
     <string name="main_long_press_title">Appui prolongé</string>
     <string name="main_long_press_text">Un appui prolongé sur la tuile/bouton ouvre un menu. Vous pouvez spécifier un délai pour la capture d\'écran ou sélectionner une zone de l\'écran à capturer.</string>
     <string name="main_assist_app_title">Application d\'assistance</string>
+    <string name="googleplay_consent_no">Je refuse</string>
+    <string name="googleplay_consent_yes">J\'accepte</string>
 </resources>
