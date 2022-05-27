@@ -127,13 +127,13 @@
         app:iconSpaceReserved="false" />
 
     <androidx.preference.MultiSelectListPreference
+        android:defaultValue="@array/setting_notification_actions_default_values"
+        android:dialogTitle="@string/setting_notification_buttons_description"
         android:entries="@array/setting_notification_actions_entries"
         android:entryValues="@array/setting_notification_actions_values"
-        android:defaultValue="@array/setting_notification_actions_default_values"
         android:key="@string/pref_key_notification_actions"
         android:summary="@string/setting_notification_buttons_description"
         android:title="@string/setting_notification_buttons"
-        android:dialogTitle="@string/setting_notification_buttons_description"
         app:iconSpaceReserved="false" />
 
     <androidx.preference.Preference

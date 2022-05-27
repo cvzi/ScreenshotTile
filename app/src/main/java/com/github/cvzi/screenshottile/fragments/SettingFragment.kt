@@ -200,7 +200,12 @@ class SettingFragment : PreferenceFragmentCompat() {
         makeLink(
             R.string.pref_static_field_key_about_updates,
             R.string.pref_static_field_link_about_updates,
-            arrayOf(context?.packageName ?: "com.github.cvzi.screenshottile", BuildConfig.VERSION_CODE, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TYPE).map { Uri.encode(it.toString())}.toTypedArray(),
+            arrayOf(
+                context?.packageName ?: "com.github.cvzi.screenshottile",
+                BuildConfig.VERSION_CODE,
+                BuildConfig.VERSION_NAME,
+                BuildConfig.BUILD_TYPE
+            ).map { Uri.encode(it.toString()) }.toTypedArray(),
         )
 
         makeNotificationSettingsLink()
@@ -759,18 +764,21 @@ class SettingFragment : PreferenceFragmentCompat() {
                 )
             } else {
                 isEnabled = true
-                val allValues = resources.getStringArray(R.array.setting_notification_actions_values)
+                val allValues =
+                    resources.getStringArray(R.array.setting_notification_actions_values)
                 val selectedEntries = ArrayList<String>()
-                for(v in allValues) {
+                for (v in allValues) {
                     if (v in values) {
                         selectedEntries.add(entries[findIndexOfValue(v)].toString())
                     }
-                    if(selectedEntries.size == 3) {
+                    if (selectedEntries.size == 3) {
                         break
                     }
                 }
                 summary =
-                    getString(R.string.setting_notification_buttons_description) + "\n" + selectedEntries.joinToString(", ")
+                    getString(R.string.setting_notification_buttons_description) + "\n" + selectedEntries.joinToString(
+                        ", "
+                    )
                 if (values.size > 3) {
                     context.toastMessage(
                         getString(R.string.setting_notification_buttons_max_three),

@@ -409,29 +409,6 @@ public class App extends Application {
         }
     }
 
-    private class CountDownRunnable implements Runnable {
-        private final Context ctx;
-        private final boolean alreadyCollapsed;
-        private int count;
-
-        CountDownRunnable(Context context, int mCount, boolean mAlreadyCollapsed) {
-            count = mCount;
-            alreadyCollapsed = mAlreadyCollapsed;
-            ctx = context;
-        }
-
-        @Override
-        public void run() {
-
-            count--;
-            if (count < 0) {
-                screenshotHiddenCountdown(ctx, true, alreadyCollapsed);
-            } else {
-                handler.postDelayed(this, 1000);
-            }
-        }
-    }
-
     /**
      * Try to start activity from TileService to collapse quick settings panel.
      * If no TileService is running, start from context
@@ -452,6 +429,29 @@ public class App extends Application {
             context.startActivity(intent);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
                 context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+            }
+        }
+    }
+
+    private class CountDownRunnable implements Runnable {
+        private final Context ctx;
+        private final boolean alreadyCollapsed;
+        private int count;
+
+        CountDownRunnable(Context context, int mCount, boolean mAlreadyCollapsed) {
+            count = mCount;
+            alreadyCollapsed = mAlreadyCollapsed;
+            ctx = context;
+        }
+
+        @Override
+        public void run() {
+
+            count--;
+            if (count < 0) {
+                screenshotHiddenCountdown(ctx, true, alreadyCollapsed);
+            } else {
+                handler.postDelayed(this, 1000);
             }
         }
     }

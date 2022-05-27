@@ -19,7 +19,6 @@ import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_RENAME_INPUT
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.utils.*
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class PostActivity : AppCompatActivity() {

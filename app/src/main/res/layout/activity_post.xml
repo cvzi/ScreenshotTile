@@ -136,19 +136,19 @@
 
                     <TextView
                         android:id="@+id/textViewDateIso"
-                        android:textSize="17sp"
-                        android:layout_marginStart="32dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="" />
+                        android:layout_marginStart="32dp"
+                        android:text=""
+                        android:textSize="17sp" />
 
                     <TextView
                         android:id="@+id/textViewDateLocal"
-                        android:textSize="17sp"
-                        android:layout_marginStart="32dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="" />
+                        android:layout_marginStart="32dp"
+                        android:text=""
+                        android:textSize="17sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerViewSuggestions"

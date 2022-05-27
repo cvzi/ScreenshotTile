@@ -291,7 +291,12 @@ fun renameImage(context: Context, uri: Uri?, newName: String): Pair<Boolean, Uri
 /**
  * Move file via contentResolver
  */
-fun renameContentResolver(context: Context, uri: Uri, newFileTitle: String, newFileName: String): Pair<Boolean, Uri?> {
+fun renameContentResolver(
+    context: Context,
+    uri: Uri,
+    newFileTitle: String,
+    newFileName: String
+): Pair<Boolean, Uri?> {
     // Try to rename file via contentResolver/MediaStore
     val updatedRows = try {
         val contentValues = ContentValues().apply {
@@ -383,7 +388,12 @@ fun copyImageContentResolver(context: Context, uri: Uri, newName: String): Pair<
 /**
  * Rename file from file system and remove and add in MediaStore
  */
-fun renameFileSystem(context: Context, file: File, dest: File, dimensions: Point? = null): Pair<Boolean, Uri?> {
+fun renameFileSystem(
+    context: Context,
+    file: File,
+    dest: File,
+    dimensions: Point? = null
+): Pair<Boolean, Uri?> {
     if (!file.exists()) {
         Log.w(UTILSIMAGEKT, "renameFileSystem() File does not exist: ${file.absoluteFile}")
         return Pair(false, null)

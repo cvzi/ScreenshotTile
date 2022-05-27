@@ -13,8 +13,10 @@ import android.graphics.Rect
 import android.icu.text.SimpleDateFormat
 import android.media.Image
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
+import android.os.StatFs
 import android.provider.MediaStore.Images
 import android.text.SpannableString
 import android.text.SpannableStringBuilder

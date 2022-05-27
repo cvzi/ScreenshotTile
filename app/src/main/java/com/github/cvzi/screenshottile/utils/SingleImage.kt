@@ -55,9 +55,10 @@ open class SingleImage(val uri: Uri) {
             contentResolver.query(uri, null, null, null, null)?.apply {
                 moveToFirst()
 
-                displayName = getColumnIndex(MediaStore.MediaColumns.DISPLAY_NAME).takeIf { it >= 0 }?.let {
-                    getString(it)
-                } ?: uri.lastPathSegment?.split("/")?.last()
+                displayName =
+                    getColumnIndex(MediaStore.MediaColumns.DISPLAY_NAME).takeIf { it >= 0 }?.let {
+                        getString(it)
+                    } ?: uri.lastPathSegment?.split("/")?.last()
 
                 mime = getColumnIndex(MediaStore.MediaColumns.MIME_TYPE).takeIf { it >= 0 }?.let {
                     getString(it)
@@ -67,12 +68,14 @@ open class SingleImage(val uri: Uri) {
                     getLongOrNull(it)
                 }
 
-                val dateModified = getColumnIndex(MediaStore.MediaColumns.DATE_MODIFIED).takeIf { it >= 0 }?.let {
-                    getLongOrNull(it)
-                }
-                val dateAdded = getColumnIndex(MediaStore.MediaColumns.DATE_ADDED).takeIf { it >= 0 }?.let {
-                    getLongOrNull(it)
-                }
+                val dateModified =
+                    getColumnIndex(MediaStore.MediaColumns.DATE_MODIFIED).takeIf { it >= 0 }?.let {
+                        getLongOrNull(it)
+                    }
+                val dateAdded =
+                    getColumnIndex(MediaStore.MediaColumns.DATE_ADDED).takeIf { it >= 0 }?.let {
+                        getLongOrNull(it)
+                    }
                 val dateTaken = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                     getColumnIndex(MediaStore.MediaColumns.DATE_TAKEN).takeIf { it >= 0 }?.let {
                         getLongOrNull(it)
@@ -80,17 +83,19 @@ open class SingleImage(val uri: Uri) {
                 } else {
                     null
                 }
-                val dateModifiedMilliseconds = getColumnIndex(DocumentsContract.Document.COLUMN_LAST_MODIFIED).takeIf { it >= 0 }?.let {
-                    getLongOrNull(it)
-                }
+                val dateModifiedMilliseconds =
+                    getColumnIndex(DocumentsContract.Document.COLUMN_LAST_MODIFIED).takeIf { it >= 0 }
+                        ?.let {
+                            getLongOrNull(it)
+                        }
 
                 date = if (dateModified != null && dateModified > 1) {
                     Date(dateModified * 1000)
-                } else if(dateAdded != null && dateAdded > 1){
+                } else if (dateAdded != null && dateAdded > 1) {
                     Date(dateAdded * 1000)
-                } else if(dateTaken != null && dateTaken > 1) {
+                } else if (dateTaken != null && dateTaken > 1) {
                     Date(dateTaken * 1000)
-                } else if(dateModifiedMilliseconds != null && dateModifiedMilliseconds > 1){
+                } else if (dateModifiedMilliseconds != null && dateModifiedMilliseconds > 1) {
                     Date(dateModifiedMilliseconds)
                 } else {
                     Log.w(TAG, "No date value found in ContentResolver")
