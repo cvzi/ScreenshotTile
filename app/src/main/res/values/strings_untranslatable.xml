@@ -39,7 +39,8 @@
     <string name="setting_broadcast_secret_value_default" translatable="false">(unset)</string>
     <string name="setting_storage_directory_value_default" translatable="false">(default)</string>
     <string name="setting_file_name_pattern_value_default" formatted="false" translatable="false">Screenshot_%timestamp%</string>
-
+    <string name="pref_key_file_names_recent" translatable="false">file_names_recent</string>
+    <string name="pref_key_file_names_starred" translatable="false">file_names_starred</string>
 
     <string name="setting_file_format_value_default" translatable="false">png</string>
     <string-array name="setting_file_format_entries" translatable="false">
@@ -167,6 +168,33 @@
         <item>@string/setting_dark_theme_on</item>
     </string-array>
 
+    <string name="pref_key_notification_actions" translatable="false">notification_actions</string>
+    <string-array name="setting_notification_actions_entries" translatable="false">
+        <item>@string/notification_share_screenshot</item>
+        <item>@string/notification_edit_screenshot</item>
+        <item>@string/notification_delete_screenshot</item>
+        <item>@string/notification_rename_screenshot</item>
+        <item>@string/notification_screenshot_details</item>
+    </string-array>
+    <string name="setting_notification_action_share" translatable="false">action_share</string>
+    <string name="setting_notification_action_edit" translatable="false">action_edit</string>
+    <string name="setting_notification_action_delete" translatable="false">action_delete</string>
+    <string name="setting_notification_action_rename" translatable="false">action_rename</string>
+    <string name="setting_notification_action_details" translatable="false">action_details</string>
+    <string-array name="setting_notification_actions_values" translatable="false">
+        <item>@string/setting_notification_action_share</item>
+        <item>@string/setting_notification_action_edit</item>
+        <item>@string/setting_notification_action_delete</item>
+        <item>@string/setting_notification_action_rename</item>
+        <item>@string/setting_notification_action_details</item>
+    </string-array>
+    <string-array name="setting_notification_actions_default_values" translatable="false">
+        <item>@string/setting_notification_action_share</item>
+        <item>@string/setting_notification_action_edit</item>
+        <item>@string/setting_notification_action_delete</item>
+    </string-array>
+
+
     <!-- About in settings -->
     <string name="pref_static_field_key_about_app_1" translatable="false">pref_static_field_key_about_app_1</string>
     <string name="pref_static_field_key_about_app_2" translatable="false">pref_static_field_key_about_app_2</string>
@@ -174,11 +202,13 @@
     <string name="pref_static_field_key_about_license_1" translatable="false">pref_static_field_key_about_license_1</string>
     <string name="pref_static_field_key_about_open_source" translatable="false">pref_static_field_key_about_open_source</string>
     <string name="pref_static_field_key_about_privacy" translatable="false">pref_static_field_key_about_privacy</string>
+    <string name="pref_static_field_key_about_updates" translatable="false">pref_static_field_key_about_updates</string>
     <string name="pref_static_field_link_about_app_1" translatable="false">https://github.com/ipcjs/ScreenshotTile</string>
     <string name="pref_static_field_link_about_app_3" translatable="false">https://github.com/cvzi/ScreenshotTile</string>
     <string name="pref_static_field_link_about_license_1" translatable="false">https://www.gnu.org/licenses/gpl-3.0</string>
     <string name="pref_static_field_link_about_open_source" translatable="false">https://cvzi.github.io/ScreenshotTile/opensource.html</string>
     <string name="pref_static_field_link_about_privacy" translatable="false">https://cvzi.github.io/ScreenshotTile/privacy.html</string>
+    <string name="pref_static_field_link_about_updates" translatable="false">https://cvzi.github.io/ScreenshotTile/updates.html?package=%1$s&amp;code=%2$s&amp;name=%3$s&amp;type=%4$s</string>
 
     <string name="about_open_source" translatable="false">Kotlin\ngradle\nMaterial Design Icons by Google</string>
     <string name="about_privacy_summary" translatable="false">cvzi.github.io/ScreenshotTile/privacy.html</string>

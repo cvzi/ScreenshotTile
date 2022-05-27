@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="application-name" content="ScreenshotTile (No root)"/>
+<meta name="msapplication-TileColor" content="#2d2d2d"/>
+<meta name="msapplication-square150x150logo" content="50.png"/>
+<meta name="msapplication-square70x70logo" content="70.png"/>
+<meta name="msapplication-TileImage" content="144.png"/>
+<meta name="msapplication-wide310x150logo" content="310wide.png"/>
+<meta name="msapplication-square310x310logo" content="310.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="57.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="60.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="72.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="76.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="114.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="120.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="144.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="152.png"/>
+<link rel="icon" type="image/png" href="16.png" sizes="16x16"/>
+<link rel="icon" type="image/png" href="32.png" sizes="32x32"/>
+<link rel="icon" type="image/png" href="96.png" sizes="96x96"/>
+<link rel="icon" type="image/png" href="128.png" sizes="128x128"/>
+<link rel="icon" type="image/png" href="196.png" sizes="196x196"/>
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="google-site-verification" content="uNQ8Bk35uuCpSKpLI-TMeGE7KL8BbKkxhmKx7-_PW2s" />
+<style>
+
+html,body {
+  color:white;
+  background-color:#2d2d2d;
+  font-family:'Helvetica', 'Arial', 'sans-serif'
+}
+.content {
+  color:black;
+  background:white;
+  border-radius: 4px;
+  border: 1px solid white;
+  padding: 10px 15px;
+  margin:15px 3px;
+}
+
+ul.morelinks {
+  list-style: none outside none;
+  margin:10px 0px;
+  padding: 0;
+  text-align: left;
+}
+
+ul.morelinks li {
+  margin: 3px 10px;
+  display: inline-block;
+}
+
+#versions {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#versions td, #versions th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#versions tr:nth-child(even){background-color: #f2f2f2;}
+
+#versions th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #491168;
+  color: white;
+}
+
+
+</style>
+
+<script type="text/javascript">
+
+const installed = {
+  package: "",
+  code: "",
+  name: "",
+  type: ""
+}
+
+function fill() {
+  for(key in installed) {
+    document.querySelectorAll('.data_' + key).forEach((e) => (e.textContent = installed[key]))
+  }
+}
+
+function load() {
+  installed.package = document.location.search.match(/package=([\w\.]+)/)[1]
+  installed.code = parseInt(document.location.search.match(/code=([\w\.]+)/)[1])
+  installed.name = document.location.search.match(/name=([\w\.]+)/)[1]
+  installed.type = document.location.search.match(/type=([\w\.]+)/)[1]
+
+  fill()
+
+  const oReq = new XMLHttpRequest()
+  oReq.addEventListener("load", loadCurrentRelease)
+  oReq.open("GET", "release.txt")
+  oReq.send()
+}
+
+function loadCurrentRelease () {
+  const arr = this.responseText.split("|")
+  const code = parseInt(arr[0].trim())
+  const name = arr[1].trim()
+  const url = 'https://github.com/cvzi/ScreenshotTile/releases/tag/v' + name
+
+  document.querySelectorAll('.data_current_name').forEach((e) => (e.textContent = name))
+  document.querySelectorAll('.data_current_code').forEach((e) => (e.textContent = code))
+  document.querySelectorAll('.data_current_link').forEach((e) => (e.href = url))
+
+  console.log([installed.code, code],installed.code === code)
+  if (installed.name === name) {
+    document.querySelectorAll('.data_status_name').forEach((e) => (e.style.background = 'green'))
+  } 
+  if (installed.code === code) {
+    document.querySelectorAll('.data_status_code').forEach((e) => (e.style.background = 'green'))
+  } else if(installed.code < code) {
+    document.querySelectorAll('.data_status_code').forEach((e) => (e.style.background = 'red'))
+  }
+  if (installed.name === name || installed.code === code) {
+    document.querySelectorAll('.data_status').forEach((e) => (e.style.background = 'green'))
+  } else {
+    document.querySelectorAll('.data_status').forEach((e) => (e.style.background = 'red'))
+  }
+
+}
+
+
+
+</script>
+
+
+<title>
+    Update check - ScreenshotTile (No root)
+</title>
+
+
+</head>
+
+<body onload="load()">
+
+<h1>Update check</h1>
+
+<div class="content">
+  <div>
+    <h3>Update for <span class="data_package"></span></h3>
+
+    <table id="versions">
+      <tr>
+        <th></th>
+        <th class="data_status">Installed</th>
+        <th>Current release</th>
+      </tr>
+      <tr>
+        <td>Version name</td>
+        <td class="data_status_name"><span class="data_name"></span></td>
+        <td><a class="data_current_name data_current_link" href="#"></a></td>
+      </tr>
+      <tr>
+        <td>Version code</td>
+        <td class="data_status_code"><span class="data_code"></span></td>
+        <td><a class="data_current_code data_current_link" href="#"></a></td>
+      </tr>
+    </table>
+
+    <h3>Download current version from</h3>
+    <h4><a href="https://f-droid.org/packages/com.github.cvzi.screenshottile/#latest">F-Droid</a></h4>
+    <h4><a href="https://github.com/cvzi/ScreenshotTile/releases">Github</a></h4>
+
+
+ </div>
+
+</div>
+
+<div class="content">
+More information:
+<ul class="morelinks">
+    <li><a href="privacy.html">Privacy policy</a></li>
+    <li><a href="opensource.html">Open Source libraries</a></li>
+    <li><a href="https://github.com/cvzi/ScreenshotTile/blob/HEAD/CHANGELOG.md">Changelog</a></li>
+    <li><a href="https://github.com/cvzi/ScreenshotTile">Github repository</a></li>
+    <li><a href="https://f-droid.org/packages/com.github.cvzi.screenshottile/">F-Droid Package</a></li>
+    <li><a href="https://gitlab.com/fdroid/fdroiddata/-/blob/master/metadata/com.github.cvzi.screenshottile.yml">F-Droid Build Metadata</a></li>
+    <li><a href="https://crowdin.com/project/screenshottile">Crowdin Translations</a></li>
+    <li><a href="https://play.google.com/store/apps/details?id=com.github.cvzi.screenshottile">Google Store</a></li>
+</ul>
+
+
+</div>
+
+</body>
+</html>

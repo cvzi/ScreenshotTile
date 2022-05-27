@@ -348,4 +348,98 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             context.getString(R.string.pref_key_failed_virtual_display_delay),
             value.toString()
         ).apply()
+
+
+    private var fileNamesRecent: Array<String>
+        get() {
+            return pref.getString(
+                context.getString(R.string.pref_key_file_names_recent),
+                ""
+            )?.split("\n")?.filter { it.isNotBlank() }?.toTypedArray() ?: arrayOf()
+        }
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_file_names_recent),
+            value.joinToString("\n")
+        ).apply()
+
+    private fun cleanFileName(name: String): String {
+        return name.removeSuffix(".png")
+            .removeSuffix(".gif")
+            .removeSuffix(".jpg")
+            .removeSuffix(".jpeg")
+            .removeSuffix(".webp")
+            .replace("\n", "")
+    }
+
+    fun addRecentFileName(name: String) {
+        val cleanName = cleanFileName(name)
+        fileNamesRecent = fileNamesRecent.toMutableList().apply {
+            minus(cleanName)
+            add(0, cleanName)
+        }.toTypedArray()
+    }
+
+    private fun removeRecentFileName(index: Int) {
+        fileNamesRecent = fileNamesRecent.toMutableList().apply {
+            if (index < size) {
+                removeAt(index)
+            }
+        }.toTypedArray()
+    }
+
+    private var fileNamesStarred: Array<String>
+        get() {
+            return pref.getString(
+                context.getString(R.string.pref_key_file_names_starred),
+                ""
+            )?.split("\n")?.filter { it.isNotBlank() }?.toTypedArray() ?: arrayOf()
+        }
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_file_names_starred),
+            value.joinToString("\n")
+        ).apply()
+
+    fun addStarredFileName(name: String) {
+        val cleanName = cleanFileName(name)
+        if (cleanName !in fileNamesStarred) {
+            fileNamesStarred += cleanName
+        }
+    }
+
+    private fun removeStarredFileName(index: Int) {
+        fileNamesStarred = fileNamesStarred.toMutableList().apply {
+            if (index < size) {
+                removeAt(index)
+            }
+        }.toTypedArray()
+    }
+
+    fun getFileNameSuggestions(): Array<FileNameSuggestion> {
+        return (fileNamesStarred.mapIndexed { index, value ->
+            FileNameSuggestion(value, true, index)
+        } + fileNamesRecent.mapIndexed { index, value ->
+            FileNameSuggestion(value, false, index)
+        }).toTypedArray()
+    }
+
+    fun removeFileName(fileNameSuggestion: FileNameSuggestion) {
+        return if (fileNameSuggestion.starred) {
+            removeStarredFileName(fileNameSuggestion.dataIndex)
+        } else {
+            removeRecentFileName(fileNameSuggestion.dataIndex)
+        }
+    }
+
+    var notificationActions: MutableSet<String>
+        get() = pref.getStringSet(
+            context.getString(R.string.pref_key_notification_actions),
+            context.resources.getStringArray(R.array.setting_notification_actions_default_values)
+                .toMutableSet()
+        ) ?: arrayOf(
+            context.getString(R.string.setting_notification_action_share),
+            context.getString(R.string.setting_notification_action_edit),
+            context.getString(R.string.setting_notification_action_delete)
+        ).toMutableSet()
+        set(value) = pref.edit()
+            .putStringSet(context.getString(R.string.pref_key_notification_actions), value).apply()
 }

@@ -4,6 +4,7 @@ import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
 import android.graphics.*
+import android.icu.text.SimpleDateFormat
 import android.media.Image
 import android.net.Uri
 import android.os.Build
@@ -13,8 +14,10 @@ import android.view.WindowManager
 import androidx.documentfile.provider.DocumentFile
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
+import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import java.io.File
+import java.io.InputStream
 import java.util.*
 import kotlin.math.ceil
 import kotlin.math.max
@@ -121,8 +124,7 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
         return false
     }
 
-    uri.normalizeScheme()
-    when (uri.scheme) {
+    when (uri.normalizeScheme().scheme) {
         "content" -> { // Android Q+
             return deleteContentResolver(context, uri)
         }
@@ -249,6 +251,214 @@ fun deleteFileSystem(context: Context, file: File): Boolean {
 }
 
 /**
+ * Rename image. Return true on success, false on failure.
+ * content:// Uris are moved via MediaStore if possible otherwise copied and original file deleted
+ * file:// Uris are renamed on filesystem and removed and added to MediaStore
+ */
+fun renameImage(context: Context, uri: Uri?, newName: String): Pair<Boolean, Uri?> {
+    if (uri == null) {
+        Log.e(UTILSIMAGEKT, "Could not move file: uri is null")
+        return Pair(false, null)
+    }
+
+    val (newFileName, newFileTitle) = fileNameFileTitle(newName, compressionPreference(context))
+
+    when (uri.normalizeScheme().scheme) {
+        "content" -> { // Android Q+
+            return renameContentResolver(context, uri, newFileTitle, newFileName)
+        }
+
+        "file" -> { // until Android P
+            val path = uri.path
+            if (path == null) {
+                Log.e(UTILSIMAGEKT, "renameImage() File path is null. uri=$uri")
+                return Pair(false, null)
+            }
+
+            val file = File(path)
+            val dest = File(file.parent, newFileName)
+
+            return renameFileSystem(context, file, dest)
+        }
+        else -> {
+            Log.e(UTILSIMAGEKT, "renameImage() Could not move file. Unknown error. uri=$uri")
+            return Pair(false, null)
+        }
+
+    }
+}
+
+/**
+ * Move file via contentResolver
+ */
+fun renameContentResolver(context: Context, uri: Uri, newFileTitle: String, newFileName: String): Pair<Boolean, Uri?> {
+    // Try to rename file via contentResolver/MediaStore
+    val updatedRows = try {
+        val contentValues = ContentValues().apply {
+            put(MediaStore.MediaColumns.DISPLAY_NAME, newFileName)
+        }
+        context.contentResolver.update(uri, contentValues, null, null)
+    } catch (e: UnsupportedOperationException) {
+        Log.w(
+            UTILSIMAGEKT,
+            "renameContentResolver() MediaStore move failed: $e\nTrying copy and delete"
+        )
+        0
+    }
+    if (updatedRows > 0) {
+        return Pair(true, uri)
+    }
+    // Try to copy the image to a new name
+    val result = copyImageContentResolver(context, uri, newFileTitle)
+    if (!result.first) {
+        return Pair(false, null)
+    }
+    // Remove the old file
+    if (!deleteImage(context, uri)) {
+        Log.e(UTILSIMAGEKT, "renameContentResolver() deleteImage failed")
+    }
+    return result
+}
+
+/**
+ * Copy file via contentResolver
+ */
+fun copyImageContentResolver(context: Context, uri: Uri, newName: String): Pair<Boolean, Uri?> {
+    val inputStream: InputStream?
+    try {
+        inputStream = context.contentResolver.openInputStream(uri)
+    } catch (e: Exception) {
+        Log.e(UTILSIMAGEKT, "copyImageContentResolver() Could not open input stream: $e")
+        return Pair(false, null)
+    }
+    if (inputStream == null) {
+        Log.e(UTILSIMAGEKT, "copyImageContentResolver() input stream is null")
+        return Pair(false, null)
+    }
+
+    val outputStreamResult = createOutputStream(
+        context,
+        newName,
+        compressionPreference(context),
+        Date(),
+        Point(0, 0)
+    )
+    if (!outputStreamResult.success) {
+        Log.e(
+            UTILSIMAGEKT,
+            "copyImageContentResolver() Could not open output stream: ${outputStreamResult.errorMessage}"
+        )
+        return Pair(false, null)
+    }
+    val outputStreamResultSuccess = (outputStreamResult as OutputStreamResultSuccess)
+    val outputStream = outputStreamResultSuccess.fileOutputStream
+    val success = try {
+        val bytes = ByteArray(1024 * 32)
+        var count = 0
+        while (count != -1) {
+            count = inputStream.read(bytes)
+            if (count != -1) {
+                outputStream.write(bytes, 0, count)
+            }
+        }
+        outputStream.flush()
+        inputStream.close()
+        outputStream.close()
+        true
+    } catch (e: Exception) {
+        Log.e(UTILSIMAGEKT, "copyImageContentResolver() Error while copying: $e")
+        false
+    } finally {
+        inputStream.close()
+        outputStream.close()
+    }
+    return if (success) {
+        Pair(true, outputStreamResultSuccess.uri)
+    } else {
+        Pair(false, null)
+    }
+}
+
+
+/**
+ * Rename file from file system and remove and add in MediaStore
+ */
+fun renameFileSystem(context: Context, file: File, dest: File, dimensions: Point? = null): Pair<Boolean, Uri?> {
+    if (!file.exists()) {
+        Log.w(UTILSIMAGEKT, "renameFileSystem() File does not exist: ${file.absoluteFile}")
+        return Pair(false, null)
+    }
+
+    if (dest.exists()) {
+        Log.w(UTILSIMAGEKT, "renameFileSystem() File already exists: ${dest.absoluteFile}")
+        return Pair(false, null)
+    }
+
+    if (!file.canWrite()) {
+        Log.w(UTILSIMAGEKT, "renameFileSystem() File is not writable: ${file.absoluteFile}")
+        return Pair(false, null)
+    }
+
+    if (file.renameTo(dest)) {
+        if (BuildConfig.DEBUG) Log.v(
+            UTILSIMAGEKT,
+            "renameFileSystem() File ${file.absoluteFile} moved to ${dest.absoluteFile}"
+        )
+        val externalContentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        val projection = arrayOf(MediaStore.Images.Media._ID)
+
+        @Suppress("DEPRECATION")
+        val selection = MediaStore.Images.Media.DATA + " = ?"
+        val queryArgs = arrayOf(file.absolutePath)
+        context.contentResolver.query(
+            externalContentUri,
+            projection,
+            selection,
+            queryArgs,
+            null
+        )?.apply {
+            if (moveToFirst()) {
+                val id = getLong(getColumnIndexOrThrow(MediaStore.Images.Media._ID))
+                val contentUri = ContentUris.withAppendedId(
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                    id
+                )
+                context.contentResolver.delete(contentUri, null, null)
+                if (BuildConfig.DEBUG) Log.v(
+                    UTILSIMAGEKT,
+                    "deleteImage() File deleted from MediaStore: $contentUri"
+                )
+            }
+            close()
+        }
+
+        val date = Date()
+        addImageToGallery(
+            context,
+            dest.absolutePath,
+            context.getString(R.string.file_title),
+            context.getString(
+                R.string.file_description,
+                SimpleDateFormat(
+                    context.getString(R.string.file_description_simple_date_format),
+                    Locale.getDefault()
+                ).format(
+                    date
+                )
+            ),
+            compressionPreference(context).mimeType,
+            date,
+            dimensions ?: Point(0, 0)
+        )
+
+        return Pair(true, Uri.fromFile(dest))
+    } else {
+        Log.w(UTILSIMAGEKT, "deleteImage() Could not delete file: ${file.absoluteFile}")
+        return Pair(false, null)
+    }
+}
+
+/**
  * Try to get the height of the status bar or return a fallback approximation
  */
 @Suppress("unused")
@@ -347,4 +557,28 @@ fun tintImage(bitmap: Bitmap, color: Long): Bitmap? {
         colorFilter = PorterDuffColorFilter(color.toInt(), PorterDuff.Mode.ADD)
     })
     return newBitmap
+}
+
+/**
+ * Split into fileName and fileTitle
+ */
+fun fileNameFileTitle(s: String, ext: String): Pair<String, String> {
+    val extWithDot = ".$ext"
+    val fileTitle: String
+    val fileName: String
+    if (s.endsWith(extWithDot)) {
+        fileTitle = s.dropLast(extWithDot.length)
+        fileName = s
+    } else {
+        fileTitle = s
+        fileName = s + extWithDot
+    }
+    return Pair(fileName, fileTitle)
+}
+
+/**
+ * Split into fileName and fileTitle
+ */
+fun fileNameFileTitle(s: String, compressionOptions: CompressionOptions): Pair<String, String> {
+    return fileNameFileTitle(s, compressionOptions.fileExtension)
 }

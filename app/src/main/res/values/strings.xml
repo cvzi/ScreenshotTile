@@ -53,6 +53,9 @@
     <string name="setting_dark_theme_system">System</string>
     <string name="setting_dark_theme_off">Disabled</string>
     <string name="setting_dark_theme_on">Enabled</string>
+    <string name="setting_notification_buttons">Notification buttons</string>
+    <string name="setting_notification_buttons_description">Select up to three buttons that appear below the screenshot notification</string>
+    <string name="setting_notification_buttons_max_three">Please choose a maximum of three buttons</string>
     <string name="notification_settings">Notifications</string>
     <string name="notification_settings_on">Enabled</string>
     <string name="notification_settings_off">Disabled</string>
@@ -73,8 +76,12 @@
     <string name="notification_delete_screenshot">Delete</string>
     <string name="notification_share_screenshot">Share</string>
     <string name="notification_edit_screenshot">Edit</string>
+    <string name="notification_rename_screenshot">Rename</string>
+    <string name="notification_screenshot_details">Details</string>
     <string name="screenshot_deleted">Screenshot deleted</string>
     <string name="screenshot_delete_failed">Could not delete file</string>
+    <string name="screenshot_renamed">File renamed to %1s</string>
+    <string name="screenshot_rename_failed">Could not rename file</string>
     <string name="permission_missing_external_storage">Failed to acquire permission for storage</string>
     <string name="permission_missing_screen_capture">Failed to acquire permission to record screen capture</string>
     <string name="hide_app_from_launcher">Hide app icon from launcher</string>
@@ -131,4 +138,16 @@
     <string name="main_long_press_text">Long pressing the tile/button opens a menu. You can specify a delay for the screenshot or cut out a rectangle from the screen.</string>
     <string name="main_assist_app_title">Assist app</string>
     <string name="main_assist_app_text">If you set this app as your assist app, you can long press the home button to take a screenshot. Enabling this app as your assist app will disable other assistants. You can change the action of the long home button press in the app settings.</string>
+
+    <!-- Post edit activity -->
+    <string name="post_button_save">Rename</string>
+    <string name="post_recent_file_names_and_suggestions">Recent file names and suggestions:</string>
+    <string name="post_hint_new_file_name">New file name</string>
+    <string name="post_rename_file">Rename file:</string>
+    <string name="post_rename_error_identical">New and old file name are identical</string>
+    <string name="post_hint_new_file_name_suggestion">New file name suggestion</string>
+    <string name="post_save_a_suggestion">Save a suggestion</string>
+    <string name="post_pin_to_favorites">Pin to favorites</string>
+    <string name="post_delete_suggestion">Delete suggestion</string>
+
 </resources>

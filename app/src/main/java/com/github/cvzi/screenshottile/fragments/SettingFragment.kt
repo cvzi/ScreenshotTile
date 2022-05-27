@@ -60,6 +60,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var openedAccessibilitySetting = false
     private var askedForStoragePermission = false
     private var notificationPref: Preference? = null
+    private var notificationActionsPref: MultiSelectListPreference? = null
     private var delayPref: ListPreference? = null
     private var fileFormatPref: ListPreference? = null
     private var useNativePref: SwitchPreference? = null
@@ -113,6 +114,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     prefManager.voiceInteractionAction, switchEvent = true
                 )
                 getString(R.string.pref_key_dark_theme) -> updateDarkTheme(switchEvent = true)
+                getString(R.string.pref_key_notification_actions) -> updateNotificationActions()
             }
         }
 
@@ -139,6 +141,8 @@ class SettingFragment : PreferenceFragmentCompat() {
 
         notificationPref =
             findPreference(getString(R.string.pref_static_field_key_notification_settings))
+        notificationActionsPref =
+            findPreference(getString(R.string.pref_key_notification_actions)) as MultiSelectListPreference?
         delayPref = findPreference(getString(R.string.pref_key_delay)) as ListPreference?
         fileFormatPref = findPreference(getString(R.string.pref_key_file_format)) as ListPreference?
         useNativePref = findPreference(getString(R.string.pref_key_use_native)) as SwitchPreference?
@@ -193,6 +197,11 @@ class SettingFragment : PreferenceFragmentCompat() {
             R.string.pref_static_field_key_about_privacy,
             R.string.pref_static_field_link_about_privacy
         )
+        makeLink(
+            R.string.pref_static_field_key_about_updates,
+            R.string.pref_static_field_link_about_updates,
+            arrayOf(context?.packageName ?: "com.github.cvzi.screenshottile", BuildConfig.VERSION_CODE, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TYPE).map { Uri.encode(it.toString())}.toTypedArray(),
+        )
 
         makeNotificationSettingsLink()
         makeAccessibilitySettingsLink()
@@ -227,6 +236,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         floatingButtonHideShowClosePreventRecursion = false
 
         updateNotificationSummary()
+        updateNotificationActions()
         updateUseNative()
         updateFloatingButton()
         updateStorageDirectory()
@@ -239,13 +249,20 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
     }
 
-    private fun makeLink(name: Int, link: Int) {
+    private fun makeLink(name: Int, link: Int, linkFormatArgs: Array<Any>? = null) {
         val myActivity = activity
         myActivity?.let {
             val myPref = findPreference(getString(name)) as Preference?
             myPref?.isSelectable = true
             myPref?.onPreferenceClickListener = OnPreferenceClickListener {
-                Intent(ACTION_VIEW, Uri.parse(getString(link))).apply {
+                val uri = Uri.parse(
+                    if (linkFormatArgs != null) {
+                        getString(link, *linkFormatArgs)
+                    } else {
+                        getString(link)
+                    }
+                )
+                Intent(ACTION_VIEW, uri).apply {
                     if (resolveActivity(myActivity.packageManager) != null) {
                         startActivity(this)
                     }
@@ -390,7 +407,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 newValue = getString(R.string.setting_voice_interaction_action_value_provided)
                 context.toastMessage(
                     getString(R.string.use_native_screenshot_unsupported),
-                    ToastType.ERROR
+                    ToastType.ACTIVITY
                 )
             } else if (ScreenshotAccessibilityService.instance == null && switchEvent) {
                 // Accessibility service is not running -> Open settings so user can enable it
@@ -499,7 +516,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                 Log.e(TAG, "setComponentEnabledSetting", e)
                 context.toastMessage(
                     myActivity.getString(R.string.toggle_app_icon_failed),
-                    ToastType.ERROR
+                    ToastType.ACTIVITY
                 )
                 prefManager.hideApp = !hide
                 false
@@ -525,6 +542,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                         getString(R.string.use_native_screenshot_summary)
                     }
                     updateNotificationSummary()
+                    updateNotificationActions()
                     updateStorageDirectory()
                     updateFileFormatSummary(prefManager.fileFormat)
                     updateFileNamePatternSummary()
@@ -536,6 +554,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     updateFileFormatSummary(prefManager.fileFormat)
                     updateFileNamePatternSummary()
                     updateNotificationSummary()
+                    updateNotificationActions()
                     updateStorageDirectory()
                 }
             }
@@ -723,6 +742,41 @@ class SettingFragment : PreferenceFragmentCompat() {
             }
             if (switchEvent) {
                 App.getInstance().applyDayNightMode()
+            }
+        }
+    }
+
+    private fun updateNotificationActions() {
+        notificationActionsPref?.apply {
+            if (prefManager.useSystemDefaults && prefManager.useNative) {
+                isEnabled = false
+                summary = getString(
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                        R.string.use_native_screenshot_option_default
+                    } else {
+                        R.string.use_native_screenshot_option_android11
+                    }
+                )
+            } else {
+                isEnabled = true
+                val allValues = resources.getStringArray(R.array.setting_notification_actions_values)
+                val selectedEntries = ArrayList<String>()
+                for(v in allValues) {
+                    if (v in values) {
+                        selectedEntries.add(entries[findIndexOfValue(v)].toString())
+                    }
+                    if(selectedEntries.size == 3) {
+                        break
+                    }
+                }
+                summary =
+                    getString(R.string.setting_notification_buttons_description) + "\n" + selectedEntries.joinToString(", ")
+                if (values.size > 3) {
+                    context.toastMessage(
+                        getString(R.string.setting_notification_buttons_max_three),
+                        ToastType.ACTIVITY
+                    )
+                }
             }
         }
     }

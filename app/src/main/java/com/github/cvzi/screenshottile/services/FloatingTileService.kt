@@ -1,5 +1,6 @@
 package com.github.cvzi.screenshottile.services
 
+import android.content.Context
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Build
 import android.os.Handler
@@ -25,6 +26,12 @@ import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Co
 class FloatingTileService : TileService() {
     companion object {
         private const val TAG = "FloatingTileService"
+        var instance: FloatingTileService? = null
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        instance = this
     }
 
     private fun setState(newState: Int) {

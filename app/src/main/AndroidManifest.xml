@@ -58,7 +58,6 @@
         android:theme="@style/AppTheme.Transparent"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="s">
-
         <activity
             android:name="com.github.cvzi.screenshottile.activities.MainActivity"
             android:exported="true"
@@ -115,6 +114,11 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.github.cvzi.screenshottile.activities.PostActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
 
         <service
             android:name="com.github.cvzi.screenshottile.services.ScreenshotTileService"
@@ -238,7 +242,6 @@
         <service
             android:name=".assist.MyVoiceInteractionSessionService"
             android:permission="android.permission.BIND_VOICE_INTERACTION" />
-
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.github.cvzi.screenshottile;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.tryNativeScreenshot;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -24,6 +25,7 @@ import com.github.cvzi.screenshottile.activities.DelayScreenshotActivity;
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity;
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener;
 import com.github.cvzi.screenshottile.services.BasicForegroundService;
+import com.github.cvzi.screenshottile.services.FloatingTileService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
 import com.github.cvzi.screenshottile.utils.PrefManager;
@@ -426,6 +428,30 @@ public class App extends Application {
                 screenshotHiddenCountdown(ctx, true, alreadyCollapsed);
             } else {
                 handler.postDelayed(this, 1000);
+            }
+        }
+    }
+
+    /**
+     * Try to start activity from TileService to collapse quick settings panel.
+     * If no TileService is running, start from context
+     *
+     * @param context Context
+     * @param intent  Intent
+     */
+    @SuppressLint({"DEPRECATION", "MissingPermission"})
+    public void startActivityAndCollapse(Context context, Intent intent) {
+        intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+        TileService tileService = ScreenshotTileService.Companion.getInstance();
+        if (tileService == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            tileService = FloatingTileService.Companion.getInstance();
+        }
+        if (tileService != null) {
+            tileService.startActivityAndCollapse(intent);
+        } else {
+            context.startActivity(intent);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
             }
         }
     }

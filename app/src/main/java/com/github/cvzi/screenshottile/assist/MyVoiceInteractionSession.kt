@@ -273,7 +273,8 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                     result.uri,
                     result.bitmap,
                     screenDensity,
-                    result.mimeType
+                    result.mimeType,
+                    dummyPath
                 )
                 prefManager.screenshotCount++
             }

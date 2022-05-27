@@ -465,7 +465,8 @@ class TakeScreenshotActivity : Activity(),
                     result.uri,
                     result.bitmap,
                     screenDensity,
-                    result.mimeType
+                    result.mimeType,
+                    dummyPath
                 )
                 App.getInstance().prefManager.screenshotCount++
             }

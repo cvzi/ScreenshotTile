@@ -362,8 +362,8 @@ fun createOutputStreamMediaStore(
         put(Images.ImageColumns.DATE_MODIFIED, dateSeconds)
         put(Images.ImageColumns.MIME_TYPE, compressionOptions.mimeType)
         if (dim.x > 0 && dim.y > 0) {
-            put(Images.ImageColumns.WIDTH, 0)
-            put(Images.ImageColumns.HEIGHT, 0)
+            put(Images.ImageColumns.WIDTH, dim.x)
+            put(Images.ImageColumns.HEIGHT, dim.y)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 put(Images.ImageColumns.RESOLUTION, "${dim.x}\u00d7${dim.y}")
             }
@@ -755,7 +755,7 @@ fun hasFdroid(context: Context): Boolean {
  * Category of a toast message, so messages can be hidden by category
  */
 enum class ToastType {
-    SUCCESS, ERROR, NAGGING
+    SUCCESS, ERROR, NAGGING, ACTIVITY
 }
 
 /**
@@ -768,6 +768,7 @@ fun Context?.toastMessage(text: String, toastType: ToastType, duration: Int = To
             ToastType.SUCCESS -> prefManager.successToasts
             ToastType.ERROR -> prefManager.errorToasts
             ToastType.NAGGING -> prefManager.naggingToasts
+            else -> true
         }
         if (showToast) {
             Toast.makeText(this, text, duration).show()

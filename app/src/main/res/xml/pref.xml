@@ -126,6 +126,16 @@
         android:title="@string/notification_settings"
         app:iconSpaceReserved="false" />
 
+    <androidx.preference.MultiSelectListPreference
+        android:entries="@array/setting_notification_actions_entries"
+        android:entryValues="@array/setting_notification_actions_values"
+        android:defaultValue="@array/setting_notification_actions_default_values"
+        android:key="@string/pref_key_notification_actions"
+        android:summary="@string/setting_notification_buttons_description"
+        android:title="@string/setting_notification_buttons"
+        android:dialogTitle="@string/setting_notification_buttons_description"
+        app:iconSpaceReserved="false" />
+
     <androidx.preference.Preference
         android:defaultValue="@string/setting_broadcast_secret_value_default"
         android:key="@string/pref_key_storage_directory"
@@ -221,5 +231,13 @@
         android:selectable="true"
         android:title="@string/advanced_settings"
         app:icon="@android:drawable/ic_menu_manage" />
+
+
+    <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_about_updates"
+        android:persistent="false"
+        android:selectable="true"
+        android:title="Update check"
+        app:icon="@android:drawable/ic_popup_sync" />
 
 </androidx.preference.PreferenceScreen>
