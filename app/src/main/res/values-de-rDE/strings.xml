@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="30">Screenshot Tile (NoRoot)</string>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Screenshot</string>
     <string name="tile_floating_label">Schwebender</string>
     <string name="tile_floating_subtitle">Screenshot</string>
@@ -53,6 +53,9 @@
     <string name="setting_dark_theme_system">System</string>
     <string name="setting_dark_theme_off">Deaktiviert</string>
     <string name="setting_dark_theme_on">Aktiviert</string>
+    <string name="setting_notification_buttons">Benachrichtigungsschaltflächen</string>
+    <string name="setting_notification_buttons_description">Wähle bis zu drei Schaltflächen aus die unter der Screenshot Benachrichtigung erscheinen</string>
+    <string name="setting_notification_buttons_max_three">Bitte wähle maximal drei Schaltflächen aus</string>
     <string name="notification_settings">Benachrichtigungen</string>
     <string name="notification_settings_on">Aktiviert</string>
     <string name="notification_settings_off">Deaktiviert</string>
@@ -73,8 +76,12 @@
     <string name="notification_delete_screenshot">Löschen</string>
     <string name="notification_share_screenshot">Teilen</string>
     <string name="notification_edit_screenshot">Bearbeiten</string>
+    <string name="notification_rename_screenshot">Umbenennen</string>
+    <string name="notification_screenshot_details">Details</string>
     <string name="screenshot_deleted">Screenshot gelöscht</string>
     <string name="screenshot_delete_failed">Screenshot konnte nicht gelöscht werden</string>
+    <string name="screenshot_renamed">Datei wurde umbenannt in %1s</string>
+    <string name="screenshot_rename_failed">Datei konnte nicht umbenannt werden</string>
     <string name="permission_missing_external_storage">Fehler bei der Berechtigung für den Internen Speicher</string>
     <string name="permission_missing_screen_capture">Fehler bei der Berechtigung zum Aufnehmen des Bildschirminhalts</string>
     <string name="hide_app_from_launcher">Verstecke App icon vom App Drawer</string>
@@ -126,4 +133,14 @@
     <string name="main_long_press_text">Durch langes Drücken auf die Kachel/Button in den Schnelleinstellungen wird ein Menü geöffnet. Dort kann eine Verzögerung ausgewählt werden oder ein Rechteck aus dem Bildschirm ausgeschnitten werden.</string>
     <string name="main_assist_app_title">Assistent-App</string>
     <string name="main_assist_app_text">Wenn du diese App als deine Assistent-App festlegst, dann kannst du mit langem Drücken der Home-Taste einen Screenshot aufnehmen. Wenn du diese app als deine Assistent-App festlegst, werden andere Assistent-Apps deaktiviert. Du kannst die Aktion des langen Drückens der Home-Taste in den Appeinstellungen ändern.</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">Umbenennen</string>
+    <string name="post_recent_file_names_and_suggestions">Zuletzt verwendete Dateinamen und Vorschläge:</string>
+    <string name="post_hint_new_file_name">Neuer Dateiname</string>
+    <string name="post_rename_file">Datei umbenennen:</string>
+    <string name="post_rename_error_identical">Neuer und alter Dateiname sind identisch</string>
+    <string name="post_hint_new_file_name_suggestion">Neuen Vorschlag hinzufügen</string>
+    <string name="post_save_a_suggestion">Vorschlag speichern</string>
+    <string name="post_pin_to_favorites">Zu Favoriten hinzufügen</string>
+    <string name="post_delete_suggestion">Vorschlag löschen</string>
 </resources>
