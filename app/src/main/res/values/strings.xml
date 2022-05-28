@@ -145,8 +145,8 @@
     <string name="post_hint_new_file_name">New file name</string>
     <string name="post_rename_file">Rename file:</string>
     <string name="post_rename_error_identical">New and old file name are identical</string>
-    <string name="post_hint_new_file_name_suggestion">New file name suggestion</string>
-    <string name="post_save_a_suggestion">Save a suggestion</string>
+    <string name="post_hint_new_file_name_suggestion">Add a new suggestion</string>
+    <string name="post_save_a_suggestion">Save suggestion</string>
     <string name="post_pin_to_favorites">Pin to favorites</string>
     <string name="post_delete_suggestion">Delete suggestion</string>
 
