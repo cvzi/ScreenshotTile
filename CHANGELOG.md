@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.17.0
+*   Choose which action buttons appear in the notification (configurable in app settings)
+*   Rename file from notification
+*   "Details" activity
+*   Update check (in app settings)
+
 ## 1.16.5
 *   Translations updated from crowdin
 

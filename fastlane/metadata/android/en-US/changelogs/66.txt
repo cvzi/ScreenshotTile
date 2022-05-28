@@ -1,0 +1,6 @@
+🌟   Choose which buttons appear in the notification
+🌟   Rename file from notification
+
+There is a new option in the app settings to choose which buttons will appear below the notification after a screenshot.
+Up to three buttons can be selected. The default buttons are "Share", "Edit" and "Delete". The new buttons "Rename" and "Details" are disabled by default.
+"Rename" allows you to rename the file directly in the notification. "Details" opens a preview of the screenshot and options to rename, delete, etc. the screenshot.
