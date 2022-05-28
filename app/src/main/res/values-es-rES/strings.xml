@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="30">Screenshot Tile (NoRoot)</string>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Captura de pantalla</string>
     <string name="tile_floating_label">Flotante</string>
     <string name="tile_floating_subtitle">Captura de pantalla</string>
@@ -53,6 +53,9 @@
     <string name="setting_dark_theme_system">Sistema</string>
     <string name="setting_dark_theme_off">Desactivado</string>
     <string name="setting_dark_theme_on">Activado</string>
+    <string name="setting_notification_buttons">Botones de la notificación</string>
+    <string name="setting_notification_buttons_description">Seleccionar hasta tres botones que aparecen debajo de la notificación de captura de pantalla</string>
+    <string name="setting_notification_buttons_max_three">Por favor elige como máximo tres botones</string>
     <string name="notification_settings">Notificaciones</string>
     <string name="notification_settings_on">Activado</string>
     <string name="notification_settings_off">Desactivado</string>
@@ -73,8 +76,12 @@
     <string name="notification_delete_screenshot">Eliminar</string>
     <string name="notification_share_screenshot">Compartir</string>
     <string name="notification_edit_screenshot">Editar</string>
+    <string name="notification_rename_screenshot">Renombrar</string>
+    <string name="notification_screenshot_details">Detalles</string>
     <string name="screenshot_deleted">Imagen borrada</string>
     <string name="screenshot_delete_failed">No se pudo eliminar la imagen</string>
+    <string name="screenshot_renamed">El archivo fue renombrado a %1s</string>
+    <string name="screenshot_rename_failed">No se pudo renombrar el archivo</string>
     <string name="permission_missing_external_storage">Error al obtener permiso para almacenamiento</string>
     <string name="permission_missing_screen_capture">Error al obtener permiso para capturar pantalla</string>
     <string name="hide_app_from_launcher">Ocultar el icono de la aplicación</string>
@@ -126,4 +133,14 @@
     <string name="main_long_press_text">Al presionar prolongadamente el mosaico/botón se abre un menú. En el menú puedes especificar un retraso para la captura de pantalla o recortar un rectángulo de la pantalla.</string>
     <string name="main_assist_app_title">Aplicación de asistencia</string>
     <string name="main_assist_app_text">Si configuras esta aplicación como su aplicación de asistencia, puedes mantener presionado el botón de inicio para tomar una captura de pantalla. Habilitar esta aplicación como tu aplicación de asistencia deshabilitará otros asistentes. Puedes cambiar la acción de la pulsación prolongada del botón de inicio en la configuración de la aplicación.</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">Renombrar</string>
+    <string name="post_recent_file_names_and_suggestions">Nombres de archivos recientes y sugerencias:</string>
+    <string name="post_hint_new_file_name">Nuevo nombre de archivo</string>
+    <string name="post_rename_file">Cambiar el nombre del archivo:</string>
+    <string name="post_rename_error_identical">El nombre nuevo y antiguo de archivo son idénticos</string>
+    <string name="post_hint_new_file_name_suggestion">Añadir una nueva sugerencia</string>
+    <string name="post_save_a_suggestion">Guardar una sugerencia</string>
+    <string name="post_pin_to_favorites">Añadir a favoritos</string>
+    <string name="post_delete_suggestion">Eliminar sugerencia</string>
 </resources>
