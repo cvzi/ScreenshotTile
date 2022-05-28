@@ -42,7 +42,7 @@ android {
             versionNameSuffix '.debug'
         }
     }
-    buildToolsVersion '31.0.0'
+    buildToolsVersion '32.0.0'
     productFlavors {
     }
     buildFeatures {
