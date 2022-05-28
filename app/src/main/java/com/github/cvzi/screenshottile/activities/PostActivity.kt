@@ -44,6 +44,7 @@ class PostActivity : AppCompatActivity() {
     private var shareIntent: Intent? = null
     private var editIntent: Intent? = null
     private var suggestions: ArrayList<FileNameSuggestion> = ArrayList()
+    private var savedInstanceState: Bundle? = null
 
     /**
      * If the activity is already open, we need to update the intent,
@@ -212,6 +213,7 @@ class PostActivity : AppCompatActivity() {
             DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM, Locale.getDefault())
                 .format(singleImage.lastModified)
 
+        restoreSavedInstanceValues()
     }
 
 
@@ -235,6 +237,34 @@ class PostActivity : AppCompatActivity() {
         } else {
             toastMessage(R.string.screenshot_rename_failed, ToastType.ACTIVITY)
         }
+    }
+
+    override fun onRestoreInstanceState(mSavedInstanceState: Bundle) {
+        super.onRestoreInstanceState(mSavedInstanceState)
+        savedInstanceState = mSavedInstanceState
+    }
+
+    private fun restoreSavedInstanceValues() {
+        savedInstanceState?.run {
+            getString("editText_${R.id.editTextNewName}", null)?.let {
+                findViewById<EditText>(R.id.editTextNewName).setText(it)
+            }
+            getString("editText_${R.id.editTextAddSuggestion}", null)?.let {
+                findViewById<EditText>(R.id.editTextAddSuggestion).setText(it)
+            }
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString(
+            "editText_${R.id.editTextNewName}",
+            findViewById<EditText>(R.id.editTextNewName).text.toString()
+        )
+        outState.putString(
+            "editText_${R.id.editTextAddSuggestion}",
+            findViewById<EditText>(R.id.editTextAddSuggestion).text.toString()
+        )
+        super.onSaveInstanceState(outState)
     }
 
 }
