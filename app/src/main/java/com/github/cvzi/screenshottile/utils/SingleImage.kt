@@ -9,6 +9,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.util.Size
 import androidx.core.database.getLongOrNull
+import androidx.core.net.toFile
+import com.github.cvzi.screenshottile.BuildConfig
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.util.*
@@ -36,8 +38,8 @@ open class SingleImage(val uri: Uri) {
         onLoad: ((SingleImageLoaded) -> Unit),
         onError: (Exception?) -> Unit
     ) {
-        Log.v(TAG, "loadImage($uri)")
         Thread {
+            if (BuildConfig.DEBUG) Log.v(TAG, "loadImage() from: $uri")
             var bm: Bitmap? = null
             var error: Exception? = null
             var displayName: String? = null
@@ -99,11 +101,36 @@ open class SingleImage(val uri: Uri) {
                     Date(dateModifiedMilliseconds)
                 } else {
                     Log.w(TAG, "No date value found in ContentResolver")
-                    Date()
+                    null
                 }
             }?.close()
 
+            if (uri.normalizeScheme().scheme == "file") {
+                val file = uri.toFile()
+                if (displayName == null) {
+                    displayName = file.name
+                }
+                try {
+                    if (file.isFile) {
+                        if (date == null) {
+                            file.lastModified().takeIf { it > 1 }?.let {
+                                date = Date(it)
+                            }
+                        }
+                        if (size == null) {
+                            size = file.length().takeIf { it > 1 }
+                        }
+                    }
+                } catch (e: SecurityException) {
+                    Log.e(TAG, e.stackTraceToString())
+                }
+                if (mime == null) {
+                    mime = mimeFromFileExtension(file.extension)
+                }
+            }
+
             val mimeType = mime ?: "image/png"
+
             val (fileName, _) = fileNameFileTitle(
                 displayName ?: "unknown",
                 mimeType.split("/").last()
@@ -131,7 +158,6 @@ open class SingleImage(val uri: Uri) {
      * @throws IOException
      */
     private fun loadThumbnail(contentResolver: ContentResolver, uri: Uri, size: Size): Bitmap {
-        Log.v(TAG, "loadThumbnail()")
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             contentResolver.loadThumbnail(uri, size, null)
         } else {

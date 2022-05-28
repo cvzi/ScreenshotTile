@@ -121,7 +121,17 @@ class CompressionOptions(var fileExtension: String = "png", val quality: Int = 1
             Bitmap.CompressFormat.PNG
         }
     }
-    val mimeType = "image/$fileExtension"
+    val mimeType = mimeFromFileExtension(fileExtension)
+}
+
+/**
+ * Get mime type from file extension
+ */
+fun mimeFromFileExtension(fileExtension: String): String {
+    return when(fileExtension.lowercase()) {
+        "jpg" -> "image/jpeg"
+        else -> "image/${fileExtension.lowercase()}"
+    }
 }
 
 /**

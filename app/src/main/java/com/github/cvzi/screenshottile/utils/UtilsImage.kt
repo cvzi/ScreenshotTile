@@ -91,7 +91,7 @@ fun addImageToGallery(
     filepath: String,
     title: String,
     description: String,
-    mimeType: String = "image/jpeg",
+    mimeType: String = "image/png",
     date: Date,
     dim: Point
 ): Uri? {
@@ -190,7 +190,7 @@ fun deleteContentResolver(context: Context, uri: Uri): Boolean {
         }
         0
     }
-    Log.v(
+    if(BuildConfig.DEBUG) Log.v(
         UTILSIMAGEKT,
         "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"
     )
