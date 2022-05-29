@@ -122,6 +122,8 @@
     <string name="about_app_2">This app still has some problems and is under development.\nIf you have root access on your phone, please use ipcjs\' version, it\'s faster and more reliant.</string>
     <string name="about_privacy_title">Privacy Policy</string>
     <string name="about_open_source_title">Open source used</string>
+    <string name="about_advanced_settings_button">Advanced settings</string>
+    <string name="about_update_check_button">Update check</string>
 
     <!-- First screen -->
     <string name="main_accessibility_settings">Accessibility settings</string>

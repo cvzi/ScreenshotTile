@@ -229,7 +229,7 @@
         android:key="@string/pref_static_field_key_advanced_settings"
         android:persistent="false"
         android:selectable="true"
-        android:title="@string/advanced_settings"
+        android:title="@string/about_advanced_settings_button"
         app:icon="@android:drawable/ic_menu_manage" />
 
 
@@ -237,7 +237,7 @@
         android:key="@string/pref_static_field_key_about_updates"
         android:persistent="false"
         android:selectable="true"
-        android:title="Update check"
+        android:title="@string/about_update_check_button"
         app:icon="@android:drawable/ic_popup_sync" />
 
 </androidx.preference.PreferenceScreen>
