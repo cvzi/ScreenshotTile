@@ -15,10 +15,12 @@
     <string name="setting_floating_button_unsupported">Krever Android 9 Pie</string>
     <string name="setting_storage_directory">Lagringsplasseringen</string>
     <string name="setting_storage_directory_description">Mappen som bildene skal lagres i</string>
+    <string name="setting_file_name_pattern">Filnavn</string>
     <string name="setting_dark_theme">Mørkt tema</string>
     <string name="setting_dark_theme_system">System</string>
     <string name="setting_dark_theme_off">Deaktivert</string>
     <string name="setting_dark_theme_on">Aktivert</string>
+    <string name="setting_notification_buttons_max_three">Velg maksimalt tre knapper</string>
     <string name="notification_settings">Varslinger</string>
     <string name="notification_settings_on">Aktivert</string>
     <string name="notification_settings_off">Deaktivert</string>
@@ -28,6 +30,7 @@
     <string name="notification_body">Trykk for å åpne skjermbilde</string>
     <string name="notification_channel_description">Viser varsling hvis en skjermbilde var tatt</string>
     <string name="notification_foreground_title">Lagrer skjermbildet…</string>
+    <string name="notification_foreground_body">Bearbeiding av skjermbildet… Trykk for å avbryte</string>
     <string name="notification_app_chooser_share">Del med…</string>
     <string name="notification_app_chooser_edit">Endre med…</string>
     <string name="screenshot_failed">Kunne ikke ta skjermbilde, prøv igjen</string>
@@ -36,6 +39,8 @@
     <string name="notification_delete_screenshot">Slett</string>
     <string name="notification_share_screenshot">Del</string>
     <string name="notification_edit_screenshot">Endre</string>
+    <string name="notification_rename_screenshot">Omdøp</string>
+    <string name="notification_screenshot_details">Detaljer</string>
     <string name="screenshot_deleted">Skjermbildet slettet</string>
     <string name="screenshot_delete_failed">Mislyktes å slette bildet</string>
     <string name="permission_missing_external_storage">Mislyktes å skaffe tillatelse for Lagring</string>
@@ -50,6 +55,8 @@
     <string name="about_app_1">Denne er et fork av\ngithub.com/ipcjs/ScreenshotTile</string>
     <string name="about_license_title">Lisens</string>
     <string name="about_app_2">Denne app er fortsatt utviklet.\nHvis du har root access, kan du bruke versjonen av ipcjs, den er raskere og mer pålitelig.</string>
-    <string name="main_assist_app_title">Assistentapp</string>
     <!-- First screen -->
+   <string name="main_assist_app_title">Assistentapp</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">Omdøp</string>
 </resources>
