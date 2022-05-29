@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="30">Decupator pentru capturi ecran (fără Root)</string>
+    <string name="app_name">Decupator pentru capturi ecran (fără Root)</string>
     <string name="tile_label">Captură ecran</string>
     <string name="tile_floating_label">Plutind pe ecran</string>
     <string name="tile_floating_subtitle">Buton Captură ecran</string>
@@ -54,6 +54,9 @@
     <string name="setting_dark_theme_system">Sistem</string>
     <string name="setting_dark_theme_off">Inactivă</string>
     <string name="setting_dark_theme_on">Activat</string>
+    <string name="setting_notification_buttons">Butoane de notificare</string>
+    <string name="setting_notification_buttons_description">Selectați până la trei butoane care apar sub notificarea de captură de ecran</string>
+    <string name="setting_notification_buttons_max_three">Vă rugăm să alegeți maximum trei butoane</string>
     <string name="notification_settings">Notificări</string>
     <string name="notification_settings_on">Activat</string>
     <string name="notification_settings_off">Dezactivat</string>
@@ -74,8 +77,12 @@
     <string name="notification_delete_screenshot">Șterge</string>
     <string name="notification_share_screenshot">Distribuie</string>
     <string name="notification_edit_screenshot">Modifică</string>
+    <string name="notification_rename_screenshot">Redenumiți</string>
+    <string name="notification_screenshot_details">Detalii</string>
     <string name="screenshot_deleted">Captură ștearsă</string>
     <string name="screenshot_delete_failed">Stergerea fișierului a eșuat</string>
+    <string name="screenshot_renamed">Fișier redenumit în %1s</string>
+    <string name="screenshot_rename_failed">Nu s-a putut redenumi fișierul</string>
     <string name="permission_missing_external_storage">Obținerea permisiunii pentru stocare a eșuat</string>
     <string name="permission_missing_screen_capture">Obținerea permisiunilor pentru înregistrarea capturii ecranului a eșuat</string>
     <string name="hide_app_from_launcher">Ascunde pictograma aplicatiei din lansator</string>
@@ -114,6 +121,8 @@
     <string name="about_app_2">Această aplicație are încă unele probleme și este în curs de dezvoltare.\nDacă aveți acces root pe telefon, vă rugăm să utilizați versiunea ipcjs\', este mai rapidă și mai fiabilă.</string>
     <string name="about_privacy_title">Politică de confidenţialitate</string>
     <string name="about_open_source_title">Sursă deschisă utilizată</string>
+    <string name="about_advanced_settings_button">Setari avansate</string>
+    <string name="about_update_check_button">Verificare actualizare</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Setări de accesibilitate</string>
     <string name="main_floating_button_title">Buton flotant</string>
@@ -129,4 +138,14 @@
     <string name="main_long_press_text">Apăsarea lungă a butonului deschide un meniu. Poți specifica o întârziere pentru captura de ecran sau poți tăia un dreptunghi de pe ecran.</string>
     <string name="main_assist_app_title">Aplicație asistent</string>
     <string name="main_assist_app_text">Dacă ați setat această aplicație ca aplicație de asistență, puteți apăsa lung pe butonul de pornire pentru a face o captură de ecran. Activarea acestei aplicații ca aplicație de asistență va dezactiva alți asistenți. Puteți modifica acțiunea de apăsare lungă a butonului Home în setările aplicației.</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">Redenumiți</string>
+    <string name="post_recent_file_names_and_suggestions">Nume de fișiere recente și sugestii:</string>
+    <string name="post_hint_new_file_name">Nume nou fișier</string>
+    <string name="post_rename_file">Redenumiți fișierul:</string>
+    <string name="post_rename_error_identical">Numele fișierului nou și cel vechi sunt identice</string>
+    <string name="post_hint_new_file_name_suggestion">Adăugați o nouă sugestie</string>
+    <string name="post_save_a_suggestion">Salvați sugestia</string>
+    <string name="post_pin_to_favorites">Puneți la favorite</string>
+    <string name="post_delete_suggestion">Ștergeți sugestia</string>
 </resources>
