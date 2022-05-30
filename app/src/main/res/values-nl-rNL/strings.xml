@@ -96,6 +96,8 @@
     <string name="about_app_2">Deze app heeft nog steeds problemen en is in ontwikkeling.\nAls je root-toegang hebt op je telefoon, gebruik dan de versie van ipcjs, deze is sneller en betrouwbaarder.</string>
     <string name="about_privacy_title">Privacybeleid</string>
     <string name="about_open_source_title">Gebruikte open source</string>
+    <string name="about_advanced_settings_button">Geavanceerde instellingen</string>
+    <string name="about_update_check_button">Zoeken naar updates</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Toegankelijkheidsinstellingen</string>
     <string name="main_floating_button_title">Zwevende knop</string>
