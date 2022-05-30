@@ -48,10 +48,14 @@
     <string name="setting_file_name_placeholders_title">У назва файлу доступні наступні заповнювачі</string>
     <string name="setting_tile_action">Дія плитки</string>
     <string name="setting_floating_action">Дія для рухомої кнопки</string>
+    <string name="setting_voice_interaction_action">Дія помічника</string>
     <string name="setting_dark_theme">Нічний режим</string>
     <string name="setting_dark_theme_system">Система</string>
     <string name="setting_dark_theme_off">Вимкнено</string>
     <string name="setting_dark_theme_on">Увімкнено</string>
+    <string name="setting_notification_buttons">Кнопки сповіщень</string>
+    <string name="setting_notification_buttons_description">Виберіть до трьох кнопок, які з’являються під сповіщенням про знімок екрана</string>
+    <string name="setting_notification_buttons_max_three">Виберіть до трьох кнопок</string>
     <string name="notification_settings">Сповіщення</string>
     <string name="notification_settings_on">Увімкнені</string>
     <string name="notification_settings_off">Вимкнені</string>
@@ -71,8 +75,12 @@
     <string name="notification_delete_screenshot">Видалити</string>
     <string name="notification_share_screenshot">Поділитися</string>
     <string name="notification_edit_screenshot">Редагувати</string>
+    <string name="notification_rename_screenshot">Перейменувати</string>
+    <string name="notification_screenshot_details">Подробиці</string>
     <string name="screenshot_deleted">Знімок екрана видалено</string>
     <string name="screenshot_delete_failed">Не вдалося видалити файл</string>
+    <string name="screenshot_renamed">Файл перейменовано на %1s</string>
+    <string name="screenshot_rename_failed">Не вдалося перейменувати файл</string>
     <string name="permission_missing_external_storage">Немає необхідного дозволу. Для збереження записаних файлів програма вимагає доступу до пам\'яті пристрою</string>
     <string name="permission_missing_screen_capture">Немає необхідного дозволу. Застосунок вимагає дозволу для знімання екрана</string>
     <string name="hide_app_from_launcher">Сховати значок з меню програм</string>
@@ -91,6 +99,15 @@
     <string name="tutorial_step16">Зробіть знімки екрану за допомогою нової кнопки</string>
     <string name="take_screenshot">Зробити знімок екрана</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Вимоги щодо чіткого повідомлення про використання персональних даних і отримання згоди</string>
+    <string name="googleplay_consent_line_0">Google Play вимагає чіткого повідомлення використання API служб спеціальних можливостей для застосунку, який не є інструментом доступності.</string>
+    <string name="googleplay_consent_line_1">Цей додаток — «Screenshot Tile [No root]» — це не інструменти доступності екрана.</string>
+    <string name="googleplay_consent_line_2">Оскільки користувачі не можуть обґрунтовано очікувати, що їхні особисті та конфіденційні дані будуть потрібні для надання або вдосконалення функцій або функціональності, сумісних з політикою, у цьому застосунку, чітке розкриття використання API служб спеціальних можливостей цим застосунком та декларації про збір даних та обмін даними в цьому застосунку потрібно:</string>
+    <string name="googleplay_consent_line_3">Цей застосунок потребує доступу до API служб спеціальних можливостей для того, щоб зробити знімок екрана, коли застосунок не використовується.</string>
+    <string name="googleplay_consent_line_4">Доступ до API служб спеціальних можливостей уможливлює запис з екрана цим застосунком.</string>
+    <string name="googleplay_consent_line_5">Записи екрана будуть використані для створення зображень знімків екрана.</string>
+    <string name="googleplay_consent_line_6">Використовуючи можливості доступності дані не збираються та не поширюються цим застосунком.</string>
+    <string name="googleplay_consent_line_7">Ви погоджуєтеся авторизувати цей застосунок на отримання доступу до API служб спеціальних можливостей та використовувати можливості доступності для запису екрана?</string>
     <string name="googleplay_consent_yes">Я погоджуюся</string>
     <string name="googleplay_consent_no">Я відмовляюся</string>
     <!-- About -->
@@ -100,6 +117,8 @@
     <string name="about_license_title">Ліцензія</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">Цей застосунок все ще має деякі проблеми та перебуває в розробці.\nЯкщо у вас є root-доступ до вашого телефона, використовуйте версію ipcjs, вона швидша та надійніша.</string>
+    <string name="about_advanced_settings_button">Додаткові налаштування</string>
+    <string name="about_update_check_button">Перевірка наявності оновлень</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Налаштування спеціальних можливостей</string>
     <string name="main_floating_button_title">Рухома кнопка</string>
@@ -114,4 +133,15 @@
     <string name="main_long_press_title">Тривале натискання</string>
     <string name="main_long_press_text">Тривале натискання на плитку/кнопку відкриває меню. В цьому меню ви можете вказати затримку перед зняттям екрана або зробити знімок вибраної частини екрана.</string>
     <string name="main_assist_app_title">Помічник</string>
+    <string name="main_assist_app_text">Якщо ви встановите цей застосунок як допоміжний, ви можете зробити знімок екрана тривалим натиском кнопку «Додому». Увімкнення цього застосунку як допоміжного застосунку вимкне інших помічників. Змінити дію кнопки Додому можна в налаштуваннях застосунку.</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">Перейменувати</string>
+    <string name="post_recent_file_names_and_suggestions">Нещодавні назви файлів і пропозиції:</string>
+    <string name="post_hint_new_file_name">Нова назва файлу</string>
+    <string name="post_rename_file">Перейменувати файл:</string>
+    <string name="post_rename_error_identical">Нова та стара назва файлу збігаються</string>
+    <string name="post_hint_new_file_name_suggestion">Додати нову пропозицію</string>
+    <string name="post_save_a_suggestion">Зберегти пропозицію</string>
+    <string name="post_pin_to_favorites">Прикріпити в обраному</string>
+    <string name="post_delete_suggestion">Видалити пропозицію</string>
 </resources>
