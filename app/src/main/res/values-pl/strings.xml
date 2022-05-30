@@ -4,13 +4,13 @@
     <string name="tile_label">Zrzut ekranu</string>
     <string name="tile_floating_label">Pływający</string>
     <string name="tile_floating_subtitle">Przycisk zrzutu ekranu</string>
-    <string name="title_delay">Opóźnienie wykonania</string>
-    <string name="more_setting">Ustawienia</string>
+    <string name="title_delay">Opóźnienie</string>
+    <string name="more_setting">Więcej ustawień</string>
     <string name="open_settings">Otwórz ustawienia</string>
     <string name="left_screenshot_right_menu">Lewo: zrzut ekranu, prawo: ustawienia</string>
     <string name="partial_screenshot">Wybierz obszar</string>
     <string name="file_format">Format pliku</string>
-    <string name="setting_delay_entry_default">Natychmiastową</string>
+    <string name="setting_delay_entry_default">Bez opóźnienia</string>
     <string name="setting_delay_entry_1s">1 sekunda</string>
     <string name="setting_delay_entry_2s">2 sekundy</string>
     <string name="setting_delay_entry_5s">5 sekund</string>
@@ -40,13 +40,21 @@
     <string name="setting_floating_button_show_close_dialog_description">Wpisz tekst lub wybierz emoji, które pojawi się jako przycisk zamykania</string>
     <string name="setting_floating_button_shutter">Motyw pływającego przycisku</string>
     <string name="setting_floating_button_delay">Opóźnienie (pływający przycisk)</string>
+    <string name="setting_broadcast_secret">Hasło do Broadcast Intent</string>
+    <string name="setting_broadcast_secret_description">Sekretna fraza umożliwiająca innym aplikacjom (takim jak MacroDroid lub Tasker) wykonanie zrzutu ekranu</string>
     <string name="setting_storage_directory">Lokalizacja zapisu</string>
     <string name="setting_storage_directory_description">Folder do którego będą zapisywane pliki</string>
+    <string name="setting_file_name_pattern">Nazwa pliku</string>
+    <string name="setting_file_name_placeholders_title">Użyj tych symboli zastępczych w nazwie pliku</string>
     <string name="setting_tile_action">Akcja kafelka</string>
+    <string name="setting_floating_action">Działanie pływającego przycisku</string>
     <string name="setting_dark_theme">Ciemny motyw</string>
-    <string name="setting_dark_theme_system">Systemu</string>
+    <string name="setting_dark_theme_system">Systemowy</string>
     <string name="setting_dark_theme_off">Wyłączony</string>
     <string name="setting_dark_theme_on">Włączony</string>
+    <string name="setting_notification_buttons">Przyciski powiadomień</string>
+    <string name="setting_notification_buttons_description">Wybierz trzy przyciski, które pojawią się pod powiadomieniem o wykonaniu zrzutu ekranu</string>
+    <string name="setting_notification_buttons_max_three">Wybierz maksymalnie trzy przyciski</string>
     <string name="notification_settings">Powiadomienia</string>
     <string name="notification_settings_on">Włączone</string>
     <string name="notification_settings_off">Wyłączone</string>
@@ -56,19 +64,23 @@
     <string name="notification_title">Wykonano zrzut ekranu</string>
     <string name="notification_body">Dotknij, aby wyświetlić zrzut ekranu</string>
     <string name="notification_channel_description">Pokazuje powiadomienie, po wykonaniu zrzutu ekranu</string>
-    <string name="notification_foreground_title">Zapisywanie zrzutu ekranu…</string>
+    <string name="notification_foreground_title">Wykonywanie zrzutu ekranu…</string>
     <string name="notification_foreground_body">Zapisywanie zrzutu ekranu… Stuknij, aby anulować</string>
     <string name="notification_foreground_channel_description">Pokazuje powiadomienie podczas wykonywania zrzutu ekranu. Zapobiega to zatrzymaniu aplikacji przez optymalizację baterii w toku wykonywania zrzutu ekranu</string>
     <string name="notification_app_chooser_share">Udostępnij przez…</string>
     <string name="notification_app_chooser_edit">Edytuj w aplikacji…</string>
     <string name="screenshot_failed">Nie udało się wykonać zrzutu ekranu</string>
     <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
-    <string name="screenshot_file_saved">Wykonano zrzut ekranu: %1$s</string>
+    <string name="screenshot_file_saved">Zrzut ekranu został zapisany: %1$s</string>
     <string name="notification_delete_screenshot">Usuń</string>
     <string name="notification_share_screenshot">Udostępnij</string>
     <string name="notification_edit_screenshot">Edytuj</string>
+    <string name="notification_rename_screenshot">Zmień nazwę</string>
+    <string name="notification_screenshot_details">Szczegóły</string>
     <string name="screenshot_deleted">Zrzut ekranu usunięty</string>
     <string name="screenshot_delete_failed">Nie można usunąć pliku</string>
+    <string name="screenshot_renamed">Zmieniono nazwę pliku na %1s</string>
+    <string name="screenshot_rename_failed">Nie udało się zmienić nazwy pliku</string>
     <string name="permission_missing_external_storage">Brak wymaganych uprawnień. Aplikacja wymaga dostępu do pamięci urządzenia, aby celu zapisania nagranych plików</string>
     <string name="permission_missing_screen_capture">Brak wymaganych uprawnień. Aplikacja wymaga uprawnień, aby przechwycić ekran.</string>
     <string name="hide_app_from_launcher">Ukryj ikonę aplikacji z szuflady aplikacji/ekranu głównego</string>
@@ -86,6 +98,8 @@
     <string name="tutorial_step11">Zaakceptuj uprawnienia</string>
     <string name="tutorial_step16">Wykonaj zrzut ekranu za pomocą nowego przycisku</string>
     <string name="take_screenshot">Wykonaj zrzut ekranu</string>
+    <string name="googleplay_consent_yes">Zgadzam się</string>
+    <string name="googleplay_consent_no">Odmawiam</string>
     <!-- About -->
     <string name="about_app_title">O aplikacji</string>
     <string name="about_app_1">To jest fork\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -93,6 +107,7 @@
     <string name="about_license_title">Licencja</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Wersja 3</string>
     <string name="about_app_2">Ta aplikacja nadal ma pewne problemy i jest w trakcie rozwoju.\nJeśli masz w telefonie dostęp do root\'a, użyj wersji użytkownika ipcjs, jest szybsza i bardziej niezawodna.</string>
+    <string name="about_advanced_settings_button">Zaawansowane ustawienia</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Ustawienia ułatwień dostępu</string>
     <string name="main_floating_button_title">Pływający przycisk</string>
@@ -107,4 +122,6 @@
     <string name="main_long_press_title">Długie naciśnięcie</string>
     <string name="main_long_press_text">Długie naciśnięcie kafelka/przycisku otwiera menu. Możesz określić opóźnienie zrzutu ekranu lub wyciąć prostokątny fragment ekranu.</string>
     <string name="main_assist_app_title">Aplikacja asystująca</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">Zmień nazwę</string>
 </resources>

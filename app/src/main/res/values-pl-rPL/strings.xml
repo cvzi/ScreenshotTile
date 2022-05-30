@@ -52,6 +52,9 @@
     <string name="setting_dark_theme_system">Systemowy</string>
     <string name="setting_dark_theme_off">Wyłączony</string>
     <string name="setting_dark_theme_on">Włączony</string>
+    <string name="setting_notification_buttons">Przyciski powiadomień</string>
+    <string name="setting_notification_buttons_description">Wybierz trzy przyciski, które pojawią się pod powiadomieniem o wykonaniu zrzutu ekranu</string>
+    <string name="setting_notification_buttons_max_three">Wybierz maksymalnie trzy przyciski</string>
     <string name="notification_settings">Powiadomienia</string>
     <string name="notification_settings_on">Włączone</string>
     <string name="notification_settings_off">Wyłączone</string>
@@ -72,8 +75,12 @@
     <string name="notification_delete_screenshot">Usuń</string>
     <string name="notification_share_screenshot">Udostępnij</string>
     <string name="notification_edit_screenshot">Edytuj</string>
+    <string name="notification_rename_screenshot">Zmień nazwę</string>
+    <string name="notification_screenshot_details">Szczegóły</string>
     <string name="screenshot_deleted">Zrzut ekranu usunięty</string>
     <string name="screenshot_delete_failed">Nie można usunąć pliku</string>
+    <string name="screenshot_renamed">Zmieniono nazwę pliku na %1s</string>
+    <string name="screenshot_rename_failed">Nie udało się zmienić nazwy pliku</string>
     <string name="permission_missing_external_storage">Brak wymaganych uprawnień. Aplikacja wymaga dostępu do pamięci urządzenia, aby celu zapisania nagranych plików</string>
     <string name="permission_missing_screen_capture">Brak wymaganych uprawnień. Aplikacja wymaga uprawnień, aby przechwycić ekran.</string>
     <string name="hide_app_from_launcher">Ukryj ikonę aplikacji z szuflady aplikacji/ekranu głównego</string>
@@ -91,6 +98,8 @@
     <string name="tutorial_step11">Zaakceptuj uprawnienia</string>
     <string name="tutorial_step16">Wykonaj zrzut ekranu za pomocą nowego przycisku</string>
     <string name="take_screenshot">Wykonaj zrzut ekranu</string>
+    <string name="googleplay_consent_yes">Zgadzam się</string>
+    <string name="googleplay_consent_no">Odmawiam</string>
     <!-- About -->
     <string name="about_app_title">O aplikacji</string>
     <string name="about_app_1">To jest fork\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -98,6 +107,7 @@
     <string name="about_license_title">Licencja</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Wersja 3</string>
     <string name="about_app_2">Ta aplikacja nadal ma pewne problemy i jest w trakcie rozwoju.\nJeśli masz w telefonie dostęp do root\'a, użyj wersji użytkownika ipcjs, jest szybsza i bardziej niezawodna.</string>
+    <string name="about_advanced_settings_button">Zaawansowane ustawienia</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Ustawienia ułatwień dostępu</string>
     <string name="main_floating_button_title">Pływający przycisk</string>
@@ -112,4 +122,6 @@
     <string name="main_long_press_title">Długie naciśnięcie</string>
     <string name="main_long_press_text">Długie naciśnięcie kafelka/przycisku otwiera menu. Możesz określić opóźnienie zrzutu ekranu lub wyciąć prostokątny fragment ekranu.</string>
     <string name="main_assist_app_title">Aplikacja asystująca</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">Zmień nazwę</string>
 </resources>
