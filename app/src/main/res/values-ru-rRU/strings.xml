@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="30">Плитка снимка экрана (без прав суперпользователя)</string>
+    <string name="app_name">Плитка снимка экрана (без прав суперпользователя)</string>
     <string name="tile_label">Снимок экрана</string>
     <string name="tile_floating_label">Плавающая</string>
     <string name="tile_floating_subtitle">Кнопка снимка экрана</string>
@@ -53,6 +53,9 @@
     <string name="setting_dark_theme_system">Как в системе</string>
     <string name="setting_dark_theme_off">Отключены</string>
     <string name="setting_dark_theme_on">Включены</string>
+    <string name="setting_notification_buttons">Кнопки в панели уведомлений</string>
+    <string name="setting_notification_buttons_description">Выберите три кнопки, отображающиеся под уведомлением о скриншоте</string>
+    <string name="setting_notification_buttons_max_three">Выберите не более трёх кнопок, пожалуйста</string>
     <string name="notification_settings">Уведомления</string>
     <string name="notification_settings_on">Включены</string>
     <string name="notification_settings_off">Отключены</string>
@@ -73,8 +76,12 @@
     <string name="notification_delete_screenshot">Удалить</string>
     <string name="notification_share_screenshot">Поделиться</string>
     <string name="notification_edit_screenshot">Редактировать</string>
+    <string name="notification_rename_screenshot">Переименовать</string>
+    <string name="notification_screenshot_details">Подробности</string>
     <string name="screenshot_deleted">Снимок экрана удалён</string>
     <string name="screenshot_delete_failed">Не удалось удалить файл</string>
+    <string name="screenshot_renamed">Файл переименован в %1s</string>
+    <string name="screenshot_rename_failed">Невозможно переименовать файл</string>
     <string name="permission_missing_external_storage">Не удалось получить разрешение на хранение</string>
     <string name="permission_missing_screen_capture">Не удалось получить разрешение на запись снимка экрана</string>
     <string name="hide_app_from_launcher">Скрыть значок приложения из меню рабочего стола</string>
@@ -113,6 +120,8 @@
     <string name="about_app_2">Это приложение всё еще имеет некоторые проблемы и находится в разработке.\nЕсли у вас есть права суперпользователя на телефоне, пожалуйста, используйте версию ipcj, она быстрее и надежнее.</string>
     <string name="about_privacy_title">Политика конфиденциальности</string>
     <string name="about_open_source_title">Использован открытый исходный код</string>
+    <string name="about_advanced_settings_button">Дополнительные настройки</string>
+    <string name="about_update_check_button">Проверить обновления</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Настройки специальных возможностей</string>
     <string name="main_floating_button_title">Всплывающая кнопка</string>
@@ -128,4 +137,14 @@
     <string name="main_long_press_text">Длительное нажатие плитки/кнопки открывает меню. Вы можете указать задержку для снимка экрана или вырезать прямоугольник с экрана.</string>
     <string name="main_assist_app_title">Помощник</string>
     <string name="main_assist_app_text">Если вы установите это приложение в качестве приложения-помощника, вы можете долго нажимать кнопку \"Домой\", чтобы сделать снимок экрана. Включение этого приложения в качестве приложения-помощника отключит других помощников. Действие длительного нажатия кнопки \"Домой\" можно изменить в настройках приложения.</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">Переименовать</string>
+    <string name="post_recent_file_names_and_suggestions">Недавние имена файлов и предложений:</string>
+    <string name="post_hint_new_file_name">Имя нового файла</string>
+    <string name="post_rename_file">Переименовать файл:</string>
+    <string name="post_rename_error_identical">Имя старого файла и нового совпадают</string>
+    <string name="post_hint_new_file_name_suggestion">Добавить предложение</string>
+    <string name="post_save_a_suggestion">Сохранить предложенное</string>
+    <string name="post_pin_to_favorites">Добавить в избранное</string>
+    <string name="post_delete_suggestion">Удалить предложенное</string>
 </resources>
