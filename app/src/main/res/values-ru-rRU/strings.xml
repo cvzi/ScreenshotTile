@@ -53,7 +53,7 @@
     <string name="setting_dark_theme_system">Как в системе</string>
     <string name="setting_dark_theme_off">Отключены</string>
     <string name="setting_dark_theme_on">Включены</string>
-    <string name="setting_notification_buttons">Кнопки в панели уведомлений</string>
+    <string name="setting_notification_buttons">Кнопки в уведомлении</string>
     <string name="setting_notification_buttons_description">Выберите три кнопки, отображающиеся под уведомлением о скриншоте</string>
     <string name="setting_notification_buttons_max_three">Выберите не более трёх кнопок, пожалуйста</string>
     <string name="notification_settings">Уведомления</string>
