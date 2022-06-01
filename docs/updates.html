@@ -79,51 +79,68 @@ ul.morelinks li {
 </style>
 
 <script type="text/javascript">
+/* globals XMLHttpRequest */
 
 const installed = {
-  package: "",
-  code: "",
-  name: "",
-  type: ""
+  package: '',
+  code: '',
+  name: '',
+  type: ''
 }
 
-function fill() {
-  for(key in installed) {
+function fill () {
+  for (const key in installed) {
     document.querySelectorAll('.data_' + key).forEach((e) => (e.textContent = installed[key]))
   }
 }
 
-function load() {
-  installed.package = document.location.search.match(/package=([\w\.]+)/)[1]
-  installed.code = parseInt(document.location.search.match(/code=([\w\.]+)/)[1])
-  installed.name = document.location.search.match(/name=([\w\.]+)/)[1]
-  installed.type = document.location.search.match(/type=([\w\.]+)/)[1]
+function matchOrNull (str, re, index) {
+  const m = str.match(re)
+  if (m) {
+    index = index || 1
+    if (index in m) {
+      return m[index]
+    }
+  }
+  return null
+}
+
+function load () {
+  installed.package = matchOrNull(document.location.search, /package=([\w.]+)/)
+  installed.code = parseInt(matchOrNull(document.location.search, /code=([\w.]+)/))
+  installed.name = matchOrNull(document.location.search, /name=([\w.]+)/)
+  installed.type = matchOrNull(document.location.search, /type=([\w.]+)/)
 
   fill()
 
   const oReq = new XMLHttpRequest()
-  oReq.addEventListener("load", loadCurrentRelease)
-  oReq.open("GET", "release.txt")
+  oReq.addEventListener('load', extractCurrentRelease)
+  oReq.open('GET', 'release.txt')
   oReq.send()
+
+  document.head.appendChild(document.createElement('script')).src = 'https://fdroid-release.cuzi.workers.dev/com.github.cvzi.screenshottile/'
 }
 
-function loadCurrentRelease () {
-  const arr = this.responseText.split("|")
+function extractCurrentRelease () {
+  const arr = this.responseText.split('|')
   const code = parseInt(arr[0].trim())
   const name = arr[1].trim()
+  showCurrentRelease(name, code)
+}
+
+function showCurrentRelease (name, code) {
   const url = 'https://github.com/cvzi/ScreenshotTile/releases/tag/v' + name
 
   document.querySelectorAll('.data_current_name').forEach((e) => (e.textContent = name))
   document.querySelectorAll('.data_current_code').forEach((e) => (e.textContent = code))
   document.querySelectorAll('.data_current_link').forEach((e) => (e.href = url))
 
-  console.log([installed.code, code],installed.code === code)
   if (installed.name === name) {
     document.querySelectorAll('.data_status_name').forEach((e) => (e.style.background = 'green'))
-  } 
+  }
   if (installed.code === code) {
     document.querySelectorAll('.data_status_code').forEach((e) => (e.style.background = 'green'))
-  } else if(installed.code < code) {
+  } else if (installed.code < code) {
     document.querySelectorAll('.data_status_code').forEach((e) => (e.style.background = 'red'))
   }
   if (installed.name === name || installed.code === code) {
@@ -131,13 +148,15 @@ function loadCurrentRelease () {
   } else {
     document.querySelectorAll('.data_status').forEach((e) => (e.style.background = 'red'))
   }
-
 }
 
-
+function suggestedFdroidRelease (resultArr) {
+  const name = resultArr[0]
+  const code = parseInt(resultArr[1])
+  showCurrentRelease(name, code)
+}
 
 </script>
-
 
 <title>
     Update check - ScreenshotTile (No root)
