@@ -7,7 +7,7 @@
 [![Download APK file](https://img.shields.io/github/release/cvzi/ScreenshotTile.svg?label=Download%20.apk&logo=android)](https://github.com/cvzi/ScreenshotTile/releases/latest)
 ![Downloads](https://img.shields.io/endpoint?color=luigi&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dcom.github.cvzi.screenshottile%26l%3DDownloads%26m%3D%24installs)
 [![F-Droid build status](https://img.shields.io/endpoint?logo=textpattern&logoColor=blue&url=https%3A%2F%2Ff-droid-build.cuzi.workers.dev%2Fcom.github.cvzi.screenshottile)](https://monitor.f-droid.org/)
-[![Gradle CI](https://img.shields.io/github/workflow/status/cvzi/ScreenshotTile/gradleCI/master?label=Gradle%20CI&logo=github)]([https://monitor.f-droid.org/](https://github.com/cvzi/ScreenshotTile/actions/workflows/gradleCI.yml))
+[![🔨 Gradle Build](https://github.com/cvzi/ScreenshotTile/actions/workflows/gradleCI.yml/badge.svg)](https://github.com/cvzi/ScreenshotTile/actions/workflows/gradleCI.yml)
 
 [<img src="/docs/imgs/get-it-on-f-droid.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.github.cvzi.screenshottile/)            Consider [donating to F-Droid](https://f-droid.org/donate/)
 
