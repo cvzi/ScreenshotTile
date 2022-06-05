@@ -92,6 +92,7 @@
     <string name="tutorial_step11">الموافقة على الأذونات</string>
     <string name="tutorial_step16">التقاط لقطات الشاشة بالزر الجديد</string>
     <string name="take_screenshot">اخذ لقطة للشاشة</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_app_title">حول</string>
     <string name="about_app_1">هذه مبني من\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -115,4 +116,5 @@
     <string name="main_long_press_title">الضغط المطول</string>
     <string name="main_long_press_text">الضغط المطول على السطر/الزر يفتح قائمة. يمكنك تحديد تأخير لقطة الشاشة أو قطع المستطيل من الشاشة.</string>
     <string name="main_assist_app_title">تطبيق المساعد</string>
+    <!-- Post edit activity -->
 </resources>
