@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="tile_label">スクリーンショット</string>
+    <string name="title_delay">遅延</string>
+    <string name="more_setting">詳細設定</string>
+    <string name="open_settings">設定を開く</string>
+    <string name="left_screenshot_right_menu">左：スクリーンショット，右：設定</string>
+    <string name="partial_screenshot">範囲の選択</string>
     <string name="file_format">フォーマット</string>
     <string name="setting_delay_entry_default">すぐ</string>
     <string name="setting_delay_entry_1s">1秒</string>
     <string name="setting_delay_entry_2s">2秒</string>
     <string name="setting_delay_entry_5s">5秒</string>
+    <string name="use_native_screenshot_unsupported">Android 9 Pie が必要です</string>
+    <string name="use_system_defaults">システムの既定を使用</string>
+    <string name="use_system_defaults_summary">Android 11 が必要です</string>
+    <string name="use_system_defaults_summary_off">アプリの設定を使用</string>
+    <string name="setting_floating_button_unsupported">Android 9 Pie が必要です</string>
     <string name="setting_storage_directory">保存場所</string>
     <string name="setting_storage_directory_description">写真を保存するフォルダを決めます</string>
+    <string name="setting_file_name_pattern">ファイル名</string>
+    <string name="setting_dark_theme">ダークテーマ</string>
+    <string name="setting_dark_theme_system">システム</string>
     <string name="setting_dark_theme_off">OFF</string>
     <string name="setting_dark_theme_on">ON</string>
+    <string name="setting_notification_buttons">通知ボタン</string>
     <string name="notification_settings">通知</string>
     <string name="notification_settings_on">ON</string>
     <string name="notification_settings_off">OFF</string>
@@ -18,15 +32,40 @@
     <string name="notification_body">タップするとスクリーンショットが表示されます</string>
     <string name="notification_foreground_title">スクリーンショットを保存中…</string>
     <string name="notification_foreground_body">スクリーンショットを保存中… タップして終了する</string>
+    <string name="notification_app_chooser_share">… でファイルを共有</string>
+    <string name="notification_app_chooser_edit">… でファイルを編集</string>
     <string name="screenshot_failed">スクリーンショット保存エラー</string>
     <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
     <string name="notification_delete_screenshot">削除</string>
     <string name="notification_share_screenshot">シェア</string>
     <string name="notification_edit_screenshot">編集</string>
+    <string name="notification_rename_screenshot">名前を変更</string>
+    <string name="notification_screenshot_details">詳細</string>
+    <string name="screenshot_deleted">スクリーンショットを削除しました</string>
+    <string name="screenshot_delete_failed">ファイルを削除できませんでした</string>
+    <string name="screenshot_renamed">ファイル名を %1s に変更しました</string>
+    <string name="screenshot_rename_failed">ファイル名を変更できませんでした</string>
     <string name="hide_app_from_launcher">ドロワーからアプリを非表示にする</string>
+    <string name="hide_app_unsupported">Android 10 以降ではサポートされていません</string>
     <string name="tutorial">チュートリアル</string>
+    <string name="take_screenshot">スクリーンショットを撮る</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_yes">同意する</string>
+    <string name="googleplay_consent_no">拒否する</string>
     <!-- About -->
+    <string name="about_app_title">概要</string>
+    <string name="about_app_1">これは\ngithub.com/ipcjs/ScreenshotTile のフォークです</string>
     <string name="about_license_title">ライセンス</string>
-    <string name="main_assist_app_title">アシストアプリ</string>
+    <string name="about_license_1">GNU General Public License バージョン 3</string>
+    <string name="about_advanced_settings_button">詳細設定</string>
+    <string name="about_update_check_button">更新を確認</string>
     <!-- First screen -->
+    <string name="main_accessibility_settings">ユーザー補助の設定</string>
+    <string name="main_long_press_title">長押し</string>
+    <string name="main_assist_app_title">アシストアプリ</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">名前を変更</string>
+    <string name="post_hint_new_file_name">新しいファイル名</string>
+    <string name="post_rename_file">ファイル名を変更：</string>
+    <string name="post_pin_to_favorites">お気に入りに追加</string>
 </resources>
