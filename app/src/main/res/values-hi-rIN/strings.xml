@@ -39,8 +39,10 @@
     <string name="screenshot_deleted">फ़ाइल सफलतापूर्वक नष्ट कर दिया</string>
     <string name="hide_app_from_launcher">एप्लिकेशन ड्रॉअर से ऐप छुपाए</string>
     <string name="tutorial">ट्यूटोरियल</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_license_title">लाइसेंस</string>
-    <string name="main_assist_app_title">सहायक ऐप</string>
     <!-- First screen -->
+    <string name="main_assist_app_title">सहायक ऐप</string>
+    <!-- Post edit activity -->
 </resources>
