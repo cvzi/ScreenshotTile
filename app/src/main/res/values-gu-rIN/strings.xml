@@ -24,8 +24,10 @@
     <string name="notification_edit_screenshot">સંપાદિત કરો</string>
     <string name="hide_app_from_launcher">એપ્લિકેશન ડ્રોઅરથી એપ્લિકેશન છુપાવો </string>
     <string name="tutorial">ટ્યૂટૉરિઅલ</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_license_title">લાઇસન્સ</string>
-    <string name="main_assist_app_title">સહાયક ઍપ</string>
     <!-- First screen -->
+    <string name="main_assist_app_title">સહાયક ઍપ</string>
+    <!-- Post edit activity -->
 </resources>
