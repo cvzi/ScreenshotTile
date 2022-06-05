@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.17.1
+* 🇷🇺 Russian translation improved by [Ilyas Khaniev](https://github.com/TheOldBlood)
+* 🇯🇵 Japanese translation improved by [FrzMtrsprt](https://github.com/FrzMtrsprt)
+* 🇻🇳 Vietnamese translation improved by [bruhwut](https://github.com/FrzMtrsprt)
+
 ## 1.17.0
 *   Choose which action buttons appear in the notification (configurable in app settings)
 *   Rename file from notification
