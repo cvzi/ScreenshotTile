@@ -23,8 +23,10 @@
     <string name="notification_share_screenshot">सामायिक करा</string>
     <string name="notification_edit_screenshot">संपादित करा</string>
     <string name="tutorial">ट्युटोरियल</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_license_title">परवाना</string>
-    <string name="main_assist_app_title">साहाय्य अ‍ॅप</string>
     <!-- First screen -->
+    <string name="main_assist_app_title">साहाय्य अ‍ॅप</string>
+    <!-- Post edit activity -->
 </resources>
