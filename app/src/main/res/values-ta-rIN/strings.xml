@@ -25,7 +25,9 @@
     <string name="notification_edit_screenshot">திருத்து</string>
     <string name="hide_app_from_launcher">பயன்பாட்டின் டிராயரில் பயன்பாட்டை மறை</string>
     <string name="tutorial">பயிற்சி</string>
-    <string name="main_assist_app_title">அசிஸ்ட் ஆப்ஸ்</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <!-- First screen -->
+    <string name="main_assist_app_title">அசிஸ்ட் ஆப்ஸ்</string>
+    <!-- Post edit activity -->
 </resources>

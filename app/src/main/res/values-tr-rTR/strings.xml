@@ -85,6 +85,7 @@
     <string name="tutorial_step8">Hızlı ayarları kapatın</string>
     <string name="tutorial_step11">İzinleri kabul edin</string>
     <string name="tutorial_step16">Ekran resmi yeni butonla çek</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_app_title">Hakkında</string>
     <string name="about_app_1">Bu bir\ngithub.com/ipcjs/ScreenshotTile çatalıdır</string>
@@ -103,4 +104,5 @@
     <string name="main_long_press_title">Uzun bas</string>
     <string name="main_long_press_text">Karo/butonu uzun basarsanız menu açar. Ekran resmi alma için erteleme koyabilirsiniz yada ekrandan dikdörtgen şekli kesebilirsiniz.</string>
     <string name="main_assist_app_title">Yardım uygulaması</string>
+    <!-- Post edit activity -->
 </resources>

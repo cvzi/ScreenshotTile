@@ -41,6 +41,7 @@
     <string name="hide_app_unsupported">دَر اَندرویدِ ۱۰+ پُشتیبانی نِمےشَوَد</string>
     <string name="tutorial">آموزش گام‌به‌گام</string>
     <string name="take_screenshot">اَنداختَنِ یِک نَماگِرِفت</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_app_title">دَربارِه</string>
     <string name="about_license_title">گُواهےنامِہ</string>
@@ -48,4 +49,5 @@
     <!-- First screen -->
     <string name="main_native_method_title">شیوِه‌یِ بُنیادین</string>
     <string name="main_assist_app_title">برنامه همیار</string>
+    <!-- Post edit activity -->
 </resources>

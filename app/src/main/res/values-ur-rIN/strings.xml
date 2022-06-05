@@ -23,8 +23,10 @@
     <string name="notification_share_screenshot">شیئر</string>
     <string name="notification_edit_screenshot">ترمیم کریں</string>
     <string name="tutorial">ٹیوٹوریل</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_license_title">لائسنس</string>
-    <string name="main_assist_app_title">معاون ایپ</string>
     <!-- First screen -->
+    <string name="main_assist_app_title">معاون ایپ</string>
+    <!-- Post edit activity -->
 </resources>

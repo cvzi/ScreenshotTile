@@ -48,6 +48,7 @@
     <string name="setting_file_name_placeholders_title">Utiliser les variables suivantes dans le nom du fichier</string>
     <string name="setting_tile_action">Action de la tuile/du bouton</string>
     <string name="setting_floating_action">Action du bouton flottant</string>
+    <string name="setting_voice_interaction_action">Action de l\'assistant</string>
     <string name="setting_dark_theme">Mode nuit</string>
     <string name="setting_dark_theme_system">Système</string>
     <string name="setting_dark_theme_off">Désactivé</string>
@@ -91,6 +92,9 @@
     <string name="tutorial_step11">Acceptez les autorisations</string>
     <string name="tutorial_step16">Prenez des captures d\'écran avec le nouveau bouton</string>
     <string name="take_screenshot">Capture d\'écran</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_yes">J\'accepte</string>
+    <string name="googleplay_consent_no">Je refuse</string>
     <!-- About -->
     <string name="about_app_title">À propos</string>
     <string name="about_app_1">Ceci est un fork de\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -112,6 +116,5 @@
     <string name="main_long_press_title">Appui prolongé</string>
     <string name="main_long_press_text">Un appui prolongé sur la tuile/bouton ouvre un menu. Vous pouvez spécifier un délai pour la capture d\'écran ou sélectionner une zone de l\'écran à capturer.</string>
     <string name="main_assist_app_title">Application d\'assistance</string>
-    <string name="googleplay_consent_no">Je refuse</string>
-    <string name="googleplay_consent_yes">J\'accepte</string>
+    <!-- Post edit activity -->
 </resources>

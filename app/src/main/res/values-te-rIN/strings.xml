@@ -24,7 +24,9 @@
     <string name="notification_share_screenshot">భాగస్వామ్యం చేయండి</string>
     <string name="notification_edit_screenshot">సవరించు</string>
     <string name="tutorial">ట్యుటోరియల్</string>
-    <string name="main_assist_app_title">సహాయక యాప్</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <!-- First screen -->
+    <string name="main_assist_app_title">సహాయక యాప్</string>
+    <!-- Post edit activity -->
 </resources>

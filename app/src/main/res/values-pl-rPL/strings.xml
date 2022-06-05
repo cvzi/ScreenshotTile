@@ -98,6 +98,7 @@
     <string name="tutorial_step11">Zaakceptuj uprawnienia</string>
     <string name="tutorial_step16">Wykonaj zrzut ekranu za pomocą nowego przycisku</string>
     <string name="take_screenshot">Wykonaj zrzut ekranu</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_yes">Zgadzam się</string>
     <string name="googleplay_consent_no">Odmawiam</string>
     <!-- About -->

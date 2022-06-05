@@ -88,6 +88,7 @@
     <string name="tutorial_step11">Hagyja jóvá az engedélyeket</string>
     <string name="tutorial_step16">Készítsen képernyőképeket az új gombbal</string>
     <string name="take_screenshot">Készítsen képernyőképet</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_app_title">Névjegy</string>
     <string name="about_app_1">Ez egy mellékága a\ngithub.com/ipcjs/ScreenshotTile projektnek</string>
@@ -111,4 +112,5 @@
     <string name="main_long_press_title">Hosszú érintés</string>
     <string name="main_long_press_text">Hosszan nyomva a gombot, megnyílik egy menü. Megadhatja a képernyőkép késleltetését, vagy kivághat egy téglalap részt a képernyőről.</string>
     <string name="main_assist_app_title">Segédalkalmazás</string>
+    <!-- Post edit activity -->
 </resources>

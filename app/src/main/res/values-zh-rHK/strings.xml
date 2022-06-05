@@ -87,6 +87,7 @@
     <string name="tutorial_step11">接受权限</string>
     <string name="tutorial_step16">使用新按钮截取屏幕截图</string>
     <string name="take_screenshot">截取屏幕截图</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_app_title">关于</string>
     <string name="about_app_1">这是\ngithub.com/ipcjs/ScreenshotTile 的一个分支</string>
@@ -108,4 +109,5 @@
     <string name="main_long_press_title">長按</string>
     <string name="main_long_press_text">長按圖塊/按鈕打開菜單。您可以指定屏幕截圖延遲或從屏幕截取矩形區域。</string>
     <string name="main_assist_app_title">小幫手應用程式</string>
+    <!-- Post edit activity -->
 </resources>

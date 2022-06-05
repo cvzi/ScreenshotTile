@@ -25,7 +25,9 @@
     <string name="notification_edit_screenshot">แก้ไข</string>
     <string name="hide_app_from_launcher">ซ่อนแอป จากรายการแอพ</string>
     <string name="tutorial">บทแนะนำ</string>
-    <string name="main_assist_app_title">แอปผู้ช่วย</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <!-- First screen -->
+    <string name="main_assist_app_title">แอปผู้ช่วย</string>
+    <!-- Post edit activity -->
 </resources>

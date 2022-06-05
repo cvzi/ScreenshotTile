@@ -30,7 +30,9 @@
     <string name="screenshot_delete_failed">ئۆچۈرۈش مەغلۇپ بولدى</string>
     <string name="tutorial">ياردەم</string>
     <string name="take_screenshot">ئېكران كېسىش</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_app_title">ئەپ ئۇچۇرى</string>
     <!-- First screen -->
+    <!-- Post edit activity -->
 </resources>

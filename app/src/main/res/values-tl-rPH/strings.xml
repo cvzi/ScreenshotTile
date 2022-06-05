@@ -31,12 +31,13 @@
     <string name="tutorial">Pagtuturo</string>
     <string name="tutorial_tap_for_next_step">Tapikin para sa\nsusunod na hakbang</string>
     <string name="take_screenshot">Kumuha ng screenshot</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_app_title">Tungkol sa App</string>
     <string name="about_app_3">Upang magbigay ng feedback:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Lisensyang</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\n(Ang Pangkaraniwang Lisensyang Publiko ng GNU Bersyon 3)</string>
     <string name="about_app_2">Ang app na ito ay pa rin sa pag-unlad.\nTandaan na ang na app na ito ay hindi gaanong matatag kumpara sa orihinal.\nSubukan ang orihinal na app kung mayroon kang root access.</string>
-    <string name="main_assist_app_title">Assist app</string>
     <!-- First screen -->
+    <!-- Post edit activity -->
 </resources>

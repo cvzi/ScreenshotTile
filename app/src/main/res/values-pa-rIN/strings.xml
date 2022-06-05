@@ -17,8 +17,10 @@
     <string name="notification_share_screenshot">ਸਾਂਝਾ ਕਰੋ</string>
     <string name="notification_edit_screenshot">ਸੰਪਾਦਨ ਕਰੋ</string>
     <string name="tutorial">ਟਿਊਟੋਰੀਅਲ</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_license_title">ਲਾਇਸੰਸ</string>
-    <string name="main_assist_app_title">ਸਹਾਇਕ ਐਪ</string>
     <!-- First screen -->
+    <string name="main_assist_app_title">ਸਹਾਇਕ ਐਪ</string>
+    <!-- Post edit activity -->
 </resources>
