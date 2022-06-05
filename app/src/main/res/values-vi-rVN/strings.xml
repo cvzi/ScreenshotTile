@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="30">Ô chụp màn hình (Không cần Root)</string>
+    <string name="app_name">Ô chụp màn hình (KhôngCầnRoot)</string>
     <string name="tile_label">Chụp màn hình</string>
     <string name="tile_floating_label">Nổi</string>
     <string name="tile_floating_subtitle">Nút chụp màn hình</string>
@@ -53,6 +53,9 @@
     <string name="setting_dark_theme_system">Hệ thống</string>
     <string name="setting_dark_theme_off">Tắt</string>
     <string name="setting_dark_theme_on">Bật</string>
+    <string name="setting_notification_buttons">Nút thông báo</string>
+    <string name="setting_notification_buttons_description">Chọn tối đa 3 nút sẽ xuất hiện ở dưới thông báo chụp màn hình</string>
+    <string name="setting_notification_buttons_max_three">Vui lòng chọn tối đa ba nút</string>
     <string name="notification_settings">Thông báo</string>
     <string name="notification_settings_on">Bật</string>
     <string name="notification_settings_off">Tắt</string>
@@ -72,8 +75,12 @@
     <string name="notification_delete_screenshot">Xóa</string>
     <string name="notification_share_screenshot">Chia sẻ</string>
     <string name="notification_edit_screenshot">Chỉnh sửa</string>
+    <string name="notification_rename_screenshot">Đổi tên</string>
+    <string name="notification_screenshot_details">Chi tiết</string>
     <string name="screenshot_deleted">Đã xoá ảnh chụp màn hình</string>
     <string name="screenshot_delete_failed">Không thể xoá tệp</string>
+    <string name="screenshot_renamed">Đã đổi tên tệp thành %1s</string>
+    <string name="screenshot_rename_failed">Không thể đổi tên tệp</string>
     <string name="permission_missing_external_storage">Nhận quyền bộ nhớ thất bại</string>
     <string name="permission_missing_screen_capture">Nhận quyền ghi lại chụp màn hình thất bại</string>
     <string name="hide_app_from_launcher">Ẩn biểu tượng ứng dụng khỏi launcher</string>
@@ -110,6 +117,8 @@
     <string name="about_license_title">Giấy phép</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE phiên bản 3</string>
     <string name="about_app_2">Ứng dụng này vẫn có một số vấn đề và đang được phát triển.\nNếu bạn có quyền truy cập root trên điện thoại của bạn thì vui lòng sử dụng phiên bản của ipcjs, nó nhanh hơn và đáng tin cậy hơn.</string>
+    <string name="about_advanced_settings_button">Cài đặt nâng cao</string>
+    <string name="about_update_check_button">Kiểm tra cập nhật</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Cài đặt hỗ trợ tiếp cận</string>
     <string name="main_floating_button_title">Nút nổi</string>
@@ -125,4 +134,6 @@
     <string name="main_long_press_text">Nhấn giữ ô/nút để mở một menu. Bạn có thể chỉ định độ trễ chụp màn hình hoặc cắt một hình chữ nhật khỏi màn hình.</string>
     <string name="main_assist_app_title">Ứng dụng trợ lý</string>
     <string name="main_assist_app_text">Nếu bạn đặt ứng dụng này làm ứng dụng trợ lý, bạn có thể nhấn giữ nút home để chụp màn hình. Việc bật ứng dụng này làm ứng dụng trợ lý sẽ tắt các ứng dụng trợ lý khác. Bạn có thể thay đổi hành động khi nhấn giữ nút home ở cài đặt ứng dụng.</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">Đổi tên</string>
 </resources>
