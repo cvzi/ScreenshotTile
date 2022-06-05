@@ -87,6 +87,7 @@
     <string name="tutorial_step11">Αποδεχτείτε τις άδειες</string>
     <string name="tutorial_step16">Τώρα μπορείτε να λάβετε στιγμιότυπα οθόνης με το νέο κουμπί</string>
     <string name="take_screenshot">Λήψη στιγμιοτύπου οθόνης</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_app_title">Περί</string>
     <string name="about_app_1">Η εφαρμογή είναι fork του \nngithub.com/ipcjs/ScreenshotTile</string>
@@ -108,4 +109,5 @@
     <string name="main_long_press_title">Παρατεταμένο πάτημα</string>
     <string name="main_long_press_text">Το παρατεταμένο πάτημα του κουμπιού ανοίγει ένα μενού. Μπορείτε να καθορίσετε μια καθυστέρηση για το στιγμιότυπο οθόνης ή να περικόψετε ένα κομμάτι της οθόνης.</string>
     <string name="main_assist_app_title">Εφαρμογή υποβοήθειας</string>
+    <!-- Post edit activity -->
 </resources>
