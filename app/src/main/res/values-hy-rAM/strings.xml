@@ -91,6 +91,7 @@
     <string name="tutorial_step11">Համաձայնեք թույլտվությունների հարցումներին</string>
     <string name="tutorial_step16">Կադրահանեք` օգտվելով նոր կոճգամից</string>
     <string name="take_screenshot">Կադրահանել</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_app_title">Հավելվածի մասին</string>
     <string name="about_app_1">Այս հավելվածը հետևյալ հավելվածի վերամշակումն է՝\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -112,4 +113,5 @@
     <string name="main_long_press_title">Երկար Սեղմում</string>
     <string name="main_long_press_text">Երկար սեղմելով կոճգամը/թռ․ կոճակը կբացվի ցուցակ։ Դուք կարող եք սահմանել հետաձգում կամ առանձնացնել էկրանի այն մասը, որը ցանկանում եք կադրահանել։</string>
     <string name="main_assist_app_title">Օգնական հավելված</string>
+    <!-- Post edit activity -->
 </resources>
