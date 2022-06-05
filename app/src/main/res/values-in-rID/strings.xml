@@ -86,6 +86,7 @@
     <string name="tutorial_step11">Terima perizinan</string>
     <string name="tutorial_step16">Ambil tangkapan layar dengan tombol baru</string>
     <string name="take_screenshot">Ambil tangkapan layar</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_app_title">Tentang</string>
     <string name="about_app_1">Kode sumber asli\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -97,4 +98,5 @@
     <string name="main_accessibility_settings">Setelan aksesibilitas</string>
     <string name="main_floating_button_title">Tombol apung</string>
     <string name="main_assist_app_title">Aplikasi bantuan</string>
+    <!-- Post edit activity -->
 </resources>
