@@ -1,0 +1,41 @@
+Adds a button/tile to the quick settings panel to take screenshots.
+
+After install you need to add the button/tile to your quick settings and then grant the permissions to record screen captures and save images to the internal storage.
+
+If the app crashes on Android 9/Pie or 10, you can try to enable "Use native screenshot method" in the app settings.
+
+<h2>Features:</h2>✓ Take screenshots from the quick settings
+✓ No root required
+✓ Notification after a screenshot was taken (can be disabled)
+✓ Immediately share, edit or delete a screenshot from the notification
+✓ Floating button/Overlay button like a chat bubble (Android 9+)
+✓ Usar como aplicación de asistencia y mantener presionado el botón Inicio para tomar una captura de pantalla
+✓ Only take screenshot of a specific area of the screen (long-press the tile)
+✓ Delay taking a screenshot
+✓ Store in any folder on any storage e.g. sd card
+✓ Store in different file formats: png, jpg or webp
+✓ Take automatic screenshots with apps like Tasker or MacroDroid
+✓ Free, open-source, no advertising
+
+This is a fork of "Screenshot Tile [Root]" but it does not require root. If you have root access, you should use the <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">original app</a> by ipcjs, it's faster and more reliant than this fork.
+
+Source code: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Original app: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Open Source license is GNU GPLv3
+
+<u>Note:</u>
+🎦 When you take a screenshot, the <b>"Google Cast" icon</b> will appear in the status bar and it will be visible in the screenshot image.
+If you want to hide the icon, there is an explanation here: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Permissions:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Photos/Media/Files and Storage"</i>
+This is required to save the screenshot files on the internal storage of your device.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Since Android 9/Pie this permission is required to take screenshots. It basically means that this app can run without showing itself. However the app will always show a notification when it is running.
+
+<h2>Automatic screenshots:</h2>If you want to automate screenshots from another app, e.g. MacroDroid or Tasker, you can find a step-by-step guide here:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Hiding the app icon:</h2>In the app settings you can hide the app icon from your launcher. You can still access the app by long pressing the tile in your quick settings. Unfortunately, Android 10 does not allow hiding an app anymore.
+
+<h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
