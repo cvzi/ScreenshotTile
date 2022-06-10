@@ -44,6 +44,7 @@
     <string name="setting_broadcast_secret_description">允许其他应用 (如 MacroDroid 或 Tasker) 启动屏幕截图的秘密短语</string>
     <string name="setting_storage_directory">保存位置</string>
     <string name="setting_storage_directory_description">用来保存文件的文件夹</string>
+    <string name="setting_file_name_pattern">檔案名</string>
     <string name="setting_tile_action">磁貼操作</string>
     <string name="setting_dark_theme">夜間模式</string>
     <string name="setting_dark_theme_system">遵循系統</string>
@@ -68,6 +69,8 @@
     <string name="notification_delete_screenshot">删除</string>
     <string name="notification_share_screenshot">分享</string>
     <string name="notification_edit_screenshot">编辑</string>
+    <string name="notification_rename_screenshot">重命名</string>
+    <string name="notification_screenshot_details">詳細資訊</string>
     <string name="screenshot_deleted">屏幕截图已删除</string>
     <string name="screenshot_delete_failed">无法删除文件</string>
     <string name="permission_missing_external_storage">获取存储空间权限失败</string>
@@ -88,6 +91,8 @@
     <string name="tutorial_step16">使用新按钮截取屏幕截图</string>
     <string name="take_screenshot">截取屏幕截图</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_yes">我同意</string>
+    <string name="googleplay_consent_no">我拒絕</string>
     <!-- About -->
     <string name="about_app_title">关于</string>
     <string name="about_app_1">这是\ngithub.com/ipcjs/ScreenshotTile 的一个分支</string>
@@ -95,6 +100,8 @@
     <string name="about_license_title">许可证</string>
     <string name="about_license_1">GNU 通用公共許可證 第 3 版</string>
     <string name="about_app_2">此应用仍然存在一些问题并且正在开发中。\n如果你的设备拥有 root 权限，请使用 ipcjs 的版本，更快速可靠。</string>
+    <string name="about_advanced_settings_button">進階設定</string>
+    <string name="about_update_check_button">檢查更新</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">無障礙設置</string>
     <string name="main_floating_button_title">浮動按鈕</string>
@@ -110,4 +117,11 @@
     <string name="main_long_press_text">長按圖塊/按鈕打開菜單。您可以指定屏幕截圖延遲或從屏幕截取矩形區域。</string>
     <string name="main_assist_app_title">小幫手應用程式</string>
     <!-- Post edit activity -->
+    <string name="post_button_save">重命名</string>
+    <string name="post_hint_new_file_name">新檔案名</string>
+    <string name="post_rename_file">重新命名檔案：</string>
+    <string name="post_hint_new_file_name_suggestion">添加建議</string>
+    <string name="post_save_a_suggestion">儲存建議</string>
+    <string name="post_pin_to_favorites">添加到收藏</string>
+    <string name="post_delete_suggestion">刪除建議</string>
 </resources>
