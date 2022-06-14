@@ -34,6 +34,9 @@ const val UTILSIMAGEKT = "UtilsImage.kt"
  * Copy rectangle of image content to new bitmap or complete image if rect is null.
  */
 fun imageToBitmap(image: Image, rect: Rect? = null): Bitmap {
+    if (image.format == ImageFormat.JPEG) {
+        return imageJPEGToBitmap(image, rect)
+    }
     val offset =
         (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
     val w = image.width + offset
@@ -47,6 +50,25 @@ fun imageToBitmap(image: Image, rect: Rect? = null): Bitmap {
     }
 }
 
+/**
+ * Copy rectangle of image content to new bitmap or complete image if rect is null.
+ * This is not JPEG data despite the format, it's just flat ARGB_8888
+ */
+fun imageJPEGToBitmap(image: Image, rect: Rect? = null): Bitmap {
+    val w = image.width
+    val h = image.height
+
+    val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+    image.planes[0].buffer.let {
+        it.rewind()
+        bitmap.copyPixelsFromBuffer(it)
+    }
+    return if (rect == null) {
+        Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
+    } else {
+        Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
+    }
+}
 
 /**
  * Create notification preview icon with appropriate size according to the device screen.
@@ -190,7 +212,7 @@ fun deleteContentResolver(context: Context, uri: Uri): Boolean {
         }
         0
     }
-    if(BuildConfig.DEBUG) Log.v(
+    if (BuildConfig.DEBUG) Log.v(
         UTILSIMAGEKT,
         "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"
     )
