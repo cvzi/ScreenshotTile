@@ -128,7 +128,12 @@ function extractCurrentRelease () {
   showCurrentRelease(name, code)
 }
 
+var lastCode = null
 function showCurrentRelease (name, code) {
+  if (lastCode != null && lastCode <= code) {
+    return
+  }
+  lastCode = code
   const url = 'https://github.com/cvzi/ScreenshotTile/releases/tag/v' + name
 
   document.querySelectorAll('.data_current_name').forEach((e) => (e.textContent = name))
