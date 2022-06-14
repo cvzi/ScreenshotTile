@@ -3,12 +3,14 @@ package com.github.cvzi.screenshottile.activities
 import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -22,10 +24,9 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
-import com.github.cvzi.screenshottile.utils.hasFdroid
-import com.github.cvzi.screenshottile.utils.isNewAppInstallation
-import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
+import com.github.cvzi.screenshottile.utils.*
 import com.google.android.material.switchmaterial.SwitchMaterial
+
 
 /**
  * Launcher activity. Explanations and selector for legacy/native method
@@ -216,6 +217,22 @@ class MainActivity : AppCompatActivity() {
                     )
                 }, 1000)
             }
+        }
+
+        // Show warning if app is installed on external storage
+        try {
+            if (packageManager.getApplicationInfo(
+                    packageName,
+                    0
+                ).flags and ApplicationInfo.FLAG_EXTERNAL_STORAGE != 0
+            ) {
+                toastMessage(
+                    "App is installed on external storage, this can cause problems  after a reboot with the floating button and the assistant function.",
+                    ToastType.ACTIVITY
+                )
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
+            Log.e(TAG, e.toString())
         }
     }
 
