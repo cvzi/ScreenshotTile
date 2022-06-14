@@ -1,9 +1,13 @@
 # Changelog
 
+## 1.17.2
+*   🇮🇷 Persian translation by [MeysamNaghavi](https://github.com/MeysamNaghavi)
+*   Allow installation on external storage [#170](https://github.com/cvzi/ScreenshotTile/issues/170)
+
 ## 1.17.1
-* 🇷🇺 Russian translation improved by [Ilyas Khaniev](https://github.com/TheOldBlood)
-* 🇯🇵 Japanese translation improved by [FrzMtrsprt](https://github.com/FrzMtrsprt)
-* 🇻🇳 Vietnamese translation improved by [bruhwut](https://github.com/FrzMtrsprt)
+*   🇷🇺 Russian translation improved by [Ilyas Khaniev](https://github.com/TheOldBlood)
+*   🇯🇵 Japanese translation improved by [FrzMtrsprt](https://github.com/FrzMtrsprt)
+*   🇻🇳 Vietnamese translation improved by [bruhwut](https://github.com/FrzMtrsprt)
 
 ## 1.17.0
 *   Choose which action buttons appear in the notification (configurable in app settings)
