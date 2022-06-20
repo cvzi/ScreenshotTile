@@ -57,7 +57,7 @@
     <string name="setting_notification_buttons_description">حداکثر سه دکمه را که در زیر اعلان اسکرین شات ظاهر می شوند را انتخاب کنید</string>
     <string name="setting_notification_buttons_max_three">لطفا حداکثر سه دکمه را انتخاب کنید</string>
     <string name="notification_settings">نوتیفیکیشن</string>
-    <string name="notification_settings_on">روشَن</string>
+    <string name="notification_settings_on">فعال</string>
     <string name="notification_settings_off">خاموش</string>
     <string name="file_title">اسکرین شات</string>
     <string name="file_description">اسکرین شات در %1$s گرفته شده است</string>
