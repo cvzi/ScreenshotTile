@@ -120,6 +120,7 @@ Now you can **add a macro** to MacroDroid:
 >   Modify or delete the contents of your internal storage/USB storage
 
 This is required to save the screenshot files on the internal storage of your device.
+Since Android 10 Q this permission is no longer used.
 
 #### [`android.permission.FOREGROUND_SERVICE`](https://developer.android.com/reference/android/Manifest.permission#FOREGROUND_SERVICE)
 
