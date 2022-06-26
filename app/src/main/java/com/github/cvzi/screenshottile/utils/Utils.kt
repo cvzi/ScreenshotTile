@@ -5,7 +5,9 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.pm.VersionedPackage
 import android.graphics.Bitmap
 import android.graphics.Paint
 import android.graphics.Point
@@ -128,7 +130,7 @@ class CompressionOptions(var fileExtension: String = "png", val quality: Int = 1
  * Get mime type from file extension
  */
 fun mimeFromFileExtension(fileExtension: String): String {
-    return when(fileExtension.lowercase()) {
+    return when (fileExtension.lowercase()) {
         "jpg" -> "image/jpeg"
         else -> "image/${fileExtension.lowercase()}"
     }
@@ -681,13 +683,9 @@ fun fillTextHeight(textView: TextView, maxHeight: Int, startSize: Float? = null)
  */
 fun isNewAppInstallation(context: Context): Boolean {
     return try {
-        context.packageManager.getPackageInfo(
-            context.packageName,
-            0
-        ).firstInstallTime == context.packageManager.getPackageInfo(
-            context.packageName,
-            0
-        ).lastUpdateTime
+        return context.packageManager.getPackageInfo(context.packageName)?.run {
+            firstInstallTime == lastUpdateTime
+        } ?: true
     } catch (e: PackageManager.NameNotFoundException) {
         Log.e(UTILSKT, "Package not found", e)
         true
@@ -754,7 +752,7 @@ fun hasFdroid(context: Context): Boolean {
         "org.fdroid.basic"
     )) {
         try {
-            packageManager.getPackageInfo(name, 0)
+            packageManager.getPackageInfo(name)
             return true
         } catch (e: PackageManager.NameNotFoundException) {
             Log.d(UTILSKT, e.toString())
@@ -838,5 +836,21 @@ fun ViewManager.safeRemoveView(view: View, tag: String = UTILSKT) {
         this.removeView(view)
     } catch (e: Exception) {
         Log.e(tag, "removeView() of $this threw e: $e")
+    }
+}
+
+/**
+ * Retrieve overall information about highest version of an application package that is installed
+ * on the system
+ */
+fun PackageManager.getPackageInfo(packageName: String): PackageInfo? {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        getPackageInfo(
+            VersionedPackage(packageName, PackageManager.VERSION_CODE_HIGHEST),
+            PackageManager.PackageInfoFlags.of(0)
+        )
+    } else {
+        @Suppress("DEPRECATION")
+        getPackageInfo(packageName, 0)
     }
 }
