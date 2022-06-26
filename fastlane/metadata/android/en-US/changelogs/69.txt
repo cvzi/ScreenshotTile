@@ -1,0 +1,4 @@
+New options in advanced settings:
+🌟   Opacity/Transparency of floating button (in Advanced Settings menu)
+🌟   Custom delay in seconds for tile/floating button screenshot (in Advanced Settings menu)
+🌟   Adaptions for Android 13 Tiramisu

@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.18.0
+*   Transparency of floating button [#175](https://github.com/cvzi/ScreenshotTile/issues/170) (in advanced settings)
+*   Custom delay time (in advanced settings)
+*   🇮🇷 Persian translation improved by [MeysamNaghavi](https://github.com/MeysamNaghavi)
+*   Don't ask for storage permission on Android 10/Q+
+*   Android 13: Offer monochrome icon for "Themed icons" in "Material You" https://developer.android.com/about/versions/13/features?hl=en#themed-app-icons
+*   Android 13: Restrict exporting of broadcast receiver and activities https://developer.android.com/about/versions/13/features?hl=en#runtime-receivers
+*   Android 13: Ask user to add tiles to quick settings on first start https://developer.android.com/about/versions/13/features?hl=en#quick-settings
+*   Android 13: Offer per-app language https://developer.android.com/about/versions/13/features?hl=en#app-languages
+*   Android 13: Notification permission https://developer.android.com/about/versions/13/changes/notification-permission
+
 ## 1.17.2
 *   🇮🇷 Persian translation by [MeysamNaghavi](https://github.com/MeysamNaghavi)
 *   Allow installation on external storage [#170](https://github.com/cvzi/ScreenshotTile/issues/170)
