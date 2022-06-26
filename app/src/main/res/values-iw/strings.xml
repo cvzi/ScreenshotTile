@@ -22,7 +22,7 @@
     <string name="setting_storage_directory">תיקיית יעד</string>
     <string name="setting_storage_directory_description">בחר את המיקום עבור קבצי התמונה</string>
     <string name="setting_file_name_pattern">שם קובץ</string>
-   <string name="setting_tile_action">פעולה הכפתור האריח</string>
+    <string name="setting_tile_action">פעולה הכפתור האריח</string>
     <string name="setting_floating_action">פעולה הכפתור הצף</string>
     <string name="setting_dark_theme">ערכת צבעים כהה</string>
     <string name="setting_dark_theme_system">עקוב אחר המערכת</string>
