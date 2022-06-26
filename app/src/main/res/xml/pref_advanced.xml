@@ -55,4 +55,26 @@
         android:title="@string/setting_failed_virtual_display_delay"
         app:iconSpaceReserved="false" />
 
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/pref_floating_button_alpha_default"
+        android:dialogMessage="@string/setting_floating_button_alpha_dialog"
+        android:key="@string/pref_key_floating_button_alpha"
+        android:summary="@string/setting_floating_button_alpha_summary"
+        android:title="@string/setting_floating_button_alpha"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/setting_delay_value_default"
+        android:key="@string/pref_key_delay"
+        android:summary="@string/setting_delay_custom_summary"
+        android:title="@string/title_delay"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/setting_delay_value_default"
+        android:key="@string/pref_key_floating_button_delay"
+        android:summary="@string/setting_floating_button_delay_custom_summary"
+        android:title="@string/setting_floating_button_delay"
+        app:iconSpaceReserved="false" />
+
 </androidx.preference.PreferenceScreen>

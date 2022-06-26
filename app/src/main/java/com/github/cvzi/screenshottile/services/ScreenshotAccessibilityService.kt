@@ -202,6 +202,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 SettingFragment.instance?.get()?.updateFloatingButtonFromService()
             }
         }
+        val alpha = App.getInstance().prefManager.floatingButtonAlpha
+        buttonScreenshot.alpha = alpha
+        buttonClose?.alpha = alpha
+
         buttonScreenshot.setOnClickListener {
             if (App.getInstance().prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_partial)) {
                 App.getInstance().screenshotPartial(this)
@@ -270,6 +274,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                                 shutterCollection.current().normal
                             )
                         )
+                        buttonScreenshot.alpha = App.getInstance().prefManager.floatingButtonAlpha
                     }
                     showSettingsButton(root, buttonScreenshot)
                     true
@@ -287,6 +292,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 )
             )
             (buttonScreenshot.drawable as Animatable).start()
+            buttonScreenshot.alpha = 1f
             it.startDragAndDrop(null, View.DragShadowBuilder(root), null, 0)
         }
 
@@ -301,7 +307,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         buttonScreenshot.visibility = View.GONE
         val textView = TextView(root.context)
         @SuppressLint("SetTextI18n")
-        textView.text = delayInSeconds.toString() + "\uFE0F\u20E3"
+        textView.text = delayInSeconds.toString().map {
+            it + "\uFE0F\u20E3"
+        }.joinToString("")
         root.findViewById<LinearLayout>(R.id.linearLayoutOuter).addView(textView, 0)
         textView.layoutParams = LinearLayout.LayoutParams(textView.layoutParams).apply {
             height = ViewGroup.LayoutParams.MATCH_PARENT
@@ -331,6 +339,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
         val textView = TextView(root.context)
         textView.tag = SETTINGS_BUTTON_TAG
+        textView.alpha = App.getInstance().prefManager.floatingButtonAlpha
         @SuppressLint("SetTextI18n")
         textView.text = "\u2699\uFE0F"
         linearLayout.addView(textView)

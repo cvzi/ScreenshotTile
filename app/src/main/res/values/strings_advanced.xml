@@ -40,4 +40,13 @@
     <string name="setting_failed_virtual_display_delay_summary" translatable="false">Default: 0 (milliseconds)</string>
     <string name="setting_failed_virtual_display_delay_dialog" translatable="false">Waiting period before trying again after the error \'Failed to start virtual display\'. Use a higher value (e.g. 500 = half a second) if the error message was visible on screenshots.\nDefault: 0 Unit: milliseconds</string>
 
+    <string name="pref_key_floating_button_alpha" translatable="false">floating_button_alpha</string>
+    <string name="pref_floating_button_alpha_default" translatable="false">1.0</string>
+    <string name="setting_floating_button_alpha" translatable="false">Floating button opacity</string>
+    <string name="setting_floating_button_alpha_summary" translatable="false">0.0 (fully-transparent) to 1.0 (fully-opaque) Default: 1.0</string>
+    <string name="setting_floating_button_alpha_dialog" translatable="false">Choose a lower value to make the button more transparent. Range 0.0 to 1.0\nDefault: 1.0 (fully-opaque)</string>
+
+    <string name="setting_delay_custom_summary" translatable="false">Set a custom delay for the tile (in seconds)\n0 seconds = no delay</string>
+    <string name="setting_floating_button_delay_custom_summary" translatable="false">Set a custom delay for the floating button (in seconds)\n0 seconds = no delay</string>
+
 </resources>

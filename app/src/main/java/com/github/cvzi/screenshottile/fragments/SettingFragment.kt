@@ -382,13 +382,23 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     private fun updateDelaySummary(value: String) {
         delayPref?.apply {
-            summary = entries[findIndexOfValue(value)]
+            val index = findIndexOfValue(value)
+            summary = if (index != -1) {
+                entries[index]
+            } else {
+                "$value (${getString(R.string.about_advanced_settings_button)})"
+            }
         }
     }
 
     private fun updateFloatingButtonDelaySummary(value: String) {
         floatingButtonDelay?.apply {
-            summary = entries[findIndexOfValue(value)]
+            val index = findIndexOfValue(value)
+            summary = if (index != -1) {
+                entries[index]
+            } else {
+                "$value (${getString(R.string.about_advanced_settings_button)})"
+            }
         }
     }
 

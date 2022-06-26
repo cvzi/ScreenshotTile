@@ -22,7 +22,9 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         get() = pref.getString(
             context.getString(R.string.pref_key_delay),
             context.getString(R.string.setting_delay_value_default)
-        )?.toIntOrNull() ?: 0
+        )?.filter {
+            it.isDigit()
+        }?.toIntOrNull() ?: 0
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_delay),
             value.toString()
@@ -195,12 +197,30 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             val d = pref.getString(
                 context.getString(R.string.pref_key_floating_button_scale),
                 "200"
-            )?.toIntOrNull() ?: 200
+            )?.filter {
+                it.isDigit()
+            }?.toIntOrNull() ?: 200
             return if (d > 0) d else 200
         }
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_floating_button_scale),
             value.toString()
+        ).apply()
+
+    var floatingButtonAlpha: Float
+        get() {
+            val s = pref.getString(
+                context.getString(R.string.pref_key_floating_button_alpha),
+                context.getString(R.string.pref_floating_button_alpha_default)
+            )?.replaceFirst(',', '.')?.filter {
+                it.isDigit() || it == '.'
+            }
+            val f = s?.toFloatOrNull() ?: 1f
+            return f.coerceIn(0f, 1f)
+        }
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_floating_button_alpha),
+            value.coerceIn(0f, 1f).toString()
         ).apply()
 
     var floatingButtonPosition: Point
@@ -226,7 +246,9 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         get() = pref.getString(
             context.getString(R.string.pref_key_floating_button_shutter),
             "0"
-        )?.toIntOrNull() ?: 0
+        )?.filter {
+            it.isDigit()
+        }?.toIntOrNull() ?: 0
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_floating_button_shutter),
             value.toString()
@@ -236,7 +258,9 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         get() = pref.getString(
             context.getString(R.string.pref_key_floating_button_delay),
             context.getString(R.string.setting_delay_value_default)
-        )?.toIntOrNull() ?: 0
+        )?.filter {
+            it.isDigit()
+        }?.toIntOrNull() ?: 0
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_floating_button_delay),
             value.toString()
