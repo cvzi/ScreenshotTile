@@ -156,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                 hintAccessibilityServiceUnavailable?.let {
                     (it.parent as? ViewGroup)?.removeView(it)
                 }
-                if (!askedForStoragePermission && packageManager.checkPermission(
+                if (!askedForStoragePermission && Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && packageManager.checkPermission(
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         packageName
                     ) != PackageManager.PERMISSION_GRANTED

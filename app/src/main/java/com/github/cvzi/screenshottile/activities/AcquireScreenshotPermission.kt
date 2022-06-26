@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.projection.MediaProjectionManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import com.github.cvzi.screenshottile.App
@@ -29,6 +30,7 @@ class AcquireScreenshotPermission : Activity() {
         const val EXTRA_TAKE_SCREENSHOT_AFTER = "extra_take_screenshot_after"
         private const val SCREENSHOT_REQUEST_CODE = 4552
         private const val WRITE_REQUEST_CODE = 12345
+        private const val NOTIFICATIONS_REQUEST_CODE = 12346
     }
 
     private var askedForStoragePermission = false
@@ -54,14 +56,23 @@ class AcquireScreenshotPermission : Activity() {
             askedForStoragePermission = true
         }
 
-        // Request storage permission (if missing)
-        if (packageManager.checkPermission(
+        // Request storage and notification permission (if missing)
+        if ((Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && packageManager.checkPermission(
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 packageName
-            ) != PackageManager.PERMISSION_GRANTED
+            ) != PackageManager.PERMISSION_GRANTED)
+            || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && packageManager.checkPermission(
+                Manifest.permission.POST_NOTIFICATIONS,
+                packageName
+            ) != PackageManager.PERMISSION_GRANTED)
         ) {
-            val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-            requestPermissions(permissions, WRITE_REQUEST_CODE)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                val permissions = arrayOf(Manifest.permission.POST_NOTIFICATIONS)
+                requestPermissions(permissions, NOTIFICATIONS_REQUEST_CODE)
+            } else {
+                val permissions = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                requestPermissions(permissions, WRITE_REQUEST_CODE)
+            }
         }
 
         // Request screenshot permission
@@ -128,6 +139,23 @@ class AcquireScreenshotPermission : Activity() {
                     getString(R.string.permission_missing_external_storage),
                     ToastType.ERROR
                 )
+            }
+        } else if (NOTIFICATIONS_REQUEST_CODE == requestCode) {
+            // We don't care if notifications permission was
+            // granted or not.
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.d(
+                    TAG,
+                    "onRequestPermissionsResult() POST_NOTIFICATIONS is PERMISSION_GRANTED"
+                )
+            } else {
+                Log.d(
+                    TAG,
+                    "onRequestPermissionsResult() POST_NOTIFICATIONS was denied"
+                )
+            }
+            if (askedForStoragePermission) {
+                App.getInstance().screenshot(this)
             }
         }
         finish()

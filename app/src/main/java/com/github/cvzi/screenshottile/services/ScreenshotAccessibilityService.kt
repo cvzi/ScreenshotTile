@@ -1,12 +1,10 @@
 package com.github.cvzi.screenshottile.services
 
-import android.Manifest
 import android.accessibilityservice.AccessibilityService
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.PixelFormat
 import android.graphics.Point
@@ -479,21 +477,12 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             temporaryHideFloatingButton()
         }
 
-        var askForStoragePermissionAfter = false
         val success: Boolean
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && useTakeScreenshotMethod && !App.getInstance().prefManager.useSystemDefaults) {
-            if (packageManager.checkPermission(
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    packageName
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // Storage permission is missing
-                askForStoragePermissionAfter = true
-                success = fallbackToSimulateScreenshotButton()
-            } else {
-                takeScreenshot()
-                success = true
-            }
+            // We don't need to check storage permission first, because this permission is not
+            // necessary since Android Q and this function is only available since Android R
+            takeScreenshot()
+            success = true
         } else {
             success = performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)
             if (success) {
@@ -504,12 +493,6 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     showTemporaryHiddenFloatingButton()
                 }, 1000)
             }
-        }
-
-        if (askForStoragePermissionAfter) {
-            Handler(Looper.getMainLooper()).postDelayed({
-                App.requestStoragePermission(this, false)
-            }, 1000)
         }
         return success
     }

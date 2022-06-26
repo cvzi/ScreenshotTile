@@ -434,7 +434,8 @@ class SettingFragment : PreferenceFragmentCompat() {
             }
         } else if (MyVoiceInteractionService.instance != null && switchEvent && !askedForStoragePermission) {
             this.activity?.run {
-                if (packageManager.checkPermission(
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q &&
+                    packageManager.checkPermission(
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         packageName
                     ) != PackageManager.PERMISSION_GRANTED
@@ -594,7 +595,8 @@ class SettingFragment : PreferenceFragmentCompat() {
                 if (switchEvent && !askedForStoragePermission) {
                     activity?.run {
                         // Check storage permission
-                        if (packageManager.checkPermission(
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q &&
+                            packageManager.checkPermission(
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                 packageName
                             ) != PackageManager.PERMISSION_GRANTED

@@ -184,7 +184,8 @@ public class App extends Application {
     }
 
     /**
-     * Open new activity that asks for the storage permission.
+     * Open new activity that asks for the storage permission (and also notifications permission
+     * since Android 13 Tirmamisu).
      *
      * @param context Context
      */

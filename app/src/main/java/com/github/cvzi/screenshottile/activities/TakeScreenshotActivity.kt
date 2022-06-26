@@ -137,7 +137,7 @@ class TakeScreenshotActivity : Activity(),
 
         surface = imageReader?.surface
 
-        if (packageManager.checkPermission(
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q && packageManager.checkPermission(
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 packageName
             ) != PackageManager.PERMISSION_GRANTED

@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.provider.Settings
 import android.service.voice.VoiceInteractionService
 import android.service.voice.VoiceInteractionSession
@@ -60,6 +61,7 @@ class MyVoiceInteractionService : VoiceInteractionService() {
         }
 
         if (App.getInstance().prefManager.voiceInteractionAction != getString(R.string.setting_voice_interaction_action_value_native) &&
+            Build.VERSION.SDK_INT < Build.VERSION_CODES.Q &&
             packageManager.checkPermission(
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 packageName

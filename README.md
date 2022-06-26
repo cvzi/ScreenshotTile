@@ -130,3 +130,7 @@ Since Android 9/Pie this permission is required to take screenshots. It basicall
 >   ScreenshotTile will start capturing everything that's displayed on your screen.
 
 This is a special permission that is requested before you take a screenshot or when you add the tile to you quick settings. It allows the app to record the screen. In this case, for a screenshot, the recording is only one image/frame.
+
+#### [`android.permission.POST_NOTIFICATIONS`](https://developer.android.com/about/versions/13/changes/notification-permission)
+
+Since Android 13 Tiramisu this permission can be used to request the ability to show notifications. You can choose "Don't allow" to block all notifications.
