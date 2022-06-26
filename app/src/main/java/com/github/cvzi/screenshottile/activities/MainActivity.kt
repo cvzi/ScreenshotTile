@@ -1,11 +1,14 @@
 package com.github.cvzi.screenshottile.activities
 
 import android.Manifest
+import android.app.StatusBarManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.graphics.drawable.Icon
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -23,7 +26,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
+import com.github.cvzi.screenshottile.services.FloatingTileService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
+import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.*
 import com.google.android.material.switchmaterial.SwitchMaterial
 
@@ -233,6 +238,40 @@ class MainActivity : AppCompatActivity() {
             }
         } catch (e: PackageManager.NameNotFoundException) {
             Log.e(TAG, e.toString())
+        }
+
+        // On Android 13 Tiramisu we ask the user to add the tile to the quick settings
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            (App.getInstance().prefManager.screenshotCount == 0 || isNewAppInstallation(this))
+        ) {
+            askToAddTiles()
+        }
+
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun askToAddTiles() {
+        if (ScreenshotTileService.instance == null) {
+            val statusBarManager = getSystemService(Context.STATUS_BAR_SERVICE) as StatusBarManager
+            // Firstly, ask for normal screenshot tile
+            statusBarManager.requestAddTileService(
+                ComponentName(this, ScreenshotTileService::class.java),
+                getString(R.string.tile_label),
+                Icon.createWithResource(this, R.drawable.ic_stat_name),
+                {
+                    it.run()
+                },
+                {
+                    // Secondly, ask for floating button tile
+                    if (FloatingTileService.instance == null) {
+                        statusBarManager.requestAddTileService(
+                            ComponentName(this, FloatingTileService::class.java),
+                            getString(R.string.tile_floating_label) + " " + getString(R.string.tile_floating_subtitle),
+                            Icon.createWithResource(this, R.drawable.ic_tile_float),
+                            {},
+                            {})
+                    }
+                })
         }
     }
 
