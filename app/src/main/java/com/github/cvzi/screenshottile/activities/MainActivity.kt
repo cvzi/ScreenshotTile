@@ -226,10 +226,19 @@ class MainActivity : AppCompatActivity() {
 
         // Show warning if app is installed on external storage
         try {
-            if (packageManager.getApplicationInfo(
+            val flags = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                packageManager.getApplicationInfo(
+                    packageName,
+                    PackageManager.ApplicationInfoFlags.of(0)
+                ).flags
+            } else {
+                @Suppress("DEPRECATION")
+                packageManager.getApplicationInfo(
                     packageName,
                     0
-                ).flags and ApplicationInfo.FLAG_EXTERNAL_STORAGE != 0
+                ).flags
+            }
+            if (flags and ApplicationInfo.FLAG_EXTERNAL_STORAGE != 0
             ) {
                 toastMessage(
                     "App is installed on external storage, this can cause problems  after a reboot with the floating button and the assistant function.",
