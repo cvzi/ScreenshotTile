@@ -199,6 +199,10 @@ class NotificationActionReceiver : BroadcastReceiver() {
         for (action in NOTIFICATION_ACTIONS) {
             intentFilter.addAction(action)
         }
-        context.registerReceiver(this, intentFilter)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            context.registerReceiver(this, intentFilter, Context.RECEIVER_NOT_EXPORTED)
+        } else {
+            context.registerReceiver(this, intentFilter)
+        }
     }
 }
