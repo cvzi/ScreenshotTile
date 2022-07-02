@@ -128,9 +128,9 @@ function extractCurrentRelease () {
   showCurrentRelease(name, code)
 }
 
-var lastCode = null
+let lastCode = null
 function showCurrentRelease (name, code) {
-  if (lastCode != null && lastCode <= code) {
+  if (lastCode != null && lastCode >= code) {
     return
   }
   lastCode = code
