@@ -22,7 +22,7 @@
     <string name="use_native_screenshot_option_default">روش بومی از پیش فرض سیستم استفاده می‌کند</string>
     <string name="use_native_screenshot_option_android11">برای استفاده از این «استفاده از پیش‌فرض سیستم» را غیرفعال کنید</string>
     <string name="accessibility_service_description">اگر این سرویس فعال باشد، برنامه می‌تواند فشار دادن دکمه پاور+خانه را برای گرفتن اسکرین‌شات شبیه‌سازی کند.\nدر برخی از دستگاه‌ها فعال سازی این روش ممکن است پایدارتر یا سریع‌تر از روش پیش‌فرض باشد.\n\nاگر سرویس را در اینجا فعال کنید، همچنین باید \"روش بومی\" را در تنظیمات برنامه فعال کنید.</string>
-    <string name="use_system_defaults">بِکارگیریِ پیشگُزیدِه‌ی سامانِہ</string>
+    <string name="use_system_defaults">استفاده از تنظیمات پیشفرض سیستم</string>
     <string name="use_system_defaults_summary">به اندروید ۱۱ نیاز دارد</string>
     <string name="use_system_defaults_summary_on">استفاده از محل ذخیره سازی،فرمت،ویرایشگر اسکرین شات و اعلانات پیش‌فرض</string>
     <string name="use_system_defaults_summary_off">استفاده کردن از تنظیمات برنامه</string>
@@ -59,10 +59,10 @@
     <string name="notification_settings">نوتیفیکیشن</string>
     <string name="notification_settings_on">فعال</string>
     <string name="notification_settings_off">خاموش</string>
-    <string name="file_title">اسکرین شات</string>
+    <string name="file_title">اسکرین‌شات</string>
     <string name="file_description">اسکرین شات در %1$s گرفته شده است</string>
     <string name="notification_title">عکس صفحه‌نمایش ذخیره شد</string>
-    <string name="notification_body">برای مشاهده عکس صفحه‌نمایشتان ضربه بزنید</string>
+    <string name="notification_body">برای مشاهده عکس گرفته شده ضربه بزنید</string>
     <string name="notification_channel_description">نمایش اعلان وقتی اسکرین شات میگیرید</string>
     <string name="notification_foreground_title">در حال ذخیره عکس صفحه‌نمایش…</string>
     <string name="notification_foreground_body">در حال ذخیره عکس صفحه‌نمایش… برای لغو ضربه بزنید</string>
@@ -72,9 +72,9 @@
     <string name="screenshot_failed">عکس صفحه‌نمایش ذخیره نشد</string>
     <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
     <string name="screenshot_file_saved">اسکرین شات در %1$s ذخیره شد</string>
-    <string name="notification_delete_screenshot">زُدودَن</string>
-    <string name="notification_share_screenshot">هَمرِسانی</string>
-    <string name="notification_edit_screenshot">ویرایِش</string>
+    <string name="notification_delete_screenshot">حذف کردن</string>
+    <string name="notification_share_screenshot">اشتراک گذاری</string>
+    <string name="notification_edit_screenshot">ویرایش</string>
     <string name="notification_rename_screenshot">تغییر نام</string>
     <string name="notification_screenshot_details">جزئیات</string>
     <string name="screenshot_deleted">اسکرین شات حذف شد</string>
@@ -86,7 +86,7 @@
     <string name="hide_app_from_launcher">مخفی کردن برنامه از کشوی برنامه ها</string>
     <string name="hide_app_unsupported">در اندروید بالای ۱۰ پشتیبانی نمیشود</string>
     <string name="toggle_app_icon_failed">نمایش/پنهان کردن نماد برنامه انجام نشد</string>
-    <string name="tutorial">آموزش گام‌به‌گام</string>
+    <string name="tutorial">آموزش گام به گام</string>
     <string name="tutorial_tap_for_next_step">برای مرحله بعدی ضربه بزنید</string>
     <string name="tutorial_step2">قسمت اعلانات را پایین بکشید</string>
     <string name="tutorial_step3">قسمت تنظیمات سریع را پایین بکشید</string>
@@ -96,7 +96,7 @@
     <string name="tutorial_step8">بستن تنظیمات سریع</string>
     <string name="tutorial_step10">قسمت اعلانات را بالا بکشید</string>
     <string name="tutorial_step11">پذیرفتن مجوز‌ها</string>
-    <string name="tutorial_step16">با دکمه جدید اسکرین شات بگیرید</string>
+    <string name="tutorial_step16">با دکمه جدید اسکرین‌شات بگیرید</string>
     <string name="take_screenshot">گرفتن اسکرین شات</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_title">افشای برجسته &amp; و الزامات رضایت فروشگاه Play</string>
