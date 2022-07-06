@@ -1,4 +1,4 @@
-Fügt eine Kachel/Button zu den Schnelleinstellungen hinzu
+Fügt dem Schnelleinstellungen eine Schaltfläche/Kachel hinzu, um Screenshots zu machen.
 
 Nach der Installation muss die Kachel noch zu den Schnelleinstellungen hinzugefügt werden, dazu zieht man einfach die Benachrichtigungsleiste herunter und drückt auf das Bearbeiten/Stift Symbol und schiebt die neue Kachel in die persönlichen Schnelleinstellungen. Danach fragt die App nach den benötigten Berechtigungen.
 
