@@ -118,6 +118,8 @@
     <string name="about_license_title">Lizenz</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">Diese App hat noch einige kleine Fehler und wird noch entwickelt.\nWenn du root Zugriff hast, kann du die originale Version von ipcjs benutzen. Sie ist schneller und stabiler.</string>
+    <string name="about_advanced_settings_button">Erweiterte Einstellungen</string>
+    <string name="about_update_check_button">Update-Check</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Bedienungshilfen Einstellungen</string>
     <string name="main_floating_button_title">Schwebender Auslöser</string>
