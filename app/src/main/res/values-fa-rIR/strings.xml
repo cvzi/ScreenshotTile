@@ -72,9 +72,9 @@
     <string name="screenshot_failed">عکس صفحه‌نمایش ذخیره نشد</string>
     <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
     <string name="screenshot_file_saved">اسکرین شات در %1$s ذخیره شد</string>
-    <string name="notification_delete_screenshot">زُدودَن</string>
-    <string name="notification_share_screenshot">هَمرِسانی</string>
-    <string name="notification_edit_screenshot">ویرایِش</string>
+    <string name="notification_delete_screenshot">حذف کردن</string>
+    <string name="notification_share_screenshot">اشتراک گذاری</string>
+    <string name="notification_edit_screenshot">ویرایش</string>
     <string name="notification_rename_screenshot">تغییر نام</string>
     <string name="notification_screenshot_details">جزئیات</string>
     <string name="screenshot_deleted">اسکرین شات حذف شد</string>
