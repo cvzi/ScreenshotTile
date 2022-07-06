@@ -118,6 +118,8 @@
     <string name="about_license_title">Licencia</string>
     <string name="about_license_1">Licencia Pública General de GNU Version 3 (GNU GPL v3)</string>
     <string name="about_app_2">Esta aplicación todavía tiene algunos problemas y está en desarrollo.\nSi tienes acceso de root, puedes usar la versión de ipcjs, es más rápido y más confiable.</string>
+    <string name="about_advanced_settings_button">Configuración avanzada</string>
+    <string name="about_update_check_button">Comprobación de actualización</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Configuración de accesibilidad</string>
     <string name="main_floating_button_title">Botón Flotante</string>
