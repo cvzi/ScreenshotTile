@@ -136,4 +136,12 @@
     <string name="main_assist_app_text">Nếu bạn đặt ứng dụng này làm ứng dụng trợ lý, bạn có thể nhấn giữ nút home để chụp màn hình. Việc bật ứng dụng này làm ứng dụng trợ lý sẽ tắt các ứng dụng trợ lý khác. Bạn có thể thay đổi hành động khi nhấn giữ nút home ở cài đặt ứng dụng.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Đổi tên</string>
+    <string name="post_recent_file_names_and_suggestions">Các tên tệp và đề xuất gần đây:</string>
+    <string name="post_hint_new_file_name">Tên tệp mới</string>
+    <string name="post_rename_file">Đổi tên tệp:</string>
+    <string name="post_rename_error_identical">Tên tệp mới và cũ giống hệt nhau</string>
+    <string name="post_hint_new_file_name_suggestion">Thêm đề xuất mới</string>
+    <string name="post_save_a_suggestion">Lưu đề xuất</string>
+    <string name="post_pin_to_favorites">Ghim vào mục yêu thích</string>
+    <string name="post_delete_suggestion">Xoá đề xuất</string>
 </resources>
