@@ -18,6 +18,8 @@ import android.os.*
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.App.resetMediaProjection
 import com.github.cvzi.screenshottile.App.setScreenshotPermission
@@ -86,6 +88,15 @@ class TakeScreenshotActivity : Activity(),
 
     private var askedForPermission = false
 
+    private val onBackInvokedCallback: OnBackInvokedCallback? =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Handle back button for Android 13+
+            OnBackInvokedCallback {
+                resetSelection()
+            }
+        } else null
+    private var onBackInvokedCallbackIsSet = false
+
     override fun onNewIntent(intent: Intent?) {
         /* If the activity is already open, we need to update the intent,
         otherwise getIntent() returns the old intent in onCreate() */
@@ -93,10 +104,14 @@ class TakeScreenshotActivity : Activity(),
         super.onNewIntent(intent)
     }
 
+    @Deprecated("Deprecated in Java")
+    @Suppress("DEPRECATION")
     override fun onBackPressed() {
+        // This is no longer used on Android 13+/Tiramisu
+        // See onBackInvokedCallback for Android 13+
         val selectorView = screenshotSelectorView
         if (partial && selectorView != null && !selectorView.defaultState) {
-            selectorView.reset()
+            resetSelection()
         } else {
             super.onBackPressed()
         }
@@ -171,7 +186,7 @@ class TakeScreenshotActivity : Activity(),
             } else {
                 // nothing selected -> reset the view
                 mScreenshotSelectorView.visibility = View.VISIBLE
-                mScreenshotSelectorView.reset()
+                resetSelection()
             }
             return
         }
@@ -214,6 +229,9 @@ class TakeScreenshotActivity : Activity(),
             text = getString(R.string.take_screenshot)
             shutter = R.drawable.ic_stat_name
             fullScreenIcon = R.drawable.ic_fullscreen
+            onSelect = {
+                addBackButtonHandler()
+            }
             onShutter = {
                 // If there is a cutout or status bars, the view might have a offset
                 val selectorViewOffset = intArrayOf(0, 0)
@@ -237,7 +255,7 @@ class TakeScreenshotActivity : Activity(),
                     prepareForScreenSharing()
                 }
             }
-            reset()
+            resetSelection()
         }
 
         // make sure that a foreground service runs
@@ -247,6 +265,31 @@ class TakeScreenshotActivity : Activity(),
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> BasicForegroundService.startForegroundService(
                 this
             )
+        }
+    }
+
+    private fun addBackButtonHandler() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !onBackInvokedCallbackIsSet) {
+            onBackInvokedCallback?.let {
+                onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                    OnBackInvokedDispatcher.PRIORITY_DEFAULT, onBackInvokedCallback
+                )
+            }
+            onBackInvokedCallbackIsSet = true
+        }
+    }
+
+    private fun resetSelection() {
+        val selectorView = screenshotSelectorView
+        if(partial && selectorView != null && !selectorView.defaultState) {
+            screenshotSelectorView?.reset()
+        }
+        // Remove handler for back button on Android 13
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            onBackInvokedCallback?.let {
+                onBackInvokedDispatcher.unregisterOnBackInvokedCallback(onBackInvokedCallback)
+            }
+            onBackInvokedCallbackIsSet = false
         }
     }
 

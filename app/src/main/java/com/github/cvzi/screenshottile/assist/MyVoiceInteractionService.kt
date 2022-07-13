@@ -7,7 +7,6 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.provider.Settings
 import android.service.voice.VoiceInteractionService
-import android.service.voice.VoiceInteractionSession
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.MainActivity
@@ -40,7 +39,6 @@ class MyVoiceInteractionService : VoiceInteractionService() {
 
     override fun onReady() {
         super.onReady()
-        disabledShowContext = VoiceInteractionSession.SHOW_WITH_ASSIST
         instance = this
         when (App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled) {
             SettingFragment.TAG -> {

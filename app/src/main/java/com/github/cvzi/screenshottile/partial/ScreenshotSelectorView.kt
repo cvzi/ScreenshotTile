@@ -45,6 +45,7 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
     }
 
     var onShutter: ((Rect) -> Unit)? = null
+    var onSelect: (() -> Unit)? = null
     var shutter: Int? = null
     var fullScreenIcon: Int? = null
     var text: String? = null
@@ -109,6 +110,7 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
         selectionRect = Rect(x, y, x, y)
         showShutter = false
         edgeMode = OFF
+        onSelect?.invoke()
     }
 
     private fun updateSelection(x: Int, y: Int) {

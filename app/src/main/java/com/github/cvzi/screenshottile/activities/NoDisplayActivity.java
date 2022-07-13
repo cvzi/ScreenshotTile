@@ -45,6 +45,17 @@ public class NoDisplayActivity extends Activity {
     }
 
     /**
+     * Open from service
+     *
+     * @param context    Context
+     */
+    public static void startNewTaskPartial(Context context) {
+        Intent intent = newPartialIntent(context);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+    /**
      * Open from service, take screenshot with legacy method
      *
      * @param context Context

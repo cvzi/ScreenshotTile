@@ -2,6 +2,7 @@ package com.github.cvzi.screenshottile.assist
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -13,6 +14,8 @@ import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
@@ -41,15 +44,15 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
     private var screenshotSelectorView: ScreenshotSelectorView? = null
     private var cutOutRect: Rect? = null
     private var currentBitmap: Bitmap? = null
-
-    override fun onBackPressed() {
-        val selectorView = screenshotSelectorView
-        if (screenshotSelectorActive && selectorView != null && !selectorView.defaultState) {
-            selectorView.reset()
-        } else {
-            super.onBackPressed()
-        }
-    }
+    private var partial = false
+    private val onBackInvokedCallback: OnBackInvokedCallback? =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Handle back button for Android 13+
+            OnBackInvokedCallback {
+                resetSelection()
+            }
+        } else null
+    private var onBackInvokedCallbackIsSet = false
 
     override fun onHandleScreenshot(bitmap: Bitmap?) {
         if (bitmap == null) {
@@ -67,11 +70,13 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         // Partial screenshot -> Show "crop bitmap view"
         cutOutRect = null
         if (bitmap != null && prefManager.voiceInteractionAction == context.getString(R.string.setting_voice_interaction_action_value_partial)) {
+            partial = true
             currentBitmap = bitmap
             if (BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: showCropBitmapView")
             showCropBitmapView(bitmap)
             return
         } else {
+            partial = false
             currentBitmap = null
         }
 
@@ -106,7 +111,11 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         if (bitmap == null) {
             Log.w(TAG, "onHandleScreenshot: Trying legacy method as last resort")
             hide()
-            NoDisplayActivity.startNewTask(context, true)
+            if (prefManager.voiceInteractionAction == context.getString(R.string.setting_voice_interaction_action_value_partial)) {
+                NoDisplayActivity.startNewTaskPartial(context)
+            } else {
+                NoDisplayActivity.startNewTaskLegacyScreenshot(context)
+            }
         } else {
             if (BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: storeBitmap(bitmap)")
             storeBitmap(bitmap)
@@ -136,6 +145,9 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                     screenshotSelectorActive = false
                 }
             }
+            onSelect = {
+                addBackButtonHandler()
+            }
         }
 
 
@@ -164,7 +176,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                 bitmap
             }
             visibility = View.VISIBLE
-            reset()
+            resetSelection()
         }
 
     }
@@ -322,5 +334,41 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         context.toastMessage(message, ToastType.ERROR)
     }
 
+    private fun addBackButtonHandler() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !onBackInvokedCallbackIsSet) {
+            onBackInvokedCallback?.let {
+                window.onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                    OnBackInvokedDispatcher.PRIORITY_DEFAULT, onBackInvokedCallback
+                )
+            }
+            onBackInvokedCallbackIsSet = true
+        }
+    }
 
+    private fun resetSelection() {
+        val selectorView = screenshotSelectorView
+        if(partial && selectorView != null && !selectorView.defaultState) {
+            screenshotSelectorView?.reset()
+        }
+        // Remove handler for back button on Android 13
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            onBackInvokedCallback?.let {
+                window.onBackInvokedDispatcher.unregisterOnBackInvokedCallback(onBackInvokedCallback)
+            }
+            onBackInvokedCallbackIsSet = false
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    @Suppress("DEPRECATION")
+    override fun onBackPressed() {
+        // This is no longer used on Android 13+/Tiramisu
+        // See onBackInvokedCallback for Android 13+
+        val selectorView = screenshotSelectorView
+        if (screenshotSelectorActive && selectorView != null && !selectorView.defaultState) {
+            resetSelection()
+        } else {
+            super.onBackPressed()
+        }
+    }
 }
