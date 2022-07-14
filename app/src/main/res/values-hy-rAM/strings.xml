@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Կադրահանման կոճգամ (առանձ root թույլտվությունների)</string>
+    <string name="app_name">Էկրանահանման Կոճակ (NoRoot)</string>
     <string name="tile_label">Կադրահանել</string>
     <string name="tile_floating_label">Թռչող կոճակ</string>
     <string name="tile_floating_subtitle">Կադրահանման Կոճակ</string>
@@ -9,8 +9,8 @@
     <string name="open_settings">Բացել կարգավորումները</string>
     <string name="left_screenshot_right_menu">Ձախից` Կադրահանում, աջից` Կարգավորումներ</string>
     <string name="partial_screenshot">Առանձնացնել մակերես</string>
-    <string name="file_format">Ֆայլի ֆորմատ</string>
-    <string name="setting_delay_entry_default">Առանձ հետաձգման</string>
+    <string name="file_format">Ձևաչափ</string>
+    <string name="setting_delay_entry_default">Առանց հետաձգման</string>
     <string name="setting_delay_entry_1s">1 վրկ</string>
     <string name="setting_delay_entry_2s">2 վրկ</string>
     <string name="setting_delay_entry_5s">5 վրկ</string>
@@ -23,36 +23,40 @@
     <string name="use_native_screenshot_option_android11">Անհրաժեշտ է անջատել «Օգտվել համակարգից սահմանված կարգավորումներից» կարգավորումը</string>
     <string name="accessibility_service_description">Եթե այս ծառայությունն ակտիվացնեք, ապա հավելվածը կկարողանա կեղծել տուն գնալու և հոսանքի կոճգամի հպումները։\nԱյս մեթոդը 
 կարող է ավելի ստաբիլ կամ արագ աշխատել որոշ սարքերի համար։\n\nԱյս ծառայությունից օգտվելու համար անհրաժեշտ է միացնել ներկառուցված կադրահանման մեթոդը հավելվածի կարգավորումների մեջ։</string>
-    <string name="use_system_defaults">Օգտվել համակարգի սահմանված կարգավորումներից</string>
+    <string name="use_system_defaults">Հաշվի առնել համակարգի կարգավորումները</string>
     <string name="use_system_defaults_summary">Անհրաժեշտ է Android 11</string>
     <string name="use_system_defaults_summary_on">Օգտագործվելու են լռելյայն կադրահանումների տեղադրությունը, ֆորմատը, խմբագրիչն ու ծանուցումները</string>
     <string name="use_system_defaults_summary_off">Օգտագործում են հավելվածի կարգավորումները</string>
     <string name="setting_floating_button">Թռչող կոճակ</string>
-    <string name="setting_floating_button_summary">Դուք նաև կարող եք այն միացնել/անջատել կոճգամների վահանակի կոճգամի միջոցով</string>
+    <string name="setting_floating_button_summary">Այս կարգավորումը նաև հասանելի է որպես վահանակի կոճգամ</string>
     <string name="setting_floating_button_unavailable">Մատչելիության ծառայությունն անջատված է</string>
     <string name="setting_floating_button_unsupported">Անհրաժեշտ է Android 9 (Pie)</string>
     <string name="setting_floating_button_scale">Թռչող կոճակի մեծություն</string>
     <string name="setting_floating_button_scale_summary">Սահմանեք թռչող կոճակի մեծությունը</string>
     <string name="setting_floating_button_hide_after">Թաքցնել թռչող կոճակը կադրահանումից հետո</string>
-    <string name="setting_floating_button_hide_after_summary">Թակցնել թռչող կոճակը կադրահանումից հետո</string>
-    <string name="setting_floating_button_show_close">Ցույց տալ [X]/փակելու կոճակ թռչող կոճակի կողքին</string>
-    <string name="setting_floating_button_show_close_summary">Օգնում է հանել թռչող կոճակը առանց կոճգամների վահանակը բացելու</string>
+    <string name="setting_floating_button_hide_after_summary">Ավտոմատ հեռացնել թռչող կոճակը՝ կադրահանում կատարելուց հետո</string>
+    <string name="setting_floating_button_show_close">Ցույց տալ փակման կոճակ «X»՝ թռչող կոճակի կողքին</string>
+    <string name="setting_floating_button_show_close_summary">Հնարավոր է դարձնում թաքցնել թռչող կոճակը՝ առանց կոճգամների վահանակը բացելու</string>
     <string name="setting_floating_button_show_close_dialog_title">Փակելու էմոտիկոն</string>
     <string name="setting_floating_button_show_close_dialog_description">Մուտքագրեք տեքստ կամ էմոտիկոն, որը կօգտագործվի որպես փակելու կոճակ</string>
     <string name="setting_floating_button_shutter">Թռչող կոճակի տեսք</string>
     <string name="setting_floating_button_delay">Հետաձգում (Թռչող կոճակ)</string>
     <string name="setting_broadcast_secret">Հեռաձակման գաղտնաբառ</string>
-    <string name="setting_broadcast_secret_description">Գաղտնի արտահայտություն, որը թույլ կտա այլ հավելվածներին (օրինակ՝ MacroDroid կամ Tasker) կադրահանել</string>
+    <string name="setting_broadcast_secret_description">Գաղտնի արտահայտություն, որը թույլ կտա այլ հավելվածներին (օրինակ՝ MacroDroid կամ Tasker) կատարել կադրահանում</string>
     <string name="setting_storage_directory">Կադրահանումների տեղադրություն</string>
     <string name="setting_storage_directory_description">Պանակ, որում կպահպանվեն կադրահանումները</string>
-    <string name="setting_file_name_pattern">Ֆայլի անվանում</string>
-    <string name="setting_file_name_placeholders_title">Օգտագործել այս փոփոխականները ֆայլի անվանման մեջ</string>
+    <string name="setting_file_name_pattern">Ֆայլանուն</string>
+    <string name="setting_file_name_placeholders_title">Օգտագործե՛ք այս փոփոխականները ֆայլի անվանման մեջ՝</string>
     <string name="setting_tile_action">Կոճգամի գործողություն</string>
     <string name="setting_floating_action">Թռչող կոճակի գործողություն</string>
+    <string name="setting_voice_interaction_action">Օգնականի գործողություն</string>
     <string name="setting_dark_theme">Գիշերային ռեժիմ</string>
     <string name="setting_dark_theme_system">Սահմանված համակարգի կողմից</string>
     <string name="setting_dark_theme_off">Անջատել</string>
     <string name="setting_dark_theme_on">Միացնել</string>
+    <string name="setting_notification_buttons">Ծանուցման Կոճակներ</string>
+    <string name="setting_notification_buttons_description">Ընտրեք մինչև 3 կոճակ, որոնք կկցվեն կադրահանման ծանուցմանը</string>
+    <string name="setting_notification_buttons_max_three">Դուք կարող ենք ընտրել մինչև 3 կոճակ</string>
     <string name="notification_settings">Ծանուցումներ</string>
     <string name="notification_settings_on">Միացված է</string>
     <string name="notification_settings_off">Անջատված է</string>
@@ -72,8 +76,12 @@
     <string name="notification_delete_screenshot">Ջնջել</string>
     <string name="notification_share_screenshot">Կիսվել</string>
     <string name="notification_edit_screenshot">Խմբագրել</string>
+    <string name="notification_rename_screenshot">Վերանվանել</string>
+    <string name="notification_screenshot_details">Տվյալներ</string>
     <string name="screenshot_deleted">Կադրահանումը ջնջվեց</string>
     <string name="screenshot_delete_failed">Չհաջողվեց ջնջել ֆայլը</string>
+    <string name="screenshot_renamed">Ֆայլը պահպանվել է որպես %1s</string>
+    <string name="screenshot_rename_failed">Ֆայլի վերանվանումը ձախողվեց</string>
     <string name="permission_missing_external_storage">Հիշողության թույլտվության հարցումը մերժվել է</string>
     <string name="permission_missing_screen_capture">Էկրանի ձայնագրման թույլտվության հարցումը մերժվել է</string>
     <string name="hide_app_from_launcher">Թաքցնել նշանը աշխատասեղանից</string>
@@ -92,26 +100,49 @@
     <string name="tutorial_step16">Կադրահանեք` օգտվելով նոր կոճգամից</string>
     <string name="take_screenshot">Կադրահանել</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">«Google Play» Բացահայտման և Համաձայնության Պահանջ</string>
+    <string name="googleplay_consent_line_0">«Google Play»-ը պահանջում է մատչելիության գործիք չհամարվող հավելվածներին հիմնավորել մատչելիության ծառայությունների API ինտերֆեյսն օգտագործելը։</string>
+    <string name="googleplay_consent_line_1">Այս հավելվածը՝ «Screenshot Tile [No Root]»-ը, մատչելիության գործիք չէ։</string>
+    <string name="googleplay_consent_line_2">Քանի որ օգտատերերի համար կարող է անսպասելի լինել իրենց անհատական տվյալները մատակարարելու անհրաժեշտությունը՝ հավելվածի աշխատանքը ընդլայնելու կամ բարելավելու համար, պահանջվում է մատչելիության ծառայությունների API ինտերֆեյսի օգտագործման պարզաբանում, ինչպես նաև հավելվածի կողմից կատարվող տվյալների հավաքման և տվյալները միջնորդների հետ կիսման սահմանում՝</string>
+    <string name="googleplay_consent_line_3">Այս հավելվածը պահանջում է մատչելիության ծառայությունների API ինտերֆեյսն օգտագործելու թույլտվություն՝ էկրանը կադրահանելու համար, երբ հավելվածը աշխատում է ետին պլանում:</string>
+    <string name="googleplay_consent_line_4">Մատչելիության ծառայությունների API ինտերֆեյսը այս հավելվածին կընձեռի էկրանը ձայնագրելու թույլտվություն։</string>
+    <string name="googleplay_consent_line_5">Էկրանի ձայնագրման ֆունկցիան կօգտագործվի միայն կադրահանման համար։</string>
+    <string name="googleplay_consent_line_6">Այս հավելվածը մատչելիության ծառայությունները չի օգտագործում ո՛չ տվյալներ հավաքելու, ո՛չ էլ այն միջնորդներին ուղարկելու համար։</string>
+    <string name="googleplay_consent_line_7">Դուք համաձայնո՞ւմ եք թույլատրել այս հավելվածին՝ օգտագործել մատչելիության ծառայությունների ինտերֆեյսը (API) և ձայնագրել էկրանը։</string>
+    <string name="googleplay_consent_yes">Համաձայն եմ</string>
+    <string name="googleplay_consent_no">Համաձայն չեմ</string>
     <!-- About -->
     <string name="about_app_title">Հավելվածի մասին</string>
     <string name="about_app_1">Այս հավելվածը հետևյալ հավելվածի վերամշակումն է՝\ngithub.com/ipcjs/ScreenshotTile</string>
     <string name="about_app_3">Այլ տվյալների կամ վրիպակների զեկույցների համար համար այցելեք՝\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Արտոնագիր</string>
     <string name="about_license_1">GNU Համապարփակ հրապարակային արտոնագիր, 3-րդ տարբերակ</string>
-    <string name="about_app_2">Քանի որ հավելվածը դեռ ծրագրավորման մեջ է, այն ունի որոշ խնդիրներ։\nԵթե դուք ունեք root թույլտվություններ, ապա օգտվեք ipcjs-ի տարբերակից, որն ավելի արագ է և ավելի ապահով։</string>
+    <string name="about_app_2">Այս հավելվածը դեռ ունի որոշ խնդիրներ և գտնվում է ակտիվ ծրագրավորման մեջ։\nԵթե ունեք «root» մատչում, օգտագործեք «ipcjs»-ի տարբերակը, որն ավելի արագ և ստաբիլ է աշխատում։</string>
+    <string name="about_advanced_settings_button">Այլ կարգավորումներ</string>
+    <string name="about_update_check_button">Ստանալ թարմացումներ</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Մատչելիության կարգավորումներ</string>
     <string name="main_floating_button_title">Թռչող կոճակ</string>
-    <string name="main_general_text">Այս հավելվածը օգտագործելու համար անհրաժեշտ է ավելացնել կոճգամը կոճգամների վահանակի վրա։ Եթե չգիտեք ինչպես անել դա, տեսեք [օգտագործողի ձեռնարկը,.TutorialActivity].\n\nԱյս հավելվածով կարող եք երկու ձևի կադրահանում կատարել՝</string>
+    <string name="main_general_text">Այս հավելվածը օգտագործելու համար անհրաժեշտ է ավելացնել կադրահանման կոճգամը՝ կոճգամների վահանակի վրա։ Եթե գտնում եք, որ Ձեզ օգնություն է անհրաժեշտ, տեսեք [օգտագործողի ձեռնարկը,.TutorialActivity].\n\nԱյս հավելվածով հնարավոր է կատարել երկու տեսակի կադրահանում․</string>
     <string name="main_legacy_method_title">Հին Մեթոդ</string>
-    <string name="main_legacy_method_text">Հին կադրահանման մեթոդը օգտվում է Android-ի ձայնագրման հատկություններից։\nԵրբ Դուք կադրահանում եք կատարում, ոչ մի ձայնային արձագանք չի լինի։ Անձայն ծանուցումը Ձեզ կառաջարկի բացել, ջնջել կադրահանումը կամ կիսվել նկարով։ Ծանուցումը կարելի է անջատել հավելվածի կարգավորումների մեջ։\nՄինչև կադրահանումը, պետք է ավելացնեք կադրահանման կոճգամը կոճգամների վահանակի մեջ, ապա համաձայնեք էկրանը ձայնագրելու և հիշողությունից օգտվելու թույլտվությունների հարցումներին, որպեսզի նկարը պահպանվի։\nՏեսեք այդ ընթացքի ուղեկցությունը։\n\nՈրոշ նոր սարքեր չեն սպասարկում այս մեթոդը, հատկապես Android 9-ն ու ավելի նոր տարբերակները։ Այս մեթոդը ստաբիլ չէ, և ամեն կադրահանման ժամանակ կարող է առաջանալ ձայնագրման հարցում։ Եթե այդպես լինի, օգտագործեք ներքևի ներկառուցված մեթոդը։</string>
+    <string name="main_legacy_method_text">Հին մեթոդը օգտագործում է «Android»-ի էկրանի ձայնագրման ֆունկցիան։\nԿադրահանման արդյունքում կառաջանա անձայն ծանուցում, որը կառաջարկի Ձեզ 3 գործողություն՝ «Բացել», «Կիսվել», և «Խմբագրել»։ Ծանուցումները կարող եք անջատել հավելվածի կարգավորումներում։\nՄինչ կադրահանում կատարելը անհրաժեշտ է կոճգամների վահանակում ավելացնել «կադրահանման» կոճգամը և համաձայնել էկրանի ձայնագրման և սարքի ներքին հիշողության մատչման թույլտվություններին։\nՍտորև՝ հասանելի է ուղեցույց։\n\nՈրոշ սարքերի՝ մասնավորպես «Android» 9.0 և բարձր տարբերակների վրա այս մեթոդը անստաբիլ է կամ կարող է ընդհանրապես չաշխատել։ Եթե առաջանան խնդիրներ, օգտագործեք ներկառուցված մեթոդը, որը կարող եք գտնել ստորև։</string>
     <string name="main_native_method_title">Ներկառուցված Մեթոդ</string>
-    <string name="main_native_method_text">Ներկառուցված մեթոդն օգտագործում է արհեստական աշխատասեղանի և հոսանքի կոճգամի սեղմում և Ձեր սարքի կադրահանման մեթոդը։\n{main_native_method_text_android_version}\n\nՄինչև կադրահանումներ կատարելը անհրաժեշտ է միացնել մատչելիության ծառայությունը Ձեր սարքի կարգավորումների մեջ։ Սեղմեք ներքևի կոճակը, որպեսզի բացվեն մատչելիության կարգավորումները։</string>
+    <string name="main_native_method_text">Ներկառուցված մեթոդը կեղծում է «Տան» և «Հոսանքի» կոճակների սեղմումը, ըստ որի կակտիվանա Ձեր սարքի ներկառուցված էկրանահանիչը։\n{main_native_method_text_android_version}\n\nԱյս մեթոդը օգտագործելու համար նախ անհրաժեշտ է ակտիվացնել համապատասխան մատչելիության ծառայությունը։ Սկսելու համար՝ սեղմեք ստորև գտնվող կոճակը։</string>
     <string name="main_native_method_text_android_pre_11">Երբ Դուք կադրահանում եք կատարում, հնարավոր է, որ ձայնային արձագանք ստանաք կամ բացվի նկարի խմբագրիչ։ Այդ գործողությունը կատարվում է Ձեր հեռախոսի կողմից և այս հավելվածը օժտված չէ փոփոխել այդ գործողությունը։ Սակայն հնարավոր է, Ձեր հեռախոսի կարգավորումները թույլ տան փոփոխել կադրահանման ընթացքը։</string>
-    <string name="main_native_method_text_android_since_11">Դուք կարող եք օգտագործել համակարգին (ծանուցումներ, խմբագրիչ, ստանդարտ պանակ ստացված նկարների համար) բնորոշ լռելյայն կարգավորումները կամ սահմանել Ձեր կարգավորումները (այլ պանակ ստացված նկարների համար և ծանուցումներ հավելվածի կողմից) օգտագործելով «Օգտվել համակարգի սահմանված կարգավորումներից» կարգավորման միջոցով։</string>
-    <string name="main_floating_button_text">Եթե Դուք միացրել եք ներկառուցված մեթոդը, ապա կարող եք նաև օգտվել թռչող կոճակ (որը նման է զրույցի պղպջակի) կադրահանում կատարելու համար։\nԴուք կարող եք այն միացնել կոճգամների վահանակի միջոցով և տեղափոխել էկրանի այլ մաս։</string>
+    <string name="main_native_method_text_android_since_11">Կարող եք ընտրել հավելվածի կարգավորումներում՝ օգտագործել ներկառուցված (բնիկ ծանուցումներ, խմբագրիչ, համակարգում սահմանված պահպանման պանակ) կամ հավելվածի կողմից (Ձեր կողմից սահմանված պահպանման պանակ և կադրահանման ծանուցումներ՝ հավելվածի կողմից) ապահովվող ծառայությունները՝ փոփոխելով «Հաշվի առնել համակարգի կարգավորումները» կարգավորումը։</string>
+    <string name="main_floating_button_text">Եթե միացրել եք ներկառուցված մեթոդը, ապա կարող եք նաև ակտիվացնել զրուցապղպջակի տեսք ունեցող կադրահանման թռչող կոճակը։\nԿոճակը հնարավոր է ակտիվացնել/ապակտիվացնել կոճգամների վահանակից և տեղաշարժել էկրանով մեկ։</string>
     <string name="main_long_press_title">Երկար Սեղմում</string>
-    <string name="main_long_press_text">Երկար սեղմելով կոճգամը/թռ․ կոճակը կբացվի ցուցակ։ Դուք կարող եք սահմանել հետաձգում կամ առանձնացնել էկրանի այն մասը, որը ցանկանում եք կադրահանել։</string>
+    <string name="main_long_press_text">Սեղմած պահելով թռչող կոճակը կամ վահանակի կոճգամը՝ կբացեք ընտրացանկ, ուր կարող եք սահմանել հետաձգում կամ առանձնացնել էկրանի այն հատվածը, որը Ձեզ անհրաժեշտ է կադրահանել։</string>
     <string name="main_assist_app_title">Օգնական հավելված</string>
+    <string name="main_assist_app_text">Եթե սահմանեք այս հավելվածը որպես ձայնային օգնական, Դուք կարող եք կադրահանում կատարել՝ սեղմած պահելով «Տան» կոճակը։ Այս հավելվածը որպես ձայնային օգնական սահմանելով՝ կանջատեք Ձեր այժմյա օգնականին։ Դուք կարող եք փոփոխել հավելվածի կատարած գործողությունը՝ կարգավորումներում։</string>
     <!-- Post edit activity -->
+    <string name="post_button_save">Վերանվանել</string>
+    <string name="post_recent_file_names_and_suggestions">Նախընթաց ֆայլանուններ և առաջարկություններ․</string>
+    <string name="post_hint_new_file_name">Նոր ֆայլանուն</string>
+    <string name="post_rename_file">Վերանվանել ֆայլը․</string>
+    <string name="post_rename_error_identical">Հին ու նոր ֆայլանունները չեն տարբերվում</string>
+    <string name="post_hint_new_file_name_suggestion">Ավելացնել նոր առաջարկություն</string>
+    <string name="post_save_a_suggestion">Հիշել առաջարկությունը</string>
+    <string name="post_pin_to_favorites">Կցել նախընտրելիների ցուցակին</string>
+    <string name="post_delete_suggestion">Ջնջել առաջարկությունը</string>
 </resources>
