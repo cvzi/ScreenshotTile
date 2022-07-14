@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.18.1
+*   File size in PostActivity
+*   Custom compression/quality for file format  [#175](https://github.com/cvzi/ScreenshotTile/issues/170) (in advanced settings)
+*   Android 13: back
+
 ## 1.18.0
 *   Transparency of floating button [#175](https://github.com/cvzi/ScreenshotTile/issues/170) (in advanced settings)
 *   Custom delay time (in advanced settings)
