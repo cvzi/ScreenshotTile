@@ -77,6 +77,7 @@ class PostActivity : AppCompatActivity() {
                                 findViewById<ImageView>(R.id.imageView).setImageResource(android.R.drawable.stat_notify_error)
                                 findViewById<TextView>(R.id.textViewFileName).text =
                                     "Failed to load image"
+                                findViewById<TextView>(R.id.textViewFileSize).text = ""
                             }
                         })
                     }
@@ -105,6 +106,7 @@ class PostActivity : AppCompatActivity() {
                     // Show delete icon and close activity
                     findViewById<ImageView>(R.id.imageView).setImageResource(android.R.drawable.ic_menu_delete)
                     findViewById<TextView>(R.id.textViewFileName).setText(R.string.screenshot_deleted)
+                    findViewById<TextView>(R.id.textViewFileSize).text = "0"
                     it.postDelayed({
                         finish()
                     }, 1000L)
@@ -201,6 +203,9 @@ class PostActivity : AppCompatActivity() {
     private fun showSingleImage(singleImage: SingleImageLoaded) {
         findViewById<ImageView>(R.id.imageView).setImageBitmap(singleImage.thumbnail)
         findViewById<TextView>(R.id.textViewFileName).text = singleImage.fileName
+        findViewById<TextView>(R.id.textViewFileSize).text = singleImage.size?.let {
+            android.text.format.Formatter.formatShortFileSize(this, it)
+        } ?: ""
         findViewById<EditText>(R.id.editTextNewName).setText(singleImage.fileName)
         shareIntent = shareImageChooserIntent(this, singleImage.uri, singleImage.mimeType)
         editIntent = editImageChooserIntent(this, singleImage.uri, singleImage.mimeType)

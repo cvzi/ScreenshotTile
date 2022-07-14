@@ -51,6 +51,13 @@
                         android:paddingVertical="2dp"
                         android:src="@android:drawable/ic_popup_sync"
                         tools:ignore="HardcodedText" />
+                    <TextView
+                        android:id="@+id/textViewFileSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:text=""
+                        android:textAlignment="textEnd" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
