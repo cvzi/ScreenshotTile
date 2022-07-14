@@ -21,6 +21,7 @@
     <string name="pref_key_use_system_defaults" translatable="false">use_system_defaults</string>
     <string name="pref_key_hide_app" translatable="false">hide_app</string>
     <string name="pref_key_file_format" translatable="false">file_format</string>
+    <string name="pref_key_format_quality" translatable="false">format_quality</string>
     <string name="pref_key_broadcast_secret" translatable="false">broadcast_secret</string>
     <string name="pref_key_storage_directory" translatable="false">storage_directory</string>
     <string name="pref_key_file_name_pattern" translatable="false">file_name_pattern</string>

@@ -49,4 +49,8 @@
     <string name="setting_delay_custom_summary" translatable="false">Set a custom delay for the tile (in seconds)\n0 seconds = no delay</string>
     <string name="setting_floating_button_delay_custom_summary" translatable="false">Set a custom delay for the floating button (in seconds)\n0 seconds = no delay</string>
 
+    <string name="setting_format_quality" translatable="false">File format quality</string>
+    <string name="setting_format_quality_summary" translatable="false">%s (Default: %s)</string>
+    <string name="setting_format_quality_dialog" translatable="false">Compression/Quality of the file format: (0 to 100)\n0 means compress for the smallest size. 100 means compress for max visual quality.\nLeave empty to use the default value.</string>
+
 </resources>

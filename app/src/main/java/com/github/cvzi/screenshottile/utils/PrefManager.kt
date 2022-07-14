@@ -75,6 +75,14 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value
         ).apply()
 
+    var formatQuality: Int
+        get() = (pref.getString(context.getString(R.string.pref_key_format_quality), "-1")
+            ?.toIntOrNull() ?: -1).coerceIn(-1, 100)
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_format_quality),
+            value.coerceIn(-1, 100).toString()
+        ).apply()
+
     var broadcastSecret: String
         get() = pref.getString(
             context.getString(R.string.pref_key_broadcast_secret),

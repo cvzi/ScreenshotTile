@@ -139,14 +139,20 @@ fun mimeFromFileExtension(fileExtension: String): String {
 /**
  * Get a CompressionsOptions object from the file_format setting
  */
-fun compressionPreference(context: Context): CompressionOptions {
+fun compressionPreference(context: Context, forceDefaultQuality: Boolean = false): CompressionOptions {
     var prefFileFormat = (context.applicationContext as? App)?.prefManager?.fileFormat
         ?: context.getString(R.string.setting_file_format_value_default)
+    val prefFormatQuality = (context.applicationContext as? App)?.prefManager?.formatQuality
+        ?: -1
     val parts = prefFileFormat.split("_")
     prefFileFormat = parts[0]
-    val quality = if (parts.size > 1) {
+    var quality = if (parts.size > 1) {
         parts[1].toInt()
     } else 100
+    if (!forceDefaultQuality && prefFormatQuality > -1) {
+        quality = prefFormatQuality
+    }
+
     return CompressionOptions(prefFileFormat, quality)
 }
 
