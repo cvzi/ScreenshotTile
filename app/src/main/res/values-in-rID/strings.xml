@@ -44,6 +44,7 @@
     <string name="setting_broadcast_secret_description">Frasa rahasia untuk mengizinkan aplikasi lain (seperti MacroDroid atau Tasker) untuk memulai tangkapan layar</string>
     <string name="setting_storage_directory">Simpan lokasi</string>
     <string name="setting_storage_directory_description">Folder untuk menyimpan tangkapan layar</string>
+    <string name="setting_file_name_pattern">Nama file</string>
     <string name="setting_tile_action">Aksi ubin</string>
     <string name="setting_dark_theme">Tema Gelap</string>
     <string name="setting_dark_theme_system">Sistem</string>
