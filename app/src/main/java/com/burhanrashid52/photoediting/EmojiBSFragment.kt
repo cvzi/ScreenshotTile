@@ -13,7 +13,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCa
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.GridLayoutManager
-import com.burhanrashid52.photoediting.PhotoApp.Companion.photoApp
 import java.lang.NumberFormatException
 import java.util.ArrayList
 import com.github.cvzi.screenshottile.R
@@ -33,6 +32,12 @@ class EmojiBSFragment : BottomSheetDialogFragment() {
         }
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+    }
+
+    fun loadEmoji(context: Context) {
+        if (emojisList.size == 0) {
+            emojisList = getEmojis(context)
+        }
     }
 
     @SuppressLint("RestrictedApi")
@@ -89,7 +94,7 @@ class EmojiBSFragment : BottomSheetDialogFragment() {
     }
 
     companion object {
-        private var emojisList = getEmojis(photoApp)
+        private var emojisList = ArrayList<String>()
 
         /**
          * Provide the list of emoji in form of unicode string
@@ -97,9 +102,9 @@ class EmojiBSFragment : BottomSheetDialogFragment() {
          * @param context context
          * @return list of emoji unicode
          */
-        fun getEmojis(context: Context?): ArrayList<String> {
+        private fun getEmojis(context: Context): ArrayList<String> {
             val convertedEmojiList = ArrayList<String>()
-            val emojiList = context!!.resources.getStringArray(R.array.photo_editor_emoji)
+            val emojiList = context.resources.getStringArray(R.array.photo_editor_emoji)
             for (emojiUnicode in emojiList) {
                 convertedEmojiList.add(convertEmoji(emojiUnicode))
             }

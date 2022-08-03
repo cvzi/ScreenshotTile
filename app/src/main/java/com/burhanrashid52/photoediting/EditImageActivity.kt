@@ -85,7 +85,9 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         handleIntentImage(mPhotoEditorView?.source)
         mWonderFont = Typeface.createFromAsset(assets, "beyond_wonderland.ttf")
         mPropertiesBSFragment = PropertiesBSFragment()
-        mEmojiBSFragment = EmojiBSFragment()
+        mEmojiBSFragment = EmojiBSFragment().apply {
+            loadEmoji(this@EditImageActivity)
+        }
         mStickerBSFragment = StickerBSFragment()
         mShapeBSFragment = ShapeBSFragment()
         mStickerBSFragment?.setStickerListener(this)
