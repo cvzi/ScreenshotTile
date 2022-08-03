@@ -1,1 +1,0 @@
-* Easy support for image editing using Paints, Text, Filters, Emoji and Sticker.
