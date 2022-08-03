@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.core.content.ContextCompat
 import java.util.ArrayList
+import com.github.cvzi.screenshottile.R
 
 /**
  * Created by Ahmed Adel on 5/8/17.

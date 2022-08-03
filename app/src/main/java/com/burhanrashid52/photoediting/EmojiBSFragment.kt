@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.burhanrashid52.photoediting.PhotoApp.Companion.photoApp
 import java.lang.NumberFormatException
 import java.util.ArrayList
+import com.github.cvzi.screenshottile.R
 
 class EmojiBSFragment : BottomSheetDialogFragment() {
     private var mEmojiListener: EmojiListener? = null

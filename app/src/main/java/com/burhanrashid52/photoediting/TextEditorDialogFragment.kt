@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import com.github.cvzi.screenshottile.R
 
 /**
  * Created by Burhanuddin Rashid on 1/16/2018.

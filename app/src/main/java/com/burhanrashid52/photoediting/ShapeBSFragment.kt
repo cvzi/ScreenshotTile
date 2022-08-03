@@ -11,6 +11,7 @@ import ja.burhanrashid52.photoeditor.shape.ShapeType
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.burhanrashid52.photoediting.ColorPickerAdapter.OnColorPickerClickListener
+import com.github.cvzi.screenshottile.R
 
 class ShapeBSFragment : BottomSheetDialogFragment(), SeekBar.OnSeekBarChangeListener {
     private var mProperties: Properties? = null

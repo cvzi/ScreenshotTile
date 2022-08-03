@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.github.cvzi.screenshottile.R
 
 class StickerBSFragment : BottomSheetDialogFragment() {
     private var mStickerListener: StickerListener? = null

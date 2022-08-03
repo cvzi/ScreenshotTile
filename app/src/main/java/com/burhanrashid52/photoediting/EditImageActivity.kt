@@ -50,6 +50,7 @@ import java.io.File
 import java.io.IOException
 import java.lang.Exception
 import androidx.annotation.RequiresPermission
+import com.github.cvzi.screenshottile.R
 
 class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickListener,
     PropertiesBSFragment.Properties, ShapeBSFragment.Properties, EmojiListener, StickerListener,
@@ -113,7 +114,9 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         mPhotoEditor?.setOnPhotoEditorListener(this)
 
         //Set Image Dynamically
-        mPhotoEditorView?.source?.setImageResource(R.drawable.paris_tower)
+        if (intent == null) {
+          mPhotoEditorView?.source?.setImageResource(android.R.drawable.stat_notify_error)
+        }
         mSaveFileHelper = FileSaveHelper(this)
     }
 
@@ -408,6 +411,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
             }
             ToolType.EMOJI -> showBottomSheetDialogFragment(mEmojiBSFragment)
             ToolType.STICKER -> showBottomSheetDialogFragment(mStickerBSFragment)
+            else -> Log.e(TAG, "onToolSelected() called with unknown: toolType = [$toolType]")
         }
     }
 

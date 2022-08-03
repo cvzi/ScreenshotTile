@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.burhanrashid52.photoediting.R
 import ja.burhanrashid52.photoeditor.PhotoFilter
 import java.io.IOException
 import java.util.ArrayList
+import com.github.cvzi.screenshottile.R
 
 /**
  * @author [Burhanuddin Rashid](https://github.com/burhanrashid52)
