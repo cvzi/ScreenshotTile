@@ -27,6 +27,7 @@ import org.junit.Assert.assertNotEquals
 import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
+import com.github.cvzi.screenshottile.R
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
