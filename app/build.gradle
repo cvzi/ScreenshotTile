@@ -20,14 +20,14 @@ android {
     }
     compileSdkVersion 33
     defaultConfig {
-        applicationId "com.github.cvzi.screenshottile"
+        applicationId 'com.github.cvzi.screenshottile'
         minSdkVersion 24
         targetSdkVersion 33
         versionCode 71
-        versionName "1.18.2"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionName '1.18.2'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
-    namespace "com.github.cvzi.screenshottile"
+    namespace 'com.github.cvzi.screenshottile'
     buildTypes {
         release {
             minifyEnabled true
@@ -73,7 +73,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'com.google.android.material:material:1.6.1'
-    implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'androidx.cardview:cardview:1.0.0'
 
     // Testing-only dependencies
     androidTestImplementation 'androidx.test:core:1.5.0-alpha01'
