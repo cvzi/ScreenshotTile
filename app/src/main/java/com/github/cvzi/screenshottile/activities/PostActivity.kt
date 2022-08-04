@@ -14,6 +14,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_RENAME_INPUT
 import com.github.cvzi.screenshottile.R
@@ -219,6 +220,12 @@ class PostActivity : AppCompatActivity() {
                 .format(singleImage.lastModified)
 
         restoreSavedInstanceValues()
+
+        // TODO open photoeditor
+        val photoEditorIntent = Intent(this, EditImageActivity::class.java)
+        photoEditorIntent.action = Intent.ACTION_EDIT
+        photoEditorIntent.setDataAndType(singleImage.uri, singleImage.mimeType)
+        startActivity(photoEditorIntent)
     }
 
 
