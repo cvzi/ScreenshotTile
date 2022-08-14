@@ -48,10 +48,14 @@
     <string name="setting_file_name_placeholders_title">Use as seguintes variáveis no nome do arquivo</string>
     <string name="setting_tile_action">Ação do botão</string>
     <string name="setting_floating_action">Ação do botão flutuante</string>
-    <string name="setting_dark_theme">Modo noturno</string>
+    <string name="setting_voice_interaction_action">Ação do assistente</string>
+    <string name="setting_dark_theme">Tema escuro</string>
     <string name="setting_dark_theme_system">Sistema</string>
-    <string name="setting_dark_theme_off">Desligadas</string>
-    <string name="setting_dark_theme_on">Ligadas</string>
+    <string name="setting_dark_theme_off">Desativado</string>
+    <string name="setting_dark_theme_on">Ativado</string>
+    <string name="setting_notification_buttons">Botões na notificação</string>
+    <string name="setting_notification_buttons_description">Selecione até 3 botões que serão exibidos na notificação após fazer uma captura de tela</string>
+    <string name="setting_notification_buttons_max_three">Por favor, escolha no máximo 3 botões</string>
     <string name="notification_settings">Notificações</string>
     <string name="notification_settings_on">Ligadas</string>
     <string name="notification_settings_off">Desligadas</string>
@@ -72,8 +76,12 @@
     <string name="notification_delete_screenshot">Excluir</string>
     <string name="notification_share_screenshot">Compartilhar</string>
     <string name="notification_edit_screenshot">Editar</string>
+    <string name="notification_rename_screenshot">Renomear</string>
+    <string name="notification_screenshot_details">Detalhes</string>
     <string name="screenshot_deleted">Captura excluída</string>
     <string name="screenshot_delete_failed">Não foi possível excluir o arquivo</string>
+    <string name="screenshot_renamed">Arquivo renomeado para %1s</string>
+    <string name="screenshot_rename_failed">Não foi possível renomear o arquivo</string>
     <string name="permission_missing_external_storage">Não foi possível obter a permissão do armazenamento</string>
     <string name="permission_missing_screen_capture">Não foi possível obter a permissão para gravar a tela</string>
     <string name="hide_app_from_launcher">Ocultar o ícone do App no lançador</string>
@@ -92,6 +100,17 @@
     <string name="tutorial_step16">Pode fazer as Capturas da tela com o novo botão</string>
     <string name="take_screenshot">Faça uma Captura da tela</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Informações importantes do Google Play e requisito de consentimento</string>
+    <string name="googleplay_consent_line_0">O Google Play requer uma divulgação de informações sobre o uso do API de Serviços de Acessibilidade para um aplicativo que não é uma ferramenta de acessibilidade.</string>
+    <string name="googleplay_consent_line_1">O app - \"Screenshot Tile [sem root]\" - não é uma ferramenta de acessibilidade.</string>
+    <string name="googleplay_consent_line_2">Dado que os usuários, na medida do possível, podem não esperar que seus dados pessoais e confidenciais sejam necessários para fornecer ou melhorar as características de conformidade com as políticas ou funcionalidades neste app, uma divulgação sobre o uso da API de Serviços de Acessibilidade por este aplicativo e uma declaração sobre compartilhamento de dados dentro deste app é necessária:</string>
+    <string name="googleplay_consent_line_3">Este app requer acesso à API de Serviços de Acessibilidade para fazer uma captura de tela quando o aplicativo não estiver em uso.</string>
+    <string name="googleplay_consent_line_4">O acesso à API de Serviços de Acessibilidade permitirá que este app capture a tela.</string>
+    <string name="googleplay_consent_line_5">Gravações da tela serão usadas para criar imagens de captura da tela.</string>
+    <string name="googleplay_consent_line_6">Os dados não são coletados nem compartilhados por este app usando as capacidades de acessibilidade.</string>
+    <string name="googleplay_consent_line_7">Você concorda em autorizar este app para obter o acesso à API de Serviços de Acessibilidade e usar as funcionalidades de acessibilidade para gravar a tela?</string>
+    <string name="googleplay_consent_yes">Concordo</string>
+    <string name="googleplay_consent_no">Não quero</string>
     <!-- About -->
     <string name="about_app_title">Sobre</string>
     <string name="about_app_1">Este é um fork of\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -101,6 +120,8 @@
     <string name="about_app_2">Este App ainda tem alguns problemas e está em desenvolvimento contínuo.\nSe você tem acesso Root no seu telefone, use a versão de ipcjs, é mais rápido e mais estável.</string>
     <string name="about_privacy_title">Política de privacidade</string>
     <string name="about_open_source_title">Software utilizado</string>
+    <string name="about_advanced_settings_button">Configurações avançadas</string>
+    <string name="about_update_check_button">Verificação por atualizações</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Configurações de acessibilidade</string>
     <string name="main_floating_button_title">Botão flutuante</string>
@@ -114,6 +135,16 @@
     <string name="main_floating_button_text">Se você ativou o método integrado, também pode usar um botão flutuante (semelhante a uma bolinha de chat) para fazer a Captura.\nVocê pode ativá-lo com um botão separado no menu de ajustes rápidos e depois movê-lo à tela.</string>
     <string name="main_long_press_title">Pressione e segure o botão</string>
     <string name="main_long_press_text">Para abrir o menu pressione e segure o botão. Você pode especificar um atraso para a Captura da tela ou selecionar um retângulo na tela.</string>
-    <string name="main_assist_app_title">App assistivo</string>
+    <string name="main_assist_app_title">App de assistência</string>
+    <string name="main_assist_app_text">Se você definir esse app como seu aplicativo de assistência, você vai poder fazer um toque longo no botão de início para efetuar uma captura de tela. Ao definir este app como seu app de assistência você desativará outros assistentes. Você pode alterar a ação do toque longo do botão de início em configurações do app.</string>
     <!-- Post edit activity -->
+    <string name="post_button_save">Renomear</string>
+    <string name="post_recent_file_names_and_suggestions">Nomes e sugestões de arquivos recentes:</string>
+    <string name="post_hint_new_file_name">Novo nome do arquivo</string>
+    <string name="post_rename_file">Renomear arquivo:</string>
+    <string name="post_rename_error_identical">Novo e antigo nome do arquivo é idêntico</string>
+    <string name="post_hint_new_file_name_suggestion">Adicionar nova sugestão</string>
+    <string name="post_save_a_suggestion">Salvar sugestão</string>
+    <string name="post_pin_to_favorites">Adicionar aos favoritos</string>
+    <string name="post_delete_suggestion">Apagar sugestão</string>
 </resources>
