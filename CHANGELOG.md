@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.18.4
+## 1.18.5
 *   Translations updated from crowdin
 
 ## 1.18.3
