@@ -10,6 +10,7 @@ Se o aplicativo apresentar problemas no Android 9/Pie ou 10, você pode tentar a
 ✓ Notificação após cada Captura da tela (pode ser desativada)
 ✓ Pode imediatamente compartilhar, editar ou excluir a Captura da tela via notificação
 ✓ Botão flutuante, tipo uma bolinha de bate-papo (Android 9+)
+✓ Use como app de assistência para fazer uma captura de tela (toque longo no botão de início)
 ✓ Capturas de uma área específica da tela (pressione e segure o botão)
 ✓ Pode definir um atraso para cada Captura da tela
 ✓ Salvar em qualquer pasta ou em qualquer tipo de armazenamento, por exemplo, cartãoSD
