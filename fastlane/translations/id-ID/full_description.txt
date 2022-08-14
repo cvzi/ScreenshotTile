@@ -1,0 +1,41 @@
+Menambahkan tombol/ubin ke panel pengaturan cepat untuk mengambil tangkapan layar.
+
+Setelah menginstal, Anda perlu menambahkan tombol/ubin ke pengaturan cepat Anda dan kemudian memberikan izin untuk merekam tangkapan layar dan menyimpan gambar ke penyimpanan internal.
+
+Jika aplikasi mogok di Android 9/Pie atau 10, Anda dapat mencoba mengaktifkan "Gunakan metode tangkapan layar asli" di pengaturan aplikasi.
+
+<h2>Fitur:</h2>✓ Ambil tangkapan layar dari pengaturan cepat
+Tidak diperlukan root
+Pemberitahuan setelah tangkapan layar diambil (dapat dinonaktifkan)
+Segera bagikan, edit, atau hapus tangkapan layar dari notifikasi
+Tombol mengambang/tombol Hamparan seperti gelembung obrolan (Android 9+)
+Gunakan sebagai aplikasi bantuan untuk mengambil tangkapan layar (tekan lama tombol Beranda)
+Hanya ambil tangkapan layar dari area tertentu di layar (tekan lama ubin)
+Tunda mengambil tangkapan layar
+Simpan di folder apa pun di penyimpanan manapun, contohnya kartu SD
+Simpan dalam format file yang berbeda: png, jpg atau webp
+Ambil tangkapan layar otomatis dengan aplikasi seperti Tasker atau MacroDroid
+Gratis, sumber terbuka, tanpa iklan
+
+Ini adalah cabang dari "Screenshot Tile [Root]" tetapi tidak memerlukan root. Jika Anda memiliki akses root, Anda harus menggunakan <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">aplikasi asli</a> oleh ipcjs, ini lebih cepat dan lebih andal daripada cabang ini.
+
+Kode sumber: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Kode sumber: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Lisensi Open Source adalah GNU GPLv3
+
+<u>Catatan:</u>
+🎦 Saat Anda mengambil tangkapan layar, <b>ikon "Google Cast"</b> akan muncul di bilah status dan akan terlihat di gambar tangkapan layar.
+Jika Anda ingin menyembunyikan ikon, ada penjelasannya di sini: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Izin:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Foto/Media/File dan Penyimpanan"</i>
+Ini diperlukan untuk menyimpan file tangkapan layar di penyimpanan internal perangkat Anda.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Sejak Android 9/Pie izin ini diperlukan untuk mengambil tangkapan layar. Ini pada dasarnya berarti bahwa aplikasi ini dapat berjalan tanpa menunjukkan dirinya sendiri. Namun aplikasi akan selalu menampilkan notifikasi saat sedang berjalan.
+
+<h2>Tangkapan layar otomatis:</h2>Jika Anda ingin mengotomatiskan tangkapan layar dari aplikasi lain, mis. MacroDroid atau Tasker, Anda dapat menemukan panduan langkah demi langkah di sini:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Menyembunyikan ikon aplikasi:</h2>Dalam pengaturan aplikasi, Anda dapat menyembunyikan ikon aplikasi dari peluncur. Anda masih dapat mengakses aplikasi dengan menekan lama ubin di pengaturan cepat Anda. Sayangnya, Android 10 tidak mengizinkan menyembunyikan aplikasi lagi.
+
+<h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
