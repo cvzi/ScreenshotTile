@@ -5,10 +5,10 @@
     <string name="tile_floating_label">Flutuante</string>
     <string name="tile_floating_subtitle">Botão de Captura da tela</string>
     <string name="title_delay">Atraso</string>
-    <string name="more_setting">Configurações</string>
+    <string name="more_setting">Configure</string>
     <string name="open_settings">Abrir configurações</string>
     <string name="left_screenshot_right_menu">À esquerda: Captura da tela, À direita: Configurações</string>
-    <string name="partial_screenshot">Selecione a área</string>
+    <string name="partial_screenshot">Selecione uma área</string>
     <string name="file_format">Formato de arquivo</string>
     <string name="setting_delay_entry_default">De imediato</string>
     <string name="setting_delay_entry_1s">1s</string>
@@ -20,8 +20,8 @@
     <string name="use_native_screenshot_unsupported">Exige mín. Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">O serviço de acessibilidade está desativado</string>
     <string name="use_native_screenshot_option_default">Método integrado usa o padrão do sistema</string>
-    <string name="use_native_screenshot_option_android11">Desativar \'Usar padrão do sistema\' para personalizar</string>
-    <string name="accessibility_service_description">Se estiver ativado, o App pode simular a combinação de Botão de ligar+Início para fazer a Captura da tela.\nEm alguns dispositivos este método pode ser mais estável ou mais rápido que o método alternativo.\n\nSe você ativar a opção aqui, você também precisará ativar o \"método nativo\" nas configurações do App.</string>
+    <string name="use_native_screenshot_option_android11">Desative \'Usar padrão do sistema\' para poder usar isto</string>
+    <string name="accessibility_service_description">Se estiver ativado, o app pode simular a combinação de Botão de ligar+Início para fazer a Captura da tela.\nEm alguns dispositivos este método pode ser mais estável ou mais rápido que o método alternativo.\n\nSe você ativar esta opção aqui, você também precisará ativar o \"método integrado\" em configurações do app.</string>
     <string name="use_system_defaults">Usar padrão do sistema</string>
     <string name="use_system_defaults_summary">Exige mín. Android 11</string>
     <string name="use_system_defaults_summary_on">Usar a pasta de armazenamento, formato, editor de Capturas e notificações padrão</string>
@@ -113,7 +113,7 @@
     <string name="googleplay_consent_no">Não quero</string>
     <!-- About -->
     <string name="about_app_title">Sobre</string>
-    <string name="about_app_1">Este é um fork of\ngithub.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_1">Esta é uma modificação do\ngithub.com/ipcjs/ScreenshotTile</string>
     <string name="about_app_3">Para mais informações e relatórios de problemas visite:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Licença</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE versão 3</string>
@@ -121,17 +121,17 @@
     <string name="about_privacy_title">Política de privacidade</string>
     <string name="about_open_source_title">Software utilizado</string>
     <string name="about_advanced_settings_button">Configurações avançadas</string>
-    <string name="about_update_check_button">Verificação por atualizações</string>
+    <string name="about_update_check_button">Verifique atualizações</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Configurações de acessibilidade</string>
     <string name="main_floating_button_title">Botão flutuante</string>
     <string name="main_general_text">Antes de poder usar este App, você precisa adicionar o botão ao menu dos ajustes rápidos. Se você não souber como fazer isso, dê uma olhada no [Tutorial,.TutorialActivity].\n\nEste App suporta dois métodos diferentes para fazer as Capturas da tela:</string>
     <string name="main_legacy_method_title">Método Legado</string>
-    <string name="main_legacy_method_text">O Método Legado usa o recurso integrado no Android para fazer as Capturas da tela.\nQuando você faça uma Captura, nenhum som é reproduzido. Uma notificação silenciosa é mostrada para abrir, compartilhar ou editar a Captura da tela. A notificação pode ser deligada nas configurações do App.\nAntes de fazer uma Captura da tela, você precisa adicionar o botão ao menu de ajustes rápidos, aceitar as permissões para poder fazer a Captura e acessar o armazenamento interno para salvar os arquivos de imagens.\nVeja o tutorial de como fazê-lo.\n\nEm alguns telefones este método não funciona, especialmente no SO mais novo que Android 9.0, é menos estável e pode pedir permissão em cada intento de Captura da tela. Se isso acontecer, você deve usar o método Legado abaixo.</string>
+    <string name="main_legacy_method_text">O Método Legado usa o recurso integrado no Android para fazer as Capturas da tela.\nQuando você faça uma Captura, nenhum som é reproduzido. Uma notificação silenciosa é mostrada para abrir, compartilhar ou editar a Captura da tela. A notificação pode ser deligada nas configurações do App.\nAntes de fazer uma Captura da tela, você precisa adicionar o botão ao menu de ajustes rápidos, aceitar as permissões para poder fazer a Captura e acessar o armazenamento interno para salvar os arquivos de imagens.\nVeja o tutorial de como fazê-lo.\n\nEm alguns telefones este método não funciona, especialmente no SO mais novo que Android 9.0, é menos estável e pode pedir permissão em cada intento de Captura da tela. Se isso acontecer, você deve usar o método Integrado abaixo.</string>
     <string name="main_native_method_title">Método Integrado</string>
     <string name="main_native_method_text">O método integrado simula combinação de Botão de ligar+Início e usa o método de Captura da tela de seu dispositivo.\n{main_native_method_text_android_version}\n\nAntes de fazer uma Captura da tela, você precisa ativar o serviço de acessibilidade nas configurações do telefone. Clique no botão abaixo para abrir as configurações de acessibilidade.</string>
-    <string name="main_native_method_text_android_pre_11">Quando você fazer uma Captura, ele pode reproduzir um som ou editar a Captura. As Capturas da tela são armazenadas numa pasta padrão da Galeria. Isto depende de seu telefone e não pode ser alterado por este App. Você pode ser capaz de alterar isto nas configurações de seu telefone.</string>
-    <string name="main_native_method_text_android_since_11">Pode alterar as configurações do App (em \"Usar padrão do sistema\") dependendo se você quer o comportamento padrão do sistema no seu telefone (notificações, editor de Capturas, pasta para fotos padrão) ou se você quiser usar as configurações do App (pasta e notificações personalizadas).</string>
+    <string name="main_native_method_text_android_pre_11">Quando você fazer uma Captura, esta ação pode reproduzir um som ou oferecer edição da Captura. As Capturas da tela são armazenadas numa pasta padrão da Galeria. Isto depende de seu telefone e não pode ser alterado por este app. Você pode ser capaz de alterar isto em configurações do seu telefone.</string>
+    <string name="main_native_method_text_android_since_11">Pode alterar em configurações do app (em \"Usar padrão do sistema\") dependendo se você quer usar no seu telefone comportamento padrão do sistema (notificações, editor de Capturas, pasta padrão para fotos) ou se você quiser usar as preferências do app (pasta e notificações personalizadas).</string>
     <string name="main_floating_button_text">Se você ativou o método integrado, também pode usar um botão flutuante (semelhante a uma bolinha de chat) para fazer a Captura.\nVocê pode ativá-lo com um botão separado no menu de ajustes rápidos e depois movê-lo à tela.</string>
     <string name="main_long_press_title">Pressione e segure o botão</string>
     <string name="main_long_press_text">Para abrir o menu pressione e segure o botão. Você pode especificar um atraso para a Captura da tela ou selecionar um retângulo na tela.</string>
