@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (TanpaRoot)</string>
+    <string name="app_name">Screenshot Tile (Tanpa Root)</string>
     <string name="tile_label">Tangkapan layar</string>
     <string name="tile_floating_label">Melayang</string>
-    <string name="tile_floating_subtitle">Tombol Menangkap layar</string>
+    <string name="tile_floating_subtitle">Tombol menangkap layar</string>
     <string name="title_delay">Penundaan</string>
     <string name="more_setting">Pengaturan lain</string>
     <string name="open_settings">Buka pengaturan</string>
-    <string name="left_screenshot_right_menu">Kiri: Tangkap layar, Kanan: Pengaturan</string>
+    <string name="left_screenshot_right_menu">Kiri: Tangkap layar, kanan: Pengaturan</string>
     <string name="partial_screenshot">Pilih area</string>
     <string name="file_format">Format file</string>
     <string name="setting_delay_entry_default">Langsung</string>
@@ -45,11 +45,17 @@
     <string name="setting_storage_directory">Simpan lokasi</string>
     <string name="setting_storage_directory_description">Folder untuk menyimpan tangkapan layar</string>
     <string name="setting_file_name_pattern">Nama file</string>
+    <string name="setting_file_name_placeholders_title">Gunakan placeholder ini dalam nama file</string>
     <string name="setting_tile_action">Aksi ubin</string>
+    <string name="setting_floating_action">Tindakan tombol mengambang</string>
+    <string name="setting_voice_interaction_action">Tindakan asisten</string>
     <string name="setting_dark_theme">Tema Gelap</string>
     <string name="setting_dark_theme_system">Sistem</string>
     <string name="setting_dark_theme_off">Nonaktif</string>
     <string name="setting_dark_theme_on">Aktif</string>
+    <string name="setting_notification_buttons">Tombol notifikasi</string>
+    <string name="setting_notification_buttons_description">Pilih hingga tiga tombol yang muncul di bawah notifikasi tangkapan layar</string>
+    <string name="setting_notification_buttons_max_three">Silakan pilih maksimal tiga tombol</string>
     <string name="notification_settings">Notifikasi</string>
     <string name="notification_settings_on">Diaktifkan</string>
     <string name="notification_settings_off">Nonaktifkan</string>
@@ -69,8 +75,12 @@
     <string name="notification_delete_screenshot">Hapus</string>
     <string name="notification_share_screenshot">Bagikan</string>
     <string name="notification_edit_screenshot">Sunting</string>
+    <string name="notification_rename_screenshot">Ganti nama</string>
+    <string name="notification_screenshot_details">Detail</string>
     <string name="screenshot_deleted">Tangkapan layar dihapus</string>
     <string name="screenshot_delete_failed">Tidak dapat menghapus file</string>
+    <string name="screenshot_renamed">File diganti namanya menjadi %1s</string>
+    <string name="screenshot_rename_failed">Tidak dapat mengubah nama berkas</string>
     <string name="permission_missing_external_storage">Gagal untuk mendapatkan izin penyimpanan</string>
     <string name="permission_missing_screen_capture">Gagal untuk mendapatkan izin mengambil tangkapan layar</string>
     <string name="hide_app_from_launcher">Sembunyikan ikon aplikasi dari laci</string>
@@ -80,6 +90,7 @@
     <string name="tutorial_tap_for_next_step">Sentuh untuk langkah selanjutnya</string>
     <string name="tutorial_step2">Tarik ke bawah area notifikasi</string>
     <string name="tutorial_step3">Tarik ke bawah pengaturan cepat</string>
+    <string name="tutorial_step4">Sentuh tombol sunting</string>
     <string name="tutorial_step5">Cari tombol tangkapan layar baru</string>
     <string name="tutorial_step6">Seret tombol ke pengaturan anda</string>
     <string name="tutorial_step8">Tutup pengaturan cepat</string>
@@ -88,6 +99,17 @@
     <string name="tutorial_step16">Ambil tangkapan layar dengan tombol baru</string>
     <string name="take_screenshot">Ambil tangkapan layar</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Pengungkapan Terkemuka Google Play &amp; Persyaratan Persetujuan</string>
+    <string name="googleplay_consent_line_0">Google Play memerlukan pengungkapan yang jelas tentang penggunaan Layanan Aksesbilitas API untuk aplikasi yang bukan merupakan alat aksesibilitas.</string>
+    <string name="googleplay_consent_line_1">Aplikasi ini - \"Screenshot Tile [Tanpa root]\" - bukan alat aksesibilitas.</string>
+    <string name="googleplay_consent_line_2">Karena pengguna mungkin tidak secara wajar mengharapkan bahwa data pengguna pribadi dan sensitif mereka akan diperlukan untuk menyediakan atau meningkatkan fitur atau fungsionalitas yang sesuai dengan kebijakan dalam aplikasi ini, pengungkapan yang menonjol tentang penggunaan API Layanan Aksesibilitas oleh aplikasi ini dan deklarasi data pengumpulan dan berbagi data dalam aplikasi ini diperlukan:</string>
+    <string name="googleplay_consent_line_3">Aplikasi ini memerlukan akses ke Layanan Aksesbilitas API untuk mengambil tangkapan layar saat aplikasi tidak digunakan.</string>
+    <string name="googleplay_consent_line_4">Akses ke Layanan Aksesbilitas API akan memungkinkan aplikasi ini merekam layar.</string>
+    <string name="googleplay_consent_line_5">Rekaman layar akan digunakan untuk membuat gambar tangkapan layar.</string>
+    <string name="googleplay_consent_line_6">Data tidak dikumpulkan atau dibagikan oleh aplikasi ini menggunakan kemampuan aksesibilitas.</string>
+    <string name="googleplay_consent_line_7">Apakah Anda setuju untuk mengizinkan aplikasi ini untuk mendapatkan akses ke Layanan Aksesbilitas API dan menggunakan kemampuan aksesibilitas untuk merekam layar?</string>
+    <string name="googleplay_consent_yes">Saya setuju</string>
+    <string name="googleplay_consent_no">Saya menolak</string>
     <!-- About -->
     <string name="about_app_title">Tentang</string>
     <string name="about_app_1">Kode sumber asli\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -95,9 +117,31 @@
     <string name="about_license_title">Lisensi</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Versi 3</string>
     <string name="about_app_2">Aplikasi ini masih memiliki banyak masalah dan sedang dalam pengembangan.\nJika telepon anda memiliki akses root, silakan gunakan ipcjs\' merupakan versi yang lebih baik.</string>
+    <string name="about_advanced_settings_button">Pengaturan lanjutan</string>
+    <string name="about_update_check_button">Periksa pembaruan</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Setelan aksesibilitas</string>
     <string name="main_floating_button_title">Tombol apung</string>
+    <string name="main_general_text">Sebelum Anda dapat menggunakan aplikasi ini, Anda perlu menambahkan ubin/tombol ke pengaturan cepat. Jika Anda tidak tahu cara melakukannya, lihat [Tutorial,.TutorialActivity].\n\nAplikasi ini mendukung dua metode berbeda untuk mengambil tangkapan layar:</string>
+    <string name="main_legacy_method_title">Metode Warisan</string>
+    <string name="main_legacy_method_text">Metode lama untuk mengambil tangkapan layar menggunakan fitur perekaman layar Android.\nSaat Anda mengambil tangkapan layar, tidak ada suara yang diputar. Notifikasi senyap ditampilkan untuk membuka, membagikan, atau mengedit tangkapan layar. Notifikasi dapat dinonaktifkan di setelan aplikasi.\nSebelum mengambil tangkapan layar, Anda perlu menambahkan ubin ke setelan cepat, menerima izin untuk merekam layar, dan izin mengakses penyimpanan internal untuk menyimpan file gambar.\nLihat tutorial tentang cara melakukannya.\n\nPada beberapa ponsel, metode ini tidak berfungsi, terutama pada Android yang lebih baru (9.0+), metode ini tidak stabil dan mungkin meminta izin pada setiap tangkapan layar. Jika itu terjadi, Anda harus menggunakan metode asli di bawah ini.</string>
+    <string name="main_native_method_title">Metode Asli</string>
+    <string name="main_native_method_text">Metode asli untuk mengambil tangkapan layar menyimulasikan penekanan tombol Utama+Daya dan menggunakan metode tangkapan layar perangkat Anda.\n{main_native_method_text_android_version}\n\nSebelum dapat mengambil tangkapan layar, Anda harus mengaktifkan layanan aksesibilitas di setelan ponsel. Tekan tombol di bawah untuk membuka pengaturan aksesibilitas.</string>
+    <string name="main_native_method_text_android_pre_11">Saat Anda mengambil tangkapan layar, mungkin akan mengeluarkan suara atau menampilkan editor tangkapan layar. Tangkapan layar disimpan dalam folder standar untuk gambar. Ini tergantung pada ponsel Anda dan tidak dapat diubah oleh aplikasi ini. Anda mungkin dapat mengubah perilaku di setelan ponsel.</string>
+    <string name="main_native_method_text_android_since_11">Anda dapat mengubah pengaturan aplikasi (di bawah \"Gunakan default sistem\") apakah Anda ingin perilaku sistem default ponsel Anda (pemberitahuan, editor tangkapan layar, folder standar untuk gambar) atau jika Anda ingin menggunakan pengaturan aplikasi (folder penyimpanan khusus dan pemberitahuan oleh aplikasi ini).</string>
+    <string name="main_floating_button_text">Jika Anda telah mengaktifkan metode asli, Anda juga dapat menggunakan tombol mengambang (mirip dengan gelembung obrolan) untuk mengambil tangkapan layar.\nAnda dapat mengaktifkannya dengan ubin/tombol terpisah di setelan cepat lalu memindahkannya di layar.</string>
+    <string name="main_long_press_title">Tekan Lama</string>
+    <string name="main_long_press_text">Menekan lama ubin/tombol akan membuka menu. Anda dapat menentukan penundaan untuk tangkapan layar atau memotong persegi panjang dari layar.</string>
     <string name="main_assist_app_title">Aplikasi bantuan</string>
+    <string name="main_assist_app_text">Jika Anda menetapkan aplikasi ini sebagai aplikasi bantuan, Anda dapat menekan lama tombol beranda untuk mengambil tangkapan layar. Mengaktifkan aplikasi ini sebagai aplikasi bantuan Anda akan menonaktifkan asisten lain. Anda dapat mengubah tindakan menekan tombol beranda yang lama di pengaturan aplikasi.</string>
     <!-- Post edit activity -->
+    <string name="post_button_save">Ganti nama</string>
+    <string name="post_recent_file_names_and_suggestions">Nama dan saran file terbaru:</string>
+    <string name="post_hint_new_file_name">Nama file baru</string>
+    <string name="post_rename_file">Ganti nama berkas:</string>
+    <string name="post_rename_error_identical">Nama file baru dan lama identik</string>
+    <string name="post_hint_new_file_name_suggestion">Tidak ada saran baru</string>
+    <string name="post_save_a_suggestion">Menyimpan saran</string>
+    <string name="post_pin_to_favorites">Tambahkan ke favorit</string>
+    <string name="post_delete_suggestion">Hapus saran</string>
 </resources>
