@@ -48,6 +48,7 @@
     <string name="setting_file_name_placeholders_title">Użyj tych symboli zastępczych w nazwie pliku</string>
     <string name="setting_tile_action">Akcja kafelka</string>
     <string name="setting_floating_action">Działanie pływającego przycisku</string>
+    <string name="setting_voice_interaction_action">Akcje Asystenta</string>
     <string name="setting_dark_theme">Ciemny motyw</string>
     <string name="setting_dark_theme_system">Systemowy</string>
     <string name="setting_dark_theme_off">Wyłączony</string>
@@ -99,6 +100,7 @@
     <string name="tutorial_step16">Wykonaj zrzut ekranu za pomocą nowego przycisku</string>
     <string name="take_screenshot">Wykonaj zrzut ekranu</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_line_1">Ta aplikacja - “Screenshot Tile [No root]“ - nie jest narzędziem ułatwień dostępu.</string>
     <string name="googleplay_consent_yes">Zgadzam się</string>
     <string name="googleplay_consent_no">Odmawiam</string>
     <!-- About -->
@@ -109,6 +111,7 @@
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Wersja 3</string>
     <string name="about_app_2">Ta aplikacja nadal ma pewne problemy i jest w trakcie rozwoju.\nJeśli masz w telefonie dostęp do root\'a, użyj wersji użytkownika ipcjs, jest szybsza i bardziej niezawodna.</string>
     <string name="about_advanced_settings_button">Zaawansowane ustawienia</string>
+    <string name="about_update_check_button">Sprawdź aktualizację</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Ustawienia ułatwień dostępu</string>
     <string name="main_floating_button_title">Pływający przycisk</string>
@@ -125,4 +128,12 @@
     <string name="main_assist_app_title">Aplikacja asystująca</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Zmień nazwę</string>
+    <string name="post_recent_file_names_and_suggestions">Nazwy i sugestie ostatnich pików:</string>
+    <string name="post_hint_new_file_name">Nowa nazwa pliku</string>
+    <string name="post_rename_file">Zmień nazwę:</string>
+    <string name="post_rename_error_identical">Nowa i stara nazwa pliku są identyczne</string>
+    <string name="post_hint_new_file_name_suggestion">Dodaj nową sugestię</string>
+    <string name="post_save_a_suggestion">Zapisz sugestię</string>
+    <string name="post_pin_to_favorites">Przypnij do ulubionych</string>
+    <string name="post_delete_suggestion">Usuń sugestię</string>
 </resources>
