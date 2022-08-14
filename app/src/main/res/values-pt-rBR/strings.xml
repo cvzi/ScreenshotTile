@@ -101,13 +101,13 @@
     <string name="take_screenshot">Faça uma Captura da tela</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_title">Informações importantes do Google Play e requisito de consentimento</string>
-    <string name="googleplay_consent_line_0">O Google Play requer uma divulgação de informações sobre o uso do API de Serviços de Acessibilidade para um aplicativo que não é uma ferramenta de acessibilidade.</string>
+    <string name="googleplay_consent_line_0">O Google Play requer uma divulgação de informações sobre o uso da API de Serviços de Acessibilidade para um aplicativo que não é uma ferramenta de acessibilidade.</string>
     <string name="googleplay_consent_line_1">O app - \"Screenshot Tile [sem root]\" - não é uma ferramenta de acessibilidade.</string>
     <string name="googleplay_consent_line_2">Dado que os usuários, na medida do possível, podem não esperar que seus dados pessoais e confidenciais sejam necessários para fornecer ou melhorar as características de conformidade com as políticas ou funcionalidades neste app, uma divulgação sobre o uso da API de Serviços de Acessibilidade por este aplicativo e uma declaração sobre compartilhamento de dados dentro deste app é necessária:</string>
     <string name="googleplay_consent_line_3">Este app requer acesso à API de Serviços de Acessibilidade para fazer uma captura de tela quando o aplicativo não estiver em uso.</string>
     <string name="googleplay_consent_line_4">O acesso à API de Serviços de Acessibilidade permitirá que este app capture a tela.</string>
     <string name="googleplay_consent_line_5">Gravações da tela serão usadas para criar imagens de captura da tela.</string>
-    <string name="googleplay_consent_line_6">Os dados não são coletados nem compartilhados por este app usando as capacidades de acessibilidade.</string>
+    <string name="googleplay_consent_line_6">Os dados não são coletados nem compartilhados por este app ao usar as funcionalidades de acessibilidade.</string>
     <string name="googleplay_consent_line_7">Você concorda em autorizar este app para obter o acesso à API de Serviços de Acessibilidade e usar as funcionalidades de acessibilidade para gravar a tela?</string>
     <string name="googleplay_consent_yes">Concordo</string>
     <string name="googleplay_consent_no">Não quero</string>
