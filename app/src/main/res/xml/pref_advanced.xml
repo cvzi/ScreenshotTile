@@ -85,4 +85,13 @@
         android:title="@string/setting_format_quality"
         app:iconSpaceReserved="false" />
 
+    <androidx.preference.EditTextPreference
+        android:defaultValue="20"
+        android:dialogMessage="@string/setting_keep_app_data_max_dialog"
+        android:key="@string/pref_key_keep_app_data_max"
+        android:summary="@string/setting_keep_app_data_max_summary"
+        android:title="@string/setting_keep_app_data_max"
+        app:iconSpaceReserved="false" />
+
+
 </androidx.preference.PreferenceScreen>

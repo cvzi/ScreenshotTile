@@ -4,12 +4,15 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import androidx.preference.EditTextPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
+import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.CompressionOptions
+import com.github.cvzi.screenshottile.utils.cleanUpAppData
 import com.github.cvzi.screenshottile.utils.compressionPreference
 import java.util.*
 
@@ -26,7 +29,9 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
     private var naggingToastsPref: SwitchPreference? = null
     private var floatingButtonAlphaPref: EditTextPreference? = null
     private var formatQualityPref: EditTextPreference? = null
+    private var keepAppDataMaxPref: EditTextPreference? = null
     private var pref: SharedPreferences? = null
+    private val prefManager = App.getInstance().prefManager
 
     private val prefListener =
         SharedPreferences.OnSharedPreferenceChangeListener { _: SharedPreferences?, key: String? ->
@@ -35,6 +40,7 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
                     switchEvent = true, forceRedraw = true
                 )
                 getString(R.string.pref_key_format_quality) -> updateFormatQualitySummary()
+                getString(R.string.pref_key_keep_app_data_max) -> updateKeepAppDataMaxSummary(switchEvent = true)
             }
         }
 
@@ -51,7 +57,8 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
             findPreference(getString(R.string.pref_key_floating_button_alpha)) as EditTextPreference?
         formatQualityPref =
             findPreference(getString(R.string.pref_key_format_quality)) as EditTextPreference?
-
+        keepAppDataMaxPref =
+            findPreference(getString(R.string.pref_key_keep_app_data_max)) as EditTextPreference?
         pref?.registerOnSharedPreferenceChangeListener(prefListener)
     }
 
@@ -62,6 +69,7 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
         updateNaggingToasts()
         updateFloatingButton(switchEvent = false, forceRedraw = false)
         updateFormatQualitySummary()
+        updateKeepAppDataMaxSummary()
     }
 
     private fun updateNaggingToasts() {
@@ -87,7 +95,6 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
             val defaultCompression = compressionPreference(context, forceDefaultQuality = true)
             val currentCompression = compressionPreference(context, forceDefaultQuality = false)
 
-
             formatQualityPref?.apply {
                 summary = getString(
                     R.string.setting_format_quality_summary,
@@ -97,6 +104,22 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
             }
         }
 
+    }
+
+    private fun updateKeepAppDataMaxSummary(switchEvent: Boolean = false) {
+        keepAppDataMaxPref?.apply {
+            val folder = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            summary = getString(
+                R.string.setting_keep_app_data_max_summary,
+                prefManager.keepAppDataMax,
+                folder ?: ""
+            )
+            if (switchEvent) {
+                this@SettingAdvancedFragment.context?.let {
+                    cleanUpAppData(it)
+                }
+            }
+        }
     }
 
     private fun compressionFormatToString(compressionOptions: CompressionOptions): String {

@@ -3,25 +3,22 @@ package com.github.cvzi.screenshottile.activities
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import android.icu.text.DateFormat
-import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.util.Size
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_RENAME_INPUT
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.utils.*
-import java.util.*
 
 
-class PostActivity : AppCompatActivity() {
+class PostActivity : GenericPostActivity() {
     companion object {
         private const val TAG = "PostActivity"
 
@@ -40,22 +37,6 @@ class PostActivity : AppCompatActivity() {
 
     }
 
-    private var singleImage: SingleImageLoaded? = null
-    private var shareIntent: Intent? = null
-    private var editIntent: Intent? = null
-    private var suggestions: ArrayList<FileNameSuggestion> = ArrayList()
-    private var savedInstanceState: Bundle? = null
-
-    /**
-     * If the activity is already open, we need to update the intent,
-     * otherwise getIntent() returns the old intent in onCreate()
-     **/
-    override fun onNewIntent(intent: Intent?) {
-        setIntent(intent)
-        super.onNewIntent(intent)
-    }
-
-
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +47,7 @@ class PostActivity : AppCompatActivity() {
             if (imagePath?.isNotBlank() == true) {
                 Uri.parse(imagePath)?.let { imageUri ->
                     SingleImage(imageUri).apply {
-                        loadImage(contentResolver, { singleImageLoaded ->
+                        loadImageInThread(contentResolver, Size(200, 400), { singleImageLoaded ->
                             runOnUiThread {
                                 singleImage = singleImageLoaded
                                 showSingleImage(singleImageLoaded)
@@ -178,78 +159,12 @@ class PostActivity : AppCompatActivity() {
 
     }
 
-    private fun saveNewSuggestions() {
-        val editText = findViewById<EditText>(R.id.editTextAddSuggestion)
-        val name = editText.text.toString()
-        if (name.isNotBlank()) {
-            App.getInstance().prefManager.addStarredFileName(name)
-            val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewSuggestions)
-            (recyclerView.adapter as? SuggestionsAdapter)?.apply {
-                updateData(App.getInstance().prefManager.getFileNameSuggestions())
-            }
-            editText.setText("")
-        }
-    }
-
-    private fun openIntent(intent: Intent) {
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent)
-        } else {
-            Log.e(TAG, "resolveActivity(editIntent) returned null")
-        }
-    }
-
-
-    private fun showSingleImage(singleImage: SingleImageLoaded) {
-        findViewById<ImageView>(R.id.imageView).setImageBitmap(singleImage.thumbnail)
-        findViewById<TextView>(R.id.textViewFileName).text = singleImage.fileName
-        findViewById<TextView>(R.id.textViewFileSize).text = singleImage.size?.let {
-            android.text.format.Formatter.formatShortFileSize(this, it)
-        } ?: ""
-        findViewById<EditText>(R.id.editTextNewName).setText(singleImage.fileName)
-        shareIntent = shareImageChooserIntent(this, singleImage.uri, singleImage.mimeType)
-        editIntent = editImageChooserIntent(this, singleImage.uri, singleImage.mimeType)
-        findViewById<TextView>(R.id.textViewDateIso).text =
-            SimpleDateFormat(
-                "yyyy-MM-dd'T'HH:mm:ss'Z'",
-                Locale.getDefault()
-            ).format(singleImage.lastModified)
-        findViewById<TextView>(R.id.textViewDateLocal).text =
-            DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM, Locale.getDefault())
-                .format(singleImage.lastModified)
-
-        restoreSavedInstanceValues()
-    }
-
-
-    private fun rename(singleImageLoaded: SingleImageLoaded) {
-        val newName = findViewById<EditText>(R.id.editTextNewName).text.toString()
-        if (newName.isBlank()) {
-            return
-        }
-        if (newName == singleImageLoaded.fileName) {
-            toastMessage(R.string.post_rename_error_identical, ToastType.ACTIVITY)
-            return
-        }
-        App.getInstance().prefManager.addRecentFileName(newName)
-        val result = renameImage(this, singleImageLoaded.uri, newName)
-        if (result.first) {
-            toastMessage(getString(R.string.screenshot_renamed, newName), ToastType.ACTIVITY)
-            finish()
-            result.second?.let {
-                startActivity(newIntentSingleImage(this, it))
-            }
-        } else {
-            toastMessage(R.string.screenshot_rename_failed, ToastType.ACTIVITY)
-        }
-    }
-
     override fun onRestoreInstanceState(mSavedInstanceState: Bundle) {
         super.onRestoreInstanceState(mSavedInstanceState)
         savedInstanceState = mSavedInstanceState
     }
 
-    private fun restoreSavedInstanceValues() {
+    override fun restoreSavedInstanceValues() {
         savedInstanceState?.run {
             getString("editText_${R.id.editTextNewName}", null)?.let {
                 findViewById<EditText>(R.id.editTextNewName).setText(it)
@@ -263,13 +178,12 @@ class PostActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString(
             "editText_${R.id.editTextNewName}",
-            findViewById<EditText>(R.id.editTextNewName).text.toString()
+            findViewById<EditText>(R.id.editTextNewName)?.text.toString()
         )
         outState.putString(
             "editText_${R.id.editTextAddSuggestion}",
-            findViewById<EditText>(R.id.editTextAddSuggestion).text.toString()
+            findViewById<EditText>(R.id.editTextAddSuggestion)?.text.toString()
         )
         super.onSaveInstanceState(outState)
     }
-
 }

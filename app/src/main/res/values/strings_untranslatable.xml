@@ -79,6 +79,8 @@
 
     <string name="unavailable_on_debug" translatable="false">Unavailable in DEBUG</string>
 
+    <string name="pref_static_field_key_post_actions" translatable="false">pref_static_field_key_post_actions</string>
+
     <!-- Shutters -->
     <integer-array name="shutter_black_dot">
         <item>@drawable/ic_black_dot_animate_shutter</item>
@@ -176,25 +178,32 @@
         <item>@string/notification_delete_screenshot</item>
         <item>@string/notification_rename_screenshot</item>
         <item>@string/notification_screenshot_details</item>
+        <item>@string/notification_crop_screenshot</item>
+        <item>@string/notification_photo_editor_screenshot</item>
     </string-array>
     <string name="setting_notification_action_share" translatable="false">action_share</string>
     <string name="setting_notification_action_edit" translatable="false">action_edit</string>
     <string name="setting_notification_action_delete" translatable="false">action_delete</string>
     <string name="setting_notification_action_rename" translatable="false">action_rename</string>
     <string name="setting_notification_action_details" translatable="false">action_details</string>
+    <string name="setting_notification_action_crop" translatable="false">action_crop</string>
+    <string name="setting_notification_action_photo_editor" translatable="false">action_photo_editor</string>
     <string-array name="setting_notification_actions_values" translatable="false">
         <item>@string/setting_notification_action_share</item>
         <item>@string/setting_notification_action_edit</item>
         <item>@string/setting_notification_action_delete</item>
         <item>@string/setting_notification_action_rename</item>
         <item>@string/setting_notification_action_details</item>
+        <item>@string/setting_notification_action_crop</item>
+        <item>@string/setting_notification_action_photo_editor</item>
     </string-array>
     <string-array name="setting_notification_actions_default_values" translatable="false">
         <item>@string/setting_notification_action_share</item>
         <item>@string/setting_notification_action_edit</item>
         <item>@string/setting_notification_action_delete</item>
     </string-array>
-
+    <string name="pref_key_post_screenshot_actions" translatable="false">post_screenshot_actions</string>
+    <string name="pref_key_screenshot_history" translatable="false">screenshot_history</string>
 
     <!-- About in settings -->
     <string name="pref_static_field_key_about_app_1" translatable="false">pref_static_field_key_about_app_1</string>
@@ -211,7 +220,7 @@
     <string name="pref_static_field_link_about_privacy" translatable="false">https://cvzi.github.io/ScreenshotTile/privacy.html</string>
     <string name="pref_static_field_link_about_updates" translatable="false">https://cvzi.github.io/ScreenshotTile/updates.html?package=%1$s&amp;code=%2$s&amp;name=%3$s&amp;type=%4$s</string>
 
-    <string name="about_open_source" translatable="false">Kotlin\ngradle\nMaterial Design Icons by Google</string>
+    <string name="about_open_source" translatable="false">Kotlin\ngradle\nMaterial Design Icons by Google\nPhotoEditor by Burhanuddin Rashid (MIT license)</string>
     <string name="about_privacy_summary" translatable="false">cvzi.github.io/ScreenshotTile/privacy.html</string>
 
     <!-- First screen -->

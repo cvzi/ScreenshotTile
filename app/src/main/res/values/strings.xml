@@ -59,6 +59,25 @@
     <string name="notification_settings">Notifications</string>
     <string name="notification_settings_on">Enabled</string>
     <string name="notification_settings_off">Disabled</string>
+    <string name="setting_post_actions">Subsequent actions</string>
+    <string name="setting_post_actions_description">Choose what happens after the screenshot was taken</string>
+    <string name="button_history">Recent screenshots</string>
+    <string name="button_history_description">View your recent screenshots including files that were not saved to the gallery</string>
+    <string name="history_title">Screenshot history</string>
+    <string name="restore_default_values">Restore default values</string>
+    <string name="post_action_save_to_storage">Save image to gallery</string>
+    <string name="post_action_show_toast">Show a \"Toast\" notification. A small popup that disappears after 2 seconds</string>
+    <string name="post_action_show_notification">Show a regular notification. You can change the buttons (Edit,Share,…) below the notification under \"More Settings\"</string>
+    <string name="post_action_empty">Don\'t open the screenshot</string>
+    <string name="post_action_open_in_post">Open in \"Details\" view</string>
+    <string name="post_action_open_in_post_crop">Crop the image</string>
+    <string name="post_action_open_in_photo_editor">Open the included photo editor</string>
+    <string name="post_action_open_in_external_editor">Open in an external photo editor</string>
+    <string name="post_action_open_in_external_viewer">Open in a photo viewer or the gallery</string>
+    <string name="post_action_open_share">Share the screenshot</string>
+    <string name="move_to_storage_directory">Move into gallery</string>
+    <string name="button_clear">Clear</string>
+    <string name="button_clear_confirm">Do you want to delete all temporary files?\nThis will delete all files in %s\n\n(These files are usually not visible in your gallery)</string>
     <string name="file_title">Screenshot</string>
     <string name="file_description">Screenshot taken on %1$s</string>
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
@@ -78,6 +97,8 @@
     <string name="notification_edit_screenshot">Edit</string>
     <string name="notification_rename_screenshot">Rename</string>
     <string name="notification_screenshot_details">Details</string>
+    <string name="notification_crop_screenshot">Crop</string>
+    <string name="notification_photo_editor_screenshot">Photo Editor</string>
     <string name="screenshot_deleted">Screenshot deleted</string>
     <string name="screenshot_delete_failed">Could not delete file</string>
     <string name="screenshot_renamed">File renamed to %1s</string>
@@ -151,5 +172,22 @@
     <string name="post_save_a_suggestion">Save suggestion</string>
     <string name="post_pin_to_favorites">Pin to favorites</string>
     <string name="post_delete_suggestion">Delete suggestion</string>
+
+    <!-- Photo Editor-->
+    <string name="label_brush">Brush</string>
+    <string name="label_shape">Shape</string>
+    <string name="label_oval">Oval</string>
+    <string name="label_rectangle">Rectangle</string>
+    <string name="label_line">Line</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Eraser</string>
+    <string name="label_eraser_mode">Eraser Mode</string>
+    <string name="label_text">Text</string>
+    <string name="label_filter">Filter</string>
+    <string name="label_adjust">Adjust</string>
+    <string name="msg_save_image">Are you want to exit without saving image ?</string>
+    <string name="app_intent_name">PhotoEditor</string>
+    <string name="msg_save_image_to_share">Please save image to share</string>
+    <string name="msg_share_image">Share Image</string>
 
 </resources>

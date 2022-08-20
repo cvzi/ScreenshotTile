@@ -524,7 +524,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             bitmap,
                             App.getInstance().prefManager.fileNamePattern,
                             compressionPreference(applicationContext),
-                            null
+                            null,
+                            useAppData = "saveToStorage" !in App.getInstance().prefManager.postScreenshotActions
                         )
                         Handler(Looper.getMainLooper()).post {
                             onFileSaved(saveImageResult)
@@ -565,8 +566,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
         screenDensity = resources.configuration.densityDpi
 
-        val result = saveImageResult as? SaveImageResultSuccess?
+        val postScreenshotActions = App.getInstance().prefManager.postScreenshotActions
 
+        val result = saveImageResult as? SaveImageResultSuccess?
         when {
             result == null -> {
                 screenShotFailedToast("Failed to cast SaveImageResult")
@@ -578,39 +580,50 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
-                getWinContext().toastMessage(
-                    getString(R.string.screenshot_file_saved, dummyPath),
-                    ToastType.SUCCESS
-                )
 
-                createNotification(
-                    this,
-                    result.uri,
-                    result.bitmap,
-                    screenDensity,
-                    result.mimeType,
-                    dummyPath
-                )
+                if ("showToast" in postScreenshotActions) {
+                    getWinContext().toastMessage(
+                        getString(R.string.screenshot_file_saved, dummyPath),
+                        ToastType.SUCCESS
+                    )
+                }
+
+                if ("showNotification" in postScreenshotActions) {
+                    createNotification(
+                        this,
+                        result.uri,
+                        result.bitmap,
+                        screenDensity,
+                        result.mimeType,
+                        dummyPath
+                    )
+                }
                 App.getInstance().prefManager.screenshotCount++
+                handlePostScreenshot(this, postScreenshotActions, result.uri, result.mimeType)
             }
             result.file != null -> {
                 // Legacy behaviour until Android P, works with the real file path
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
-                getWinContext().toastMessage(
-                    getString(R.string.screenshot_file_saved, path),
-                    ToastType.SUCCESS
-                )
+                if ("showToast" in postScreenshotActions) {
+                    getWinContext().toastMessage(
+                        getString(R.string.screenshot_file_saved, path),
+                        ToastType.SUCCESS
+                    )
+                }
 
-                createNotification(
-                    this,
-                    uri,
-                    result.bitmap,
-                    screenDensity,
-                    result.mimeType
-                )
+                if ("showNotification" in postScreenshotActions) {
+                    createNotification(
+                        this,
+                        uri,
+                        result.bitmap,
+                        screenDensity,
+                        result.mimeType
+                    )
+                }
                 App.getInstance().prefManager.screenshotCount++
+                handlePostScreenshot(this, postScreenshotActions, uri, result.mimeType)
             }
             else -> {
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")

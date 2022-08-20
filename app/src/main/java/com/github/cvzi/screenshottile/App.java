@@ -1,6 +1,7 @@
 package com.github.cvzi.screenshottile;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static com.github.cvzi.screenshottile.utils.UtilsKt.cleanUpAppData;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.tryNativeScreenshot;
 
 import android.annotation.SuppressLint;
@@ -242,6 +243,8 @@ public class App extends Application {
         prefManager = new PrefManager(this);
 
         applyDayNightMode();
+
+        cleanUpAppData(this);
     }
 
     /**

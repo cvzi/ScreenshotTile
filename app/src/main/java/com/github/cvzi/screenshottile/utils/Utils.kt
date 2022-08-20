@@ -32,11 +32,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.DialogFragment
+import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.activities.PostActivity
+import com.github.cvzi.screenshottile.activities.PostCropActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
+import kotlinx.coroutines.*
 import java.io.*
 import java.net.URLDecoder
 import java.util.*
@@ -101,6 +105,14 @@ fun createImageFile(context: Context, filename: String): File {
 }
 
 /**
+ * New image file in /data/ "Picture" directory.
+ */
+fun createAppDataImageFile(context: Context, filename: String): File {
+    val storageDir = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    return File(storageDir, filename)
+}
+
+/**
  * Represents a file format and a quality setting for compression. See https://developer.android.com/reference/kotlin/android/graphics/Bitmap#compress
  */
 class CompressionOptions(var fileExtension: String = "png", val quality: Int = 100) {
@@ -139,7 +151,10 @@ fun mimeFromFileExtension(fileExtension: String): String {
 /**
  * Get a CompressionsOptions object from the file_format setting
  */
-fun compressionPreference(context: Context, forceDefaultQuality: Boolean = false): CompressionOptions {
+fun compressionPreference(
+    context: Context,
+    forceDefaultQuality: Boolean = false
+): CompressionOptions {
     var prefFileFormat = (context.applicationContext as? App)?.prefManager?.fileFormat
         ?: context.getString(R.string.setting_file_format_value_default)
     val prefFormatQuality = (context.applicationContext as? App)?.prefManager?.formatQuality
@@ -217,10 +232,11 @@ fun createOutputStream(
     fileTitle: String,
     compressionOptions: CompressionOptions,
     date: Date,
-    dim: Point
+    dim: Point,
+    useAppData: Boolean
 ): OutputStreamResult {
-    return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-        createOutputStreamLegacy(context, fileTitle, compressionOptions, date, dim)
+    return if (useAppData || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+        createOutputStreamLegacy(context, fileTitle, compressionOptions, date, dim, useAppData)
     } else {
         createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim)
     }
@@ -234,7 +250,8 @@ fun createOutputStreamLegacy(
     fileTitle: String,
     compressionOptions: CompressionOptions,
     date: Date,
-    dim: Point
+    dim: Point,
+    useAppData: Boolean
 ): OutputStreamResult {
     val filename = if (fileTitle.endsWith(
             ".${compressionOptions.fileExtension}",
@@ -245,14 +262,16 @@ fun createOutputStreamLegacy(
     val customDirectory = App.getInstance().prefManager.screenshotDirectory
 
     var imageFile: File? = null
-    if (customDirectory != null) {
+    if (useAppData) {
+        imageFile = createAppDataImageFile(context, filename)
+    } else if (customDirectory != null) {
         if (customDirectory.startsWith("content://")) {
             return createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim)
         } else if (customDirectory.startsWith("file://")) {
             imageFile = File(customDirectory.substring(7), filename)
         }
     }
-    if (imageFile == null || !imageFile.canWrite()) {
+    if (imageFile == null) {
         imageFile = createImageFile(context, filename)
     }
 
@@ -438,6 +457,37 @@ fun formatFileName(fileNamePattern: String, date: Date): String {
 }
 
 /**
+ * Cut cutOutRect from bitmap and return new bitmap,
+ * return old bitmap if cutOutRect is null or malformed
+ */
+fun cutOutBitmap(fullBitmap: Bitmap, cutOutRect: Rect?): Bitmap {
+    if (cutOutRect != null
+        && cutOutRect.width() > 0
+        && cutOutRect.height() > 0
+    ) {
+        // Constrain cutOutRect to bitmap dimensions
+        cutOutRect.left = max(0, cutOutRect.left)
+        cutOutRect.top = max(0, cutOutRect.top)
+        if (cutOutRect.left + cutOutRect.width() > fullBitmap.width) {
+            cutOutRect.right = fullBitmap.width
+        }
+        if (cutOutRect.top + cutOutRect.height() > fullBitmap.height) {
+            cutOutRect.bottom = fullBitmap.height
+        }
+        if (cutOutRect.width() > 0 && cutOutRect.height() > 0) {
+            return Bitmap.createBitmap(
+                fullBitmap,
+                cutOutRect.left,
+                cutOutRect.top,
+                cutOutRect.width(),
+                cutOutRect.height()
+            )
+        }
+    }
+    return fullBitmap
+}
+
+/**
  * Save image to jpg file in default "Picture" storage.
  */
 fun saveBitmapToFile(
@@ -445,19 +495,10 @@ fun saveBitmapToFile(
     fullBitmap: Bitmap,
     fileNamePattern: String,
     compressionOptions: CompressionOptions = CompressionOptions(),
-    cutOutRect: Rect?
+    cutOutRect: Rect?,
+    useAppData: Boolean
 ): SaveImageResult {
-    val bitmap = if (cutOutRect != null) {
-        Bitmap.createBitmap(
-            fullBitmap,
-            cutOutRect.left,
-            cutOutRect.top,
-            cutOutRect.width(),
-            cutOutRect.height()
-        )
-    } else {
-        fullBitmap
-    }
+    val bitmap = cutOutBitmap(fullBitmap, cutOutRect)
 
     val date = Date()
 
@@ -468,7 +509,8 @@ fun saveBitmapToFile(
         filename,
         compressionOptions,
         date,
-        Point(bitmap.width, bitmap.height)
+        Point(bitmap.width, bitmap.height),
+        useAppData
     )
 
     if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
@@ -524,23 +566,32 @@ fun saveBitmapToFile(
     // Add to gallery
     return when {
         result.imageFile != null -> {
-            addImageToGallery(
-                context,
-                result.imageFile.absolutePath,
-                context.getString(R.string.file_title),
-                context.getString(
-                    R.string.file_description,
-                    SimpleDateFormat(
-                        context.getString(R.string.file_description_simple_date_format),
-                        Locale.getDefault()
-                    ).format(
-                        date
+            if (!useAppData) {
+                addImageToGallery(
+                    context,
+                    result.imageFile.absolutePath,
+                    context.getString(R.string.file_title),
+                    context.getString(
+                        R.string.file_description,
+                        SimpleDateFormat(
+                            context.getString(R.string.file_description_simple_date_format),
+                            Locale.getDefault()
+                        ).format(
+                            date
+                        )
+                    ),
+                    compressionOptions.mimeType,
+                    date,
+                    Point(bitmap.width, bitmap.height)
+                )
+                App.getInstance().prefManager.screenshotHistoryAdd(
+                    PrefManager.ScreenshotHistoryItem(
+                        Uri.fromFile(result.imageFile),
+                        Date(),
+                        result.imageFile
                     )
-                ),
-                compressionOptions.mimeType,
-                date,
-                Point(bitmap.width, bitmap.height)
-            )
+                )
+            }
             SaveImageResultSuccess(bitmap, compressionOptions.mimeType, result.imageFile)
         }
         result.uri != null -> {
@@ -551,30 +602,17 @@ fun saveBitmapToFile(
                     try {
                         context.contentResolver.update(result.uri, this, null, null)
                     } catch (e: UnsupportedOperationException) {
-                        // This happens if the file was created with DocumentFile instead of the contentResolver
-                        /*
-                        // Seems like this is not necessary and causes issue cvzi/ScreenshotTile#94
-                        addImageToGallery(
-                            context,
-                            result.uri.toString(),
-                            context.getString(R.string.file_title),
-                            context.getString(
-                                R.string.file_description,
-                                SimpleDateFormat(
-                                    context.getString(R.string.file_description_simple_date_format),
-                                    Locale.getDefault()
-                                ).format(
-                                    date
-                                )
-                            ),
-                            compressionOptions.mimeType,
-                            date,
-                            Point(bitmap.width, bitmap.height)
-                        )
-                        */
+                        Log.e(UTILSKT, e.stackTraceToString())
                     }
                 }
             }
+            App.getInstance().prefManager.screenshotHistoryAdd(
+                PrefManager.ScreenshotHistoryItem(
+                    result.uri,
+                    Date(),
+                    result.imageFile
+                )
+            )
             SaveImageResultSuccess(
                 bitmap,
                 compressionOptions.mimeType,
@@ -596,13 +634,14 @@ fun saveImageToFile(
     image: Image,
     fileNamePattern: String,
     compressionOptions: CompressionOptions = CompressionOptions(),
-    cutOutRect: Rect?
+    cutOutRect: Rect?,
+    useAppData: Boolean
 ): SaveImageResult {
 
     val bitmap = imageToBitmap(image, cutOutRect)
     image.close()
 
-    return saveBitmapToFile(context, bitmap, fileNamePattern, compressionOptions, null)
+    return saveBitmapToFile(context, bitmap, fileNamePattern, compressionOptions, null, useAppData)
 }
 
 
@@ -858,5 +897,109 @@ fun PackageManager.getPackageInfo(packageName: String): PackageInfo? {
     } else {
         @Suppress("DEPRECATION")
         getPackageInfo(packageName, 0)
+    }
+}
+
+/**
+ * Handle the following post screenshot actions:
+ * "openInPost", "openInPostCrop", "openInPhotoEditor", "openInExternalEditor", "openInExternalViewer", "openShare"
+ */
+fun handlePostScreenshot(
+    context: Context,
+    postScreenshotActions: ArrayList<String>,
+    uri: Uri,
+    mimeType: String? = null
+) {
+    when {
+        "openInPost" in postScreenshotActions -> {
+            App.getInstance().startActivityAndCollapse(
+                context,
+                PostActivity.newIntentSingleImage(context, uri)
+            )
+        }
+        "openInPostCrop" in postScreenshotActions -> {
+            App.getInstance().startActivityAndCollapse(
+                context,
+                PostCropActivity.newIntentSingleImage(context, uri)
+            )
+        }
+        "openInPhotoEditor" in postScreenshotActions -> {
+            App.getInstance().startActivityAndCollapse(
+                context,
+                Intent(context, EditImageActivity::class.java).apply {
+                    action = Intent.ACTION_EDIT
+                    setDataAndNormalize(uri)
+                })
+        }
+        "openInExternalEditor" in postScreenshotActions -> {
+            val editIntent = editImageChooserIntent(context, uri, mimeType ?: "image/png")
+            editIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+            if (editIntent.resolveActivity(context.packageManager) != null) {
+                App.getInstance().startActivityAndCollapse(context, editIntent)
+            } else {
+                Log.e(UTILSKT, "openInExternalEditor: resolveActivity(editIntent) returned null")
+                context.toastMessage("No suitable external photo editor found", ToastType.ERROR)
+            }
+        }
+        "openInExternalViewer" in postScreenshotActions -> {
+            val openImageIntent = openImageIntent(context, uri, mimeType ?: "image/png")
+            if (openImageIntent.resolveActivity(context.packageManager) != null) {
+                App.getInstance().startActivityAndCollapse(context, openImageIntent)
+            } else {
+                Log.e(
+                    UTILSKT,
+                    "openInExternalViewer: resolveActivity(openImageIntent) returned null"
+                )
+                context.toastMessage("No suitable external photo viewer found", ToastType.ERROR)
+            }
+        }
+        "openShare" in postScreenshotActions -> {
+            val shareIntent = shareImageChooserIntent(context, uri, mimeType ?: "image/png")
+            shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+            if (shareIntent.resolveActivity(context.packageManager) != null) {
+                App.getInstance().startActivityAndCollapse(context, shareIntent)
+            } else {
+                Log.e(UTILSKT, "openShare: resolveActivity(shareIntent) returned null")
+                context.toastMessage("No suitable app for sharing found", ToastType.ERROR)
+            }
+        }
+    }
+}
+
+fun cleanUpAppData(context: Context) = cleanUpAppData(context, null, null)
+fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -> Unit)? = null) {
+    CoroutineScope(Job() + Dispatchers.IO).launch(Dispatchers.IO) {
+        try {
+            val keepMax = keepMaxFiles ?: App.getInstance().prefManager.keepAppDataMax
+            if (keepMax < 0) {
+                return@launch
+            }
+            val folder = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+            val fileList =
+                folder?.listFiles()?.map { file ->
+                    val lastModified = try {
+                        file.lastModified()
+                    } catch (e: Exception) {
+                        null
+                    }
+                    Pair(file, lastModified)
+                }?.sortedByDescending { it.second }
+
+            if (fileList != null && fileList.size > keepMax) {
+                for (i in keepMax until fileList.size) {
+                    Log.v(UTILSKT, "cleanUpAppData() delete ${fileList[i].first}")
+                    fileList[i].first.delete()
+                }
+            }
+            if (onDeleted != null) {
+                withContext(Dispatchers.Main) {
+                    onDeleted.invoke()
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(UTILSKT, "cleanUpAppData", e)
+        }
     }
 }

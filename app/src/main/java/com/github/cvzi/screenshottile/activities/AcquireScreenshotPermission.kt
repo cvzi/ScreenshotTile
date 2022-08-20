@@ -1,3 +1,5 @@
+@file:Suppress("SpellCheckingInspection")
+
 package com.github.cvzi.screenshottile.activities
 
 import android.Manifest

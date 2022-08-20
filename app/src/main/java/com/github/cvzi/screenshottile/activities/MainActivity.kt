@@ -144,6 +144,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        findViewById<Button>(R.id.buttonPostActions).setOnClickListener {
+            startActivity(Intent(this, PostSettingsActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.buttonHistory).setOnClickListener {
+            startActivity(Intent(this, HistoryActivity::class.java))
+        }
+
         findViewById<TextView>(R.id.textDescGeneral)?.run {
             makeActivityClickable(this)
         }

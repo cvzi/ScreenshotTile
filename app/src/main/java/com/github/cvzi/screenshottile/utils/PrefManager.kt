@@ -3,8 +3,12 @@ package com.github.cvzi.screenshottile.utils
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Point
+import android.net.Uri
+import android.util.Log
 import androidx.preference.PreferenceManager
 import com.github.cvzi.screenshottile.R
+import java.io.File
+import java.util.*
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -12,6 +16,18 @@ import com.github.cvzi.screenshottile.R
  */
 
 class PrefManager(private val context: Context, private val pref: SharedPreferences) {
+    companion object {
+        const val TAG = "PrefManager.kt"
+        val POST_ACTIONS = arrayOf(
+            "saveToStorage", "showToast", "showNotification",
+            // The following are exclusive in the sense that only the first selected will be run
+            "openInPost", "openInPostCrop", "openInPhotoEditor",
+            "openInExternalEditor", "openInExternalViewer", "openShare"
+        )
+        const val POST_ACTIONS_DEFAULT = "saveToStorage,showToast,showNotification"
+        const val HISTORY_DELIMITER = "~///////~"
+        const val HISTORY_ITEM_DELIMITER = "~////~"
+    }
 
     constructor(context: Context) : this(
         context,
@@ -474,4 +490,115 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         ).toMutableSet()
         set(value) = pref.edit()
             .putStringSet(context.getString(R.string.pref_key_notification_actions), value).apply()
+
+    var postScreenshotActions: ArrayList<String>
+        get() {
+            val raw = pref.getString(
+                context.getString(R.string.pref_key_post_screenshot_actions), POST_ACTIONS_DEFAULT
+            ) ?: POST_ACTIONS_DEFAULT
+            val result = ArrayList<String>()
+            raw.split(",").forEach {
+                val action = it.trim()
+                if (action in POST_ACTIONS) {
+                    result.add(action)
+                }
+            }
+            return result
+        }
+        set(values) = pref.edit()
+            .putString(
+                context.getString(R.string.pref_key_post_screenshot_actions),
+                LinkedHashSet(values).joinToString(",")
+            ).apply()
+
+    fun postScreenshotActionsReset() =
+        pref.edit()
+            .putString(
+                context.getString(R.string.pref_key_post_screenshot_actions),
+                POST_ACTIONS_DEFAULT
+            ).apply()
+
+
+    data class ScreenshotHistoryItem(val uri: Uri, val date: Date, val file: File?)
+
+    var screenshotHistory: ArrayList<ScreenshotHistoryItem>
+        get() {
+            val result = ArrayList<ScreenshotHistoryItem>()
+            try {
+                val raw = pref.getString(
+                    context.getString(R.string.pref_key_screenshot_history), ""
+                ) ?: ""
+                raw.split(HISTORY_DELIMITER).forEach {
+                    if (it.isNotBlank()) {
+                        val parts = it.split(HISTORY_ITEM_DELIMITER)
+                        if (parts.size > 1) {
+                            val uri = Uri.parse(parts[0])
+                            val date = Date(parts[1].toLong())
+                            val file: File? = if (parts.size > 2) {
+                                File(parts[2])
+                            } else {
+                                null
+                            }
+                            result.add(ScreenshotHistoryItem(uri, date, file))
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, e.stackTraceToString())
+            }
+            return result
+        }
+        set(values) {
+            try {
+                val size = values.size
+                pref.edit()
+                    .putString(
+                        context.getString(R.string.pref_key_screenshot_history),
+                        values.filterIndexed { index, _ ->
+                            // if more than 100 items, delete first 30 items
+                            size < 100 || index > 30
+                        }.joinToString(HISTORY_DELIMITER) {
+                            if (it.file != null) {
+                                "${
+                                    it.uri.toString().replace(HISTORY_ITEM_DELIMITER, "")
+                                }$HISTORY_ITEM_DELIMITER${
+                                    it.date.time
+                                }$HISTORY_ITEM_DELIMITER${
+                                    it.file.toString().replace(HISTORY_ITEM_DELIMITER, "")
+                                }"
+                            } else {
+                                "${
+                                    it.uri.toString().replace(HISTORY_ITEM_DELIMITER, "")
+                                }$HISTORY_ITEM_DELIMITER${
+                                    it.date.time
+                                }"
+                            }
+                        }
+                    ).apply()
+            } catch (e: Exception) {
+                Log.e(TAG, e.stackTraceToString())
+            }
+        }
+
+    fun screenshotHistoryAdd(item: ScreenshotHistoryItem) {
+        val t = screenshotHistory
+        t.add(item)
+        screenshotHistory = t
+    }
+
+    fun screenshotHistoryRemove(uri: Uri) {
+        screenshotHistory = ArrayList<ScreenshotHistoryItem>(screenshotHistory.filter {
+            it.uri != uri
+        })
+    }
+
+    var keepAppDataMax: Int
+        get() = pref.getString(
+            context.getString(R.string.pref_key_keep_app_data_max),
+            "30"
+        )?.toIntOrNull() ?: 30
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_keep_app_data_max),
+            value.toString()
+        ).apply()
 }

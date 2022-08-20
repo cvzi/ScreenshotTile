@@ -2,13 +2,14 @@ package com.github.cvzi.screenshottile.assist
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.Rect
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Environment
+import android.os.Looper
 import android.service.voice.VoiceInteractionSession
 import android.util.Log
 import android.view.View
@@ -25,7 +26,6 @@ import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.*
-import java.lang.ref.WeakReference
 
 /**
  * A session is started when the home button is long pressed
@@ -35,9 +35,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         private const val TAG = "MyVoiceInSession"
     }
 
-    private var handler = SaveImageHandler(this, Looper.getMainLooper())
-    private var thread: Thread? = null
-    private var saveImageResult: SaveImageResult? = null
+    private val saveImageHandler = SaveImageHandler(Looper.getMainLooper())
     private val prefManager = App.getInstance().prefManager
     private var screenshotSelectorActive = false
     private var layoutView: ConstraintLayout? = null
@@ -61,7 +59,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
 
         screenshotSelectorActive = false
 
-        if (thread?.isAlive == true) {
+        if (saveImageHandler.isRunning()) {
             Log.e(TAG, "onHandleScreenshot: Thread is already running")
             hide()
             return
@@ -215,40 +213,20 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
      * Store the bitmap to file system in a separate thread
      */
     private fun storeBitmap(bitmap: Bitmap) {
-        thread = Thread {
-            saveImageResult = saveBitmapToFile(
-                context,
-                bitmap,
-                prefManager.fileNamePattern,
-                compressionPreference(context),
-                cutOutRect
-            )
-            handler.sendEmptyMessage(TakeScreenshotActivity.THREAD_FINISHED)
-        }
-        handler.sendEmptyMessage(TakeScreenshotActivity.THREAD_START)
-    }
-
-    /**
-     * Handle messages from/to service/thread
-     */
-    class SaveImageHandler(myVoiceInteractionSession: MyVoiceInteractionSession, looper: Looper) :
-        Handler(looper) {
-        private var service: WeakReference<MyVoiceInteractionSession> =
-            WeakReference(myVoiceInteractionSession)
-
-        override fun handleMessage(msg: Message) {
-            super.handleMessage(msg)
-            if (msg.what == TakeScreenshotActivity.THREAD_START) {
-                service.get()?.thread?.start()
-            } else if (msg.what == TakeScreenshotActivity.THREAD_FINISHED) {
-                service.get()?.onFileSaved()
-            }
+        saveImageHandler.storeBitmap(
+            context,
+            bitmap,
+            cutOutRect,
+            prefManager.fileNamePattern,
+            useAppData = "saveToStorage" !in prefManager.postScreenshotActions
+        ) {
+            onFileSaved(it)
         }
     }
 
-    private fun onFileSaved() {
+
+    private fun onFileSaved(saveImageResult: SaveImageResult?) {
         currentBitmap = null
-        val saveImageResult = this.saveImageResult
         if (saveImageResult == null) {
             screenShotFailedToast("saveImageResult is null")
             hide()
@@ -262,8 +240,9 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
 
         val screenDensity = context.resources.configuration.densityDpi
 
-        val result = saveImageResult as? SaveImageResultSuccess?
+        val postScreenshotActions = App.getInstance().prefManager.postScreenshotActions
 
+        val result = saveImageResult as? SaveImageResultSuccess?
         when {
             result == null -> {
                 screenShotFailedToast("Failed to cast SaveImageResult")
@@ -275,30 +254,38 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
-                context.toastMessage(
-                    context.getString(R.string.screenshot_file_saved, dummyPath),
-                    ToastType.SUCCESS
-                )
 
-                createNotification(
-                    context,
-                    result.uri,
-                    result.bitmap,
-                    screenDensity,
-                    result.mimeType,
-                    dummyPath
-                )
+                if ("showToast" in postScreenshotActions) {
+                    context.toastMessage(
+                        context.getString(R.string.screenshot_file_saved, dummyPath),
+                        ToastType.SUCCESS
+                    )
+                }
+
+                if ("showNotification" in postScreenshotActions) {
+                    createNotification(
+                        context,
+                        result.uri,
+                        result.bitmap,
+                        screenDensity,
+                        result.mimeType,
+                        dummyPath
+                    )
+                }
                 prefManager.screenshotCount++
+                handlePostScreenshot(context, postScreenshotActions, result.uri, result.mimeType)
             }
             result.file != null -> {
                 // Legacy behaviour until Android P, works with the real file path
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
-                context.toastMessage(
-                    context.getString(R.string.screenshot_file_saved, path),
-                    ToastType.SUCCESS
-                )
+                if ("showToast" in postScreenshotActions) {
+                    context.toastMessage(
+                        context.getString(R.string.screenshot_file_saved, path),
+                        ToastType.SUCCESS
+                    )
+                }
 
                 createNotification(
                     context,
@@ -308,6 +295,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                     result.mimeType
                 )
                 prefManager.screenshotCount++
+                handlePostScreenshot(context, postScreenshotActions, uri, result.mimeType)
             }
             else -> {
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")
@@ -317,10 +305,8 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
     }
 
     override fun onHide() {
-        thread = null
         currentBitmap = null
         cutOutRect = null
-        saveImageResult = null
         screenshotSelectorActive = false
         super.onHide()
     }

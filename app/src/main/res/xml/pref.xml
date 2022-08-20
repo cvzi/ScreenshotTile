@@ -168,6 +168,14 @@
         android:title="@string/setting_tile_action"
         app:iconSpaceReserved="false" />
 
+    <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_post_actions"
+        android:persistent="false"
+        android:selectable="true"
+        android:summary="@string/setting_post_actions_description"
+        android:title="@string/setting_post_actions"
+        app:iconSpaceReserved="false" />
+
     <androidx.preference.ListPreference
         android:defaultValue="@string/setting_dark_theme_value_default"
         android:entries="@array/setting_dark_theme_entries"
