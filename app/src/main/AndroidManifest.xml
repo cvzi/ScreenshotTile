@@ -122,6 +122,42 @@
             android:excludeFromRecents="true"
             android:exported="false"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.github.cvzi.screenshottile.activities.PostCropActivity"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_crop"
+            android:label="@string/notification_crop_screenshot"
+            android:theme="@style/AppTheme">
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_crop"
+                android:label="@string/notification_crop_screenshot">
+                <action android:name="action_nextgen_edit" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_crop"
+                android:label="@string/notification_crop_screenshot">
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.github.cvzi.screenshottile.activities.PostSettingsActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.github.cvzi.screenshottile.activities.MainActivity"
+            android:taskAffinity="${applicationId}.task"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.github.cvzi.screenshottile.activities.HistoryActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.github.cvzi.screenshottile.activities.MainActivity"
+            android:taskAffinity="${applicationId}.task"
+            android:theme="@style/AppTheme" />
 
         <service
             android:name="com.github.cvzi.screenshottile.services.ScreenshotTileService"
@@ -249,22 +285,26 @@
 
         <activity
             android:name="com.burhanrashid52.photoediting.EditImageActivity"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_photo_editor"
+            android:label="@string/notification_photo_editor_screenshot"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:exported="true">
-
-            <intent-filter>
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_photo_editor"
+                android:label="@string/notification_photo_editor_screenshot">
                 <action android:name="action_nextgen_edit" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="image/*" />
             </intent-filter>
 
-            <intent-filter>
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_photo_editor"
+                android:label="@string/notification_photo_editor_screenshot">
                 <action android:name="android.intent.action.EDIT" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="image/*" />
             </intent-filter>
-
 
         </activity>
 
@@ -274,7 +314,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.burhanrashid52.photoediting.fileprovider"
+            android:authorities="com.github.cvzi.screenshottile.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
 

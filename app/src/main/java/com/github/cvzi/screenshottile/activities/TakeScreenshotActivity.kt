@@ -32,7 +32,6 @@ import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.*
-import java.lang.ref.WeakReference
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.
@@ -51,8 +50,6 @@ class TakeScreenshotActivity : Activity(),
         const val NOTIFICATION_PREVIEW_MIN_SIZE = 50
         const val NOTIFICATION_PREVIEW_MAX_SIZE = 400
         const val NOTIFICATION_BIG_PICTURE_MAX_HEIGHT = 1024
-        const val THREAD_START = 1
-        const val THREAD_FINISHED = 2
         const val EXTRA_PARTIAL = "$APPLICATION_ID.TakeScreenshotActivity.EXTRA_PARTIAL"
 
         /**
@@ -79,9 +76,6 @@ class TakeScreenshotActivity : Activity(),
     private var imageReader: ImageReader? = null
     private var mediaProjection: MediaProjection? = null
     private var cutOutRect: Rect? = null
-    private var handler = SaveImageHandler(this, Looper.getMainLooper())
-    private var thread: Thread? = null
-    private var saveImageResult: SaveImageResult? = null
     private var partial = false
     private var isFullscreen = false
     private var screenshotSelectorView: ScreenshotSelectorView? = null
@@ -320,7 +314,6 @@ class TakeScreenshotActivity : Activity(),
     }
 
     private fun prepareForScreenSharing() {
-        saveImageResult = null
         screenSharing = true
         mediaProjection = try {
             App.createMediaProjection()
@@ -437,56 +430,36 @@ class TakeScreenshotActivity : Activity(),
             return
         }
 
-        val compressionOptions = compressionPreference(applicationContext)
-        val fileNamePattern = App.getInstance().prefManager.fileNamePattern
-
-        thread = Thread {
-            saveImageResult = saveImageToFile(
-                applicationContext,
-                image,
-                fileNamePattern,
-                compressionOptions,
-                cutOutRect
-            )
-            image.close()
-
-            handler.sendEmptyMessage(THREAD_FINISHED)
+        val prefManager = App.getInstance().prefManager
+        val fileNamePattern = prefManager.fileNamePattern
+        val useAppData = "saveToStorage" !in prefManager.postScreenshotActions
+        SaveImageHandler(Looper.getMainLooper()).storeImage(
+            applicationContext,
+            image,
+            cutOutRect,
+            fileNamePattern,
+            useAppData
+        ) {
+            onFileSaved(it)
         }
-        handler.sendEmptyMessage(THREAD_START)
+
     }
 
-    /**
-     * Handle messages from/to activity/thread
-     */
-    class SaveImageHandler(takeScreenshotActivity: TakeScreenshotActivity, looper: Looper) :
-        Handler(looper) {
-        private var activity: WeakReference<TakeScreenshotActivity> =
-            WeakReference(takeScreenshotActivity)
-
-        override fun handleMessage(msg: Message) {
-            super.handleMessage(msg)
-            if (msg.what == THREAD_START) {
-                activity.get()?.thread?.start()
-            } else if (msg.what == THREAD_FINISHED) {
-                activity.get()?.onFileSaved()
-            }
-        }
-    }
-
-    private fun onFileSaved() {
+    private fun onFileSaved(saveImageResult: SaveImageResult?) {
         if (saveImageResult == null) {
             screenShotFailedToast("saveImageResult is null")
             finish()
             return
         }
-        if (saveImageResult?.success != true) {
-            screenShotFailedToast(saveImageResult?.errorMessage)
+        if (!saveImageResult.success) {
+            screenShotFailedToast(saveImageResult.errorMessage)
             finish()
             return
         }
 
-        val result = saveImageResult as? SaveImageResultSuccess?
+        val postScreenshotActions = App.getInstance().prefManager.postScreenshotActions
 
+        val result = saveImageResult as? SaveImageResultSuccess?
         when {
             result == null -> {
                 screenShotFailedToast("Failed to cast SaveImageResult")
@@ -498,43 +471,51 @@ class TakeScreenshotActivity : Activity(),
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
-                toastMessage(
-                    getString(R.string.screenshot_file_saved, dummyPath),
-                    ToastType.SUCCESS
-                )
 
-                createNotification(
-                    this,
-                    result.uri,
-                    result.bitmap,
-                    screenDensity,
-                    result.mimeType,
-                    dummyPath
-                )
+                if ("showToast" in postScreenshotActions) {
+                    toastMessage(
+                        getString(R.string.screenshot_file_saved, dummyPath),
+                        ToastType.SUCCESS
+                    )
+                }
+                if ("showNotification" in postScreenshotActions) {
+                    createNotification(
+                        this,
+                        result.uri,
+                        result.bitmap,
+                        screenDensity,
+                        result.mimeType,
+                        dummyPath
+                    )
+                }
                 App.getInstance().prefManager.screenshotCount++
+                handlePostScreenshot(this, postScreenshotActions, result.uri, result.mimeType)
             }
             result.file != null -> {
                 // Legacy behaviour until Android P, works with the real file path
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
-                toastMessage(getString(R.string.screenshot_file_saved, path), ToastType.SUCCESS)
+                if ("showToast" in postScreenshotActions) {
+                    toastMessage(getString(R.string.screenshot_file_saved, path), ToastType.SUCCESS)
+                }
 
-                createNotification(
-                    this,
-                    uri,
-                    result.bitmap,
-                    screenDensity,
-                    result.mimeType
-                )
+                if ("showNotification" in postScreenshotActions) {
+                    createNotification(
+                        this,
+                        uri,
+                        result.bitmap,
+                        screenDensity,
+                        result.mimeType
+                    )
+                }
                 App.getInstance().prefManager.screenshotCount++
+                handlePostScreenshot(this, postScreenshotActions, uri, result.mimeType)
             }
             else -> {
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")
             }
         }
-
-        saveImageResult = null
 
         // Stop foreground service for Android Q+
         ScreenshotTileService.instance?.background()

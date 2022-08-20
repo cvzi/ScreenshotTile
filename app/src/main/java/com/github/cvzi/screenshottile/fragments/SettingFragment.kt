@@ -33,6 +33,7 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.MainActivity
+import com.github.cvzi.screenshottile.activities.PostSettingsActivity
 import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
@@ -60,6 +61,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var openedAccessibilitySetting = false
     private var askedForStoragePermission = false
     private var notificationPref: Preference? = null
+    private var postActionsPref: Preference? = null
     private var notificationActionsPref: MultiSelectListPreference? = null
     private var delayPref: ListPreference? = null
     private var fileFormatPref: ListPreference? = null
@@ -141,6 +143,8 @@ class SettingFragment : PreferenceFragmentCompat() {
 
         notificationPref =
             findPreference(getString(R.string.pref_static_field_key_notification_settings))
+        postActionsPref =
+            findPreference(getString(R.string.pref_static_field_key_post_actions))
         notificationActionsPref =
             findPreference(getString(R.string.pref_key_notification_actions)) as MultiSelectListPreference?
         delayPref = findPreference(getString(R.string.pref_key_delay)) as ListPreference?
@@ -209,6 +213,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         )
 
         makeNotificationSettingsLink()
+        makePostActionsLink()
         makeAccessibilitySettingsLink()
         makeStorageDirectoryLink()
         makeAdvancedSettingsLink()
@@ -241,6 +246,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         floatingButtonHideShowClosePreventRecursion = false
 
         updateNotificationSummary()
+        updatePostActionsSummary()
         updateNotificationActions()
         updateUseNative()
         updateFloatingButton()
@@ -289,6 +295,23 @@ class SettingFragment : PreferenceFragmentCompat() {
                     myActivity.packageName,
                     createNotificationScreenshotTakenChannel(myActivity)
                 )
+                intent.resolveActivity(myActivity.packageManager)?.let {
+                    startActivity(intent)
+                }
+            }
+            true
+        }
+    }
+
+    private fun makePostActionsLink() {
+        val myPref =
+            findPreference(getString(R.string.pref_static_field_key_post_actions)) as Preference?
+
+        myPref?.isSelectable = true
+        myPref?.onPreferenceClickListener = OnPreferenceClickListener {
+            val myActivity = activity
+            myActivity?.let {
+                val intent = Intent(myActivity, PostSettingsActivity::class.java)
                 intent.resolveActivity(myActivity.packageManager)?.let {
                     startActivity(intent)
                 }
@@ -378,6 +401,26 @@ class SettingFragment : PreferenceFragmentCompat() {
                 }
             }
         }
+    }
+
+    private fun updatePostActionsSummary() {
+        postActionsPref?.apply {
+            when {
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R -> {
+                    isEnabled = false
+                    summary = getString(R.string.use_native_screenshot_option_default)
+                }
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults -> {
+                    isEnabled = false
+                    summary = getString(R.string.use_native_screenshot_option_android11)
+                }
+                else -> {
+                    isEnabled = true
+                    summary = getString(R.string.setting_post_actions_description)
+                }
+            }
+        }
+
     }
 
     private fun updateDelaySummary(value: String) {
@@ -558,6 +601,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                         getString(R.string.use_native_screenshot_summary)
                     }
                     updateNotificationSummary()
+                    updatePostActionsSummary()
                     updateNotificationActions()
                     updateStorageDirectory()
                     updateFileFormatSummary(prefManager.fileFormat)
@@ -570,6 +614,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     updateFileFormatSummary(prefManager.fileFormat)
                     updateFileNamePatternSummary()
                     updateNotificationSummary()
+                    updatePostActionsSummary()
                     updateNotificationActions()
                     updateStorageDirectory()
                 }

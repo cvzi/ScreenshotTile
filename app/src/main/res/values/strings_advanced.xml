@@ -53,4 +53,8 @@
     <string name="setting_format_quality_summary" translatable="false">%s (Default: %s)</string>
     <string name="setting_format_quality_dialog" translatable="false">Compression/Quality of the file format: (0 to 100)\n0 means compress for the smallest size. 100 means compress for max visual quality.\nLeave empty to use the default value.</string>
 
+    <string name="pref_key_keep_app_data_max" translatable="false">keep_app_data_max</string>
+    <string name="setting_keep_app_data_max" translatable="false">Max number of screenshots to keep in Android/data/ folder:</string>
+    <string name="setting_keep_app_data_max_summary" translatable="false">%d (Default: 30)\n%s</string>
+    <string name="setting_keep_app_data_max_dialog" translatable="false">Max number of screenshots to keep in Android/data/ folder:\n-1 means keep unlimited.\nDefault value 30.</string>
 </resources>

@@ -14,7 +14,9 @@ import android.os.Build
 import android.util.Log
 import android.view.Display
 import android.widget.Toast
+import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.activities.PostActivity
+import com.github.cvzi.screenshottile.activities.PostCropActivity
 import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.*
@@ -26,6 +28,8 @@ const val NOTIFICATION_ACTION_EDIT = "NOTIFICATION_ACTION_EDIT"
 const val NOTIFICATION_ACTION_STOP = "NOTIFICATION_ACTION_STOP"
 const val NOTIFICATION_ACTION_RENAME = "NOTIFICATION_ACTION_RENAME"
 const val NOTIFICATION_ACTION_DETAILS = "NOTIFICATION_ACTION_DETAILS"
+const val NOTIFICATION_ACTION_CROP = "NOTIFICATION_ACTION_CROP"
+const val NOTIFICATION_ACTION_PHOTO_EDITOR = "NOTIFICATION_ACTION_PHOTO_EDITOR"
 const val NOTIFICATION_ACTION_DATA_URI = "NOTIFICATION_ACTION_DATA_URI"
 const val NOTIFICATION_ACTION_DATA_MIME_TYPE = "NOTIFICATION_ACTION_DATA_MIME_TYPE"
 const val NOTIFICATION_ACTION_ID = "NOTIFICATION_ACTION_ID"
@@ -36,7 +40,9 @@ val NOTIFICATION_ACTIONS = arrayOf(
     NOTIFICATION_ACTION_EDIT,
     NOTIFICATION_ACTION_STOP,
     NOTIFICATION_ACTION_RENAME,
-    NOTIFICATION_ACTION_DETAILS
+    NOTIFICATION_ACTION_DETAILS,
+    NOTIFICATION_ACTION_CROP,
+    NOTIFICATION_ACTION_PHOTO_EDITOR
 )
 
 /**
@@ -80,7 +86,6 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
-
 
                     if (path != null && deleteImage(this, path)) {
                         windowContext.toastMessage(
@@ -171,13 +176,41 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
                     if (path == null) {
-                        Log.e(TAG, "NOTIFICATION_ACTION_MORE path is null")
+                        Log.e(TAG, "NOTIFICATION_ACTION_DETAILS path is null")
                         return
                     }
                     App.getInstance().startActivityAndCollapse(
                         this,
                         PostActivity.newIntentSingleImage(context, path)
                     )
+                }
+
+                NOTIFICATION_ACTION_CROP -> {
+                    hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
+                    val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
+                    if (path == null) {
+                        Log.e(TAG, "NOTIFICATION_ACTION_CROP path is null")
+                        return
+                    }
+                    App.getInstance().startActivityAndCollapse(
+                        this,
+                        PostCropActivity.newIntentSingleImage(context, path)
+                    )
+                }
+
+                NOTIFICATION_ACTION_PHOTO_EDITOR -> {
+                    hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
+                    val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
+                    if (path == null) {
+                        Log.e(TAG, "NOTIFICATION_ACTION_PHOTO_EDITOR path is null")
+                        return
+                    }
+                    App.getInstance().startActivityAndCollapse(
+                        this,
+                        Intent(context, EditImageActivity::class.java).apply {
+                            action = Intent.ACTION_EDIT
+                            setDataAndNormalize(path)
+                        })
                 }
 
                 NOTIFICATION_ACTION_STOP -> {

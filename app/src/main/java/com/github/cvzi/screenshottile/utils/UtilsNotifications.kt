@@ -13,6 +13,9 @@ import android.provider.Settings
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.FileProvider
+import androidx.core.net.toFile
+import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 
@@ -125,7 +128,7 @@ fun createNotification(
     val uniqueId =
         (System.currentTimeMillis() and 0xfffffff).toInt() // notification id and pending intent request code must be unique for each notification
 
-    val openImageIntent = openImageIntent(path, mimeType)
+    val openImageIntent = openImageIntent(context, path, mimeType)
     val contentPendingIntent =
         PendingIntent.getActivity(
             appContext,
@@ -175,7 +178,7 @@ fun createNotification(
         val shareIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_SHARE)
         val pendingIntentShare = PendingIntent.getBroadcast(
             appContext,
-            uniqueId + 3,
+            uniqueId + 2,
             shareIntent,
             PendingIntent.FLAG_IMMUTABLE
         )
@@ -189,6 +192,7 @@ fun createNotification(
     }
     if (appContext.getString(R.string.setting_notification_action_edit) in notificationActions) {
         if (editImageIntent(
+                context,
                 path,
                 mimeType
             ).resolveActivity(context.applicationContext.packageManager) != null
@@ -196,7 +200,7 @@ fun createNotification(
             val editIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_EDIT)
             val pendingIntentEdit = PendingIntent.getBroadcast(
                 appContext,
-                uniqueId + 4,
+                uniqueId + 3,
                 editIntent,
                 PendingIntent.FLAG_IMMUTABLE
             )
@@ -214,7 +218,7 @@ fun createNotification(
         val deleteIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_DELETE)
         val pendingIntentDelete = PendingIntent.getBroadcast(
             appContext,
-            uniqueId + 2,
+            uniqueId + 4,
             deleteIntent,
             PendingIntent.FLAG_IMMUTABLE
         )
@@ -289,6 +293,41 @@ fun createNotification(
         )
     }
 
+    if (appContext.getString(R.string.setting_notification_action_crop) in notificationActions) {
+        val detailsIntent =
+            actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_CROP)
+        val pendingIntentDetails = PendingIntent.getBroadcast(
+            appContext,
+            uniqueId + 7,
+            detailsIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+        builder.addAction(
+            Notification.Action.Builder(
+                icon,
+                appContext.getString(R.string.notification_crop_screenshot),
+                pendingIntentDetails
+            ).build()
+        )
+    }
+
+    if (appContext.getString(R.string.setting_notification_action_photo_editor) in notificationActions) {
+        val detailsIntent =
+            actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_PHOTO_EDITOR)
+        val pendingIntentDetails = PendingIntent.getBroadcast(
+            appContext,
+            uniqueId + 8,
+            detailsIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+        builder.addAction(
+            Notification.Action.Builder(
+                icon,
+                appContext.getString(R.string.notification_photo_editor_screenshot),
+                pendingIntentDetails
+            ).build()
+        )
+    }
 
     // Listen for action buttons clicks
     App.registerNotificationReceiver()
@@ -323,9 +362,18 @@ fun actionButtonIntent(
  * Intent to open share chooser.
  */
 fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Intent {
+    val uri = if (path.scheme == "file") {
+        FileProvider.getUriForFile(
+            context,
+            EditImageActivity.FILE_PROVIDER_AUTHORITY,
+            path.toFile()
+        )
+    } else {
+        path
+    }
     Intent(Intent.ACTION_SEND).apply {
         type = mimeType
-        putExtra(Intent.EXTRA_STREAM, path)
+        putExtra(Intent.EXTRA_STREAM, uri)
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         return Intent.createChooser(
             this,
@@ -337,15 +385,24 @@ fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Inte
 /**
  * Intent to edit image.
  */
-fun editImageIntent(path: Uri, mimeType: String): Intent {
+fun editImageIntent(context: Context, path: Uri, mimeType: String): Intent {
+    val uri = if (path.scheme == "file") {
+        FileProvider.getUriForFile(
+            context,
+            EditImageActivity.FILE_PROVIDER_AUTHORITY,
+            path.toFile()
+        )
+    } else {
+        path
+    }
     return Intent(Intent.ACTION_EDIT).apply {
-        setDataAndType(path, mimeType)
+        setDataAndType(uri, mimeType)
         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-        if (path.scheme == "content") {
+        if (uri.scheme == "content") {
             // Google Photos needs this, other apps don't need it
-            putExtra(MediaStore.EXTRA_OUTPUT, path)
+            putExtra(MediaStore.EXTRA_OUTPUT, uri)
         }
     }
 }
@@ -354,7 +411,7 @@ fun editImageIntent(path: Uri, mimeType: String): Intent {
  * Intent to open edit image chooser.
  */
 fun editImageChooserIntent(context: Context, path: Uri, mimeType: String): Intent {
-    editImageIntent(path, mimeType).apply {
+    editImageIntent(context, path, mimeType).apply {
         return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_edit))
     }
 }
@@ -362,12 +419,21 @@ fun editImageChooserIntent(context: Context, path: Uri, mimeType: String): Inten
 /**
  * Intent to open image file on notification tap.
  */
-fun openImageIntent(path: Uri, mimeType: String): Intent {
+fun openImageIntent(context: Context, path: Uri, mimeType: String): Intent {
     // Create intent for notification click
+    val uri = if (path.scheme == "file") {
+        FileProvider.getUriForFile(
+            context,
+            EditImageActivity.FILE_PROVIDER_AUTHORITY,
+            path.toFile()
+        )
+    } else {
+        path
+    }
     return Intent(Intent.ACTION_VIEW).apply {
         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        setDataAndType(path, mimeType)
+        setDataAndType(uri, mimeType)
     }
 }
 

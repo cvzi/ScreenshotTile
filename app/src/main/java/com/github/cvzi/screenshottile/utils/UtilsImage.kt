@@ -273,6 +273,49 @@ fun deleteFileSystem(context: Context, file: File): Boolean {
 }
 
 /**
+ * Move image to normal storage location. Return true on success, false on failure.
+ * content:// Uris are moved via MediaStore if possible otherwise copied and original file deleted
+ * file:// Uris are renamed on filesystem and removed and added to MediaStore
+ */
+fun moveImageToStorage(context: Context, file: File, newName: String?): Pair<Boolean, Uri?> {
+    // TODO this does not work on old Android API 24, it moves in the same folder as source
+    val compressionOptions = compressionPreference(context)
+    val (newFileName, newFileTitle) =
+        if (newName == null) {
+            val date = Date()
+            val name = formatFileName(App.getInstance().prefManager.fileNamePattern, date)
+            val filename = if (name.endsWith(
+                    ".${compressionOptions.fileExtension}",
+                    true
+                )
+            ) name else "$name.${compressionOptions.fileExtension}"
+
+            fileNameFileTitle(filename, compressionOptions)
+        } else {
+            fileNameFileTitle(newName, compressionOptions)
+        }
+
+
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) { // Android Q+
+        // Try to copy the image to a new name
+        val result = copyImageContentResolver(context, file.inputStream(), newFileTitle)
+        if (!result.first) {
+            return Pair(false, null)
+        }
+        // Remove the old file
+        if (!deleteImage(context, Uri.fromFile(file))) {
+            Log.e(UTILSIMAGEKT, "renameContentResolver() deleteImage failed")
+        }
+        return result
+
+    } else { // until Android P
+        val dest = File(file.parent, newFileName)
+        renameFileSystem(context, file, dest)
+    }
+
+}
+
+/**
  * Rename image. Return true on success, false on failure.
  * content:// Uris are moved via MediaStore if possible otherwise copied and original file deleted
  * file:// Uris are renamed on filesystem and removed and added to MediaStore
@@ -298,7 +341,7 @@ fun renameImage(context: Context, uri: Uri?, newName: String): Pair<Boolean, Uri
             }
 
             val file = File(path)
-            val dest = File(file.parent, newFileName)
+            val dest = createImageFile(context, newFileName)
 
             return renameFileSystem(context, file, dest)
         }
@@ -347,8 +390,10 @@ fun renameContentResolver(
     return result
 }
 
+
+
 /**
- * Copy file via contentResolver
+ * Copy file via contentResolver from uri
  */
 fun copyImageContentResolver(context: Context, uri: Uri, newName: String): Pair<Boolean, Uri?> {
     val inputStream: InputStream?
@@ -363,12 +408,20 @@ fun copyImageContentResolver(context: Context, uri: Uri, newName: String): Pair<
         return Pair(false, null)
     }
 
+    return copyImageContentResolver(context, inputStream, newName)
+}
+
+/**
+ * Copy file via contentResolver from inputStream
+ */
+fun copyImageContentResolver(context: Context, inputStream: InputStream, newName: String): Pair<Boolean, Uri?> {
     val outputStreamResult = createOutputStream(
         context,
         newName,
         compressionPreference(context),
         Date(),
-        Point(0, 0)
+        Point(0, 0),
+        useAppData = false
     )
     if (!outputStreamResult.success) {
         Log.e(
@@ -400,6 +453,17 @@ fun copyImageContentResolver(context: Context, uri: Uri, newName: String): Pair<
         outputStream.close()
     }
     return if (success) {
+        if (outputStreamResultSuccess.uri != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            outputStreamResultSuccess.contentValues?.run {
+                this.clear()
+                    this.put(MediaStore.Images.ImageColumns.IS_PENDING, 0)
+                try {
+                    context.contentResolver.update(outputStreamResultSuccess.uri, this, null, null)
+                } catch (e: UnsupportedOperationException) {
+                    Log.e(UTILSKT, e.stackTraceToString())
+                }
+            }
+        }
         Pair(true, outputStreamResultSuccess.uri)
     } else {
         Pair(false, null)
