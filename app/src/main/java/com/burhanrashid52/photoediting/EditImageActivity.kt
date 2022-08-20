@@ -9,6 +9,7 @@ import android.graphics.Bitmap
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.os.Looper
 import android.provider.MediaStore
 import android.util.Log
 import android.view.MotionEvent
@@ -20,29 +21,21 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AlertDialog
 import com.burhanrashid52.photoediting.base.BaseActivity
-import ja.burhanrashid52.photoeditor.OnPhotoEditorListener
 import com.burhanrashid52.photoediting.EmojiBSFragment.EmojiListener
-import com.burhanrashid52.photoediting.StickerBSFragment.StickerListener
 import com.burhanrashid52.photoediting.tools.EditingToolsAdapter.OnItemSelected
-import ja.burhanrashid52.photoeditor.PhotoEditor
-import ja.burhanrashid52.photoeditor.PhotoEditorView
 import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.tools.EditingToolsAdapter
 import com.burhanrashid52.photoediting.filters.FilterViewAdapter
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.LinearLayoutManager
-import ja.burhanrashid52.photoeditor.TextStyleBuilder
-import ja.burhanrashid52.photoeditor.ViewType
 import androidx.core.content.FileProvider
 import androidx.core.content.ContextCompat
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.burhanrashid52.photoediting.filters.FilterListener
-import ja.burhanrashid52.photoeditor.SaveSettings
 import ja.burhanrashid52.photoeditor.PhotoEditor.OnSaveListener
 import ja.burhanrashid52.photoeditor.shape.ShapeType
-import ja.burhanrashid52.photoeditor.PhotoFilter
 import com.burhanrashid52.photoediting.tools.ToolType
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ja.burhanrashid52.photoeditor.shape.ShapeBuilder
@@ -50,10 +43,14 @@ import java.io.File
 import java.io.IOException
 import java.lang.Exception
 import androidx.annotation.RequiresPermission
+import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.utils.SaveImageHandler
+import com.github.cvzi.screenshottile.utils.SaveImageResultSuccess
+import ja.burhanrashid52.photoeditor.*
 
 class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickListener,
-    PropertiesBSFragment.Properties, ShapeBSFragment.Properties, EmojiListener, StickerListener,
+    PropertiesBSFragment.Properties, ShapeBSFragment.Properties, EmojiListener,
     OnItemSelected, FilterListener {
 
     var mPhotoEditor: PhotoEditor? = null
@@ -62,7 +59,6 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     private var mShapeBSFragment: ShapeBSFragment? = null
     private var mShapeBuilder: ShapeBuilder? = null
     private var mEmojiBSFragment: EmojiBSFragment? = null
-    private var mStickerBSFragment: StickerBSFragment? = null
     private var mTxtCurrentTool: TextView? = null
     private var mWonderFont: Typeface? = null
     private var mRvTools: RecyclerView? = null
@@ -88,9 +84,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         mEmojiBSFragment = EmojiBSFragment().apply {
             loadEmoji(this@EditImageActivity)
         }
-        mStickerBSFragment = StickerBSFragment()
         mShapeBSFragment = ShapeBSFragment()
-        mStickerBSFragment?.setStickerListener(this)
         mEmojiBSFragment?.setEmojiListener(this)
         mPropertiesBSFragment?.setPropertiesChangeListener(this)
         mShapeBSFragment?.setPropertiesChangeListener(this)
@@ -263,6 +257,10 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         ) == PackageManager.PERMISSION_GRANTED
         if (hasStoragePermission || FileSaveHelper.isSdkHigherThan28()) {
             showLoading("Saving...")
+
+
+
+
             mSaveFileHelper?.createFile(fileName, object : FileSaveHelper.OnFileCreateResult {
 
                 @RequiresPermission(allOf = [Manifest.permission.WRITE_EXTERNAL_STORAGE])
@@ -278,6 +276,43 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                             .setTransparencyEnabled(true)
                             .build()
 
+                        mPhotoEditor?.saveAsBitmap(object : OnSaveBitmap {
+                            override fun onBitmapReady(saveBitmap: Bitmap?) {
+                                if (saveBitmap == null) {
+                                    Log.e(TAG, "saveAsBitmap -> onBitmapReady(null)")
+                                    hideLoading()
+                                    showSnackbar("Failed to save Image")
+                                    return
+                                }
+
+                                SaveImageHandler(Looper.getMainLooper()).storeBitmap(
+                                    this@EditImageActivity,
+                                    saveBitmap,
+                                    null,
+                                    App.getInstance().prefManager.fileNamePattern,
+                                    useAppData = false
+                                ) {
+                                    hideLoading()
+                                    val result = it as? SaveImageResultSuccess?
+                                    if (result != null) {
+                                        hideLoading()
+                                        showSnackbar("Image Saved Successfully")
+                                        mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
+                                        mPhotoEditorView?.source?.setImageURI(mSaveImageUri)
+                                    } else {
+                                        hideLoading()
+                                        showSnackbar("Failed to save Image")
+                                        Log.e(TAG, "saveAsBitmap -> storeBitmap -> SaveImageResult Error ${it?.errorMessage}")
+                                    }
+                                }
+                            }
+                            override fun onFailure(e: Exception?) {
+                                hideLoading()
+                                showSnackbar("Failed to save Image")
+                                Log.e(TAG, "saveAsBitmap -> onFailure", e)
+                            }
+                        })
+                        /*
                         mPhotoEditor?.saveAsFile(
                             filePath,
                             saveSettings,
@@ -297,6 +332,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                                     showSnackbar("Failed to save Image")
                                 }
                             })
+                        */
                     } else {
                         hideLoading()
                         error?.let { showSnackbar(error) }
@@ -357,11 +393,6 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         mTxtCurrentTool?.setText(R.string.label_emoji)
     }
 
-    override fun onStickerClick(bitmap: Bitmap?) {
-        mPhotoEditor?.addImage(bitmap)
-        mTxtCurrentTool?.setText(R.string.label_sticker)
-    }
-
     @SuppressLint("MissingPermission")
     override fun isPermissionGranted(isGranted: Boolean, permission: String?) {
         if (isGranted) {
@@ -412,7 +443,6 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 showFilter(true)
             }
             ToolType.EMOJI -> showBottomSheetDialogFragment(mEmojiBSFragment)
-            ToolType.STICKER -> showBottomSheetDialogFragment(mStickerBSFragment)
             else -> Log.e(TAG, "onToolSelected() called with unknown: toolType = [$toolType]")
         }
     }
@@ -467,7 +497,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
 
     companion object {
         private val TAG = EditImageActivity::class.java.simpleName
-        const val FILE_PROVIDER_AUTHORITY = "com.burhanrashid52.photoediting.fileprovider"
+        const val FILE_PROVIDER_AUTHORITY = "com.github.cvzi.screenshottile.fileprovider"
         private const val CAMERA_REQUEST = 52
         private const val PICK_REQUEST = 53
         const val ACTION_NEXTGEN_EDIT = "action_nextgen_edit"

@@ -338,64 +338,6 @@ class EditImageActivityTest {
         assertNotEquals(textScaleYBeforeScaling, textFrameParentView.scaleY)
     }
 
-    @Test
-    fun checkIfOnlyOneStickerCanBeSelectedAtATime() {
-        mActivityRule.launchActivity(null)
-
-        // Add the first emoji to the editor
-        Espresso.onView(ViewMatchers.withId(R.id.rvConstraintTools))
-            .perform(
-                RecyclerViewActions.scrollTo<RecyclerView.ViewHolder>(
-                    ViewMatchers.hasDescendant(
-                        ViewMatchers.withText(R.string.label_emoji)
-                    )
-                )
-            )
-        Espresso.onView(ViewMatchers.withText(R.string.label_emoji)).perform(ViewActions.click())
-        Espresso.onView(ViewMatchers.withId(R.id.rvEmoji))
-            .perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                    0,
-                    ViewActions.click()
-                )
-            )
-
-        // Move the first emoji to the left.
-        // NOTE(lucianocheng): I tried to do a SwipeAction here, but using the swipe to move
-        //                     the element turned out to be very difficult in practice.
-        val firstEmojiStickerFrameBorder = mActivityRule.activity.findViewById<View>(R.id.frmBorder)
-        (firstEmojiStickerFrameBorder.parent as FrameLayout).x = 0f
-
-        // Add the second emoji to the editor
-        Espresso.onView(withIndex(ViewMatchers.withText(R.string.label_emoji), 1)).perform(
-            ViewActions.click()
-        )
-        Espresso.onView(ViewMatchers.withId(R.id.rvEmoji))
-            .perform(
-                RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                    1,
-                    ViewActions.click()
-                )
-            )
-
-        // Assert that the first emoji is not selected (frame background is null)
-        Espresso.onView(withIndex(ViewMatchers.withId(R.id.frmBorder), 0))
-            .check { view: View, noViewFoundException: NoMatchingViewException? ->
-                assertNull(
-                    view.background
-                )
-            }
-
-        // Assert that the second emoji is selected (frame background is not null)
-        Espresso.onView(withIndex(ViewMatchers.withId(R.id.frmBorder), 1))
-            .check { view: View, noViewFoundException: NoMatchingViewException? ->
-                TestCase.assertNotNull(
-                    null,
-                    view.background
-                )
-            }
-    }
-
     companion object {
         // Helper class for matching with multiple elements with the same ID
         // NOTE(lucianocheng): All emoji / stickers have the same views, so we need this to retrieve

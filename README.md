@@ -29,9 +29,11 @@ To help translate this app, please visit [crowdin.com](https://crwd.in/screensho
 
 You may translate the resource files directly and open a pull request. The English source is in [/app/src/main/res/values/strings.xml](/app/src/main/res/values/strings.xml) and the translated files are stored in [/app/src/main/res/values-XX/strings.xml](/app/src/main/res/) (XX = language code)
 
-## Contributors
+## Contributors & libraries
 
 [![Contributors](https://contrib.rocks/image?repo=cvzi/ScreenshotTile)](https://github.com/cvzi/ScreenshotTile/graphs/contributors)
+
+The internal image editor and image library used is [github.com/burhanrashid52/PhotoEditor](https://github.com/burhanrashid52/PhotoEditor) (MIT license) by [Burhanuddin Rashid](https://github.com/burhanrashid52).
 
 ## Technical details
 
