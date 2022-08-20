@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Skärmdump</string>
     <string name="tile_floating_label">Svävande</string>
     <string name="tile_floating_subtitle">Skärmbildsknapp</string>
@@ -40,4 +41,10 @@
     <string name="setting_floating_button_shutter">Tema för flytande knapp</string>
     <string name="setting_floating_button_delay">Fördröjning (Flytande knapp)</string>
     <string name="file_title">Skärmdump</string>
+    <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <!-- About -->
+    <!-- First screen -->
+    <string name="main_floating_button_title">Flytande knapp</string>
+    <!-- Post edit activity -->
 </resources>

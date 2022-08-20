@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.18.5
+*   Translations updated from crowdin
+
+## 1.18.3
+*   Fix crash when opening advanced settings  [#187](https://github.com/cvzi/ScreenshotTile/issues/187)
+
 ## 1.18.2
 *   Translations updated from crowdin
 
