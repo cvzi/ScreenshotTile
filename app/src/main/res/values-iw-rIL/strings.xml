@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">אריח צילום מסך (ללא רוט)</string>
     <string name="tile_label">צילום מסך</string>
     <string name="tile_floating_label">כפתור צף</string>
     <string name="tile_floating_subtitle">לצילום מסך</string>
     <string name="title_delay">השהיית</string>
     <string name="more_setting">הגדרות נוספות</string>
     <string name="open_settings">פתח את הקביעות</string>
+    <string name="left_screenshot_right_menu">משמאל: צילום מסך, מימין: הגדרות</string>
     <string name="partial_screenshot">חיתוך</string>
     <string name="file_format">תבנית קובץ</string>
     <string name="setting_delay_entry_default">מיד</string>
@@ -13,6 +15,8 @@
     <string name="setting_delay_entry_2s">2 שניות</string>
     <string name="setting_delay_entry_5s">5 שניות</string>
     <string name="show_count_down">מציג ספירה לאחור</string>
+    <string name="use_native_screenshot">השתמש בשיטת צילום מסך מקורית</string>
+    <string name="use_native_screenshot_summary">הדמיית בית + לחיצת כפתור הפעלה</string>
     <string name="use_native_screenshot_unsupported">דורש אנדרואיד 9 \"פאי\" ואילך</string>
     <string name="use_system_defaults_summary">דורש אנדרואיד 11 ואילך</string>
     <string name="setting_floating_button">כפתור צף</string>

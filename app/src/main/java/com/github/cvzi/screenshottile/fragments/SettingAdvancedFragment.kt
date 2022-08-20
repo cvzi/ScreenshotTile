@@ -124,27 +124,28 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
 
     private fun compressionFormatToString(compressionOptions: CompressionOptions): String {
         @Suppress("DEPRECATION")
-        return when (compressionOptions.format) {
-            Bitmap.CompressFormat.JPEG -> "JPEG ${compressionOptions.quality}%"
-            Bitmap.CompressFormat.PNG -> "PNG (quality parameter has no effect)"
-            Bitmap.CompressFormat.WEBP -> {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && compressionOptions.quality == 100) {
-                    "WEBP (Lossless 100%)"
-                } else {
-                    "WEBP (Lossy ${compressionOptions.quality}%)"
-                }
+        // Do not use when, it is exhaustive and enumerates fields that are not available on
+        // all Android version, it will crashes with `No static field WEBP_LOSSY` on old Android
+        return if (compressionOptions.format == Bitmap.CompressFormat.JPEG) {
+            "JPEG ${compressionOptions.quality}%"
+        } else if (compressionOptions.format == Bitmap.CompressFormat.PNG) {
+            "PNG (quality parameter has no effect)"
+        } else if (compressionOptions.format == Bitmap.CompressFormat.WEBP) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && compressionOptions.quality == 100) {
+                "WEBP (Lossless 100%)"
+            } else {
+                "WEBP (Lossy ${compressionOptions.quality}%)"
             }
-            else -> {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    when (compressionOptions.format) {
-                        Bitmap.CompressFormat.WEBP_LOSSY -> "WEBP (Lossy ${compressionOptions.quality}%)"
-                        Bitmap.CompressFormat.WEBP_LOSSLESS -> "WEBP (Lossless ${compressionOptions.quality}%)"
-                        else -> "${compressionOptions.format.name} ${compressionOptions.quality}%"
-                    }
-                } else {
-                    "${compressionOptions.format.name} ${compressionOptions.quality}%"
-                }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (compressionOptions.format == Bitmap.CompressFormat.WEBP_LOSSY) {
+                "WEBP (Lossy ${compressionOptions.quality}%)"
+            } else if (compressionOptions.format == Bitmap.CompressFormat.WEBP_LOSSLESS) {
+                "WEBP (Lossless ${compressionOptions.quality}%)"
+            } else {
+                "${compressionOptions.format.name} ${compressionOptions.quality}%"
             }
+        } else {
+            "${compressionOptions.format.name} ${compressionOptions.quality}%"
         }
     }
 

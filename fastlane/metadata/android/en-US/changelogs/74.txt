@@ -1,0 +1,3 @@
+🌟   Custom file format compression/quality value (in Advanced Settings menu)
+🌟   Adaptions for Android 13 Tiramisu
+🐛   Bugfix: Advanced settings menu could not be opened on some Android versions
