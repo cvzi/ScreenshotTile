@@ -223,7 +223,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 val intent = Intent()
                 intent.type = "image/*"
                 intent.action = Intent.ACTION_GET_CONTENT
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_REQUEST)
+                startActivityForResult(Intent.createChooser(intent, getString(R.string.msg_choose_image)), PICK_REQUEST)
             }
         }
     }
@@ -286,7 +286,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                                 if (saveBitmap == null) {
                                     Log.e(TAG, "saveAsBitmap -> onBitmapReady(null)")
                                     hideLoading()
-                                    showSnackbar("Failed to save Image")
+                                    showSnackbar(getString(R.string.msg_failed_to_save))
                                     return
                                 }
 
@@ -301,12 +301,12 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                                     val result = it as? SaveImageResultSuccess?
                                     if (result != null) {
                                         hideLoading()
-                                        showSnackbar("Image Saved Successfully")
+                                        showSnackbar(getString(R.string.msg_image_saved))
                                         mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
                                         mPhotoEditorView?.source?.setImageURI(mSaveImageUri)
                                     } else {
                                         hideLoading()
-                                        showSnackbar("Failed to save Image")
+                                        showSnackbar(getString(R.string.msg_failed_to_save))
                                         Log.e(
                                             TAG,
                                             "saveAsBitmap -> storeBitmap -> SaveImageResult Error ${it?.errorMessage}"
@@ -317,7 +317,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
 
                             override fun onFailure(e: Exception?) {
                                 hideLoading()
-                                showSnackbar("Failed to save Image")
+                                showSnackbar(getString(R.string.msg_failed_to_save))
                                 Log.e(TAG, "saveAsBitmap -> onFailure", e)
                             }
                         })

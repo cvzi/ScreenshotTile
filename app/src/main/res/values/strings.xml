@@ -174,6 +174,7 @@
     <string name="post_delete_suggestion">Delete suggestion</string>
 
     <!-- Photo Editor-->
+    <string name="app_intent_name">PhotoEditor</string>
     <string name="label_brush">Brush</string>
     <string name="label_shape">Shape</string>
     <string name="label_oval">Oval</string>
@@ -192,7 +193,9 @@
     <string name="label_save">Save</string>
     <string name="label_discard">Discard</string>
     <string name="msg_save_image">Do you want to exit without saving the image?</string>
-    <string name="app_intent_name">PhotoEditor</string>
     <string name="msg_save_image_to_share">Please save image to share</string>
     <string name="msg_share_image">Share Image</string>
+    <string name="msg_choose_image">Select an image</string>
+    <string name="msg_image_saved">Image saved successfully</string>
+    <string name="msg_failed_to_save">Failed to save image</string>
 </resources>
