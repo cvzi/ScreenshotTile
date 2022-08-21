@@ -59,8 +59,28 @@
     <string name="notification_settings">نوتیفیکیشن</string>
     <string name="notification_settings_on">فعال</string>
     <string name="notification_settings_off">خاموش</string>
+    <string name="setting_post_actions">اقدامات بعدی</string>
+    <string name="setting_post_actions_description">انتخاب کنید بعد از گرفتن اسکرین‌شات چه اتفاقی بیفتد</string>
+    <string name="button_history">اسکرین‌شات های اخیر</string>
+    <string name="button_history_description">اسکرین‌شات های اخیر خود از جمله فایل هایی که در گالری ذخیره نشده اند را مشاهده کنید</string>
+    <string name="history_title">تاریخچه اسکرین‌شات</string>
+    <string name="restore_default_values">بازگردانی به مقادیر پیشفرض</string>
+    <string name="post_action_save_to_storage">ذخیره تصویر در گالری</string>
+    <string name="post_action_show_toast">نمایش یک اعلان \" توست\". یک پنجره کوچک که پس از 2 ثانیه ناپدید می شود</string>
+    <string name="post_action_show_notification">نمایش یک اعلان منظم.می‌توانید دکمه‌های (ویرایش، اشتراک‌گذاری،…) را در زیر اعلان در قسمت «تنظیمات بیشتر» تغییر دهید</string>
+    <string name="post_action_empty">باز نکردن اسکرین‌شات</string>
+    <string name="post_action_open_in_post">باز کردن در نمای \"جزییات\"</string>
+    <string name="post_action_open_in_post_crop">برش تصویر</string>
+    <string name="post_action_open_in_photo_editor">باز کردن ویرایشگر عکس موجود</string>
+    <string name="post_action_open_in_external_editor">باز کردن ویرایشگر تصویر جانبی</string>
+    <string name="post_action_open_in_external_viewer">باز کردن توسط نمایشگر عکس یا گالری</string>
+    <string name="post_action_open_share">به اشتراک گذاری اسکرین‌شات</string>
+    <string name="move_to_storage_directory">انتقال به گالری</string>
+    <string name="button_clear">پاک کردن</string>
+    <string name="button_clear_confirm">آیا می‌خواهید همه فایل‌های موقت را حذف کنید؟\nبا این کار همه فایل‌های موجود در %s حذف می‌شوند\n\n(این فایل‌ها معمولاً در گالری شما قابل مشاهده نیستند)</string>
     <string name="file_title">اسکرین‌شات</string>
     <string name="file_description">اسکرین شات در %1$s گرفته شده است</string>
+    <string name="file_description_simple_date_format">سال/ماه/روز ساعت/دقیقه/ثانیه</string>
     <string name="notification_title">عکس صفحه‌نمایش ذخیره شد</string>
     <string name="notification_body">برای مشاهده عکس گرفته شده ضربه بزنید</string>
     <string name="notification_channel_description">نمایش اعلان وقتی اسکرین شات میگیرید</string>
@@ -77,6 +97,8 @@
     <string name="notification_edit_screenshot">ویرایش</string>
     <string name="notification_rename_screenshot">تغییر نام</string>
     <string name="notification_screenshot_details">جزئیات</string>
+    <string name="notification_crop_screenshot">برش</string>
+    <string name="notification_photo_editor_screenshot">ویرایشگر عکس</string>
     <string name="screenshot_deleted">اسکرین شات حذف شد</string>
     <string name="screenshot_delete_failed">فایل حذف نشد</string>
     <string name="screenshot_renamed">نام فایل به %1s تغییر یافت</string>
@@ -117,6 +139,8 @@
     <string name="about_license_title">مجوز</string>
     <string name="about_license_1">پروانه عمومی همگانی گنو نسخه ۳</string>
     <string name="about_app_2">این برنامه همچنان مشکلاتی دارد و در حال توسعه است.\nاگر در تلفن خود دسترسی ریشته دارید لطفا از ورژن ipcjs\' استفاده کنید،سریع تر و قابل اطمینان تر است.</string>
+    <string name="about_privacy_title">سیاست حریم خصوصی</string>
+    <string name="about_open_source_title">متن باز های استفاده شده</string>
     <string name="about_advanced_settings_button">تنظیمات پیشرفته</string>
     <string name="about_update_check_button">بررسی بروزرسانی</string>
     <!-- First screen -->
@@ -144,4 +168,19 @@
     <string name="post_save_a_suggestion">ذخیره پیشنهاد</string>
     <string name="post_pin_to_favorites">سنجاق کردن در موارد دلخواه</string>
     <string name="post_delete_suggestion">حذف پیشنهاد</string>
+    <!-- Photo Editor-->
+    <string name="label_brush">قلم مو</string>
+    <string name="label_shape">شکل</string>
+    <string name="label_oval">بیضی</string>
+    <string name="label_rectangle">مستطیل</string>
+    <string name="label_line">خط</string>
+    <string name="label_emoji">شکلک</string>
+    <string name="label_eraser">پاک کن</string>
+    <string name="label_text">متن</string>
+    <string name="label_filter">فیلتر</string>
+    <string name="label_adjust">تنظیم</string>
+    <string name="msg_save_image">آیا میخواهید بدون ذخیره تصویر خارج شوید؟</string>
+    <string name="app_intent_name">ویرایشگر تصویر</string>
+    <string name="msg_save_image_to_share">لطفا برای به اشتراک گذاری ابتدا تصویر را ذخیره کنید</string>
+    <string name="msg_share_image">به اشتراک‌گذاری تصویر</string>
 </resources>
