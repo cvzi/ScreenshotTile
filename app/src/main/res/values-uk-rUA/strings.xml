@@ -46,6 +46,7 @@
     <string name="setting_storage_directory_description">Тека для збереження знімків екрана</string>
     <string name="setting_file_name_pattern">Назва файлу</string>
     <string name="setting_file_name_placeholders_title">У назва файлу доступні наступні заповнювачі</string>
+    <string name="setting_file_name_placeholders" formatted="false">%timestamp% — час як yyyy-MM-dd_H-mm-ss\n%counter% — рахує кількість знімків екрана\n%random% — випадковий UUID\n%randint% — випадкове число</string>
     <string name="setting_tile_action">Дія плитки</string>
     <string name="setting_floating_action">Дія для рухомої кнопки</string>
     <string name="setting_voice_interaction_action">Дія помічника</string>
@@ -59,8 +60,28 @@
     <string name="notification_settings">Сповіщення</string>
     <string name="notification_settings_on">Увімкнені</string>
     <string name="notification_settings_off">Вимкнені</string>
+    <string name="setting_post_actions">Подальші дії</string>
+    <string name="setting_post_actions_description">Виберіть, що відбувається після знімка екрана</string>
+    <string name="button_history">Останні знімки екрана</string>
+    <string name="button_history_description">Переглянути останні знімки екрана, в тому числі файли, які не були збережені в галереї</string>
+    <string name="history_title">Історія знімків екрана</string>
+    <string name="restore_default_values">Відновити типові значення</string>
+    <string name="post_action_save_to_storage">Зберегти до галереї</string>
+    <string name="post_action_show_toast">Показувати сповіщення «Тост». Коротке спливне вікно, що зникає за 2 секунди</string>
+    <string name="post_action_show_notification">Показувати звичайне сповіщення. Ви можете змінити кнопки (Редагувати, Поділитися,…) під сповіщенням у розділі «Налаштування»</string>
+    <string name="post_action_empty">Не відкривати знімок екрана</string>
+    <string name="post_action_open_in_post">Відкрити в режимі «Подробиці»</string>
+    <string name="post_action_open_in_post_crop">Обрізати зображення</string>
+    <string name="post_action_open_in_photo_editor">Відкрити вбудований фоторедактор</string>
+    <string name="post_action_open_in_external_editor">Відкрити у зовнішньому фоторедакторі</string>
+    <string name="post_action_open_in_external_viewer">Відкрити у переглядачі світлин або галереї</string>
+    <string name="post_action_open_share">Поділитися знімком екрана</string>
+    <string name="move_to_storage_directory">Перемістити до галереї</string>
+    <string name="button_clear">Очистити</string>
+    <string name="button_clear_confirm">Видалити всі тимчасові файли?\nЦе видалить усі файли у %s\n\n(Ці файли зазвичай не показуються у вашій галереї)</string>
     <string name="file_title">Знімок екрана</string>
     <string name="file_description">Знімок екрана зроблено %1$s</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Знімок екрана збережено</string>
     <string name="notification_body">Натисніть, щоб побачити зображення</string>
     <string name="notification_channel_description">Показує сповіщення, коли ви зробили знімок екрана</string>
@@ -77,6 +98,8 @@
     <string name="notification_edit_screenshot">Редагувати</string>
     <string name="notification_rename_screenshot">Перейменувати</string>
     <string name="notification_screenshot_details">Подробиці</string>
+    <string name="notification_crop_screenshot">Обрізати</string>
+    <string name="notification_photo_editor_screenshot">Фоторедактор</string>
     <string name="screenshot_deleted">Знімок екрана видалено</string>
     <string name="screenshot_delete_failed">Не вдалося видалити файл</string>
     <string name="screenshot_renamed">Файл перейменовано на %1s</string>
@@ -117,6 +140,8 @@
     <string name="about_license_title">Ліцензія</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">Цей застосунок все ще має деякі проблеми та перебуває в розробці.\nЯкщо у вас є root-доступ до вашого телефона, використовуйте версію ipcjs, вона швидша та надійніша.</string>
+    <string name="about_privacy_title">Політика приватності</string>
+    <string name="about_open_source_title">Використано відкритий код</string>
     <string name="about_advanced_settings_button">Додаткові налаштування</string>
     <string name="about_update_check_button">Перевірка наявності оновлень</string>
     <!-- First screen -->
@@ -144,4 +169,20 @@
     <string name="post_save_a_suggestion">Зберегти пропозицію</string>
     <string name="post_pin_to_favorites">Прикріпити в обраному</string>
     <string name="post_delete_suggestion">Видалити пропозицію</string>
+    <!-- Photo Editor-->
+    <string name="label_brush">Пензель</string>
+    <string name="label_shape">Фігура</string>
+    <string name="label_oval">Овал</string>
+    <string name="label_rectangle">Прямокутник</string>
+    <string name="label_line">Лінія</string>
+    <string name="label_emoji">Емоджі</string>
+    <string name="label_eraser">Гумка</string>
+    <string name="label_eraser_mode">Режим гумки</string>
+    <string name="label_text">Текст</string>
+    <string name="label_filter">Фільтр</string>
+    <string name="label_adjust">Скоригувати</string>
+    <string name="msg_save_image">Вийти не зберігши зображення?</string>
+    <string name="app_intent_name">Фоторедактор</string>
+    <string name="msg_save_image_to_share">Збережіть зображення, щоб поділитися ним</string>
+    <string name="msg_share_image">Поділитися зображенням</string>
 </resources>
