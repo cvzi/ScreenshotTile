@@ -413,9 +413,9 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     private fun showSaveDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(getString(R.string.msg_save_image))
-        builder.setPositiveButton("Save") { _: DialogInterface?, _: Int -> saveImage() }
-        builder.setNegativeButton("Cancel") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-        builder.setNeutralButton("Discard") { _: DialogInterface?, _: Int -> finish() }
+        builder.setPositiveButton(R.string.label_save) { _: DialogInterface?, _: Int -> saveImage() }
+        builder.setNegativeButton(android.R.string.cancel) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+        builder.setNeutralButton(R.string.label_discard) { _: DialogInterface?, _: Int -> finish() }
         builder.create().show()
     }
 

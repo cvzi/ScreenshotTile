@@ -22,7 +22,7 @@ class EditingToolsAdapter(private val mOnItemSelected: OnItemSelected) :
     }
 
     internal inner class ToolModel(
-        val mToolName: String,
+        val mToolName: Int,
         val mToolIcon: Int,
         val mToolType: ToolType
     )
@@ -35,7 +35,7 @@ class EditingToolsAdapter(private val mOnItemSelected: OnItemSelected) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mToolList[position]
-        holder.txtTool.text = item.mToolName
+        holder.txtTool.setText(item.mToolName)
         holder.imgToolIcon.setImageResource(item.mToolIcon)
     }
 
@@ -57,10 +57,11 @@ class EditingToolsAdapter(private val mOnItemSelected: OnItemSelected) :
     }
 
     init {
-        mToolList.add(ToolModel("Shape", R.drawable.ic_oval, ToolType.SHAPE))
-        mToolList.add(ToolModel("Text", R.drawable.ic_text, ToolType.TEXT))
-        mToolList.add(ToolModel("Eraser", R.drawable.ic_eraser, ToolType.ERASER))
-        mToolList.add(ToolModel("Filter", R.drawable.ic_photo_filter, ToolType.FILTER))
-        mToolList.add(ToolModel("Emoji", R.drawable.ic_insert_emoticon, ToolType.EMOJI))
+        mToolList.add(ToolModel(R.string.label_oval, R.drawable.ic_oval, ToolType.SHAPE))
+        mToolList.add(ToolModel(R.string.label_shape, R.drawable.ic_oval, ToolType.SHAPE))
+        mToolList.add(ToolModel(R.string.label_text, R.drawable.ic_text, ToolType.TEXT))
+        mToolList.add(ToolModel(R.string.label_eraser, R.drawable.ic_eraser, ToolType.ERASER))
+        mToolList.add(ToolModel(R.string.label_filter, R.drawable.ic_photo_filter, ToolType.FILTER))
+        mToolList.add(ToolModel(R.string.label_emoji, R.drawable.ic_insert_emoticon, ToolType.EMOJI))
     }
 }
