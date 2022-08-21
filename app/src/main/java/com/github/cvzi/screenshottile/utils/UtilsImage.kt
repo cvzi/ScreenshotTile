@@ -17,6 +17,8 @@ import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.io.InputStream
 import java.util.*
 import kotlin.math.ceil
@@ -278,7 +280,6 @@ fun deleteFileSystem(context: Context, file: File): Boolean {
  * file:// Uris are renamed on filesystem and removed and added to MediaStore
  */
 fun moveImageToStorage(context: Context, file: File, newName: String?): Pair<Boolean, Uri?> {
-    // TODO this does not work on old Android API 24, it moves in the same folder as source
     val compressionOptions = compressionPreference(context)
     val (newFileName, newFileTitle) =
         if (newName == null) {
@@ -309,7 +310,7 @@ fun moveImageToStorage(context: Context, file: File, newName: String?): Pair<Boo
         return result
 
     } else { // until Android P
-        val dest = File(file.parent, newFileName)
+        val dest = createImageFile(context, newFileName)
         renameFileSystem(context, file, dest)
     }
 
@@ -391,7 +392,6 @@ fun renameContentResolver(
 }
 
 
-
 /**
  * Copy file via contentResolver from uri
  */
@@ -414,7 +414,11 @@ fun copyImageContentResolver(context: Context, uri: Uri, newName: String): Pair<
 /**
  * Copy file via contentResolver from inputStream
  */
-fun copyImageContentResolver(context: Context, inputStream: InputStream, newName: String): Pair<Boolean, Uri?> {
+fun copyImageContentResolver(
+    context: Context,
+    inputStream: InputStream,
+    newName: String
+): Pair<Boolean, Uri?> {
     val outputStreamResult = createOutputStream(
         context,
         newName,
@@ -456,7 +460,7 @@ fun copyImageContentResolver(context: Context, inputStream: InputStream, newName
         if (outputStreamResultSuccess.uri != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             outputStreamResultSuccess.contentValues?.run {
                 this.clear()
-                    this.put(MediaStore.Images.ImageColumns.IS_PENDING, 0)
+                this.put(MediaStore.Images.ImageColumns.IS_PENDING, 0)
                 try {
                     context.contentResolver.update(outputStreamResultSuccess.uri, this, null, null)
                 } catch (e: UnsupportedOperationException) {
@@ -495,7 +499,20 @@ fun renameFileSystem(
         return Pair(false, null)
     }
 
-    if (file.renameTo(dest)) {
+    val result = if (file.parent == dest.parent) {
+        file.renameTo(dest)
+    } else {
+        try {
+            file.copyTo(dest)
+            file.delete()
+            true
+        } catch (e: Exception) {
+            Log.e(UTILSIMAGEKT, "renameFileSystem() copyTo failed:", e)
+            false
+        }
+    }
+
+    if (result) {
         if (BuildConfig.DEBUG) Log.v(
             UTILSIMAGEKT,
             "renameFileSystem() File ${file.absoluteFile} moved to ${dest.absoluteFile}"

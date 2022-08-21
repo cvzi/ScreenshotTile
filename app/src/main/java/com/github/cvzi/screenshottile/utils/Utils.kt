@@ -989,7 +989,7 @@ fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -
 
             if (fileList != null && fileList.size > keepMax) {
                 for (i in keepMax until fileList.size) {
-                    Log.v(UTILSKT, "cleanUpAppData() delete ${fileList[i].first}")
+                    Log.d(UTILSKT, "cleanUpAppData() delete ${fileList[i].first}")
                     fileList[i].first.delete()
                 }
             }

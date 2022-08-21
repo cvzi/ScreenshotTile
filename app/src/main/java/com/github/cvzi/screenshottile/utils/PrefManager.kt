@@ -592,6 +592,12 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         })
     }
 
+    fun screenshotHistoryRemove(file: File) {
+        screenshotHistory = ArrayList<ScreenshotHistoryItem>(screenshotHistory.filter {
+            it.file == null || it.file != file
+        })
+    }
+
     var keepAppDataMax: Int
         get() = pref.getString(
             context.getString(R.string.pref_key_keep_app_data_max),

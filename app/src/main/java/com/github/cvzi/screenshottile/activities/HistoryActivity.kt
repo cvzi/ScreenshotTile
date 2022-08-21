@@ -194,6 +194,7 @@ class ScreenshotHistoryAdapter(
                             Toast.LENGTH_SHORT
                         )
                         removeFromData(it)
+                        App.getInstance().prefManager.screenshotHistoryRemove(it.uri)
                     } else {
                         activity.toastMessage(
                             R.string.screenshot_delete_failed,
@@ -227,6 +228,8 @@ class ScreenshotHistoryAdapter(
                                 dataSet[index] = SingleImage(uri, null, null, Date(), false)
                                 notifyItemChanged(index)
                             }
+                            App.getInstance().prefManager.screenshotHistoryRemove(currentSingleImage.uri)
+                            App.getInstance().prefManager.screenshotHistoryRemove(file)
                         }
                     }
                 }
