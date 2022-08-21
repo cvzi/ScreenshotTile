@@ -21,8 +21,8 @@
                 android:id="@+id/textDescGeneral"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/history_title"
                 android:layout_weight="1"
+                android:text="@string/history_title"
                 android:textAppearance="@android:style/TextAppearance.Material.Body2" />
 
             <Button

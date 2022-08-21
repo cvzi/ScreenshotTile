@@ -9,7 +9,6 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 
@@ -20,12 +19,14 @@ open class BaseActivity : AppCompatActivity() {
     private var mProgressDialog: ProgressDialog? = null
     private var mPermission: String? = null
 
-    private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-        isPermissionGranted(it, mPermission)
-    }
+    private val permissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
+            isPermissionGranted(it, mPermission)
+        }
 
     fun requestPermission(permission: String): Boolean {
-        val isGranted = ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+        val isGranted =
+            ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
         if (!isGranted) {
             mPermission = permission
             permissionLauncher.launch(permission)

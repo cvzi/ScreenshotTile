@@ -11,14 +11,13 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.burhanrashid52.photoediting.ColorPickerAdapter.OnColorPickerClickListener
-import kotlin.jvm.JvmOverloads
-import androidx.appcompat.app.AppCompatActivity
 import androidx.annotation.ColorInt
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.burhanrashid52.photoediting.ColorPickerAdapter.OnColorPickerClickListener
 import com.github.cvzi.screenshottile.R
 
 /**

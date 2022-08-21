@@ -40,7 +40,9 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
                     switchEvent = true, forceRedraw = true
                 )
                 getString(R.string.pref_key_format_quality) -> updateFormatQualitySummary()
-                getString(R.string.pref_key_keep_app_data_max) -> updateKeepAppDataMaxSummary(switchEvent = true)
+                getString(R.string.pref_key_keep_app_data_max) -> updateKeepAppDataMaxSummary(
+                    switchEvent = true
+                )
             }
         }
 
@@ -123,7 +125,7 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
     }
 
     private fun compressionFormatToString(compressionOptions: CompressionOptions): String {
-        @Suppress("DEPRECATION")
+        @Suppress("DEPRECATION", "CascadeIf")
         // Do not use when, it is exhaustive and enumerates fields that are not available on
         // all Android version, it will crashes with `No static field WEBP_LOSSY` on old Android
         return if (compressionOptions.format == Bitmap.CompressFormat.JPEG) {

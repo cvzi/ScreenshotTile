@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <bool name="accessibility_service_enabled">false</bool>
+    <string name="empty_string" translatable="false" />
     <!-- Settings -->
     <string name="setting_delay_value_default" translatable="false">0</string>
     <string-array name="setting_delay_entries" translatable="false">

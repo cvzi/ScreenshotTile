@@ -35,7 +35,7 @@ class SaveImageHandler(looper: Looper) :
     /**
      * Check if thread is running
      */
-    fun isRunning(): Boolean{
+    fun isRunning(): Boolean {
         return thread?.isAlive == true
     }
 

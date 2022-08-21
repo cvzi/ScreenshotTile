@@ -198,7 +198,7 @@
         android:persistent="false"
         android:selectable="false"
         android:summary="@string/about_app_2"
-        android:title=""
+        android:title="@string/empty_string"
         app:iconSpaceReserved="false" />
 
     <androidx.preference.Preference
@@ -206,7 +206,7 @@
         android:persistent="false"
         android:selectable="true"
         android:summary="@string/about_app_3"
-        android:title=""
+        android:title="@string/empty_string"
         app:icon="@android:drawable/sym_action_email" />
 
     <androidx.preference.Preference

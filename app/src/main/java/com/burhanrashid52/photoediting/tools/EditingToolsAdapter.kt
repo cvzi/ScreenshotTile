@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.R
-import java.util.ArrayList
 
 /**
  * @author [Burhanuddin Rashid](https://github.com/burhanrashid52)
@@ -49,7 +48,7 @@ class EditingToolsAdapter(private val mOnItemSelected: OnItemSelected) :
         val txtTool: TextView = itemView.findViewById(R.id.txtTool)
 
         init {
-            itemView.setOnClickListener { _: View? ->
+            itemView.setOnClickListener {
                 mOnItemSelected.onToolSelected(
                     mToolList[layoutPosition].mToolType
                 )

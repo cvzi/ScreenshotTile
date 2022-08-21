@@ -14,8 +14,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="3dp">
+        android:layout_marginStart="3dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewFileName"
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Folder/Name"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <LinearLayout
             android:layout_width="match_parent"

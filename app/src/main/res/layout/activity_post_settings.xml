@@ -59,10 +59,10 @@
                                 android:text="" />
 
                             <LinearLayout
-                                android:layout_weight="1"
-                                android:layout_gravity="center_vertical"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:orientation="vertical">
 
                                 <TextView
@@ -92,10 +92,10 @@
                                 android:text="" />
 
                             <TextView
-                                android:layout_weight="1"
-                                android:layout_gravity="center_vertical"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:text="@string/post_action_show_toast" />
                         </TableRow>
 
@@ -110,10 +110,10 @@
                                 android:text="" />
 
                             <TextView
-                                android:layout_weight="1"
-                                android:layout_gravity="center_vertical"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
                                 android:text="@string/post_action_show_notification" />
                         </TableRow>
 

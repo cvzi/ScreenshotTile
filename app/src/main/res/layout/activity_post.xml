@@ -51,6 +51,7 @@
                         android:paddingVertical="2dp"
                         android:src="@android:drawable/ic_popup_sync"
                         tools:ignore="HardcodedText" />
+
                     <TextView
                         android:id="@+id/textViewFileSize"
                         android:layout_width="match_parent"

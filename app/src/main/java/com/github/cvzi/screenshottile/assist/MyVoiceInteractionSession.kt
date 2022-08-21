@@ -333,7 +333,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
 
     private fun resetSelection() {
         val selectorView = screenshotSelectorView
-        if(partial && selectorView != null && !selectorView.defaultState) {
+        if (partial && selectorView != null && !selectorView.defaultState) {
             screenshotSelectorView?.reset()
         }
         // Remove handler for back button on Android 13

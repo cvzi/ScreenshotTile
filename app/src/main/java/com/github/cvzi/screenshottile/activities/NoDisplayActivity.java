@@ -47,7 +47,7 @@ public class NoDisplayActivity extends Activity {
     /**
      * Open from service
      *
-     * @param context    Context
+     * @param context Context
      */
     public static void startNewTaskPartial(Context context) {
         Intent intent = newPartialIntent(context);

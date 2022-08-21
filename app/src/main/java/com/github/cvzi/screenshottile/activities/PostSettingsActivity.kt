@@ -51,13 +51,14 @@ class PostSettingsActivity : AppCompatActivity() {
         val prefManager = App.getInstance().prefManager
 
         findViewById<TextView>(R.id.textDescGeneral).apply {
-            text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                getString(R.string.use_native_screenshot_option_default)
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
-                getString(R.string.use_native_screenshot_option_android11)
-            } else {
-                getString(R.string.setting_post_actions_description)
-            }
+            text =
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                    getString(R.string.use_native_screenshot_option_default)
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
+                    getString(R.string.use_native_screenshot_option_android11)
+                } else {
+                    getString(R.string.setting_post_actions_description)
+                }
         }
 
         findViewById<TextView>(R.id.textViewSaveImageLocation).text =
@@ -122,7 +123,7 @@ class PostSettingsActivity : AppCompatActivity() {
         switch.setTag(R.id.tag_action_key, actionKey)
         switch.setOnCheckedChangeListener(onActionCheckedChange)
     }
-    
+
     private val onActionCheckedChange =
         CompoundButton.OnCheckedChangeListener { compoundButton, isChecked ->
             val actionKey = compoundButton.getTag(R.id.tag_action_key) as String
