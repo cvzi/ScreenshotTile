@@ -46,6 +46,7 @@
     <string name="setting_storage_directory_description">Ordner, wo Screenshots gespeichert werden</string>
     <string name="setting_file_name_pattern">Dateiname</string>
     <string name="setting_file_name_placeholders_title">Verwende diese Platzhalter im Dateinamen</string>
+    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - Zeit als yyyy-MM-dd_HH-mm-ss\n%counter% - zählt die Anzahl der Screenshots\n%random% - eine zufällige UUID\n%randint% - eine zufällige Zahl</string>
     <string name="setting_tile_action">Kachelaktion</string>
     <string name="setting_floating_action">Aktion des schwebenden Screenshot Auslösers</string>
     <string name="setting_voice_interaction_action">Assistentaktion</string>
@@ -59,6 +60,25 @@
     <string name="notification_settings">Benachrichtigungen</string>
     <string name="notification_settings_on">Aktiviert</string>
     <string name="notification_settings_off">Deaktiviert</string>
+    <string name="setting_post_actions">Anschließende Aktionen</string>
+    <string name="setting_post_actions_description">Entscheide was passiert, nachdem der Screenshot gemacht wurde</string>
+    <string name="button_history">Screenshot Verlauf</string>
+    <string name="button_history_description">Zeige deine letzten Screenshots einschließlich Dateien, die nicht in der Galerie gespeichert wurden</string>
+    <string name="history_title">Screenshot-Verlauf</string>
+    <string name="restore_default_values">Auf Standard zurücksetzen</string>
+    <string name="post_action_save_to_storage">Bild in Galerie speichern</string>
+    <string name="post_action_show_toast">Zeige eine \"Toast\"-Benachrichtigung. Ein kleines Popup, das nach 2 Sekunden verschwindet</string>
+    <string name="post_action_show_notification">Zeige eine normale Benachrichtigung. Die Schaltflächen (Bearbeiten, Teilen) unter der Benachrichtigung können unter \"Mehr Einstellungen\" ändern</string>
+    <string name="post_action_empty">Screenshot nicht öffnen</string>
+    <string name="post_action_open_in_post">In \"Details\" öffnen</string>
+    <string name="post_action_open_in_post_crop">Bild zuschneiden</string>
+    <string name="post_action_open_in_photo_editor">Den mitgelieferten Foto-Editor öffnen</string>
+    <string name="post_action_open_in_external_editor">In einem externen Foto-Editor öffnen</string>
+    <string name="post_action_open_in_external_viewer">In einem Foto-Viewer oder in der Galerie öffnen</string>
+    <string name="post_action_open_share">Screenshot teilen</string>
+    <string name="move_to_storage_directory">In Galerie verschieben</string>
+    <string name="button_clear">Leeren</string>
+    <string name="button_clear_confirm">Möchtest du alle temporären Dateien löschen?\nDies löscht alle Dateien in %s\n\n(Diese Dateien sind normalerweise nicht in der Galerie sichtbar)</string>
     <string name="file_title">Screenshot</string>
     <string name="file_description">Screenshot vom %1$s</string>
     <string name="file_description_simple_date_format">dd.MM.yyyy HH:mm:ss</string>
@@ -78,6 +98,8 @@
     <string name="notification_edit_screenshot">Bearbeiten</string>
     <string name="notification_rename_screenshot">Umbenennen</string>
     <string name="notification_screenshot_details">Details</string>
+    <string name="notification_crop_screenshot">Zuschneiden</string>
+    <string name="notification_photo_editor_screenshot">Foto-Editor</string>
     <string name="screenshot_deleted">Screenshot gelöscht</string>
     <string name="screenshot_delete_failed">Screenshot konnte nicht gelöscht werden</string>
     <string name="screenshot_renamed">Datei wurde umbenannt in %1s</string>
@@ -118,6 +140,8 @@
     <string name="about_license_title">Lizenz</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">Diese App hat noch einige kleine Fehler und wird noch entwickelt.\nWenn du root Zugriff hast, kann du die originale Version von ipcjs benutzen. Sie ist schneller und stabiler.</string>
+    <string name="about_privacy_title">Datenschutzerklärung</string>
+    <string name="about_open_source_title">Verwendete Open Source</string>
     <string name="about_advanced_settings_button">Erweiterte Einstellungen</string>
     <string name="about_update_check_button">Update-Check</string>
     <!-- First screen -->
@@ -145,4 +169,20 @@
     <string name="post_save_a_suggestion">Vorschlag speichern</string>
     <string name="post_pin_to_favorites">Zu Favoriten hinzufügen</string>
     <string name="post_delete_suggestion">Vorschlag löschen</string>
+    <!-- Photo Editor-->
+    <string name="label_brush">Pinsel</string>
+    <string name="label_shape">Form</string>
+    <string name="label_oval">Oval</string>
+    <string name="label_rectangle">Rechteck</string>
+    <string name="label_line">Linie</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Radierer</string>
+    <string name="label_eraser_mode">Radiermodus</string>
+    <string name="label_text">Text</string>
+    <string name="label_filter">Filter</string>
+    <string name="label_adjust">Anpassen</string>
+    <string name="msg_save_image">Beenden ohne das Bild zu speichern?</string>
+    <string name="app_intent_name">FotoEditor</string>
+    <string name="msg_save_image_to_share">Bitte Bild speichern um zu teilen</string>
+    <string name="msg_share_image">Bild teilen</string>
 </resources>
