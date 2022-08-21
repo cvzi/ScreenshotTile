@@ -1,0 +1,4 @@
+2.0.0-beta0 Pre-Release:
+🌟   Included PhotoEditor by Burhanuddin Rashid
+🌟   Crop image
+🌟   Choose what should happen after a screenshot was taken
