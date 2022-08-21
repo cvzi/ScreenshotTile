@@ -46,6 +46,7 @@
     <string name="setting_storage_directory_description">用来保存文件的文件夹</string>
     <string name="setting_file_name_pattern">文件名</string>
     <string name="setting_file_name_placeholders_title">在文件名中使用这些占位符</string>
+    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - 时间格式 yyyy-MM-dd_HH-mm-ss\n%counter% - 计算屏幕截图数目\n%random% - 随机的 UUID\n%randint% - 随机数字</string>
     <string name="setting_tile_action">磁贴操作</string>
     <string name="setting_floating_action">浮动按钮操作</string>
     <string name="setting_voice_interaction_action">助理操作</string>
@@ -59,6 +60,25 @@
     <string name="notification_settings">通知</string>
     <string name="notification_settings_on">已启用</string>
     <string name="notification_settings_off">已禁用</string>
+    <string name="setting_post_actions">后续操作</string>
+    <string name="setting_post_actions_description">选择屏幕截图之后的操作</string>
+    <string name="button_history">最近的屏幕截图</string>
+    <string name="button_history_description">查看最近的截图，包括未保存到图库的文件</string>
+    <string name="history_title">屏幕截图历史</string>
+    <string name="restore_default_values">恢复默认值</string>
+    <string name="post_action_save_to_storage">保存图片到相册</string>
+    <string name="post_action_show_toast">显示“Toast”通知。小弹窗会在 2 秒后消失</string>
+    <string name="post_action_show_notification">显示常规通知。你可以在“更多设置”中更改通知下方的按钮 (编辑、分享…)</string>
+    <string name="post_action_empty">不要打开截图</string>
+    <string name="post_action_open_in_post">在“详情”视图中打开</string>
+    <string name="post_action_open_in_post_crop">裁剪图像</string>
+    <string name="post_action_open_in_photo_editor">打开包含的图片编辑器</string>
+    <string name="post_action_open_in_external_editor">在外部照片编辑器中打开</string>
+    <string name="post_action_open_in_external_viewer">在照片查看器或相册中打开</string>
+    <string name="post_action_open_share">分享截图</string>
+    <string name="move_to_storage_directory">移动到图库</string>
+    <string name="button_clear">清除</string>
+    <string name="button_clear_confirm">你想要删除所有临时文件吗？\n这将删除 %s\n\n 中的所有文件 (这些文件通常在相册中不可见)</string>
     <string name="file_title">屏幕截图</string>
     <string name="file_description">屏幕截图完成 %1$s</string>
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
@@ -78,6 +98,8 @@
     <string name="notification_edit_screenshot">编辑</string>
     <string name="notification_rename_screenshot">重命名</string>
     <string name="notification_screenshot_details">详细信息</string>
+    <string name="notification_crop_screenshot">剪裁</string>
+    <string name="notification_photo_editor_screenshot">照片编辑器</string>
     <string name="screenshot_deleted">屏幕截图已删除</string>
     <string name="screenshot_delete_failed">无法删除文件</string>
     <string name="screenshot_renamed">文件重命名为 %1s</string>
@@ -118,6 +140,8 @@
     <string name="about_license_title">许可证</string>
     <string name="about_license_1">GNU 通用公共许可证 第 3 版</string>
     <string name="about_app_2">此应用仍然存在一些问题并且正在开发中。\n如果你的设备拥有 root 权限，请使用 ipcjs 的版本，更快速可靠。</string>
+    <string name="about_privacy_title">隐私政策</string>
+    <string name="about_open_source_title">所用的开源项目</string>
     <string name="about_advanced_settings_button">高级设置</string>
     <string name="about_update_check_button">检查更新</string>
     <!-- First screen -->
@@ -145,4 +169,20 @@
     <string name="post_save_a_suggestion">保存建议</string>
     <string name="post_pin_to_favorites">添加到收藏</string>
     <string name="post_delete_suggestion">删除建议</string>
+    <!-- Photo Editor-->
+    <string name="label_brush">画笔</string>
+    <string name="label_shape">形状</string>
+    <string name="label_oval">椭圆</string>
+    <string name="label_rectangle">矩形</string>
+    <string name="label_line">线条</string>
+    <string name="label_emoji">表情符号</string>
+    <string name="label_eraser">橡皮擦</string>
+    <string name="label_eraser_mode">擦除模式</string>
+    <string name="label_text">文本</string>
+    <string name="label_filter">滤镜</string>
+    <string name="label_adjust">调整</string>
+    <string name="msg_save_image">你想要退出而不保存图像吗？</string>
+    <string name="app_intent_name">照片编辑器</string>
+    <string name="msg_save_image_to_share">请保存图片以分享</string>
+    <string name="msg_share_image">分享图片</string>
 </resources>
