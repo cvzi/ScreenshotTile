@@ -170,7 +170,6 @@
     <string name="post_pin_to_favorites">تثبيت إلى المفضلة</string>
     <string name="post_delete_suggestion">حذف الاقتراح</string>
     <!-- Photo Editor-->
-    <string name="app_intent_name">محرر الصور</string>
     <string name="label_brush">فرشاة</string>
     <string name="label_shape">الشكل</string>
     <string name="label_oval">بيضاوي</string>
