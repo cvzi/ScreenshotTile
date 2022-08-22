@@ -170,6 +170,7 @@
     <string name="post_pin_to_favorites">تثبيت إلى المفضلة</string>
     <string name="post_delete_suggestion">حذف الاقتراح</string>
     <!-- Photo Editor-->
+    <string name="app_intent_name">محرر الصور</string>
     <string name="label_brush">فرشاة</string>
     <string name="label_shape">الشكل</string>
     <string name="label_oval">بيضاوي</string>
@@ -181,8 +182,16 @@
     <string name="label_text">نص</string>
     <string name="label_filter">فلتر</string>
     <string name="label_adjust">تعديل</string>
+    <string name="label_rotation">التدوير</string>
+    <string name="label_opacity">الشفافية</string>
+    <string name="label_done">تم</string>
+    <string name="label_close">إغلاق</string>
+    <string name="label_save">حفظ</string>
+    <string name="label_discard">تجاهل</string>
     <string name="msg_save_image">هل تريد الخروج دون حفظ الصورة؟</string>
-    <string name="app_intent_name">محرر الصور</string>
     <string name="msg_save_image_to_share">الرجاء حفظ الصورة للمشاركة</string>
     <string name="msg_share_image">مشاركة الصورة</string>
+    <string name="msg_choose_image">اختر صورة</string>
+    <string name="msg_image_saved">تم حفظ الصورة بنجاح</string>
+    <string name="msg_failed_to_save">فشل في حفظ الصورة</string>
 </resources>
