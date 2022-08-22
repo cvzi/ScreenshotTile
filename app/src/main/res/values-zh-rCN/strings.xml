@@ -170,7 +170,6 @@
     <string name="post_pin_to_favorites">添加到收藏</string>
     <string name="post_delete_suggestion">删除建议</string>
     <!-- Photo Editor-->
-    <string name="app_intent_name">照片编辑器</string>
     <string name="label_brush">画笔</string>
     <string name="label_shape">形状</string>
     <string name="label_oval">椭圆</string>
