@@ -174,7 +174,6 @@
     <string name="post_delete_suggestion">Delete suggestion</string>
 
     <!-- Photo Editor-->
-    <string name="app_intent_name">PhotoEditor</string>
     <string name="label_brush">Brush</string>
     <string name="label_shape">Shape</string>
     <string name="label_oval">Oval</string>
