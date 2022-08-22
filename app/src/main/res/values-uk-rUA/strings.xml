@@ -170,7 +170,6 @@
     <string name="post_pin_to_favorites">Прикріпити в обраному</string>
     <string name="post_delete_suggestion">Видалити пропозицію</string>
     <!-- Photo Editor-->
-    <string name="app_intent_name">Фоторедактор</string>
     <string name="label_brush">Пензель</string>
     <string name="label_shape">Фігура</string>
     <string name="label_oval">Овал</string>
