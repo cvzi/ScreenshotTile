@@ -170,6 +170,7 @@
     <string name="post_pin_to_favorites">Прикріпити в обраному</string>
     <string name="post_delete_suggestion">Видалити пропозицію</string>
     <!-- Photo Editor-->
+    <string name="app_intent_name">Фоторедактор</string>
     <string name="label_brush">Пензель</string>
     <string name="label_shape">Фігура</string>
     <string name="label_oval">Овал</string>
@@ -181,8 +182,16 @@
     <string name="label_text">Текст</string>
     <string name="label_filter">Фільтр</string>
     <string name="label_adjust">Скоригувати</string>
+    <string name="label_rotation">Обертання</string>
+    <string name="label_opacity">Непрозорість</string>
+    <string name="label_done">Готово</string>
+    <string name="label_close">Закрити</string>
+    <string name="label_save">Зберегти</string>
+    <string name="label_discard">Відхилити</string>
     <string name="msg_save_image">Вийти не зберігши зображення?</string>
-    <string name="app_intent_name">Фоторедактор</string>
     <string name="msg_save_image_to_share">Збережіть зображення, щоб поділитися ним</string>
     <string name="msg_share_image">Поділитися зображенням</string>
+    <string name="msg_choose_image">Вибрати зображення</string>
+    <string name="msg_image_saved">Зображення успішно збережено</string>
+    <string name="msg_failed_to_save">Не вдалося зберегти зображення</string>
 </resources>
