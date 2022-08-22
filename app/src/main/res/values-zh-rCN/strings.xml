@@ -170,6 +170,7 @@
     <string name="post_pin_to_favorites">添加到收藏</string>
     <string name="post_delete_suggestion">删除建议</string>
     <!-- Photo Editor-->
+    <string name="app_intent_name">照片编辑器</string>
     <string name="label_brush">画笔</string>
     <string name="label_shape">形状</string>
     <string name="label_oval">椭圆</string>
@@ -181,8 +182,16 @@
     <string name="label_text">文本</string>
     <string name="label_filter">滤镜</string>
     <string name="label_adjust">调整</string>
+    <string name="label_rotation">旋转</string>
+    <string name="label_opacity">不透明度</string>
+    <string name="label_done">完成</string>
+    <string name="label_close">关闭</string>
+    <string name="label_save">保存</string>
+    <string name="label_discard">放弃</string>
     <string name="msg_save_image">你想要退出而不保存图像吗？</string>
-    <string name="app_intent_name">照片编辑器</string>
     <string name="msg_save_image_to_share">请保存图片以分享</string>
     <string name="msg_share_image">分享图片</string>
+    <string name="msg_choose_image">选择图片</string>
+    <string name="msg_image_saved">图片保存成功</string>
+    <string name="msg_failed_to_save">保存图片失败</string>
 </resources>
