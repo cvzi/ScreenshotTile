@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Zrzut ekranu</string>
+    <string name="tile_floating">Pływający przycisk zrzutu ekranu</string>
     <string name="tile_floating_label">Pływający</string>
     <string name="tile_floating_subtitle">Przycisk zrzutu ekranu</string>
     <string name="title_delay">Opóźnienie</string>

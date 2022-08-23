@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="tile_label">צילום מסך</string>
+    <string name="tile_floating">כפתור צף לצילום מסך</string>
     <string name="tile_floating_label">כפתור צף</string>
     <string name="tile_floating_subtitle">לצילום מסך</string>
     <string name="title_delay">השהיית</string>

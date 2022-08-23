@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Плитка снимка экрана (NoRoot)</string>
     <string name="tile_label">Снимок экрана</string>
+    <string name="tile_floating">Плавающая Кнопка снимка экрана</string>
     <string name="tile_floating_label">Плавающая</string>
     <string name="tile_floating_subtitle">Кнопка снимка экрана</string>
     <string name="title_delay">Задержка</string>

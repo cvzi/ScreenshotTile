@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">屏幕截图磁贴 (NoRoot)</string>
     <string name="tile_label">屏幕截图</string>
+    <string name="tile_floating">浮动屏幕截图按钮</string>
     <string name="tile_floating_label">浮动</string>
     <string name="tile_floating_subtitle">屏幕截图按钮</string>
     <string name="title_delay">延时</string>

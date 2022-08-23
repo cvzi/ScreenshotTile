@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">مربع لقطة الشاشة (NoRot)</string>
     <string name="tile_label">لقطة شاشة</string>
+    <string name="tile_floating">عائمة زر لقطة الشاشة</string>
     <string name="tile_floating_label">عائمة</string>
     <string name="tile_floating_subtitle">زر لقطة الشاشة</string>
     <string name="title_delay">تأخير</string>

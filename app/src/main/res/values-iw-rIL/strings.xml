@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">אריח צילום מסך (ללא רוט)</string>
     <string name="tile_label">צילום מסך</string>
+    <string name="tile_floating">כפתור צף לצילום מסך</string>
     <string name="tile_floating_label">כפתור צף</string>
     <string name="tile_floating_subtitle">לצילום מסך</string>
     <string name="title_delay">השהיית</string>

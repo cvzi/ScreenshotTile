@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">کاشیِ نَماگِرِفت (نابُن)</string>
     <string name="tile_label">نَماگِرِفت</string>
+    <string name="tile_floating">دکمه شناور</string>
     <string name="tile_floating_label">شناور</string>
     <string name="tile_floating_subtitle">دُکمِہ‌یِ نَماگِرِفت</string>
     <string name="title_delay">تأخیر</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Ô chụp màn hình (KhôngCầnRoot)</string>
     <string name="tile_label">Chụp màn hình</string>
+    <string name="tile_floating">Nổi nút chụp màn hình</string>
     <string name="tile_floating_label">Nổi</string>
     <string name="tile_floating_subtitle">Nút chụp màn hình</string>
     <string name="title_delay">Độ trễ</string>

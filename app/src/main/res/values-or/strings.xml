@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">ସ୍କ୍ରିନସଟ୍ ଟାଇଲ୍ (NoRoot)</string>
     <string name="tile_label">ସ୍କ୍ରିନସଟ୍</string>
+    <string name="tile_floating">ଭାସମାନ ସ୍କ୍ରିନସଟ୍ ବଟନ୍</string>
     <string name="tile_floating_label">ଭାସମାନ</string>
     <string name="tile_floating_subtitle">ସ୍କ୍ରିନସଟ୍ ବଟନ୍</string>
     <string name="title_delay">ବିଳମ୍ବ</string>

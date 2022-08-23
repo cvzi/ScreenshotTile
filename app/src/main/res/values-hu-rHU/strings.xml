@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Képernyőkép</string>
+    <string name="tile_floating">Lebegő képernyőkép gomb</string>
     <string name="tile_floating_label">Lebegő gomb</string>
     <string name="tile_floating_subtitle">Képernyőkép gomb</string>
     <string name="title_delay">Késleltetés</string>

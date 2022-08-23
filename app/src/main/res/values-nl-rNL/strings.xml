@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Schermafdruktegel (NoRoot)</string>
     <string name="tile_label">Schermafdruk</string>
+    <string name="tile_floating">Zwevend schermafdrukknop</string>
     <string name="tile_floating_label">Zwevend</string>
     <string name="tile_floating_subtitle">Schermafdrukknop</string>
     <string name="title_delay">Vertraging</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Էկրանահանման Կոճակ (NoRoot)</string>
     <string name="tile_label">Կադրահանել</string>
+    <string name="tile_floating">Թռչող Կադրահանման Կոճակ</string>
     <string name="tile_floating_label">Թռչող կոճակ</string>
     <string name="tile_floating_subtitle">Կադրահանման Կոճակ</string>
     <string name="title_delay">Հետաձգում</string>

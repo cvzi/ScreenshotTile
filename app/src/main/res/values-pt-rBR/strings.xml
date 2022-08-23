@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Screenshot Tile (sem root)</string>
     <string name="tile_label">Captura da tela</string>
+    <string name="tile_floating">Flutuante botão de Captura da tela</string>
     <string name="tile_floating_label">Flutuante</string>
     <string name="tile_floating_subtitle">Botão de Captura da tela</string>
     <string name="title_delay">Atraso</string>

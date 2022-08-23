@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Screenshot Tile (Tanpa Root)</string>
     <string name="tile_label">Tangkapan layar</string>
+    <string name="tile_floating">Melayang tombol menangkap layar</string>
     <string name="tile_floating_label">Melayang</string>
     <string name="tile_floating_subtitle">Tombol menangkap layar</string>
     <string name="title_delay">Penundaan</string>

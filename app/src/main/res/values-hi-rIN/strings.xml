@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">स्क्रीनशॉट टाइल (नो रुट)</string>
     <string name="tile_label">ਸਕ੍ਰੀਨਸ਼ਾਟ</string>
+    <string name="tile_floating">फ्लोटिंग बटन स्क्रीनशॉट</string>
     <string name="tile_floating_label">फ्लोटिंग</string>
     <string name="tile_floating_subtitle">स्क्रीनशॉट बटन</string>
     <string name="title_delay">विलंब</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Jubin Petikan Skrin (No Root)</string>
     <string name="tile_label">Tangkapan Skrin</string>
+    <string name="tile_floating">Terapung screenshot butang</string>
     <string name="tile_floating_label">Terapung</string>
     <string name="tile_floating_subtitle">Butang screenshot</string>
     <string name="title_delay">Lengah</string>

@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Screenshot</string>
+    <string name="tile_floating">Fluttuante Pulsante Screenshot</string>
     <string name="tile_floating_label">Fluttuante</string>
     <string name="tile_floating_subtitle">Pulsante Screenshot</string>
     <string name="title_delay">Ritardo</string>

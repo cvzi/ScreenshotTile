@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Στιγμιότυπο οθόνης</string>
+    <string name="tile_floating">Αιωρούμενο Κουμπί Στιγμιοτύπου οθόνης</string>
     <string name="tile_floating_label">Αιωρούμενο</string>
     <string name="tile_floating_subtitle">Κουμπί Στιγμιοτύπου οθόνης</string>
     <string name="title_delay">Καθυστέρηση</string>

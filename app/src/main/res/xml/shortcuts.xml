@@ -27,7 +27,7 @@
     </shortcut>
     <shortcut
         android:enabled="true"
-        android:icon="@drawable/ic_tile_float_dark"
+        android:icon="@mipmap/ic_launcher_floating"
         android:shortcutId="toggleFloatingButton"
         android:shortcutLongLabel="@string/setting_floating_button"
         android:shortcutShortLabel="@string/setting_floating_button"

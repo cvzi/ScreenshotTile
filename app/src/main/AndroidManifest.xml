@@ -126,10 +126,12 @@
             android:name="com.github.cvzi.screenshottile.activities.PostCropActivity"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_crop"
+            android:roundIcon="@mipmap/ic_launcher_crop_round"
             android:label="@string/notification_crop_screenshot"
             android:theme="@style/AppTheme">
             <intent-filter
                 android:icon="@mipmap/ic_launcher_crop"
+                android:roundIcon="@mipmap/ic_launcher_crop_round"
                 android:label="@string/notification_crop_screenshot">
                 <action android:name="action_nextgen_edit" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -138,6 +140,7 @@
 
             <intent-filter
                 android:icon="@mipmap/ic_launcher_crop"
+                android:roundIcon="@mipmap/ic_launcher_crop_round"
                 android:label="@string/notification_crop_screenshot">
                 <action android:name="android.intent.action.EDIT" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -177,7 +180,7 @@
             android:enabled="@bool/accessibility_service_enabled"
             android:exported="true"
             android:icon="@drawable/ic_tile_float"
-            android:label="@string/tile_floating_label"
+            android:label="@string/tile_floating"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
             tools:targetApi="p">
             <intent-filter>
@@ -203,7 +206,7 @@
             android:name="com.github.cvzi.screenshottile.services.BasicForegroundService"
             android:exported="false"
             android:foregroundServiceType="mediaProjection"
-            android:icon="@drawable/ic_stat_name"
+            android:icon="@mipmap/ic_launcher"
             android:label="@string/tile_label"
             tools:targetApi="q" />
 
@@ -270,6 +273,7 @@
             android:name=".assist.MyVoiceInteractionService"
             android:exported="true"
             android:label="@string/app_name"
+            android:icon="@mipmap/ic_launcher"
             android:permission="android.permission.BIND_VOICE_INTERACTION">
             <meta-data
                 android:name="android.voice_interaction"
@@ -287,11 +291,13 @@
             android:name="com.burhanrashid52.photoediting.EditImageActivity"
             android:exported="true"
             android:icon="@mipmap/ic_launcher_photo_editor"
+            android:roundIcon="@mipmap/ic_launcher_photo_editor_round"
             android:label="@string/notification_photo_editor_screenshot"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter
                 android:icon="@mipmap/ic_launcher_photo_editor"
+                android:roundIcon="@mipmap/ic_launcher_photo_editor_round"
                 android:label="@string/notification_photo_editor_screenshot">
                 <action android:name="action_nextgen_edit" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -300,6 +306,7 @@
 
             <intent-filter
                 android:icon="@mipmap/ic_launcher_photo_editor"
+                android:roundIcon="@mipmap/ic_launcher_photo_editor_round"
                 android:label="@string/notification_photo_editor_screenshot">
                 <action android:name="android.intent.action.EDIT" />
                 <category android:name="android.intent.category.DEFAULT" />

@@ -39,6 +39,7 @@ class FloatingTileService : TileService() {
             qsTile?.run {
                 state = newState
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    qsTile.label = getString(R.string.tile_floating_label)
                     qsTile.subtitle = getString(R.string.tile_floating_subtitle)
                 }
                 updateTile()

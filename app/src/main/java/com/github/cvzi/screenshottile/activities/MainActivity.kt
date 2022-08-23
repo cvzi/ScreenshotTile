@@ -283,7 +283,7 @@ class MainActivity : AppCompatActivity() {
                     if (FloatingTileService.instance == null) {
                         statusBarManager.requestAddTileService(
                             ComponentName(this, FloatingTileService::class.java),
-                            getString(R.string.tile_floating_label) + " " + getString(R.string.tile_floating_subtitle),
+                            getString(R.string.tile_floating),
                             Icon.createWithResource(this, R.drawable.ic_tile_float),
                             {},
                             {})

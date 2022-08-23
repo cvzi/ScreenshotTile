@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Skärmdump</string>
+    <string name="tile_floating">Svävande Skärmbildsknapp</string>
     <string name="tile_floating_label">Svävande</string>
     <string name="tile_floating_subtitle">Skärmbildsknapp</string>
     <string name="title_delay">Fördröjning</string>

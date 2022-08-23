@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Ekran görüntüsü döşemesi (NoRoot)</string>
     <string name="tile_label">Ekran görüntüsü</string>
+    <string name="tile_floating">Yüzen Pencere Ekran Görüntü düğmesi</string>
     <string name="tile_floating_label">Yüzen Pencere</string>
     <string name="tile_floating_subtitle">Ekran Görüntü düğmesi</string>
     <string name="title_delay">Gecikme</string>

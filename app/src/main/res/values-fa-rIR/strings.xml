@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">کاشی اسکرین‌ شات (بدون‌روت)</string>
     <string name="tile_label">اسکرین شات</string>
+    <string name="tile_floating">دکمه شناور</string>
     <string name="tile_floating_label">شناور</string>
     <string name="tile_floating_subtitle">دکمه اسکرین شات</string>
     <string name="title_delay">تأخیر</string>
