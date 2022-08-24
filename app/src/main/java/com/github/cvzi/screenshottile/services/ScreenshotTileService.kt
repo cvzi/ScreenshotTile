@@ -163,7 +163,7 @@ class ScreenshotTileService : TileService(),
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             return
         }
-        stopForeground(true)
+        stopForeground(STOP_FOREGROUND_REMOVE)
     }
 
     /**
