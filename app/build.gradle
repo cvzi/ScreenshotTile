@@ -23,8 +23,8 @@ android {
         applicationId 'com.github.cvzi.screenshottile'
         minSdkVersion 24
         targetSdkVersion 33
-        versionCode 76
-        versionName '2.0.0-beta1'
+        versionCode 77
+        versionName '2.0.0-beta2'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     namespace 'com.github.cvzi.screenshottile'
