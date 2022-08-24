@@ -72,7 +72,7 @@ open class SingleImage(
          * @throws FileNotFoundException
          * @throws IOException
          */
-        fun loadBitmapFromDisk(contentResolver: ContentResolver, uri: Uri): Bitmap {
+        fun loadBitmapFromDisk(contentResolver: ContentResolver, uri: Uri, mutable: Boolean?=null): Bitmap {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 Log.e(
                     TAG,
@@ -81,7 +81,7 @@ open class SingleImage(
             }
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 val onHeaderListener = ImageDecoder.OnHeaderDecodedListener { decoder, _, _ ->
-                    decoder.isMutableRequired = BuildConfig.DEBUG
+                    decoder.isMutableRequired = BuildConfig.DEBUG || mutable == true
                 }
                 ImageDecoder.decodeBitmap(
                     ImageDecoder.createSource(contentResolver, uri),

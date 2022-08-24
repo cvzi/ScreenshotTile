@@ -438,7 +438,8 @@ class TakeScreenshotActivity : Activity(),
             image,
             cutOutRect,
             fileNamePattern,
-            useAppData
+            useAppData,
+            directory = null
         ) {
             onFileSaved(it)
         }

@@ -87,7 +87,7 @@ fun tryNativeScreenshot(): Boolean {
 /**
  * New image file in default "Picture" directory. (used only for Android P and lower)
  */
-fun createImageFile(context: Context, filename: String): File {
+fun createImageFileInDefaulPictureFolder(context: Context, filename: String): File {
     var storageDir: File?
     @Suppress("DEPRECATION")
     storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
@@ -233,12 +233,13 @@ fun createOutputStream(
     compressionOptions: CompressionOptions,
     date: Date,
     dim: Point,
-    useAppData: Boolean
+    useAppData: Boolean,
+    directory: String?
 ): OutputStreamResult {
     return if (useAppData || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-        createOutputStreamLegacy(context, fileTitle, compressionOptions, date, dim, useAppData)
+        createOutputStreamLegacy(context, fileTitle, compressionOptions, date, dim, useAppData, directory)
     } else {
-        createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim)
+        createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim, directory)
     }
 }
 
@@ -251,7 +252,8 @@ fun createOutputStreamLegacy(
     compressionOptions: CompressionOptions,
     date: Date,
     dim: Point,
-    useAppData: Boolean
+    useAppData: Boolean,
+    directory: String?
 ): OutputStreamResult {
     val filename = if (fileTitle.endsWith(
             ".${compressionOptions.fileExtension}",
@@ -259,20 +261,20 @@ fun createOutputStreamLegacy(
         )
     ) fileTitle else "$fileTitle.${compressionOptions.fileExtension}"
 
-    val customDirectory = App.getInstance().prefManager.screenshotDirectory
+    val customDirectory = directory ?: App.getInstance().prefManager.screenshotDirectory
 
     var imageFile: File? = null
     if (useAppData) {
         imageFile = createAppDataImageFile(context, filename)
     } else if (customDirectory != null) {
         if (customDirectory.startsWith("content://")) {
-            return createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim)
+            return createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim, customDirectory)
         } else if (customDirectory.startsWith("file://")) {
             imageFile = File(customDirectory.substring(7), filename)
         }
     }
     if (imageFile == null) {
-        imageFile = createImageFile(context, filename)
+        imageFile = createImageFileInDefaulPictureFolder(context, filename)
     }
 
     try {
@@ -348,7 +350,8 @@ fun createOutputStreamMediaStore(
     fileTitle: String,
     compressionOptions: CompressionOptions,
     date: Date,
-    dim: Point
+    dim: Point,
+    directory: String?
 ): OutputStreamResult {
     val filename = if (fileTitle.endsWith(
             ".${compressionOptions.fileExtension}",
@@ -360,7 +363,10 @@ fun createOutputStreamMediaStore(
     var storageUri = Images.Media.EXTERNAL_CONTENT_URI
     var outputStream: OutputStream? = null
     var dummyPath = ""
-    App.getInstance().prefManager.screenshotDirectory?.let {
+
+    val customDirectory = directory ?: App.getInstance().prefManager.screenshotDirectory
+
+    customDirectory?.let {
         // Use DocumentFile for custom directory
         val customDirectoryUri = Uri.parse(it)
         val docDir = DocumentFile.fromTreeUri(context, customDirectoryUri)
@@ -496,7 +502,8 @@ fun saveBitmapToFile(
     fileNamePattern: String,
     compressionOptions: CompressionOptions = CompressionOptions(),
     cutOutRect: Rect?,
-    useAppData: Boolean
+    useAppData: Boolean,
+    directory: String?
 ): SaveImageResult {
     val bitmap = cutOutBitmap(fullBitmap, cutOutRect)
 
@@ -510,7 +517,8 @@ fun saveBitmapToFile(
         compressionOptions,
         date,
         Point(bitmap.width, bitmap.height),
-        useAppData
+        useAppData,
+        directory
     )
 
     if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
@@ -635,13 +643,14 @@ fun saveImageToFile(
     fileNamePattern: String,
     compressionOptions: CompressionOptions = CompressionOptions(),
     cutOutRect: Rect?,
-    useAppData: Boolean
+    useAppData: Boolean,
+    directory: String? = null
 ): SaveImageResult {
 
     val bitmap = imageToBitmap(image, cutOutRect)
     image.close()
 
-    return saveBitmapToFile(context, bitmap, fileNamePattern, compressionOptions, null, useAppData)
+    return saveBitmapToFile(context, bitmap, fileNamePattern, compressionOptions, null, useAppData, directory)
 }
 
 

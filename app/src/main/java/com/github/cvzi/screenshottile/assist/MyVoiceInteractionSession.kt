@@ -218,7 +218,8 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             bitmap,
             cutOutRect,
             prefManager.fileNamePattern,
-            useAppData = "saveToStorage" !in prefManager.postScreenshotActions
+            useAppData = "saveToStorage" !in prefManager.postScreenshotActions,
+            directory = null
         ) {
             onFileSaved(it)
         }

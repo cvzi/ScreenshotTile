@@ -525,7 +525,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             App.getInstance().prefManager.fileNamePattern,
                             compressionPreference(applicationContext),
                             null,
-                            useAppData = "saveToStorage" !in App.getInstance().prefManager.postScreenshotActions
+                            useAppData = "saveToStorage" !in App.getInstance().prefManager.postScreenshotActions,
+                            directory = null
                         )
                         Handler(Looper.getMainLooper()).post {
                             onFileSaved(saveImageResult)

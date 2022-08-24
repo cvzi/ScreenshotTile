@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/editTextFileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textAutoCorrect"
+        android:hint="@string/dialog_ask_filename_hint"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
+        android:contentDescription="@string/dialog_ask_filename_title"
+        android:textColorHint="#000000" />
+
+    <TextView
+        android:id="@+id/textViewMessageFolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_ask_filename_directory" />
+
+    <TextView
+        android:id="@+id/textViewFolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/dialog_ask_filename_directory"
+        android:text="" />
+</LinearLayout>

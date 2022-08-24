@@ -48,6 +48,7 @@ class SaveImageHandler(looper: Looper) :
         cutOutRect: Rect?,
         fileNamePattern: String,
         useAppData: Boolean,
+        directory: String?,
         onFileSaved: (SaveImageResult?) -> Unit
     ) {
         onSaved = onFileSaved
@@ -58,7 +59,8 @@ class SaveImageHandler(looper: Looper) :
                 fileNamePattern,
                 compressionPreference(context),
                 cutOutRect,
-                useAppData
+                useAppData,
+                directory
             )
             sendEmptyMessage(THREAD_FINISHED)
         }
@@ -74,6 +76,7 @@ class SaveImageHandler(looper: Looper) :
         cutOutRect: Rect?,
         fileNamePattern: String,
         useAppData: Boolean,
+        directory: String?,
         onFileSaved: (SaveImageResult?) -> Unit
     ) {
         onSaved = onFileSaved
@@ -84,7 +87,8 @@ class SaveImageHandler(looper: Looper) :
                 fileNamePattern,
                 compressionPreference(context),
                 cutOutRect,
-                useAppData
+                useAppData,
+                directory
             )
             sendEmptyMessage(THREAD_FINISHED)
         }

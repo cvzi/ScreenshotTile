@@ -2,6 +2,7 @@ package com.burhanrashid52.photoediting
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -15,8 +16,12 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AnticipateOvershootInterpolator
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresPermission
 import androidx.annotation.VisibleForTesting
 import androidx.appcompat.app.AlertDialog
@@ -40,12 +45,16 @@ import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.SaveImageResultSuccess
+import com.github.cvzi.screenshottile.utils.SingleImage.Companion.loadBitmapFromDisk
+import com.github.cvzi.screenshottile.utils.formatFileName
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ja.burhanrashid52.photoeditor.*
 import ja.burhanrashid52.photoeditor.shape.ShapeBuilder
 import ja.burhanrashid52.photoeditor.shape.ShapeType
 import java.io.File
 import java.io.IOException
+import java.util.*
+
 
 class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickListener,
     PropertiesBSFragment.Properties, ShapeBSFragment.Properties, EmojiListener,
@@ -67,6 +76,8 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     private val mConstraintSet = ConstraintSet()
     private var mIsFilterVisible = false
 
+    private lateinit var startForPickFolder: ActivityResultLauncher<Intent>
+
     @VisibleForTesting
     var mSaveImageUri: Uri? = null
     private var mSaveFileHelper: FileSaveHelper? = null
@@ -76,7 +87,9 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         makeFullScreen()
         setContentView(R.layout.activity_edit_image)
         initViews()
-        handleIntentImage(mPhotoEditorView?.source)
+        if (!handleIntentImage(mPhotoEditorView?.source)) {
+            mPhotoEditorView?.source?.setImageResource(android.R.drawable.stat_notify_error)
+        }
         mWonderFont = Typeface.createFromAsset(assets, "beyond_wonderland.ttf")
         mPropertiesBSFragment = PropertiesBSFragment()
         mEmojiBSFragment = EmojiBSFragment().apply {
@@ -107,26 +120,30 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         }
         mPhotoEditor?.setOnPhotoEditorListener(this)
 
-        //Set Image Dynamically
-        if (intent == null) {
-            mPhotoEditorView?.source?.setImageResource(android.R.drawable.stat_notify_error)
-        }
         mSaveFileHelper = FileSaveHelper(this)
+
+        startForPickFolder =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    result.data?.data?.let { uri ->
+                        askForFilename(uri)
+                    }
+                }
+            }
     }
 
-    private fun handleIntentImage(source: ImageView?) {
+    private fun handleIntentImage(source: ImageView?): Boolean {
         if (intent == null) {
-            return
+            return false
         }
+        val uri = intent.data ?: intent.clipData?.getItemAt(0)?.uri ?: return false
 
         when (intent.action) {
-            Intent.ACTION_EDIT, ACTION_NEXTGEN_EDIT -> {
+            Intent.ACTION_SEND, Intent.ACTION_EDIT, ACTION_NEXTGEN_EDIT -> {
                 try {
-                    val uri = intent.data
-                    val bitmap = MediaStore.Images.Media.getBitmap(
-                        contentResolver, uri
-                    )
+                    val bitmap = loadBitmapFromDisk(contentResolver, uri, true)
                     source?.setImageBitmap(bitmap)
+                    return true
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -134,13 +151,12 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
             else -> {
                 val intentType = intent.type
                 if (intentType != null && intentType.startsWith("image/")) {
-                    val imageUri = intent.data
-                    if (imageUri != null) {
-                        source?.setImageURI(imageUri)
-                    }
+                    source?.setImageURI(uri)
+                    return true
                 }
             }
         }
+        return false
     }
 
     private fun initViews() {
@@ -160,6 +176,8 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         imgGallery.setOnClickListener(this)
         val imgSave: ImageView = findViewById(R.id.imgSave)
         imgSave.setOnClickListener(this)
+        val imgSaveAs: ImageView = findViewById(R.id.imgSaveAs)
+        imgSaveAs.setOnClickListener(this)
         val imgClose: ImageView = findViewById(R.id.imgClose)
         imgClose.setOnClickListener(this)
         val imgShare: ImageView = findViewById(R.id.imgShare)
@@ -214,7 +232,8 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
             R.id.imgUndo -> mPhotoEditor?.undo()
             R.id.imgRedo -> mPhotoEditor?.redo()
             R.id.imgSave -> saveImage()
-            R.id.imgClose -> onBackPressed()
+            R.id.imgSaveAs -> openSaveAsPicker()
+            R.id.imgClose -> backPress()
             R.id.imgShare -> shareImage()
             R.id.imgCamera -> {
                 val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -224,7 +243,12 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 val intent = Intent()
                 intent.type = "image/*"
                 intent.action = Intent.ACTION_GET_CONTENT
-                startActivityForResult(Intent.createChooser(intent, getString(R.string.msg_choose_image)), PICK_REQUEST)
+                startActivityForResult(
+                    Intent.createChooser(
+                        intent,
+                        getString(R.string.msg_choose_image)
+                    ), PICK_REQUEST
+                )
             }
         }
     }
@@ -254,99 +278,151 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         )
     }
 
+
+    private fun askForFilename(folder: Uri) {
+        val fileNamePattern = App.getInstance().prefManager.fileNamePattern
+        val filenameSuggestion = formatFileName(fileNamePattern, Date())
+
+        AlertDialog.Builder(this).apply {
+            val editText: EditText
+
+            @SuppressLint("InflateParams")
+            val linearLayout: View =
+                layoutInflater.inflate(R.layout.dialog_ask_filename, null).apply {
+                    editText = findViewById(R.id.editTextFileName)
+                    editText.setText(filenameSuggestion)
+                    findViewById<TextView>(R.id.textViewFolder).text =
+                        folder.path ?: folder.toString()
+                }
+            setTitle(R.string.dialog_ask_filename_title)
+            setMessage(R.string.dialog_ask_filename_hint)
+            setView(linearLayout)
+            setPositiveButton(android.R.string.ok) { dialog, _ ->
+                val filename = editText.text.toString()
+                dialog.dismiss()
+                if (filename.isNotBlank()) {
+                    saveImageInFolder(folder, filename.trim())
+                }
+            }
+            setNegativeButton(android.R.string.cancel) { dialog, _ ->
+                dialog.dismiss()
+            }
+            show()
+        }
+    }
+
+    private fun openSaveAsPicker() {
+        Intent(Intent.ACTION_OPEN_DOCUMENT_TREE).apply {
+            addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+            if (resolveActivity(packageManager) != null) {
+                startForPickFolder.launch(Intent.createChooser(this, "Choose directory"))
+            }
+        }
+    }
+
+    private fun saveImageInFolder(folder: Uri, fileName: String) {
+        showLoading("Saving...")
+        val saveSettings = SaveSettings.Builder()
+            .setClearViewsEnabled(true)
+            .setTransparencyEnabled(true)
+            .build()
+
+        mPhotoEditor?.saveAsBitmap(saveSettings, object : OnSaveBitmap {
+            override fun onBitmapReady(saveBitmap: Bitmap?) {
+                if (saveBitmap == null) {
+                    Log.e(TAG, "saveAsBitmap -> onBitmapReady(null)")
+                    hideLoading()
+                    showSnackbar(getString(R.string.msg_failed_to_save))
+                    return
+                }
+
+                SaveImageHandler(Looper.getMainLooper()).storeBitmap(
+                    this@EditImageActivity,
+                    saveBitmap,
+                    null,
+                    fileName,
+                    useAppData = false,
+                    directory = folder.toString()
+                ) {
+                    hideLoading()
+                    val result = it as? SaveImageResultSuccess?
+                    if (result != null) {
+                        hideLoading()
+                        showSnackbar(getString(R.string.msg_image_saved))
+                        mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
+                        mPhotoEditorView?.source?.setImageURI(mSaveImageUri)
+                    } else {
+                        hideLoading()
+                        showSnackbar(getString(R.string.msg_failed_to_save))
+                        Log.e(
+                            TAG,
+                            "saveAsBitmap -> storeBitmap -> SaveImageResult Error ${it?.errorMessage}"
+                        )
+                    }
+                }
+            }
+
+            override fun onFailure(e: Exception?) {
+                hideLoading()
+                showSnackbar(getString(R.string.msg_failed_to_save))
+                Log.e(TAG, "saveAsBitmap -> onFailure", e)
+            }
+        })
+    }
+
+
     @RequiresPermission(allOf = [Manifest.permission.WRITE_EXTERNAL_STORAGE])
     private fun saveImage() {
-        val fileName = System.currentTimeMillis().toString() + ".png"
         val hasStoragePermission = ContextCompat.checkSelfPermission(
             this,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
         ) == PackageManager.PERMISSION_GRANTED
         if (hasStoragePermission || FileSaveHelper.isSdkHigherThan28()) {
             showLoading("Saving...")
+            val saveSettings = SaveSettings.Builder()
+                .setClearViewsEnabled(true)
+                .setTransparencyEnabled(true)
+                .build()
 
-
-
-
-            mSaveFileHelper?.createFile(fileName, object : FileSaveHelper.OnFileCreateResult {
-
-                @RequiresPermission(allOf = [Manifest.permission.WRITE_EXTERNAL_STORAGE])
-                override fun onFileCreateResult(
-                    created: Boolean,
-                    filePath: String?,
-                    error: String?,
-                    uri: Uri?
-                ) {
-                    if (created && filePath != null) {
-                        val saveSettings = SaveSettings.Builder()
-                            .setClearViewsEnabled(true)
-                            .setTransparencyEnabled(true)
-                            .build()
-
-                        mPhotoEditor?.saveAsBitmap(object : OnSaveBitmap {
-                            override fun onBitmapReady(saveBitmap: Bitmap?) {
-                                if (saveBitmap == null) {
-                                    Log.e(TAG, "saveAsBitmap -> onBitmapReady(null)")
-                                    hideLoading()
-                                    showSnackbar(getString(R.string.msg_failed_to_save))
-                                    return
-                                }
-
-                                SaveImageHandler(Looper.getMainLooper()).storeBitmap(
-                                    this@EditImageActivity,
-                                    saveBitmap,
-                                    null,
-                                    App.getInstance().prefManager.fileNamePattern,
-                                    useAppData = false
-                                ) {
-                                    hideLoading()
-                                    val result = it as? SaveImageResultSuccess?
-                                    if (result != null) {
-                                        hideLoading()
-                                        showSnackbar(getString(R.string.msg_image_saved))
-                                        mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
-                                        mPhotoEditorView?.source?.setImageURI(mSaveImageUri)
-                                    } else {
-                                        hideLoading()
-                                        showSnackbar(getString(R.string.msg_failed_to_save))
-                                        Log.e(
-                                            TAG,
-                                            "saveAsBitmap -> storeBitmap -> SaveImageResult Error ${it?.errorMessage}"
-                                        )
-                                    }
-                                }
-                            }
-
-                            override fun onFailure(e: Exception?) {
-                                hideLoading()
-                                showSnackbar(getString(R.string.msg_failed_to_save))
-                                Log.e(TAG, "saveAsBitmap -> onFailure", e)
-                            }
-                        })
-                        /*
-                        mPhotoEditor?.saveAsFile(
-                            filePath,
-                            saveSettings,
-                            object : OnSaveListener {
-                                override fun onSuccess(imagePath: String) {
-                                    mSaveFileHelper?.notifyThatFileIsNowPubliclyAvailable(
-                                        contentResolver
-                                    )
-                                    hideLoading()
-                                    showSnackbar("Image Saved Successfully")
-                                    mSaveImageUri = uri
-                                    mPhotoEditorView?.source?.setImageURI(mSaveImageUri)
-                                }
-
-                                override fun onFailure(exception: Exception) {
-                                    hideLoading()
-                                    showSnackbar("Failed to save Image")
-                                }
-                            })
-                        */
-                    } else {
+            mPhotoEditor?.saveAsBitmap(saveSettings, object : OnSaveBitmap {
+                override fun onBitmapReady(saveBitmap: Bitmap?) {
+                    if (saveBitmap == null) {
+                        Log.e(TAG, "saveAsBitmap -> onBitmapReady(null)")
                         hideLoading()
-                        error?.let { showSnackbar(error) }
+                        showSnackbar(getString(R.string.msg_failed_to_save))
+                        return
                     }
+
+                    SaveImageHandler(Looper.getMainLooper()).storeBitmap(
+                        this@EditImageActivity,
+                        saveBitmap,
+                        null,
+                        App.getInstance().prefManager.fileNamePattern,
+                        useAppData = false,
+                        directory = null
+                    ) {
+                        hideLoading()
+                        val result = it as? SaveImageResultSuccess?
+                        if (result != null) {
+                            hideLoading()
+                            showSnackbar(getString(R.string.msg_image_saved))
+                            mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
+                            mPhotoEditorView?.source?.setImageURI(mSaveImageUri)
+                        } else {
+                            hideLoading()
+                            showSnackbar(getString(R.string.msg_failed_to_save))
+                            Log.e(
+                                TAG,
+                                "saveAsBitmap -> storeBitmap -> SaveImageResult Error ${it?.errorMessage}"
+                            )
+                        }
+                    }
+                }
+
+                override fun onFailure(e: Exception?) {
+                    hideLoading()
+                    showSnackbar(getString(R.string.msg_failed_to_save))
+                    Log.e(TAG, "saveAsBitmap -> onFailure", e)
                 }
             })
         } else {
@@ -495,6 +571,13 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     }
 
     override fun onBackPressed() {
+        // TODO this won't work on Android Tiramisu
+        if (!backPress()) {
+            super.onBackPressed()
+        }
+    }
+
+    private fun backPress(): Boolean {
         val isCacheEmpty =
             mPhotoEditor?.isCacheEmpty ?: throw IllegalArgumentException("isCacheEmpty Expected")
 
@@ -504,9 +587,11 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         } else if (!isCacheEmpty) {
             showSaveDialog()
         } else {
-            super.onBackPressed()
+            return false
         }
+        return true
     }
+
 
     companion object {
         private val TAG = EditImageActivity::class.java.simpleName

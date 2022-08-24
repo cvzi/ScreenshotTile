@@ -74,15 +74,17 @@ class PostCropActivity : GenericPostActivity() {
         statusTextView.text = ""
 
         when (intent.action) {
-            Intent.ACTION_EDIT, ACTION_NEXTGEN_EDIT -> {
-                intent.data?.let {
+            Intent.ACTION_SEND, Intent.ACTION_EDIT, ACTION_NEXTGEN_EDIT -> {
+                val uri = intent.data ?: intent.clipData?.getItemAt(0)?.uri
+                uri?.let {
                     openImageFromUri(it)
                 }
             }
             else -> {
                 val intentType = intent.type
                 if (intentType != null && intentType.startsWith("image/")) {
-                    intent.data?.let {
+                    val uri = intent.data ?: intent.clipData?.getItemAt(0)?.uri
+                    uri?.let {
                         openImageFromUri(it)
                     }
                 }
@@ -135,6 +137,7 @@ class PostCropActivity : GenericPostActivity() {
                 runOnUiThread {
                     singleImage = singleImageLoaded
                     loadScreenshotSelectorView(singleImageLoaded)
+                    screenshotSelectorView.setBackgroundColor(if (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) Color.BLACK else Color.WHITE)
                 }
             }, { error ->
                 runOnUiThread {
@@ -157,7 +160,8 @@ class PostCropActivity : GenericPostActivity() {
             bitmap,
             cutOutRect,
             prefManager.fileNamePattern,
-            useAppData = false
+            useAppData = false,
+            directory = null
         ) {
             onFileSaved(it)
         }

@@ -1,6 +1,5 @@
 package com.burhanrashid52.photoediting.base
 
-import android.R
 import android.app.ProgressDialog
 import android.content.pm.PackageManager
 import android.view.View
@@ -59,7 +58,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     protected fun showSnackbar(message: String) {
-        val view = findViewById<View>(R.id.content)
+        val view = findViewById<View>(android.R.id.content)
         if (view != null) {
             Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
         } else {

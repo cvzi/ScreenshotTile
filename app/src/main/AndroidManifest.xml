@@ -133,11 +133,18 @@
                 android:icon="@mipmap/ic_launcher_crop"
                 android:roundIcon="@mipmap/ic_launcher_crop_round"
                 android:label="@string/notification_crop_screenshot">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_crop"
+                android:roundIcon="@mipmap/ic_launcher_crop_round"
+                android:label="@string/notification_crop_screenshot">
                 <action android:name="action_nextgen_edit" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="image/*" />
             </intent-filter>
-
             <intent-filter
                 android:icon="@mipmap/ic_launcher_crop"
                 android:roundIcon="@mipmap/ic_launcher_crop_round"
@@ -299,11 +306,18 @@
                 android:icon="@mipmap/ic_launcher_photo_editor"
                 android:roundIcon="@mipmap/ic_launcher_photo_editor_round"
                 android:label="@string/notification_photo_editor_screenshot">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+            <intent-filter
+                android:icon="@mipmap/ic_launcher_photo_editor"
+                android:roundIcon="@mipmap/ic_launcher_photo_editor_round"
+                android:label="@string/notification_photo_editor_screenshot">
                 <action android:name="action_nextgen_edit" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="image/*" />
             </intent-filter>
-
             <intent-filter
                 android:icon="@mipmap/ic_launcher_photo_editor"
                 android:roundIcon="@mipmap/ic_launcher_photo_editor_round"
@@ -312,7 +326,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="image/*" />
             </intent-filter>
-
         </activity>
 
         <meta-data

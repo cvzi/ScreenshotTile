@@ -308,7 +308,7 @@ fun moveImageToStorage(context: Context, file: File, newName: String?): Pair<Boo
         return result
 
     } else { // until Android P
-        val dest = createImageFile(context, newFileName)
+        val dest = createImageFileInDefaulPictureFolder(context, newFileName)
         renameFileSystem(context, file, dest)
     }
 
@@ -340,7 +340,7 @@ fun renameImage(context: Context, uri: Uri?, newName: String): Pair<Boolean, Uri
             }
 
             val file = File(path)
-            val dest = createImageFile(context, newFileName)
+            val dest = createImageFileInDefaulPictureFolder(context, newFileName)
 
             return renameFileSystem(context, file, dest)
         }
@@ -423,7 +423,8 @@ fun copyImageContentResolver(
         compressionPreference(context),
         Date(),
         Point(0, 0),
-        useAppData = false
+        useAppData = false,
+        directory = null
     )
     if (!outputStreamResult.success) {
         Log.e(
