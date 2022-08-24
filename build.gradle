@@ -21,9 +21,9 @@ allprojects {
 }
 
 sonarqube {
-  properties {
-      property 'sonar.projectKey', 'cvzi_ScreenshotTile'
-  }
+    properties {
+        property 'sonar.projectKey', 'cvzi_ScreenshotTile'
+    }
 }
 
 task clean(type: Delete) {
