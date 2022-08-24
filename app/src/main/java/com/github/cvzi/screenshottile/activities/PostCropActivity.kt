@@ -65,7 +65,7 @@ class PostCropActivity : GenericPostActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.image_crop)
+        setContentView(R.layout.activity_post_crop)
 
         layoutView = findViewById(R.id.layout_view)
         screenshotSelectorView = findViewById(R.id.global_screenshot_selector)
