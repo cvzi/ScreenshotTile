@@ -36,6 +36,7 @@ import com.burhanrashid52.photoediting.tools.EditingToolsAdapter
 import com.burhanrashid52.photoediting.tools.EditingToolsAdapter.OnItemSelected
 import com.burhanrashid52.photoediting.tools.ToolType
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.SaveImageResultSuccess
@@ -509,7 +510,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
 
     companion object {
         private val TAG = EditImageActivity::class.java.simpleName
-        const val FILE_PROVIDER_AUTHORITY = "com.github.cvzi.screenshottile.fileprovider"
+        const val FILE_PROVIDER_AUTHORITY = "${BuildConfig.APPLICATION_ID}.fileprovider"
         private const val CAMERA_REQUEST = 52
         private const val PICK_REQUEST = 53
         const val ACTION_NEXTGEN_EDIT = "action_nextgen_edit"
