@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile (sem root)</string>
-    <string name="tile_label">Captura da tela</string>
-    <string name="tile_floating">Flutuante botão de Captura da tela</string>
+    <string name="tile_label">Capturar a tela</string>
+    <string name="tile_floating">Botão flutuante para Captura da tela</string>
     <string name="tile_floating_label">Flutuante</string>
     <string name="tile_floating_subtitle">Botão de Captura da tela</string>
     <string name="title_delay">Atraso</string>
@@ -22,7 +22,7 @@
     <string name="use_native_screenshot_unavailable">O serviço de acessibilidade está desativado</string>
     <string name="use_native_screenshot_option_default">Método integrado usa o padrão do sistema</string>
     <string name="use_native_screenshot_option_android11">Desative \'Usar padrão do sistema\' para poder usar isto</string>
-    <string name="accessibility_service_description">Se estiver ativado, o app pode simular a combinação de Botão de ligar+Início para fazer a Captura da tela.\nEm alguns dispositivos este método pode ser mais estável ou mais rápido que o método alternativo.\n\nSe você ativar esta opção aqui, você também precisará ativar o \"método integrado\" em configurações do app.</string>
+    <string name="accessibility_service_description">Se estiver ativado, o app pode simular a combinação de Botão de ligar+Início para fazer a Captura da tela.\nEm alguns dispositivos este método pode ser mais estável ou mais rápido que o método padrão.\n\nSe você ativar esta opção aqui, você também precisará ativar o \"método integrado\" em configurações do app.</string>
     <string name="use_system_defaults">Usar padrão do sistema</string>
     <string name="use_system_defaults_summary">Exige mín. Android 11</string>
     <string name="use_system_defaults_summary_on">Usar a pasta de armazenamento, formato, editor de Capturas e notificações padrão</string>
@@ -47,6 +47,7 @@
     <string name="setting_storage_directory_description">Pasta de Capturas</string>
     <string name="setting_file_name_pattern">Nome do arquivo</string>
     <string name="setting_file_name_placeholders_title">Use as seguintes variáveis no nome do arquivo</string>
+    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - tempo mostrado como aaaa-MM-dd_HH-mm-ss\n%counter% - contagem de capturas da tela\n%random% - um UUID aleatório\n%randint% - um número aleatório</string>
     <string name="setting_tile_action">Ação do botão</string>
     <string name="setting_floating_action">Ação do botão flutuante</string>
     <string name="setting_voice_interaction_action">Ação do assistente</string>
@@ -58,8 +59,27 @@
     <string name="setting_notification_buttons_description">Selecione até 3 botões que serão exibidos na notificação após fazer uma captura de tela</string>
     <string name="setting_notification_buttons_max_three">Por favor, escolha no máximo 3 botões</string>
     <string name="notification_settings">Notificações</string>
-    <string name="notification_settings_on">Ligadas</string>
-    <string name="notification_settings_off">Desligadas</string>
+    <string name="notification_settings_on">Ativadas</string>
+    <string name="notification_settings_off">Desativadas</string>
+    <string name="setting_post_actions">O que acontece depois</string>
+    <string name="setting_post_actions_description">Escolha o que acontece depois de uma captura da tela</string>
+    <string name="button_history">Capturas recentes</string>
+    <string name="button_history_description">Veja as capturas da tela recentes incluindo os arquivos que não foram salvos na galeria</string>
+    <string name="history_title">Histórico de capturas</string>
+    <string name="restore_default_values">Resetar para valores padrão</string>
+    <string name="post_action_save_to_storage">Salvar imagem na galeria</string>
+    <string name="post_action_show_toast">Mostrar uma notificação de \"Aviso\". Um pequeno popup que desaparece após 2 segundos</string>
+    <string name="post_action_show_notification">Mostrar uma notificação normal. Você pode alterar os botões (Editar,Compartilhar,…) abaixo da notificação em \"Mais configurações\"</string>
+    <string name="post_action_empty">Não mostrar a captura da tela</string>
+    <string name="post_action_open_in_post">Abrir em modo \"Detalhado\"</string>
+    <string name="post_action_open_in_post_crop">Cortar a imagem</string>
+    <string name="post_action_open_in_photo_editor">Abrir editor de fotos incluído</string>
+    <string name="post_action_open_in_external_editor">Abrir via um editor de fotos externo</string>
+    <string name="post_action_open_in_external_viewer">Abrir via um visualizador de fotos ou via galeria</string>
+    <string name="post_action_open_share">Compartilhar a captura da tela</string>
+    <string name="move_to_storage_directory">Mover para a galeria</string>
+    <string name="button_clear">Limpar</string>
+    <string name="button_clear_confirm">Você quer excluir todos os arquivos temporários?\nIsto apagará todos os arquivos em %s\n\n(Estes arquivos normalmente não estão visíveis na sua galeria)</string>
     <string name="file_title">Captura</string>
     <string name="file_description">Captura feita em %1$s</string>
     <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
@@ -79,6 +99,8 @@
     <string name="notification_edit_screenshot">Editar</string>
     <string name="notification_rename_screenshot">Renomear</string>
     <string name="notification_screenshot_details">Detalhes</string>
+    <string name="notification_crop_screenshot">Cortar</string>
+    <string name="notification_photo_editor_screenshot">Editor de fotos</string>
     <string name="screenshot_deleted">Captura excluída</string>
     <string name="screenshot_delete_failed">Não foi possível excluir o arquivo</string>
     <string name="screenshot_renamed">Arquivo renomeado para %1s</string>
@@ -128,12 +150,12 @@
     <string name="main_floating_button_title">Botão flutuante</string>
     <string name="main_general_text">Antes de poder usar este App, você precisa adicionar o botão ao menu dos ajustes rápidos. Se você não souber como fazer isso, dê uma olhada no [Tutorial,.TutorialActivity].\n\nEste App suporta dois métodos diferentes para fazer as Capturas da tela:</string>
     <string name="main_legacy_method_title">Método Legado</string>
-    <string name="main_legacy_method_text">O Método Legado usa o recurso integrado no Android para fazer as Capturas da tela.\nQuando você faça uma Captura, nenhum som é reproduzido. Uma notificação silenciosa é mostrada para abrir, compartilhar ou editar a Captura da tela. A notificação pode ser deligada nas configurações do App.\nAntes de fazer uma Captura da tela, você precisa adicionar o botão ao menu de ajustes rápidos, aceitar as permissões para poder fazer a Captura e acessar o armazenamento interno para salvar os arquivos de imagens.\nVeja o tutorial de como fazê-lo.\n\nEm alguns telefones este método não funciona, especialmente no SO mais novo que Android 9.0, é menos estável e pode pedir permissão em cada intento de Captura da tela. Se isso acontecer, você deve usar o método Integrado abaixo.</string>
+    <string name="main_legacy_method_text">O Método Legado de Capturas da tela usa a funcionalidade de gravação da tela do Android.\nQuando você faz uma Captura, nenhum som é reproduzido. Uma notificação silenciosa é mostrada para abrir, compartilhar ou editar a captura da tela. A notificação pode ser desativada em configurações do app.\nAntes de fazer uma Captura da tela, você precisa adicionar o botão ao menu de ajustes rápidos, conceder as permissões para poder fazer as Capturas e acessar o armazenamento interno a fim de salvar os arquivos de imagens.\nVeja o tutorial de como fazê-lo.\n\nEm alguns telefones este método não funciona, principalmente em versões do sistema mais novos que Android 9.0, o app fica menos estável e pode pedir permissão em cada intento de Captura da tela. Se isso acontecer, você deve usar o método Integrado abaixo.</string>
     <string name="main_native_method_title">Método Integrado</string>
-    <string name="main_native_method_text">O método integrado simula combinação de Botão de ligar+Início e usa o método de Captura da tela de seu dispositivo.\n{main_native_method_text_android_version}\n\nAntes de fazer uma Captura da tela, você precisa ativar o serviço de acessibilidade nas configurações do telefone. Clique no botão abaixo para abrir as configurações de acessibilidade.</string>
+    <string name="main_native_method_text">O método integrado simula combinação de Botão de ligar+Início e usa o método de Captura da tela do seu dispositivo.\n{main_native_method_text_android_version}\n\nAntes de fazer uma Captura da tela, você precisa ativar o Serviço de Acessibilidade em configurações do telefone. Clique no botão abaixo para abrir as configurações de acessibilidade.</string>
     <string name="main_native_method_text_android_pre_11">Quando você fazer uma Captura, esta ação pode reproduzir um som ou oferecer edição da Captura. As Capturas da tela são armazenadas numa pasta padrão da Galeria. Isto depende de seu telefone e não pode ser alterado por este app. Você pode ser capaz de alterar isto em configurações do seu telefone.</string>
     <string name="main_native_method_text_android_since_11">Pode alterar em configurações do app (em \"Usar padrão do sistema\") dependendo se você quer usar no seu telefone comportamento padrão do sistema (notificações, editor de Capturas, pasta padrão para fotos) ou se você quiser usar as preferências do app (pasta e notificações personalizadas).</string>
-    <string name="main_floating_button_text">Se você ativou o método integrado, também pode usar um botão flutuante (semelhante a uma bolinha de chat) para fazer a Captura.\nVocê pode ativá-lo com um botão separado no menu de ajustes rápidos e depois movê-lo à tela.</string>
+    <string name="main_floating_button_text">Se você ativou o método integrado, também pode usar um botão flutuante (semelhante a um balão do chat) para fazer a Captura.\nVocê pode ativá-lo via um botão separado no menu de ajustes rápidos e depois movê-lo à tela.</string>
     <string name="main_long_press_title">Pressione e segure o botão</string>
     <string name="main_long_press_text">Para abrir o menu pressione e segure o botão. Você pode especificar um atraso para a Captura da tela ou selecionar um retângulo na tela.</string>
     <string name="main_assist_app_title">App de assistência</string>
@@ -148,4 +170,28 @@
     <string name="post_save_a_suggestion">Salvar sugestão</string>
     <string name="post_pin_to_favorites">Adicionar aos favoritos</string>
     <string name="post_delete_suggestion">Apagar sugestão</string>
+    <!-- Photo Editor-->
+    <string name="label_brush">Pincel</string>
+    <string name="label_shape">Formato</string>
+    <string name="label_oval">Oval</string>
+    <string name="label_rectangle">Retangular</string>
+    <string name="label_line">Linha</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Borracha</string>
+    <string name="label_eraser_mode">Modo de borracha</string>
+    <string name="label_text">Texto</string>
+    <string name="label_filter">Filtrar</string>
+    <string name="label_adjust">Ajustar</string>
+    <string name="label_rotation">Rotação</string>
+    <string name="label_opacity">Transparência</string>
+    <string name="label_done">Concluído</string>
+    <string name="label_close">Fechar</string>
+    <string name="label_save">Salvar</string>
+    <string name="label_discard">Descartar</string>
+    <string name="msg_save_image">Você quer sair sem salvar a imagem?</string>
+    <string name="msg_save_image_to_share">Salve a imagem para compartilhar</string>
+    <string name="msg_share_image">Compartilhe a imagem</string>
+    <string name="msg_choose_image">Selecione uma imagem</string>
+    <string name="msg_image_saved">Imagem salva com sucesso</string>
+    <string name="msg_failed_to_save">Não foi possível salvar a imagem</string>
 </resources>
