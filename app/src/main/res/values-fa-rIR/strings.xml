@@ -181,7 +181,6 @@
     <string name="label_filter">فیلتر</string>
     <string name="label_adjust">تنظیم</string>
     <string name="msg_save_image">آیا میخواهید بدون ذخیره تصویر خارج شوید؟</string>
-    <string name="app_intent_name">ویرایشگر تصویر</string>
     <string name="msg_save_image_to_share">لطفا برای به اشتراک گذاری ابتدا تصویر را ذخیره کنید</string>
     <string name="msg_share_image">به اشتراک‌گذاری تصویر</string>
 </resources>

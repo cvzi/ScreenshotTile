@@ -183,7 +183,6 @@
     <string name="label_filter">Filter</string>
     <string name="label_adjust">Anpassen</string>
     <string name="msg_save_image">Beenden ohne das Bild zu speichern?</string>
-    <string name="app_intent_name">FotoEditor</string>
     <string name="msg_save_image_to_share">Bitte Bild speichern um zu teilen</string>
     <string name="msg_share_image">Bild teilen</string>
 </resources>
