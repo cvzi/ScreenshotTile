@@ -2,7 +2,7 @@ Adicione um botão ao painel de ajustes rápidos para fazer as Capturas da tela.
 
 Após a instalação, você precisa adicionar o botão ao menu de ajustes rápidos e conceder as permissões para poder fazer as Capturas da tela e salvar as imagens no armazenamento do dispositivo.
 
-Se o aplicativo apresentar problemas no Android 9/Pie ou 10, você pode tentar ativar o método "Integrado" de Captura da tela em configurações do App.
+Se o app apresentar problemas no Android 9/Pie ou 10, você pode tentar "Usar o método integrado de captura da tela" em configurações do app.
 
 <h2>Funcionalidades:</h2> 
 ✓ Capturas da tela diretamente dos ajustes rápidos
