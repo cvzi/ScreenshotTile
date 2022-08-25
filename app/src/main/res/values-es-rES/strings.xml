@@ -47,6 +47,7 @@
     <string name="setting_storage_directory_description">Carpeta para guardar screenshots</string>
     <string name="setting_file_name_pattern">Nombre del archivo</string>
     <string name="setting_file_name_placeholders_title">Usa las siguientes variables en el nombre del archivo</string>
+    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - tiempo como yyyy-MM-dd_HH-mm-ss\n%counter% - cuenta el número de capturas de pantalla\n%random% - un UUID aleatorio\n%ryint% - un número aleatorio</string>
     <string name="setting_tile_action">Acción del mosaico</string>
     <string name="setting_floating_action">Acción del botón flotante</string>
     <string name="setting_voice_interaction_action">Acción del asistente</string>
@@ -60,6 +61,25 @@
     <string name="notification_settings">Notificaciones</string>
     <string name="notification_settings_on">Activado</string>
     <string name="notification_settings_off">Desactivado</string>
+    <string name="setting_post_actions">Acciones posteriores</string>
+    <string name="setting_post_actions_description">Elegir lo que sucede después de la captura de pantalla</string>
+    <string name="button_history">Capturas recientes</string>
+    <string name="button_history_description">Ver tus capturas de pantalla recientes incluyendo archivos que no se han guardado en la galería</string>
+    <string name="history_title">Historial de capturas</string>
+    <string name="restore_default_values">Restaurar valores predeterminados</string>
+    <string name="post_action_save_to_storage">Guardar imagen en la galería</string>
+    <string name="post_action_show_toast">Mostrar una notificación de \"Toast\". Un pequeño popup que desaparece después de 2 segundos</string>
+    <string name="post_action_show_notification">Mostrar una notificación regular. Puede cambiar los botones (Editar, Compartir,…) debajo de la notificación en \"Más ajustes\"</string>
+    <string name="post_action_empty">No abrir la captura de pantalla</string>
+    <string name="post_action_open_in_post">Abrir en la vista \"Detalles\"</string>
+    <string name="post_action_open_in_post_crop">Recortar imágen</string>
+    <string name="post_action_open_in_photo_editor">Abrir el editor de fotos incluido</string>
+    <string name="post_action_open_in_external_editor">Abrir en un editor de fotos externo</string>
+    <string name="post_action_open_in_external_viewer">Abrir en un visor de fotos o en la galería</string>
+    <string name="post_action_open_share">Compartir la captura de pantalla</string>
+    <string name="move_to_storage_directory">Mover en la galería</string>
+    <string name="button_clear">Borrar</string>
+    <string name="button_clear_confirm">¿Quieres eliminar todos los archivos temporales?\nEsto eliminará todos los archivos en %s\n\n(Estos archivos normalmente no son visibles en la galería)</string>
     <string name="file_title">Captura de pantalla</string>
     <string name="file_description">Captura de pantalla creado %1$s</string>
     <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
@@ -79,6 +99,8 @@
     <string name="notification_edit_screenshot">Editar</string>
     <string name="notification_rename_screenshot">Renombrar</string>
     <string name="notification_screenshot_details">Detalles</string>
+    <string name="notification_crop_screenshot">Recortar</string>
+    <string name="notification_photo_editor_screenshot">Editor de fotos</string>
     <string name="screenshot_deleted">Imagen borrada</string>
     <string name="screenshot_delete_failed">No se pudo eliminar la imagen</string>
     <string name="screenshot_renamed">El archivo fue renombrado a %1s</string>
@@ -119,6 +141,8 @@
     <string name="about_license_title">Licencia</string>
     <string name="about_license_1">Licencia Pública General de GNU Version 3 (GNU GPL v3)</string>
     <string name="about_app_2">Esta aplicación todavía tiene algunos problemas y está en desarrollo.\nSi tienes acceso de root, puedes usar la versión de ipcjs, es más rápido y más confiable.</string>
+    <string name="about_privacy_title">Política de privacidad</string>
+    <string name="about_open_source_title">Código abierto usado</string>
     <string name="about_advanced_settings_button">Configuración avanzada</string>
     <string name="about_update_check_button">Comprobación de actualización</string>
     <!-- First screen -->
@@ -146,4 +170,31 @@
     <string name="post_save_a_suggestion">Guardar una sugerencia</string>
     <string name="post_pin_to_favorites">Añadir a favoritos</string>
     <string name="post_delete_suggestion">Eliminar sugerencia</string>
+    <!-- Photo Editor-->
+    <string name="label_brush">Pincel</string>
+    <string name="label_shape">Forma</string>
+    <string name="label_oval">Oval</string>
+    <string name="label_rectangle">Rectángulo</string>
+    <string name="label_line">Línea</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Borrar</string>
+    <string name="label_eraser_mode">Modo borrar</string>
+    <string name="label_text">Texto</string>
+    <string name="label_filter">Filtro</string>
+    <string name="label_adjust">Ajustar</string>
+    <string name="label_rotation">Rotación</string>
+    <string name="label_opacity">Opacidad</string>
+    <string name="label_done">Listo</string>
+    <string name="label_close">Cerrar</string>
+    <string name="label_save">Guardar</string>
+    <string name="label_discard">Descartar</string>
+    <string name="msg_save_image">¿Quieres salir sin guardar la imagen?</string>
+    <string name="msg_save_image_to_share">Guarda la imagen para compartir</string>
+    <string name="msg_share_image">Compartir imagen</string>
+    <string name="msg_choose_image">Selecciona una imagen</string>
+    <string name="msg_image_saved">Imagen guardada</string>
+    <string name="msg_failed_to_save">Error al guardar la imagen</string>
+    <string name="dialog_ask_filename_title">Guardar como</string>
+    <string name="dialog_ask_filename_directory">Carpeta seleccionada:</string>
+    <string name="dialog_ask_filename_hint">Nombre del archivo (sin extensión)</string>
 </resources>
