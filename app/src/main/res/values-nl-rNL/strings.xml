@@ -63,6 +63,7 @@
     <string name="notification_settings_off">Uitgeschakeld</string>
     <string name="setting_post_actions">Volgende acties</string>
     <string name="setting_post_actions_description">Kies wat er gebeurt nadat de schermafbeelding is gemaakt</string>
+    <string name="button_history">Recente schermafdrukken</string>
     <string name="file_title">Schermafdruk</string>
     <string name="file_description">Schermafdruk gemaakt op %1$s</string>
     <string name="notification_title">Gemaakte schermafdruk</string>
@@ -131,4 +132,7 @@
     <string name="msg_choose_image">Afbeelding selecteren</string>
     <string name="msg_image_saved">Afbeelding succesvol opgeslagen</string>
     <string name="msg_failed_to_save">Opslaan van afbeelding mislukt</string>
+    <string name="dialog_ask_filename_title">Opslaan als</string>
+    <string name="dialog_ask_filename_directory">Gekozen map:</string>
+    <string name="dialog_ask_filename_hint">Bestandsnaam (zonder extensie)</string>
 </resources>
