@@ -29,6 +29,7 @@ jobs:
             - "pt-PT"
             - "ro-RO"
             - "ru-RU"
+            - "sv-SE"
             - "tr-TR"
             - "uk-UA"
             - "vi-VN"

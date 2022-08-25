@@ -238,6 +238,12 @@ class UnitTestClickableActivityLinkLocalized : UnitTestClickableActivityLink() {
     }
 
     @Test
+    @Config(qualifiers="sv-rSE")
+    fun svSE() {
+        makeClickableActivities_LocalizedString()
+    }
+
+    @Test
     @Config(qualifiers = "sw")
     fun sw() {
         makeClickableActivities_LocalizedString()
