@@ -3,6 +3,7 @@ package com.burhanrashid52.photoediting
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,9 +47,9 @@ class EmojiBSFragment : BottomSheetDialogFragment() {
         val params = (contentView.parent as View).layoutParams as CoordinatorLayout.LayoutParams
         val behavior = params.behavior
         if (behavior != null && behavior is BottomSheetBehavior<*>) {
-            behavior.setBottomSheetCallback(mBottomSheetBehaviorCallback)
+            behavior.addBottomSheetCallback(mBottomSheetBehaviorCallback)
         }
-        (contentView.parent as View).setBackgroundColor(resources.getColor(android.R.color.transparent))
+        (contentView.parent as View).setBackgroundColor(Color.TRANSPARENT)
         val rvEmoji: RecyclerView = contentView.findViewById(R.id.rvEmoji)
         val gridLayoutManager = GridLayoutManager(activity, 5)
         rvEmoji.layoutManager = gridLayoutManager
