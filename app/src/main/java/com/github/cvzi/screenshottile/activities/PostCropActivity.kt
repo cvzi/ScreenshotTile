@@ -277,8 +277,8 @@ class PostCropActivity : GenericPostActivity() {
                 window.onBackInvokedDispatcher.registerOnBackInvokedCallback(
                     OnBackInvokedDispatcher.PRIORITY_DEFAULT, onBackInvokedCallback
                 )
+                onBackInvokedCallbackIsSet = true
             }
-            onBackInvokedCallbackIsSet = true
         }
     }
 
@@ -291,8 +291,8 @@ class PostCropActivity : GenericPostActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             onBackInvokedCallback?.let {
                 window.onBackInvokedDispatcher.unregisterOnBackInvokedCallback(onBackInvokedCallback)
+                onBackInvokedCallbackIsSet = false
             }
-            onBackInvokedCallbackIsSet = false
         }
     }
 

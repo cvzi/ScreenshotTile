@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Typeface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.provider.MediaStore
@@ -19,6 +20,8 @@ import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -77,6 +80,15 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     private var mIsFilterVisible = false
 
     private lateinit var startForPickFolder: ActivityResultLauncher<Intent>
+    private val onBackInvokedCallback: OnBackInvokedCallback? =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Handle back button for Android 13+
+            OnBackInvokedCallback {
+                backPress()
+            }
+        } else null
+    private var onBackInvokedCallbackIsSet = false
+
 
     @VisibleForTesting
     var mSaveImageUri: Uri? = null
@@ -501,6 +513,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     }
 
     override fun onToolSelected(toolType: ToolType?) {
+        addBackButtonHandler()
         when (toolType) {
             ToolType.SHAPE -> {
                 mPhotoEditor?.setBrushDrawingMode(true)
@@ -547,6 +560,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         val rvFilterId: Int =
             mRvFilters?.id ?: throw IllegalArgumentException("RV Filter ID Expected")
         if (isVisible) {
+            addBackButtonHandler()
             mConstraintSet.clear(rvFilterId, ConstraintSet.START)
             mConstraintSet.connect(
                 rvFilterId, ConstraintSet.START,
@@ -570,8 +584,11 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         mConstraintSet.applyTo(mRootView)
     }
 
+    @Deprecated("Deprecated in Java")
+    @Suppress("DEPRECATION")
     override fun onBackPressed() {
-        // TODO this won't work on Android Tiramisu
+        // This is no longer used on Android 13+/Tiramisu
+        // See onBackInvokedCallback for Android 13+
         if (!backPress()) {
             super.onBackPressed()
         }
@@ -587,9 +604,30 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         } else if (!isCacheEmpty) {
             showSaveDialog()
         } else {
+            removeBackButtonHandler()
             return false
         }
         return true
+    }
+
+    private fun addBackButtonHandler() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !onBackInvokedCallbackIsSet) {
+            onBackInvokedCallback?.let {
+                window.onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                    OnBackInvokedDispatcher.PRIORITY_DEFAULT, onBackInvokedCallback
+                )
+                onBackInvokedCallbackIsSet = true
+            }
+        }
+    }
+
+    private fun removeBackButtonHandler() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            onBackInvokedCallback?.let {
+                window.onBackInvokedDispatcher.unregisterOnBackInvokedCallback(onBackInvokedCallback)
+                onBackInvokedCallbackIsSet = false
+            }
+        }
     }
 
 

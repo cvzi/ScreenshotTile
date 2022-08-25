@@ -268,8 +268,8 @@ class TakeScreenshotActivity : Activity(),
                 onBackInvokedDispatcher.registerOnBackInvokedCallback(
                     OnBackInvokedDispatcher.PRIORITY_DEFAULT, onBackInvokedCallback
                 )
+                onBackInvokedCallbackIsSet = true
             }
-            onBackInvokedCallbackIsSet = true
         }
     }
 
@@ -282,8 +282,8 @@ class TakeScreenshotActivity : Activity(),
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             onBackInvokedCallback?.let {
                 onBackInvokedDispatcher.unregisterOnBackInvokedCallback(onBackInvokedCallback)
+                onBackInvokedCallbackIsSet = false
             }
-            onBackInvokedCallbackIsSet = false
         }
     }
 

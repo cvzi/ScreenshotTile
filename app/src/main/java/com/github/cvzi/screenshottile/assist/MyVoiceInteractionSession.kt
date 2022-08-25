@@ -327,8 +327,8 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                 window.onBackInvokedDispatcher.registerOnBackInvokedCallback(
                     OnBackInvokedDispatcher.PRIORITY_DEFAULT, onBackInvokedCallback
                 )
+                onBackInvokedCallbackIsSet = true
             }
-            onBackInvokedCallbackIsSet = true
         }
     }
 
@@ -341,8 +341,8 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             onBackInvokedCallback?.let {
                 window.onBackInvokedDispatcher.unregisterOnBackInvokedCallback(onBackInvokedCallback)
+                onBackInvokedCallbackIsSet = false
             }
-            onBackInvokedCallbackIsSet = false
         }
     }
 
