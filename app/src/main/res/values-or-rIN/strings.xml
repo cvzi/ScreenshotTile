@@ -37,6 +37,7 @@
     <string name="notification_settings">ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ</string>
     <string name="notification_settings_on">ସକ୍ଷମ</string>
     <string name="notification_settings_off">ଅକ୍ଷମ</string>
+    <string name="post_action_empty">ସ୍କ୍ରିନସଟ୍ ଖୋଲନ୍ତୁନି</string>
     <string name="file_title">ସ୍କ୍ରିନସଟ୍</string>
     <string name="file_description">%1$s ରେ ସ୍କ୍ରିନସଟ୍ ନିଆଯାଇଛି</string>
     <string name="notification_title">ସ୍କ୍ରିନସଟ୍ ନିଆଯାଇଛି</string>
@@ -50,6 +51,8 @@
     <string name="notification_delete_screenshot">ବିଲୋପ</string>
     <string name="notification_share_screenshot">ଅଂଶୀଦାର</string>
     <string name="notification_edit_screenshot">ସମ୍ପାଦନ</string>
+    <string name="notification_rename_screenshot">ନାଁ ବଦଳାନ୍ତୁ</string>
+    <string name="notification_photo_editor_screenshot">ଫଟୋ ସମ୍ପାଦକ</string>
     <string name="screenshot_deleted">ସ୍କ୍ରିନସଟ୍ ବିଲୋପ କରାଗଲା</string>
     <string name="screenshot_delete_failed">ଫାଇଲ୍ ବିଲୋପ କରାଯାଇପାରିଲା ନାହିଁ</string>
     <string name="hide_app_from_launcher">ଉନ୍ମୋଚକ ଠାରୁ ଆପ୍ ଆଇକନ୍ ଲୁଚାନ୍ତୁ</string>
@@ -61,6 +64,11 @@
     <string name="tutorial_step5">ନୂତନ ସ୍କ୍ରିନସଟ୍ ବଟନ୍ ଖୋଜନ୍ତୁ</string>
     <string name="take_screenshot">ସ୍କ୍ରିନ୍‌ସଟ୍ ନିଅନ୍ତୁ</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_line_1">ଏହି ଆପ୍ - “ସ୍କ୍ରିନସଟ୍ ଟାଇଲ୍ [No root]“ - କୌଣସି ଅଭିଗମ୍ୟତା ଉପକରଣ ନୁହଁ।</string>
+    <string name="googleplay_consent_line_4">ଅଭିଗମ୍ୟତା ସେବା API କୁ ଆକସେସ୍ ଦିଆଗଲେ ଏହି ଆପକୁ ସ୍କ୍ରିନ୍ ରେକର୍ଡ କରିବା ପାଇଁ ଅନୁମତି ମିଳିବ।</string>
+    <string name="googleplay_consent_line_5">ସ୍କ୍ରିନସଟ୍ ପ୍ରତିଛବି ତିଆରିକରିବା ପାଇଁ ସ୍କ୍ରିନ୍ ରେକର୍ଡିଂ ବ୍ୟବହାର କରାଯିବ।</string>
+    <string name="googleplay_consent_line_6">ଅଭିଗମ୍ୟତା କ୍ଷମତା ବ୍ୟବହାର କରି ଏହି ଆପ୍ ଦ୍ୱାରା ତଥ୍ୟ ସଂଗ୍ରହ କିମ୍ବା ଅଂଶୀଦାର କରାଯାଏ ନାହିଁ।</string>
+    <string name="googleplay_consent_line_7">ଆପଣ ଏହି ଆପକୁ ଅଭିଗମ୍ୟତା ସେବା API କୁ ଆକସେସ୍ କରି ସ୍କ୍ରିନ୍ ରେକର୍ଡ କରିବାଲାଗି ଅଭିଗମ୍ୟତା କ୍ଷମତା ବ୍ୟବହାର କରିବା ନେଇ ଅନୁମତି ଦେବାକୁ ରାଜି ତ?</string>
     <!-- About -->
     <string name="about_app_title">ବିଷୟରେ</string>
     <string name="about_app_1">ଏହା ହେଉଛି\ngithub.com/ipcjs/ScreenshotTile ର ଏକ ଫର୍କ‍୍</string>
@@ -68,7 +76,7 @@
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE ସଂସ୍କରଣ 3</string>
     <string name="about_app_2">ଏହି ଆପରେ ଏପର୍ଯ୍ୟନ୍ତ କିଛି ସମସ୍ୟା ରହିଛି ଏବଂ ବିକାଶରେ ଅଛି।\nଯଦି ଆପଣଙ୍କ ଫୋନରେ ରୁଟ୍ ଆକସେସ୍ ଅଛି, ଦୟାକରି ipcjsଙ୍କ ସଂସ୍କରଣ ବ୍ୟବହାର କରନ୍ତୁ, ଯାହା ଦ୍ରୁତ ଏବଂ ଅଧିକ ନିର୍ଭରଶୀଳ ଅଟେ।</string>
     <string name="about_privacy_title">ଗୋପନୀୟତା ନୀତି</string>
-    <string name="about_open_source_title">ଖୋଲା ଉତ୍ସ ବ୍ୟବହୃତ ହୋଇଛି</string>
+    <string name="about_open_source_title">ବ୍ୟବହୃତ ଖୋଲା ଉତ୍ସ</string>
     <string name="about_advanced_settings_button">ବିକଶିତ ସେଟିଂସ୍</string>
     <string name="about_update_check_button">ଅଦ୍ୟତନ ଯାଞ୍ଚ</string>
     <!-- First screen -->
@@ -76,4 +84,15 @@
     <string name="main_floating_button_title">ଭାସମାନ ବଟନ୍</string>
     <string name="main_assist_app_title">ସହାୟକ ଆପ୍</string>
     <!-- Post edit activity -->
+    <string name="post_button_save">ନାଁ ବଦଳାନ୍ତୁ</string>
+    <!-- Photo Editor-->
+    <string name="label_rotation">ଘୂର୍ଣ୍ଣନ</string>
+    <string name="label_opacity">ଅପାରଦର୍ଶିତା</string>
+    <string name="label_done">ହୋଇଗଲା</string>
+    <string name="label_close">ବନ୍ଦ କରନ୍ତୁ</string>
+    <string name="label_save">ସଞ୍ଚୟ କରନ୍ତୁ</string>
+    <string name="label_discard">ପରିତ୍ୟାଗ କରନ୍ତୁ</string>
+    <string name="msg_choose_image">ଗୋଟେ ପ୍ରତିଛବି ବାଛିଲ</string>
+    <string name="msg_image_saved">ପ୍ରତିଛବି ସଫଳତାର ସହିତ ସଞ୍ଚୟ ହୋଇଛି</string>
+    <string name="msg_failed_to_save">ପ୍ରତିଛବି ସଞ୍ଚୟ କରିବାରେ ବିଫଳ</string>
 </resources>
