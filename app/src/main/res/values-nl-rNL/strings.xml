@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Schermafdruktegel (NoRoot)</string>
     <string name="tile_label">Schermafdruk</string>
-    <string name="tile_floating">Zwevend schermafdrukknop</string>
+    <string name="tile_floating">Zwevende schermafdrukknop</string>
     <string name="tile_floating_label">Zwevend</string>
     <string name="tile_floating_subtitle">Schermafdrukknop</string>
     <string name="title_delay">Vertraging</string>
@@ -45,15 +45,24 @@
     <string name="setting_broadcast_secret_description">Een geheime zin om andere applicaties (zoals MacroDroid of Tasker) toe te staan schermafdrukken te starten</string>
     <string name="setting_storage_directory">Opslaglocatie</string>
     <string name="setting_storage_directory_description">Map om schermafdrukken in op te slaan</string>
+    <string name="setting_file_name_pattern">Bestandsnaam</string>
+    <string name="setting_file_name_placeholders_title">Deze tijdelijke aanduidingen in de bestandsnaam gebruiken</string>
+    <string name="setting_file_name_placeholders" formatted="false">%timestamp% – tijd als yyyy-MM-dd_HH-mm-ss\n%counter% – telt het aantal screenshots\n%random% – een willekeurig UUID\n%randint% – een willekeurig getal</string>
     <string name="setting_tile_action">Tegelactie</string>
+    <string name="setting_floating_action">Actie voor zwevende knop</string>
+    <string name="setting_voice_interaction_action">Actie van assistent</string>
     <string name="setting_dark_theme">Donker thema</string>
     <string name="setting_dark_theme_system">Systeem</string>
     <string name="setting_dark_theme_off">Uitgeschakeld</string>
     <string name="setting_dark_theme_on">Ingeschakeld</string>
     <string name="setting_notification_buttons">Meldingsknoppen</string>
+    <string name="setting_notification_buttons_description">Selecteer maximaal drie knoppen om onder de schermafbeeldingnotificatie te verschijnen</string>
+    <string name="setting_notification_buttons_max_three">Kies maximaal drie knoppen</string>
     <string name="notification_settings">Meldingen</string>
     <string name="notification_settings_on">Ingeschakeld</string>
     <string name="notification_settings_off">Uitgeschakeld</string>
+    <string name="setting_post_actions">Volgende acties</string>
+    <string name="setting_post_actions_description">Kies wat er gebeurt nadat de schermafbeelding is gemaakt</string>
     <string name="file_title">Schermafdruk</string>
     <string name="file_description">Schermafdruk gemaakt op %1$s</string>
     <string name="notification_title">Gemaakte schermafdruk</string>
@@ -104,7 +113,7 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">Toegankelijkheidsinstellingen</string>
     <string name="main_floating_button_title">Zwevende knop</string>
-    <string name="main_general_text">Voordat je deze app kunt gebruiken, moet je de tegel/knop toevoegen aan de snelle instellingen. Als je niet weet hoe je dit moet doen, bekijk dan de [Tutorial,.TutorialActivity].\n\nDeze app ondersteunt twee verschillende methoden voor het maken van schermafdrukken:</string>
+    <string name="main_general_text">Voordat je deze app kunt gebruiken, moet je de tegel/knop toevoegen aan de snelle instellingen. Als je niet weet hoe je dit moet doen, bekijk dan de [Handleiding,.TutorialActivity].\n\nDeze app ondersteunt twee verschillende methoden voor het maken van schermafdrukken:</string>
     <string name="main_legacy_method_title">Verouderde methode</string>
     <string name="main_legacy_method_text">De oude methode om schermafbeeldingen te maken maakt gebruik van de schermopnamefuncties van Android.\nAls je een schermafdruk maakt, wordt er geen geluid afgespeeld. Een stille melding wordt getoond om de schermafdruk te openen, delen of bewerken. De notificatie kan uitgeschakeld worden in de app-instellingen.\nVoordat je een schermafdruk kunt maken moet je de tegel toevoegen aan de snelle instellingen, machtigen om het scherm op te nemen en om toegang te krijgen tot de interne opslag om het afbeeldingsbestand op te slaan.\nZie de handleiding over hoe je dat moet doen.\n\nOp sommige telefoons werkt deze methode niet, vooral op nieuwere Androids (9.0+) is het instabiel en kan het bij elke schermafdruk om toestemming vragen. Als dat gebeurt moet je hieronder de ingebouwde methode gebruiken.</string>
     <string name="main_native_method_title">Ingebouwde methode</string>
@@ -116,4 +125,10 @@
     <string name="main_long_press_text">Lang indrukken van de tegel/knop opent een menu. Je kunt een vertraging opgeven voor de schermafdruk of een rechthoek uitknippen van het scherm.</string>
     <string name="main_assist_app_title">App voor assistentie</string>
     <!-- Post edit activity -->
+    <!-- Photo Editor-->
+    <string name="label_save">Opslaan</string>
+    <string name="label_discard">Verwerpen</string>
+    <string name="msg_choose_image">Afbeelding selecteren</string>
+    <string name="msg_image_saved">Afbeelding succesvol opgeslagen</string>
+    <string name="msg_failed_to_save">Opslaan van afbeelding mislukt</string>
 </resources>
