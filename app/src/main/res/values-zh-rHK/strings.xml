@@ -123,4 +123,8 @@
     <string name="post_save_a_suggestion">儲存建議</string>
     <string name="post_pin_to_favorites">加入收藏</string>
     <string name="post_delete_suggestion">刪除建議</string>
+    <!-- Photo Editor-->
+    <string name="dialog_ask_filename_title">保存为</string>
+    <string name="dialog_ask_filename_directory">已选择路径：</string>
+    <string name="dialog_ask_filename_hint">文件名称（不包括扩展名）</string>
 </resources>
