@@ -2,11 +2,11 @@
 <resources>
     <string name="app_name">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Captura de pantalla</string>
-    <string name="tile_floating">Botton flotante de captura de pantella</string>
-    <string name="tile_floating_label">Boton Flotante</string>
+    <string name="tile_floating">Botón flotante de captura de pantalla</string>
+    <string name="tile_floating_label">Botón Flotante</string>
     <string name="tile_floating_subtitle">Captura de pantalla</string>
     <string name="title_delay">Retraso</string>
-    <string name="more_setting">Mas ajustes</string>
+    <string name="more_setting">Más ajustes</string>
     <string name="open_settings">Abrir ajustes</string>
     <string name="left_screenshot_right_menu">Izquierda: Captura de pantalla, derecha: Ajustes</string>
     <string name="partial_screenshot">Seleccionar rectángulo</string>
@@ -69,10 +69,10 @@
     <string name="restore_default_values">Restaurar valores predeterminados</string>
     <string name="post_action_save_to_storage">Guardar imagen en la galería</string>
     <string name="post_action_show_toast">Mostrar una notificación de \"Toast\". Un pequeño popup que desaparece después de 2 segundos</string>
-    <string name="post_action_show_notification">Mostrar una notificación regular. Puede cambiar los botones (Editar, Compartir,…) debajo de la notificación en \"Más ajustes\"</string>
+    <string name="post_action_show_notification">Mostrar una notificación regular. Puede cambiar los botones (Editar, Compartir, …) debajo de la notificación en \"Más ajustes\"</string>
     <string name="post_action_empty">No abrir la captura de pantalla</string>
     <string name="post_action_open_in_post">Abrir en la vista \"Detalles\"</string>
-    <string name="post_action_open_in_post_crop">Recortar imágen</string>
+    <string name="post_action_open_in_post_crop">Recortar imagen</string>
     <string name="post_action_open_in_photo_editor">Abrir el editor de fotos incluido</string>
     <string name="post_action_open_in_external_editor">Abrir en un editor de fotos externo</string>
     <string name="post_action_open_in_external_viewer">Abrir en un visor de fotos o en la galería</string>
@@ -85,7 +85,7 @@
     <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
     <string name="notification_title">Se ha guardado la captura de pantalla</string>
     <string name="notification_body">Toca para ver la captura de pantalla</string>
-    <string name="notification_channel_description">Monstrar notificationes de capturas de pantalla</string>
+    <string name="notification_channel_description">Mostrar notificaciones de capturas de pantalla</string>
     <string name="notification_foreground_title">Tomando la captura de pantalla…</string>
     <string name="notification_foreground_body">Procesando la captura de pantalla… Toque para cancelar</string>
     <string name="notification_foreground_channel_description">Muestra una notificación cuando estás tomando una captura de pantalla. Evita que la optimización de la batería finalice la aplicación mientras se está realizando una captura de pantalla</string>
@@ -112,18 +112,18 @@
     <string name="toggle_app_icon_failed">Error al mostrar/ocultar el icono de la aplicación</string>
     <string name="tutorial">Instrucciones</string>
     <string name="tutorial_tap_for_next_step">Toque para el siguiente paso</string>
-    <string name="tutorial_step2">Desliza hacia abajo el área de notificaciónes</string>
+    <string name="tutorial_step2">Desliza hacia abajo el área de notificaciones</string>
     <string name="tutorial_step3">Desliza hacia arribo una segunda vez</string>
     <string name="tutorial_step4">Toca el botón Editar</string>
     <string name="tutorial_step5">Encuentra el nuevo botón de captura de pantalla</string>
     <string name="tutorial_step6">Arrastra el botón a tu configuración</string>
-    <string name="tutorial_step8">Cerra las configuraciónes rápidas</string>
+    <string name="tutorial_step8">Cerra las configuraciones rápidas</string>
     <string name="tutorial_step10">Desliza hacia arriba el área de notificación</string>
     <string name="tutorial_step11">Acepta los permisos</string>
     <string name="tutorial_step16">Ahora puedes tomar capturas de pantalla con el botón nuevo</string>
     <string name="take_screenshot">Captura de pantalla</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
-    <string name="googleplay_consent_title">Aviso &amp; solicitud de consentimiento destacados de Google Play</string>
+    <string name="googleplay_consent_title">Aviso &amp; solicitud de consentimiento destacado de Google Play</string>
     <string name="googleplay_consent_line_0">Google Play requiere una aviso prominente del uso de la API de Servicios de Accesibilidad para una aplicación que no es una herramienta de accesibilidad.</string>
     <string name="googleplay_consent_line_1">Esta aplicación - “Screenshot Tile [NoRoot]“ - no es una herramienta de accesibilidad.</string>
     <string name="googleplay_consent_line_2">Puesto que los usuarios pueden no esperar razonablemente que sus datos personales y sensibles de usuario sean requeridos para proporcionar o mejorar las características o funcionalidad de la política dentro de esta aplicación, se requiere una divulgación destacada del uso de la API de Servicios de Accesibilidad por esta aplicación y una declaración de la recopilación de datos y el intercambio de datos dentro de esta aplicación:</string>
@@ -150,7 +150,7 @@
     <string name="main_floating_button_title">Botón Flotante</string>
     <string name="main_general_text">Antes de poder usar esta aplicación, debes agregar el mosaico/botón a la configuración rápida. Si no sabes cómo hacer esto, echa un vistazo al [Instrucciones,.TutorialActivity].\n\nEsta aplicación admite dos métodos diferentes para tomar capturas de pantalla:</string>
     <string name="main_legacy_method_title">Método original</string>
-    <string name="main_legacy_method_text">El método original para tomar capturas de pantalla usa las funciones de grabación de pantalla de Android.\nCuando tomas una captura de pantalla, no se reproduce ningún sonido. Se muestra una notificación silenciosa para abrir, compartir o editar la captura de pantalla. La notificación se puede deshabilitar en la configuración de la aplicación.\nAntes de poder tomar una captura de pantalla, debes agregar el mosaico a las configuraciónes rápidas, aceptar los permisos para grabar la pantalla y para acceder al almacenamiento interno para guardar el archivo de imagen.\nConsulte las instrucciones de abajo para saber cómo hacerlo.\n\nEn algunos teléfonos este método no funciona, especialmente en los Android más nuevos (9.0+) es inestable y puede solicitar permiso en cada captura de pantalla. Si eso sucede, debes usar el método nativo.</string>
+    <string name="main_legacy_method_text">El método original para tomar capturas de pantalla usa las funciones de grabación de pantalla de Android.\nCuando tomas una captura de pantalla, no se reproduce ningún sonido. Se muestra una notificación silenciosa para abrir, compartir o editar la captura de pantalla. La notificación se puede deshabilitar en la configuración de la aplicación.\nAntes de poder tomar una captura de pantalla, debes agregar el mosaico a las configuraciones rápidas, aceptar los permisos para grabar la pantalla y para acceder al almacenamiento interno para guardar el archivo de imagen.\nConsulte las instrucciones de abajo para saber cómo hacerlo.\n\nEn algunos teléfonos este método no funciona, especialmente en los Android más nuevos (9.0+) es inestable y puede solicitar permiso en cada captura de pantalla. Si eso sucede, debes usar el método nativo.</string>
     <string name="main_native_method_title">Método nativo</string>
     <string name="main_native_method_text">El método nativo para tomar capturas de pantalla simula presionar el botón Inicio+Encendido y utiliza el método de captura de pantalla de su dispositivo.\n{main_native_method_text_android_version}\n\nAntes de poder tomar una captura de pantalla, debe habilitar el servicio de accesibilidad en la configuración del teléfono. Presione el botón de abajo para abrir la configuración de accesibilidad.</string>
     <string name="main_native_method_text_android_pre_11">Cuando tomas una captura de pantalla, puede reproducir un sonido o mostrar un editor de captura de pantalla. Las capturas de pantalla se almacenan en la carpeta estándar para imágenes. Esto depende de su teléfono y esta aplicación no puede cambiarlo. Es posible que puedes cambiar el comportamiento en la configuración de su teléfono.</string>
