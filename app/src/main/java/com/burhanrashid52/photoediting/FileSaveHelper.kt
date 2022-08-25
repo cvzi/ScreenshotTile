@@ -13,6 +13,7 @@ import java.io.IOException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
+
 /**
  * General contract of this class is to
  * create a file on a device.
@@ -25,7 +26,8 @@ import java.util.concurrent.Executors
  * Remember! in order to shutdown executor call [FileSaveHelper.addObserver] or
  * create object with the [FileSaveHelper]
  */
-class FileSaveHelper(private val mContentResolver: ContentResolver) : LifecycleObserver {
+class FileSaveHelper(private val mContentResolver: ContentResolver) : LifecycleObserver,
+    DefaultLifecycleObserver {
     private val executor: ExecutorService? = Executors.newSingleThreadExecutor()
     private val fileCreatedResult: MutableLiveData<FileMeta> = MutableLiveData()
     private var resultListener: OnFileCreateResult? = null
@@ -49,8 +51,7 @@ class FileSaveHelper(private val mContentResolver: ContentResolver) : LifecycleO
         lifecycleOwner.lifecycle.addObserver(this)
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun release() {
+    override fun onDestroy(owner: LifecycleOwner) {
         executor?.shutdownNow()
     }
 
@@ -149,7 +150,7 @@ class FileSaveHelper(private val mContentResolver: ContentResolver) : LifecycleO
          * @param created  whether file creation is success or failure
          * @param filePath filepath on disk. null in case of failure
          * @param error    in case file creation is failed . it would represent the cause
-         * @param Uri      Uri to the newly created file. null in case of failure
+         * @param uri      Uri to the newly created file. null in case of failure
          */
         fun onFileCreateResult(created: Boolean, filePath: String?, error: String?, uri: Uri?)
     }
