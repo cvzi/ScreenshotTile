@@ -182,8 +182,19 @@
     <string name="label_text">Text</string>
     <string name="label_filter">Filter</string>
     <string name="label_adjust">Anpassen</string>
+    <string name="label_rotation">Rotation</string>
+    <string name="label_opacity">Deckkraft</string>
+    <string name="label_done">Fertig</string>
+    <string name="label_close">Schließen</string>
+    <string name="label_save">Speichern</string>
+    <string name="label_discard">Verwerfen</string>
     <string name="msg_save_image">Beenden ohne das Bild zu speichern?</string>
-    <string name="app_intent_name">FotoEditor</string>
     <string name="msg_save_image_to_share">Bitte Bild speichern um zu teilen</string>
     <string name="msg_share_image">Bild teilen</string>
+    <string name="msg_choose_image">Bild auswählen</string>
+    <string name="msg_image_saved">Bild wurde erfolgreich gespeichert</string>
+    <string name="msg_failed_to_save">Fehler beim Speichern des Bildes</string>
+    <string name="dialog_ask_filename_title">Speichern unter</string>
+    <string name="dialog_ask_filename_directory">Ausgewählter Ordner:</string>
+    <string name="dialog_ask_filename_hint">Dateiname (ohne Dateiendung)</string>
 </resources>
