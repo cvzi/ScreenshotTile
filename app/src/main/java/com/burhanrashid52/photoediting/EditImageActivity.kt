@@ -146,12 +146,11 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
 
     private fun handleIntentImage(source: ImageView?): Boolean {
         if (intent == null) {
-            return false
+            return true
         }
-        val uri = intent.data ?: intent.clipData?.getItemAt(0)?.uri ?: return false
-
         when (intent.action) {
             Intent.ACTION_SEND, Intent.ACTION_EDIT, ACTION_NEXTGEN_EDIT -> {
+                val uri = intent.data ?: intent.clipData?.getItemAt(0)?.uri ?: return false
                 try {
                     val bitmap = loadBitmapFromDisk(contentResolver, uri, true)
                     source?.setImageBitmap(bitmap)
@@ -160,7 +159,11 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                     e.printStackTrace()
                 }
             }
+            ACTION_NO_IMAGE -> {
+                return true
+            }
             else -> {
+                val uri = intent.data ?: intent.clipData?.getItemAt(0)?.uri ?: return false
                 val intentType = intent.type
                 if (intentType != null && intentType.startsWith("image/")) {
                     source?.setImageURI(uri)
@@ -636,6 +639,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         const val FILE_PROVIDER_AUTHORITY = "${BuildConfig.APPLICATION_ID}.fileprovider"
         private const val CAMERA_REQUEST = 52
         private const val PICK_REQUEST = 53
+        const val ACTION_NO_IMAGE = "NO_IMAGE"
         const val ACTION_NEXTGEN_EDIT = "action_nextgen_edit"
         const val PINCH_TEXT_SCALABLE_INTENT_KEY = "PINCH_TEXT_SCALABLE"
     }

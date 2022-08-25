@@ -37,4 +37,17 @@
             android:targetClass="com.github.cvzi.screenshottile.activities.NoDisplayActivity"
             android:targetPackage="com.github.cvzi.screenshottile" />
     </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher_photo_editor"
+        android:roundIcon="@mipmap/ic_launcher_photo_editor_round"
+        android:shortcutId="openPhotoEditor"
+        android:shortcutLongLabel="@string/notification_photo_editor_screenshot"
+        android:shortcutShortLabel="@string/notification_photo_editor_screenshot"
+        tools:targetApi="N_MR1">
+        <intent
+            android:action="NO_IMAGE"
+            android:targetClass="com.burhanrashid52.photoediting.EditImageActivity"
+            android:targetPackage="com.github.cvzi.screenshottile" />
+    </shortcut>
 </shortcuts>
