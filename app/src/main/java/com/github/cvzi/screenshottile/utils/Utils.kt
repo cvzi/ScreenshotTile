@@ -982,6 +982,7 @@ fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -
     CoroutineScope(Job() + Dispatchers.IO).launch(Dispatchers.IO) {
         try {
             val keepMax = keepMaxFiles ?: App.getInstance().prefManager.keepAppDataMax
+            Log.d(UTILSKT, "cleanUpAppData[keepMaxFiles=$keepMaxFiles, keepMax=$keepMax]")
             if (keepMax < 0) {
                 return@launch
             }
@@ -1008,7 +1009,7 @@ fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -
                 }
             }
         } catch (e: Exception) {
-            Log.e(UTILSKT, "cleanUpAppData", e)
+            Log.e(UTILSKT, "cleanUpAppData Error", e)
         }
     }
 }
