@@ -194,4 +194,7 @@
     <string name="msg_choose_image">选择图片</string>
     <string name="msg_image_saved">图片保存成功</string>
     <string name="msg_failed_to_save">保存图片失败</string>
+    <string name="dialog_ask_filename_title">另存为</string>
+    <string name="dialog_ask_filename_directory">选定的目录：</string>
+    <string name="dialog_ask_filename_hint">文件名称 (无扩展名)</string>
 </resources>
