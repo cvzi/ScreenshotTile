@@ -11,22 +11,22 @@ Se o app apresentar problemas no Android 9/Pie ou 10, você pode tentar "Usar o 
 ✓ Pode imediatamente compartilhar, editar ou excluir a Captura da tela via notificação
 ✓ Botão flutuante, tipo um balão do chat (Android 9+)
 ✓ Use como app de assistência para fazer uma captura de tela (toque longo no botão de início)
-✓ Capturas da tela de uma área específica (clique longo no botão)
+✓ Capturas da tela de uma área específica (toque longo no botão)
 ✓ Pode definir um atraso para cada Captura da tela
-✓ Salvar em qualquer pasta ou em qualquer tipo de armazenamento, por exemplo, cartãoSD
-✓ Salvar em diferentes formatos de arquivo: png, jpg ou webp
-✓ Fazer as Capturas automáticas via aplicativos como Tasker ou MacroDroid
-✓ Gratuito, de código livre e sem anúncios
+✓ Salve em qualquer pasta ou qualquer tipo de armazenamento, p.ex. cartão SD
+✓ Salve em diferentes formatos de arquivo: png, jpg ou webp
+✓ Faça as Capturas automáticas via apps como Tasker ou MacroDroid
+✓ Gratuito, de software livre e sem anúncios
 
-Este é um fork de "Screenshot Tile [Root]" que não requer o Root. Se você tiver acesso Root, deveria usar o <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">App original</a> de ipcjs, é mais rápido e mais estável que este fork.
+Esta é uma modificação do "Screenshot Tile [Root]" mas não exige privilégios root. Se você tiver acesso root, deveria usar o <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">app original</a> do ipcjs, é mais rápido e mais estável que esta modificação.
 
-Código fonte <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Código fonte: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 App original: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
 Sob a licença de código livre GNU GPLv3
 
-<u>Aviso:</u>
-🎦 Quando for fazer uma Captura da tela, o ícone de <b>"Google Cast"</b> aparecerá na barra superior do SO e será visível na imagem da tela capturada.
-Se você quiser esconder o ícone, há uma dica aqui: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+<u>Observação:</u>
+🎦 Quando for fazer uma Captura da tela, o ícone do <b>"Google Cast"</b> aparecerá na barra superior e será visível na imagem da tela capturada.
+Se você quiser esconder o ícone, aqui há uma dica: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
 
 <h2>Permissões:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Fotos/Mídia/Arquivos e Armazenamento"</i>
 Isto é necessário para salvar os arquivos de Captura da tela no armazenamento interno do seu dispositivo.
@@ -37,6 +37,6 @@ Desde o Android 9/Pie, esta permissão é necessária para fazer as Capturas. Is
 <h2>Capturas automáticas:</h2>Se você quiser automatizar as Capturas através de outro aplicativo, por exemplo, MacroDroid ou Tasker, você pode encontrar um tutorial passo-a-passo aqui:
 <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
 
-<h2>Ocultar o ícone do aplicativo:</h2>Em configurações do App, você pode retirar o ícone do aplicativo de lançador. No entanto pode acessar o App pressionando e segurando o botão em ajustes rápidos. Infelizmente, o Android 10 não permite mais ocultar nenhum aplicativo.
+<h2>Esconder o ícone do app:</h2>Em configurações do app, você pode esconder o ícone do aplicativo no lançador. No entanto você pode acessar o app via toque longo no botão em ajustes rápidos. Infelizmente, o Android 10 não permite mais esconder nenhum app.
 
 <h2>🌎 Suporte e traduções</h2>Se houver algum problema ou se quiser ajudar a traduzir este App para seu idioma, entre em contato comigo no <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> ou para contribuir com uma tradução visite o site <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
