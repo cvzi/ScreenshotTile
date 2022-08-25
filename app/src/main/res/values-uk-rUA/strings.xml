@@ -194,4 +194,7 @@
     <string name="msg_choose_image">Вибрати зображення</string>
     <string name="msg_image_saved">Зображення успішно збережено</string>
     <string name="msg_failed_to_save">Не вдалося зберегти зображення</string>
+    <string name="dialog_ask_filename_title">Зберегти як</string>
+    <string name="dialog_ask_filename_directory">Вибраний каталог:</string>
+    <string name="dialog_ask_filename_hint">Назва файлу (без розширення)</string>
 </resources>
