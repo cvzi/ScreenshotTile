@@ -53,12 +53,6 @@ open class SingleImage(
             uri: Uri,
             size: Size
         ): Bitmap {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                Log.e(
-                    TAG,
-                    "This seems to be broken from time to time in Android Tiramisu 33 resulting in a black image"
-                )
-            }
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 contentResolver.loadThumbnail(uri, size, null)
             } else {
@@ -73,12 +67,6 @@ open class SingleImage(
          * @throws IOException
          */
         fun loadBitmapFromDisk(contentResolver: ContentResolver, uri: Uri, mutable: Boolean?=null): Bitmap {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                Log.e(
-                    TAG,
-                    "This seems to be broken from time to time in Android Tiramisu 33 resulting in a black image"
-                )
-            }
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 val onHeaderListener = ImageDecoder.OnHeaderDecodedListener { decoder, _, _ ->
                     decoder.isMutableRequired = BuildConfig.DEBUG || mutable == true
