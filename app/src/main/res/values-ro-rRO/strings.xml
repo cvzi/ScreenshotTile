@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Decupator pentru capturi ecran</string>
     <string name="tile_label">Captură ecran</string>
+    <string name="tile_floating">Butonul de captură de ecran plutitor</string>
     <string name="tile_floating_label">Plutind pe ecran</string>
     <string name="tile_floating_subtitle">Buton Captură ecran</string>
     <string name="title_delay">Întârziere</string>
@@ -60,6 +61,25 @@
     <string name="notification_settings">Notificări</string>
     <string name="notification_settings_on">Activat</string>
     <string name="notification_settings_off">Dezactivat</string>
+    <string name="setting_post_actions">Acțiuni ulterioare</string>
+    <string name="setting_post_actions_description">Alegeți ce se întâmplă după ce a fost făcută captura de ecran</string>
+    <string name="button_history">Capturi de ecran recente</string>
+    <string name="button_history_description">Vizualizați capturile de ecran recente, inclusiv fișierele care nu au fost salvate în galerie</string>
+    <string name="history_title">Istoricul capturilor de ecran</string>
+    <string name="restore_default_values">Restabilirea valorilor implicite</string>
+    <string name="post_action_save_to_storage">Salvați imaginea în galerie</string>
+    <string name="post_action_show_toast">Afișați o notificare \"Toast\". O mică fereastră pop-up care dispare după 2 secunde</string>
+    <string name="post_action_show_notification">Afișați o notificare obișnuită. Puteți schimba butoanele (Editare, Partajare,...) de sub notificare la \"Mai multe setări\"</string>
+    <string name="post_action_empty">Nu deschideți captura de ecran</string>
+    <string name="post_action_open_in_post">Deschideți în vizualizarea \"Detalii\"</string>
+    <string name="post_action_open_in_post_crop">Decupați imaginea</string>
+    <string name="post_action_open_in_photo_editor">Deschideți editorul de fotografie inclus</string>
+    <string name="post_action_open_in_external_editor">Deschideți într-un editor foto extern</string>
+    <string name="post_action_open_in_external_viewer">Deschideți într-un vizualizator de fotografii sau în galerie</string>
+    <string name="post_action_open_share">Partajați captura de ecran</string>
+    <string name="move_to_storage_directory">Mutați în galerie</string>
+    <string name="button_clear">Ștergeți</string>
+    <string name="button_clear_confirm">Doriți să ștergeți toate fișierele temporare?\nAceasta va șterge toate fișierele din %s\n\n(Aceste fișiere nu sunt de obicei vizibile în galeria dumneavoastră)</string>
     <string name="file_title">Captură ecran</string>
     <string name="file_description">Captură de ecran efectuată pe %1$s</string>
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
@@ -79,6 +99,8 @@
     <string name="notification_edit_screenshot">Modifică</string>
     <string name="notification_rename_screenshot">Redenumiți</string>
     <string name="notification_screenshot_details">Detalii</string>
+    <string name="notification_crop_screenshot">Decupează</string>
+    <string name="notification_photo_editor_screenshot">Editor foto</string>
     <string name="screenshot_deleted">Captură ștearsă</string>
     <string name="screenshot_delete_failed">Stergerea fișierului a eșuat</string>
     <string name="screenshot_renamed">Fișier redenumit în %1s</string>
@@ -148,4 +170,31 @@
     <string name="post_save_a_suggestion">Salvați sugestia</string>
     <string name="post_pin_to_favorites">Puneți la favorite</string>
     <string name="post_delete_suggestion">Ștergeți sugestia</string>
+    <!-- Photo Editor-->
+    <string name="label_brush">Pensulă</string>
+    <string name="label_shape">Formă</string>
+    <string name="label_oval">Oval</string>
+    <string name="label_rectangle">Dreptunghi</string>
+    <string name="label_line">Linia</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Radieră</string>
+    <string name="label_eraser_mode">Modul Ștergere</string>
+    <string name="label_text">Text</string>
+    <string name="label_filter">Filtru</string>
+    <string name="label_adjust">Ajustați</string>
+    <string name="label_rotation">Rotație</string>
+    <string name="label_opacity">Opacitate</string>
+    <string name="label_done">Finalizat</string>
+    <string name="label_close">Închideți</string>
+    <string name="label_save">Salvaţi</string>
+    <string name="label_discard">Anulați</string>
+    <string name="msg_save_image">Doriți să ieșiți fără a salva imaginea?</string>
+    <string name="msg_save_image_to_share">Salvați imaginea pentru a o partaja</string>
+    <string name="msg_share_image">Distribuie imaginea</string>
+    <string name="msg_choose_image">Selectează o imagine</string>
+    <string name="msg_image_saved">Imagine salvata cu succes</string>
+    <string name="msg_failed_to_save">Nu s-a reușit salvarea imaginii</string>
+    <string name="dialog_ask_filename_title">Salvează ca</string>
+    <string name="dialog_ask_filename_directory">Director selectat:</string>
+    <string name="dialog_ask_filename_hint">Numele fișierului (fără extensie)</string>
 </resources>
