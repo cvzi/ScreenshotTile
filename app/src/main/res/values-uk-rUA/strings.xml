@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name_long" comment="app_name_long" maxLength="50">Screenshot Tile (NoRoot)</string>
+    <string name="app_name" maxLength="50">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Знімок екрана</string>
     <string name="tile_floating">Рухома кнопка знімку екрана</string>
     <string name="tile_floating_label">Рухома</string>
