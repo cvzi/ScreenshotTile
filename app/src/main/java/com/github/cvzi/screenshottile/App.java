@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
 import android.os.Build;
@@ -18,6 +19,7 @@ import android.os.StrictMode;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
 
@@ -30,6 +32,8 @@ import com.github.cvzi.screenshottile.services.FloatingTileService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
 import com.github.cvzi.screenshottile.utils.PrefManager;
+
+import java.lang.ref.WeakReference;
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -50,6 +54,7 @@ public class App extends Application {
     private final Handler handler = new Handler(Looper.getMainLooper());
     private PrefManager prefManager;
     private Runnable screenshotRunnable;
+    private WeakReference<Bitmap> lastScreenshot = null;
 
     public static App getInstance() {
         return instance;
@@ -57,6 +62,32 @@ public class App extends Application {
 
     public static Intent getScreenshotPermission() {
         return screenshotPermission;
+    }
+
+    /**
+     * Get the last bitmap and remove the weak reference
+     *
+     * @return last bitmap or null
+     */
+    public @Nullable Bitmap getLastScreenshot() {
+        if (lastScreenshot != null) {
+            Bitmap tmp = lastScreenshot.get();
+            lastScreenshot = null;
+            return tmp;
+        }
+        return null;
+    }
+
+    /**
+     * Set the last bitmap
+     * @param lastScreenshot The last bitmap or null to remove reference
+     */
+    public void setLastScreenshot(@Nullable Bitmap lastScreenshot) {
+        if (lastScreenshot != null) {
+            this.lastScreenshot = new WeakReference<Bitmap>(lastScreenshot);
+        } else {
+            this.lastScreenshot = null;
+        }
     }
 
     /**

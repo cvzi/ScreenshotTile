@@ -44,6 +44,20 @@ class PostCropActivity : GenericPostActivity() {
             return intent
         }
 
+        /**
+         * New Intent that opens a single image for cropping and tries to read the last bitmap
+         *
+         * @param context    Context
+         * @param uri   Uri   of image
+         * @return The intent
+         */
+        fun newIntentSingleImageBitmap(context: Context, uri: Uri): Intent {
+            val intent = Intent(context, PostCropActivity::class.java)
+            intent.action = OPEN_IMAGE_FROM_URI
+            intent.setDataAndNormalize(uri)
+            intent.putExtra(BITMAP_FROM_LAST_SCREENSHOT, true)
+            return intent
+        }
     }
 
     private lateinit var layoutView: ConstraintLayout
@@ -74,10 +88,16 @@ class PostCropActivity : GenericPostActivity() {
         statusTextView.text = ""
 
         when (intent.action) {
-            Intent.ACTION_SEND, Intent.ACTION_EDIT, ACTION_NEXTGEN_EDIT -> {
+            Intent.ACTION_SEND, Intent.ACTION_EDIT, ACTION_NEXTGEN_EDIT, OPEN_IMAGE_FROM_URI -> {
                 val uri = intent.data ?: intent.clipData?.getItemAt(0)?.uri
+                val tryLastBitmap = intent.getBooleanExtra(BITMAP_FROM_LAST_SCREENSHOT, false)
+                val lastBitmap = if (tryLastBitmap) {
+                    App.getInstance().lastScreenshot
+                } else {
+                    null
+                }
                 uri?.let {
-                    openImageFromUri(it)
+                    openImageFromUri(it, lastBitmap)
                 }
             }
             else -> {
@@ -131,9 +151,9 @@ class PostCropActivity : GenericPostActivity() {
     }
 
 
-    private fun openImageFromUri(imageUri: Uri) {
+    private fun openImageFromUri(imageUri: Uri, bitmap: Bitmap? = null) {
         SingleImage(imageUri).apply {
-            loadImageInThread(contentResolver, null, { singleImageLoaded ->
+            loadImageInThread(contentResolver, null, bitmap, { singleImageLoaded ->
                 runOnUiThread {
                     singleImage = singleImageLoaded
                     loadScreenshotSelectorView(singleImageLoaded)

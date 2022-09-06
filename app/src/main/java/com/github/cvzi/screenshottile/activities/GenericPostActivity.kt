@@ -21,6 +21,9 @@ import java.util.*
 open class GenericPostActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "GenericPostActivity"
+        const val OPEN_IMAGE_FROM_URI = "com.github.cvzi.screenshottile.OPEN_IMAGE_FROM_URI"
+        const val BITMAP_FROM_LAST_SCREENSHOT =
+            "com.github.cvzi.screenshottile.BITMAP_FROM_LAST_SCREENSHOT"
     }
 
     var singleImage: SingleImageLoaded? = null

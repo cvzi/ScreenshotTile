@@ -274,7 +274,13 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                     )
                 }
                 prefManager.screenshotCount++
-                handlePostScreenshot(context, postScreenshotActions, result.uri, result.mimeType)
+                handlePostScreenshot(
+                    context,
+                    postScreenshotActions,
+                    result.uri,
+                    result.mimeType,
+                    result.bitmap
+                )
             }
             result.file != null -> {
                 // Legacy behaviour until Android P, works with the real file path
@@ -296,7 +302,13 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                     result.mimeType
                 )
                 prefManager.screenshotCount++
-                handlePostScreenshot(context, postScreenshotActions, uri, result.mimeType)
+                handlePostScreenshot(
+                    context,
+                    postScreenshotActions,
+                    uri,
+                    result.mimeType,
+                    result.bitmap
+                )
             }
             else -> {
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")

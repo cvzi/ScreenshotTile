@@ -35,6 +35,12 @@ class PostActivity : GenericPostActivity() {
             return intent
         }
 
+        fun newIntentSingleImageBitmap(context: Context, uri: Uri): Intent {
+            val intent = Intent(context, PostActivity::class.java)
+            intent.putExtra(NOTIFICATION_ACTION_RENAME_INPUT, uri.toString())
+            intent.putExtra(BITMAP_FROM_LAST_SCREENSHOT, true)
+            return intent
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -44,23 +50,34 @@ class PostActivity : GenericPostActivity() {
 
         intent?.run {
             val imagePath = getStringExtra(NOTIFICATION_ACTION_RENAME_INPUT)
+            val tryLastBitmap = getBooleanExtra(BITMAP_FROM_LAST_SCREENSHOT, false)
+            val lastBitmap = if (tryLastBitmap) {
+                App.getInstance().lastScreenshot
+            } else {
+                null
+            }
             if (imagePath?.isNotBlank() == true) {
                 Uri.parse(imagePath)?.let { imageUri ->
                     SingleImage(imageUri).apply {
-                        loadImageInThread(contentResolver, Size(200, 400), { singleImageLoaded ->
-                            runOnUiThread {
-                                singleImage = singleImageLoaded
-                                showSingleImage(singleImageLoaded)
-                            }
-                        }, { error ->
-                            runOnUiThread {
-                                Log.e(TAG, "Failed to load image: $error")
-                                findViewById<ImageView>(R.id.imageView).setImageResource(android.R.drawable.stat_notify_error)
-                                findViewById<TextView>(R.id.textViewFileName).text =
-                                    "Failed to load image"
-                                findViewById<TextView>(R.id.textViewFileSize).text = ""
-                            }
-                        })
+                        loadImageInThread(
+                            contentResolver,
+                            Size(200, 400),
+                            lastBitmap,
+                            { singleImageLoaded ->
+                                runOnUiThread {
+                                    singleImage = singleImageLoaded
+                                    showSingleImage(singleImageLoaded)
+                                }
+                            },
+                            { error ->
+                                runOnUiThread {
+                                    Log.e(TAG, "Failed to load image: $error")
+                                    findViewById<ImageView>(R.id.imageView).setImageResource(android.R.drawable.stat_notify_error)
+                                    findViewById<TextView>(R.id.textViewFileName).text =
+                                        "Failed to load image"
+                                    findViewById<TextView>(R.id.textViewFileSize).text = ""
+                                }
+                            })
                     }
                 }
             }

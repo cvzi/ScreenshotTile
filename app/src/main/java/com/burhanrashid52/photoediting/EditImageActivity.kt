@@ -46,6 +46,8 @@ import com.burhanrashid52.photoediting.tools.ToolType
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.activities.GenericPostActivity
+import com.github.cvzi.screenshottile.activities.GenericPostActivity.Companion.OPEN_IMAGE_FROM_URI
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.SaveImageResultSuccess
 import com.github.cvzi.screenshottile.utils.SingleImage.Companion.loadBitmapFromDisk
@@ -149,10 +151,17 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
             return true
         }
         when (intent.action) {
-            Intent.ACTION_SEND, Intent.ACTION_EDIT, ACTION_NEXTGEN_EDIT -> {
+            Intent.ACTION_SEND, Intent.ACTION_EDIT, ACTION_NEXTGEN_EDIT, OPEN_IMAGE_FROM_URI -> {
                 val uri = intent.data ?: intent.clipData?.getItemAt(0)?.uri ?: return false
+                val tryLastBitmap =
+                    intent.getBooleanExtra(GenericPostActivity.BITMAP_FROM_LAST_SCREENSHOT, false)
+                val lastBitmap = if (tryLastBitmap) {
+                    App.getInstance().lastScreenshot
+                } else {
+                    null
+                }
                 try {
-                    val bitmap = loadBitmapFromDisk(contentResolver, uri, true)
+                    val bitmap = lastBitmap ?: loadBitmapFromDisk(contentResolver, uri, true)
                     source?.setImageBitmap(bitmap)
                     return true
                 } catch (e: IOException) {

@@ -90,12 +90,13 @@ open class SingleImage(
     fun loadImageInThread(
         contentResolver: ContentResolver,
         dimensions: Size?,
+        bitmap: Bitmap?,
         onLoad: ((SingleImageLoaded) -> Unit),
         onError: (Exception?) -> Unit
     ) {
         Thread {
             try {
-                onLoad(loadImage(contentResolver, dimensions))
+                onLoad(loadImage(contentResolver, dimensions, bitmap))
             } catch (e: Exception) {
                 onError(e)
             }
@@ -108,17 +109,26 @@ open class SingleImage(
      */
     fun loadImage(
         contentResolver: ContentResolver,
-        dimensions: Size?
+        dimensions: Size?,
+        bitmap: Bitmap? = null
     ): SingleImageLoaded {
         if (BuildConfig.DEBUG) Log.v(TAG, "loadImage() from: $uri")
         var displayName: String? = null
         var mime: String? = null
         var size: Long? = null
         var date: Date? = null
-        val bm = if (dimensions != null && dimensions.height > 0 && dimensions.width > 0) {
-            loadThumbnailFromDisk(contentResolver, uri, dimensions)
+        val bm = if (bitmap != null) {
+            if (dimensions != null && dimensions.height > 0 && dimensions.width > 0) {
+                Bitmap.createScaledBitmap(bitmap, dimensions.width, dimensions.height, true)
+            } else {
+                bitmap
+            }
         } else {
-            loadBitmapFromDisk(contentResolver, uri)
+            if (dimensions != null && dimensions.height > 0 && dimensions.width > 0) {
+                loadThumbnailFromDisk(contentResolver, uri, dimensions)
+            } else {
+                loadBitmapFromDisk(contentResolver, uri)
+            }
         }
 
         contentResolver.query(uri, null, null, null, null)?.apply {

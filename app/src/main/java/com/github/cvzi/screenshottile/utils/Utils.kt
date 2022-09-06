@@ -36,6 +36,7 @@ import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.activities.GenericPostActivity
 import com.github.cvzi.screenshottile.activities.PostActivity
 import com.github.cvzi.screenshottile.activities.PostCropActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
@@ -237,7 +238,15 @@ fun createOutputStream(
     directory: String?
 ): OutputStreamResult {
     return if (useAppData || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-        createOutputStreamLegacy(context, fileTitle, compressionOptions, date, dim, useAppData, directory)
+        createOutputStreamLegacy(
+            context,
+            fileTitle,
+            compressionOptions,
+            date,
+            dim,
+            useAppData,
+            directory
+        )
     } else {
         createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim, directory)
     }
@@ -268,7 +277,14 @@ fun createOutputStreamLegacy(
         imageFile = createAppDataImageFile(context, filename)
     } else if (customDirectory != null) {
         if (customDirectory.startsWith("content://")) {
-            return createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim, customDirectory)
+            return createOutputStreamMediaStore(
+                context,
+                fileTitle,
+                compressionOptions,
+                date,
+                dim,
+                customDirectory
+            )
         } else if (customDirectory.startsWith("file://")) {
             imageFile = File(customDirectory.substring(7), filename)
         }
@@ -650,7 +666,15 @@ fun saveImageToFile(
     val bitmap = imageToBitmap(image, cutOutRect)
     image.close()
 
-    return saveBitmapToFile(context, bitmap, fileNamePattern, compressionOptions, null, useAppData, directory)
+    return saveBitmapToFile(
+        context,
+        bitmap,
+        fileNamePattern,
+        compressionOptions,
+        null,
+        useAppData,
+        directory
+    )
 }
 
 
@@ -917,26 +941,33 @@ fun handlePostScreenshot(
     context: Context,
     postScreenshotActions: ArrayList<String>,
     uri: Uri,
-    mimeType: String? = null
+    mimeType: String? = null,
+    fullBitmap: Bitmap? = null
 ) {
+    val app = App.getInstance()
+    app.lastScreenshot = null
     when {
         "openInPost" in postScreenshotActions -> {
+            app.lastScreenshot = fullBitmap
             App.getInstance().startActivityAndCollapse(
                 context,
-                PostActivity.newIntentSingleImage(context, uri)
+                PostActivity.newIntentSingleImageBitmap(context, uri)
             )
         }
         "openInPostCrop" in postScreenshotActions -> {
+            app.lastScreenshot = fullBitmap
             App.getInstance().startActivityAndCollapse(
                 context,
-                PostCropActivity.newIntentSingleImage(context, uri)
+                PostCropActivity.newIntentSingleImageBitmap(context, uri)
             )
         }
         "openInPhotoEditor" in postScreenshotActions -> {
+            app.lastScreenshot = fullBitmap
             App.getInstance().startActivityAndCollapse(
                 context,
                 Intent(context, EditImageActivity::class.java).apply {
                     action = Intent.ACTION_EDIT
+                    putExtra(GenericPostActivity.BITMAP_FROM_LAST_SCREENSHOT, true)
                     setDataAndNormalize(uri)
                 })
         }

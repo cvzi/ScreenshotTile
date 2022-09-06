@@ -600,7 +600,13 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     )
                 }
                 App.getInstance().prefManager.screenshotCount++
-                handlePostScreenshot(this, postScreenshotActions, result.uri, result.mimeType)
+                handlePostScreenshot(
+                    this,
+                    postScreenshotActions,
+                    result.uri,
+                    result.mimeType,
+                    result.bitmap
+                )
             }
             result.file != null -> {
                 // Legacy behaviour until Android P, works with the real file path
@@ -624,7 +630,13 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     )
                 }
                 App.getInstance().prefManager.screenshotCount++
-                handlePostScreenshot(this, postScreenshotActions, uri, result.mimeType)
+                handlePostScreenshot(
+                    this,
+                    postScreenshotActions,
+                    uri,
+                    result.mimeType,
+                    result.bitmap
+                )
             }
             else -> {
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")
