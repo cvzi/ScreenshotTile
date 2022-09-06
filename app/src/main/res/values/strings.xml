@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Screenshot</string>
     <string name="tile_floating">Floating Screenshot Button</string>
     <string name="tile_floating_label">Floating</string>

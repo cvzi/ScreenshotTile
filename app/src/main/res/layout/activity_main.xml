@@ -36,7 +36,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="start"
-                            android:text="@string/app_name"
+                            android:text="@string/app_name_long"
                             android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
                         <RelativeLayout
