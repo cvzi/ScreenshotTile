@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="app_name_long" comment="app_name_long" maxLength="50">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Captura de pantalla</string>
     <string name="tile_floating">Botón flotante de captura de pantalla</string>
     <string name="tile_floating_label">Botón Flotante</string>

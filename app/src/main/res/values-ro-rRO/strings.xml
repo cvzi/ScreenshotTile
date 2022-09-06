@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Decupator pentru capturi ecran</string>
+    <string name="app_name_long" comment="app_name_long" maxLength="50">Decupator pentru capturi ecran</string>
     <string name="tile_label">Captură ecran</string>
     <string name="tile_floating">Butonul de captură de ecran plutitor</string>
     <string name="tile_floating_label">Plutind pe ecran</string>
