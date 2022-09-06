@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="app_name_long" comment="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Screenshot</string>
     <string name="tile_floating">Schwebender Screenshot Button</string>
     <string name="tile_floating_label">Schwebender</string>
