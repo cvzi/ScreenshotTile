@@ -41,6 +41,8 @@ android {
         debug {
             applicationIdSuffix '.debug'
             versionNameSuffix '.debug'
+            minifyEnabled false
+            shrinkResources false
         }
     }
     productFlavors {
