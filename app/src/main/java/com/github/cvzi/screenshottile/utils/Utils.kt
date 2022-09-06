@@ -286,11 +286,11 @@ fun createOutputStreamLegacy(
             UTILSKT,
             "createOutputStreamLegacy() Could not createNewFile() ${imageFile.absolutePath} $e"
         )
-        val directory =
+        val externalDirectory =
             context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        imageFile = File(directory, imageFile.name)
+        imageFile = File(externalDirectory, imageFile.name)
         try {
-            directory?.mkdirs()
+            externalDirectory?.mkdirs()
             imageFile.createNewFile()
             if (BuildConfig.DEBUG) Log.v(
                 UTILSKT,
