@@ -25,6 +25,13 @@
                 android:text="@string/history_title"
                 android:textAppearance="@android:style/TextAppearance.Material.Body2" />
 
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchKeepHistory"
+                android:text="@string/notification_settings_on"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/setting_keep_screenshot_history_summary" />
+
             <Button
                 android:id="@+id/buttonClear"
                 android:layout_width="wrap_content"

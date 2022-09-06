@@ -4,6 +4,7 @@ package com.github.cvzi.screenshottile.activities
 import android.annotation.SuppressLint
 import android.icu.text.DateFormat
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -23,7 +24,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.*
+import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -48,6 +51,16 @@ class HistoryActivity : AppCompatActivity() {
             clear()
         }
 
+        findViewById<SwitchMaterial>(R.id.switchKeepHistory).setOnCheckedChangeListener { v, isChecked ->
+            val prefManager = App.getInstance().prefManager
+            if (isChecked != prefManager.keepScreenshotHistory) {
+                v.setText(if (isChecked) R.string.notification_settings_on else R.string.notification_settings_off)
+                prefManager.keepScreenshotHistory = isChecked
+                if (!isChecked) {
+                    clear()
+                }
+            }
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -87,6 +100,8 @@ class HistoryActivity : AppCompatActivity() {
             Log.v(TAG, "Click on history item: $record $view")
         }
         recyclerView.adapter = adapter
+
+        findViewById<SwitchMaterial>(R.id.switchKeepHistory).isChecked = App.getInstance().prefManager.keepScreenshotHistory
     }
 
     private fun loadImageList(): ArrayList<SingleImage> {

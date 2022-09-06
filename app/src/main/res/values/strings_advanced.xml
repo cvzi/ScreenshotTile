@@ -57,4 +57,10 @@
     <string name="setting_keep_app_data_max" translatable="false">Max number of screenshots to keep in Android/data/ folder:</string>
     <string name="setting_keep_app_data_max_summary" translatable="false">%d (Default: 30)\n%s</string>
     <string name="setting_keep_app_data_max_dialog" translatable="false">Max number of screenshots to keep in Android/data/ folder:\n-1 means keep unlimited.\nDefault value 30.</string>
+
+    <string name="pref_key_keep_screenshot_history" translatable="false">keep_screenshot_history</string>
+    <bool name="pref_keep_screenshot_history_default">true</bool>
+    <string name="setting_keep_screenshot_history" translatable="false">Keep a history of screenshots</string>
+    <string name="setting_keep_screenshot_history_summary" translatable="false">Store a list of recent screenshots</string>
+
 </resources>

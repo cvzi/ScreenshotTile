@@ -581,6 +581,7 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         }
 
     fun screenshotHistoryAdd(item: ScreenshotHistoryItem) {
+        if (!keepScreenshotHistory) return
         val t = screenshotHistory
         t.add(item)
         screenshotHistory = t
@@ -607,4 +608,12 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             context.getString(R.string.pref_key_keep_app_data_max),
             value.toString()
         ).apply()
+
+    var keepScreenshotHistory: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_keep_screenshot_history), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_keep_screenshot_history),
+            value
+        ).apply()
+
 }
