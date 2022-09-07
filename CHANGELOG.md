@@ -1,11 +1,12 @@
 # Changelog
 
-## 2.0.0-beta4
+## 2.0.0-beta5
 *   Included [PhotoEditor](https://github.com/burhanrashid52/PhotoEditor) by [Burhanuddin Rashid](https://github.com/burhanrashid52)
 *   Crop image after a screenshot was taken
 *   Choose what happens after a screenshot was taken
 *   Directly open or edit a screenshot (without storing in the gallery)
 *   Overview of recent screenshots
+*   Screenshot history (can be turned off)
 
 ## 1.18.5
 *   Translations updated from crowdin
