@@ -53,6 +53,7 @@
     <string name="notification_settings">Bildirimler</string>
     <string name="notification_settings_on">etkinleştirildi</string>
     <string name="notification_settings_off">etkinleştirildi</string>
+    <string name="post_action_open_in_photo_editor">Dahili fotoğraf düzenleyicisini aç</string>
     <string name="file_title">Ekran görüntüsü</string>
     <string name="file_description">Ekran görüntüsü %1$s çekildi</string>
     <string name="notification_title">Ekran görüntüsü alındı</string>
