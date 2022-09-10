@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ekran görüntüsü döşemesi (NoRoot)</string>
+    <string name="app_name" maxLength="50">Ekran görüntüsü döşemesi</string>
+    <string name="app_name_long">Ekran görüntüsü döşemesi (NoRoot)</string>
     <string name="tile_label">Ekran görüntüsü</string>
     <string name="tile_floating">Yüzen Pencere Ekran Görüntü düğmesi</string>
     <string name="tile_floating_label">Yüzen Pencere</string>
@@ -45,15 +46,37 @@
     <string name="setting_broadcast_secret_description">Başka uygulamalar Gizli ifadeye izin ver ekran resimleri almak için</string>
     <string name="setting_storage_directory">Kaydetme lokasyonu</string>
     <string name="setting_storage_directory_description">Ekran görüntüsü kaydetme dosyası</string>
+    <string name="setting_file_name_pattern">Dosya adı</string>
+    <string name="setting_file_name_placeholders_title">Bu yer tutucuları dosya adında kullanın</string>
     <string name="setting_tile_action">Döşeme Eylemi</string>
+    <string name="setting_floating_action">Yüzen buton eylemi</string>
+    <string name="setting_voice_interaction_action">Asistan eylemi</string>
     <string name="setting_dark_theme">Karanlık tema</string>
     <string name="setting_dark_theme_system">Sistem</string>
     <string name="setting_dark_theme_off">Devre dışı</string>
     <string name="setting_dark_theme_on">etkinleştirildi</string>
+    <string name="setting_notification_buttons">Bildirim butonları</string>
+    <string name="setting_notification_buttons_max_three">Lütfen en fazla 3 buton seçin</string>
     <string name="notification_settings">Bildirimler</string>
     <string name="notification_settings_on">etkinleştirildi</string>
     <string name="notification_settings_off">etkinleştirildi</string>
+    <string name="setting_post_actions">sonraki eylem</string>
+    <string name="setting_post_actions_description">Ekran görüntüsü alındıktan sonra ne olacağını seçin</string>
+    <string name="button_history">Son ekran görüntüleri</string>
+    <string name="history_title">Ekran görüntüsü geçmişi</string>
+    <string name="restore_default_values">Varsayılan değerleri geri yükle</string>
+    <string name="post_action_save_to_storage">Resmi galeriye kaydet</string>
+    <string name="post_action_show_toast">Bir \"Toast\" bildirimi göster . 2 saniye sonra kaybolan küçük bir açılır-pencere</string>
+    <string name="post_action_empty">Ekran görüntüsünü açma</string>
+    <string name="post_action_open_in_post">\"Detaylar\" görünümünde aç</string>
+    <string name="post_action_open_in_post_crop">Resmi kırp</string>
     <string name="post_action_open_in_photo_editor">Dahili fotoğraf düzenleyicisini aç</string>
+    <string name="post_action_open_in_external_editor">Harici bir fotoğraf düzenleyicisinde aç</string>
+    <string name="post_action_open_in_external_viewer">Bir fotoğraf görüntüleyicisinde veya galeride aç</string>
+    <string name="post_action_open_share">Ekran görüntüsünü paylaş</string>
+    <string name="move_to_storage_directory">Galeriye taşı</string>
+    <string name="button_clear">Temizle</string>
+    <string name="button_clear_confirm">Tüm geçici dosyaları silmek istiyor musunuz?\nBu %s klasöründeki tüm dosyaları silecektir\n\n(Bu dosyalar genellikle galerinizde görünmez)</string>
     <string name="file_title">Ekran görüntüsü</string>
     <string name="file_description">Ekran görüntüsü %1$s çekildi</string>
     <string name="notification_title">Ekran görüntüsü alındı</string>
@@ -70,8 +93,14 @@
     <string name="notification_delete_screenshot">Sil</string>
     <string name="notification_share_screenshot">Paylaş</string>
     <string name="notification_edit_screenshot">Düzenle</string>
+    <string name="notification_rename_screenshot">Yeniden adlandır</string>
+    <string name="notification_screenshot_details">Detaylar</string>
+    <string name="notification_crop_screenshot">Kırp</string>
+    <string name="notification_photo_editor_screenshot">Fotoğraf Düzenleyicisi</string>
     <string name="screenshot_deleted">Ekran görüntüsü silindi</string>
     <string name="screenshot_delete_failed">Dosya silinemedi</string>
+    <string name="screenshot_renamed">Dosya %1s olarak yeniden adlandırıldı</string>
+    <string name="screenshot_rename_failed">Dosya yeniden adlandırılamadı</string>
     <string name="permission_missing_external_storage">Depolamadan izin alınmadı </string>
     <string name="permission_missing_screen_capture">Ekran kaydetme yaklamada izin almada hataya düşüldü</string>
     <string name="hide_app_from_launcher">uygulama ikonu başlatıcıdan gizle</string>
@@ -85,9 +114,15 @@
     <string name="tutorial_step5">Yeni ekran resmi butonu bul</string>
     <string name="tutorial_step6">Bu butonu ayarlarda sürükle</string>
     <string name="tutorial_step8">Hızlı ayarları kapatın</string>
+    <string name="tutorial_step10">Bildirim bölgesini çekin</string>
     <string name="tutorial_step11">İzinleri kabul edin</string>
     <string name="tutorial_step16">Ekran resmi yeni butonla çek</string>
+    <string name="take_screenshot">Ekran görüntüsü al</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_line_1">Bu uygulama - “Screenshot Tile [No root]“ - bir erişilebilirlik aracı değildir.</string>
+    <string name="googleplay_consent_line_4">Erişilebilirlik Hizmeti API\'sine verilecek erişim bu uygulamanın ekran kaydetmesine izin verir.</string>
+    <string name="googleplay_consent_yes">Kabul ediyorum</string>
+    <string name="googleplay_consent_no">Reddediyorum</string>
     <!-- About -->
     <string name="about_app_title">Hakkında</string>
     <string name="about_app_1">Bu bir\ngithub.com/ipcjs/ScreenshotTile çatalıdır</string>
@@ -95,6 +130,10 @@
     <string name="about_license_title">Lisans</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">Bu uygulamanın bazı hataları var ve şuan bakımda. Eğer root giriş iznin varsa telefonunda, lütfen ipcjs versiyonu kullan , daha güvenilir ve daha hızlı.</string>
+    <string name="about_privacy_title">Gizlilik Politikası</string>
+    <string name="about_open_source_title">Kullanılan açık kaynak(lar)</string>
+    <string name="about_advanced_settings_button">Gelişmiş ayarlar</string>
+    <string name="about_update_check_button">Güncellemeleri denetle</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Erişilebilirlik ayarları</string>
     <string name="main_floating_button_title">Yüzen buton</string>
@@ -107,4 +146,6 @@
     <string name="main_long_press_text">Karo/butonu uzun basarsanız menu açar. Ekran resmi alma için erteleme koyabilirsiniz yada ekrandan dikdörtgen şekli kesebilirsiniz.</string>
     <string name="main_assist_app_title">Yardım uygulaması</string>
     <!-- Post edit activity -->
+    <string name="post_button_save">Yeniden adlandır</string>
+    <!-- Photo Editor-->
 </resources>
