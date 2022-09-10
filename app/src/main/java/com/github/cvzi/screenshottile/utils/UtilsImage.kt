@@ -113,7 +113,7 @@ fun addImageToGallery(
     filepath: String,
     title: String,
     description: String,
-    mimeType: String = "image/png",
+    mimeType: String,
     date: Date,
     dim: Point
 ): Uri? {

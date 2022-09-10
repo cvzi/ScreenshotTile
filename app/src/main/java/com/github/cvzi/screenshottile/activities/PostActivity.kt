@@ -93,6 +93,17 @@ class PostActivity : GenericPostActivity() {
                 openIntent(intent)
             }
         }
+        findViewById<Button>(R.id.buttonPhotoEditor).setOnClickListener {
+            photoEditorIntent?.let { intent ->
+                openIntent(intent)
+            }
+        }
+        findViewById<Button>(R.id.buttonCrop).setOnClickListener {
+            cropIntent?.let { intent ->
+                openIntent(intent)
+            }
+        }
+
         findViewById<Button>(R.id.buttonDelete).setOnClickListener {
             singleImage?.let { singleImageLoaded ->
                 if (deleteImage(this, singleImageLoaded.uri)) {

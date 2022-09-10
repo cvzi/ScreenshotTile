@@ -33,13 +33,30 @@ class SingleImageLoaded(
 open class SingleImage(
     val uri: Uri,
     val file: File? = null,
-    val folder: String? = null,
+    var folder: String? = null,
     open val lastModified: Date? = null,
     val isAppData: Boolean = false
 ) {
     open val fileName: String? = null
     open val mimeType: String? = null
     open val bitmap: Bitmap? = null
+
+    init {
+        folder = folder ?: file?.parentFile?.absolutePath
+        if (folder == null) {
+            uri.pathSegments?.let { segments ->
+                val index = segments.indexOf("document")
+                val shortened =
+                    if (segments[0] == "tree" && index > 0 && index < segments.size - 1) {
+                        segments.slice(index + 1 until segments.size)
+                    } else {
+                        segments.slice(0 until segments.size - 1)
+                    }
+                folder = shortened.joinToString("/").removePrefix("primary:")
+            }
+        }
+        folder = folder ?: uri.path ?: uri.toString()
+    }
 
     companion object {
         private const val TAG = "SingleImage"
@@ -66,7 +83,11 @@ open class SingleImage(
          * @throws FileNotFoundException
          * @throws IOException
          */
-        fun loadBitmapFromDisk(contentResolver: ContentResolver, uri: Uri, mutable: Boolean?=null): Bitmap {
+        fun loadBitmapFromDisk(
+            contentResolver: ContentResolver,
+            uri: Uri,
+            mutable: Boolean? = null
+        ): Bitmap {
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 val onHeaderListener = ImageDecoder.OnHeaderDecodedListener { decoder, _, _ ->
                     decoder.isMutableRequired = BuildConfig.DEBUG || mutable == true
@@ -208,7 +229,7 @@ open class SingleImage(
             }
         }
 
-        val mimeType = mime ?: "image/png"
+        val mimeType = mime ?: "image/*"
 
         val (fileName, _) = fileNameFileTitle(
             displayName ?: "unknown",
@@ -222,7 +243,7 @@ open class SingleImage(
             lastModified = date ?: lastModified ?: Date(),
             size = size,
             file = file,
-            folder = folder,
+            folder = folder?.removeSuffix(fileName),
             isAppData = isAppData
         )
     }

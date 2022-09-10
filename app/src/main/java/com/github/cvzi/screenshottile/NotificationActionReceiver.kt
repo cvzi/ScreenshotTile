@@ -192,9 +192,10 @@ class NotificationActionReceiver : BroadcastReceiver() {
                         Log.e(TAG, "NOTIFICATION_ACTION_CROP path is null")
                         return
                     }
+                    val mimeType = intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE)
                     App.getInstance().startActivityAndCollapse(
                         this,
-                        PostCropActivity.newIntentSingleImage(context, path)
+                        PostCropActivity.newIntentSingleImage(context, path, mimeType)
                     )
                 }
 
@@ -205,11 +206,12 @@ class NotificationActionReceiver : BroadcastReceiver() {
                         Log.e(TAG, "NOTIFICATION_ACTION_PHOTO_EDITOR path is null")
                         return
                     }
+                    val mimeType = intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE)
                     App.getInstance().startActivityAndCollapse(
                         this,
                         Intent(context, EditImageActivity::class.java).apply {
                             action = Intent.ACTION_EDIT
-                            setDataAndNormalize(path)
+                            setDataAndTypeAndNormalize(path, mimeType)
                         })
                 }
 

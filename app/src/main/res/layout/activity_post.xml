@@ -59,6 +59,16 @@
                         android:layout_gravity="end"
                         android:text=""
                         android:textAlignment="textEnd" />
+
+                    <TextView
+                        android:id="@+id/textViewFileFolder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:text=""
+                        android:textAlignment="textStart" />
+
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -71,32 +81,61 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/buttonShare"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/notification_share_screenshot" />
+                        android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/buttonEdit"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/buttonShare"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/notification_share_screenshot" />
+
+                        <Button
+                            android:id="@+id/buttonEdit"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/notification_edit_screenshot" />
+
+                        <Button
+                            android:id="@+id/buttonDelete"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/notification_delete_screenshot" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/notification_edit_screenshot" />
+                        android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/buttonDelete"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/notification_delete_screenshot" />
+                        <Button
+                            android:id="@+id/buttonPhotoEditor"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/notification_photo_editor_screenshot" />
 
+                        <Button
+                            android:id="@+id/buttonCrop"
+                            style="?android:attr/buttonBarButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/notification_crop_screenshot" />
+
+                    </LinearLayout>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

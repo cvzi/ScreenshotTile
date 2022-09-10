@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.PostActivity.Companion.newIntentSingleImage
@@ -29,6 +30,8 @@ open class GenericPostActivity : AppCompatActivity() {
     var singleImage: SingleImageLoaded? = null
     var shareIntent: Intent? = null
     var editIntent: Intent? = null
+    var photoEditorIntent: Intent? = null
+    var cropIntent: Intent? = null
     var suggestions: ArrayList<FileNameSuggestion> = ArrayList()
     protected var savedInstanceState: Bundle? = null
 
@@ -75,9 +78,19 @@ open class GenericPostActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.textViewFileSize).text = singleImage.size?.let {
             android.text.format.Formatter.formatShortFileSize(this, it)
         } ?: ""
+        findViewById<TextView>(R.id.textViewFileFolder).text =
+            singleImage.folder ?: singleImage.file?.parentFile?.absolutePath ?: singleImage.uri.path
+                    ?: ""
         findViewById<EditText>(R.id.editTextNewName).setText(singleImage.fileName)
         shareIntent = shareImageChooserIntent(this, singleImage.uri, singleImage.mimeType)
         editIntent = editImageChooserIntent(this, singleImage.uri, singleImage.mimeType)
+        cropIntent =
+            PostCropActivity.newIntentSingleImage(this, singleImage.uri, singleImage.mimeType)
+        photoEditorIntent = Intent(this, EditImageActivity::class.java).apply {
+            action = Intent.ACTION_EDIT
+            setDataAndTypeAndNormalize(singleImage.uri, singleImage.mimeType)
+        }
+
         findViewById<TextView>(R.id.textViewDateIso).text =
             SimpleDateFormat(
                 "yyyy-MM-dd'T'HH:mm:ss'Z'",

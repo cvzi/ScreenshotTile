@@ -119,7 +119,6 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.github.cvzi.screenshottile.activities.PostActivity"
-            android:excludeFromRecents="true"
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity

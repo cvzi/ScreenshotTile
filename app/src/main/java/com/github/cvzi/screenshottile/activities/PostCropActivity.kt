@@ -37,10 +37,10 @@ class PostCropActivity : GenericPostActivity() {
          * @param uri   Uri   of image
          * @return The intent
          */
-        fun newIntentSingleImage(context: Context, uri: Uri): Intent {
+        fun newIntentSingleImage(context: Context, uri: Uri, mimeType: String? = null): Intent {
             val intent = Intent(context, PostCropActivity::class.java)
             intent.action = Intent.ACTION_EDIT
-            intent.setDataAndNormalize(uri)
+            intent.setDataAndTypeAndNormalize(uri, mimeType ?: "image/*")
             return intent
         }
 
@@ -51,10 +51,10 @@ class PostCropActivity : GenericPostActivity() {
          * @param uri   Uri   of image
          * @return The intent
          */
-        fun newIntentSingleImageBitmap(context: Context, uri: Uri): Intent {
+        fun newIntentSingleImageBitmap(context: Context, uri: Uri, mimeType: String? = null): Intent {
             val intent = Intent(context, PostCropActivity::class.java)
             intent.action = OPEN_IMAGE_FROM_URI
-            intent.setDataAndNormalize(uri)
+            intent.setDataAndTypeAndNormalize(uri, mimeType ?: "image/*")
             intent.putExtra(BITMAP_FROM_LAST_SCREENSHOT, true)
             return intent
         }

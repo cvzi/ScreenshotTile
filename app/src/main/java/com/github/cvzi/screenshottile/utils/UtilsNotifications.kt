@@ -385,7 +385,7 @@ fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Inte
 /**
  * Intent to edit image.
  */
-fun editImageIntent(context: Context, path: Uri, mimeType: String): Intent {
+fun editImageIntent(context: Context, path: Uri, mimeType: String?): Intent {
     val uri = if (path.scheme == "file") {
         FileProvider.getUriForFile(
             context,
@@ -396,7 +396,7 @@ fun editImageIntent(context: Context, path: Uri, mimeType: String): Intent {
         path
     }
     return Intent(Intent.ACTION_EDIT).apply {
-        setDataAndType(uri, mimeType)
+        setDataAndTypeAndNormalize(uri, mimeType ?: "image/*")
         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
@@ -410,7 +410,7 @@ fun editImageIntent(context: Context, path: Uri, mimeType: String): Intent {
 /**
  * Intent to open edit image chooser.
  */
-fun editImageChooserIntent(context: Context, path: Uri, mimeType: String): Intent {
+fun editImageChooserIntent(context: Context, path: Uri, mimeType: String?): Intent {
     editImageIntent(context, path, mimeType).apply {
         return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_edit))
     }
@@ -419,7 +419,7 @@ fun editImageChooserIntent(context: Context, path: Uri, mimeType: String): Inten
 /**
  * Intent to open image file on notification tap.
  */
-fun openImageIntent(context: Context, path: Uri, mimeType: String): Intent {
+fun openImageIntent(context: Context, path: Uri, mimeType: String?): Intent {
     // Create intent for notification click
     val uri = if (path.scheme == "file") {
         FileProvider.getUriForFile(
@@ -433,7 +433,7 @@ fun openImageIntent(context: Context, path: Uri, mimeType: String): Intent {
     return Intent(Intent.ACTION_VIEW).apply {
         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        setDataAndType(uri, mimeType)
+        setDataAndTypeAndNormalize(uri, mimeType ?: "image/*")
     }
 }
 

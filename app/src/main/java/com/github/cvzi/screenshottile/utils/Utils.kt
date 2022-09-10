@@ -946,6 +946,7 @@ fun handlePostScreenshot(
 ) {
     val app = App.getInstance()
     app.lastScreenshot = null
+    val mimeTypeNullSafe = mimeType ?: "image/*"
     when {
         "openInPost" in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
@@ -958,7 +959,7 @@ fun handlePostScreenshot(
             app.lastScreenshot = fullBitmap
             App.getInstance().startActivityAndCollapse(
                 context,
-                PostCropActivity.newIntentSingleImageBitmap(context, uri)
+                PostCropActivity.newIntentSingleImageBitmap(context, uri, mimeTypeNullSafe)
             )
         }
         "openInPhotoEditor" in postScreenshotActions -> {
@@ -972,7 +973,7 @@ fun handlePostScreenshot(
                 })
         }
         "openInExternalEditor" in postScreenshotActions -> {
-            val editIntent = editImageChooserIntent(context, uri, mimeType ?: "image/png")
+            val editIntent = editImageChooserIntent(context, uri, mimeTypeNullSafe)
             editIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             if (editIntent.resolveActivity(context.packageManager) != null) {
@@ -983,7 +984,7 @@ fun handlePostScreenshot(
             }
         }
         "openInExternalViewer" in postScreenshotActions -> {
-            val openImageIntent = openImageIntent(context, uri, mimeType ?: "image/png")
+            val openImageIntent = openImageIntent(context, uri, mimeTypeNullSafe)
             if (openImageIntent.resolveActivity(context.packageManager) != null) {
                 App.getInstance().startActivityAndCollapse(context, openImageIntent)
             } else {
@@ -995,7 +996,7 @@ fun handlePostScreenshot(
             }
         }
         "openShare" in postScreenshotActions -> {
-            val shareIntent = shareImageChooserIntent(context, uri, mimeType ?: "image/png")
+            val shareIntent = shareImageChooserIntent(context, uri, mimeTypeNullSafe ?: "image/*")
             shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             if (shareIntent.resolveActivity(context.packageManager) != null) {
