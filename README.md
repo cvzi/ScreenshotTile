@@ -137,3 +137,6 @@ This is a special permission that is requested before you take a screenshot or w
 #### [`android.permission.POST_NOTIFICATIONS`](https://developer.android.com/about/versions/13/changes/notification-permission)
 
 Since Android 13 Tiramisu this permission can be used to request the ability to show notifications. You can choose "Don't allow" to block all notifications.
+
+# Miscellaneous data
+Some miscellaneous files (mostly images) that don't need to be in the main repository of ScreenshotTile were moved to a separate repository: https://github.com/cvzi/ScreenshotTile_miscellaneous
