@@ -44,8 +44,8 @@
     <string name="setting_floating_button_delay">Retraso (botón flotante)</string>
     <string name="setting_broadcast_secret">Contraseña de Broadcast intent</string>
     <string name="setting_broadcast_secret_description">Una frase secreta para permitir que otras aplicaciones (como MacroDroid o Tasker) pueden iniciar capturas de pantalla</string>
-    <string name="setting_storage_directory">Carpeta de almacenamiento</string>
-    <string name="setting_storage_directory_description">Carpeta para guardar screenshots</string>
+    <string name="setting_storage_directory">Ubicación de guardado</string>
+    <string name="setting_storage_directory_description">Carpeta para guardar capturas</string>
     <string name="setting_file_name_pattern">Nombre del archivo</string>
     <string name="setting_file_name_placeholders_title">Usa las siguientes variables en el nombre del archivo</string>
     <string name="setting_file_name_placeholders" formatted="false">%timestamp% - tiempo como yyyy-MM-dd_HH-mm-ss\n%counter% - cuenta el número de capturas de pantalla\n%random% - un UUID aleatorio\n%randint% - un número aleatorio</string>
