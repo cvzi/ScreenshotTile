@@ -291,7 +291,13 @@
         <service
             android:name=".assist.MyVoiceInteractionSessionService"
             android:permission="android.permission.BIND_VOICE_INTERACTION" />
-
+        <service android:name=".assist.RecognitionServiceEmpty"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.speech.RecognitionService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
 
         <activity
             android:name="com.burhanrashid52.photoediting.EditImageActivity"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <voice-interaction-service xmlns:android="http://schemas.android.com/apk/res/android"
-    android:recognitionService="com.github.cvzi.screenshottile.assist.MyVoiceInteractionService"
+    android:recognitionService="com.github.cvzi.screenshottile.assist.RecognitionServiceEmpty"
     android:sessionService="com.github.cvzi.screenshottile.assist.MyVoiceInteractionSessionService"
     android:settingsActivity="com.github.cvzi.screenshottile.activities.SettingsActivity"
     android:supportsAssist="true" />
