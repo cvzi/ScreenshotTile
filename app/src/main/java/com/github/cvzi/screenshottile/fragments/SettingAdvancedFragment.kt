@@ -5,10 +5,10 @@ import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import androidx.preference.DialogPreference
 import androidx.preference.EditTextPreference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
-import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.CompressionOptions
@@ -31,7 +31,6 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
     private var formatQualityPref: EditTextPreference? = null
     private var keepAppDataMaxPref: EditTextPreference? = null
     private var pref: SharedPreferences? = null
-    private val prefManager = App.getInstance().prefManager
 
     private val prefListener =
         SharedPreferences.OnSharedPreferenceChangeListener { _: SharedPreferences?, key: String? ->
@@ -72,6 +71,55 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
         updateFloatingButton(switchEvent = false, forceRedraw = false)
         updateFormatQualitySummary()
         updateKeepAppDataMaxSummary()
+        otherSummaries()
+    }
+
+    private fun otherSummaries() {
+        findPreference<DialogPreference>(getString(R.string.pref_key_select_area_shutter_delay))?.apply {
+            val defaultStr = getString(
+                R.string.setting_defaults_to_milliseconds,
+                getString(R.string.pref_select_area_shutter_delay_default)
+            )
+            summary = defaultStr
+            dialogMessage =
+                "${getString(R.string.setting_select_area_shutter_delay_dialog)}\n$defaultStr"
+        }
+
+        findPreference<DialogPreference>(getString(R.string.pref_key_original_after_permission_delay))?.apply {
+            val defaultStr = getString(
+                R.string.setting_defaults_to_milliseconds,
+                getString(R.string.pref_original_after_permission_delay_default)
+            )
+            summary = defaultStr
+            dialogMessage =
+                "${getString(R.string.setting_original_after_permission_delay_dialog)}\n$defaultStr"
+        }
+
+        findPreference<DialogPreference>(getString(R.string.pref_key_failed_virtual_display_delay))?.apply {
+            val defaultStr = getString(
+                R.string.setting_defaults_to_milliseconds,
+                getString(R.string.pref_failed_virtual_display_delay_default)
+            )
+            summary = defaultStr
+            dialogMessage =
+                "${getString(R.string.setting_failed_virtual_display_delay_dialog)}\n$defaultStr"
+        }
+
+        findPreference<DialogPreference>(getString(R.string.pref_key_failed_virtual_display_delay))?.apply {
+            getString(
+                R.string.setting_failed_virtual_display_delay,
+                "Failed to start virtual display"
+            ).let {
+                title = it
+                dialogTitle = it
+            }
+        }
+
+        findPreference<SwitchPreference>(getString(R.string.pref_key_keep_screenshot_history))?.summary =
+            getString(
+                R.string.setting_keep_screenshot_history_summary,
+                getString(R.string.button_history)
+            )
     }
 
     private fun updateNaggingToasts() {
@@ -111,10 +159,11 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
     private fun updateKeepAppDataMaxSummary(switchEvent: Boolean = false) {
         keepAppDataMaxPref?.apply {
             val folder = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-            summary = getString(
-                R.string.setting_keep_app_data_max_summary,
-                prefManager.keepAppDataMax,
-                folder ?: ""
+            summary = folder?.absolutePath ?: "Android/data/${context.packageName}/files/Pictures"
+            dialogMessage = getString(
+                R.string.setting_keep_app_data_max_dialog,
+                getString(R.string.post_action_save_to_storage),
+                getString(R.string.pref_key_keep_app_data_max_default)
             )
             if (switchEvent) {
                 this@SettingAdvancedFragment.context?.let {

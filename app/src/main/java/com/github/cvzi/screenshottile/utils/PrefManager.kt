@@ -602,7 +602,7 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
     var keepAppDataMax: Int
         get() = pref.getString(
             context.getString(R.string.pref_key_keep_app_data_max),
-            "30"
+            context.getString(R.string.pref_key_keep_app_data_max_default)
         )?.toIntOrNull() ?: 30
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_keep_app_data_max),

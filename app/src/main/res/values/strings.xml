@@ -202,4 +202,28 @@
     <string name="dialog_ask_filename_title">Save as</string>
     <string name="dialog_ask_filename_directory">Selected directory:</string>
     <string name="dialog_ask_filename_hint">File name (without extension)</string>
+
+    <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Default mode: On</string>
+    <string name="setting_defaults_to_milliseconds">Default: %1$s milliseconds</string>
+    <string name="setting_toasts">All \"Toast\" notifications</string>
+    <string name="setting_success_toasts">\"Toast\" notifications for successful events</string>
+    <string name="setting_error_toasts">\"Toast\" notifications for errors</string>
+    <string name="setting_select_area_shutter_delay">Delay after tapping the shutter (in "Select area" mode)</string>
+    <string name="setting_select_area_shutter_delay_dialog">Waiting period between the time the shutter was tapped and the screenshot is taken. Use a higher value (for example 500) if the shutter icon was visible on screenshots.</string>
+    <string name="setting_original_after_permission_delay">Delay after screenshot permission was granted (applies to "Original method")</string>
+    <string name="setting_original_after_permission_delay_dialog">Waiting period between the time the permission was granted and the screenshot is taken. Use a higher value (for example 500) if permission dialog was visible on screenshots.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Delay after \"%1$s\" error</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Waiting period before trying again after the error message. Use a higher value (for example 500) if the error message was visible on screenshots.</string>
+    <string name="setting_floating_button_alpha">Floating button transparency</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (fully-transparent) to 1.0 (fully-opaque)</string>
+    <string name="setting_floating_button_alpha_dialog">Choose a lower value to make the button more transparent. Range 0.0 to 1.0\nDefault: 1.0 (fully-opaque)</string>
+    <string name="setting_delay_custom_summary">Choose a custom delay for the tile (in seconds)</string>
+    <string name="setting_floating_button_delay_custom_summary">Choose a custom delay for the floating button (in seconds)</string>
+    <string name="setting_format_quality">File format quality</string>
+    <string name="setting_format_quality_dialog">Compression/Quality of the file format: (0 to 100)\n0 means compress for the smallest size. 100 means compress for max visual quality.\nLeave empty to use the default value.</string>
+    <string name="setting_keep_app_data_max">Max. number of screenshots to keep in:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">If you disabled \"%1$s\", then screenshots are temporarily stored in the \"Android/data/\" folder and periodically deleted when the maximum number of files is reached.\n-1 means keep unlimited\nDefault value %2$s</string>
+    <string name="setting_keep_screenshot_history">Keep history of screenshots</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Stores the file names of screenshots in a list. This is required for the function \"%1$s\"</string>
 </resources>

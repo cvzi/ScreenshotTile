@@ -2,24 +2,70 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_advanced_settings"
+        android:persistent="false"
+        android:selectable="false"
+        android:title="@string/about_advanced_settings_button"
+        app:icon="@android:drawable/ic_menu_manage" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/pref_floating_button_alpha_default"
+        android:dialogMessage="@string/setting_floating_button_alpha_dialog"
+        android:key="@string/pref_key_floating_button_alpha"
+        android:summary="@string/setting_floating_button_alpha_summary"
+        android:title="@string/setting_floating_button_alpha"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.SwitchPreference
+        android:defaultValue="@bool/pref_keep_screenshot_history_default"
+        android:key="@string/pref_key_keep_screenshot_history"
+        android:summary="@string/setting_keep_screenshot_history_summary"
+        android:title="@string/setting_keep_screenshot_history"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue=""
+        android:dialogMessage="@string/setting_format_quality_dialog"
+        android:key="@string/pref_key_format_quality"
+        android:summary="@string/setting_format_quality_summary"
+        android:title="@string/setting_format_quality"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/setting_delay_value_default"
+        android:dialogMessage="@string/setting_delay_custom_summary"
+        android:key="@string/pref_key_delay"
+        android:summary="@string/setting_delay_custom_summary"
+        android:title="@string/title_delay"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.EditTextPreference
+        android:defaultValue="@string/setting_delay_value_default"
+        android:dialogMessage="@string/setting_floating_button_delay_custom_summary"
+        android:key="@string/pref_key_floating_button_delay"
+        android:summary="@string/setting_floating_button_delay_custom_summary"
+        android:title="@string/setting_floating_button_delay"
+        app:iconSpaceReserved="false" />
+
     <androidx.preference.SwitchPreference
         android:defaultValue="@bool/pref_toasts_default"
         android:key="@string/pref_key_toasts"
-        android:summary="@string/setting_toasts_summary"
+        android:summary="@string/setting_defaults_to_on"
         android:title="@string/setting_toasts"
         app:iconSpaceReserved="false" />
 
     <androidx.preference.SwitchPreference
         android:defaultValue="@bool/pref_success_toasts_default"
         android:key="@string/pref_key_success_toasts"
-        android:summary="@string/setting_success_toasts_summary"
+        android:summary="@string/setting_defaults_to_on"
         android:title="@string/setting_success_toasts"
         app:iconSpaceReserved="false" />
 
     <androidx.preference.SwitchPreference
         android:defaultValue="@bool/pref_error_toasts_default"
         android:key="@string/pref_key_error_toasts"
-        android:summary="@string/setting_error_toasts_summary"
+        android:summary="@string/setting_defaults_to_on"
         android:title="@string/setting_error_toasts"
         app:iconSpaceReserved="false" />
 
@@ -35,7 +81,7 @@
         android:defaultValue="@string/pref_select_area_shutter_delay_default"
         android:dialogMessage="@string/setting_select_area_shutter_delay_dialog"
         android:key="@string/pref_key_select_area_shutter_delay"
-        android:summary="@string/setting_select_area_shutter_delay_summary"
+        android:summary="@string/setting_defaults_to_milliseconds"
         android:title="@string/setting_select_area_shutter_delay"
         app:iconSpaceReserved="false" />
 
@@ -43,7 +89,7 @@
         android:defaultValue="@string/pref_original_after_permission_delay_default"
         android:dialogMessage="@string/setting_original_after_permission_delay_dialog"
         android:key="@string/pref_key_original_after_permission_delay"
-        android:summary="@string/setting_original_after_permission_delay_summary"
+        android:summary="@string/setting_defaults_to_milliseconds"
         android:title="@string/setting_original_after_permission_delay"
         app:iconSpaceReserved="false" />
 
@@ -51,53 +97,16 @@
         android:defaultValue="@string/pref_failed_virtual_display_delay_default"
         android:dialogMessage="@string/setting_failed_virtual_display_delay_dialog"
         android:key="@string/pref_key_failed_virtual_display_delay"
-        android:summary="@string/setting_failed_virtual_display_delay_summary"
+        android:summary="@string/setting_defaults_to_milliseconds"
         android:title="@string/setting_failed_virtual_display_delay"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.EditTextPreference
-        android:defaultValue="@string/pref_floating_button_alpha_default"
-        android:dialogMessage="@string/setting_floating_button_alpha_dialog"
-        android:key="@string/pref_key_floating_button_alpha"
-        android:summary="@string/setting_floating_button_alpha_summary"
-        android:title="@string/setting_floating_button_alpha"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.EditTextPreference
-        android:defaultValue="@string/setting_delay_value_default"
-        android:key="@string/pref_key_delay"
-        android:summary="@string/setting_delay_custom_summary"
-        android:title="@string/title_delay"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.EditTextPreference
-        android:defaultValue="@string/setting_delay_value_default"
-        android:key="@string/pref_key_floating_button_delay"
-        android:summary="@string/setting_floating_button_delay_custom_summary"
-        android:title="@string/setting_floating_button_delay"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.EditTextPreference
-        android:defaultValue=""
-        android:dialogMessage="@string/setting_format_quality_dialog"
-        android:key="@string/pref_key_format_quality"
-        android:summary="@string/setting_format_quality_summary"
-        android:title="@string/setting_format_quality"
         app:iconSpaceReserved="false" />
 
     <androidx.preference.EditTextPreference
         android:defaultValue="20"
         android:dialogMessage="@string/setting_keep_app_data_max_dialog"
         android:key="@string/pref_key_keep_app_data_max"
-        android:summary="@string/setting_keep_app_data_max_summary"
+        android:summary="@string/setting_keep_app_data_max_dialog"
         android:title="@string/setting_keep_app_data_max"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.SwitchPreference
-        android:defaultValue="@bool/pref_keep_screenshot_history_default"
-        android:key="@string/pref_key_keep_screenshot_history"
-        android:summary="@string/setting_keep_screenshot_history_summary"
-        android:title="@string/setting_keep_screenshot_history"
         app:iconSpaceReserved="false" />
 
 </androidx.preference.PreferenceScreen>

@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="pref_static_field_key_advanced_settings" translatable="false">pref_static_field_key_advanced_settings</string>
-
     <string name="pref_key_toasts" translatable="false">pref_key_toasts</string>
     <bool name="pref_toasts_default">true</bool>
-    <string name="setting_toasts" translatable="false">Toast notifications</string>
-    <string name="setting_toasts_summary" translatable="false">Enable/Disable all toast notifications\nDefault: On</string>
 
     <string name="pref_key_success_toasts" translatable="false">pref_key_success_toasts</string>
     <bool name="pref_success_toasts_default">true</bool>
-    <string name="setting_success_toasts" translatable="false">Toast notifications for success</string>
-    <string name="setting_success_toasts_summary" translatable="false">Enable/Disable toast notifications for successful events\nDefault: On</string>
 
     <string name="pref_key_error_toasts" translatable="false">pref_key_error_toasts</string>
     <bool name="pref_error_toasts_default">true</bool>
-    <string name="setting_error_toasts" translatable="false">Toast notifications for errors</string>
-    <string name="setting_error_toasts_summary" translatable="false">Enable/Disable toast notifications for errors\nDefault: On</string>
 
     <string name="pref_key_nagging_toasts" translatable="false">pref_key_nagging_toasts</string>
     <bool name="pref_nagging_toasts_default">true</bool>
@@ -24,43 +17,22 @@
 
     <string name="pref_key_select_area_shutter_delay" translatable="false">select_area_shutter_delay</string>
     <string name="pref_select_area_shutter_delay_default" translatable="false">0</string>
-    <string name="setting_select_area_shutter_delay" translatable="false">Select area: Delay after shutter tap</string>
-    <string name="setting_select_area_shutter_delay_summary" translatable="false">Default: 0 (milliseconds)</string>
-    <string name="setting_select_area_shutter_delay_dialog" translatable="false">Waiting period between the time the shutter was tapped and the screenshot is taken. Use a higher value (e.g. 500 = half a second) if the shutter icon was visible on screenshots.\nDefault: 0 Unit: milliseconds</string>
 
     <string name="pref_key_original_after_permission_delay" translatable="false">original_after_permission_delay</string>
     <string name="pref_original_after_permission_delay_default" translatable="false">300</string>
-    <string name="setting_original_after_permission_delay" translatable="false">Original method: delay after screenshot permission was granted</string>
-    <string name="setting_original_after_permission_delay_summary" translatable="false">Default: 300 (milliseconds)</string>
-    <string name="setting_original_after_permission_delay_dialog" translatable="false">Waiting period between the time the permission was granted and the screenshot is taken. Use a higher value (e.g. 500 = half a second) if permission dialog was visible on screenshots.\nDefault: 300 Unit: milliseconds</string>
 
     <string name="pref_key_failed_virtual_display_delay" translatable="false">failed_virtual_display_delay</string>
     <string name="pref_failed_virtual_display_delay_default" translatable="false">0</string>
-    <string name="setting_failed_virtual_display_delay" translatable="false">Original method: delay after \'Failed to start virtual display\'</string>
-    <string name="setting_failed_virtual_display_delay_summary" translatable="false">Default: 0 (milliseconds)</string>
-    <string name="setting_failed_virtual_display_delay_dialog" translatable="false">Waiting period before trying again after the error \'Failed to start virtual display\'. Use a higher value (e.g. 500 = half a second) if the error message was visible on screenshots.\nDefault: 0 Unit: milliseconds</string>
 
     <string name="pref_key_floating_button_alpha" translatable="false">floating_button_alpha</string>
     <string name="pref_floating_button_alpha_default" translatable="false">1.0</string>
-    <string name="setting_floating_button_alpha" translatable="false">Floating button opacity</string>
-    <string name="setting_floating_button_alpha_summary" translatable="false">0.0 (fully-transparent) to 1.0 (fully-opaque) Default: 1.0</string>
-    <string name="setting_floating_button_alpha_dialog" translatable="false">Choose a lower value to make the button more transparent. Range 0.0 to 1.0\nDefault: 1.0 (fully-opaque)</string>
 
-    <string name="setting_delay_custom_summary" translatable="false">Set a custom delay for the tile (in seconds)\n0 seconds = no delay</string>
-    <string name="setting_floating_button_delay_custom_summary" translatable="false">Set a custom delay for the floating button (in seconds)\n0 seconds = no delay</string>
-
-    <string name="setting_format_quality" translatable="false">File format quality</string>
     <string name="setting_format_quality_summary" translatable="false">%s (Default: %s)</string>
-    <string name="setting_format_quality_dialog" translatable="false">Compression/Quality of the file format: (0 to 100)\n0 means compress for the smallest size. 100 means compress for max visual quality.\nLeave empty to use the default value.</string>
 
     <string name="pref_key_keep_app_data_max" translatable="false">keep_app_data_max</string>
-    <string name="setting_keep_app_data_max" translatable="false">Max number of screenshots to keep in Android/data/ folder:</string>
-    <string name="setting_keep_app_data_max_summary" translatable="false">%d (Default: 30)\n%s</string>
-    <string name="setting_keep_app_data_max_dialog" translatable="false">Max number of screenshots to keep in Android/data/ folder:\n-1 means keep unlimited.\nDefault value 30.</string>
+    <string name="pref_key_keep_app_data_max_default" translatable="false">30</string>
 
     <string name="pref_key_keep_screenshot_history" translatable="false">keep_screenshot_history</string>
     <bool name="pref_keep_screenshot_history_default">true</bool>
-    <string name="setting_keep_screenshot_history" translatable="false">Keep a history of screenshots</string>
-    <string name="setting_keep_screenshot_history_summary" translatable="false">Store a list of recent screenshots</string>
 
 </resources>
