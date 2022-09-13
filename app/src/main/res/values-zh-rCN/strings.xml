@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="50">屏幕截图磁贴</string>
+    <string name="app_name">屏幕截图磁贴</string>
     <string name="app_name_long">屏幕截图磁贴 (NoRoot)</string>
     <string name="tile_label">屏幕截图</string>
     <string name="tile_floating">浮动屏幕截图按钮</string>
@@ -198,4 +198,27 @@
     <string name="dialog_ask_filename_title">另存为</string>
     <string name="dialog_ask_filename_directory">选定的目录：</string>
     <string name="dialog_ask_filename_hint">文件名称 (无扩展名)</string>
+    <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">默认模式：开启</string>
+    <string name="setting_defaults_to_milliseconds">默认: %1$s 毫秒</string>
+    <string name="setting_toasts">所有“浮窗”通知</string>
+    <string name="setting_success_toasts">成功事件的“浮窗”通知</string>
+    <string name="setting_error_toasts">出错的“浮窗”通知</string>
+    <string name="setting_select_area_shutter_delay">点击快门后延迟 (在“选择区域”模式)</string>
+    <string name="setting_select_area_shutter_delay_dialog">从轻按快门到截取屏幕截图之间的等待时间。 如果在屏幕截图上可以看到快门图标，请使用更高的值(例如 500)。</string>
+    <string name="setting_original_after_permission_delay">授予截图权限后延迟(适用于“原始方法”)</string>
+    <string name="setting_original_after_permission_delay_dialog">从授予权限到截取屏幕截图之间的等待时间。 如果权限对话框在屏幕截图上可见，请使用更高的值(例如 500)。</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">\"%1$s\"错误后延迟</string>
+    <string name="setting_failed_virtual_display_delay_dialog">出现错误消息后重试之前的等待时间。 如果错误消息在屏幕截图中可见，请使用更高的值(例如 500)。</string>
+    <string name="setting_floating_button_alpha">悬浮按钮透明度</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (完全透明) 到 1.0 (完全不透明)</string>
+    <string name="setting_floating_button_alpha_dialog">选择一个较低的值使按钮更加透明。范围 0.0 到 1.0\n默认值： 1.0 (完全不透明)</string>
+    <string name="setting_delay_custom_summary">选择一个自定义的瓷贴延迟(秒)</string>
+    <string name="setting_floating_button_delay_custom_summary">选择浮动按钮的自定义延迟 (秒)</string>
+    <string name="setting_format_quality">文件格式质量</string>
+    <string name="setting_format_quality_dialog">文件格式的压缩/质量：(0至100)\n意味着最小的文件。100 表示最高画质。\n留空使用默认值。</string>
+    <string name="setting_keep_app_data_max">最多保留屏幕截图数量：</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">如果您禁用了“%1$s”，那么屏幕截图暂时保存在\"Android/data/\"文件夹中，并在达到最大文件数时被定期删除。\n-1 意味着保留无限多的截图\n默认值 %2$s</string>
+    <string name="setting_keep_screenshot_history">保留截图历史</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">将屏幕截图的文件名存储在列表中，这是功能\"%1$s\" 所必需的。</string>
 </resources>
