@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="50">Screenshot Tile</string>
+    <string name="app_name">Screenshot Tile</string>
     <string name="app_name_long">Screenshot Tile (sem root)</string>
-    <string name="tile_label">Capturar a tela</string>
-    <string name="tile_floating">Botão flutuante para Captura da tela</string>
+    <string name="tile_label">Capturar tela</string>
+    <string name="tile_floating">Botão flutuante da Captura</string>
     <string name="tile_floating_label">Flutuante</string>
     <string name="tile_floating_subtitle">Botão de Captura da tela</string>
-    <string name="title_delay">Atraso</string>
+    <string name="title_delay">Adiar</string>
     <string name="more_setting">Configure</string>
     <string name="open_settings">Abrir configurações</string>
     <string name="left_screenshot_right_menu">À esquerda: Captura da tela, À direita: Configurações</string>
     <string name="partial_screenshot">Selecione uma área</string>
     <string name="file_format">Formato de arquivo</string>
-    <string name="setting_delay_entry_default">De imediato</string>
+    <string name="setting_delay_entry_default">Captura instantânea</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
     <string name="show_count_down">Mostrar a contagem regressiva</string>
     <string name="use_native_screenshot">Usar o método de Captura do Android</string>
-    <string name="use_native_screenshot_summary">Simular a combinação de Botão de ligar+Início</string>
+    <string name="use_native_screenshot_summary">Simula a combinação de botões Ligar + Início</string>
     <string name="use_native_screenshot_unsupported">Exige mín. Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">O serviço de acessibilidade está desativado</string>
     <string name="use_native_screenshot_option_default">Método integrado usa o padrão do sistema</string>
     <string name="use_native_screenshot_option_android11">Desative \'Usar padrão do sistema\' para poder usar isto</string>
-    <string name="accessibility_service_description">Se estiver ativado, o app pode simular a combinação de Botão de ligar+Início para fazer a Captura da tela.\nEm alguns dispositivos este método pode ser mais estável ou mais rápido que o método padrão.\n\nSe você ativar esta opção aqui, você também precisará ativar o \"método integrado\" em configurações do app.</string>
+    <string name="accessibility_service_description">Se ativado, o app pode simular a combinação de botões de ligar+início para fazer a Captura da tela.\nEm alguns dispositivos este método pode ser mais estável ou mais rápido que o método padrão.\n\nSe você ativar esta opção aqui, você também precisará ativar o \"método integrado\" em configurações do app.</string>
     <string name="use_system_defaults">Usar padrão do sistema</string>
     <string name="use_system_defaults_summary">Exige mín. Android 11</string>
     <string name="use_system_defaults_summary_on">Usar a pasta de armazenamento, formato, editor de Capturas e notificações padrão</string>
@@ -40,13 +40,13 @@
     <string name="setting_floating_button_show_close_summary">Permite remover o botão flutuante sem abrir os ajustes rápidos</string>
     <string name="setting_floating_button_show_close_dialog_title">Defina Emoji para o botão de Fechar</string>
     <string name="setting_floating_button_show_close_dialog_description">Digite um texto ou escolha um Emoji que aparecerá como o botão de Fechar</string>
-    <string name="setting_floating_button_shutter">Aparência do botão flutuante</string>
-    <string name="setting_floating_button_delay">Atraso (botão flutuante)</string>
+    <string name="setting_floating_button_shutter">Formato do botão flutuante</string>
+    <string name="setting_floating_button_delay">Adiar (botão flutuante)</string>
     <string name="setting_broadcast_secret">Mostrar a senha</string>
     <string name="setting_broadcast_secret_description">Uma frase secreta que permita aos outros apps (como MacroDroid ou Tasker) fazer a Captura da tela</string>
     <string name="setting_storage_directory">Localização de arquivos</string>
     <string name="setting_storage_directory_description">Pasta de Capturas</string>
-    <string name="setting_file_name_pattern">Nome do arquivo</string>
+    <string name="setting_file_name_pattern">Nome de arquivo</string>
     <string name="setting_file_name_placeholders_title">Use as seguintes variáveis no nome do arquivo</string>
     <string name="setting_file_name_placeholders" formatted="false">%timestamp% - tempo mostrado como aaaa-MM-dd_HH-mm-ss\n%counter% - contagem de capturas da tela\n%random% - um UUID aleatório\n%randint% - um número aleatório</string>
     <string name="setting_tile_action">Ação do botão</string>
@@ -60,16 +60,16 @@
     <string name="setting_notification_buttons_description">Selecione até 3 botões que serão exibidos na notificação após fazer uma captura de tela</string>
     <string name="setting_notification_buttons_max_three">Por favor, escolha no máximo 3 botões</string>
     <string name="notification_settings">Notificações</string>
-    <string name="notification_settings_on">Ativadas</string>
+    <string name="notification_settings_on">Ativado</string>
     <string name="notification_settings_off">Desativadas</string>
-    <string name="setting_post_actions">O que acontece depois</string>
+    <string name="setting_post_actions">Ação posterior</string>
     <string name="setting_post_actions_description">Escolha o que acontece depois de uma captura da tela</string>
     <string name="button_history">Capturas recentes</string>
     <string name="button_history_description">Veja as capturas da tela recentes incluindo os arquivos que não foram salvos na galeria</string>
     <string name="history_title">Histórico de capturas</string>
     <string name="restore_default_values">Resetar para valores padrão</string>
     <string name="post_action_save_to_storage">Salvar imagem na galeria</string>
-    <string name="post_action_show_toast">Mostrar uma notificação de \"Aviso\". Um pequeno popup que desaparece após 2 segundos</string>
+    <string name="post_action_show_toast">Mostrar notificação de \"Aviso\". Um pequeno popup que desaparecerá após 2 segundos</string>
     <string name="post_action_show_notification">Mostrar uma notificação normal. Você pode alterar os botões (Editar,Compartilhar,…) abaixo da notificação em \"Mais configurações\"</string>
     <string name="post_action_empty">Não mostrar a captura da tela</string>
     <string name="post_action_open_in_post">Abrir em modo \"Detalhado\"</string>
@@ -153,12 +153,12 @@
     <string name="main_legacy_method_title">Método Legado</string>
     <string name="main_legacy_method_text">O Método Legado de Capturas da tela usa a funcionalidade de gravação da tela do Android.\nQuando você faz uma Captura, nenhum som é reproduzido. Uma notificação silenciosa é mostrada para abrir, compartilhar ou editar a captura da tela. A notificação pode ser desativada em configurações do app.\nAntes de fazer uma Captura da tela, você precisa adicionar o botão ao menu de ajustes rápidos, conceder as permissões para poder fazer as Capturas e acessar o armazenamento interno a fim de salvar os arquivos de imagens.\nVeja o tutorial de como fazê-lo.\n\nEm alguns telefones este método não funciona, principalmente em versões do sistema mais novos que Android 9.0, o app fica menos estável e pode pedir permissão em cada intento de Captura da tela. Se isso acontecer, você deve usar o método Integrado abaixo.</string>
     <string name="main_native_method_title">Método Integrado</string>
-    <string name="main_native_method_text">O método integrado simula combinação de Botão de ligar+Início e usa o método de Captura da tela do seu dispositivo.\n{main_native_method_text_android_version}\n\nAntes de fazer uma Captura da tela, você precisa ativar o Serviço de Acessibilidade em configurações do telefone. Clique no botão abaixo para abrir as configurações de acessibilidade.</string>
+    <string name="main_native_method_text">O método integrado simula combinação de botões de ligar+início e usa o método de Captura da tela do seu dispositivo.\n{main_native_method_text_android_version}\n\nAntes de fazer uma Captura da tela, você precisa ativar o Serviço de Acessibilidade em configurações do telefone. Toque no botão abaixo para abrir as Configurações de Acessibilidade.</string>
     <string name="main_native_method_text_android_pre_11">Quando você fazer uma Captura, esta ação pode reproduzir um som ou oferecer edição da Captura. As Capturas da tela são armazenadas numa pasta padrão da Galeria. Isto depende de seu telefone e não pode ser alterado por este app. Você pode ser capaz de alterar isto em configurações do seu telefone.</string>
     <string name="main_native_method_text_android_since_11">Pode alterar em configurações do app (em \"Usar padrão do sistema\") dependendo se você quer usar no seu telefone comportamento padrão do sistema (notificações, editor de Capturas, pasta padrão para fotos) ou se você quiser usar as preferências do app (pasta e notificações personalizadas).</string>
     <string name="main_floating_button_text">Se você ativou o método integrado, também pode usar um botão flutuante (semelhante a um balão do chat) para fazer a Captura.\nVocê pode ativá-lo via um botão separado no menu de ajustes rápidos e depois movê-lo à tela.</string>
     <string name="main_long_press_title">Toque longo</string>
-    <string name="main_long_press_text">Para abrir o menu faça toque longo no botão. Você pode especificar um atraso para a Captura ou selecionar uma área na tela.</string>
+    <string name="main_long_press_text">Para abrir o menu faça toque longo no botão. Você pode adiar ação de Captura ou selecionar uma área na tela.</string>
     <string name="main_assist_app_title">App de assistência</string>
     <string name="main_assist_app_text">Se você definir esse app como seu aplicativo de assistência, você vai poder fazer um toque longo no botão de início para efetuar uma captura de tela. Ao definir este app como seu app de assistência você desativará outros assistentes. Você pode alterar a ação do toque longo do botão de início em configurações do app.</string>
     <!-- Post edit activity -->
@@ -181,7 +181,7 @@
     <string name="label_eraser">Borracha</string>
     <string name="label_eraser_mode">Modo de borracha</string>
     <string name="label_text">Texto</string>
-    <string name="label_filter">Filtrar</string>
+    <string name="label_filter">Filtros</string>
     <string name="label_adjust">Ajustar</string>
     <string name="label_rotation">Rotação</string>
     <string name="label_opacity">Transparência</string>
@@ -198,4 +198,27 @@
     <string name="dialog_ask_filename_title">Salvar como</string>
     <string name="dialog_ask_filename_directory">Pasta selecionada:</string>
     <string name="dialog_ask_filename_hint">Nome do arquivo (sem extensão)</string>
+    <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Modo padrão: Ativado</string>
+    <string name="setting_defaults_to_milliseconds">Padrão: %1$s milissegundos</string>
+    <string name="setting_toasts">Todas as notificações de \"Aviso\"</string>
+    <string name="setting_success_toasts">Notificações de \"Aviso\" para eventos bem-sucedidos</string>
+    <string name="setting_error_toasts">Notificações de \"Aviso\" para erros</string>
+    <string name="setting_select_area_shutter_delay">Adiar após tocar no obturador (no modo \"Selecione uma área\")</string>
+    <string name="setting_select_area_shutter_delay_dialog">Período de espera entre o momento em que você tocou o ícone do obturador e a Captura da tela sendo feita. Use um valor maior (p.ex., 500) se o ícone do obturador aparece nas Capturas da tela.</string>
+    <string name="setting_original_after_permission_delay">Adiar após conceder a permissão de Captura da tela (se refere ao \"Método original\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Período de espera entre o momento em que você concedeu a permissão e a Captura da tela sendo feita. Use um valor maior (p.ex., 500) se a solicitação da permissão aparece nas Capturas da tela.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Adiar após erro de \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Período de espera antes de tentar mais uma vez após receber um aviso com erro. Use um valor maior (p.ex., 500) se a mensagem de erro aparece nas Capturas da tela.</string>
+    <string name="setting_floating_button_alpha">Transparência do botão flutuante</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (totalmente transparente) até 1.0 (totalmente opaco)</string>
+    <string name="setting_floating_button_alpha_dialog">Escolha um valor mais baixo para tornar o botão mais transparente. Variação de 0.0 a 1.0\nPadrão: 1.0 (totalmente opaco)</string>
+    <string name="setting_delay_custom_summary">Escolha um atraso personalizado para o botão em ajustes rápidos (em segundos)</string>
+    <string name="setting_floating_button_delay_custom_summary">Escolha um atraso personalizado para o botão flutuante (em segundos)</string>
+    <string name="setting_format_quality">Qualidade de arquivo</string>
+    <string name="setting_format_quality_dialog">Compressão/Qualidade de arquivo: (de 0 a 100)\n0 compactar para obter um tamanho menor. 100 para obter a máxima qualidade visual.\nDeixe em branco para usar o valor padrão.</string>
+    <string name="setting_keep_app_data_max">Número máximo de Capturas da tela para salvar:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Se você desativou \"%1$s\", neste caso Capturas da tela serão temporariamente armazenadas na pasta \"Android/dados/\" e periodicamente apagadas, quando um número máximo de arquivos for atingido.\n-1 significa manter ilimitado\nValor Padrão %2$s</string>
+    <string name="setting_keep_screenshot_history">Manter histórico de Capturas da tela</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Salva nomes de arquivos de Capturas da tela em uma lista. Isso é necessário para a opção de \"%1$s\"</string>
 </resources>
