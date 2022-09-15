@@ -7,7 +7,7 @@
     <string name="tile_floating_label">Flutuante</string>
     <string name="tile_floating_subtitle">Botão de Captura da tela</string>
     <string name="title_delay">Adiar</string>
-    <string name="more_setting">Configure</string>
+    <string name="more_setting">Mais opções</string>
     <string name="open_settings">Abrir configurações</string>
     <string name="left_screenshot_right_menu">À esquerda: Captura da tela, À direita: Configurações</string>
     <string name="partial_screenshot">Selecione uma área</string>
@@ -29,7 +29,7 @@
     <string name="use_system_defaults_summary_on">Usar a pasta de armazenamento, formato, editor de Capturas e notificações padrão</string>
     <string name="use_system_defaults_summary_off">Usar as configurações do App</string>
     <string name="setting_floating_button">Botão flutuante</string>
-    <string name="setting_floating_button_summary">Também pode ligá/desligá-lo no menu de ajustes rápidos</string>
+    <string name="setting_floating_button_summary">Também pode ativar/desativar a opção via menu dos ajustes rápidos</string>
     <string name="setting_floating_button_unavailable">Serviço de acessibilidade está desativado</string>
     <string name="setting_floating_button_unsupported">Exige mín. Android 9 Pie</string>
     <string name="setting_floating_button_scale">Tamanho do botão flutuante</string>
@@ -204,8 +204,8 @@
     <string name="setting_toasts">Todas as notificações de \"Aviso\"</string>
     <string name="setting_success_toasts">Notificações de \"Aviso\" para eventos bem-sucedidos</string>
     <string name="setting_error_toasts">Notificações de \"Aviso\" para erros</string>
-    <string name="setting_select_area_shutter_delay">Adiar após tocar no obturador (no modo \"Selecione uma área\")</string>
-    <string name="setting_select_area_shutter_delay_dialog">Período de espera entre o momento em que você tocou o ícone do obturador e a Captura da tela sendo feita. Use um valor maior (p.ex., 500) se o ícone do obturador aparece nas Capturas da tela.</string>
+    <string name="setting_select_area_shutter_delay">Adiar após tocar no ícone de obturador (em modo \"Selecione uma área\")</string>
+    <string name="setting_select_area_shutter_delay_dialog">Período de espera entre o momento em que você tocou o ícone de obturador e a Captura da tela sendo feita. Use um valor maior (p.ex., 500) se o ícone de obturador aparece nas Capturas da tela.</string>
     <string name="setting_original_after_permission_delay">Adiar após conceder a permissão de Captura da tela (se refere ao \"Método original\")</string>
     <string name="setting_original_after_permission_delay_dialog">Período de espera entre o momento em que você concedeu a permissão e a Captura da tela sendo feita. Use um valor maior (p.ex., 500) se a solicitação da permissão aparece nas Capturas da tela.</string>
     <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Adiar após erro de \"%1$s\"</string>
@@ -216,7 +216,7 @@
     <string name="setting_delay_custom_summary">Escolha um atraso personalizado para o botão em ajustes rápidos (em segundos)</string>
     <string name="setting_floating_button_delay_custom_summary">Escolha um atraso personalizado para o botão flutuante (em segundos)</string>
     <string name="setting_format_quality">Qualidade de arquivo</string>
-    <string name="setting_format_quality_dialog">Compressão/Qualidade de arquivo: (de 0 a 100)\n0 compactar para obter um tamanho menor. 100 para obter a máxima qualidade visual.\nDeixe em branco para usar o valor padrão.</string>
+    <string name="setting_format_quality_dialog">Compressão/Qualidade de arquivo: (de 0 a 100)\n0 reduz imagens ao tamanho menor. 100 para obter a máxima qualidade de imagem.\nDeixe em branco para usar o valor padrão.</string>
     <string name="setting_keep_app_data_max">Número máximo de Capturas da tela para salvar:</string>
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Se você desativou \"%1$s\", neste caso Capturas da tela serão temporariamente armazenadas na pasta \"Android/dados/\" e periodicamente apagadas, quando um número máximo de arquivos for atingido.\n-1 significa manter ilimitado\nValor Padrão %2$s</string>
     <string name="setting_keep_screenshot_history">Manter histórico de Capturas da tela</string>
