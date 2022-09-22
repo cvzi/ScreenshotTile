@@ -12,7 +12,7 @@ Se o app apresentar problemas no Android 9/Pie ou 10, você pode tentar "Usar o 
 ✓ Botão flutuante, tipo um balão do chat (Android 9+)
 ✓ Use como app de assistência para fazer uma captura de tela (toque longo no botão de início)
 ✓ Capturas da tela de uma área específica (toque longo no botão)
-✓ Pode definir um atraso para cada Captura da tela
+✓ Pode definir um adiamento para cada Captura da tela
 ✓ Salve em qualquer pasta ou qualquer tipo de armazenamento, p.ex. cartão SD
 ✓ Salve em diferentes formatos de arquivo: png, jpg ou webp
 ✓ Faça as Capturas automáticas via apps como Tasker ou MacroDroid
