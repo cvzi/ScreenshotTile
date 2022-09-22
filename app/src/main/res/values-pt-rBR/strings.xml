@@ -29,7 +29,7 @@
     <string name="use_system_defaults_summary_on">Usar a pasta de armazenamento, formato, editor de Capturas e notificações padrão</string>
     <string name="use_system_defaults_summary_off">Usar as configurações do App</string>
     <string name="setting_floating_button">Botão flutuante</string>
-    <string name="setting_floating_button_summary">Também pode ativar/desativar a opção via menu dos ajustes rápidos</string>
+    <string name="setting_floating_button_summary">Também pode ativar/desativar via menu de ajustes rápidos</string>
     <string name="setting_floating_button_unavailable">Serviço de acessibilidade está desativado</string>
     <string name="setting_floating_button_unsupported">Exige mín. Android 9 Pie</string>
     <string name="setting_floating_button_scale">Tamanho do botão flutuante</string>
