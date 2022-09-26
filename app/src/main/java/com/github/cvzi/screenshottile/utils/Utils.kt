@@ -996,7 +996,7 @@ fun handlePostScreenshot(
             }
         }
         "openShare" in postScreenshotActions -> {
-            val shareIntent = shareImageChooserIntent(context, uri, mimeTypeNullSafe ?: "image/*")
+            val shareIntent = shareImageChooserIntent(context, uri, mimeTypeNullSafe)
             shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             if (shareIntent.resolveActivity(context.packageManager) != null) {
