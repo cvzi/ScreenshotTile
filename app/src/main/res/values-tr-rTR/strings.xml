@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="50">Ekran görüntüsü döşemesi</string>
+    <string name="app_name">Ekran görüntüsü döşemesi</string>
     <string name="app_name_long">Ekran görüntüsü döşemesi (NoRoot)</string>
     <string name="tile_label">Ekran görüntüsü</string>
     <string name="tile_floating">Yüzen Pencere Ekran Görüntü düğmesi</string>
@@ -41,25 +41,25 @@
     <string name="setting_floating_button_show_close_dialog_title">Emoji kapatma butonu</string>
     <string name="setting_floating_button_show_close_dialog_description">Kapanma butonu olarak gözükecek Yazı veya emoji yaz</string>
     <string name="setting_floating_button_shutter">Yüzen buton teması</string>
-    <string name="setting_floating_button_delay">Ertleme (yüzen butonu)</string>
+    <string name="setting_floating_button_delay">Erteleme (Yüzen buton)</string>
     <string name="setting_broadcast_secret">Yayın amaçı şifresi</string>
-    <string name="setting_broadcast_secret_description">Başka uygulamalar Gizli ifadeye izin ver ekran resimleri almak için</string>
-    <string name="setting_storage_directory">Kaydetme lokasyonu</string>
-    <string name="setting_storage_directory_description">Ekran görüntüsü kaydetme dosyası</string>
+    <string name="setting_broadcast_secret_description">Ekran görüntülerini başlatmak için diğer uygulamalara izin vermek için gizli bir cümle (MacroDroid veya Tasker gibi.)</string>
+    <string name="setting_storage_directory">Kaydetme konumu</string>
+    <string name="setting_storage_directory_description">Ekran görüntülerinin kaydedileceği klasör</string>
     <string name="setting_file_name_pattern">Dosya adı</string>
     <string name="setting_file_name_placeholders_title">Bu yer tutucuları dosya adında kullanın</string>
     <string name="setting_tile_action">Döşeme Eylemi</string>
     <string name="setting_floating_action">Yüzen buton eylemi</string>
     <string name="setting_voice_interaction_action">Asistan eylemi</string>
-    <string name="setting_dark_theme">Karanlık tema</string>
+    <string name="setting_dark_theme">Koyu tema</string>
     <string name="setting_dark_theme_system">Sistem</string>
     <string name="setting_dark_theme_off">Devre dışı</string>
-    <string name="setting_dark_theme_on">etkinleştirildi</string>
+    <string name="setting_dark_theme_on">Etkin</string>
     <string name="setting_notification_buttons">Bildirim butonları</string>
     <string name="setting_notification_buttons_max_three">Lütfen en fazla 3 buton seçin</string>
     <string name="notification_settings">Bildirimler</string>
-    <string name="notification_settings_on">etkinleştirildi</string>
-    <string name="notification_settings_off">etkinleştirildi</string>
+    <string name="notification_settings_on">Etkin</string>
+    <string name="notification_settings_off">Devre dışı</string>
     <string name="setting_post_actions">sonraki eylem</string>
     <string name="setting_post_actions_description">Ekran görüntüsü alındıktan sonra ne olacağını seçin</string>
     <string name="button_history">Son ekran görüntüleri</string>
@@ -67,6 +67,7 @@
     <string name="restore_default_values">Varsayılan değerleri geri yükle</string>
     <string name="post_action_save_to_storage">Resmi galeriye kaydet</string>
     <string name="post_action_show_toast">Bir \"Toast\" bildirimi göster . 2 saniye sonra kaybolan küçük bir açılır-pencere</string>
+    <string name="post_action_show_notification">Düzenli bir bildirim göster. Düğmeleri bildirimin altındaki \"Daha Fazla Ayar\" yerinden değiştirebilirsiniz (Düzenle, Paylaş vb,...)</string>
     <string name="post_action_empty">Ekran görüntüsünü açma</string>
     <string name="post_action_open_in_post">\"Detaylar\" görünümünde aç</string>
     <string name="post_action_open_in_post_crop">Resmi kırp</string>
@@ -120,7 +121,11 @@
     <string name="take_screenshot">Ekran görüntüsü al</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_line_1">Bu uygulama - “Screenshot Tile [No root]“ - bir erişilebilirlik aracı değildir.</string>
+    <string name="googleplay_consent_line_3">Bu uygulamanın, uygulama kullanımda değilken ekran görüntüsü alabilmek için Erişilebilirlik API\'sine ihtiyacı vardır.</string>
     <string name="googleplay_consent_line_4">Erişilebilirlik Hizmeti API\'sine verilecek erişim bu uygulamanın ekran kaydetmesine izin verir.</string>
+    <string name="googleplay_consent_line_5">Ekran kaydetmeleri ekran görüntüleri oluşturmak için kullanılacak.</string>
+    <string name="googleplay_consent_line_6">Erişebilirlik kabiliyetini kullanarak hiçbir veri toplanmaz veya bu uygulamayla paylaşılmaz.</string>
+    <string name="googleplay_consent_line_7">Bu uygulamayı Erişebilirlik Hizmetleri API\'sine yetkilendirip, Erişebilirlik kabiliyetlerini ekranı kaydetmek için kullanmasını kabul ediyor musunuz?</string>
     <string name="googleplay_consent_yes">Kabul ediyorum</string>
     <string name="googleplay_consent_no">Reddediyorum</string>
     <!-- About -->
@@ -147,5 +152,39 @@
     <string name="main_assist_app_title">Yardım uygulaması</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Yeniden adlandır</string>
+    <string name="post_recent_file_names_and_suggestions">En son dosya adları ve öneriler:</string>
+    <string name="post_hint_new_file_name">Yeni dosya adı</string>
+    <string name="post_rename_file">Dosyayı yeniden adlandır:</string>
+    <string name="post_rename_error_identical">Yeni ve eski ad aynı</string>
+    <string name="post_hint_new_file_name_suggestion">Yeni bir öneri ekle</string>
+    <string name="post_save_a_suggestion">Öneriyi kaydet</string>
+    <string name="post_pin_to_favorites">Favorilere sabitle</string>
+    <string name="post_delete_suggestion">Öneriyi sil</string>
     <!-- Photo Editor-->
+    <string name="label_brush">Fırça</string>
+    <string name="label_shape">Şekil</string>
+    <string name="label_oval">Oval</string>
+    <string name="label_rectangle">Dikdörtgen</string>
+    <string name="label_line">Çizgi</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Silgi</string>
+    <string name="label_eraser_mode">Silgi Modu</string>
+    <string name="label_text">Yazı</string>
+    <string name="label_filter">Filtre</string>
+    <string name="label_adjust">Ayarla</string>
+    <string name="label_rotation">Rotasyon</string>
+    <string name="label_opacity">Saydamlık</string>
+    <string name="label_done">Tamam</string>
+    <string name="label_close">Kapat</string>
+    <string name="label_save">Kaydet</string>
+    <string name="label_discard">Yoksay</string>
+    <string name="msg_save_image">Resmi kaydetmeden çıkmak istiyor musunuz?</string>
+    <string name="msg_save_image_to_share">Lütfen paylaşmak için resmi kaydedin</string>
+    <string name="msg_share_image">Resmi Paylaş</string>
+    <string name="msg_choose_image">Bir resim seç</string>
+    <string name="msg_image_saved">Resim başarıyla kaydedildi</string>
+    <string name="msg_failed_to_save">Resim kaydedilemedi</string>
+    <string name="dialog_ask_filename_title">Farklı kaydet</string>
+    <string name="dialog_ask_filename_directory">Seçilen dizin:</string>
+    <string name="dialog_ask_filename_hint">Dosya adı (uzantı olmadan)</string>
 </resources>
