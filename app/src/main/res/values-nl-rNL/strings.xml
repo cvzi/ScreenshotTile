@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Schermafdruktegel (NoRoot)</string>
+    <string name="app_name">Schermafdruktegel</string>
+    <string name="app_name_long">Schermafdruktegel (NoRoot)</string>
     <string name="tile_label">Schermafdruk</string>
     <string name="tile_floating">Zwevende schermafdrukknop</string>
     <string name="tile_floating_label">Zwevend</string>
@@ -64,6 +65,22 @@
     <string name="setting_post_actions">Volgende acties</string>
     <string name="setting_post_actions_description">Kies wat er gebeurt nadat de schermafbeelding is gemaakt</string>
     <string name="button_history">Recente schermafdrukken</string>
+    <string name="button_history_description">Bekijk je recente schermafdrukken, inclusief bestanden die niet in de galerij zijn opgeslagen</string>
+    <string name="history_title">Schermafdrukgeschiedenis</string>
+    <string name="restore_default_values">Standaardwaarden herstellen</string>
+    <string name="post_action_save_to_storage">Afbeelding opslaan in galerij</string>
+    <string name="post_action_show_toast">Een “Toast”-melding tonen: een kleine pop-up die na 2 seconden verdwijnt</string>
+    <string name="post_action_show_notification">Een gewone melding tonen. Je kan de knoppen onder de notificatie (Bewerken, Delen,…)  wijzigen in “Meer Instellingen”</string>
+    <string name="post_action_empty">Schermafdruk niet openen</string>
+    <string name="post_action_open_in_post">In “Details”-weergave openen</string>
+    <string name="post_action_open_in_post_crop">Afbeelding bijsnijden</string>
+    <string name="post_action_open_in_photo_editor">De ingebouwde fotobewerker openen</string>
+    <string name="post_action_open_in_external_editor">In een externe fotobewerker openen</string>
+    <string name="post_action_open_in_external_viewer">In een fotoviewer of de galerij openen</string>
+    <string name="post_action_open_share">Schermafdruk delen</string>
+    <string name="move_to_storage_directory">Naar galerij verplaatsen</string>
+    <string name="button_clear">Wissen</string>
+    <string name="button_clear_confirm">Wil je alle tijdelijke bestanden verwijderen?\nDit verwijdert alle bestanden in %s\n\n(Deze bestanden zijn meestal niet zichtbaar in je galerij.)</string>
     <string name="file_title">Schermafdruk</string>
     <string name="file_description">Schermafdruk gemaakt op %1$s</string>
     <string name="notification_title">Gemaakte schermafdruk</string>
@@ -80,8 +97,13 @@
     <string name="notification_delete_screenshot">Verwijderen</string>
     <string name="notification_share_screenshot">Delen</string>
     <string name="notification_edit_screenshot">Bewerken</string>
+    <string name="notification_rename_screenshot">Naam wijzigen</string>
+    <string name="notification_crop_screenshot">Bijsnijden</string>
+    <string name="notification_photo_editor_screenshot">Fotobewerker</string>
     <string name="screenshot_deleted">Schermafdruk verwijderd</string>
     <string name="screenshot_delete_failed">Kon bestand niet verwijderen</string>
+    <string name="screenshot_renamed">Bestandsnaam gewijzigd naar %1s</string>
+    <string name="screenshot_rename_failed">Bestandsnaam kon niet worden gewijzigd</string>
     <string name="permission_missing_external_storage">Kan geen toestemming voor opslag verkrijgen</string>
     <string name="permission_missing_screen_capture">Kan geen toestemming verkrijgen om schermafdruk te maken</string>
     <string name="hide_app_from_launcher">Ap- icoon verbergen voor de launcher</string>
@@ -100,6 +122,17 @@
     <string name="tutorial_step16">Maak schermafdrukken met de nieuwe knop</string>
     <string name="take_screenshot">Schermafdruk maken</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Prominente-Bekendmakings- &amp; Toestemmingsvereiste van Google Play</string>
+    <string name="googleplay_consent_line_0">Google Play vereist prominente openbaarmaking van het gebruik van de Toegankelijkheidsdiensten-API voor een app die geen toegankelijkheidsgereedschap is.</string>
+    <string name="googleplay_consent_line_1">Deze app – “Schermafdruktegel [No root]” – is geen toegankelijkheidstool.</string>
+    <string name="googleplay_consent_line_2">Omdat gebruikers redelijkerwijs niet verwachten dat hun persoonlijke en gevoelige gebruikersgegevens nodig zullen zijn om beleidsconforme functies of functionaliteit binnen deze app te bieden of te verbeteren is een prominente openbaarmaking van het gebruik van de Toegankelijkheidsdiensten-API door deze app en een declaratie van het verzamelen en delen van gegevens binnen deze app vereist:</string>
+    <string name="googleplay_consent_line_3">Deze app vereist toegang tot de Toegankelijkheidsdiensten-API om een schermafdruk te maken wanneer de app niet in gebruik is.</string>
+    <string name="googleplay_consent_line_4">Met toegang tot Toegankelijkheidsdiensten-API kan deze app het scherm opnemen.</string>
+    <string name="googleplay_consent_line_5">Schermopnames zullen worden gebruikt om schermafdrukken te maken.</string>
+    <string name="googleplay_consent_line_6">Deze app verzameld noch deelt gegevens met behulp van de toegankelijkheidsmogelijkheden.</string>
+    <string name="googleplay_consent_line_7">Ga je akkoord met het machtigen van deze app om toegang te krijgen tot de Toegankelijkheidsdiensten-API en om de toegankelijkheidsmogelijkheden te gebruiken voor het opnemen van het scherm?</string>
+    <string name="googleplay_consent_yes">Ik ga akkoord</string>
+    <string name="googleplay_consent_no">Ik ga niet akkoord</string>
     <!-- About -->
     <string name="about_app_title">Over</string>
     <string name="about_app_1">Dit is een vork van\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -125,7 +158,14 @@
     <string name="main_long_press_title">Lang indrukken</string>
     <string name="main_long_press_text">Lang indrukken van de tegel/knop opent een menu. Je kunt een vertraging opgeven voor de schermafdruk of een rechthoek uitknippen van het scherm.</string>
     <string name="main_assist_app_title">App voor assistentie</string>
+    <string name="main_assist_app_text">Als je deze app als assistentie-app instelt, kun je lang op de home-knop drukken om een screenshot te maken.  Door deze app in te schakelen worden andere assistenten uitgeschakeld.  U kunt de actie behorend bij lang op de thuisknop te drukken wijzigen in de app-instellingen.</string>
     <!-- Post edit activity -->
+    <string name="post_button_save">Naam wijzigen</string>
+    <string name="post_recent_file_names_and_suggestions">Recente bestandsnamen en suggesties:</string>
+    <string name="post_hint_new_file_name">Nieuwe bestandsnaam</string>
+    <string name="post_rename_file">Bestandsnaam wijzigen:</string>
+    <string name="post_rename_error_identical">Nieuwe en oude bestandsnaam zijn identiek</string>
+    <string name="post_hint_new_file_name_suggestion">Nieuwe suggestie toevoegen</string>
     <!-- Photo Editor-->
     <string name="label_save">Opslaan</string>
     <string name="label_discard">Verwerpen</string>
@@ -135,4 +175,11 @@
     <string name="dialog_ask_filename_title">Opslaan als</string>
     <string name="dialog_ask_filename_directory">Gekozen map:</string>
     <string name="dialog_ask_filename_hint">Bestandsnaam (zonder extensie)</string>
+    <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Standaardmodus: Aan</string>
+    <string name="setting_defaults_to_milliseconds">Standaard: %1$s milliseconden</string>
+    <string name="setting_toasts">Alle “Toast”-meldingen</string>
+    <string name="setting_success_toasts">“Toast”-meldingen voor geslaagde gebeurtenissen</string>
+    <string name="setting_error_toasts">“Toast”-meldingen voor fouten</string>
+    <string name="setting_select_area_shutter_delay">Vertraging na op de sluiter te drukken (in modus “Gebied selecteren”)</string>
 </resources>
