@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="50">Screenshot Tile</string>
+    <string name="app_name">Screenshot Tile</string>
     <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Знімок екрана</string>
     <string name="tile_floating">Рухома кнопка знімку екрана</string>
@@ -198,4 +198,10 @@
     <string name="dialog_ask_filename_title">Зберегти як</string>
     <string name="dialog_ask_filename_directory">Вибраний каталог:</string>
     <string name="dialog_ask_filename_hint">Назва файлу (без розширення)</string>
+    <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Типовий режим: Увімкнено</string>
+    <string name="setting_defaults_to_milliseconds">Типово: %1$s мілісекунд</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Затримка після помилки «%1$s»</string>
+    <string name="setting_floating_button_alpha">Прозорість рухомої кнопки</string>
+    <string name="setting_keep_screenshot_history">Зберігати історію знімків екрану</string>
 </resources>
