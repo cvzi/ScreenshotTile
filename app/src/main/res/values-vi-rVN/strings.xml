@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ô chụp màn hình (KhôngCầnRoot)</string>
+    <string name="app_name">Ô chụp màn hình</string>
+    <string name="app_name_long">Ô chụp màn hình (KhôngCầnRoot)</string>
     <string name="tile_label">Chụp màn hình</string>
     <string name="tile_floating">Nổi nút chụp màn hình</string>
     <string name="tile_floating_label">Nổi</string>
@@ -38,7 +39,7 @@
     <string name="setting_floating_button_show_close">Hiện nút [X]/đóng bên cạnh nút nổi</string>
     <string name="setting_floating_button_show_close_summary">Để cho bạn loại bỏ nút nổi mà không mở cài đặt nhanh</string>
     <string name="setting_floating_button_show_close_dialog_title">Emoji nút đóng</string>
-    <string name="setting_floating_button_show_close_dialog_description">Nhập một văn bản hoặc emoji mà nó sẽ hiện lên là nút đóng</string>
+    <string name="setting_floating_button_show_close_dialog_description">Nhập một văn bản hoặc emoji, nó sẽ hiện lên là nút đóng</string>
     <string name="setting_floating_button_shutter">Chủ đề nút nổi</string>
     <string name="setting_floating_button_delay">Độ trễ (Nút nổi)</string>
     <string name="setting_broadcast_secret">Mật khẩu intent truyền phát</string>
@@ -47,6 +48,7 @@
     <string name="setting_storage_directory_description">Thư mục lưu ảnh chụp màn hình</string>
     <string name="setting_file_name_pattern">Tên tệp</string>
     <string name="setting_file_name_placeholders_title">Sử dụng các chỗ giữ chỗ này trong tên tệp</string>
+    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - thời gian dưới dạng yyyy-MM-dd_HH-mm-ss\n%csố đếm% - đếm số lượng ảnh chụp màn hình\n%rngẫu nhiên% - UUID ngẫu nhiên\n%rsố ngẫu nhiên% - số ngẫu nhiên</string>
     <string name="setting_tile_action">Hành động của ô</string>
     <string name="setting_floating_action">Hành động nút nổi</string>
     <string name="setting_voice_interaction_action">Hành động trợ lý</string>
@@ -60,6 +62,25 @@
     <string name="notification_settings">Thông báo</string>
     <string name="notification_settings_on">Bật</string>
     <string name="notification_settings_off">Tắt</string>
+    <string name="setting_post_actions">Hành động thực hiện sau đó</string>
+    <string name="setting_post_actions_description">Chọn việc xảy ra sau khi chụp màn hình</string>
+    <string name="button_history">Ảnh chụp màn hình gần đây</string>
+    <string name="button_history_description">Xem các ảnh chụp màn hình gần đây, kể cả các tệp không được lưu vào thư viện</string>
+    <string name="history_title">Lịch sử chụp màn hình</string>
+    <string name="restore_default_values">Khôi phục giá trị mặc định</string>
+    <string name="post_action_save_to_storage">Lưu hình ảnh vào thư viện</string>
+    <string name="post_action_show_toast">Hiện thông báo \"Toast\" - khu vực thông báo nhỏ biến mất sau 2 giây</string>
+    <string name="post_action_show_notification">Hiện thông báo bình thường. Bạn có thể thay đổi các nút (Sửa, Chia sẻ,…) ở dưới thông báo trong mục \"Thêm tùy chọn\"</string>
+    <string name="post_action_empty">Không mở ảnh chụp màn hình</string>
+    <string name="post_action_open_in_post">Xem trong chế độ \"Chi tiết\"</string>
+    <string name="post_action_open_in_post_crop">Cắt ảnh</string>
+    <string name="post_action_open_in_photo_editor">Mở trình chỉnh sửa ảnh đi kèm ứng dụng</string>
+    <string name="post_action_open_in_external_editor">Mở trong trình chỉnh sửa ảnh bên ngoài</string>
+    <string name="post_action_open_in_external_viewer">Mở trong ứng dụng xem ảnh hoặc thư viện</string>
+    <string name="post_action_open_share">Chia sẻ ảnh chụp màn hình</string>
+    <string name="move_to_storage_directory">Di chuyển vào thư viện</string>
+    <string name="button_clear">Xóa</string>
+    <string name="button_clear_confirm">Bạn có muốn xóa tất cả tệp tạm không?\nViệc này sẽ xóa tất cả tệp trong %s\n\n(Các tệp này thường là không nhìn thấy được trong thư viện)</string>
     <string name="file_title">Ảnh chụp màn hình</string>
     <string name="file_description">Đã chụp ảnh màn hình vào %1$s</string>
     <string name="notification_title">Đã chụp ảnh màn hình</string>
@@ -78,6 +99,8 @@
     <string name="notification_edit_screenshot">Chỉnh sửa</string>
     <string name="notification_rename_screenshot">Đổi tên</string>
     <string name="notification_screenshot_details">Chi tiết</string>
+    <string name="notification_crop_screenshot">Cắt</string>
+    <string name="notification_photo_editor_screenshot">Trình chỉnh sửa ảnh</string>
     <string name="screenshot_deleted">Đã xoá ảnh chụp màn hình</string>
     <string name="screenshot_delete_failed">Không thể xoá tệp</string>
     <string name="screenshot_renamed">Đã đổi tên tệp thành %1s</string>
@@ -118,6 +141,8 @@
     <string name="about_license_title">Giấy phép</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE phiên bản 3</string>
     <string name="about_app_2">Ứng dụng này vẫn có một số vấn đề và đang được phát triển.\nNếu bạn có quyền truy cập root trên điện thoại của bạn thì vui lòng sử dụng phiên bản của ipcjs, nó nhanh hơn và đáng tin cậy hơn.</string>
+    <string name="about_privacy_title">Chính sách riêng tư</string>
+    <string name="about_open_source_title">Phần mềm mã nguồn mở được sử dụng</string>
     <string name="about_advanced_settings_button">Cài đặt nâng cao</string>
     <string name="about_update_check_button">Kiểm tra cập nhật</string>
     <!-- First screen -->
@@ -145,4 +170,30 @@
     <string name="post_save_a_suggestion">Lưu đề xuất</string>
     <string name="post_pin_to_favorites">Ghim vào mục yêu thích</string>
     <string name="post_delete_suggestion">Xoá đề xuất</string>
+    <!-- Photo Editor-->
+    <string name="label_brush">Cọ</string>
+    <string name="label_shape">Hình dạng</string>
+    <string name="label_oval">Bầu dục</string>
+    <string name="label_rectangle">Chữ nhật</string>
+    <string name="label_line">Đường thẳng</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Tẩy</string>
+    <string name="label_eraser_mode">Chế độ tẩy</string>
+    <string name="label_text">Chữ</string>
+    <string name="label_filter">Bộ lọc</string>
+    <string name="label_adjust">Điều chỉnh</string>
+    <string name="label_rotation">Xoay</string>
+    <string name="label_opacity">Độ trong suốt</string>
+    <string name="label_done">Xong</string>
+    <string name="label_close">Đóng</string>
+    <string name="label_save">Lưu</string>
+    <string name="label_discard">Bỏ</string>
+    <string name="msg_save_image">Bạn có muốn thoát mà không lưu ảnh không?</string>
+    <string name="msg_save_image_to_share">Vui lòng lưu ảnh để chia sẻ</string>
+    <string name="msg_share_image">Chia sẻ hình ảnh</string>
+    <string name="msg_choose_image">Chọn hình ảnh</string>
+    <string name="msg_image_saved">Lưu ảnh thành công</string>
+    <string name="msg_failed_to_save">Lưu ảnh thất bại</string>
+    <string name="dialog_ask_filename_title">Lưu dưới dạng</string>
+    <string name="dialog_ask_filename_directory">Thư mục đã chọn:</string>
 </resources>
