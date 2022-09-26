@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">אריח צילום מסך (ללא רוט)</string>
+    <string name="app_name">אריח צילום מסך </string>
+    <string name="app_name_long">אריח צילום מסך (ללא רוט)</string>
     <string name="tile_label">צילום מסך</string>
     <string name="tile_floating">כפתור צף לצילום מסך</string>
     <string name="tile_floating_label">כפתור צף</string>
@@ -19,10 +20,25 @@
     <string name="use_native_screenshot">השתמש בשיטת צילום מסך מקורית</string>
     <string name="use_native_screenshot_summary">הדמיית בית + לחיצת כפתור הפעלה</string>
     <string name="use_native_screenshot_unsupported">דורש אנדרואיד 9 \"פאי\" ואילך</string>
+    <string name="use_native_screenshot_unavailable">שירות הנגישות מושבת</string>
+    <string name="use_native_screenshot_option_default">השיטה המקורית משתמשת בברירת המחדל של המערכת</string>
+    <string name="use_native_screenshot_option_android11">השבת את \'השימוש בברירות המחדל של המערכת\' כדי להשתמש בזה</string>
+    <string name="accessibility_service_description">שירות זה מופעל, האפליקציה יכולה לדמות לחיצה על כפתור הפעלה+בית כדי לצלם צילומי מסך.\nבמכשירים מסוימים המאפשרים שיטה זו עשויים להיות יציבים יותר או מהירים יותר משיטת ברירת המחדל.\n\nאם תפעיל את השירות כאן, אתה גם צריך כדי להפעיל את \"השיטה המקורית\" בהגדרות האפליקציה.</string>
+    <string name="use_system_defaults">השתמש בברירת המחדל של המערכת</string>
     <string name="use_system_defaults_summary">דורש אנדרואיד 11 ואילך</string>
+    <string name="use_system_defaults_summary_on">שימוש ברירת המחדל של ספריית אחסון, פורמט, עורך צילומי מסך והתראות</string>
+    <string name="use_system_defaults_summary_off">שימוש בהגדרות האפליקציה</string>
     <string name="setting_floating_button">כפתור צף</string>
+    <string name="setting_floating_button_summary">אתה יכול גם להפעיל/לכבות אותו מאריח ההגדרות המהירות</string>
+    <string name="setting_floating_button_unavailable">שירות הנגישות מושבת</string>
     <string name="setting_floating_button_unsupported">דורש אנדרואיד 9 \"פאי\" ואילך</string>
     <string name="setting_floating_button_scale">גודל כפתור צף</string>
+    <string name="setting_floating_button_scale_summary">התאם את גודל הכפתור הצף</string>
+    <string name="setting_floating_button_hide_after">הסתר כפתור צף לאחר צילום מסך</string>
+    <string name="setting_floating_button_hide_after_summary">הסר אוטומטית את הכפתור הצף לאחר שצילמת צילום מסך</string>
+    <string name="setting_floating_button_show_close">הצג כפתור [X]/סגור ליד הלחצן הצף</string>
+    <string name="setting_floating_button_show_close_summary">מאפשר להסיר את הכפתור הצף מבלי לפתוח את ההגדרות המהירות</string>
+    <string name="setting_floating_button_show_close_dialog_title">סגור כפתור של אימוגי</string>
     <string name="setting_floating_button_delay">השהיית עם הכפתור הצף</string>
     <string name="setting_storage_directory">תיקיית יעד</string>
     <string name="setting_storage_directory_description">בחר את המיקום עבור קבצי התמונה</string>
@@ -38,6 +54,7 @@
     <string name="notification_settings_off">כבוי</string>
     <string name="file_title">צילום מסך</string>
     <string name="file_description">%1$s צילום מסך</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">צילום המסך נשמר</string>
     <string name="notification_body">אפשר להקיש כדי להציג את צילום המסך</string>
     <string name="notification_channel_description">מציג התראות לאחר צילום מסך</string>
@@ -70,7 +87,6 @@
     <string name="googleplay_consent_no">אני מסרב</string>
     <!-- About -->
     <string name="about_app_title">אודות</string>
-    <string name="about_app_3">For more information and bug reports visit: github.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">רישיון</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\n שיון הציבורי הכללי של גנו גרסה   3 </string>
     <!-- First screen -->
