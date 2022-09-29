@@ -1,4 +1,4 @@
-Dodaje przycisk/kafelek do panelu szybkich ustawień, aby wykonywać zrzuty ekranu.
+Dodaje przycisk/kafelek wykonywania zrzutu ekranu do panelu szybkich ustawień.
 
 Po zainstalowaniu musisz dodać kafelek/przycisk do szybkich ustawień, a następnie przydzielić uprawnienia do nagrywania ekranu i zapisywania obrazów do pamięci wewnętrznej.
 
