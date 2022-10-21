@@ -48,7 +48,10 @@
     <string name="setting_storage_directory_description">用来保存文件的文件夹</string>
     <string name="setting_file_name_pattern">文件名</string>
     <string name="setting_file_name_placeholders_title">在文件名中使用这些占位符</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - 时间格式 yyyy-MM-dd_HH-mm-ss\n%counter% - 计算屏幕截图数目\n%random% - 随机的 UUID\n%randint% - 随机数字</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - 时间格式 yyyy-MM-dd_HH-mm-ss
+%counter% - 计算屏幕截图数目
+%random% - 随机的 UUID
+%randint% - 随机数字]]></string>
     <string name="setting_tile_action">磁贴操作</string>
     <string name="setting_floating_action">浮动按钮操作</string>
     <string name="setting_voice_interaction_action">助理操作</string>
