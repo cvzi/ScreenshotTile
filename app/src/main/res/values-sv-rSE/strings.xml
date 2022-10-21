@@ -136,7 +136,7 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">Tillgänglighetsinställningar</string>
     <string name="main_floating_button_title">Flytande knapp</string>
-    <string name="main_general_text">Innan du kan använda den här appen måste du lägga till panelknappen i snabbinställningarna. Om du inte vet hur man gör detta, ta en titt på [Handledningen,. TutorialActivity].\n\nDenna app stöder två olika metoder för att ta skärmdumpar:</string>
+    <string name="main_general_text">Innan du kan använda den här appen måste du lägga till panelknappen i snabbinställningarna. Om du inte vet hur man gör detta, ta en titt på [Handledningen,.TutorialActivity].\n\nDenna app stöder två olika metoder för att ta skärmdumpar:</string>
     <string name="main_legacy_method_title">Äldre metod</string>
     <string name="main_legacy_method_text">Den äldre metoden för att ta skärmdumpar använder skärminspelningsfunktioner i Android.\nNär du tar en skärmbild spelas inget ljud. En tyst avisering visas för att öppna, dela eller redigera skärmbilden. Meddelandet kan inaktiveras i appinställningarna.\nInnan du kan ta en skärmdump måste du lägga till panelen till snabbinställningarna, acceptera behörighet att spela in skärmen och behörighet att komma åt den interna lagringsenheten för att spara bildfilen.\nSe handledningen om hur man gör det.\n\nPå vissa telefoner fungerar denna metod inte, särskilt på nyare Androids (9.0+) är det instabilt och det kan be om tillstånd på varje enskild skärmdump. Om det händer bör du använda den nativa metoden nedan.</string>
     <string name="main_native_method_title">Nativ metod</string>
