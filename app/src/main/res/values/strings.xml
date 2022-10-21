@@ -47,7 +47,10 @@
     <string name="setting_storage_directory_description">Folder to save screenshots in</string>
     <string name="setting_file_name_pattern">File name</string>
     <string name="setting_file_name_placeholders_title">Use these placeholders in the file name</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - time as yyyy-MM-dd_HH-mm-ss\n%counter% - counts the number of screenshots\n%random% - a random UUID\n%randint% - a random number</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - time as yyyy-MM-dd_HH-mm-ss
+%counter% - counts the number of screenshots
+%random% - a random UUID
+%randint% - a random number]]></string>
     <string name="setting_tile_action">Tile action</string>
     <string name="setting_floating_action">Floating button action</string>
     <string name="setting_voice_interaction_action">Assistant action</string>
