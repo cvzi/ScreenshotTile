@@ -1,4 +1,4 @@
-Dodaje przycisk/kafelek do panelu szybkich ustawień, aby wykonywać zrzuty ekranu.
+Dodaje przycisk/kafelek wykonywania zrzutu ekranu do panelu szybkich ustawień.
 
 Po zainstalowaniu musisz dodać kafelek/przycisk do szybkich ustawień, a następnie przydzielić uprawnienia do nagrywania ekranu i zapisywania obrazów do pamięci wewnętrznej.
 
@@ -9,6 +9,7 @@ Jeśli aplikacja zawiesza się w systemie Android 9/Pie lub 10, możesz spróbow
 ✓ Powiadomienie po wykonaniu zrzutu ekranu (może zostać wyłączone)
 ✓ Natychmiast udostępniaj, edytuj lub usuń zrzut ekranu bezpośrednio z powiadomienia
 ✓ Pływający przycisk/Nakładka podobna do dymka czatu (Android 9+)
+✓ Użyj jako aplikacji wspomagającej, aby zrobić zrzut ekranu (przytrzymaj przycisk główny)
 ✓ Wykonywanie zrzutu tylko określonego fragmentu ekranu (długie naciśnięcie kafelka)
 ✓ Opóźnienie wykonania zrzutu ekranu
 ✓ Przechowywanie w dowolnym folderze lub pamięci np. karcie pamięci
