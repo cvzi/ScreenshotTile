@@ -48,7 +48,10 @@
     <string name="setting_storage_directory_description">Папка для сохранения снимков экрана</string>
     <string name="setting_file_name_pattern">Имя файла</string>
     <string name="setting_file_name_placeholders_title">В имени файла используйте эти заполнители</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - время в формате yyyy-MM-dd_HH-mm-ss\n%counter% - подсчет количества снимков экрана\n%random% - случайный UUID\n%randint% - случайное число</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - время в формате yyyy-MM-dd_HH-mm-ss
+%counter% - подсчет количества снимков экрана
+%random% - случайный UUID
+%randint% - случайное число]]></string>
     <string name="setting_tile_action">Действие плитки</string>
     <string name="setting_floating_action">Действие плавающей кнопки</string>
     <string name="setting_voice_interaction_action">Действия помощника</string>
