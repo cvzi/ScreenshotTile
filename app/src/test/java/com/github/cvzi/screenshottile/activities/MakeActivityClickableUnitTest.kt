@@ -27,11 +27,19 @@ open class UnitTestClickableActivityLink {
 
         for (activity in clickableStringResult.activities) {
             println("  Class: \"$activity\"")
-            val c = Class.forName(activity)
+            val c = try {
+                Class.forName(activity)
+            } catch (e: ClassNotFoundException) {
+                e.printStackTrace()
+                null
+            }
+            if (c == null) {
+                println("  ❌ c is null")
+            }
             assertThat(c).isNotNull()
         }
 
-        println("  Ok.")
+        println("  ✅ Ok.")
     }
 }
 

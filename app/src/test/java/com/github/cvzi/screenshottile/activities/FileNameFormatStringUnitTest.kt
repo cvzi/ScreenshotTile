@@ -24,7 +24,7 @@ open class UnitTestFileNameFormatString {
         assertThat(text).contains("%random%")
         assertThat(text).contains("%randint%")
 
-        println("  Ok.")
+        println("  ✅ Ok.")
     }
 }
 
