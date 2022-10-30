@@ -144,6 +144,21 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        findViewById<Button>(R.id.buttonFloatingButtonSettings)?.apply {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                setOnClickListener {
+                    startActivity(
+                        Intent(
+                            this@MainActivity,
+                            FloatingButtonSettingsActivity::class.java
+                        )
+                    )
+                }
+            } else {
+                visibility = View.GONE
+            }
+        }
+
         findViewById<Button>(R.id.buttonPostActions).setOnClickListener {
             startActivity(Intent(this, PostSettingsActivity::class.java))
         }

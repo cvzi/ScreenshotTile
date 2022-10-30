@@ -9,7 +9,7 @@
             android:viewportHeight="318">
             <path
                 android:name="circle"
-                android:fillColor="#BB000000"
+                android:fillColor="#FF666666"
                 android:pathData="M 159 159 M 139 159 C 139 154.777 140.337 150.661 142.82 147.244 C 145.302 143.828 148.803 141.284 152.82 139.979 C 156.836 138.674 161.164 138.674 165.18 139.979 C 169.197 141.284 172.698 143.828 175.18 147.244 C 177.663 150.661 179 154.777 179 159 C 179 163.223 177.663 167.339 175.18 170.756 C 172.698 174.172 169.197 176.716 165.18 178.021 C 161.164 179.326 156.836 179.326 152.82 178.021 C 148.803 176.716 145.302 174.172 142.82 170.756 C 140.337 167.339 139 163.223 139 159" />
             <group
                 android:name="blades"
@@ -17,37 +17,37 @@
                 android:pivotY="159">
                 <path
                     android:name="blade_0"
-                    android:fillColor="#DDeeeeee"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 99.37 127.995 C 99.37 127.995 175.54 6.675 173.51 4.655 C 145.88 -5.455 79.15 8.705 49.5 43.745 C 48.15 48.465 99.37 127.995 99.37 127.995 Z"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
                 <path
                     android:name="blade_1"
-                    android:fillColor="#DDeeeeee"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 153.068 93.437 C 153.068 93.437 296.197 99.305 296.943 96.54 C 291.997 67.537 246.569 16.648 201.431 8.313 C 196.664 9.485 153.068 93.437 153.068 93.437 Z"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
                 <path
                     android:name="blade_2"
-                    android:fillColor="#DDeeeeee"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 209.57 122.434 C 209.57 122.434 276.81 248.922 279.573 248.168 C 302.105 229.248 323.074 164.336 307.465 121.169 C 304.046 117.647 209.57 122.434 209.57 122.434 Z"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
                 <path
                     android:name="blade_3"
-                    android:fillColor="#DDeeeeee"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 212.177 186.054 C 212.177 186.054 136.263 307.534 138.297 309.55 C 165.949 319.601 232.649 305.301 262.225 270.198 C 263.565 265.475 212.177 186.054 212.177 186.054 Z"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
                 <path
                     android:name="blade_4"
-                    android:fillColor="#DDeeeeee"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 162.307 220.256 C 162.307 220.256 19.142 215.332 18.415 218.102 C 23.552 247.072 69.314 297.66 114.508 305.699 C 119.267 304.495 162.307 220.256 162.307 220.256 Z"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
                 <path
                     android:name="blade_5"
-                    android:fillColor="#DDeeeeee"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 105.586 193.797 C 105.586 193.797 38.36 67.302 35.597 68.055 C 13.064 86.972 -7.913 151.883 7.691 195.05 C 11.11 198.573 105.586 193.797 105.586 193.797 Z"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />

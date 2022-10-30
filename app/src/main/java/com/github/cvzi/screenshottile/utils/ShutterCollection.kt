@@ -20,9 +20,14 @@ class ShutterCollection(
     /**
      * Represents a drawable shutter and its name
      */
-    inner class Shutter(val name: String, val normal: Int, val move: Int)
+    inner class Shutter(
+        val name: String,
+        val normal: Int,
+        val move: Int,
+        val index: Int
+    )
 
-    private val list: MutableList<Shutter> = mutableListOf()
+    val list: MutableList<Shutter> = mutableListOf()
 
     var index = 0
         get() {
@@ -49,7 +54,7 @@ class ShutterCollection(
             @SuppressLint("ResourceType")
             val move = currentShutters.getResourceId(1, -1)
             val name = context.resources.getStringArray(namesArrayResourceId)[i]
-            list.add(Shutter(name, normal, move))
+            list.add(Shutter(name, normal, move, i))
             currentShutters.recycle()
         }
         availableShutters.recycle()

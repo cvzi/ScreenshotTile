@@ -8,6 +8,7 @@
     <string name="title_delay">Delay</string>
     <string name="more_setting">More Settings</string>
     <string name="open_settings">Open settings</string>
+    <string name="floating_button_settings">Floating button settings</string>
     <string name="left_screenshot_right_menu">Left: Screenshot, right: Settings</string>
     <string name="partial_screenshot">Select area</string>
     <string name="file_format">File format</string>
@@ -221,6 +222,7 @@
     <string name="setting_floating_button_alpha">Floating button transparency</string>
     <string name="setting_floating_button_alpha_summary">0.0 (fully-transparent) to 1.0 (fully-opaque)</string>
     <string name="setting_floating_button_alpha_dialog">Choose a lower value to make the button more transparent. Range 0.0 to 1.0\nDefault: 1.0 (fully-opaque)</string>
+    <string name="setting_floating_button_color">Floating button color</string>
     <string name="setting_delay_custom_summary">Choose a custom delay for the tile (in seconds)</string>
     <string name="setting_floating_button_delay_custom_summary">Choose a custom delay for the floating button (in seconds)</string>
     <string name="setting_format_quality">File format quality</string>

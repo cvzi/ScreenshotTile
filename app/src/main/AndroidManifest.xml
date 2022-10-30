@@ -167,6 +167,13 @@
             android:parentActivityName="com.github.cvzi.screenshottile.activities.MainActivity"
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.github.cvzi.screenshottile.activities.FloatingButtonSettingsActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.github.cvzi.screenshottile.activities.MainActivity"
+            android:taskAffinity="${applicationId}.task"
+            android:theme="@style/AppTheme" />
 
         <service
             android:name="com.github.cvzi.screenshottile.services.ScreenshotTileService"

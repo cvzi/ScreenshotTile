@@ -13,44 +13,44 @@
                 android:pivotY="159">
                 <path
                     android:name="path_0"
-                    android:fillColor="#ffffff"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 152.048 170.68 C 149.752 147.872 151.883 111.649 152.112 82.63 C 152.342 53.61 150.669 31.793 140.763 37.797 C 145.587 29.418 150.411 21.04 155.235 12.661 C 154.173 65.334 153.111 118.007 152.048 170.68"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
                 <path
                     android:name="path_1"
-                    android:fillColor="#ffffff"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 152.048 170.68 L 153.642 91.671 C 154.173 65.334 154.704 38.998 155.235 12.661 C 160.217 21.349 165.2 30.037 170.183 38.725 C 151.413 23.873 158.093 126.695 152.048 170.68"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
                 <path
                     android:name="path_2"
-                    android:fillColor="#ffffff"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 152.049 170.68 C 194.391 197.858 236.734 225.036 279.077 252.213 C 275.342 244.043 271.607 235.873 267.873 227.704 C 272.498 254.248 190.029 189.935 152.049 170.68 Z"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
                 <path
                     android:name="path_3"
-                    android:fillColor="#ffffff"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 151.334 170.323 L 151.334 170.323 C 178.125 195.401 272.16 239.495 253.52 251.441 C 262.039 251.698 270.558 251.956 279.077 252.213 C 236.496 224.916 193.915 197.62 151.334 170.323"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
                 <path
                     android:name="path_4"
-                    android:fillColor="#ffffff"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 152.048 170.68 C 110.835 200.618 69.621 230.556 28.407 260.495 C 37.918 259.339 47.429 258.183 56.939 257.028 C 34.594 251.732 120.345 199.463 152.048 170.68 Z"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
                 <path
                     android:name="path_5"
-                    android:fillColor="#ffffff"
+                    android:fillColor="#FFeeeeee"
                     android:pathData="M 152.048 170.68 L 152.048 170.68 C 114.617 189.959 39.248 256.521 40.261 231.92 C 36.31 241.445 32.359 250.97 28.407 260.495 C 69.621 230.556 110.835 200.618 152.048 170.68"
                     android:strokeWidth="1"
                     android:strokeColor="#000000" />
             </group>
             <path
                 android:name="circle"
-                android:fillColor="#FF000000"
+                android:fillColor="#FF666666"
                 android:pathData="M 112.124 136.964 C 118.939 128.873 128.149 123.149 138.422 120.623 C 138.422 120.623 138.422 120.623 138.422 120.623 C 143.426 119.358 148.564 118.884 153.654 119.188 C 158.997 119.508 164.287 120.684 169.314 122.704 C 179.13 126.649 187.446 133.608 193.058 142.576 C 198.669 151.544 201.293 162.066 200.548 172.619 C 199.803 183.171 195.728 193.22 188.913 201.311 C 182.098 209.402 172.887 215.125 162.614 217.652 C 152.358 220.244 141.539 219.515 131.722 215.571 C 121.906 211.626 113.591 204.667 107.979 195.699 C 102.367 186.731 99.744 176.209 100.489 165.656 C 101.233 155.104 105.308 145.055 112.124 136.964" />
         </vector>
     </aapt:attr>
@@ -58,18 +58,18 @@
         <aapt:attr name="android:animation">
             <set>
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="pathData"
                     android:valueFrom="M 99.37 127.995 C 99.37 127.995 99.37 127.995 99.37 127.995 C 99.37 127.995 48.15 48.465 49.5 43.745 C 79.15 8.705 145.88 -5.455 173.51 4.655 C 175.54 6.675 99.37 127.995 99.37 127.995"
                     android:valueTo="M 152.048 170.68 C 149.752 147.872 151.883 111.649 152.112 82.63 C 152.342 53.61 150.669 31.793 140.763 37.797 C 145.587 29.418 150.411 21.04 155.235 12.661 C 154.173 65.334 153.111 118.007 152.048 170.68"
                     android:valueType="pathType" />
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="fillColor"
-                    android:valueFrom="#ffffff"
-                    android:valueTo="#88000000"
+                    android:valueFrom="#FFeeeeee"
+                    android:valueTo="#FF666666"
                     android:valueType="colorType" />
             </set>
         </aapt:attr>
@@ -78,18 +78,18 @@
         <aapt:attr name="android:animation">
             <set>
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="pathData"
                     android:valueFrom="M 153.068 93.437 L 153.068 93.437 C 153.068 93.437 196.664 9.485 201.431 8.313 C 246.569 16.648 291.997 67.537 296.943 96.54 C 296.197 99.305 153.068 93.437 153.068 93.437"
                     android:valueTo="M 152.048 170.68 L 153.642 91.671 C 154.173 65.334 154.704 38.998 155.235 12.661 C 160.217 21.349 165.2 30.037 170.183 38.725 C 151.413 23.873 158.093 126.695 152.048 170.68"
                     android:valueType="pathType" />
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="fillColor"
-                    android:valueFrom="#ffffff"
-                    android:valueTo="#88000000"
+                    android:valueFrom="#FFeeeeee"
+                    android:valueTo="#FF666666"
                     android:valueType="colorType" />
             </set>
         </aapt:attr>
@@ -98,18 +98,18 @@
         <aapt:attr name="android:animation">
             <set>
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="pathData"
                     android:valueFrom="M 209.57 122.434 C 209.57 122.434 276.81 248.922 279.573 248.168 C 302.105 229.248 323.074 164.336 307.465 121.169 C 304.046 117.647 209.57 122.434 209.57 122.434 Z"
                     android:valueTo="M 152.049 170.68 C 194.391 197.858 236.734 225.036 279.077 252.213 C 275.342 244.043 271.607 235.873 267.873 227.704 C 272.498 254.248 190.029 189.935 152.049 170.68 Z"
                     android:valueType="pathType" />
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="fillColor"
-                    android:valueFrom="#ffffff"
-                    android:valueTo="#88000000"
+                    android:valueFrom="#FFeeeeee"
+                    android:valueTo="#FF666666"
                     android:valueType="colorType" />
             </set>
         </aapt:attr>
@@ -118,18 +118,18 @@
         <aapt:attr name="android:animation">
             <set>
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="pathData"
                     android:valueFrom="M 212.177 186.054 L 212.177 186.054 C 212.177 186.054 136.263 307.534 138.297 309.55 C 165.949 319.601 232.649 305.301 262.225 270.198 C 263.565 265.475 212.177 186.054 212.177 186.054"
                     android:valueTo="M 151.334 170.323 L 151.334 170.323 C 178.125 195.401 272.16 239.495 253.52 251.441 C 262.039 251.698 270.558 251.956 279.077 252.213 C 236.496 224.916 193.915 197.62 151.334 170.323"
                     android:valueType="pathType" />
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="fillColor"
-                    android:valueFrom="#ffffff"
-                    android:valueTo="#88000000"
+                    android:valueFrom="#FFeeeeee"
+                    android:valueTo="#FF666666"
                     android:valueType="colorType" />
             </set>
         </aapt:attr>
@@ -138,18 +138,18 @@
         <aapt:attr name="android:animation">
             <set>
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="pathData"
                     android:valueFrom="M 162.307 220.256 C 162.307 220.256 19.142 215.332 18.415 218.102 C 23.552 247.072 69.314 297.66 114.508 305.699 C 119.267 304.495 162.307 220.256 162.307 220.256 Z"
                     android:valueTo="M 152.048 170.68 C 110.835 200.618 69.621 230.556 28.407 260.495 C 37.918 259.339 47.429 258.183 56.939 257.028 C 34.594 251.732 120.345 199.463 152.048 170.68 Z"
                     android:valueType="pathType" />
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="fillColor"
-                    android:valueFrom="#ffffff"
-                    android:valueTo="#88000000"
+                    android:valueFrom="#FFeeeeee"
+                    android:valueTo="#FF666666"
                     android:valueType="colorType" />
             </set>
         </aapt:attr>
@@ -158,31 +158,54 @@
         <aapt:attr name="android:animation">
             <set>
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="pathData"
                     android:valueFrom="M 105.586 193.797 L 105.586 193.797 C 105.586 193.797 38.36 67.302 35.597 68.055 C 13.064 86.972 -7.913 151.883 7.691 195.05 C 11.11 198.573 105.586 193.797 105.586 193.797"
                     android:valueTo="M 152.048 170.68 L 152.048 170.68 C 114.617 189.959 39.248 256.521 40.261 231.92 C 36.31 241.445 32.359 250.97 28.407 260.495 C 69.621 230.556 110.835 200.618 152.048 170.68"
                     android:valueType="pathType" />
                 <objectAnimator
-                    android:duration="500"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="fillColor"
-                    android:valueFrom="#ffffff"
-                    android:valueTo="#88000000"
+                    android:valueFrom="#FFeeeeee"
+                    android:valueTo="#FF666666"
                     android:valueType="colorType" />
             </set>
         </aapt:attr>
     </target>
     <target android:name="circle">
         <aapt:attr name="android:animation">
-            <objectAnimator
-                android:duration="400"
-                android:interpolator="@android:interpolator/fast_out_linear_in"
-                android:propertyName="pathData"
-                android:valueFrom="M 139.979 152.82 C 140.624 150.836 141.579 148.953 142.82 147.244 C 145.302 143.828 148.803 141.284 152.82 139.979 C 156.836 138.674 161.164 138.674 165.18 139.979 C 169.197 141.284 172.698 143.828 175.18 147.244 C 177.663 150.661 179 154.777 179 159 C 179 163.223 177.663 167.339 175.18 170.756 C 172.698 174.172 169.197 176.716 165.18 178.021 C 161.164 179.326 156.836 179.326 152.82 178.021 C 150.812 177.369 148.932 176.406 147.244 175.18 C 145.557 173.954 144.061 172.464 142.82 170.756 C 140.337 167.339 139 163.223 139 159 C 139 156.889 139.334 154.804 139.979 152.82"
-                android:valueTo="M 112.124 136.964 C 118.939 128.873 128.149 123.149 138.422 120.623 C 138.422 120.623 138.422 120.623 138.422 120.623 C 143.426 119.358 148.564 118.884 153.654 119.188 C 158.997 119.508 164.287 120.684 169.314 122.704 C 179.13 126.649 187.446 133.608 193.058 142.576 C 198.669 151.544 201.293 162.066 200.548 172.619 C 199.803 183.171 195.728 193.22 188.913 201.311 C 182.098 209.402 172.887 215.125 162.614 217.652 C 152.358 220.244 141.539 219.515 131.722 215.571 C 121.906 211.626 113.591 204.667 107.979 195.699 C 102.367 186.731 99.744 176.209 100.489 165.656 C 101.233 155.104 105.308 145.055 112.124 136.964"
-                android:valueType="pathType" />
+            <set>
+                <objectAnimator
+                    android:duration="400"
+                    android:interpolator="@android:interpolator/fast_out_linear_in"
+                    android:propertyName="pathData"
+                    android:valueFrom="M 139.979 152.82 C 140.624 150.836 141.579 148.953 142.82 147.244 C 145.302 143.828 148.803 141.284 152.82 139.979 C 156.836 138.674 161.164 138.674 165.18 139.979 C 169.197 141.284 172.698 143.828 175.18 147.244 C 177.663 150.661 179 154.777 179 159 C 179 163.223 177.663 167.339 175.18 170.756 C 172.698 174.172 169.197 176.716 165.18 178.021 C 161.164 179.326 156.836 179.326 152.82 178.021 C 150.812 177.369 148.932 176.406 147.244 175.18 C 145.557 173.954 144.061 172.464 142.82 170.756 C 140.337 167.339 139 163.223 139 159 C 139 156.889 139.334 154.804 139.979 152.82"
+                    android:valueTo="M 112.124 136.964 C 118.939 128.873 128.149 123.149 138.422 120.623 C 138.422 120.623 138.422 120.623 138.422 120.623 C 143.426 119.358 148.564 118.884 153.654 119.188 C 158.997 119.508 164.287 120.684 169.314 122.704 C 179.13 126.649 187.446 133.608 193.058 142.576 C 198.669 151.544 201.293 162.066 200.548 172.619 C 199.803 183.171 195.728 193.22 188.913 201.311 C 182.098 209.402 172.887 215.125 162.614 217.652 C 152.358 220.244 141.539 219.515 131.722 215.571 C 121.906 211.626 113.591 204.667 107.979 195.699 C 102.367 186.731 99.744 176.209 100.489 165.656 C 101.233 155.104 105.308 145.055 112.124 136.964"
+                    android:valueType="pathType" />
+                <objectAnimator
+                    android:duration="400"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="fillColor"
+                    android:valueFrom="#FF666666"
+                    android:valueTo="#FFeeeeee"
+                    android:valueType="colorType" />
+                <objectAnimator
+                    android:duration="400"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="strokeColor"
+                    android:valueFrom="#00000000"
+                    android:valueTo="#FF000000"
+                    android:valueType="colorType" />
+                <objectAnimator
+                    android:duration="400"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="strokeWidth"
+                    android:valueFrom="0"
+                    android:valueTo="3"
+                    android:valueType="floatType" />
+            </set>
         </aapt:attr>
     </target>
 </animated-vector>

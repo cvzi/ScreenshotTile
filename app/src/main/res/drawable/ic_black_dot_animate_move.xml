@@ -9,11 +9,11 @@
             android:viewportHeight="24">
             <path
                 android:name="path_corners"
-                android:fillColor="#ffffff"
+                android:fillColor="#FFffffff"
                 android:pathData="M 5 15 L 3 15 L 3 19 C 3 20.1 3.9 21 5 21 L 9 21 L 9 19 L 5 19 L 5 15 Z M 5 5 L 9 5 L 9 3 L 5 3 C 3.9 3 3 3.9 3 5 L 3 9 L 5 9 L 5 5 Z M 19 3 L 15 3 L 15 5 L 19 5 L 19 9 L 21 9 L 21 5 C 21 3.9 20.1 3 19 3 Z M 19 19 L 15 19 L 15 21 L 19 21 C 20.1 21 21 20.1 21 19 L 21 15 L 19 15 L 19 19 Z" />
             <path
                 android:name="path_circle"
-                android:fillColor="#40000000"
+                android:fillColor="#FFbbbbbb"
                 android:pathData="M 12 8 C 9.79 8 8 9.79 8 12 C 8 14.21 9.79 16 12 16 C 14.21 16 16 14.21 16 12 C 16 9.79 14.21 8 12 8 Z" />
         </vector>
     </aapt:attr>
@@ -21,21 +21,21 @@
         <aapt:attr name="android:animation">
             <set>
                 <objectAnimator
-                    android:duration="600"
+                    android:duration="400"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="pathData"
                     android:valueFrom="M 7 19 L 5 19 L 5 15 L 5 15 L 3 15 C 3 16.333 3 17.667 3 19 C 3 20.1 3.9 21 5 21 L 9 21 L 9 19 L 7 19 M 5 9 L 5 5 L 5 5 L 9 5 L 9 3 L 5 3 C 3.9 3 3 3.9 3 5 L 3 9 L 4 9 L 5 9 M 15 3 L 15 5 L 19 5 L 19 7 L 19 9 L 21 9 L 21 5 C 21 3.9 20.1 3 19 3 C 19 3 19 3 19 3 L 15 3 M 19 15 L 19 17 L 19 19 L 19 19 L 15 19 C 15 19.667 15 20.333 15 21 L 19 21 C 20.1 21 21 20.1 21 19 L 21 15 L 19 15"
                     android:valueTo="M 5.72 17.997 L 5.035 18.698 L 4.349 19.399 L 3.664 20.1 L 3 19 C 3.043 21.105 3.097 21.138 5 21 C 4.642 20.769 4.285 20.539 3.927 20.308 L 6.003 18.17 L 12.003 12.225 L 5.72 17.997 M 12.003 12.225 L 6.003 5.886 L 4.038 3.775 L 4.506 3.581 L 4.975 3.388 L 5.443 3.194 C 3.244 2.864 2.666 3.515 3.221 5.36 L 3.83 4.066 L 5.803 6.087 L 12.003 12.225 M 19.028 3.138 L 19.962 3.664 L 18.979 4.747 L 17.997 5.83 L 12.003 12.225 L 18.059 6.114 L 20.197 3.955 C 20.493 4.331 20.788 4.707 21.083 5.083 C 21.038 3.117 20.958 3.138 19.028 3.138 L 19.028 3.138 M 12.003 12.225 L 18.28 18.19 L 19.211 19.118 L 20.142 20.045 L 21.083 18.917 C 21.148 21.129 21.117 21.134 18.862 21.138 L 19.99 20.308 C 19.671 19.993 19.353 19.678 19.035 19.363 L 18.08 18.419 L 12.003 12.225"
                     android:valueType="pathType" />
                 <objectAnimator
-                    android:duration="600"
+                    android:duration="400"
                     android:interpolator="@android:interpolator/fast_out_slow_in"
                     android:propertyName="fillColor"
                     android:valueFrom="#ffffff"
                     android:valueTo="#000000"
                     android:valueType="colorType" />
                 <objectAnimator
-                    android:duration="400"
+                    android:duration="300"
                     android:interpolator="@android:anim/linear_interpolator"
                     android:propertyName="fillAlpha"
                     android:valueFrom="1"
@@ -48,11 +48,25 @@
         <aapt:attr name="android:animation">
             <set>
                 <objectAnimator
-                    android:duration="600"
+                    android:duration="400"
                     android:interpolator="@android:interpolator/fast_out_slow_in"
                     android:propertyName="fillColor"
-                    android:valueFrom="#40000000"
-                    android:valueTo="#dddddd"
+                    android:valueFrom="#FFbbbbbb"
+                    android:valueTo="#FFffffff"
+                    android:valueType="colorType" />
+                <objectAnimator
+                    android:duration="300"
+                    android:interpolator="@android:anim/linear_interpolator"
+                    android:propertyName="strokeWidth"
+                    android:valueFrom="0.0"
+                    android:valueTo="0.3"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="400"
+                    android:interpolator="@android:interpolator/fast_out_slow_in"
+                    android:propertyName="strokeColor"
+                    android:valueFrom="#00000000"
+                    android:valueTo="#FF000000"
                     android:valueType="colorType" />
             </set>
         </aapt:attr>

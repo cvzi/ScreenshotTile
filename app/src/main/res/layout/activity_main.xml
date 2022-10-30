@@ -202,6 +202,14 @@
                         android:layout_height="wrap_content"
                         android:text="@string/main_floating_button_text"
                         android:textAppearance="@android:style/TextAppearance.Material.Body1" />
+
+                    <Button
+                        android:id="@+id/buttonFloatingButtonSettings"
+                        style="@android:style/Widget.Holo.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/floating_button_settings" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

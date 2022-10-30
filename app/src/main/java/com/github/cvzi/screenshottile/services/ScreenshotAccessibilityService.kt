@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.PixelFormat
 import android.graphics.Point
 import android.graphics.drawable.Animatable
@@ -78,6 +79,20 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }
         }
 
+        fun setShutterDrawable(context: Context, button: ImageView, res: Int) {
+            button.setImageDrawable(
+                ContextCompat.getDrawable(
+                    context,
+                    res
+                )?.apply {
+                    val colorString = App.getInstance().prefManager.floatingButtonColorTint
+                    val colorInt = parseColorString(colorString)
+                    if (colorInt != null) {
+                        setTint(colorInt)
+                    }
+                }
+            )
+        }
     }
 
     private var screenDensity: Int = 0
@@ -158,12 +173,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         addWindowViewAt(root, position.x, position.y)
 
         val buttonScreenshot = root.findViewById<ImageView>(R.id.buttonScreenshot)
-        buttonScreenshot.setImageDrawable(
-            ContextCompat.getDrawable(
-                this,
-                shutterCollection.current().normal
-            )
-        )
+        setShutterDrawable(this, buttonScreenshot, shutterCollection.current().normal)
         var buttonClose: TextView? = null
 
         val scale = App.getInstance().prefManager.floatingButtonScale
@@ -171,7 +181,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             // Scale button
             buttonScreenshot.post {
                 buttonScreenshot.layoutParams = buttonScreenshot.layoutParams.apply {
-                    width = buttonScreenshot.measuredWidth * scale / 100
+                    width = buttonScreenshot.measuredHeight * scale / 100
                     height = buttonScreenshot.measuredHeight * scale / 100
                 }
                 buttonScreenshot.post {
@@ -250,28 +260,26 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         buttonScreenshot.setOnDragListener { v, event ->
             when (event.action) {
                 DragEvent.ACTION_DROP, DragEvent.ACTION_DRAG_ENDED -> {
-                    var x = (event.x - v.measuredWidth / 2.0).toInt()
-                    var y = (event.y - v.measuredHeight).toInt()
-                    if (event.action == DragEvent.ACTION_DROP) {
-                        // x and y are relative to the inside of the view's bounding box
-                        x =
-                            (App.getInstance().prefManager.floatingButtonPosition.x - v.measuredWidth / 2.0 + event.x).toInt()
-                        y =
-                            (App.getInstance().prefManager.floatingButtonPosition.y - v.measuredHeight / 2.0 + event.y).toInt()
-                    }
                     root.let {
                         if (!dragDone) {
+                            val x: Int
+                            val y: Int
+                            if (event.action == DragEvent.ACTION_DROP) {
+                                // x and y are relative to the inside of the view's bounding box
+                                val old = App.getInstance().prefManager.floatingButtonPosition
+                                x = (old.x - v.measuredWidth / 2.0 + event.x).toInt()
+                                y = (old.y - v.measuredHeight / 2.0 + event.y).toInt()
+                            } else {
+                                val parent = v.parent as View
+                                x = (event.x - parent.measuredWidth / 2).toInt()
+                                y = (event.y - parent.measuredHeight / 2).toInt()
+                            }
                             dragDone = true
                             updateWindowViewPosition(it, x, y)
                             App.getInstance().prefManager.floatingButtonPosition =
                                 Point(x, y)
                         }
-                        buttonScreenshot.setImageDrawable(
-                            ContextCompat.getDrawable(
-                                this,
-                                shutterCollection.current().normal
-                            )
-                        )
+                        setShutterDrawable(this, buttonScreenshot, shutterCollection.current().normal)
                         buttonScreenshot.alpha = App.getInstance().prefManager.floatingButtonAlpha
                     }
                     showSettingsButton(root, buttonScreenshot)
@@ -283,12 +291,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
         buttonScreenshot.setOnLongClickListener {
             dragDone = false
-            (buttonScreenshot as ImageView).setImageDrawable(
-                ContextCompat.getDrawable(
-                    this,
-                    shutterCollection.current().move
-                )
-            )
+            setShutterDrawable(this, buttonScreenshot, shutterCollection.current().move)
             (buttonScreenshot.drawable as Animatable).start()
             buttonScreenshot.alpha = 1f
             it.startDragAndDrop(null, View.DragShadowBuilder(root), null, 0)

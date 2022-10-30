@@ -300,6 +300,16 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value
         ).apply()
 
+    var floatingButtonColorTint: String?
+        get() = pref.getString(
+            context.getString(R.string.pref_key_floating_button_color_tint),
+            null
+        )
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_floating_button_color_tint),
+            value ?: ""
+        ).apply()
+
     var voiceInteractionAction: String
         get() = pref.getString(
             context.getString(R.string.pref_key_voice_interaction_action),

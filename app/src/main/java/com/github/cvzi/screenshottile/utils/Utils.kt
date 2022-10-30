@@ -8,10 +8,7 @@ import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.VersionedPackage
-import android.graphics.Bitmap
-import android.graphics.Paint
-import android.graphics.Point
-import android.graphics.Rect
+import android.graphics.*
 import android.icu.text.SimpleDateFormat
 import android.media.Image
 import android.net.Uri
@@ -1044,4 +1041,25 @@ fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -
             Log.e(UTILSKT, "cleanUpAppData Error", e)
         }
     }
+}
+
+fun parseColorString(colorString: String?): Int? {
+    if (!colorString.isNullOrBlank() && colorString.trim().lowercase() != "null") {
+        if (colorString.startsWith("i")) {
+            try {
+                return colorString.substring(1).toInt()
+            } catch (_: NumberFormatException) {
+            }
+        }
+        try {
+            return Color.parseColor(colorString)
+        } catch (e: IllegalArgumentException) {
+            try {
+                return Color.parseColor("#$colorString")
+            } catch (_: IllegalArgumentException) {
+            }
+        }
+        Log.e(UTILSKT, "Could not parse color '$colorString'")
+    }
+    return null
 }
