@@ -9,6 +9,7 @@
     <string name="title_delay">Độ trễ</string>
     <string name="more_setting">Thêm cài đặt</string>
     <string name="open_settings">Mở cài đặt</string>
+    <string name="floating_button_settings">Cài đặt nút nổi</string>
     <string name="left_screenshot_right_menu">Trái: Chụp màn hình, phải: Cài đặt</string>
     <string name="partial_screenshot">Chọn khu vực</string>
     <string name="file_format">Định dạng tệp</string>
@@ -48,7 +49,10 @@
     <string name="setting_storage_directory_description">Thư mục lưu ảnh chụp màn hình</string>
     <string name="setting_file_name_pattern">Tên tệp</string>
     <string name="setting_file_name_placeholders_title">Sử dụng các chỗ giữ chỗ này trong tên tệp</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - thời gian dưới dạng yyyy-MM-dd_HH-mm-ss\n%counter% - đếm số lượng ảnh chụp màn hình\n%random% - UUID ngẫu nhiên\n%randint% - số ngẫu nhiên</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - thời gian dưới dạng yyyy-MM-dd_HH-mm-ss
+%counter% - đếm số lượng ảnh chụp màn hình
+%random% - UUID ngẫu nhiên
+%randint% - số ngẫu nhiên]]></string>
     <string name="setting_tile_action">Hành động của ô</string>
     <string name="setting_floating_action">Hành động nút nổi</string>
     <string name="setting_voice_interaction_action">Hành động trợ lý</string>
@@ -83,6 +87,7 @@
     <string name="button_clear_confirm">Bạn có muốn xóa tất cả tệp tạm không?\nViệc này sẽ xóa tất cả tệp trong %s\n\n(Các tệp này thường là không nhìn thấy được trong thư viện)</string>
     <string name="file_title">Ảnh chụp màn hình</string>
     <string name="file_description">Đã chụp ảnh màn hình vào %1$s</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Đã chụp ảnh màn hình</string>
     <string name="notification_body">Nhấn để xem hình ảnh</string>
     <string name="notification_channel_description">Hiện một thông báo khi bạn đã chụp ảnh màn hình</string>
@@ -196,4 +201,29 @@
     <string name="msg_failed_to_save">Lưu ảnh thất bại</string>
     <string name="dialog_ask_filename_title">Lưu dưới dạng</string>
     <string name="dialog_ask_filename_directory">Thư mục đã chọn:</string>
+    <string name="dialog_ask_filename_hint">Tên tệp (không có phần mở rộng)</string>
+    <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Chế độ mặc định: Bật</string>
+    <string name="setting_defaults_to_milliseconds">Mặc định: %1$s mili giây</string>
+    <string name="setting_toasts">Tất cả thông báo \"Toast\"</string>
+    <string name="setting_success_toasts">Thông báo \"Toast\" cho các sự kiện thành công</string>
+    <string name="setting_error_toasts">Thông báo \"Toast\" cho các lỗi</string>
+    <string name="setting_select_area_shutter_delay">Độ trễ sau khi nhấn nút chụp (ở chế độ \"Chọn khu vực\")</string>
+    <string name="setting_select_area_shutter_delay_dialog">Thời gian chờ giữa nhấn nút chụp và chụp màn hình. Hãy sử dụng giá trị cao hơn (ví dụ 500) nếu biểu tượng nút chụp hiện ra trên ảnh chụp.</string>
+    <string name="setting_original_after_permission_delay">Độ trễ sau khi cho phép quyền chụp màn hình (áp dụng với \"Phương pháp cũ\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Thời gian chờ giữa cho phép quyền và chụp màn hình. Hãy sử dụng giá trị cao hơn (ví dụ 500) nếu hộp thoại hỏi xin quyền hiện ra trên ảnh chụp.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Độ trễ sau lỗi \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Thời gian chờ trước khi thử lại sau khi hiện thông báo lỗi. Hãy sử dụng giá trị cao hơn (ví dụ 500) nếu thông báo lỗi hiện ra trên ảnh chụp.</string>
+    <string name="setting_floating_button_alpha">Độ trong suốt của nút nổi</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (hoàn toàn trong suốt) đến 1.0 (hoàn toàn rõ)</string>
+    <string name="setting_floating_button_alpha_dialog">Chọn giá trị thấp hơn để làm nút trong suốt hơn. Phạm vi 0.0 đến 1.0\nMặc định: 1.0 (hoàn toàn rõ)</string>
+    <string name="setting_floating_button_color">Màu nút nổi</string>
+    <string name="setting_delay_custom_summary">Chọn độ trễ tuỳ chỉnh cho ô (tính theo giây)</string>
+    <string name="setting_floating_button_delay_custom_summary">Chọn độ trễ tuỳ chỉnh cho nút nổi (tính theo giây)</string>
+    <string name="setting_format_quality">Chất lượng định dạng tệp</string>
+    <string name="setting_format_quality_dialog">Độ nén/Chất lượng định dạng tệp: (0 đến 100)\n0 nghĩa là nén đến kích cỡ nhỏ nhất. 100 nghĩa là nén đến chất lượng hình ảnh cao nhất.\nĐể trống để sử dụng giá trị mặc định.</string>
+    <string name="setting_keep_app_data_max">Số ảnh chụp màn hình tối đa để giữ trong:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Nếu bạn đã tắt \"%1$s\", thì ảnh chụp màn hình được giữ tạm thời trong thư mục \"Android/data/\" và được xoá định kỳ khi số lượng tệp đạt đến tối đa.\n-1 nghĩa là không giới hạn\nGiá trị mặc định %2$s</string>
+    <string name="setting_keep_screenshot_history">Giữ lịch sử ảnh chụp màn hình</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Giữ tên tệp ảnh chụp màn hình trong một danh sách. Tuỳ chọn này là bắt buộc để sử dụng chức năng \"%1$s\"</string>
 </resources>
