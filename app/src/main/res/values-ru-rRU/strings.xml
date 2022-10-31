@@ -9,6 +9,7 @@
     <string name="title_delay">Задержка</string>
     <string name="more_setting">Больше настроек</string>
     <string name="open_settings">Открыть настройки</string>
+    <string name="floating_button_settings">Настройки плавающей кнопки</string>
     <string name="left_screenshot_right_menu">Слева: Снимок экрана, справа: Настройки</string>
     <string name="partial_screenshot">Выбрать область</string>
     <string name="file_format">Формат файла</string>
@@ -216,6 +217,7 @@
     <string name="setting_floating_button_alpha">Прозрачность плавающей кнопки</string>
     <string name="setting_floating_button_alpha_summary">От 0.0 (полностью прозрачный) до 1.0 (полностью непрозрачный)</string>
     <string name="setting_floating_button_alpha_dialog">Выберите меньшее значение, чтобы сделать кнопку более прозрачной. Диапазон от 0.0 до 1.0\nПо умолчанию: 1.0 (полностью прозрачная)</string>
+    <string name="setting_floating_button_color">Цвет плавающей кнопки</string>
     <string name="setting_delay_custom_summary">Выбор пользовательской задержки для плитки (в секундах)</string>
     <string name="setting_floating_button_delay_custom_summary">Выбор пользовательской задержки для плавающей кнопки (в секундах)</string>
     <string name="setting_format_quality">Качество формата файла</string>
