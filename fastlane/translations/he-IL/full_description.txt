@@ -1,0 +1,41 @@
+מוסיף לחצן/אריח לחלונית ההגדרות המהירות כדי לצלם צילומי מסך.
+
+לאחר ההתקנה, עליך להוסיף את הכפתור/האריח להגדרות המהירות שלך ולאחר מכן להעניק את ההרשאות להקליט צילומי מסך ולשמור תמונות באחסון הפנימי.
+
+אם האפליקציה קורסת ב-Android 9/Pie או 10, אתה יכול לנסות להפעיל את "השתמש בשיטת צילום מסך מקורית" בהגדרות האפליקציה.
+
+<h2>תכונות:</h2>✓ צלם צילומי מסך מההגדרות המהירות
+✓ אין צורך בשורש
+✓ הודעה לאחר צילום מסך (ניתן לנטרל)
+✓ שתף, ערוך או מחק מיד צילום מסך מההודעה
+✓ כפתור צף/כפתור שכבת-על כמו בועת צ'אט (אנדרואיד 9+)
+✓ השתמש כאפליקציית סיוע לצילום מסך (לחץ לחיצה ארוכה על כפתור הבית)
+✓ צלם רק צילום מסך של אזור מסוים במסך (לחץ לחיצה ארוכה על האריח)
+✓ עיכוב בצילום מסך
+✓ אחסן בכל תיקיה בכל אחסון, למשל. כרטיס זכרון
+✓ אחסן בפורמטים שונים של קבצים: png, jpg או webp
+✓ צלם צילומי מסך אוטומטיים עם אפליקציות כמו Tasker או MacroDroid
+✓ חינם, קוד פתוח, ללא פרסומות
+
+זהו מזלג של "אריח צילום מסך [Root]" אך הוא אינו דורש רוט. אם יש לך גישת בסיס, עליך להשתמש ב<a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">אפליקציה המקורית</a> של ipcjs, זה מהיר יותר ועדיף יותר מהמזלג הזה.
+
+קוד מקור: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+אפליקציה מקורית: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+רישיון קוד פתוח GNU GPLv3
+
+<u>הערה:</u>
+🎦 כשאתה מצלם צילום מסך, <b>סמל "Google Cast"</b> יופיע בשורת המצב והוא יהיה גלוי בתמונת צילום המסך.
+אם אתה רוצה להסתיר את הסמל, יש כאן הסבר: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>הרשאות:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "תמונות/מדיה/קבצים ואחסון"</i>
+נדרש כדי לשמור את קבצי צילום המסך באחסון הפנימי של המכשיר שלך.
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+מאז אנדרואיד 9/Pie נדרשת הרשאה זו כדי לצלם צילומי מסך. זה בעצם אומר שהאפליקציה הזו יכולה לפעול מבלי להראות את עצמה. עם זאת, האפליקציה תמיד תציג התראה כאשר היא פועלת.
+
+<h2>צילומי מסך אוטומטיים:</h2>אם אתה רוצה להפוך צילומי מסך מאפליקציה אחרת, למשל. MacroDroid או Tasker, אתה יכול למצוא מדריך שלב אחר שלב כאן:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>הסתרת סמל האפליקציה:</h2>בהגדרות האפליקציה תוכל להסתיר את סמל האפליקציה ממסך הבית שלך. אתה עדיין יכול לגשת לאפליקציה על ידי לחיצה ארוכה על האריח בהגדרות המהירות שלך. למרבה הצער, אנדרואיד 10 לא מאפשר הסתרת אפליקציה יותר.
+
+<h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
