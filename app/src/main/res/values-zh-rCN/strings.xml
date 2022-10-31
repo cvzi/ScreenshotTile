@@ -9,6 +9,7 @@
     <string name="title_delay">延迟</string>
     <string name="more_setting">更多设置</string>
     <string name="open_settings">打开设置</string>
+    <string name="floating_button_settings">浮动按钮设置</string>
     <string name="left_screenshot_right_menu">左：屏幕截图，右：设置</string>
     <string name="partial_screenshot">选择区域</string>
     <string name="file_format">文件格式</string>
@@ -216,6 +217,7 @@
     <string name="setting_floating_button_alpha">悬浮按钮透明度</string>
     <string name="setting_floating_button_alpha_summary">0.0 (完全透明) 到 1.0 (完全不透明)</string>
     <string name="setting_floating_button_alpha_dialog">选择一个较低的值使按钮更加透明。范围 0.0 到 1.0\n默认值： 1.0 (完全不透明)</string>
+    <string name="setting_floating_button_color">浮动按钮颜色</string>
     <string name="setting_delay_custom_summary">选择一个自定义的瓷贴延迟(秒)</string>
     <string name="setting_floating_button_delay_custom_summary">选择浮动按钮的自定义延迟 (秒)</string>
     <string name="setting_format_quality">文件格式质量</string>
