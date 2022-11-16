@@ -6,7 +6,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.graphics.PixelFormat
 import android.graphics.Point
 import android.graphics.drawable.Animatable
@@ -30,10 +29,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.activities.MainActivity
-import com.github.cvzi.screenshottile.activities.NoDisplayActivity
-import com.github.cvzi.screenshottile.activities.SettingsActivity
-import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
+import com.github.cvzi.screenshottile.activities.*
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
 import com.github.cvzi.screenshottile.utils.*
@@ -89,6 +85,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     val colorInt = parseColorString(colorString)
                     if (colorInt != null) {
                         setTint(colorInt)
+                    } else {
+                        setTintList(null)
                     }
                 }
             )
@@ -279,7 +277,11 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             App.getInstance().prefManager.floatingButtonPosition =
                                 Point(x, y)
                         }
-                        setShutterDrawable(this, buttonScreenshot, shutterCollection.current().normal)
+                        setShutterDrawable(
+                            this,
+                            buttonScreenshot,
+                            shutterCollection.current().normal
+                        )
                         buttonScreenshot.alpha = App.getInstance().prefManager.floatingButtonAlpha
                     }
                     showSettingsButton(root, buttonScreenshot)
@@ -349,7 +351,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
         textView.setOnClickListener {
             textView.text = "\u23F3"
-            SettingsActivity.startNewTask(it.context)
+            FloatingButtonSettingsActivity.startNewTask(it.context)
         }
         buttonScreenshot.post {
             textView.run {

@@ -47,6 +47,13 @@
         app:iconSpaceReserved="false"
         app:isPreferenceVisible="false" />
 
+    <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_floating_button_settings"
+        android:persistent="false"
+        android:selectable="true"
+        android:title="@string/floating_button_settings"
+        app:icon="@drawable/ic_tile_float_dark" />
+
     <androidx.preference.SwitchPreference
         android:defaultValue="false"
         android:key="@string/pref_key_floating_button"

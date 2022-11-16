@@ -28,6 +28,7 @@
     <string name="pref_key_file_name_pattern" translatable="false">file_name_pattern</string>
     <string name="pref_static_field_key_file_name_placeholders" translatable="false">pref_static_field_key_file_name_placeholders</string>
     <string name="pref_key_screenshot_count" translatable="false">screenshot_count</string>
+    <string name="pref_static_field_key_floating_button_settings" translatable="false">pref_static_field_key_floating_button_settings</string>
     <string name="pref_key_floating_button" translatable="false">floating_button</string>
     <string name="pref_key_floating_button_scale" translatable="false">floating_button_scale</string>
     <string name="pref_key_floating_button_position" translatable="false">floating_button_position</string>

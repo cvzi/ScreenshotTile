@@ -28,12 +28,13 @@
                     android:orientation="vertical"
                     android:padding="10dp">
 
-                    <TextView
-                        android:id="@+id/textDescGeneral"
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchFloatingButtonEnabled"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/main_floating_button_title"
-                        android:textAppearance="@android:style/TextAppearance.Material.Body2" />
+                        android:textAppearance="@android:style/TextAppearance.Material.Body2"
+                        android:text="@string/main_floating_button_title" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -326,7 +327,7 @@
                         android:id="@+id/buttonMoreSettings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/setting_floating_button" />
+                        android:text="@string/more_setting" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

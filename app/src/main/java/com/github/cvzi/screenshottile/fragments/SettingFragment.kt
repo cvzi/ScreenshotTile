@@ -32,6 +32,7 @@ import androidx.preference.Preference.OnPreferenceClickListener
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.activities.FloatingButtonSettingsActivity
 import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.activities.PostSettingsActivity
 import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
@@ -62,6 +63,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     private var askedForStoragePermission = false
     private var notificationPref: Preference? = null
     private var postActionsPref: Preference? = null
+    private var floatingButtonSettingsPref: Preference? = null
     private var notificationActionsPref: MultiSelectListPreference? = null
     private var delayPref: ListPreference? = null
     private var fileFormatPref: ListPreference? = null
@@ -145,6 +147,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             findPreference(getString(R.string.pref_static_field_key_notification_settings))
         postActionsPref =
             findPreference(getString(R.string.pref_static_field_key_post_actions))
+        floatingButtonSettingsPref = findPreference(getString(R.string.pref_static_field_key_floating_button_settings))
         notificationActionsPref =
             findPreference(getString(R.string.pref_key_notification_actions)) as MultiSelectListPreference?
         delayPref = findPreference(getString(R.string.pref_key_delay)) as ListPreference?
@@ -214,6 +217,7 @@ class SettingFragment : PreferenceFragmentCompat() {
 
         makeNotificationSettingsLink()
         makePostActionsLink()
+        makeFloatingButtonSettingsLink()
         makeAccessibilitySettingsLink()
         makeStorageDirectoryLink()
         makeAdvancedSettingsLink()
@@ -317,6 +321,19 @@ class SettingFragment : PreferenceFragmentCompat() {
                 }
             }
             true
+        }
+    }
+
+    private fun makeFloatingButtonSettingsLink() {
+        (findPreference(getString(R.string.pref_static_field_key_floating_button_settings)) as Preference?)?.let {
+            it.isSelectable = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+            it.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+            it.onPreferenceClickListener = OnPreferenceClickListener { pref ->
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    FloatingButtonSettingsActivity.start(pref.context)
+                }
+                true
+            }
         }
     }
 

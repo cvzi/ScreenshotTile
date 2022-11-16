@@ -1,6 +1,8 @@
 package com.github.cvzi.screenshottile.activities
 
 
+import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
@@ -27,6 +29,23 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 class FloatingButtonSettingsActivity : AppCompatActivity() {
     companion object {
         const val TAG = "FloatingButtonSettings"
+
+        /**
+         * Get intent
+         */
+        fun newIntent(ctx: Context): Intent = Intent(ctx, FloatingButtonSettingsActivity::class.java)
+
+        /**
+         * Start activity
+         */
+        fun start(ctx: Context) = ctx.startActivity(newIntent(ctx))
+
+        /**
+         * Start activity from service
+         */
+        fun startNewTask(ctx: Context) = ctx.startActivity(newIntent(ctx).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        })
     }
 
     private var savedInstanceState: Bundle? = null
@@ -34,6 +53,7 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
 
     private val hsv = floatArrayOf(360.0f, 1.0f, 0.5f)
 
+    private lateinit var switchFloatingButtonEnabled: SwitchMaterial
     private lateinit var imageViewFloatingButton: ImageView
     private lateinit var textViewCloseButton: TextView
     private lateinit var switchFloatingButtonColorTint: SwitchMaterial
@@ -55,6 +75,7 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_floating_button_settings)
 
         shutterCollection = ShutterCollection(this, R.array.shutters, R.array.shutter_names)
+        switchFloatingButtonEnabled = findViewById(R.id.switchFloatingButtonEnabled)
         imageViewFloatingButton = findViewById(R.id.imageViewFloatingButton)
         textViewCloseButton = findViewById(R.id.imageViewCloseButton)
         switchFloatingButtonColorTint = findViewById(R.id.switchFloatingButtonColorTint)
@@ -63,11 +84,19 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
         radioGroupShutterTheme = findViewById(R.id.radioGroupShutterTheme)
         switchFloatingButtonDelay = findViewById(R.id.switchFloatingButtonDelay)
         editTextFloatingButtonDelay = findViewById(R.id.editTextFloatingButtonDelay)
-
         seekBarFloatingButtonTintH = findViewById(R.id.seekBarFloatingButtonTintH)
         seekBarFloatingButtonTintV = findViewById(R.id.seekBarFloatingButtonTintV)
         seekBarFloatingButtonAlpha = findViewById(R.id.seekBarFloatingButtonAlpha)
         seekBarFloatingButtonScale = findViewById(R.id.seekBarFloatingButtonScale)
+
+        switchFloatingButtonEnabled.setOnCheckedChangeListener { _, isChecked ->
+            prefManager.floatingButton = isChecked
+            if (isChecked && ScreenshotAccessibilityService.instance == null) {
+                ScreenshotAccessibilityService.openAccessibilitySettings(this, MainActivity.TAG)
+            } else {
+                ScreenshotAccessibilityService.instance?.updateFloatingButton()
+            }
+        }
 
         radioGroupAction.setOnCheckedChangeListener { _, checkedId ->
             prefManager.floatingButtonAction = getString(
@@ -134,6 +163,7 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
                 imageViewFloatingButton.alpha = 1f
                 textViewCloseButton.alpha = 1f
             }
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
 
         seekBarFloatingButtonTintH.max = 3600
@@ -158,12 +188,13 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
                 ScreenshotAccessibilityService.setShutterDrawable(
                     this, imageViewFloatingButton, shutterCollection.current().normal
                 )
-
             }
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
         findViewById<SwitchMaterial>(R.id.switchFloatingButtonShowClose).setOnCheckedChangeListener { _, isChecked ->
             prefManager.floatingButtonShowClose = isChecked
             updateCloseButton()
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
 
         seekBarFloatingButtonScale.apply {
@@ -184,6 +215,7 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
                     this, imageViewFloatingButton, shutterCollection.current().normal
                 )
             }
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
 
         findViewById<Button>(R.id.buttonRefresh).setOnClickListener {
@@ -205,6 +237,9 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
+        switchFloatingButtonEnabled.isChecked =
+            ScreenshotAccessibilityService.instance != null && prefManager.floatingButton
 
         findViewById<RadioButton>(
             when (prefManager.floatingButtonAction) {
