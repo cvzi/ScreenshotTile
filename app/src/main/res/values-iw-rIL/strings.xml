@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">אריח צילום מסך </string>
+    <string name="app_name">אריח צילום מסך</string>
     <string name="app_name_long">אריח צילום מסך (ללא רוט)</string>
     <string name="tile_label">צילום מסך</string>
     <string name="tile_floating">כפתור צף לצילום מסך</string>
@@ -9,6 +9,7 @@
     <string name="title_delay">השהיית</string>
     <string name="more_setting">הגדרות נוספות</string>
     <string name="open_settings">פתח את הקביעות</string>
+    <string name="floating_button_settings">הגדרות כפתור צף</string>
     <string name="left_screenshot_right_menu">משמאל: צילום מסך, מימין: הגדרות</string>
     <string name="partial_screenshot">חיתוך</string>
     <string name="file_format">תבנית קובץ</string>
@@ -39,19 +40,52 @@
     <string name="setting_floating_button_show_close">הצג כפתור [X]/סגור ליד הלחצן הצף</string>
     <string name="setting_floating_button_show_close_summary">מאפשר להסיר את הכפתור הצף מבלי לפתוח את ההגדרות המהירות</string>
     <string name="setting_floating_button_show_close_dialog_title">סגור כפתור של אימוגי</string>
+    <string name="setting_floating_button_show_close_dialog_description">הקלד טקסט או אימוג\'י שיופיעו כלחצן הסגירה</string>
+    <string name="setting_floating_button_shutter">ערכת נושא לחצן צף</string>
     <string name="setting_floating_button_delay">השהיית עם הכפתור הצף</string>
+    <string name="setting_broadcast_secret">סיסמת כוונת שידור</string>
+    <string name="setting_broadcast_secret_description">ביטוי סודי המאפשר ליישומים אחרים (כמו MacroDroid או Tasker) ליזום צילומי מסך</string>
     <string name="setting_storage_directory">תיקיית יעד</string>
     <string name="setting_storage_directory_description">בחר את המיקום עבור קבצי התמונה</string>
     <string name="setting_file_name_pattern">שם קובץ</string>
+    <string name="setting_file_name_placeholders_title">השתמש במצייני מיקום אלה בשם הקובץ</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - זמן כמו yyyy-MM-dd_HH-mm-ss
+%counter% - סופר את מספר צילומי המסך 
+%random% - אקראי UUID
+%randint% - מספר אקראי]]></string>
     <string name="setting_tile_action">פעולה הכפתור האריח</string>
     <string name="setting_floating_action">פעולה הכפתור הצף</string>
+    <string name="setting_voice_interaction_action">עוזר הפעולות</string>
     <string name="setting_dark_theme">ערכת צבעים כהה</string>
     <string name="setting_dark_theme_system">עקוב אחר המערכת</string>
     <string name="setting_dark_theme_off">כבוי</string>
     <string name="setting_dark_theme_on">פועל</string>
+    <string name="setting_notification_buttons">כפתורי התראה</string>
+    <string name="setting_notification_buttons_description">בחר עד שלושה לחצנים המופיעים מתחת להתראת צילום המסך</string>
+    <string name="setting_notification_buttons_max_three">נא לבחור שלושה לחצנים לכל היותר</string>
     <string name="notification_settings">התראות</string>
     <string name="notification_settings_on">פועל</string>
     <string name="notification_settings_off">כבוי</string>
+    <string name="setting_post_actions">הפעולות הבאות</string>
+    <string name="setting_post_actions_description">בחר מה יקרה לאחר צילום המסך</string>
+    <string name="button_history">צילומי מסך אחרונים</string>
+    <string name="button_history_description">הצג את צילומי המסך האחרונים שלך כולל קבצים שלא נשמרו בגלריה</string>
+    <string name="history_title">היסטוריית צילומי מסך</string>
+    <string name="restore_default_values">שחזר ערכי ברירת מחדל</string>
+    <string name="post_action_save_to_storage">שמור תמונה לגלריה</string>
+    <string name="post_action_show_toast">הצג הודעת \"טוסט\". חלון קופץ קטן שנעלם לאחר 2 שניות</string>
+    <string name="post_action_show_notification">הצג הודעה רגילה. אתה יכול לשנות את הכפתורים (ערוך, שתף,...) מתחת להודעה תחת \"הגדרות נוספות\"</string>
+    <string name="post_action_empty">אל תפתח את צילום המסך</string>
+    <string name="post_action_open_in_post">פתח בתצוגת \"פרטים\"</string>
+    <string name="post_action_open_in_post_crop">חיתוך תמונה</string>
+    <string name="post_action_open_in_photo_editor">פתח את עורך התמונות הכלול</string>
+    <string name="post_action_open_in_external_editor">פתח בעורך תמונות חיצוני</string>
+    <string name="post_action_open_in_external_viewer">פתח במציג תמונות או בגלריה</string>
+    <string name="post_action_open_share">שתף צילום מסך</string>
+    <string name="move_to_storage_directory">עבור לגלריה</string>
+    <string name="button_clear">ניקוי</string>
+    <string name="button_clear_confirm">האם אתה רוצה למחוק את כל הקבצים הזמניים?\nזה ימחק את כל הקבצים ב-%s\n\n(קבצים אלה בדרך כלל אינם גלויים בגלריה שלך)
+ בקשת הקשר</string>
     <string name="file_title">צילום מסך</string>
     <string name="file_description">%1$s צילום מסך</string>
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
@@ -60,6 +94,7 @@
     <string name="notification_channel_description">מציג התראות לאחר צילום מסך</string>
     <string name="notification_foreground_title">שומר צילום מסך…</string>
     <string name="notification_foreground_body">שומר צילום מסך… לחץ ליציאה</string>
+    <string name="notification_foreground_channel_description">מציג התראה כשאתה מצלם צילום מסך. מונע מהאפליקציה להיסגר על ידי אופטימיזציית הסוללה בזמן שתמונת מסך בתהליך</string>
     <string name="notification_app_chooser_share">שתף עם</string>
     <string name="notification_app_chooser_edit">לערוך עם</string>
     <string name="screenshot_failed">לא ניתן היה לשמור צילום מסך</string>
@@ -70,6 +105,8 @@
     <string name="notification_edit_screenshot">עריכת</string>
     <string name="notification_rename_screenshot">שינוי שם</string>
     <string name="notification_screenshot_details">פרטים</string>
+    <string name="notification_crop_screenshot">חיתוך</string>
+    <string name="notification_photo_editor_screenshot">עורך תמונות</string>
     <string name="screenshot_deleted">צילום מסך נמחק</string>
     <string name="screenshot_delete_failed">לא ניתן למחוק את הקובץ</string>
     <string name="screenshot_renamed">שם הקובץ השתנה: %1s</string>
@@ -81,14 +118,21 @@
     <string name="toggle_app_icon_failed">אירעה שגיאה להציג/להסתיר את סמל</string>
     <string name="tutorial">הדרכה</string>
     <string name="tutorial_tap_for_next_step">הקש כדי לנווט קדימה</string>
+    <string name="tutorial_step2">משוך מטה את חלון ההתראות</string>
+    <string name="tutorial_step3">משוך למטה את ההגדרות המהירות</string>
+    <string name="tutorial_step4">הקש על כפתור העריכה</string>
+    <string name="tutorial_step5">מצא את כפתור צילום המסך החדש</string>
+    <string name="tutorial_step6">גרור את הכפתור להגדרות שלך</string>
+    <string name="tutorial_step8">סגור את ההגדרות המהירות</string>
+    <string name="tutorial_step10">משוך מעלה את חלון ההתראות</string>
+    <string name="tutorial_step11">אשר הרשאות</string>
+    <string name="tutorial_step16">צלם צילומי מסך עם הכפתור החדש</string>
     <string name="take_screenshot">קח תמונת מסך</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_yes">אני מסכים</string>
     <string name="googleplay_consent_no">אני מסרב</string>
     <!-- About -->
     <string name="about_app_title">אודות</string>
-    <string name="about_license_title">רישיון</string>
-    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\n שיון הציבורי הכללי של גנו גרסה   3 </string>
     <!-- First screen -->
     <string name="main_accessibility_settings">הגדרות נגישות</string>
     <string name="main_floating_button_title">כפתור צף</string>
