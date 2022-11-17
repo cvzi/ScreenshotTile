@@ -694,3 +694,31 @@ fun fileNameFileTitle(s: String, ext: String): Pair<String, String> {
 fun fileNameFileTitle(s: String, compressionOptions: CompressionOptions): Pair<String, String> {
     return fileNameFileTitle(s, compressionOptions.fileExtension)
 }
+
+/**
+ * Create new scaled Bitmap with same width/height ratio
+ */
+fun scaleBitmap(bm: Bitmap, maxWidth: Int, maxHeight: Int): Pair<Bitmap, Float> {
+    val scale =
+        min(maxWidth.toFloat() / bm.width.toFloat(), maxHeight.toFloat() / bm.height.toFloat())
+    return Pair(
+        Bitmap.createScaledBitmap(
+            bm,
+            (bm.width * scale).toInt(),
+            (bm.height * scale).toInt(),
+            true
+        ), scale
+    )
+}
+
+/**
+ * Create new scaled Rect
+ */
+fun scaleRect(rect: Rect, factor: Float): Rect {
+    return Rect(
+        (rect.left * factor).toInt(),
+        (rect.top * factor).toInt(),
+        (rect.right * factor).toInt(),
+        (rect.bottom * factor).toInt()
+    )
+}

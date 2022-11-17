@@ -50,6 +50,8 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
     var fullScreenIcon: Int? = null
     var text: String? = null
     var bitmap: Bitmap? = null
+    var offsetTop = 0f
+    var offsetLeft = 0f
 
     var defaultState = true
     private var showShutter = false
@@ -343,21 +345,27 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
 
         val bm = bitmap
         if (bm != null && !bm.isRecycled) {
-            canvas.drawBitmap(bm, 0f, 0f, null)
+            canvas.drawBitmap(bm, offsetLeft, offsetTop, null)
         }
 
         canvas.drawPaint(paintBackground)
         selectionRect?.let { rect ->
+            val src = Rect(rect).apply {
+                offset(-offsetLeft.toInt(), -offsetTop.toInt())
+            }
             if (bm != null && !bm.isRecycled) {
-                canvas.drawBitmap(bm, rect, rect, null)
+                canvas.drawBitmap(bm, src, rect, null)
             } else {
                 canvas.drawRect(rect, paintSelection)
             }
             return
         }
         resultRect?.let { rect ->
+            val src = Rect(rect).apply {
+                offset(-offsetLeft.toInt(), -offsetTop.toInt())
+            }
             if (bm != null && !bm.isRecycled) {
-                canvas.drawBitmap(bm, rect, rect, null)
+                canvas.drawBitmap(bm, src, rect, null)
             } else {
                 canvas.drawRect(rect, paintSelection)
             }
@@ -395,7 +403,10 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
                                 // Click on shutter
                                 hideShutter()
                                 performClick()
-                                onShutter?.invoke(this)
+                                val result = Rect(this).apply {
+                                    offset(-offsetLeft.toInt(), -offsetTop.toInt())
+                                }
+                                onShutter?.invoke(result)
                                 return false
                             }
                             if (fullscreenButtonRect?.contains(x, y) == true) {

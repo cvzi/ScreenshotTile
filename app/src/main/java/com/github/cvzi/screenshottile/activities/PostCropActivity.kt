@@ -51,7 +51,11 @@ class PostCropActivity : GenericPostActivity() {
          * @param uri   Uri   of image
          * @return The intent
          */
-        fun newIntentSingleImageBitmap(context: Context, uri: Uri, mimeType: String? = null): Intent {
+        fun newIntentSingleImageBitmap(
+            context: Context,
+            uri: Uri,
+            mimeType: String? = null
+        ): Intent {
             val intent = Intent(context, PostCropActivity::class.java)
             intent.action = OPEN_IMAGE_FROM_URI
             intent.setDataAndTypeAndNormalize(uri, mimeType ?: "image/*")
@@ -66,6 +70,7 @@ class PostCropActivity : GenericPostActivity() {
     private val prefManager = App.getInstance().prefManager
     private var screenshotSelectorActive = false
     private var cutOutRect: Rect? = null
+    private var scale: Float? = null
     private val onBackInvokedCallback: OnBackInvokedCallback? =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // Handle back button for Android 13+
@@ -121,12 +126,40 @@ class PostCropActivity : GenericPostActivity() {
             layoutView.setBackgroundColor(Color.WHITE)
         }
 
+        Log.v(
+            TAG,
+            "view before: ${screenshotSelectorView.measuredWidth}x${screenshotSelectorView.measuredHeight}"
+        )
+
+        var bm: Bitmap = if (BuildConfig.DEBUG && singleImage.bitmap.isMutable) {
+            tintImage(singleImage.bitmap, color = 0xFF006622)
+        } else {
+            singleImage.bitmap
+        } ?: return
+
+        if (screenshotSelectorView.measuredWidth < bm.width || screenshotSelectorView.measuredHeight < bm.height) {
+            Log.d(
+                TAG,
+                "View is only ${screenshotSelectorView.measuredWidth}x${screenshotSelectorView.measuredHeight}"
+            )
+            val scaleResult = scaleBitmap(
+                bm,
+                screenshotSelectorView.measuredWidth,
+                screenshotSelectorView.measuredHeight
+            )
+            bm = scaleResult.first
+            scale = scaleResult.second
+            Log.d(TAG, "Scaled bitmap by $scale to ${bm.width}x${bm.height}")
+        } else {
+            scale = null
+        }
+
         screenshotSelectorView.apply {
-            bitmap = if (BuildConfig.DEBUG && singleImage.bitmap.isMutable) {
-                tintImage(singleImage.bitmap, color = 0xFF006622)
-            } else {
-                singleImage.bitmap
-            }
+            bitmap = bm
+
+            // Center bitmap in view
+            offsetLeft = (measuredWidth - bm.width) / 2f
+            offsetTop = (measuredHeight - bm.height) / 2f
 
             visibility = View.VISIBLE
             text = context.getString(R.string.take_screenshot)
@@ -170,11 +203,18 @@ class PostCropActivity : GenericPostActivity() {
         }
     }
 
-
     /**
      * Store the bitmap to file system in a separate thread
      */
     private fun storeBitmap(bitmap: Bitmap) {
+        scale?.let {
+            if (scale != 1f) {
+                cutOutRect = cutOutRect?.run {
+                    scaleRect(this, 1f / it)
+                }
+            }
+        }
+
         SaveImageHandler(Looper.getMainLooper()).storeBitmap(
             this,
             bitmap,
