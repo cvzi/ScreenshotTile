@@ -9,6 +9,7 @@ Se l'app si blocca su Android 9/Pie o 10, è possibile provare ad abilitare "Usa
 ✓ Notifica dopo uno screenshot (può essere disabilitata)
 ✓ Condividi, modifica o elimina immediatamente uno screenshot dalla notifica
 Pulsante mobile / pulsante di sovrapposizione come una bolla di chat (Android 9+)
+✓ Use as assist app to take a screenshot (long-press the Home button)
 ✓ Prendi solo uno screenshot di un'area specifica dello schermo (premere a lungo il tile)
 ✓ Ritardo nell'acquisizione di uno screenshot
 ✓ Conservare in qualsiasi cartella su qualsiasi archiviazione, ad es. scheda Sd

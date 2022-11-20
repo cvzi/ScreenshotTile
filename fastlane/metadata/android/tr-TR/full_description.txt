@@ -1,40 +1,41 @@
-Ekran görüntüleri için hızlı ayar kutusu
+Ekran görüntüsü almak için hızlı ayarlar paneline bir buton/döşeme ekler.
 
-Yüklemeden sonra düğmeyi / kutucuğu hızlı ayarlarınıza eklemeniz ve ardından ekran görüntülerini kaydetme ve görüntüleri dahili depolama birimine kaydetme izinleri vermeniz gerekir.
+Kurulumdan sonra, düğmeyi/döşemeyi hızlı ayarlarınıza eklemeniz ve ardından ekran görüntülerini kaydetme ve görüntüleri dahili depolamaya kaydetme izinlerini vermeniz gerekir.
 
-If the app crashes on Android 9/Pie or 10, you can try to enable "Use native screenshot method" in the app settings.
+Uygulama Android 9/Pie veya 10'da çökerse, ayarlardan "Doğal ekran görüntüsü alma yöntemi"ni etkinleştirmeyi deneyebilirsiniz.
 
-<h2>Özellikleri:</h2>✓ Settings Hızlı ayarlardan ekran görüntüsü alın
-✓ Root Kök gerekmez
-✓ Screenshot Ekran görüntüsü alındıktan sonra bildirim (devre dışı bırakılabilir)
-✓ Bildirimdeki ekran görüntüsünü hemen paylaşın, düzenleyin veya silin
-✓ Sohbet balonu gibi kayan düğme / Yer paylaşımlı düğme
-✓ Sadece ekranın belirli bir alanının ekran görüntüsünü al (döşemeye uzun bas)
-✓ Screenshot Ekran görüntüsü alarak Gecikme
-✓ File Farklı dosya formatlarında saklayın: png, jpg veya webp
-✓ Tasker veya MacroDroid gibi uygulamalarla otomatik ekran görüntüsü alın
+<h2>Özellikler:</h2>✓ Hızlı ayarlardan Ekran görüntüsü alma
+Root gerekli değildir
+Ekran resmi alındığında bildirim göster (bu kapatılabilir )
+✓ Bildirimden hemencecik paylaşın, düzenleyin veya silin
+✓ Kayan düğme gibi sohbet balonu/Yer paylaşımlı düğme (Android 9+)
+Ekran görüntüsü almak için asistan olarak kullan (ana ekran tuşuna uzun basın.)
+✓ Only take screenshot of a specific area of the screen (long-press the tile)
+✓ Ekran görüntüsü alırken erteleme kullanma
+✓ Herhangi bir depolamada herhangi bir klasörde kaydetme örn. hafıza kartı
+✓ Store in different file formats: png, jpg or webp
+✓ Take automatic screenshots with apps like Tasker or MacroDroid
 ✓ Ücretsiz, açık kaynaklı, reklamsız
 
-Bu, "Screenshot Tile [Root]" adlı bir çatal. Ancak kök gerektirmiyor. Kök erişiminiz varsa, <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">orijinal uygulamayı</a> kullanmanız gerekir, bu çataldan daha hızlı ve daha dayanıklıdır.
+This is a fork of "Screenshot Tile [Root]" but it does not require root. If you have root access, you should use the <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">original app</a> by ipcjs, it's faster and more reliant than this fork.
 
 Kaynak kodu: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Orijinal uygulama: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
-Açık Kaynak lisansı GNU GPLv3'tür
+Açık Kaynak Lisansı GNU GPLv3'dür
 
 <u>Not:</u>
-🎦 Screenshot Bir ekran görüntüsü aldığınızda, durum çubuğunda "Google Cast" simgesi görünecek ve ekran görüntüsünde görünecektir.
-Simgeyi gizlemek istiyorsanız, burada bir açıklama var: https://github.com/cvzi/ScreenshotTile#icon
+🎦 Ekran görüntüsü aldığınızda, <b>"Google Cast" ikonu</b> durum çubuğunda görünecek ve ekran görüntüsünde görünür olacaktır.
+İkonu gizlemek istiyorsanız, burada bir açıklama var: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
 
-<h2>İzinler:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE</i> "Fotoğraflar / Medya / Dosyalar ve Depolama"
-Ekran görüntüsü dosyalarını cihazınızın dahili depolama alanına kaydetmek için bu gereklidir.
+<h2>İzinler:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Fotoğraflar/Medya/Dosyalar ve Depolama"</i>
+Bu izin cihazın dahili depolamasında ekran görüntüsü kaydetmek için gereklidir.
 
 ❏ <i>android.permission.FOREGROUND_SERVICE</i>
-Android 9 / Pie'ten bu yana ekran görüntüsü almak için bu izin gereklidir. Temelde bu uygulama kendini göstermeden çalışabileceği anlamına gelir. Ancak uygulama çalışırken her zaman bir bildirim gösterecektir.
+Android 9/Pie'den beri ekran görüntüsü almak için bu izin gerekli. Temel olarak bunun anlamı bu uygulama kendisini göstermeden çalışabilir. However the app will always show a notification when it is running.
 
-<h2>Otomatik ekran görüntüleri:</h2>Ekran görüntülerini başka bir uygulamadan otomatikleştirmek istiyorsanız, ör. MacroDroid veya Tasker, burada adım adım rehber bulabilirsiniz:
-https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents
+<h2>Automatic screenshots:</h2>If you want to automate screenshots from another app, e.g. MacroDroid or Tasker, you can find a step-by-step guide here:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
 
-<h2>Hiding the app icon:</h2>In the app settings you can hide the app icon from your launcher. You can still access the app by long pressing the tile in your quick settings. Unfortunately, Android 10 does not allow hiding an app anymore.
+<h2>Uygulama simgesini gizleme:</h2>Uygulama ayarlarında uygulama simgesini başlatıcınızda(launcher) gizleyebilirsiniz. Yine de hızlı ayarlarınızda döşemeye uzun basarak uygulamaya erişebilirsiniz. Ne yazık ki, Android 10 artık bir uygulamanın gizlenmesine izin vermiyor.
 
-<h2>🌎 Support and translations</h2>A Bir sorun varsa veya bu uygulamanın dilinize çevrilmesine yardımcı olmak istiyorsanız, lütfen <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a> veya <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> adresinden benimle iletişime geçin.
-You can help to translate this app into your language on crowdin: <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+<h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
