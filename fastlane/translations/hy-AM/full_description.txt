@@ -1,4 +1,4 @@
-Ավելացնում է կադրահանման կոճակ կոճգամների վահանակի վրա։
+Ավելացնում է կադրահանման կոճակ` կոճգամների վահանակում։
 
 Հավելվածը տեղադրելուց հետո անհրաժեշտ է ավելացնել կոճակը կոճգամների վահանակի վրա և համաձայնել էկրանի ձայնագրման և նկարը հիշողության մեջ պահպանելու թույլտվությունների հարցումներին։
 
@@ -9,6 +9,7 @@
 ✓ Ցույց է տալիս կադրահանման մասին ծանուցում, որը կարելի է անջատել
 ✓ Միանգամից խմբագրեք, ջնջեք կադրահանումը կամ կիսվեք նկարով ծանուցումից
 ✓ Թռչող կոճակ, որը նման է զրույցի պղպջակի (Android 9+)
+✓ Use as assist app to take a screenshot (long-press the Home button)
 ✓ Կատարեք կադրահանում էկրանի ցանկացած  մակերեսի վրա (կոճգամի երկար սեղմում)
 ✓ Կադրահանման հետաձգում
 ✓ Պահպանեք կադրահանումը ցանկացած հիշող սարքի ցանկացած պանակի մեջ (օրինակ՝ SD քարտ)
@@ -16,7 +17,7 @@
 ✓ Ավտոմատացված կադրահանումներ այլ հավելվածներից։ Օրինակ` MacroDroid կամ Tasker
 ✓ Անվճար, բաց կոդով, առանձ գովազդների
 
-Այս հավելվածը «Screenshot Tile [Root]»-ի վերամշակված տարբերակն է, սակայն նրան root թույլտվություններ անհրաժեշտ չեն։ If you have root access, you should use the <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">original app</a> by ipcjs, it's faster and more reliant than this fork.
+Այս հավելվածը «Screenshot Tile [Root]»-ի վերամշակված տարբերակն է, սակայն նրան root թույլտվություններ անհրաժեշտ չեն։ Եթե ունեք «root» մատչում, օգտագործե՛ք <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">բնիկ հավելվածը</a>` «ipcjs»-ի կողմից մշակված։ Այն ավելի արագ և ստաբիլ է աշխատում, քան այս հավելվածը։
 
 Source code: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Original app: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>

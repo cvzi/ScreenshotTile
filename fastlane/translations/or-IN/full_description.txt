@@ -1,0 +1,41 @@
+Adds a button/tile to the quick settings panel to take screenshots.
+
+After install you need to add the button/tile to your quick settings and then grant the permissions to record screen captures and save images to the internal storage.
+
+If the app crashes on Android 9/Pie or 10, you can try to enable "Use native screenshot method" in the app settings.
+
+<h2>ବୈଶିଷ୍ଟ୍ୟଗୁଡ଼ିକ:</h2>✓ ଦ୍ରୁତ ସେଟିଂସରୁ ସ୍କ୍ରିନସଟ୍ ନିଅନ୍ତୁ
+✓ କୌଣସି ରୁଟ୍ ଆବଶ୍ୟକ ନାହିଁ
+✓ ସ୍କ୍ରିନସଟ୍ ନିଆଯିବା ପରେ ବିଜ୍ଞପ୍ତି (ଅକ୍ଷମ କରାଯାଇପାରିବ)
+✓ ବିଜ୍ଞପ୍ତିରୁ ତୁରନ୍ତ ଏକ ସ୍କ୍ରିନସଟ୍ ଅଂଶୀଦାର, ସମ୍ପାଦନ କିମ୍ବା ବିଲୋପ କରନ୍ତୁ
+✓ Floating button/Overlay button like a chat bubble (Android 9+)
+✓ Use as assist app to take a screenshot (long-press the Home button)
+✓ Only take screenshot of a specific area of the screen (long-press the tile)
+✓ ଏକ ସ୍କ୍ରିନସଟ୍ ନେବାରେ ବିଳମ୍ବ ଅନ୍ତର୍ଭୁକ୍ତ କରନ୍ତୁ
+✓ ଯେକୌଣସି ଷ୍ଟୋରେଜର ଯେକୌଣସି ଫୋଲ୍ଡରରେ ଗଚ୍ଛିତ କରନ୍ତୁ ଯଥା SD କାର୍ଡ
+✓ ବିଭିନ୍ନ ଫାଇଲ୍ ଫର୍ମାଟରେ ଗଚ୍ଛିତ କରନ୍ତୁ: png, jpg କିମ୍ବା webp
+✓ Tasker କିମ୍ୱା MacroDroid ଭଳି ଆପ୍ ସହ ସ୍ୱୟଂଚାଳିତ ସ୍କ୍ରିନସଟ୍ ନିଅନ୍ତୁ
+✓ ମାଗଣା, ଖୋଲା-ଉତ୍ସ, କୌଣସି ବିଜ୍ଞାପନ ନାହିଁ
+
+ଏହା "ସ୍କ୍ରିନସଟ୍ ଟାଇଲ୍ [Root]" ର ଏକ ଫର୍କ‍୍ କିନ୍ତୁ ଏହା ରୁଟ୍ ଆବଶ୍ୟକ କରେ ନାହିଁ। ଯଦି ଆପଣଙ୍କର ରୁଟ୍ ଆକସେସ୍ ଅଛି, ତେବେ ଆପଣ ipcjsଙ୍କ <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">ମୂଳ ଆପ୍</a> ବ୍ୟବହାର କରିବା ଉଚିତ୍ ଯାହା ଏହି ଫର୍କ‍୍ ଅପେକ୍ଷା ଦ୍ରୁତ ଏବଂ ଅଧିକ ନିର୍ଭରଶୀଳ ଅଟେ।
+
+Source code: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+ମୂଳ ଆପ୍: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+ଖୋଲା ଉତ୍ସ ଲାଇସେନ୍ସ GNU GPLv3 ଅଟେ
+
+<u>ଧ୍ୟାନ ଦିଅନ୍ତୁ:</u>
+🎦 When you take a screenshot, the <b>"Google Cast" icon</b> will appear in the status bar and it will be visible in the screenshot image.
+ଯଦି ଆପଣ ଆଇକନ୍ ଲୁଚାଇବାକୁ ଚାହାଁନ୍ତି, ଏଠାରେ ଏକ ବ୍ୟାଖ୍ୟା ଅଛି: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Permissions:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Photos/Media/Files and Storage"</i>
+ଆପଣଙ୍କ ଡିଭାଇସର ଅନ୍ତର୍ନିହିତ ଷ୍ଟୋରେଜରେ ସ୍କ୍ରିନସଟ୍ ଫାଇଲଗୁଡ଼ିକ ସଞ୍ଚୟ କରିବା ପାଇଁ ଏହା ଆବଶ୍ୟକ ଅଟେ।
+
+❏ <i>android.permission.FOREGROUND_SERVICE</i>
+Since Android 9/Pie this permission is required to take screenshots. ଏହାର ମୂଳ ଅର୍ଥ ହେଉଛି ଏହି ଆପ୍ ନିଜକୁ ନ ଦେଖାଇ ଚାଲିପାରିବ। ତଥାପି ଆପ୍ ଚାଲୁଥିବାବେଳେ ସର୍ବଦା ଏକ ବିଜ୍ଞପ୍ତି ଦେଖାଇବ।
+
+<h2>Automatic screenshots:</h2>If you want to automate screenshots from another app, e.g. MacroDroid or Tasker, you can find a step-by-step guide here:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Hiding the app icon:</h2>In the app settings you can hide the app icon from your launcher. You can still access the app by long pressing the tile in your quick settings. ଦୁର୍ଭାଗ୍ୟବଶତଃ, ଆଣ୍ଡ୍ରଏଡ୍ 10 ଆଉ ଏକ ଆପ୍ ଲୁଚାଇବାକୁ ଅନୁମତି ଦିଏ ନାହିଁ।
+
+<h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
