@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="50">Decupator pentru capturi ecran</string>
+    <string name="app_name">Decupator pentru capturi ecran</string>
     <string name="app_name_long">Decupator pentru capturi ecran (NoRoot)</string>
     <string name="tile_label">Captură ecran</string>
     <string name="tile_floating">Butonul de captură de ecran plutitor</string>
@@ -48,7 +48,10 @@
     <string name="setting_storage_directory_description">Director pentru salvarea capturilor de ecran</string>
     <string name="setting_file_name_pattern">Numele fișierului</string>
     <string name="setting_file_name_placeholders_title">Utilizați aceste caractere de poziție în numele fișierului</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - ora ca yyyy-MM-dd_HH-mm-ss\n%counter% - numără numărul de capturi de ecran\n%random% - un UUID aleatoriu\n%randint% - un număr aleatoriu</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - ora ca yyyy-MM-dd_HH-mm-ss
+%counter% - numără numărul de capturi de ecran
+%random% - un UUID aleatoriu
+%randint% - un număr aleatoriu]]></string>
     <string name="setting_tile_action">Acțiunea plăcutei</string>
     <string name="setting_floating_action">Acțiunea butonului flotant</string>
     <string name="setting_voice_interaction_action">Asistent acțiune</string>
@@ -198,4 +201,5 @@
     <string name="dialog_ask_filename_title">Salvează ca</string>
     <string name="dialog_ask_filename_directory">Director selectat:</string>
     <string name="dialog_ask_filename_hint">Numele fișierului (fără extensie)</string>
+    <!-- Advanced Settings -->
 </resources>

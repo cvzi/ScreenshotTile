@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">אריח צילום מסך</string>
+    <string name="app_name">Screenshot Tile</string>
     <string name="app_name_long">אריח צילום מסך (ללא רוט)</string>
     <string name="tile_label">צילום מסך</string>
     <string name="tile_floating">כפתור צף לצילום מסך</string>
@@ -133,6 +133,9 @@
     <string name="googleplay_consent_no">אני מסרב</string>
     <!-- About -->
     <string name="about_app_title">אודות</string>
+    <string name="about_app_3">For more information and bug reports visit: github.com/cvzi/ScreenshotTile</string>
+    <string name="about_license_title">רישיון</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\n שיון הציבורי הכללי של גנו גרסה   3 </string>
     <!-- First screen -->
     <string name="main_accessibility_settings">הגדרות נגישות</string>
     <string name="main_floating_button_title">כפתור צף</string>
@@ -146,4 +149,7 @@
     <string name="post_save_a_suggestion">אחסן את הצעת השם</string>
     <string name="post_pin_to_favorites">הוספת סימניה</string>
     <string name="post_delete_suggestion">הסר את הצעת השם</string>
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
+    <string name="setting_floating_button_color">צבע כפתור צף</string>
 </resources>

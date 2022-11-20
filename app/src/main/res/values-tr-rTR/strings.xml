@@ -80,6 +80,7 @@
     <string name="button_clear_confirm">Tüm geçici dosyaları silmek istiyor musunuz?\nBu %s klasöründeki tüm dosyaları silecektir\n\n(Bu dosyalar genellikle galerinizde görünmez)</string>
     <string name="file_title">Ekran görüntüsü</string>
     <string name="file_description">Ekran görüntüsü %1$s çekildi</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Ekran görüntüsü alındı</string>
     <string name="notification_body">Resmi görmek için tıkla</string>
     <string name="notification_channel_description">Ekran görüntüsü alındığında bildirim gösterilir</string>
@@ -187,4 +188,5 @@
     <string name="dialog_ask_filename_title">Farklı kaydet</string>
     <string name="dialog_ask_filename_directory">Seçilen dizin:</string>
     <string name="dialog_ask_filename_hint">Dosya adı (uzantı olmadan)</string>
+    <!-- Advanced Settings -->
 </resources>

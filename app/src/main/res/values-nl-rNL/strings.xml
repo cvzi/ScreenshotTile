@@ -9,6 +9,7 @@
     <string name="title_delay">Vertraging</string>
     <string name="more_setting">Meer instellingen</string>
     <string name="open_settings">Instellingen openen</string>
+    <string name="floating_button_settings">Instellingen voor zwevende knop</string>
     <string name="left_screenshot_right_menu">Links: Schermafdruk, Rechts: Instellingen</string>
     <string name="partial_screenshot">Gebied selecteren</string>
     <string name="file_format">Bestandsindeling</string>
@@ -48,7 +49,10 @@
     <string name="setting_storage_directory_description">Map om schermafdrukken in op te slaan</string>
     <string name="setting_file_name_pattern">Bestandsnaam</string>
     <string name="setting_file_name_placeholders_title">Deze tijdelijke aanduidingen in de bestandsnaam gebruiken</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% – tijd als yyyy-MM-dd_HH-mm-ss\n%counter% – telt het aantal screenshots\n%random% – een willekeurig UUID\n%randint% – een willekeurig getal</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% – tijd als yyyy-MM-dd_HH-mm-ss
+%counter% – telt het aantal screenshots
+%random% – een willekeurig UUID
+%randint% – een willekeurig getal]]></string>
     <string name="setting_tile_action">Tegelactie</string>
     <string name="setting_floating_action">Actie voor zwevende knop</string>
     <string name="setting_voice_interaction_action">Actie van assistent</string>
@@ -83,6 +87,7 @@
     <string name="button_clear_confirm">Wil je alle tijdelijke bestanden verwijderen?\nDit verwijdert alle bestanden in %s\n\n(Deze bestanden zijn meestal niet zichtbaar in je galerij.)</string>
     <string name="file_title">Schermafdruk</string>
     <string name="file_description">Schermafdruk gemaakt op %1$s</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Gemaakte schermafdruk</string>
     <string name="notification_body">Tik om de afbeelding te zien</string>
     <string name="notification_channel_description">Toont een melding wanneer je een schermafdruk hebt genomen</string>
@@ -98,6 +103,7 @@
     <string name="notification_share_screenshot">Delen</string>
     <string name="notification_edit_screenshot">Bewerken</string>
     <string name="notification_rename_screenshot">Naam wijzigen</string>
+    <string name="notification_screenshot_details">Details</string>
     <string name="notification_crop_screenshot">Bijsnijden</string>
     <string name="notification_photo_editor_screenshot">Fotobewerker</string>
     <string name="screenshot_deleted">Schermafdruk verwijderd</string>
@@ -182,4 +188,5 @@
     <string name="setting_success_toasts">“Toast”-meldingen voor geslaagde gebeurtenissen</string>
     <string name="setting_error_toasts">“Toast”-meldingen voor fouten</string>
     <string name="setting_select_area_shutter_delay">Vertraging na op de sluiter te drukken (in modus “Gebied selecteren”)</string>
+    <string name="setting_floating_button_color">Kleur zwevende knop</string>
 </resources>

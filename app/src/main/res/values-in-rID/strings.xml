@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (Tanpa Root)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (Tanpa Root)</string>
     <string name="tile_label">Tangkapan layar</string>
     <string name="tile_floating">Melayang tombol menangkap layar</string>
     <string name="tile_floating_label">Melayang</string>
@@ -16,7 +17,7 @@
     <string name="setting_delay_entry_2s">2 detik</string>
     <string name="setting_delay_entry_5s">5 detik</string>
     <string name="show_count_down">Perlihatkan hitungan mundur</string>
-    <string name="use_native_screenshot">Gunakan metode tangkap layar natural</string>
+    <string name="use_native_screenshot">Gunakan metode tangkapan layar natural</string>
     <string name="use_native_screenshot_summary">Mensimulasikan Home + Tombol matikan daya</string>
     <string name="use_native_screenshot_unsupported">Membutuhkan Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">Layanan aksesibilitas dinonaktifkan</string>
@@ -24,7 +25,7 @@
     <string name="use_native_screenshot_option_android11">Nonaktifkan \'Pakai sistem default\' untuk menggunakan ini</string>
     <string name="accessibility_service_description">Jika layanan ini diaktifkan, aplikasi dapat mensimulasikan Tombol Daya + Home untuk mengambil tangkapan layar.\nPada beberapa perangkat, mengaktifkan metode ini mungkin akan lebih stabil atau cepat dibandingkan mode default.\n\nJika anda mengaktifkan layanan disini, anda juga harus mengaktifkan \'metode natural\' pada pegaturan aplikasi.</string>
     <string name="use_system_defaults">Gunakan bawaan sistem</string>
-    <string name="use_system_defaults_summary">Membutuhkan Android 11 Pie</string>
+    <string name="use_system_defaults_summary">Membutuhkan Android 11</string>
     <string name="use_system_defaults_summary_on">Menggunakan direktori penyimpanan, format, screenshot editor, dan notifikasi</string>
     <string name="use_system_defaults_summary_off">Menggunakan pengaturan aplikasi</string>
     <string name="setting_floating_button">Tombol mengambang</string>
@@ -145,4 +146,6 @@
     <string name="post_save_a_suggestion">Menyimpan saran</string>
     <string name="post_pin_to_favorites">Tambahkan ke favorit</string>
     <string name="post_delete_suggestion">Hapus saran</string>
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

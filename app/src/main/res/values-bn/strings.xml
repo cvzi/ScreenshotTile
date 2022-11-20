@@ -26,8 +26,12 @@
     <string name="tutorial">টিউটোরিয়াল</string>
     <string name="tutorial_tap_for_next_step">পরবর্তী পর্ব দেখতে ট্যাপ করুন</string>
     <string name="take_screenshot">স্ক্রিনশট</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <string name="about_license_title">লাইসেন্স</string>
-    <string name="main_assist_app_title">সহায়তা অ্যাপ</string>
     <!-- First screen -->
+    <string name="main_assist_app_title">সহায়তা অ্যাপ</string>
+    <!-- Post edit activity -->
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

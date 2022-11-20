@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Capture d\'écran</string>
     <string name="tile_floating">Bouton flottant</string>
     <string name="tile_floating_label">Flottant</string>
@@ -118,4 +119,6 @@
     <string name="main_long_press_text">Un appui prolongé sur la tuile/bouton ouvre un menu. Vous pouvez spécifier un délai pour la capture d\'écran ou sélectionner une zone de l\'écran à capturer.</string>
     <string name="main_assist_app_title">Application d\'assistance</string>
     <!-- Post edit activity -->
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

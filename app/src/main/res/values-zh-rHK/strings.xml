@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">屏幕截图磁贴 (NoRoot)</string>
+    <string name="app_name">屏幕截图磁贴</string>
+    <string name="app_name_long">屏幕截图磁贴 (NoRoot)</string>
     <string name="tile_label">屏幕截图</string>
     <string name="tile_floating">浮動屏幕截圖按鈕</string>
     <string name="tile_floating_label">浮動</string>
@@ -8,6 +9,7 @@
     <string name="title_delay">延时</string>
     <string name="more_setting">更多设置</string>
     <string name="open_settings">打開設置</string>
+    <string name="floating_button_settings">浮动按钮设置</string>
     <string name="left_screenshot_right_menu">左：屏幕截圖，右：設置</string>
     <string name="partial_screenshot">选择区域</string>
     <string name="file_format">文件格式</string>
@@ -127,4 +129,6 @@
     <string name="dialog_ask_filename_title">保存为</string>
     <string name="dialog_ask_filename_directory">已选择路径：</string>
     <string name="dialog_ask_filename_hint">文件名称（不包括扩展名）</string>
+    <!-- Advanced Settings -->
+    <string name="setting_floating_button_color">浮动按钮颜色</string>
 </resources>

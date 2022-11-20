@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Jubin Petikan Skrin (No Root)</string>
+    <string name="app_name">Jubin Petikan Skrin</string>
+    <string name="app_name_long">Jubin Petikan Skrin (No Root)</string>
     <string name="tile_label">Tangkapan Skrin</string>
     <string name="tile_floating">Terapung screenshot butang</string>
     <string name="tile_floating_label">Terapung</string>
@@ -66,4 +67,6 @@
     <string name="main_floating_button_title">Butang terapung</string>
     <string name="main_assist_app_title">Apl bantuan</string>
     <!-- Post edit activity -->
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

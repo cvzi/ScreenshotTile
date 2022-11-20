@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="50">Screenshot Tile</string>
+    <string name="app_name">Screenshot Tile</string>
     <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Screenshot</string>
     <string name="tile_floating">Schwebender Screenshot Button</string>
@@ -48,7 +48,10 @@
     <string name="setting_storage_directory_description">Ordner, wo Screenshots gespeichert werden</string>
     <string name="setting_file_name_pattern">Dateiname</string>
     <string name="setting_file_name_placeholders_title">Verwende diese Platzhalter im Dateinamen</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - Zeit als yyyy-MM-dd_HH-mm-ss\n%counter% - zählt die Anzahl der Screenshots\n%random% - eine zufällige UUID\n%randint% - eine zufällige Zahl</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - Zeit als yyyy-MM-dd_HH-mm-ss
+%counter% - zählt die Anzahl der Screenshots
+%random% - eine zufällige UUID
+%randint% - eine zufällige Zahl]]></string>
     <string name="setting_tile_action">Kachelaktion</string>
     <string name="setting_floating_action">Aktion des schwebenden Screenshot Auslösers</string>
     <string name="setting_voice_interaction_action">Assistentaktion</string>
@@ -198,4 +201,5 @@
     <string name="dialog_ask_filename_title">Speichern unter</string>
     <string name="dialog_ask_filename_directory">Ausgewählter Ordner:</string>
     <string name="dialog_ask_filename_hint">Dateiname (ohne Dateiendung)</string>
+    <!-- Advanced Settings -->
 </resources>

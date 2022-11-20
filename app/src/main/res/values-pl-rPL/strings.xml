@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Zrzut ekranu</string>
     <string name="tile_floating">Pływający przycisk zrzutu ekranu</string>
     <string name="tile_floating_label">Pływający</string>
@@ -60,6 +61,23 @@
     <string name="notification_settings">Powiadomienia</string>
     <string name="notification_settings_on">Włączone</string>
     <string name="notification_settings_off">Wyłączone</string>
+    <string name="setting_post_actions">Następujące działania</string>
+    <string name="setting_post_actions_description">Wybierz, co ma się stać po wykonaniu zrzutu ekranu</string>
+    <string name="button_history">Najnowsze zrzuty ekranu</string>
+    <string name="button_history_description">Zobacz swoje najnowsze zrzuty ekranu, w tym pliki, które nie zostały zapisane w galerii</string>
+    <string name="history_title">Historia zrzutów ekranu</string>
+    <string name="restore_default_values">Przywróć wartości domyślne</string>
+    <string name="post_action_save_to_storage">Zapisz obraz w galerii</string>
+    <string name="post_action_empty">Nie otwieraj zrzutu ekranu</string>
+    <string name="post_action_open_in_post">Otwórz panel \"Szczegóły\"</string>
+    <string name="post_action_open_in_post_crop">Przytnij obraz</string>
+    <string name="post_action_open_in_photo_editor">Otwórz we wbudowanym edytorze obrazów</string>
+    <string name="post_action_open_in_external_editor">Otwórz w zewnętrznym edytorze obrazów</string>
+    <string name="post_action_open_in_external_viewer">Otwórz w przeglądarce zdjęć lub w galerii</string>
+    <string name="post_action_open_share">Udostępnij zrzut ekranu</string>
+    <string name="move_to_storage_directory">Przenieś do galerii</string>
+    <string name="button_clear">Wyczyść</string>
+    <string name="button_clear_confirm">Czy chcesz usunąć wszystkie pliki tymczasowe?\nSpowoduje to usunięcie wszystkich plików w %s\n\n(Te pliki nie są zazwyczaj widoczne w Twojej galerii)</string>
     <string name="file_title">Zrzut ekranu</string>
     <string name="file_description">Zrzut ekranu z %1$s</string>
     <string name="file_description_simple_date_format">yyyy-MM-dd HH:mm:ss</string>
@@ -79,6 +97,8 @@
     <string name="notification_edit_screenshot">Edytuj</string>
     <string name="notification_rename_screenshot">Zmień nazwę</string>
     <string name="notification_screenshot_details">Szczegóły</string>
+    <string name="notification_crop_screenshot">Przytnij</string>
+    <string name="notification_photo_editor_screenshot">Edytor obrazów</string>
     <string name="screenshot_deleted">Zrzut ekranu usunięty</string>
     <string name="screenshot_delete_failed">Nie można usunąć pliku</string>
     <string name="screenshot_renamed">Zmieniono nazwę pliku na %1s</string>
@@ -111,6 +131,8 @@
     <string name="about_license_title">Licencja</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Wersja 3</string>
     <string name="about_app_2">Ta aplikacja nadal ma pewne problemy i jest w trakcie rozwoju.\nJeśli masz w telefonie dostęp do root\'a, użyj wersji użytkownika ipcjs, jest szybsza i bardziej niezawodna.</string>
+    <string name="about_privacy_title">Polityka prywatności</string>
+    <string name="about_open_source_title">Biblioteki open source</string>
     <string name="about_advanced_settings_button">Zaawansowane ustawienia</string>
     <string name="about_update_check_button">Sprawdź aktualizację</string>
     <!-- First screen -->
@@ -137,4 +159,33 @@
     <string name="post_save_a_suggestion">Zapisz sugestię</string>
     <string name="post_pin_to_favorites">Przypnij do ulubionych</string>
     <string name="post_delete_suggestion">Usuń sugestię</string>
+    <!-- Photo Editor-->
+    <string name="label_brush">Pędzel</string>
+    <string name="label_shape">Kształt</string>
+    <string name="label_oval">Owal</string>
+    <string name="label_rectangle">Prostokąt</string>
+    <string name="label_line">Linia</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Gumka</string>
+    <string name="label_eraser_mode">Tryb gumki</string>
+    <string name="label_text">Tekst</string>
+    <string name="label_filter">Filtr</string>
+    <string name="label_rotation">Rotacja</string>
+    <string name="label_opacity">Przezroczystość</string>
+    <string name="label_done">Gotowe</string>
+    <string name="label_close">Zamknij</string>
+    <string name="label_save">Zapisz</string>
+    <string name="label_discard">Odrzuć</string>
+    <string name="msg_save_image">Czy chcesz wyjść bez zapisywania obrazu?</string>
+    <string name="msg_save_image_to_share">Zapisz obraz, aby go udostępnić</string>
+    <string name="msg_share_image">Udostępnij obraz</string>
+    <string name="msg_choose_image">Wybierz obraz</string>
+    <string name="msg_image_saved">Obraz został zapisany</string>
+    <string name="msg_failed_to_save">Błąd zapisywania obrazu</string>
+    <string name="dialog_ask_filename_title">Zapisz jako</string>
+    <string name="dialog_ask_filename_directory">Wybierz katalog:</string>
+    <string name="dialog_ask_filename_hint">Nazwa pliku (bez rozszerzenia)</string>
+    <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Tryb domyślny: włączony</string>
+    <string name="setting_floating_button_alpha_summary">0,0 (w pełni przezroczysty) do 1,0 (całkowicie nieprzezroczyste)</string>
 </resources>

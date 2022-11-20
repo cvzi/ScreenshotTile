@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Էկրանահանման Կոճակ (NoRoot)</string>
+    <string name="app_name">Էկրանահանման Կոճակ</string>
+    <string name="app_name_long">Էկրանահանման Կոճակ (NoRoot)</string>
     <string name="tile_label">Կադրահանել</string>
     <string name="tile_floating">Թռչող Կադրահանման Կոճակ</string>
     <string name="tile_floating_label">Թռչող կոճակ</string>
@@ -146,4 +147,6 @@
     <string name="post_save_a_suggestion">Հիշել առաջարկությունը</string>
     <string name="post_pin_to_favorites">Կցել նախընտրելիների ցուցակին</string>
     <string name="post_delete_suggestion">Ջնջել առաջարկությունը</string>
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

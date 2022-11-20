@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Στιγμιότυπο οθόνης</string>
     <string name="tile_floating">Αιωρούμενο Κουμπί Στιγμιοτύπου οθόνης</string>
     <string name="tile_floating_label">Αιωρούμενο</string>
@@ -111,4 +111,6 @@
     <string name="main_long_press_text">Το παρατεταμένο πάτημα του κουμπιού ανοίγει ένα μενού. Μπορείτε να καθορίσετε μια καθυστέρηση για το στιγμιότυπο οθόνης ή να περικόψετε ένα κομμάτι της οθόνης.</string>
     <string name="main_assist_app_title">Εφαρμογή υποβοήθειας</string>
     <!-- Post edit activity -->
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

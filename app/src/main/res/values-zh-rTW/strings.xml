@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">屏幕截图磁贴 (NoRoot)</string>
+    <string name="app_name">屏幕截图磁贴</string>
+    <string name="app_name_long">屏幕截图磁贴 (NoRoot)</string>
     <string name="tile_label">屏幕截图</string>
     <string name="tile_floating">浮動屏幕截圖按鈕</string>
     <string name="tile_floating_label">浮動</string>
@@ -125,4 +126,6 @@
     <string name="post_save_a_suggestion">儲存建議</string>
     <string name="post_pin_to_favorites">添加到收藏</string>
     <string name="post_delete_suggestion">刪除建議</string>
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

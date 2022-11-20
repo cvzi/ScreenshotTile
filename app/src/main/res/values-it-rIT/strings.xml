@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Screenshot</string>
     <string name="tile_floating">Fluttuante Pulsante Screenshot</string>
     <string name="tile_floating_label">Fluttuante</string>
@@ -118,4 +119,6 @@
     <string name="main_long_press_text">Premendo a lungo il bottone si apre un menu. È possibile specificare un ritardo per lo screenshot o tagliare un rettangolo dallo schermo.</string>
     <string name="main_assist_app_title">App di assistenza</string>
     <!-- Post edit activity -->
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

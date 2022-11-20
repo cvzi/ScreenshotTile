@@ -48,7 +48,10 @@
     <string name="setting_storage_directory_description">Mapp att spara skärmdumpar i</string>
     <string name="setting_file_name_pattern">Filnamn</string>
     <string name="setting_file_name_placeholders_title">Använd dessa platshållare i filnamnet</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - tid som yyyy-MM-dd_HH-mm-ss\n%counter% - räknar antalet skärmbilder\n%random% - ett slumpmässigt UUID\n%randint% - ett slumpmässigt tal</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tid som yyyy-MM-dd_HH-mm-ss
+%counter% - räknar antalet skärmbilder
+%random% - ett slumpmässigt UUID
+%randint% - ett slumpmässigt tal]]></string>
     <string name="setting_tile_action">Funktion för knapp i snabbpanel</string>
     <string name="setting_floating_action">Funktion på flytande knapp</string>
     <string name="setting_voice_interaction_action">Funktion för assistent</string>

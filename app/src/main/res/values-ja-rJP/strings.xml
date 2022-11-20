@@ -68,4 +68,6 @@
     <string name="post_hint_new_file_name">新しいファイル名</string>
     <string name="post_rename_file">ファイル名を変更：</string>
     <string name="post_pin_to_favorites">お気に入りに追加</string>
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

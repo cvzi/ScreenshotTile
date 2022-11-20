@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">مربع لقطة الشاشة (NoRot)</string>
+    <string name="app_name">مربع لقطة الشاشة</string>
+    <string name="app_name_long">مربع لقطة الشاشة (NoRot)</string>
     <string name="tile_label">لقطة شاشة</string>
     <string name="tile_floating">عائمة زر لقطة الشاشة</string>
     <string name="tile_floating_label">عائمة</string>
@@ -47,19 +48,22 @@
     <string name="setting_storage_directory_description">مكان المجلد لحفظ لقطات الشاشة فيه</string>
     <string name="setting_file_name_pattern">اسم الملف</string>
     <string name="setting_file_name_placeholders_title">استخدم هذه العناصر النائبة في اسم الملف</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - وقت yyy-MM-dd_HH-mm-ss\n%counter% - يحسب عدد لقطات الشاشة\n%random% - مستخدم عشوائي\n%randint% - رقم عشوائي</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - وقت yyy-MM-dd_HH-mm-ss
+%counter% - يحسب عدد لقطات الشاشة
+%random% - مستخدم عشوائي
+%randint% - رقم عشوائي]]></string>
     <string name="setting_tile_action">إجراءات البلاط</string>
     <string name="setting_floating_action">إجراء الزر العائم</string>
     <string name="setting_voice_interaction_action">إجراء زر المساعد الرقمي</string>
     <string name="setting_dark_theme">نمط داكن</string>
     <string name="setting_dark_theme_system">النظام</string>
     <string name="setting_dark_theme_off">تم إيقاف</string>
-    <string name="setting_dark_theme_on">‏‏تم تشغيل</string>
+    <string name="setting_dark_theme_on">تم تشغيل</string>
     <string name="setting_notification_buttons">أزرار الإشعارات</string>
     <string name="setting_notification_buttons_description">حدد ما يصل إلى ثلاثة أزرار تظهر أسفل إشعار لقطة الشاشة</string>
     <string name="setting_notification_buttons_max_three">الرجاء اختيار ثلاثة أزرار كحد أقصى</string>
     <string name="notification_settings">الإشعارات</string>
-    <string name="notification_settings_on">‏‏تم تشغيل</string>
+    <string name="notification_settings_on">تم تشغيل</string>
     <string name="notification_settings_off">تم إيقاف</string>
     <string name="setting_post_actions">الإجراءات اللاحقة</string>
     <string name="setting_post_actions_description">اختر ما يحدث بعد أخذ لقطة الشاشة</string>
@@ -194,4 +198,5 @@
     <string name="msg_choose_image">اختر صورة</string>
     <string name="msg_image_saved">تم حفظ الصورة بنجاح</string>
     <string name="msg_failed_to_save">فشل في حفظ الصورة</string>
+    <!-- Advanced Settings -->
 </resources>

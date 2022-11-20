@@ -53,9 +53,9 @@
     <string name="setting_dark_theme">نمط داكن</string>
     <string name="setting_dark_theme_system">النظام</string>
     <string name="setting_dark_theme_off">تم إيقاف</string>
-    <string name="setting_dark_theme_on">‏‏تم تشغيل</string>
+    <string name="setting_dark_theme_on">م تشغيل</string>
     <string name="notification_settings">الإشعارات</string>
-    <string name="notification_settings_on">‏‏تم تشغيل</string>
+    <string name="notification_settings_on">تم تشغيل</string>
     <string name="notification_settings_off">تم إيقاف</string>
     <string name="file_title">لقطة شاشة</string>
     <string name="file_description">تم التقاط لقطة شاشة في %1$s</string>

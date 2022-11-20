@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">کاشی اسکرین‌ شات (بدون‌روت)</string>
+    <string name="app_name">کاشی اسکرین‌ شات</string>
+    <string name="app_name_long">کاشی اسکرین‌ شات (بدون‌روت)</string>
     <string name="tile_label">اسکرین شات</string>
     <string name="tile_floating">دکمه شناور</string>
     <string name="tile_floating_label">شناور</string>
@@ -183,4 +184,5 @@
     <string name="msg_save_image">آیا میخواهید بدون ذخیره تصویر خارج شوید؟</string>
     <string name="msg_save_image_to_share">لطفا برای به اشتراک گذاری ابتدا تصویر را ذخیره کنید</string>
     <string name="msg_share_image">به اشتراک‌گذاری تصویر</string>
+    <!-- Advanced Settings -->
 </resources>

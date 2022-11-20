@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (NoRoot)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Képernyőkép</string>
     <string name="tile_floating">Lebegő képernyőkép gomb</string>
     <string name="tile_floating_label">Lebegő gomb</string>
@@ -114,4 +115,6 @@
     <string name="main_long_press_text">Hosszan nyomva a gombot, megnyílik egy menü. Megadhatja a képernyőkép késleltetését, vagy kivághat egy téglalap részt a képernyőről.</string>
     <string name="main_assist_app_title">Segédalkalmazás</string>
     <!-- Post edit activity -->
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

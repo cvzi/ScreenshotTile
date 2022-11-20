@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile (sem root)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (sem root)</string>
     <string name="tile_label">Captura de tela</string>
     <string name="tile_floating">Flutuante botão captura de ecrã</string>
     <string name="tile_floating_label">Flutuante</string>
@@ -47,6 +48,10 @@
     <string name="setting_storage_directory_description">Pasta para guardar os ficheiros</string>
     <string name="setting_file_name_pattern">Nome do ficheiro</string>
     <string name="setting_file_name_placeholders_title">Use as seguintes variáveis no nome do ficheiro</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tempo mostrado como aaaa-MM-dd_HH-mm-ss
+%counter% - contagem de capturas da tela
+%random% - um UUID aleatório
+%randint% - um número aleatório]]></string>
     <string name="setting_tile_action">Ação do botão</string>
     <string name="setting_floating_action">Ação do botão flutuante</string>
     <string name="setting_dark_theme">Tema escuro</string>
@@ -114,4 +119,6 @@
     <string name="main_long_press_text">Pressionar e segurar o botão abre um menu. Pode especificar um atraso para a captura do ecrã ou recortar uma parte do ecrã.</string>
     <string name="main_assist_app_title">App de assistência</string>
     <!-- Post edit activity -->
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

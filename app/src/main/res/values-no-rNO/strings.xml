@@ -56,4 +56,6 @@
     <string name="main_assist_app_title">Assistentapp</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Omdøp</string>
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>

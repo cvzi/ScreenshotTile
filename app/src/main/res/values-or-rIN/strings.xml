@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ସ୍କ୍ରିନସଟ୍ ଟାଇଲ୍ (NoRoot)</string>
+    <string name="app_name">ସ୍କ୍ରିନସଟ୍ ଟାଇଲ୍</string>
+    <string name="app_name_long">ସ୍କ୍ରିନସଟ୍ ଟାଇଲ୍ (NoRoot)</string>
     <string name="tile_label">ସ୍କ୍ରିନସଟ୍</string>
     <string name="tile_floating">ଭାସମାନ ସ୍କ୍ରିନସଟ୍ ବଟନ୍</string>
     <string name="tile_floating_label">ଭାସମାନ</string>
@@ -95,4 +96,5 @@
     <string name="msg_choose_image">ଗୋଟେ ପ୍ରତିଛବି ବାଛିଲ</string>
     <string name="msg_image_saved">ପ୍ରତିଛବି ସଫଳତାର ସହିତ ସଞ୍ଚୟ ହୋଇଛି</string>
     <string name="msg_failed_to_save">ପ୍ରତିଛବି ସଞ୍ଚୟ କରିବାରେ ବିଫଳ</string>
+    <!-- Advanced Settings -->
 </resources>

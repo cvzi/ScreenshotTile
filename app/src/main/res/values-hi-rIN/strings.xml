@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">स्क्रीनशॉट टाइल (नो रुट)</string>
+    <string name="app_name">स्क्रीनशॉट टाइल</string>
+    <string name="app_name_long">स्क्रीनशॉट टाइल (नो रुट)</string>
     <string name="tile_label">ਸਕ੍ਰੀਨਸ਼ਾਟ</string>
     <string name="tile_floating">फ्लोटिंग बटन स्क्रीनशॉट</string>
     <string name="tile_floating_label">फ्लोटिंग</string>
@@ -46,4 +47,6 @@
     <!-- First screen -->
     <string name="main_assist_app_title">सहायक ऐप</string>
     <!-- Post edit activity -->
+    <!-- Photo Editor-->
+    <!-- Advanced Settings -->
 </resources>
