@@ -9,6 +9,7 @@
     <string name="title_delay">Temporisation</string>
     <string name="more_setting">Paramètres</string>
     <string name="open_settings">Ouvrir les paramètres</string>
+    <string name="floating_button_settings">Paramètres du bouton flottant</string>
     <string name="left_screenshot_right_menu">À gauche : Capture d\'écran, à droite : Paramètres</string>
     <string name="partial_screenshot">Rogner</string>
     <string name="file_format">Format du fichier</string>
@@ -48,6 +49,10 @@
     <string name="setting_storage_directory_description">Dossier où sont stockés les fichiers</string>
     <string name="setting_file_name_pattern">Nom du fichier</string>
     <string name="setting_file_name_placeholders_title">Utiliser les variables suivantes dans le nom du fichier</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - temps noté yyyy-MM-dd_HH-mm-ss
+%counter% - compte le nombre de captures d'écran
+%random% - un UUID aléatoire
+%ret int% - un nombre aléatoire]]></string>
     <string name="setting_tile_action">Action de la tuile/du bouton</string>
     <string name="setting_floating_action">Action du bouton flottant</string>
     <string name="setting_voice_interaction_action">Action de l\'assistant</string>
@@ -55,9 +60,25 @@
     <string name="setting_dark_theme_system">Système</string>
     <string name="setting_dark_theme_off">Désactivé</string>
     <string name="setting_dark_theme_on">Activé</string>
+    <string name="setting_notification_buttons">Boutons de notification</string>
+    <string name="setting_notification_buttons_description">Sélectionnez jusqu\'à trois boutons qui apparaissent sous la notification de capture d\'écran</string>
+    <string name="setting_notification_buttons_max_three">Veuillez sélectionner un maximum de trois boutons</string>
     <string name="notification_settings">Notifications</string>
     <string name="notification_settings_on">Activé</string>
     <string name="notification_settings_off">Désactivé</string>
+    <string name="setting_post_actions">Actions suivantes</string>
+    <string name="setting_post_actions_description">Choisissez ce qui se passe après la capture d\'écran</string>
+    <string name="button_history">Captures d\'écran récentes</string>
+    <string name="button_history_description">Voir vos captures d\'écran récentes, y compris les fichiers qui n\'ont pas été enregistrés dans la galerie</string>
+    <string name="history_title">Historique des captures d\'écran</string>
+    <string name="restore_default_values">Restaurer les valeurs par défaut</string>
+    <string name="post_action_save_to_storage">Enregistrer l\'image dans la galerie</string>
+    <string name="post_action_show_toast">Afficher une notification \"Toast\". Une petite fenêtre qui disparaît après 2 secondes</string>
+    <string name="post_action_show_notification">Afficher une notification normale. Vous pouvez modifier les boutons (Éditer, Partager, …) sous la notification dans \"Plus de paramètres\"</string>
+    <string name="post_action_empty">Ne pas ouvrir la capture d\'écran</string>
+    <string name="post_action_open_in_post">Ouvrir en vue \"Détails\"</string>
+    <string name="post_action_open_in_post_crop">Rogner l’image</string>
+    <string name="post_action_open_in_photo_editor">Ouvrir l\'éditeur de photos inclus</string>
     <string name="file_title">Capture d\'écran</string>
     <string name="file_description">Capture d\'écran %1$s</string>
     <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
