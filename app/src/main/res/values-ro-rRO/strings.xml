@@ -9,6 +9,7 @@
     <string name="title_delay">Întârziere</string>
     <string name="more_setting">Mai multe setări</string>
     <string name="open_settings">Deschide setările</string>
+    <string name="floating_button_settings">Setări buton plutitor</string>
     <string name="left_screenshot_right_menu">Stânga: Captură ecran, dreapta: Setări</string>
     <string name="partial_screenshot">Zonă selecție</string>
     <string name="file_format">Formatul fișierului</string>
@@ -202,4 +203,27 @@
     <string name="dialog_ask_filename_directory">Director selectat:</string>
     <string name="dialog_ask_filename_hint">Numele fișierului (fără extensie)</string>
     <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Mod implicit: On</string>
+    <string name="setting_defaults_to_milliseconds">Implicit: %1$s milisecunde</string>
+    <string name="setting_toasts">Toate notificările \"Toast\"</string>
+    <string name="setting_success_toasts">\"Toast\" notificări pentru evenimente reușite</string>
+    <string name="setting_error_toasts">\"Toast\" notificări pentru erori</string>
+    <string name="setting_select_area_shutter_delay">Întârziere după apăsarea obturatorului (în modul \"Selectare zonă\")</string>
+    <string name="setting_select_area_shutter_delay_dialog">Perioada de așteptare între momentul în care a fost apăsat obturatorul și momentul în care se realizează captura de ecran. Utilizați o valoare mai mare (de exemplu, 500) dacă pictograma obturatorului a fost vizibilă pe capturi de ecran.</string>
+    <string name="setting_original_after_permission_delay">Întârziere după acordarea permisiunii de captură de ecran (se aplică la \"Metoda originală\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Perioada de așteptare între momentul în care a fost acordată permisiunea și momentul în care se face captura de ecran. Utilizați o valoare mai mare (de exemplu, 500) dacă dialogul de acordare a permisiunii a fost vizibil pe capturi de ecran.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Întârziere după eroarea \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Perioada de așteptare înainte de a încerca din nou după mesajul de eroare. Utilizați o valoare mai mare (de exemplu 500) dacă mesajul de eroare a fost vizibil în capturile de ecran.</string>
+    <string name="setting_floating_button_alpha">Transparența butoanelor plutitoare</string>
+    <string name="setting_floating_button_alpha_summary">0,0 (complet-transparent) până la 1,0 (complet-opac)</string>
+    <string name="setting_floating_button_alpha_dialog">Alegeți o valoare mai mică pentru a face butonul mai transparent. Interval de la 0,0 la 1,0\nDefault: 1,0 (complet-opac)</string>
+    <string name="setting_floating_button_color">Culoarea butonului plutitor</string>
+    <string name="setting_delay_custom_summary">Alegeți o întârziere personalizată pentru placă (în secunde)</string>
+    <string name="setting_floating_button_delay_custom_summary">Alegeți o întârziere personalizată pentru butonul plutitor (în secunde)</string>
+    <string name="setting_format_quality">Calitatea formatului fișierului</string>
+    <string name="setting_format_quality_dialog">Compresia/calitatea formatului fișierului: (0 până la 100)\nînseamnă comprimare pentru cea mai mică mărime. 100 înseamnă comprimare pentru calitatea vizuală maximă.\nLăsați gol pentru a utiliza valoarea implicită.</string>
+    <string name="setting_keep_app_data_max">Numărul maxim de capturi de ecran care trebuie păstrate în:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Dacă ați dezactivat \"%1$s\", atunci capturile de ecran sunt stocate temporar în folderul \"Android/data/\" și sunt șterse periodic atunci când este atins numărul maxim de fișiere.\n-1 înseamnă păstrare nelimitată\nValoare implicită %2$s</string>
+    <string name="setting_keep_screenshot_history">Păstrați istoricul capturilor de ecran</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Stochează numele fișierelor de capturi de ecran într-o listă. Acest lucru este necesar pentru funcția \"%1$s\"</string>
 </resources>
