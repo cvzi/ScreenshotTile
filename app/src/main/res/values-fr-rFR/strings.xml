@@ -50,7 +50,7 @@
     <string name="setting_file_name_pattern">Nom du fichier</string>
     <string name="setting_file_name_placeholders_title">Utiliser les variables suivantes dans le nom du fichier</string>
     <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - temps noté yyyy-MM-dd_HH-mm-ss
-%counter% - compte le nombre de captures d'écran
+%counter% - compte le nombre de captures d\'écran
 %random% - un UUID aléatoire
 %ret int% - un nombre aléatoire]]></string>
     <string name="setting_tile_action">Action de la tuile/du bouton</string>
