@@ -52,7 +52,7 @@
     <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - temps noté yyyy-MM-dd_HH-mm-ss
 %counter% - compte le nombre de captures d\'écran
 %random% - un UUID aléatoire
-%ret int% - un nombre aléatoire]]></string>
+%randint% - un nombre aléatoire]]></string>
     <string name="setting_tile_action">Action de la tuile/du bouton</string>
     <string name="setting_floating_action">Action du bouton flottant</string>
     <string name="setting_voice_interaction_action">Action de l\'assistant</string>
