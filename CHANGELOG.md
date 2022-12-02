@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.1
+*   Updated screenshots in metadata
+
 ## 2.0.0
 *   Included [PhotoEditor](https://github.com/burhanrashid52/PhotoEditor) by [Burhanuddin Rashid](https://github.com/burhanrashid52)
 *   Crop image after a screenshot was taken

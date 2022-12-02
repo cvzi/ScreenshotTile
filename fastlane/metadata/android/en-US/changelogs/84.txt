@@ -1,0 +1,5 @@
+🌟   Included PhotoEditor by Burhanuddin Rashid
+🌟   Crop image
+🌟   Choose what should happen after a screenshot was taken
+🌟   Screenshot history (can be turned off)
+🌟   Floating button color and transparency
