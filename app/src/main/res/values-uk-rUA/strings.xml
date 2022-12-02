@@ -205,9 +205,25 @@
     <!-- Advanced Settings -->
     <string name="setting_defaults_to_on">Типовий режим: Увімкнено</string>
     <string name="setting_defaults_to_milliseconds">Типово: %1$s мілісекунд</string>
+    <string name="setting_toasts">Всі сповіщення \"Тост\"</string>
+    <string name="setting_success_toasts">\"Озвучання\" сповіщення про успішні події</string>
+    <string name="setting_error_toasts">\"Озвучання\" сповіщення про помилки</string>
+    <string name="setting_select_area_shutter_delay">Затримка після натиснення віконниці (в режимі \"Вибрати область)</string>
+    <string name="setting_select_area_shutter_delay_dialog">Період очікування між часом затвору та знімком екрану. Використовувати верхнє значення (наприклад, 500), якщо значок затвору був видимий на скріншотах.</string>
+    <string name="setting_original_after_permission_delay">Затримка доступу до скріншота (застосовується до \"Оригінального методу\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Час очікування між часом надходить дозвіл та знімок екрану. Використовувати вище значення (наприклад, 500), якщо діалогове вікно дозволів було видно на скріншотах.</string>
     <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Затримка після помилки «%1$s»</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Час очікування перед повторною спробою після повідомлення про помилку. Для отримання вищого значення використовуйте (наприклад, 500), якщо повідомлення про помилку було видно на скріншоті.</string>
     <string name="setting_floating_button_alpha">Прозорість рухомої кнопки</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (цілком прозорий) до 1.0 (криваво-непрозорий)</string>
+    <string name="setting_floating_button_alpha_dialog">Виберіть нижче значення, щоб зробити кнопку більш прозорішою. Діапазон 0.0 до 1.0\nЗа замовчуванням: 1.0 (повністю)</string>
     <string name="setting_floating_button_color">Колір рухомої кнопки</string>
+    <string name="setting_delay_custom_summary">Вибрати затримку для плитки (в секундах)</string>
+    <string name="setting_floating_button_delay_custom_summary">Виберіть свою затримку для плаваючої кнопки (у секундах)</string>
     <string name="setting_format_quality">Якість формату файлу</string>
+    <string name="setting_format_quality_dialog">Стискання/Якість формату файлу: (0 - 100)\n0 - стискання для найменших розмірів. 100 означає стискання максимальної візуальної якості.\nЗалиште порожнім для використання значення за замовчуванням.</string>
+    <string name="setting_keep_app_data_max">Макс. кількість скріншотів для збереження:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Якщо вимкнути \"%1$s\", потім, знятки тимчасово зберігаються в теці \"Android/data/\" і періодично видаляються при досягненні максимальної кількості файлів.\n-1 означає зберегти необмежений\nЗначення за замовчуванням %2$s</string>
     <string name="setting_keep_screenshot_history">Зберігати історію знімків екрану</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Зберігає імена файлів скріншотів в списку. Для функції \"%1$s\"</string>
 </resources>
