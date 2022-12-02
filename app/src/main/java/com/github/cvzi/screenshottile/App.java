@@ -56,7 +56,11 @@ public class App extends Application {
     private WeakReference<Bitmap> lastScreenshot = null;
 
     public App() {
-        instance = this;
+        setInstance(this);
+    }
+
+    private static void setInstance(App app) {
+        instance = app;
     }
 
     public static App getInstance() {
