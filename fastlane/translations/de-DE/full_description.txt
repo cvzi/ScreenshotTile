@@ -1,6 +1,6 @@
 Fügt dem Schnelleinstellungen eine Schaltfläche/Kachel hinzu, um Screenshots zu machen.
 
-Diese Berechtigung wird benötigt um die Screenshots auf dem internen Speicher abzulegen.
+Nach der Installation müssen Sie die Schaltfläche/Kachel zu Ihren Schnelleinstellungen hinzufügen und dann die Berechtigung zur Aufnahme von Bildschirmaufnahmen und zum Speichern von Bildern auf dem internen Speicher gewähren.
 
 Falls es zu Abstürzen bei Androi 9 Pie oder 10 kommt, aktiviere die Funktion "Native Screenshotaufnahme" in den App-Einstellungen.
 
