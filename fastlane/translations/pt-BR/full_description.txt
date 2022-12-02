@@ -4,15 +4,14 @@ Após a instalação, você precisa adicionar um botão de ação ao menu de aju
 
 Se o app apresentar problemas no Android 9/Pie ou 10, você pode tentar "Usar o método integrado de captura da tela" em configurações do app.
 
-<h2>Funcionalidades:</h2> 
-✓ Capturas da tela diretamente dos ajustes rápidos
+<h2>Funcionalidades:</h2>
 ✓ Sem privilégios root
 ✓ Notificação após cada Captura da tela (pode ser desativada)
 ✓ Pode imediatamente compartilhar, editar ou excluir a Captura da tela via notificação
 ✓ Botão flutuante, tipo um balão do chat (Android 9+)
 ✓ Use como app de assistência para fazer uma captura de tela (toque longo no botão de início)
 ✓ Capturas da tela de uma área específica (toque longo no botão)
-✓ Pode definir um adiamento para cada Captura da tela
+✓ Capturas da tela diretamente dos ajustes rápidos
 ✓ Salve em qualquer pasta ou qualquer tipo de armazenamento, p.ex. cartão SD
 ✓ Salve em diferentes formatos de arquivo: png, jpg ou webp
 ✓ Faça as Capturas automáticas via apps como Tasker ou MacroDroid
@@ -32,7 +31,7 @@ Se você quiser esconder o ícone, aqui há uma dica: <a href="https://github.co
 Isto é necessário para salvar os arquivos de Captura da tela no armazenamento interno do seu dispositivo.
 
 ❏ <i>android.permission.FOREGROUND_SERVICE</i>
-Desde o Android 9/Pie, esta permissão é necessária para fazer as Capturas. Isso basicamente significa que este aplicativo pode estar ativo em segundo plano. Entretanto, o aplicativo sempre mostrará uma notificação quando estiver sendo executado.
+Desde o Android 9/Pie, esta permissão é necessária para fazer as Capturas. Isso basicamente significa que este aplicativo pode estar ativo em segundo plano. Entretanto, o aplicativo sempre mostrará uma notificação quando estiver sendo executado. Isso basicamente significa que este aplicativo pode estar ativo em segundo plano. Entretanto, o aplicativo sempre mostrará uma notificação quando estiver sendo executado.
 
 <h2>Capturas automáticas:</h2>Se você quiser automatizar as Capturas através de outro aplicativo, por exemplo, MacroDroid ou Tasker, você pode encontrar um tutorial passo-a-passo aqui:
 <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>

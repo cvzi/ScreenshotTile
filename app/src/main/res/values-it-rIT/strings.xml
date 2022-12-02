@@ -9,6 +9,7 @@
     <string name="title_delay">Ritardo</string>
     <string name="more_setting">Altre impostazioni</string>
     <string name="open_settings">Apri impostazioni</string>
+    <string name="floating_button_settings">Impostazioni pulsante fluttuante</string>
     <string name="left_screenshot_right_menu">Sinistra: Schermata; a destra: Impostazioni</string>
     <string name="partial_screenshot">Seleziona l\'area</string>
     <string name="file_format">Formato file</string>
@@ -48,6 +49,10 @@
     <string name="setting_storage_directory_description">Cartella in cui salvare gli screenshot</string>
     <string name="setting_file_name_pattern">Nome del file</string>
     <string name="setting_file_name_placeholders_title">Usa le seguenti variabili nel nome del file</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tempo come yyyy-MM-dd_HH-mm-ss
+%counter% - conta il numero di screenshot
+%random% - un UUID casuale
+%randint% - un numero casuale]]></string>
     <string name="setting_tile_action">Azione del pulsante/tile</string>
     <string name="setting_floating_action">Azione del pulsante fluttuante</string>
     <string name="setting_voice_interaction_action">Azione dell\'assistente</string>
@@ -55,9 +60,31 @@
     <string name="setting_dark_theme_system">Sistema</string>
     <string name="setting_dark_theme_off">Disabilitato</string>
     <string name="setting_dark_theme_on">Abilitato</string>
+    <string name="setting_notification_buttons">Pulsanti notifiche</string>
+    <string name="setting_notification_buttons_description">Seleziona fino a tre pulsanti che appaiono sotto la notifica screenshot</string>
+    <string name="setting_notification_buttons_max_three">Scegli un massimo di tre pulsanti</string>
     <string name="notification_settings">Notifiche</string>
     <string name="notification_settings_on">Abilitato</string>
     <string name="notification_settings_off">Disabilitato</string>
+    <string name="setting_post_actions">Azioni successive</string>
+    <string name="setting_post_actions_description">Scegli cosa succede dopo che è stata scattata la schermata</string>
+    <string name="button_history">Schermate recenti</string>
+    <string name="button_history_description">Visualizza le tue schermate recenti, inclusi i file che non sono stati salvati nella galleria</string>
+    <string name="history_title">Cronologia screenshot</string>
+    <string name="restore_default_values">Ripristina valori predefiniti</string>
+    <string name="post_action_save_to_storage">Salva immagine nella galleria</string>
+    <string name="post_action_show_toast">Mostra una notifica \"Toast\". Un piccolo popup che scompare dopo 2 secondi</string>
+    <string name="post_action_show_notification">Mostra una notifica regolare. È possibile modificare i pulsanti (Edito,Condividi,…) sotto la notifica sotto \"Altre impostazioni\"</string>
+    <string name="post_action_empty">Non aprire lo screenshot</string>
+    <string name="post_action_open_in_post">Apri nella vista \"Dettagli\"</string>
+    <string name="post_action_open_in_post_crop">Ritaglia l\'immagine</string>
+    <string name="post_action_open_in_photo_editor">Apri l\'editor di foto incluso</string>
+    <string name="post_action_open_in_external_editor">Apri in un editor di foto esterno</string>
+    <string name="post_action_open_in_external_viewer">Apri in un visualizzatore di foto o in una galleria</string>
+    <string name="post_action_open_share">Condividi lo screenshot</string>
+    <string name="move_to_storage_directory">Sposta nella galleria</string>
+    <string name="button_clear">Pulisci</string>
+    <string name="button_clear_confirm">Vuoi eliminare tutti i file temporanei?\nQuesto eliminerà tutti i file in %s\n\n(Questi file di solito non sono visibili nella tua galleria)</string>
     <string name="file_title">Screenshot</string>
     <string name="file_description">Screenshot scattato il %1$s</string>
     <string name="file_description_simple_date_format">dd/MM/yyyy HH:mm:ss</string>
@@ -75,8 +102,14 @@
     <string name="notification_delete_screenshot">Elimina</string>
     <string name="notification_share_screenshot">Condividi</string>
     <string name="notification_edit_screenshot">Modifica</string>
+    <string name="notification_rename_screenshot">Rinomina</string>
+    <string name="notification_screenshot_details">Dettagli</string>
+    <string name="notification_crop_screenshot">Ritaglia</string>
+    <string name="notification_photo_editor_screenshot">Editor Di Foto</string>
     <string name="screenshot_deleted">Screenshot eliminato</string>
     <string name="screenshot_delete_failed">Impossibile eliminare il file</string>
+    <string name="screenshot_renamed">File rinominato in %1s</string>
+    <string name="screenshot_rename_failed">Impossibile rinominare il file</string>
     <string name="permission_missing_external_storage">Impossibile acquisire i permessi per l\'archiviazione</string>
     <string name="permission_missing_screen_capture">Impossibile acquisire i permessi per registrare lo schermo</string>
     <string name="hide_app_from_launcher">Nascondere l\'icona dell\'app dal launcher</string>
@@ -95,6 +128,15 @@
     <string name="tutorial_step16">Cattura schermate con il nuovo pulsante</string>
     <string name="take_screenshot">Cattura uno screenshot</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Google Play Prominent Disclosure &amp; Consent Requirement</string>
+    <string name="googleplay_consent_line_0">Google Play richiede una divulgazione prominente dell\'uso delle API di Servizi di Accessibilità per un\'app che non è uno strumento di accessibilità.</string>
+    <string name="googleplay_consent_line_1">Questa app - “Screenshot Tile [No root]“ - non è uno strumento di accessibilità.</string>
+    <string name="googleplay_consent_line_2">Dal momento che gli utenti non possono ragionevolmente aspettarsi che i loro dati personali e sensibili dell\'utente saranno tenuti a fornire o a migliorare le funzionalità o le caratteristiche conformi alla politica all\'interno di questa app, è necessaria una divulgazione di rilievo dell\'utilizzo dell\'API di Servizi di Accessibilità da parte di questa app e una dichiarazione della raccolta dei dati e della condivisione dei dati all\'interno di questa app:</string>
+    <string name="googleplay_consent_line_3">Questa app richiede l\'accesso alle API di Servizi di Accessibilità per scattare uno screenshot quando l\'applicazione non è in uso.</string>
+    <string name="googleplay_consent_line_4">L\'accesso all\'API Servizi di Accessibilità permetterà a questa app di registrare lo schermo.</string>
+    <string name="googleplay_consent_line_5">Le registrazioni dello schermo saranno usate per creare immagini screenshot.</string>
+    <string name="googleplay_consent_line_6">I dati non sono né raccolti né condivisi da questa app utilizzando le funzionalità di accessibilità.</string>
+    <string name="googleplay_consent_line_7">Accetti di autorizzare questa app ad accedere all\'API Servizi di Accessibilità e ad utilizzare le funzionalità di accessibilità per registrare lo schermo?</string>
     <string name="googleplay_consent_yes">Accetto</string>
     <string name="googleplay_consent_no">Rifiuto</string>
     <!-- About -->
@@ -104,6 +146,10 @@
     <string name="about_license_title">Licenza</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Versione 3</string>
     <string name="about_app_2">Questa app ha ancora alcuni problemi ed è in fase di sviluppo.\nSe hai permessi di root sul tuo telefono, usa la versione di ipcjs, è più veloce e più affidabile.</string>
+    <string name="about_privacy_title">Politica Sulla Privacy</string>
+    <string name="about_open_source_title">Open source used</string>
+    <string name="about_advanced_settings_button">Impostazioni avanzate</string>
+    <string name="about_update_check_button">Controllo aggiornamento</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Impostazioni di accessibilità</string>
     <string name="main_floating_button_title">Pulsante fluttuante</string>
@@ -118,7 +164,66 @@
     <string name="main_long_press_title">Premi a lungo</string>
     <string name="main_long_press_text">Premendo a lungo il bottone si apre un menu. È possibile specificare un ritardo per lo screenshot o tagliare un rettangolo dallo schermo.</string>
     <string name="main_assist_app_title">App di assistenza</string>
+    <string name="main_assist_app_text">Se si imposta questa app come app di assistenza, è possibile premere a lungo il pulsante home per scattare uno screenshot. Abilitare questa app come la tua app di assistenza disabiliterà altri assistenti. È possibile modificare l\'azione del pulsante home lungo premere nelle impostazioni dell\'app.</string>
     <!-- Post edit activity -->
+    <string name="post_button_save">Rinomina</string>
+    <string name="post_recent_file_names_and_suggestions">Nomi e suggerimenti di file recenti:</string>
+    <string name="post_hint_new_file_name">Nuovo nome del file</string>
+    <string name="post_rename_file">Rinomina file:</string>
+    <string name="post_rename_error_identical">Nuovo e vecchio nome del file sono identici</string>
+    <string name="post_hint_new_file_name_suggestion">Aggiungi un nuovo suggerimento</string>
+    <string name="post_save_a_suggestion">Salva suggerimento</string>
+    <string name="post_pin_to_favorites">Pin ai preferiti</string>
+    <string name="post_delete_suggestion">Elimina suggerimento</string>
     <!-- Photo Editor-->
+    <string name="label_brush">Pennello</string>
+    <string name="label_shape">Forma</string>
+    <string name="label_oval">Ovale</string>
+    <string name="label_rectangle">Rettangolo</string>
+    <string name="label_line">Linea</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Eraser</string>
+    <string name="label_eraser_mode">Modalità Gomma</string>
+    <string name="label_text">Testo</string>
+    <string name="label_filter">Filtro</string>
+    <string name="label_adjust">Regola</string>
+    <string name="label_rotation">Rotazione</string>
+    <string name="label_opacity">Opacità</string>
+    <string name="label_done">Fatto</string>
+    <string name="label_close">Chiudi</string>
+    <string name="label_save">Salva</string>
+    <string name="label_discard">Scarta</string>
+    <string name="msg_save_image">Vuoi uscire senza salvare l\'immagine?</string>
+    <string name="msg_save_image_to_share">Salva l\'immagine da condividere</string>
+    <string name="msg_share_image">Condividi Immagine</string>
+    <string name="msg_choose_image">Seleziona un\'immagine</string>
+    <string name="msg_image_saved">Immagine salvata con successo</string>
+    <string name="msg_failed_to_save">Impossibile salvare l\'immagine</string>
+    <string name="dialog_ask_filename_title">Salva come</string>
+    <string name="dialog_ask_filename_directory">Directory selezionata:</string>
+    <string name="dialog_ask_filename_hint">Nome file (senza estensione)</string>
     <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Modalità predefinita: accesa</string>
+    <string name="setting_defaults_to_milliseconds">Predefinito: %1$s millisecondi</string>
+    <string name="setting_toasts">Tutte le notifiche \"Toast\"</string>
+    <string name="setting_success_toasts">Notifiche \"Toast\" per eventi riusciti</string>
+    <string name="setting_error_toasts">Notifiche \"Toast\" per errori</string>
+    <string name="setting_select_area_shutter_delay">Ritardo dopo aver toccato l\'otturatore (in modalità \"Seleziona area\")</string>
+    <string name="setting_select_area_shutter_delay_dialog">Periodo di attesa tra il momento in cui l\'otturatore è stato toccato e lo screenshot è preso. Utilizzare un valore più alto (ad esempio 500) se l\'icona dell\'otturatore era visibile sugli screenshot.</string>
+    <string name="setting_original_after_permission_delay">Ritardo dopo che è stato concesso il permesso screenshot (si applica al \"metodo originale\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Periodo di attesa tra il momento in cui è stato concesso il permesso e lo screenshot è stato preso. Usa un valore più alto (ad esempio 500) se la finestra di dialogo dei permessi era visibile sugli screenshot.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Ritardo dopo l\'errore \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Periodo di attesa prima di riprovare dopo il messaggio di errore. Usare un valore più alto (ad esempio 500) se il messaggio di errore è visibile negli screenshot.</string>
+    <string name="setting_floating_button_alpha">Trasparenza pulsante fluttuante</string>
+    <string name="setting_floating_button_alpha_summary">0,0 (completamente trasparente) a 1,0 (completamente opaco)</string>
+    <string name="setting_floating_button_alpha_dialog">Scegli un valore inferiore per rendere il pulsante più trasparente. Intervallo da 0.0 a 1.0\nPredefinito: 1.0 (fully-opaque)</string>
+    <string name="setting_floating_button_color">Colore pulsante fluttuante</string>
+    <string name="setting_delay_custom_summary">Scegli un ritardo personalizzato per il tile (in secondi)</string>
+    <string name="setting_floating_button_delay_custom_summary">Scegli un ritardo personalizzato per il pulsante fluttuante (in secondi)</string>
+    <string name="setting_format_quality">Qualità formato file</string>
+    <string name="setting_format_quality_dialog">Compressione/Qualità del formato di file: (da 0 a 100)\n0 significa comprimere per le dimensioni più piccole. 100 significa comprimere per la massima qualità visiva.\nLasciare vuoto per usare il valore predefinito.</string>
+    <string name="setting_keep_app_data_max">Numero massimo di screenshot da mantenere in:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Se hai disabilitato \"%1$s\", quindi gli screenshot vengono temporaneamente memorizzati nella cartella \"Android/data/\" e periodicamente cancellati quando viene raggiunto il numero massimo di file.\n-1 significa mantenere illimitato\nValore predefinito %2$s</string>
+    <string name="setting_keep_screenshot_history">Mantieni la cronologia degli screenshot</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Memorizza i nomi dei file degli screenshot in una lista. Ciò è necessario per la funzione \"%1$s\"</string>
 </resources>

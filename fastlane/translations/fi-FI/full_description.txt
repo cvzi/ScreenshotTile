@@ -1,0 +1,41 @@
+Lisää nappi tai tiili pika-asetuspaneeliin ottaaksesi kuvakaappauksia.
+
+Asennuksen jälkeen sinun on lisättävä nappi tai laatta pika-asetuksiin ja myönnettävä sen jälkeen oikeudet tallentaa kuvakaappauksia ja tallentaa kuvia sisäiseen tallennustilaan.
+
+Jos sovellus kaatuu Android 9/Pie tai 10, voit yrittää ottaa käyttöön "Käytä natiivi kuvakaappausmenetelmää" sovelluksen asetuksissa.
+
+<h2>Ominaisuudet:</h2>✓ Ota kuvakaappauksia nopeista asetuksista
+✓ Juuria ei tarvita
+✓ Ilmoitus kuvakaappauksen ottamisen jälkeen (voidaan poistaa käytöstä)
+✓ Jaa, muokkaa tai poista ilmoituskuvakaappaus välittömästi
+✓ Kelluva painike/peitepainike kuin chat-kupla (Android 9 +)
+✓ Käytä apuna sovelluksessa kuvakaappauksen ottamiseksi (paina pitkään aloituspainiketta)
+✓ Ota vain kuvakaappaus tietystä näytön alueesta (paina pitkään laattaa)
+✓ Viivästys kuvakaappauksen ottamisessa
+✓ Tallenna mihin tahansa kansioon missä tahansa tallennustilassa, esim. sd kortti
+✓ Säilytä eri tiedostomuodoissa: png, jpg tai webp
+✓ Ota automaattiset kuvakaappaukset esimerkiksi Taskerilla tai MacroDroidilla
+✓ Vapaa, avoin lähdekoodi, ei mainontaa
+
+Tämä on haarukka "Kuvakaappaus Tile [Root]", mutta se ei vaadi juuri. Jos sinulla on root-oikeudet, sinun pitäisi käyttää <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">alkuperäistä sovellusta</a> ipcjs, se on nopeampi ja luotettavampi kuin tämä haara.
+
+Lähdekoodi: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Alkuperäinen sovellus: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Avoimen lähdekoodin lisenssi on GNU GPLv3
+
+<u>Huomautus:</u>
+🎦 Kun otat kuvakaappauksen, <b>"Google Cast" -kuvake</b> näkyy tilapalkissa ja se näkyy kuvakaappauksen kuvassa.
+Jos haluat piilottaa kuvakkeen, tässä on selitys: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Oikeudet:</h2>¶ <i>android.permission.WRITE_EXTERNAL_STORAGE "Photos/Media/Files and Storage"</i>
+Tämä on tarpeen, jotta voit tallentaa kuvakaappaustiedostot laitteesi sisäiseen tallennustilaan.
+
+¶ <i>android.permission.FOREGROUND_SERVICE</i>
+Koska Android 9/Pie on tämän luvan tarvitaan kuvakaappausten ottamiseen. Se tarkoittaa periaatteessa sitä, että tämä sovellus voi ajaa näyttämättä itseään. Sovellus näyttää kuitenkin aina ilmoituksen, kun se on käynnissä.
+
+<h2>Automaattiset kuvakaappaukset:</h2>Jos haluat automatisoida kuvakaappaukset toisesta sovelluksesta, esim. MacroDroidista tai Taskerista, löydät tästä vaiheittaisen oppaan:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Piilossa sovelluksen kuvake:</h2>Sovelluksen asetuksissa voit piilottaa sovelluksen kuvakkeen käynnistäjältäsi. Voit silti käyttää sovellusta painamalla pitkään laattaa nopeissa asetuksissa. Valitettavasti Android 10 ei enää salli sovelluksen piilottamista.
+
+<h2>🌎 Tuki ja käännökset</h2>Jos ongelma ilmenee tai haluat auttaa sovelluksen kääntämisessä kielellesi, ota minuun yhteyttä <a href="https://github.com/cvzi/ScreenshotTile/issues">githubissa. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> tai osallistu käännökseen osoitteessa <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>

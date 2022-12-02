@@ -1,0 +1,41 @@
+Přidá tlačítko/dlaždici do panelu rychlého nastavení pro pořizování snímků obrazovky.
+
+Po instalaci musíte přidat tlačítko/dlaždici do rychlého nastavení a poté udělit oprávnění k nahrávání snímků obrazovky a ukládání obrázků do vnitřního úložiště.
+
+Pokud aplikace spadne na Android 9/Pie nebo 10, můžete se pokusit povolit v nastavení aplikace "Použít nativní metodu snímku obrazovky".
+
+<h2>Vlastnosti:</h2>✓ Pořídit snímky obrazovky z rychlého nastavení
+✓ Není vyžadován žádný root
+✓ Upozornění po pořízení snímku obrazovky (může být zakázáno)
+✓ Okamžitě sdílejte, upravujte nebo odstraňte snímek obrazovky z oznámení
+✓ Plovoucí tlačítko/Překrytí jako bublina chatu (Android 9+)
+✓ Použití jako asistenční aplikace pro pořízení snímku obrazovky (dlouhým stiskem tlačítka Domů)
+✓ Pořídit pouze snímek obrazovky konkrétní oblasti obrazovky (dlouhým stiskem dlaždice)
+✓ Zpoždění pořízení snímku obrazovky
+✓ Ukládat do libovolné složky na libovolném úložišti, např. sd karta
+✓ Ukládat v různých formátech souborů: png, jpg nebo webp
+✓ Automatické snímání obrazovky s aplikacemi, jako je Tasker nebo MacroDroid
+✓ Free, open-source, žádná reklama
+
+Tohle je vidlice "Screenshot Tile [Root]", ale nevyžaduje root. Pokud máte root přístup, měli byste použít <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">původní aplikaci</a> ipcjs, je to rychlejší a spolehlivější než toto vidlice.
+
+Zdrojový kód: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Původní aplikace: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Open Source licence je GNU GPLv3
+
+<u>Poznámka:</u>
+🎦 Když pořídíte snímek obrazovky <b>"Google Cast" ikona</b> se zobrazí ve stavové liště a bude viditelná v obrázku snímku.
+Pokud chcete ikonu skrýt, je zde vysvětlení: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Oprávnění:</h2><unk> <i>android.permission.WRITE_EXTERNAL_STORAGE "Photos/Media/Soubory a úložiště"</i>
+Toto je vyžadováno pro uložení souborů se snímkem obrazovky do vnitřního úložiště vašeho zařízení.
+
+<unk> <i>android.permission.FOREGROUND_SERVICE</i>
+Od Android 9/Pie je toto oprávnění vyžadováno pro pořízení snímků obrazovky. V podstatě to znamená, že tato aplikace může běžet bez zobrazení sama sebe. Aplikace však vždy zobrazí oznámení, když je spuštěna.
+
+<h2>Automatické snímky obrazovky:</h2>Pokud chcete automatizovat snímky obrazovky z jiné aplikace, např. MacroDroid nebo Tasker, můžete najít návod krok za krokem:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Skrytí ikony aplikace:</h2>V nastavení aplikace můžete skrýt ikonu aplikace z vašeho launcheru. Stále můžete přistupovat k aplikaci dlouhým stiskem dlaždice v rychlém nastavení. Android 10 bohužel již neumožňuje skrýt aplikaci.
+
+<h2>🌎 Podpora a překlady</h2>Pokud je problém nebo chcete pomoci přeložit tuto aplikaci do vašeho jazyka, prosím, kontaktujte mě na <a href="https://github.com/cvzi/ScreenshotTile/issues">githubu. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> nebo přispějte překladem na <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>

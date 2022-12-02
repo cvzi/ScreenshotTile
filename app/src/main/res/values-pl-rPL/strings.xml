@@ -9,6 +9,7 @@
     <string name="title_delay">Opóźnienie</string>
     <string name="more_setting">Więcej ustawień</string>
     <string name="open_settings">Otwórz ustawienia</string>
+    <string name="floating_button_settings">Ustawienia pływającego przycisku</string>
     <string name="left_screenshot_right_menu">Lewo: zrzut ekranu, prawo: ustawienia</string>
     <string name="partial_screenshot">Wybierz obszar</string>
     <string name="file_format">Format pliku</string>
@@ -48,6 +49,10 @@
     <string name="setting_storage_directory_description">Folder do którego będą zapisywane pliki</string>
     <string name="setting_file_name_pattern">Nazwa pliku</string>
     <string name="setting_file_name_placeholders_title">Użyj tych symboli zastępczych w nazwie pliku</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - czas w postaci yyyy-MM-dd_HH-mm-ss
+%counter% - zlicza ilość zrzutów ekranu
+%random% - losowy UUID
+%randint% - losowy numer]]></string>
     <string name="setting_tile_action">Akcja kafelka</string>
     <string name="setting_floating_action">Działanie pływającego przycisku</string>
     <string name="setting_voice_interaction_action">Akcje Asystenta</string>
@@ -68,6 +73,8 @@
     <string name="history_title">Historia zrzutów ekranu</string>
     <string name="restore_default_values">Przywróć wartości domyślne</string>
     <string name="post_action_save_to_storage">Zapisz obraz w galerii</string>
+    <string name="post_action_show_toast">Pokaż powiadomienie \"Toast\". Małe okienko, które zniknie po 2 sekundach</string>
+    <string name="post_action_show_notification">Pokaż regularne powiadomienie. Możesz zmienić przyciski (Edyt, Udostępnij,…) pod powiadomieniem w \"Więcej ustawień\"</string>
     <string name="post_action_empty">Nie otwieraj zrzutu ekranu</string>
     <string name="post_action_open_in_post">Otwórz panel \"Szczegóły\"</string>
     <string name="post_action_open_in_post_crop">Przytnij obraz</string>
@@ -121,7 +128,15 @@
     <string name="tutorial_step16">Wykonaj zrzut ekranu za pomocą nowego przycisku</string>
     <string name="take_screenshot">Wykonaj zrzut ekranu</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Google Play Prominent Disclosure &amp; Wymaganie zgody</string>
+    <string name="googleplay_consent_line_0">Google Play wymaga wyraźnego ujawnienia korzystania z API Usług Dostępności w aplikacji, która nie jest narzędziem dostępności.</string>
     <string name="googleplay_consent_line_1">Ta aplikacja - “Screenshot Tile [No root]“ - nie jest narzędziem ułatwień dostępu.</string>
+    <string name="googleplay_consent_line_2">Ponieważ użytkownicy nie mogą racjonalnie oczekiwać, że ich dane osobowe i wrażliwe użytkownika będą musiały dostarczyć lub poprawić zgodne z polityką funkcje lub funkcjonalność tej aplikacji, wymagane jest wyraźne ujawnienie wykorzystania API Usług Dostępności przez tę aplikację oraz oświadczenie o gromadzeniu i udostępnianiu danych w ramach tej aplikacji:</string>
+    <string name="googleplay_consent_line_3">Ta aplikacja wymaga dostępu do API Usług Dostępności aby zrobić zrzut ekranu, gdy aplikacja nie jest w użyciu.</string>
+    <string name="googleplay_consent_line_4">Dostęp do Usług Dostępności API umożliwi aplikacji nagrywanie ekranu.</string>
+    <string name="googleplay_consent_line_5">Nagrania ekranu będą używane do tworzenia obrazów zrzutu ekranu.</string>
+    <string name="googleplay_consent_line_6">Dane nie są ani gromadzone ani udostępniane przez tę aplikację przy użyciu możliwości dostępności.</string>
+    <string name="googleplay_consent_line_7">Czy zgadzasz się na autoryzację tej aplikacji w celu uzyskania dostępu do API Usług Dostępności i wykorzystania możliwości dostępności do nagrywania ekranu?</string>
     <string name="googleplay_consent_yes">Zgadzam się</string>
     <string name="googleplay_consent_no">Odmawiam</string>
     <!-- About -->
@@ -149,6 +164,7 @@
     <string name="main_long_press_title">Długie naciśnięcie</string>
     <string name="main_long_press_text">Długie naciśnięcie kafelka/przycisku otwiera menu. Możesz określić opóźnienie zrzutu ekranu lub wyciąć prostokątny fragment ekranu.</string>
     <string name="main_assist_app_title">Aplikacja asystująca</string>
+    <string name="main_assist_app_text">Jeśli ustawisz tę aplikację jako aplikację pomocniczą, możesz przytrzymać przycisk home aby zrobić zrzut ekranu. Włączenie tej aplikacji jako aplikacji pomocniczej wyłączy innych asystentów. Możesz zmienić działanie długiego przycisku Home w ustawieniach aplikacji.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Zmień nazwę</string>
     <string name="post_recent_file_names_and_suggestions">Nazwy i sugestie ostatnich pików:</string>
@@ -170,6 +186,7 @@
     <string name="label_eraser_mode">Tryb gumki</string>
     <string name="label_text">Tekst</string>
     <string name="label_filter">Filtr</string>
+    <string name="label_adjust">Dostosuj</string>
     <string name="label_rotation">Rotacja</string>
     <string name="label_opacity">Przezroczystość</string>
     <string name="label_done">Gotowe</string>
@@ -187,5 +204,26 @@
     <string name="dialog_ask_filename_hint">Nazwa pliku (bez rozszerzenia)</string>
     <!-- Advanced Settings -->
     <string name="setting_defaults_to_on">Tryb domyślny: włączony</string>
+    <string name="setting_defaults_to_milliseconds">Domyślnie: %1$s milisekund</string>
+    <string name="setting_toasts">Wszystkie powiadomienia \"Toast\"</string>
+    <string name="setting_success_toasts">Powiadomienia \"Toast\" dla udanych wydarzeń</string>
+    <string name="setting_error_toasts">Powiadomienia \"Toast\" o błędach</string>
+    <string name="setting_select_area_shutter_delay">Opóźnienie po naciśnięciu migawki (w trybie \"Wybierz obszar\" )</string>
+    <string name="setting_select_area_shutter_delay_dialog">Okres oczekiwania pomiędzy naciśnięciem migawki a wykonaniem zrzutu ekranu. Użyj wyższej wartości (na przykład 500), jeśli ikona migawki była widoczna na zrzucie ekranu.</string>
+    <string name="setting_original_after_permission_delay">Opóźnienie po przyznaniu uprawnień do zrzutu ekranu (dotyczy \"Oryginalnej metody\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Okres oczekiwania pomiędzy udzieleniem zezwolenia a wykonaniem zrzutu ekranu. Użyj wyższej wartości (na przykład 500), jeśli okno dialogowe uprawnień było widoczne na zrzucie ekranu.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Opóźnienie po błędzie \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Okres oczekiwania przed ponowną próbą po wiadomości o błędzie. Użyj wyższej wartości (na przykład 500) jeśli komunikat o błędzie był widoczny na zrzucie ekranu.</string>
+    <string name="setting_floating_button_alpha">Przezroczystość pływającego przycisku</string>
     <string name="setting_floating_button_alpha_summary">0,0 (w pełni przezroczysty) do 1,0 (całkowicie nieprzezroczyste)</string>
+    <string name="setting_floating_button_alpha_dialog">Wybierz niższą wartość, aby przycisk był bardziej przezroczywy. Zakres od 0.0 do 1.0\nDomyślnie: 1.0 (pełnoprzezroczysty)</string>
+    <string name="setting_floating_button_color">Kolor pływającego przycisku</string>
+    <string name="setting_delay_custom_summary">Wybierz niestandardowe opóźnienie kafelka (w sekundach)</string>
+    <string name="setting_floating_button_delay_custom_summary">Wybierz niestandardowe opóźnienie dla pływającego przycisku (w sekundach)</string>
+    <string name="setting_format_quality">Jakość formatu pliku</string>
+    <string name="setting_format_quality_dialog">Kompresja/Jakość formatu pliku: (0 do 100)\n0 oznacza kompresję dla najmniejszego rozmiaru. 100 oznacza kompresję dla maksymalnej jakości wizualnej.\nPozostaw puste, aby użyć wartości domyślnej.</string>
+    <string name="setting_keep_app_data_max">Maks. liczba zrzutów ekranu do trzymania w:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Jeśli wyłączyłeś \"%1$s\", następnie zrzuty ekranu są tymczasowo przechowywane w folderze \"Android/data/\" i okresowo usuwane po osiągnięciu maksymalnej liczby plików.\n-1 oznacza zachowanie nieograniczonej\nwartości domyślnej %2$s</string>
+    <string name="setting_keep_screenshot_history">Zachowaj historię zrzutów ekranu</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Przechowuje nazwy plików zrzutów ekranu na liście. Jest to wymagane dla funkcji \"%1$s\"</string>
 </resources>

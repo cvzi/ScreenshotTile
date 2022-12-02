@@ -172,9 +172,30 @@
     <string name="post_rename_file">Bestandsnaam wijzigen:</string>
     <string name="post_rename_error_identical">Nieuwe en oude bestandsnaam zijn identiek</string>
     <string name="post_hint_new_file_name_suggestion">Nieuwe suggestie toevoegen</string>
+    <string name="post_save_a_suggestion">Suggestie opslaan</string>
+    <string name="post_pin_to_favorites">Vastmaken aan favorieten</string>
+    <string name="post_delete_suggestion">Suggestie verwijderen</string>
     <!-- Photo Editor-->
+    <string name="label_brush">Borstel</string>
+    <string name="label_shape">Vorm</string>
+    <string name="label_oval">Ovaal</string>
+    <string name="label_rectangle">Rechthoek</string>
+    <string name="label_line">Lijn</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Eraser</string>
+    <string name="label_eraser_mode">Wisser modus</string>
+    <string name="label_text">Tekstveld</string>
+    <string name="label_filter">Filteren</string>
+    <string name="label_adjust">Aanpassen</string>
+    <string name="label_rotation">Rotatie</string>
+    <string name="label_opacity">Transparantie</string>
+    <string name="label_done">Voltooid</string>
+    <string name="label_close">Afsluiten</string>
     <string name="label_save">Opslaan</string>
     <string name="label_discard">Verwerpen</string>
+    <string name="msg_save_image">Wilt u afsluiten zonder de afbeelding op te slaan?</string>
+    <string name="msg_save_image_to_share">Sla afbeelding op om te delen</string>
+    <string name="msg_share_image">Afbeelding delen</string>
     <string name="msg_choose_image">Afbeelding selecteren</string>
     <string name="msg_image_saved">Afbeelding succesvol opgeslagen</string>
     <string name="msg_failed_to_save">Opslaan van afbeelding mislukt</string>
@@ -188,5 +209,21 @@
     <string name="setting_success_toasts">“Toast”-meldingen voor geslaagde gebeurtenissen</string>
     <string name="setting_error_toasts">“Toast”-meldingen voor fouten</string>
     <string name="setting_select_area_shutter_delay">Vertraging na op de sluiter te drukken (in modus “Gebied selecteren”)</string>
+    <string name="setting_select_area_shutter_delay_dialog">Wachttijd tussen de tijd dat de sluiter werd afgespeeld en de schermafbeelding wordt gemaakt. Gebruik een hogere waarde (bijvoorbeeld 500) als het sluiterpictogram zichtbaar is op screenshots.</string>
+    <string name="setting_original_after_permission_delay">Vertraging nadat screenshot toestemming is verleend (is van toepassing op \"Oorspronkelijke methode\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Wachttijd tussen de tijd dat de machtiging werd verleend en de schermafbeelding wordt gemaakt. Gebruik een hogere waarde (bijvoorbeeld 500) als het venster rechten zichtbaar was bij screenshots.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Vertraging na \"%1$s\" fout</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Wachtperiode voordat u het opnieuw probeert na het foutbericht. Gebruik een hogere waarde (bijvoorbeeld 500) als het foutbericht zichtbaar was op screenshots.</string>
+    <string name="setting_floating_button_alpha">Transparantie zwevende knop</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (volledig transparant) naar 1.0 (volledig ondoorzichtig)</string>
+    <string name="setting_floating_button_alpha_dialog">Kies een lagere waarde om de knop transparanter te maken. Bereik 0.0 tot 1.0\nStandaard: 1.0 (volledig ondoorzichtig)</string>
     <string name="setting_floating_button_color">Kleur zwevende knop</string>
+    <string name="setting_delay_custom_summary">Kies een aangepaste vertraging voor de tegel (in seconden)</string>
+    <string name="setting_floating_button_delay_custom_summary">Kies een aangepaste vertraging voor de zwevende knop (in seconden)</string>
+    <string name="setting_format_quality">Bestandsformaat kwaliteit</string>
+    <string name="setting_format_quality_dialog">Compressie/kwaliteit van het bestandsindeling: (0 tot 100)\n0 betekent comprimeren voor de kleinste grootte. 100 betekent compressie voor max visuele kwaliteit.\nLaat leeg om de standaardwaarde te gebruiken.</string>
+    <string name="setting_keep_app_data_max">Max. aantal schermafbeeldingen om mee te doen:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Als u \"%1$s\" uitschakelt, dan worden screenshots tijdelijk opgeslagen in de map \"Android/data/\" en periodiek verwijderd wanneer het maximale aantal bestanden is bereikt.\n-1 betekent dat onbeperkt\nstandaard waarde [%2$s ] wordt behouden</string>
+    <string name="setting_keep_screenshot_history">Behoud de geschiedenis van screenshots</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Bewaart de bestandsnamen van screenshots in een lijst. Dit is vereist voor de functie \"%1$s\"</string>
 </resources>

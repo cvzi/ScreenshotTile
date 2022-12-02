@@ -9,6 +9,7 @@
     <string name="title_delay">Verzögerung</string>
     <string name="more_setting">Mehr Einstellungen</string>
     <string name="open_settings">Einstellungen öffnen</string>
+    <string name="floating_button_settings">Einstellungen der schwebenden Taste</string>
     <string name="left_screenshot_right_menu">Links: Screenshot, rechts: Einstellungen</string>
     <string name="partial_screenshot">Bereich auswählen</string>
     <string name="file_format">Dateiformat</string>
@@ -202,4 +203,27 @@
     <string name="dialog_ask_filename_directory">Ausgewählter Ordner:</string>
     <string name="dialog_ask_filename_hint">Dateiname (ohne Dateiendung)</string>
     <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Standardmodus: An</string>
+    <string name="setting_defaults_to_milliseconds">Standard: %1$s Millisekunden</string>
+    <string name="setting_toasts">Alle \"Toast\"-Benachrichtigungen</string>
+    <string name="setting_success_toasts">\"Toast\" Benachrichtigungen für erfolgreiche Ereignisse</string>
+    <string name="setting_error_toasts">\"Toast\" Benachrichtigungen für Fehler</string>
+    <string name="setting_select_area_shutter_delay">Verzögerung nach Tippen des Auslösers (im \"Bereich auswählen\" Modus)</string>
+    <string name="setting_select_area_shutter_delay_dialog">Wartezeit zwischen der Zeit bis der Auslöser gedrückt wurde und der Bildschirmfoto aufgenommen wird. Verwenden Sie einen höheren Wert (zum Beispiel 500), wenn das Auslösesymbol auf Screenshots sichtbar war.</string>
+    <string name="setting_original_after_permission_delay">Verzögerung nach Erteilung der Screenshot-Berechtigung (gilt für \"Originalmethode\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Wartezeit zwischen der Zeit der Erteilung der Erlaubnis und der Aufnahme des Screenshots. Verwenden Sie einen höheren Wert (z.B. 500), wenn der Berechtigungsdialog auf Screenshots angezeigt wurde.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Verzögerung nach \"%1$s\" Fehler</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Wartezeit vor dem erneuten Versuch nach der Fehlermeldung. Verwenden Sie einen höheren Wert (z.B. 500), wenn die Fehlermeldung auf Screenshots sichtbar war.</string>
+    <string name="setting_floating_button_alpha">Transparenz der schwebenden Taste</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (vollständig transparent) bis 1.0 (vollständig undurchsichtig)</string>
+    <string name="setting_floating_button_alpha_dialog">Wählen Sie einen niedrigeren Wert, um den Button transparenter zu machen. Bereich 0.0 bis 1.0\nStandard: 1.0 (vollständig undurchsichtig)</string>
+    <string name="setting_floating_button_color">Schwebende Schaltflächenfarbe</string>
+    <string name="setting_delay_custom_summary">Wähle eine eigene Verzögerung für die Kachel (in Sekunden)</string>
+    <string name="setting_floating_button_delay_custom_summary">Wähle eine benutzerdefinierte Verzögerung für den schwebenden Button (in Sekunden)</string>
+    <string name="setting_format_quality">Qualität des Dateiformats</string>
+    <string name="setting_format_quality_dialog">Kompression/Qualität des Dateiformats: (0 bis 100)\n0 bedeutet Komprimierung für die kleinste Größe. 100 bedeutet Komprimierung für maximale visuelle Qualität.\nLeer lassen um den Standardwert zu verwenden.</string>
+    <string name="setting_keep_app_data_max">Max. Anzahl der Screenshots um zu halten:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Wenn Sie \"%1$s\" deaktiviert haben, dann werden Screenshots temporär im Ordner \"Android/data/\" gespeichert und periodisch gelöscht, wenn die maximale Anzahl an Dateien erreicht ist.\n-1 bedeutet unbegrenzt\nStandardwert %2$s</string>
+    <string name="setting_keep_screenshot_history">Verlauf der Screenshots behalten</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Speichert die Dateinamen von Screenshots in einer Liste. Dies ist erforderlich für die Funktion \"%1$s\"</string>
 </resources>
