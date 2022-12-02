@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dlaždice snímku obrazovky</string>
-    <string name="app_name_long">Dlaždice snímku obrazovky (NoRoot)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Snímek obrazovky</string>
     <string name="tile_floating">Plovoucí tlačítko snímku obrazovky</string>
     <string name="tile_floating_label">Plovoucí</string>
