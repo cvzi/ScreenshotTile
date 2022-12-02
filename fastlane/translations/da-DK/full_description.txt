@@ -1,0 +1,41 @@
+Tilføjer en knap/flise til hurtigindstillingspanelet for at tage screenshots.
+
+Når du har installeret skal du tilføje knappen / flisen til dine hurtigindstillinger og derefter give tilladelser til at optage skærmoptagelser og gemme billeder til den interne lagerplads.
+
+Hvis appen går ned på Android 9/Pie eller 10, kan du prøve at aktivere "Brug native screenshot metode" i app-indstillinger.
+
+<h2>Funktioner:</h2>✓ Tag skærmbilleder fra de hurtige indstillinger
+✓ Ingen root påkrævet
+✓ Notifikation efter et screenshot blev taget (kan deaktiveres)
+✓ Deler, rediger eller slet et skærmaftryk fra notifikationen
+✓ Flydende knap/Overlay knap som en chatboble (Android 9+)
+✓ Brug som hjælp-app til at tage et skærmbillede (langt tryk på knappen Start)
+✓ Tag kun skærmbillede af et bestemt område af skærmen (langt tryk på flisen)
+✓ Forsinkelse med at tage et skærmbillede
+✓ Gem i enhver mappe på enhver lagerplads, f.eks. SD-kort
+✓ Gem i forskellige filformater: png, jpg eller webp
+✓ Tag automatiske skærmfotos med apps som Tasker eller MacroDroid
+✓ Gratis, open-source, ingen reklamer
+
+Dette er en gaffel af "Screenshot Tile [Root]", men det kræver ikke root. Hvis du har root-adgang, skal du bruge den <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">oprindelige app</a> af ipcjs, det er hurtigere og mere afhængig end denne gaffel.
+
+Kildekode: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+Original app: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+Open Source licens er GNU GPLv3
+
+<u>Bemærk:</u>
+🎦 Når du tager et skærmbillede, ikonet <b>"Google Cast"</b> vises i statuslinjen, og det vil være synligt i skærmbilledet.
+Hvis du ønsker at skjule ikonet, er der en forklaring her: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>Tilladelser:</h2>¤ <i>android.permission.WRITE_EXTERNAL_STORAGE "Billeder/Medier/Filer og Lagring"</i>
+Dette er nødvendigt for at gemme screenshot filer på den interne lagerplads på din enhed.
+
+Ι <i>android.permission.FOREGROUND_SERVICE</i>
+Da Android 9/Pie denne tilladelse er nødvendig for at tage screenshots. Det betyder dybest set, at denne app kan køre uden at vise sig selv. Men app'en vil altid vise en notifikation, når den kører.
+
+<h2>Automatiske screenshots:</h2>Hvis du ønsker at automatisere screenshots fra en anden app, f.eks. MacroDroid eller Tasker, kan du finde en trin-for-trin guide her:
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>Skjuler app-ikonet:</h2>I app-indstillingerne kan du skjule app-ikonet fra din launcher. Du kan stadig få adgang til appen ved at trykke længe på flisen i dine hurtigindstillinger. Desværre, Android 10 tillader ikke at skjule en app længere.
+
+<h2>🌎 Support og oversættelser</h2>Hvis der er et problem, eller hvis du ønsker at hjælpe med at oversætte denne app til dit sprog, kontakt mig venligst på <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> eller bidrage med en oversættelse på <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
