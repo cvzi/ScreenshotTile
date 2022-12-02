@@ -469,6 +469,7 @@ public class App extends Application {
         } else {
             context.startActivity(intent);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                // skipcq
                 context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
             }
         }
