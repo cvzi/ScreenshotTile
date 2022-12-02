@@ -1,10 +1,9 @@
 Fügt dem Schnelleinstellungen eine Schaltfläche/Kachel hinzu, um Screenshots zu machen.
 
-Nach der Installation muss die Kachel noch zu den Schnelleinstellungen hinzugefügt werden, dazu zieht man einfach die Benachrichtigungsleiste herunter und drückt auf das Bearbeiten/Stift Symbol und schiebt die neue Kachel in die persönlichen Schnelleinstellungen. Danach fragt die App nach den benötigten Berechtigungen.
+Diese Berechtigung wird benötigt um die Screenshots auf dem internen Speicher abzulegen.
 
 Falls es zu Abstürzen bei Androi 9 Pie oder 10 kommt, aktiviere die Funktion "Native Screenshotaufnahme" in den App-Einstellungen.
 
-<h2>Features:</h2>
 ✓ Screenshots direkt aus den Schnelleinstellungen
 ✓ Kein Root benötigt
 ✓ Nach den Screenshot wird eine Benachrichtigung angezeigt (deaktivierbar)
@@ -18,7 +17,7 @@ Falls es zu Abstürzen bei Androi 9 Pie oder 10 kommt, aktiviere die Funktion "N
 ✓ Automatische Screenshtos mit Tasker oder MacroDroid
 ✓ Kostenlos, Open Source, keine Werbung
 
-Diese App ist ein Fork von "Screenshot Tile [Root]", aber dieser Fork benötigt kein Root. Falls du Root Zugriff hast, solltest du die <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">originale App</a> verwenden. Sie ist schneller und zuverlässiger.
+Diese App ist ein Fork von "Screenshot Tile [Root]", aber dieser Fork benötigt kein Root. Falls du Root Zugriff hast, solltest du die <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">originale App</a> verwenden.
 
 Source code: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Original App: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
