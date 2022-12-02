@@ -47,14 +47,17 @@ public class App extends Application {
     private static App instance;
     private static Intent screenshotPermission = null;
     private static OnAcquireScreenshotPermissionListener onAcquireScreenshotPermissionListener = null;
-    private static Boolean checkAccessibilityServiceOnCollapse = true;
+    private static boolean checkAccessibilityServiceOnCollapse = true;
     private static MediaProjection mediaProjection = null;
     private static volatile boolean receiverRegistered = false;
-    private static NotificationActionReceiver notificationActionReceiver;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private PrefManager prefManager;
     private Runnable screenshotRunnable;
     private WeakReference<Bitmap> lastScreenshot = null;
+
+    public App() {
+        instance = this;
+    }
 
     public static App getInstance() {
         return instance;
@@ -69,7 +72,8 @@ public class App extends Application {
      *
      * @return last bitmap or null
      */
-    public @Nullable Bitmap getLastScreenshot() {
+    public @Nullable
+    Bitmap getLastScreenshot() {
         if (lastScreenshot != null) {
             Bitmap tmp = lastScreenshot.get();
             lastScreenshot = null;
@@ -80,11 +84,12 @@ public class App extends Application {
 
     /**
      * Set the last bitmap
+     *
      * @param lastScreenshot The last bitmap or null to remove reference
      */
     public void setLastScreenshot(@Nullable Bitmap lastScreenshot) {
         if (lastScreenshot != null) {
-            this.lastScreenshot = new WeakReference<Bitmap>(lastScreenshot);
+            this.lastScreenshot = new WeakReference<>(lastScreenshot);
         } else {
             this.lastScreenshot = null;
         }
@@ -122,7 +127,7 @@ public class App extends Application {
             return;
         }
 
-        notificationActionReceiver = new NotificationActionReceiver();
+        NotificationActionReceiver notificationActionReceiver = new NotificationActionReceiver();
         notificationActionReceiver.registerReceiver(App.getInstance());
 
         receiverRegistered = true;
@@ -217,11 +222,11 @@ public class App extends Application {
 
     /**
      * Open new activity that asks for the storage permission (and also notifications permission
-     * since Android 13 Tirmamisu).
+     * since Android 13 Tiramisu).
      *
      * @param context Context
      */
-    public static void requestStoragePermission(Context context, Boolean screenshot) {
+    public static void requestStoragePermission(Context context, boolean screenshot) {
         final Intent intent = new Intent(context, AcquireScreenshotPermission.class);
         intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(AcquireScreenshotPermission.EXTRA_REQUEST_PERMISSION_STORAGE, true);
@@ -229,18 +234,17 @@ public class App extends Application {
         context.startActivity(intent);
     }
 
-    public static Boolean checkAccessibilityServiceOnCollapse() {
+    public static boolean checkAccessibilityServiceOnCollapse() {
         return checkAccessibilityServiceOnCollapse;
     }
 
-    public static void checkAccessibilityServiceOnCollapse(Boolean checkAccessibilityServiceOnCollapse) {
+    public static void checkAccessibilityServiceOnCollapse(boolean checkAccessibilityServiceOnCollapse) {
         App.checkAccessibilityServiceOnCollapse = checkAccessibilityServiceOnCollapse;
     }
 
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
-        instance = this;
     }
 
     @Override
@@ -357,8 +361,8 @@ public class App extends Application {
             try {
                 tileService.startActivityAndCollapse(intent);
                 startActivityAndCollapseSucceeded = true;
-            } catch (NullPointerException e) {
-                startActivityAndCollapseSucceeded = false;
+                // skipcq
+            } catch (NullPointerException ignored) {
             }
         }
 
@@ -375,7 +379,7 @@ public class App extends Application {
         }
     }
 
-    private void screenshotHiddenCountdown(Context context, Boolean now, Boolean alreadyCollapsed) {
+    private void screenshotHiddenCountdown(Context context, boolean now, boolean alreadyCollapsed) {
         int delay = prefManager.getDelay();
         if (now) {
             delay = 0;
@@ -390,6 +394,7 @@ public class App extends Application {
                 try {
                     tileService.startActivityAndCollapse(intent);
                     startActivityAndCollapseSucceeded = true;
+                    // skipcq
                 } catch (NullPointerException e) {
                     Log.e(TAG, "screenshotHiddenCountdown() tileService was null");
                 }
@@ -412,6 +417,7 @@ public class App extends Application {
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 try {
                     tileService.startActivityAndCollapse(intent);
+                    // skipcq
                 } catch (NullPointerException e) {
                     context.startActivity(intent);
                 }
