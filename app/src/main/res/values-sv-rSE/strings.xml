@@ -9,6 +9,7 @@
     <string name="title_delay">Fördröjning</string>
     <string name="more_setting">Fler inställningar</string>
     <string name="open_settings">Öppna inställningar</string>
+    <string name="floating_button_settings">Inställningar för flytande knapp</string>
     <string name="left_screenshot_right_menu">Vänster: Skärmdump, höger: Inställningar</string>
     <string name="partial_screenshot">Välj område</string>
     <string name="file_format">Filformat</string>
@@ -127,10 +128,23 @@
     <string name="tutorial_step16">Ta skärmdumpar med den nya knappen</string>
     <string name="take_screenshot">Ta en skärmdump</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Google Play Överhängande Utlämnande &amp; Samtycke Krav</string>
+    <string name="googleplay_consent_line_0">Google Play kräver ett tydligt avslöjande av tillgänglighetstjänster API: s användning för en app som inte är ett verktyg för tillgänglighet.</string>
+    <string name="googleplay_consent_line_1">Denna app - ”Screenshot Tile [No root]” - är inte ett tillgänglighetsverktyg.</string>
+    <string name="googleplay_consent_line_2">Eftersom användare inte rimligen kan förvänta sig att deras personliga och känsliga användardata kommer att krävas för att tillhandahålla eller förbättra policy-kompatibla funktioner eller funktionalitet i denna app, ett framträdande avslöjande av användningen av API:et för Tillgänglighetstjänster genom denna app och en deklaration om datainsamling och datadelning i denna app krävs:</string>
+    <string name="googleplay_consent_line_3">Denna app kräver åtkomst till Accessibility Services API för att ta en skärmdump när appen inte används.</string>
+    <string name="googleplay_consent_line_4">Åtkomst till Accessibility Services API gör det möjligt för appen att spela in skärmen.</string>
+    <string name="googleplay_consent_line_5">Skärminspelningar kommer att användas för att skapa skärmdump bilder.</string>
+    <string name="googleplay_consent_line_6">Data varken samlas in eller delas av denna app med hjälp av tillgänglighetsfunktionerna.</string>
+    <string name="googleplay_consent_line_7">Håller du med om att tillåta denna app att få tillgång till Accessibility Services API och att använda tillgänglighetsfunktionerna för att spela in skärmen?</string>
     <string name="googleplay_consent_yes">Jag samtycker</string>
     <string name="googleplay_consent_no">Jag vägrar</string>
     <!-- About -->
     <string name="about_app_title">Om</string>
+    <string name="about_app_1">Detta är en gaffel av\ngithub.com/ipcjs/ScreenshotTile</string>
+    <string name="about_app_3">För mer information och felrapporter besök:\ngithub.com/cvzi/ScreenshotTile</string>
+    <string name="about_license_title">Licens</string>
+    <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
     <string name="about_app_2">Denna app har fortfarande vissa problem och är under utveckling.\nOm du har root-åtkomst på din telefon kan du använda ipcjs version, den är snabbare och mer tillförlitlig.</string>
     <string name="about_privacy_title">Integritetspolicy</string>
     <string name="about_open_source_title">Användning av öppen källkod</string>
@@ -203,6 +217,7 @@
     <string name="setting_floating_button_alpha">Genomskinlighet för flytande knapp</string>
     <string name="setting_floating_button_alpha_summary">0,0 (helt genomskinlig) till 1,0 (helt ogenomskinlig)</string>
     <string name="setting_floating_button_alpha_dialog">Välj ett lägre värde för att göra knappen mer transparent. Räckvidd 0.0 till 1.0\nStandard: 1.0 (fullt ogenomskinlig)</string>
+    <string name="setting_floating_button_color">Färg på flytande knapp</string>
     <string name="setting_delay_custom_summary">Välj en anpassad fördröjning för panelknappen (i sekunder)</string>
     <string name="setting_floating_button_delay_custom_summary">Välj en anpassad fördröjning för den flytande knappen (i sekunder)</string>
     <string name="setting_format_quality">Kvalitet för filformat</string>
