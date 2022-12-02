@@ -153,7 +153,7 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">Tilgjengelige innstillinger</string>
     <string name="main_floating_button_title">Flytende knapp</string>
-    <string name="main_general_text">Før du kan bruke denne appen, må du legge til tips/knappen til hurtiginnstillingene. Hvis du ikke vet hvordan du gjør dette, ta en titt på [Tutorial, . Opplæringsaktivitet].\n\nDenne appen støtter to forskjellige metoder for å ta skjermbilder:</string>
+    <string name="main_general_text">Før du kan bruke denne appen, må du legge til tips/knappen til hurtiginnstillingene. Hvis du ikke vet hvordan du gjør dette, ta en titt på [Opplæringsaktivitet,.TutorialActivity].\n\nDenne appen støtter to forskjellige metoder for å ta skjermbilder:</string>
     <string name="main_legacy_method_title">Eldre metode</string>
     <string name="main_legacy_method_text">Den eldre metoden for å ta opp skjermbilder bruker skjermopptaksfunksjonene i Android.\nNår du tar et skjermbilde blir ingen lyd spilt. En stille melding vises ved å åpne, dele eller redigere skjermbildet. Varselet kan deaktiveres i appinnstillingene.\nFør du kan ta et skjermbilde må du legge til flisen i hurtiginnstillingene, godta tillatelsen til å spille inn skjermen og tillatelse til å få tilgang til intern lagring for å lagre bildefilen.\nSe veiledningen for hvordan du skal gjøre det.\n\nPå noen telefoner fungerer ikke denne metoden, spesielt på nyere Androider (9. +) det er ustabil og det kan be om tillatelse for hver enkelt skjermbilde. Hvis det skjer bør du bruke den opprinnelige metoden nedenfor.</string>
     <string name="main_native_method_title">Lokal Metode</string>
