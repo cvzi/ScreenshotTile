@@ -9,6 +9,7 @@
     <string name="title_delay">تأخير</string>
     <string name="more_setting">المزيد الإعدادات</string>
     <string name="open_settings">فتح الإعدادات</string>
+    <string name="floating_button_settings">إعدادات الزر العائم</string>
     <string name="left_screenshot_right_menu">اليسار: لقطة الشاشة، اليمين: الإعدادات</string>
     <string name="partial_screenshot">قص</string>
     <string name="file_format">صيغة الملف</string>
@@ -198,5 +199,31 @@
     <string name="msg_choose_image">اختر صورة</string>
     <string name="msg_image_saved">تم حفظ الصورة بنجاح</string>
     <string name="msg_failed_to_save">فشل في حفظ الصورة</string>
+    <string name="dialog_ask_filename_title">حفظ كـ</string>
+    <string name="dialog_ask_filename_directory">الدليل المحدد:</string>
+    <string name="dialog_ask_filename_hint">اسم الملف (بدون ملحق)</string>
     <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">الوضع الافتراضي: يعمل</string>
+    <string name="setting_defaults_to_milliseconds">الافتراضي: %1$s مللي ثانية</string>
+    <string name="setting_toasts">جميع الإشعارات \"Toast\"</string>
+    <string name="setting_success_toasts">إشعارات \"Toast\" للأحداث الناجحة</string>
+    <string name="setting_error_toasts">التنبيهات \"Toast\" للأخطاء</string>
+    <string name="setting_select_area_shutter_delay">تأخير بعد النقر على المصراع (في وضع \"تحديد المنطقة\")</string>
+    <string name="setting_select_area_shutter_delay_dialog">فترة الانتظار بين الوقت الذي تم فيه النقر على المصور ثم يتم أخذ لقطة الشاشة. استخدام قيمة أعلى (على سبيل المثال 500) إذا كانت أيقونة التصوير مرئية على لقطات الشاشة.</string>
+    <string name="setting_original_after_permission_delay">التأخير بعد منح إذن لقطة الشاشة (ينطبق على \"الطريقة الأصلية\")</string>
+    <string name="setting_original_after_permission_delay_dialog">فترة الانتظار بين الوقت الذي تم فيه منح الإذن وآخر لقطة الشاشة. استخدام قيمة أعلى (على سبيل المثال 500) إذا كان مرئي على لقطات الشاشة.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">تأخير بعد خطأ \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">فترة الانتظار قبل المحاولة مرة أخرى بعد رسالة الخطأ. استخدم قيمة أعلى (على سبيل المثال 500) إذا كانت رسالة الخطأ مرئية على لقطات الشاشة.</string>
+    <string name="setting_floating_button_alpha">شفافية الزر العائم</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (شفاف تماما) إلى 1.0 (غامض)</string>
+    <string name="setting_floating_button_alpha_dialog">اختر قيمة أقل لجعل الزر أكثر شفافية. مدى 0.0 إلى 1.0\nالافتراضي: 1.0 (كامل غامض)</string>
+    <string name="setting_floating_button_color">لون الزر العائم</string>
+    <string name="setting_delay_custom_summary">اختر تأخير مخصص للبلاط (بالثواني)</string>
+    <string name="setting_floating_button_delay_custom_summary">اختر تأخير مخصص للزر العائم (بالثواني)</string>
+    <string name="setting_format_quality">جودة تنسيق الملف</string>
+    <string name="setting_format_quality_dialog">الضغط/جودة تنسيق الملف: (0 إلى 100)\n0 يعني الضغط لأصغر حجم. 100 يعني ضغطة للحصول على الحد الأقصى للجودة المرئية.\nاتركه فارغاً لاستخدام القيمة الافتراضية.</string>
+    <string name="setting_keep_app_data_max">الحد الأقصى لعدد لقطات الشاشة للاحتفاظ بها:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">إذا قمت بتعطيل \"%1$s\"، ثم يتم تخزين لقطات الشاشة مؤقتاً في مجلد \"Android/data/\" ويتم حذفها دورياً عند الوصول إلى الحد الأقصى لعدد الملفات.\n-1 يعني الحفاظ على قيمة افتراضية غير محدودة\n%2$s</string>
+    <string name="setting_keep_screenshot_history">الاحتفاظ بسجل لقطات الشاشة</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">يخزن أسماء الملفات لقطات الشاشة في قائمة. هذا مطلوب للوظيفة \"%1$s\"</string>
 </resources>
