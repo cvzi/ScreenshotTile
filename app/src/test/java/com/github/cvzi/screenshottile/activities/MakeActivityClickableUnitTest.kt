@@ -66,6 +66,18 @@ class UnitTestClickableActivityLinkLocalized : UnitTestClickableActivityLink() {
     }
 
     @Test
+    @Config(qualifiers = "cs-rCZ")
+    fun csCZ() {
+        makeClickableActivities_LocalizedString()
+    }
+
+    @Test
+    @Config(qualifiers = "da-rDK")
+    fun daDK() {
+        makeClickableActivities_LocalizedString()
+    }
+
+    @Test
     @Config(qualifiers = "de-rDE")
     fun deDE() {
         makeClickableActivities_LocalizedString()
@@ -92,6 +104,12 @@ class UnitTestClickableActivityLinkLocalized : UnitTestClickableActivityLink() {
     @Test
     @Config(qualifiers = "fa")
     fun fa() {
+        makeClickableActivities_LocalizedString()
+    }
+
+    @Test
+    @Config(qualifiers = "fi-rFI")
+    fun fiFI() {
         makeClickableActivities_LocalizedString()
     }
 
@@ -246,7 +264,7 @@ class UnitTestClickableActivityLinkLocalized : UnitTestClickableActivityLink() {
     }
 
     @Test
-    @Config(qualifiers="sv-rSE")
+    @Config(qualifiers = "sv-rSE")
     fun svSE() {
         makeClickableActivities_LocalizedString()
     }

@@ -51,6 +51,18 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
+    @Config(qualifiers = "cs-rCZ")
+    fun csCZ() {
+        checkLocalizedString()
+    }
+
+    @Test
+    @Config(qualifiers = "da-rDK")
+    fun daDK() {
+        checkLocalizedString()
+    }
+
+    @Test
     @Config(qualifiers = "de-rDE")
     fun deDE() {
         checkLocalizedString()
@@ -77,6 +89,12 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     @Test
     @Config(qualifiers = "fa")
     fun fa() {
+        checkLocalizedString()
+    }
+
+    @Test
+    @Config(qualifiers = "fi-rFI")
+    fun fiFI() {
         checkLocalizedString()
     }
 
@@ -231,7 +249,7 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers="sv-rSE")
+    @Config(qualifiers = "sv-rSE")
     fun svSE() {
         checkLocalizedString()
     }
