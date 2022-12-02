@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Kuvakaappaus Tile</string>
-    <string name="app_name_long">Kuvakaappaus Tiili (Noroot)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Kuvakaappaus</string>
     <string name="tile_floating">Kelluva Kuvakaappaus</string>
     <string name="tile_floating_label">Kelluva</string>
