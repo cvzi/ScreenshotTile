@@ -50,7 +50,7 @@
     <string name="setting_file_name_pattern">Název souboru</string>
     <string name="setting_file_name_placeholders_title">Použít tyto zástupné symboly v názvu souboru</string>
     <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - čas jako yyyy-MM-dd_HH-mm-ss
-%c- počítá počet snímků obrazovky
+%counter% - počítá počet snímků obrazovky
 %random% - náhodný UUID
 %randint% - náhodné číslo]]></string>
     <string name="setting_tile_action">Akce dlaždice</string>
