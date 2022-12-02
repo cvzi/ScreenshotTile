@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Στιγμιότυπο Πλακιδίου</string>
     <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Στιγμιότυπο οθόνης</string>
     <string name="tile_floating">Αιωρούμενο Κουμπί Στιγμιοτύπου οθόνης</string>
@@ -8,6 +9,7 @@
     <string name="title_delay">Καθυστέρηση</string>
     <string name="more_setting">Περισσότερες Ρυθμίσεις</string>
     <string name="open_settings">Άνοιγμα ρυθμίσεων</string>
+    <string name="floating_button_settings">Ρυθμίσεις αιωρούμενου κουμπιού</string>
     <string name="left_screenshot_right_menu">Αριστερά: Στιγμιότυπο οθόνης, δεξιά: Ρυθμίσεις</string>
     <string name="partial_screenshot">Επιλογή περιοχής</string>
     <string name="file_format">Μορφή αρχείου</string>
@@ -45,16 +47,47 @@
     <string name="setting_broadcast_secret_description">Μία μυστική φράση για να επιτρέπεται σε άλλες εφαρμογές (όπως η MacroDroid ή η Tasker) να εκκινήσουν στιγμιότυπα οθόνης</string>
     <string name="setting_storage_directory">Αποθήκευση τοποθεσίας</string>
     <string name="setting_storage_directory_description">Φάκελος για αποθήκευση στιγμιοτύπων οθόνης</string>
+    <string name="setting_file_name_pattern">Όνομα αρχείου</string>
+    <string name="setting_file_name_placeholders_title">Χρήση αυτών των κράτησης θέσης στο όνομα αρχείου</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - χρόνος ως yyyy-MM-dd_HH-mm-ss
+%counter% - μετράει τον αριθμό των στιγμιότυπων οθόνης
+%random% - ένα τυχαίο UID
+%randint% - ένας τυχαίος αριθμός]]></string>
     <string name="setting_tile_action">Ενέργεια κουμπιού</string>
+    <string name="setting_floating_action">Ενέργεια αιωρούμενου κουμπιού</string>
+    <string name="setting_voice_interaction_action">Βοηθός δράσης</string>
     <string name="setting_dark_theme">Σκούρο θέμα</string>
     <string name="setting_dark_theme_system">Σύστημα</string>
     <string name="setting_dark_theme_off">Απενεργοποιημένο</string>
     <string name="setting_dark_theme_on">Ενεργοποιημένο</string>
+    <string name="setting_notification_buttons">Κουμπιά ειδοποιήσεων</string>
+    <string name="setting_notification_buttons_description">Επιλέξτε μέχρι τρία κουμπιά που εμφανίζονται κάτω από την ειδοποίηση στιγμιότυπου οθόνης</string>
+    <string name="setting_notification_buttons_max_three">Παρακαλώ επιλέξτε το πολύ τρία κουμπιά</string>
     <string name="notification_settings">Ειδοποιήσεις</string>
     <string name="notification_settings_on">Ενεργοποιημένο</string>
     <string name="notification_settings_off">Απενεργοποιημένο</string>
+    <string name="setting_post_actions">Επακόλουθες ενέργειες</string>
+    <string name="setting_post_actions_description">Επιλέξτε τι θα συμβεί μετά τη λήψη του στιγμιότυπου οθόνης</string>
+    <string name="button_history">Πρόσφατα στιγμιότυπα οθόνης</string>
+    <string name="button_history_description">Προβολή των πρόσφατων στιγμιότυπων σας, συμπεριλαμβανομένων των αρχείων που δεν αποθηκεύτηκαν στη συλλογή</string>
+    <string name="history_title">Ιστορικό στιγμιοτύπου οθόνης</string>
+    <string name="restore_default_values">Επαναφορά προεπιλεγμένων τιμών</string>
+    <string name="post_action_save_to_storage">Αποθήκευση εικόνας στη συλλογή</string>
+    <string name="post_action_show_toast">Εμφάνιση ειδοποίησης \"Τώρα\". Ένα μικρό αναδυόμενο παράθυρο που εξαφανίζεται μετά από 2 δευτερόλεπτα</string>
+    <string name="post_action_show_notification">Εμφάνιση μιας κανονικής ειδοποίησης. Μπορείτε να αλλάξετε τα κουμπιά (Edit,Share,…) κάτω από την ειδοποίηση στην ενότητα \"Περισσότερες ρυθμίσεις\"</string>
+    <string name="post_action_empty">Να μην ανοίγει το στιγμιότυπο οθόνης</string>
+    <string name="post_action_open_in_post">Άνοιγμα στην προβολή \"Λεπτομέρειες\"</string>
+    <string name="post_action_open_in_post_crop">Περικοπή της εικόνας</string>
+    <string name="post_action_open_in_photo_editor">Άνοιγμα του ενσωματωμένου επεξεργαστή φωτογραφιών</string>
+    <string name="post_action_open_in_external_editor">Άνοιγμα σε εξωτερικό επεξεργαστή φωτογραφιών</string>
+    <string name="post_action_open_in_external_viewer">Άνοιγμα σε προβολέα φωτογραφιών ή στη συλλογή</string>
+    <string name="post_action_open_share">Μοιραστείτε το στιγμιότυπο οθόνης</string>
+    <string name="move_to_storage_directory">Μετακίνηση στη συλλογή</string>
+    <string name="button_clear">Εκκαθάριση</string>
+    <string name="button_clear_confirm">Θέλετε να διαγράψετε όλα τα προσωρινά αρχεία?\nΑυτό θα διαγράψει όλα τα αρχεία σε %s\n\n(Αυτά τα αρχεία συνήθως δεν είναι ορατά στη συλλογή σας)</string>
     <string name="file_title">Στιγμιότυπο οθόνης</string>
     <string name="file_description">Λήφθηκε στιγμιότυπο οθόνης σε %1$s</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Λήφθηκε στιγμιότυπο οθόνης</string>
     <string name="notification_body">Πατήστε για προβολή της εικόνας</string>
     <string name="notification_channel_description">Εμφανίζει μία ειδοποίηση κατά τη λήψη στιγμιοτύπου οθόνης</string>
@@ -69,8 +102,14 @@
     <string name="notification_delete_screenshot">Διαγραφή</string>
     <string name="notification_share_screenshot">Κοινοποίηση</string>
     <string name="notification_edit_screenshot">Επεξεργασία</string>
+    <string name="notification_rename_screenshot">Μετονομασία</string>
+    <string name="notification_screenshot_details">Λεπτομέρειες</string>
+    <string name="notification_crop_screenshot">Περικοπή</string>
+    <string name="notification_photo_editor_screenshot">Επεξεργαστής Φωτογραφιών</string>
     <string name="screenshot_deleted">Διαγράφηκε το στιγμιότυπο οθόνης</string>
     <string name="screenshot_delete_failed">Αδυναμία διαγραφής αρχείου</string>
+    <string name="screenshot_renamed">Το αρχείο μετονομάστηκε σε %1s</string>
+    <string name="screenshot_rename_failed">Αδυναμία μετονομασίας αρχείου</string>
     <string name="permission_missing_external_storage">Αποτυχία απόκτησης άδειας αποθηκευτικού χώρου</string>
     <string name="permission_missing_screen_capture">Αποτυχία απόκτησης άδειας καταγραφής της οθόνης</string>
     <string name="hide_app_from_launcher">Απόκρυψη εικονιδίου εφαρμογής από τον εκκινητή (launcher)</string>
@@ -89,6 +128,17 @@
     <string name="tutorial_step16">Τώρα μπορείτε να λάβετε στιγμιότυπα οθόνης με το νέο κουμπί</string>
     <string name="take_screenshot">Λήψη στιγμιοτύπου οθόνης</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Προεξέχουσα αποκάλυψη &amp; απαίτηση συγκατάθεσης Google Play</string>
+    <string name="googleplay_consent_line_0">Το Google Play απαιτεί εμφανή αποκάλυψη της χρήσης του API υπηρεσιών προσβασιμότητας για μια εφαρμογή που δεν είναι εργαλείο προσβασιμότητας.</string>
+    <string name="googleplay_consent_line_1">Αυτή η εφαρμογή - \"Screenshot Tile [No root]\" - δεν είναι ένα εργαλείο προσβασιμότητας.</string>
+    <string name="googleplay_consent_line_2">Δεδομένου ότι οι χρήστες δεν μπορούν εύλογα να αναμένουν ότι τα προσωπικά και ευαίσθητα δεδομένα χρηστών τους θα υποχρεούνται να παρέχουν ή να βελτιώνουν τα συμβατά με την πολιτική χαρακτηριστικά ή λειτουργικά χαρακτηριστικά εντός αυτής της εφαρμογής, απαιτείται ευδιάκριτη γνωστοποίηση της χρήσης του API υπηρεσιών προσβασιμότητας από αυτήν την εφαρμογή και δήλωση της συλλογής δεδομένων και της ανταλλαγής δεδομένων στο πλαίσιο αυτής της εφαρμογής:</string>
+    <string name="googleplay_consent_line_3">Αυτή η εφαρμογή απαιτεί πρόσβαση στο API υπηρεσιών προσβασιμότητας προκειμένου να ληφθεί στιγμιότυπο οθόνης όταν η εφαρμογή δεν χρησιμοποιείται.</string>
+    <string name="googleplay_consent_line_4">Η πρόσβαση σε API υπηρεσιών προσβασιμότητας θα επιτρέψει σε αυτήν την εφαρμογή να καταγράψει την οθόνη.</string>
+    <string name="googleplay_consent_line_5">Θα χρησιμοποιηθούν εγγραφές οθόνης για τη δημιουργία εικόνων στιγμιότυπου οθόνης.</string>
+    <string name="googleplay_consent_line_6">Τα δεδομένα δεν συλλέγονται ούτε μοιράζονται από αυτήν την εφαρμογή χρησιμοποιώντας τις δυνατότητες προσβασιμότητας.</string>
+    <string name="googleplay_consent_line_7">Συμφωνείτε να εξουσιοδοτήσετε αυτή την εφαρμογή να αποκτήσει πρόσβαση στο API υπηρεσιών προσβασιμότητας και να χρησιμοποιήσετε τις δυνατότητες προσβασιμότητας για την εγγραφή της οθόνης?</string>
+    <string name="googleplay_consent_yes">Συμφωνώ</string>
+    <string name="googleplay_consent_no">Απορρίπτω</string>
     <!-- About -->
     <string name="about_app_title">Περί</string>
     <string name="about_app_1">Η εφαρμογή είναι fork του \nngithub.com/ipcjs/ScreenshotTile</string>
@@ -96,6 +146,10 @@
     <string name="about_license_title">Άδεια</string>
     <string name="about_license_1">ΓΕΝΙΚΗ ΑΔΕΙΑ ΔΗΜΟΣΙΑΣ ΧΡΗΣΗΣ GNU 3η Έκδοση</string>
     <string name="about_app_2">Αυτή η εφαρμογή εξακολουθεί να έχει κάποια προβλήματα και βρίσκεται υπό ανάπτυξη.\nΕάν είστε υπερχρήστης (root), παρακαλώ χρησιμοποιήστε την έκδοση του ipcjs, είναι ταχύτερη και πιο αξιόπιστη.</string>
+    <string name="about_privacy_title">Πολιτική Απορρήτου</string>
+    <string name="about_open_source_title">Ανοικτός κώδικας που χρησιμοποιείται</string>
+    <string name="about_advanced_settings_button">Ρυθμίσεις για προχωρημένους</string>
+    <string name="about_update_check_button">Έλεγχος ενημερώσεων</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Ρυθμίσεις προσβασιμότητας</string>
     <string name="main_floating_button_title">Αιωρούμενο κουμπί</string>
@@ -110,7 +164,66 @@
     <string name="main_long_press_title">Παρατεταμένο πάτημα</string>
     <string name="main_long_press_text">Το παρατεταμένο πάτημα του κουμπιού ανοίγει ένα μενού. Μπορείτε να καθορίσετε μια καθυστέρηση για το στιγμιότυπο οθόνης ή να περικόψετε ένα κομμάτι της οθόνης.</string>
     <string name="main_assist_app_title">Εφαρμογή υποβοήθειας</string>
+    <string name="main_assist_app_text">Αν ορίσετε αυτήν την εφαρμογή ως εφαρμογή βοήθειας, μπορείτε να πατήσετε παρατεταμένα το κουμπί αρχικής οθόνης για να τραβήξετε ένα στιγμιότυπο οθόνης. Ενεργοποίηση αυτής της εφαρμογής ως βοηθητική εφαρμογή σας θα απενεργοποιήσει άλλους βοηθούς. Μπορείτε να αλλάξετε την ενέργεια του παρατεταμένου πλήκτρου αρχικής οθόνης στις ρυθμίσεις της εφαρμογής.</string>
     <!-- Post edit activity -->
+    <string name="post_button_save">Μετονομασία</string>
+    <string name="post_recent_file_names_and_suggestions">Πρόσφατα ονόματα αρχείων και προτάσεις:</string>
+    <string name="post_hint_new_file_name">Νέο όνομα αρχείου</string>
+    <string name="post_rename_file">Μετονομασία αρχείου:</string>
+    <string name="post_rename_error_identical">Το νέο και παλιό όνομα αρχείου είναι πανομοιότυπο</string>
+    <string name="post_hint_new_file_name_suggestion">Προσθήκη νέας πρότασης</string>
+    <string name="post_save_a_suggestion">Αποθήκευση πρότασης</string>
+    <string name="post_pin_to_favorites">Καρφίτσωμα στα αγαπημένα</string>
+    <string name="post_delete_suggestion">Διαγραφή πρότασης</string>
     <!-- Photo Editor-->
+    <string name="label_brush">Πινέλο</string>
+    <string name="label_shape">Σχήμα</string>
+    <string name="label_oval">Οβάλ</string>
+    <string name="label_rectangle">Ορθογώνιο</string>
+    <string name="label_line">Γραμμή</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Eraser</string>
+    <string name="label_eraser_mode">Λειτουργία Γόμα</string>
+    <string name="label_text">Κείμενο</string>
+    <string name="label_filter">Φίλτρο</string>
+    <string name="label_adjust">Προσαρμογή</string>
+    <string name="label_rotation">Περιστροφή</string>
+    <string name="label_opacity">Αδιαφάνεια</string>
+    <string name="label_done">Ολοκληρώθηκε</string>
+    <string name="label_close">Κλείσιμο</string>
+    <string name="label_save">Αποθήκευση</string>
+    <string name="label_discard">Απορρίψτε</string>
+    <string name="msg_save_image">Θέλετε να βγείτε χωρίς να αποθηκεύσετε την εικόνα?</string>
+    <string name="msg_save_image_to_share">Παρακαλώ αποθηκεύστε την εικόνα για κοινοποίηση</string>
+    <string name="msg_share_image">Κοινή Χρήση Εικόνας</string>
+    <string name="msg_choose_image">Επιλέξτε μια εικόνα</string>
+    <string name="msg_image_saved">Η εικόνα αποθηκεύτηκε επιτυχώς</string>
+    <string name="msg_failed_to_save">Αποτυχία αποθήκευσης εικόνας</string>
+    <string name="dialog_ask_filename_title">Αποθήκευση ως</string>
+    <string name="dialog_ask_filename_directory">Επιλεγμένος κατάλογος:</string>
+    <string name="dialog_ask_filename_hint">Όνομα αρχείου (χωρίς επέκταση)</string>
     <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Προεπιλεγμένη λειτουργία: Ενεργή</string>
+    <string name="setting_defaults_to_milliseconds">Προεπιλογή: %1$s χιλιοστά του δευτερολέπτου</string>
+    <string name="setting_toasts">Όλες οι ειδοποιήσεις \"Toast\"</string>
+    <string name="setting_success_toasts">\"Toast\" ειδοποιήσεις για επιτυχημένες εκδηλώσεις</string>
+    <string name="setting_error_toasts">\"Toast\" ειδοποιήσεις για σφάλματα</string>
+    <string name="setting_select_area_shutter_delay">Καθυστέρηση μετά το πάτημα του κλείστρου (σε λειτουργία \"Επιλογή περιοχής)</string>
+    <string name="setting_select_area_shutter_delay_dialog">Περίοδος αναμονής μεταξύ του χρόνου που χρησιμοποιήθηκε το κλείστρο και της λήψης του στιγμιότυπου οθόνης. Χρησιμοποιήστε μια υψηλότερη τιμή (για παράδειγμα 500) αν το εικονίδιο κλείστρου ήταν ορατό στα στιγμιότυπα οθόνης.</string>
+    <string name="setting_original_after_permission_delay">Καθυστέρηση μετά την χορήγηση δικαιώματος οθόνης (ισχύει για την \"Αρχική μέθοδο\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Περίοδος αναμονής μεταξύ του χρόνου που χορηγήθηκε το δικαίωμα και λαμβάνεται το στιγμιότυπο οθόνης. Χρησιμοποιήστε μια υψηλότερη τιμή (για παράδειγμα 500) αν ο διάλογος δικαιωμάτων ήταν ορατός στα στιγμιότυπα οθόνης.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Καθυστέρηση μετά από σφάλμα \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Περίοδος αναμονής πριν προσπαθήσετε ξανά μετά το μήνυμα σφάλματος. Χρησιμοποιήστε μια υψηλότερη τιμή (για παράδειγμα 500) αν το μήνυμα σφάλματος ήταν ορατό στα στιγμιότυπα οθόνης.</string>
+    <string name="setting_floating_button_alpha">Διαφάνεια αιωρούμενου κουμπιού</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (πλήρως διαφανές) έως 1.0 (πλήρως αδιαφανές)</string>
+    <string name="setting_floating_button_alpha_dialog">Επιλέξτε μια χαμηλότερη τιμή για να κάνετε το κουμπί πιο διαφανές. Από 0.0 έως 1.0\nΠροεπιλογή: 1.0 (πλήρως αδιαφανές)</string>
+    <string name="setting_floating_button_color">Χρώμα αιωρούμενου κουμπιού</string>
+    <string name="setting_delay_custom_summary">Επιλέξτε μια προσαρμοσμένη καθυστέρηση για το πλακίδιο (σε δευτερόλεπτα)</string>
+    <string name="setting_floating_button_delay_custom_summary">Επιλέξτε μια προσαρμοσμένη καθυστέρηση για το αιωρούμενο κουμπί (σε δευτερόλεπτα)</string>
+    <string name="setting_format_quality">Ποιότητα μορφής αρχείου</string>
+    <string name="setting_format_quality_dialog">Συμπίεση/Ποιότητα της μορφής αρχείου: (0 έως 100)\n0 σημαίνει συμπίεση για το μικρότερο μέγεθος. 100 σημαίνει συμπίεση για μέγιστη οπτική ποιότητα.\nΑφήστε κενό για να χρησιμοποιήσετε την προεπιλεγμένη τιμή.</string>
+    <string name="setting_keep_app_data_max">Μέγιστος αριθμός στιγμιότυπων οθόνης που θα κρατηθεί:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Εάν απενεργοποιήσατε το \"%1$s\", τότε τα στιγμιότυπα οθόνης αποθηκεύονται προσωρινά στο φάκελο \"Android/data/\" και διαγράφονται περιοδικά όταν επιτευχθεί ο μέγιστος αριθμός αρχείων.\n-1 σημαίνει διατήρηση απεριόριστης\nΠροεπιλεγμένη τιμή %2$s</string>
+    <string name="setting_keep_screenshot_history">Διατήρηση ιστορικού στιγμιότυπων οθόνης</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Αποθηκεύει τα ονόματα αρχείων των στιγμιότυπων οθόνης σε μια λίστα. Αυτό απαιτείται για τη συνάρτηση \"%1$s\"</string>
 </resources>
