@@ -9,6 +9,7 @@
     <string name="title_delay">Atraso</string>
     <string name="more_setting">Ajustes</string>
     <string name="open_settings">Abrir configurações</string>
+    <string name="floating_button_settings">Configurações do botão flutuante</string>
     <string name="left_screenshot_right_menu">Esquerda: captura de ecrã, direita: configurações</string>
     <string name="partial_screenshot">Selecionar retângulo</string>
     <string name="file_format">Formato de arquivo</string>
@@ -54,15 +55,39 @@
 %randint% - um número aleatório]]></string>
     <string name="setting_tile_action">Ação do botão</string>
     <string name="setting_floating_action">Ação do botão flutuante</string>
+    <string name="setting_voice_interaction_action">Ação de assistente</string>
     <string name="setting_dark_theme">Tema escuro</string>
     <string name="setting_dark_theme_system">Sistema</string>
     <string name="setting_dark_theme_off">Desativado</string>
     <string name="setting_dark_theme_on">Ativado</string>
+    <string name="setting_notification_buttons">Botões de notificação</string>
+    <string name="setting_notification_buttons_description">Selecione até três botões que aparecem abaixo da notificação de captura de tela</string>
+    <string name="setting_notification_buttons_max_three">Por favor, escolha um máximo de três botões</string>
     <string name="notification_settings">Notificações</string>
     <string name="notification_settings_on">Ligado</string>
     <string name="notification_settings_off">Desligado</string>
+    <string name="setting_post_actions">Ações subsequentes</string>
+    <string name="setting_post_actions_description">Escolha o que acontece após a captura de tela ser tirada</string>
+    <string name="button_history">Imagens recentes</string>
+    <string name="button_history_description">Veja suas capturas de tela recentes incluindo arquivos que não foram salvos na galeria</string>
+    <string name="history_title">Histórico de screenshot</string>
+    <string name="restore_default_values">Restaurar valores padrão</string>
+    <string name="post_action_save_to_storage">Salvar imagem na galeria</string>
+    <string name="post_action_show_toast">Mostrar uma notificação \"Toast\". Um pequeno pop-up que desaparece após 2 segundos</string>
+    <string name="post_action_show_notification">Mostrar uma notificação regular. Você pode alterar os botões (Edit,Compartilhar,…) abaixo da notificação sob \"Mais Configurações\"</string>
+    <string name="post_action_empty">Não abrir a captura de tela</string>
+    <string name="post_action_open_in_post">Abrir na visão \"Detalhes\"</string>
+    <string name="post_action_open_in_post_crop">Recortar a imagem</string>
+    <string name="post_action_open_in_photo_editor">Abrir o editor de fotos incluído</string>
+    <string name="post_action_open_in_external_editor">Abrir em um editor de fotos externo</string>
+    <string name="post_action_open_in_external_viewer">Abrir em um visualizador de fotos ou na galeria</string>
+    <string name="post_action_open_share">Compartilhar captura de tela</string>
+    <string name="move_to_storage_directory">Mover para a galeria</string>
+    <string name="button_clear">Limpar</string>
+    <string name="button_clear_confirm">Você deseja excluir todos os arquivos temporários?\nIsto irá apagar todos os arquivos em %s\n\n(Estes arquivos geralmente não são visíveis na sua galeria)</string>
     <string name="file_title">Captura de ecrã</string>
     <string name="file_description">Captura de ecrã tirada em %1$s</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Captura de tela obtida</string>
     <string name="notification_body">Toque para visualizar a captura de tela</string>
     <string name="notification_channel_description">Mostra uma notificação quando faz um captura de ecrã</string>
@@ -77,8 +102,14 @@
     <string name="notification_delete_screenshot">Excluir</string>
     <string name="notification_share_screenshot">Compartilhar</string>
     <string name="notification_edit_screenshot">Editar</string>
+    <string name="notification_rename_screenshot">Renomear</string>
+    <string name="notification_screenshot_details">detalhes</string>
+    <string name="notification_crop_screenshot">Recortar</string>
+    <string name="notification_photo_editor_screenshot">Editor de Fotos</string>
     <string name="screenshot_deleted">Captura de ecrã eliminada</string>
     <string name="screenshot_delete_failed">Não foi possível eliminar ficheiro</string>
+    <string name="screenshot_renamed">Arquivo renomeado para %1s</string>
+    <string name="screenshot_rename_failed">Não foi possível renomear o arquivo</string>
     <string name="permission_missing_external_storage">Falha ao adquirir permissão para aceder ao armazenamento</string>
     <string name="permission_missing_screen_capture">Falha ao adquirir permissão para capturar o ecrã</string>
     <string name="hide_app_from_launcher">Ocultar aplicação no menu</string>
@@ -97,6 +128,17 @@
     <string name="tutorial_step16">Faça capturas de ecrã com o novo botão</string>
     <string name="take_screenshot">Tirar uma captura de ecrã</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">Divulgação Proeminente do Google Play &amp; Requisito de Consentimento</string>
+    <string name="googleplay_consent_line_0">O Google Play requer uma divulgação proeminente do uso dos Serviços de Acessibilidade API para um aplicativo que não é uma ferramenta de acessibilidade.</string>
+    <string name="googleplay_consent_line_1">Este aplicativo - \"Screenshot Tile [No root]\" - não é uma ferramenta de acessibilidade.</string>
+    <string name="googleplay_consent_line_2">Uma vez que os usuários podem não esperar razoavelmente que seus dados pessoais e confidenciais sejam necessários para fornecer ou melhorar os recursos compatíveis com a política ou funcionalidades neste app uma divulgação proeminente do uso da API de Serviços de Acessibilidade por este aplicativo e uma declaração do compartilhamento de dados dentro deste aplicativo é necessária:</string>
+    <string name="googleplay_consent_line_3">Este aplicativo requer acesso à API de Serviços de Acessibilidade para tirar uma captura de tela quando o aplicativo não estiver em uso.</string>
+    <string name="googleplay_consent_line_4">O acesso à API de Serviços de Acessibilidade permitirá que este aplicativo grave a tela.</string>
+    <string name="googleplay_consent_line_5">Gravações de tela serão utilizadas para criar imagens de captura de tela.</string>
+    <string name="googleplay_consent_line_6">Os dados não são coletados nem compartilhados por este aplicativo usando as capacidades de acessibilidade.</string>
+    <string name="googleplay_consent_line_7">Você concorda em autorizar este aplicativo para obter acesso à API de Serviços de Acessibilidade e usar os recursos de acessibilidade para gravar a tela?</string>
+    <string name="googleplay_consent_yes">Eu concordo</string>
+    <string name="googleplay_consent_no">Eu me recuso</string>
     <!-- About -->
     <string name="about_app_title">Sobre</string>
     <string name="about_app_1">Isto é uma bifurcação de\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -104,6 +146,10 @@
     <string name="about_license_title">Licença</string>
     <string name="about_license_1">Versão 3 da GNU GENERAL PUBLIC LICENSE</string>
     <string name="about_app_2">Esta aplicação ainda tem alguns problemas e está em desenvolvimento.\nSe tem acesso root no seu telemóvel, use a versão do ipcjs, é mais rápida e mais estável.</string>
+    <string name="about_privacy_title">Política de Privacidade</string>
+    <string name="about_open_source_title">Código-fonte aberto usado</string>
+    <string name="about_advanced_settings_button">Configurações avançadas</string>
+    <string name="about_update_check_button">Verificação de atualizações</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Configurações de acessibilidade</string>
     <string name="main_floating_button_title">Botão flutuante</string>
@@ -118,7 +164,66 @@
     <string name="main_long_press_title">Toque longo</string>
     <string name="main_long_press_text">Pressionar e segurar o botão abre um menu. Pode especificar um atraso para a captura do ecrã ou recortar uma parte do ecrã.</string>
     <string name="main_assist_app_title">App de assistência</string>
+    <string name="main_assist_app_text">Se você definir esse aplicativo como seu aplicativo de assistência, pressione longamente o botão de início para fazer uma captura de tela. Ativar este aplicativo como seu app assistivo desativará outros assistentes. Você pode alterar a ação do botão home longo pressione nas configurações do aplicativo.</string>
     <!-- Post edit activity -->
+    <string name="post_button_save">Renomear</string>
+    <string name="post_recent_file_names_and_suggestions">Nomes de arquivos e sugestões recentes:</string>
+    <string name="post_hint_new_file_name">Novo nome do arquivo</string>
+    <string name="post_rename_file">Renomear arquivo:</string>
+    <string name="post_rename_error_identical">Nome do arquivo novo e antigo são idênticos</string>
+    <string name="post_hint_new_file_name_suggestion">Adicionar uma nova sugestão</string>
+    <string name="post_save_a_suggestion">Salvar sugestão</string>
+    <string name="post_pin_to_favorites">Fixar nos favoritos</string>
+    <string name="post_delete_suggestion">Excluir sugestão</string>
     <!-- Photo Editor-->
+    <string name="label_brush">Escova</string>
+    <string name="label_shape">Forma</string>
+    <string name="label_oval">Opala</string>
+    <string name="label_rectangle">Retângulo</string>
+    <string name="label_line">Linha</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Eraser</string>
+    <string name="label_eraser_mode">Modo borracha</string>
+    <string name="label_text">texto</string>
+    <string name="label_filter">filtro</string>
+    <string name="label_adjust">Ajustar</string>
+    <string name="label_rotation">Rotação</string>
+    <string name="label_opacity">Transparência</string>
+    <string name="label_done">Concluído</string>
+    <string name="label_close">FECHAR</string>
+    <string name="label_save">Guardar</string>
+    <string name="label_discard">Descartar</string>
+    <string name="msg_save_image">Você quer sair sem salvar a imagem?</string>
+    <string name="msg_save_image_to_share">Por favor, salve a imagem para compartilhar</string>
+    <string name="msg_share_image">Compartilhar imagem</string>
+    <string name="msg_choose_image">Selecione uma imagem</string>
+    <string name="msg_image_saved">Imagem salva com sucesso</string>
+    <string name="msg_failed_to_save">Falha ao salvar a imagem</string>
+    <string name="dialog_ask_filename_title">Salvar como...</string>
+    <string name="dialog_ask_filename_directory">Diretório selecionado:</string>
+    <string name="dialog_ask_filename_hint">Nome do arquivo (sem extensão)</string>
     <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Modo padrão: Ligado</string>
+    <string name="setting_defaults_to_milliseconds">Padrão: %1$s milissegundos</string>
+    <string name="setting_toasts">Todas as notificações \"Toast\"</string>
+    <string name="setting_success_toasts">Notificações \"Toast\" para eventos bem-sucedidos</string>
+    <string name="setting_error_toasts">Notificações de \"Toast\" para erros</string>
+    <string name="setting_select_area_shutter_delay">Atraso após tocar no obturador (no modo \"Selecionar área\"</string>
+    <string name="setting_select_area_shutter_delay_dialog">Período de espera entre o tempo em que o obturador foi pressionado e a captura de tela é tirada. Use um valor maior (por exemplo, 500) se o ícone do obturador era visível nas capturas de tela.</string>
+    <string name="setting_original_after_permission_delay">Atraso após conceder permissão de captura de tela (aplica-se ao \"método original\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Período de espera entre o tempo em que a permissão foi concedida e a captura de tela é tirada. Use um valor maior (por exemplo, 500) se o diálogo de permissão era visível nas capturas de tela.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Atraso após \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Período de espera antes de tentar novamente depois da mensagem de erro. Use um valor maior (por exemplo, 500) se a mensagem de erro foi visível na captura de tela.</string>
+    <string name="setting_floating_button_alpha">Transparência do botão flutuante</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (totalmente transparente) para 1.0 (totalmente opaco)</string>
+    <string name="setting_floating_button_alpha_dialog">Escolha um valor mais baixo para tornar o botão mais transparente. Intervalo 0.0 a 1.0\nPadrão: 1.0 (totalmente opaco)</string>
+    <string name="setting_floating_button_color">Cor do botão flutuante</string>
+    <string name="setting_delay_custom_summary">Escolha um atraso personalizado para o bloco (em segundos)</string>
+    <string name="setting_floating_button_delay_custom_summary">Escolha um atraso personalizado para o botão flutuante (em segundos)</string>
+    <string name="setting_format_quality">Formato do arquivo</string>
+    <string name="setting_format_quality_dialog">Compressão/Qualidade do formato do arquivo: (0 a 100)\n0 significa compressão para um tamanho menor. 100 significa compressão para máximo qualidade visual.\nDeixe em branco para usar o valor padrão.</string>
+    <string name="setting_keep_app_data_max">Número máximo de capturas de tela para manter em:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Se você desativar \"%1$s\", as capturas de tela são temporariamente armazenadas na pasta \"Android/dados/\" e excluídas periodicamente quando o número máximo de arquivos é atingido.\n-1 significa manter ilimitado\nValor padrão %2$s</string>
+    <string name="setting_keep_screenshot_history">Manter histórico de capturas de tela</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Armazena os nomes dos arquivos de capturas de tela em uma lista. Isso é necessário para a função \"%1$s\"</string>
 </resources>
