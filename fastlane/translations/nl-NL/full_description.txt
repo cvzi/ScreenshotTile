@@ -38,4 +38,4 @@ Sinds Android 9/Pie is deze toestemming vereist voor het maken van screenshots. 
 
 <h2>Het app-pictogram verbergen:</h2>In de instellingen van de app kan je het app-pictogram verbergen van je launcher. Je hebt nog steeds toegang tot de app door lang op de tegel te drukken in je snelle instellingen. Helaas staat Android 10 het verbergen van een app niet meer toe.
 
-<h2>🌎 Ondersteuning en vertalingen</h2>Als er een probleem is of je wil helpen deze app te vertalen in jouw taal, neem contact met me op via <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> of draag een vertaling bij op <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+<h2>🌎 Ondersteuning en vertalingen</h2>Als er een probleem is of je wil helpen deze app te vertalen in jouw taal, neem contact met me op via <a href="https://github.com/cvzi/ScreenshotTile/issues">github.
