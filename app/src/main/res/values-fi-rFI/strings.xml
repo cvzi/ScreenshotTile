@@ -153,7 +153,7 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">Esteettömyyden asetukset</string>
     <string name="main_floating_button_title">Kelluva painike</string>
-    <string name="main_general_text">Ennen kuin voit käyttää tätä sovellusta, sinun täytyy lisätä tiili/painike pikaasetuksiin. Jos et tiedä miten tehdä tämän, katso [Tutoriaalinen,. utorialActivity].\n\nTämä sovellus tukee kahta eri tapaa kuvakaappausten ottamiseksi:</string>
+    <string name="main_general_text">Ennen kuin voit käyttää tätä sovellusta, sinun täytyy lisätä tiili/painike pikaasetuksiin. Jos et tiedä miten tehdä tämän, katso [Tutoriaalinen,.TutorialActivity].\n\nTämä sovellus tukee kahta eri tapaa kuvakaappausten ottamiseksi:</string>
     <string name="main_legacy_method_title">Vanha Menetelmä</string>
     <string name="main_legacy_method_text">Vanha tapa ottaa kuvakaappauksia käyttää näytön tallennus ominaisuuksia Android.\nKun otat kuvakaappauksen, ääntä ei soiteta. Äänetön ilmoitus avataan, jaetaan tai muokataan kuvakaappausta. Ilmoitus voidaan poistaa käytöstä sovelluksen asetuksissa.\nEnnen kuin voit ottaa kuvakaappauksen, sinun täytyy lisätä tiili nopeisiin asetuksiin, hyväksyä oikeudet tallentaa näytön ja luvan käyttää sisäistä tallennustilaa tallentaa kuvatiedosto.\nKatso opetusohjelma miten tehdä se.\n\nJoissakin puhelimissa tämä menetelmä ei toimi, erityisesti uudemmilla Androideilla (9. +) se on epävakaa ja se voi pyytää lupaa joka ikinen kuvakaappaus. Jos näin tapahtuu, sinun pitäisi käyttää natiivi menetelmä alla.</string>
     <string name="main_native_method_title">Natiivi Menetelmä</string>
