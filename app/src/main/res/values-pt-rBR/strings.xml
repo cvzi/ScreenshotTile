@@ -9,6 +9,7 @@
     <string name="title_delay">Adiamento</string>
     <string name="more_setting">Mais opções</string>
     <string name="open_settings">Abrir configurações</string>
+    <string name="floating_button_settings">Configurações do botão flutuante</string>
     <string name="left_screenshot_right_menu">À esquerda: Captura da tela, À direita: Configurações</string>
     <string name="partial_screenshot">Selecione uma área</string>
     <string name="file_format">Formato de arquivo</string>
@@ -216,6 +217,7 @@
     <string name="setting_floating_button_alpha">Transparência do botão flutuante</string>
     <string name="setting_floating_button_alpha_summary">0.0 (totalmente transparente) até 1.0 (totalmente opaco)</string>
     <string name="setting_floating_button_alpha_dialog">Escolha um valor mais baixo para tornar o botão mais transparente. Variação de 0.0 a 1.0\nPadrão: 1.0 (totalmente opaco)</string>
+    <string name="setting_floating_button_color">Cor do botão flutuante</string>
     <string name="setting_delay_custom_summary">Escolha um adiamento personalizado para o botão de ajustes rápidos (em segundos)</string>
     <string name="setting_floating_button_delay_custom_summary">Escolha um adiamento personalizado para o botão flutuante (em segundos)</string>
     <string name="setting_format_quality">Qualidade de arquivo</string>
