@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Skjermbilde Tile</string>
-    <string name="app_name_long">Skjermbilde Feril (NoRoot)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Skjermbilde</string>
     <string name="tile_floating">Flytende skjermbilde knapp</string>
     <string name="tile_floating_label">Flytende</string>
