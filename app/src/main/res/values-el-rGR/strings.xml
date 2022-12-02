@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Στιγμιότυπο Πλακιδίου</string>
+    <string name="app_name">Screenshot Tile</string>
     <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Στιγμιότυπο οθόνης</string>
     <string name="tile_floating">Αιωρούμενο Κουμπί Στιγμιοτύπου οθόνης</string>
