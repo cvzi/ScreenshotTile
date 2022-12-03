@@ -76,7 +76,7 @@
     <string name="post_action_show_toast">Zobrazit oznámení \"Toast\". Malé vyskakovací okno, které zmizí po 2 sekundách</string>
     <string name="post_action_show_notification">Zobrazit pravidelné oznámení. Tlačítka můžete změnit (dit, Sdílet,…) pod oznámením pod \"Další nastavení\"</string>
     <string name="post_action_empty">Neotevírat snímek obrazovky</string>
-    <string name="post_action_open_in_post">Otevřít v zobrazení \"Details\"</string>
+    <string name="post_action_open_in_post">Otevřít v zobrazení \"Detaily\"</string>
     <string name="post_action_open_in_post_crop">Oříznout obrázek</string>
     <string name="post_action_open_in_photo_editor">Otevřít zahrnutý editor fotek</string>
     <string name="post_action_open_in_external_editor">Otevřít v externím editoru fotek</string>
