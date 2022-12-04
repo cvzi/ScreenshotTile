@@ -2,12 +2,11 @@ Añade un botón/mosaico al panel de ajustes rápidos para realizar capturas de 
 
 Después de instalar necesita agregar el botón/mosaico a la configuración rápida y luego conceder los permisos para grabar capturas de pantalla y guardar imágenes en el almacenamiento interno.
 
-Si la aplicación se bloquea en Android 9/Pie o 10, puede intentar habilitar "Usar método de captura de pantalla nativa" en los ajustes de la aplicación.
-
 <h2>Características:</h2>✓ Captura de pantalla de los ajustes rápidos
 ✓ No requiere root
 ✓ Notificación después de tomar una captura de pantalla (puede desactivarse)
 ✓ Compartir, editar o eliminar inmediatamente una captura de pantalla de la notificación
+✓ Editar la captura de pantalla con el editor de imágenes incluido
 ✓ Botón/sobreposición como una burbuja de chat (Android 9+)
 ✓ Usar como aplicación de asistencia y mantener presionado el botón Inicio para tomar una captura de pantalla
 ✓ Solo toma una captura de pantalla de un área específica de la pantalla (pulsación larga en el azulejo)
@@ -17,7 +16,7 @@ Si la aplicación se bloquea en Android 9/Pie o 10, puede intentar habilitar "Us
 ✓ Tomar capturas de pantalla automáticas con aplicaciones como Tasker o MacroDroid
 ✓ Gratis, de código abierto y sin publicidad
 
-Esta es una bifurcación de "Tilo de captura de pantalla [Root]" pero no requiere root. Si tienes acceso root, debes usar la <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">aplicación original</a> de ipcjs, es más rápida y fiable que este fork.
+Esta es una bifurcación de "Tilo de captura de pantalla [Root]" pero no requiere root.
 
 Código fuente: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 App original: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -39,3 +38,5 @@ Desde Android 9/Pie este permiso es necesario para realizar capturas de pantalla
 <h2>Ocultar el icono de la aplicación:</h2>En la configuración de la aplicación puedes ocultar el icono de la aplicación de tu launcher. Aún puedes acceder a la aplicación manteniendo pulsado el mosaico en tus ajustes rápidos. Desafortunadamente, Android 10 ya no permite ocultar una aplicación.
 
 <h2>🌎 Soporte y traducciones</h2>Si hay un problema o quieres ayudar a traducir esta aplicación a tu idioma, ponte en contacto conmigo en <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> o contribuir con una traducción en <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Esta aplicación puede acceder a la <a href="https://support.google.com/googleplay/android-developer/answer/10964491">API de Servicios de Accesibilidad</a> que permite a esta aplicación grabar la pantalla. Los datos no son recolectados ni compartidos por esta aplicación usando las capacidades de accesibilidad.
