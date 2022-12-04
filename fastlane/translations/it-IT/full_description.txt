@@ -2,12 +2,11 @@ Aggiunge un pulsante/tile al pannello delle impostazioni rapide per catturare sc
 
 Dopo l'installazione è necessario aggiungere il pulsante/tile alle impostazioni rapide e quindi concedere le autorizzazioni per registrare le acquisizioni dello schermo e salvare le immagini nella memoria interna.
 
-Se l'app si blocca su Android 9/Pie o 10, è possibile provare ad abilitare "Usa il metodo di screenshot nativo" nelle impostazioni.
-
 <h2>Caratteristiche:</h2>✓ Cattura gli screenshot dalle impostazioni rapide
 ✓ Nessuna root richiesta
 ✓ Notifica dopo uno screenshot (può essere disabilitata)
 ✓ Condividi, modifica o elimina immediatamente uno screenshot dalla notifica
+✓ Modifica lo screenshot con l'editor di immagini incluso
 Pulsante mobile / pulsante di sovrapposizione come una bolla di chat (Android 9+)
 ✓ Use as assist app to take a screenshot (long-press the Home button)
 ✓ Prendi solo uno screenshot di un'area specifica dello schermo (premere a lungo il tile)
@@ -17,7 +16,7 @@ Pulsante mobile / pulsante di sovrapposizione come una bolla di chat (Android 9+
 ✓ Fai screenshot automatici con app come Tasker o MacroDroid
 ✓ Gratis, open-source, nessuna pubblicità
 
-Questo è un fork di "Screenshot Tile [Root]" ma non richiede root. Se hai accesso root, dovresti usare <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">l'app originale</a> da ipcjs, è più veloce e più affidabile di questo fork.
+Questo è un fork di "Screenshot Tile [Root]" ma non richiede root.
 
 Codice sorgente: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 App originale: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -39,3 +38,5 @@ Da Android 9/Pie è necessaria questa autorizzazione per scattare screenshot. Si
 <h2>Nascondi l'icona dell'app:</h2>Nelle impostazioni dell'app puoi nascondere l'icona dell'app dal Launcher. Puoi ancora accedere all'app premendo a lungo il tile nelle impostazioni rapide. Purtroppo Android 10 non consente più di nascondere un'app.
 
 <h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Questa app può accedere all'<a href="https://support.google.com/googleplay/android-developer/answer/10964491">API Servizi di Accessibilità</a> che consente a questa app di registrare lo schermo. I dati non sono né raccolti né condivisi da questa app utilizzando le funzionalità di accessibilità.
