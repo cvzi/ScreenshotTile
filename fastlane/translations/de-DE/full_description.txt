@@ -2,12 +2,11 @@ Fügt dem Schnelleinstellungen eine Schaltfläche/Kachel hinzu, um Screenshots z
 
 Nach der Installation müssen Sie die Schaltfläche/Kachel zu Ihren Schnelleinstellungen hinzufügen und dann die Berechtigung zur Aufnahme von Bildschirmaufnahmen und zum Speichern von Bildern auf dem internen Speicher gewähren.
 
-Falls es zu Abstürzen bei Androi 9 Pie oder 10 kommt, aktiviere die Funktion "Native Screenshotaufnahme" in den App-Einstellungen.
-
 ✓ Screenshots direkt aus den Schnelleinstellungen
 ✓ Kein Root benötigt
 ✓ Nach den Screenshot wird eine Benachrichtigung angezeigt (deaktivierbar)
 ✓ Teilen, Bearbeiten oder Löschen direkt aus der Benachrichtigung
+✓ Bearbeite den Screenshot mit dem mitgelieferten Bildbearbeitungsprogramm
 ✓ Schwebender Auslöseknopf (ähnlich wie eine Chat bubble)
 ✓ Aktiviere als Assistent-App um Screenshots aufzunehmen (langes Drücken der Home-Taste)
 ✓ Aufnehmen von bestimmten Bereichen des Bildschirms (lange auf die Kachel drücken)
@@ -17,7 +16,7 @@ Falls es zu Abstürzen bei Androi 9 Pie oder 10 kommt, aktiviere die Funktion "N
 ✓ Automatische Screenshtos mit Tasker oder MacroDroid
 ✓ Kostenlos, Open Source, keine Werbung
 
-Diese App ist ein Fork von "Screenshot Tile [Root]", aber dieser Fork benötigt kein Root. Falls du Root Zugriff hast, solltest du die <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">originale App</a> verwenden.
+Diese App ist ein Fork von "Screenshot Tile [Root]", aber dieser Fork benötigt kein Root.
 
 Source code: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Original App: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -39,3 +38,5 @@ Seit Android 9/Pie wird diese Berechtigung benötigt, wenn eine App im Hintergru
 <h2>App icon verstecken:</h2>In den App-Einstellungen kann man das Icon dieser App verstecken. Man kann die App weiterhin Öffnen indem man lange auf die Kachel in den Schnelleinstellungen drückt. Leider lassen sich ab Android 10 keine App-Icons mehr verstecken.
 
 <h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Diese App kann auf die <a href="https://support.google.com/googleplay/android-developer/answer/10964491">Accessibility Services API</a> zugreifen, mit der diese App den Bildschirm aufnehmen kann. Von dieser App werden mithilfe der Bedienungshilfefunktionen weder personenbezogene noch vertrauliche Nutzerdaten gesammelt oder geteilt.
