@@ -2,12 +2,11 @@ Adds a button/tile to the quick settings panel to take screenshots.
 
 After install you need to add the button/tile to your quick settings and then grant the permissions to record screen captures and save images to the internal storage.
 
-If the app crashes on Android 9/Pie or 10, you can try to enable "Use native screenshot method" in the app settings.
-
 <h2>Features:</h2>✓ Take screenshots from the quick settings
 ✓ No root required
 ✓ Notification after a screenshot was taken (can be disabled)
 ✓ Immediately share, edit or delete a screenshot from the notification
+✓ Edit the screenshot with the included image editor
 ✓ Floating button/Overlay button like a chat bubble (Android 9+)
 ✓ Use as assist app to take a screenshot (long-press the Home button)
 ✓ Only take screenshot of a specific area of the screen (long-press the tile)
@@ -17,7 +16,7 @@ If the app crashes on Android 9/Pie or 10, you can try to enable "Use native scr
 ✓ Take automatic screenshots with apps like Tasker or MacroDroid
 ✓ Free, open-source, no advertising
 
-This is a fork of "Screenshot Tile [Root]" but it does not require root. If you have root access, you should use the <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">original app</a> by ipcjs, it's faster and more reliant than this fork.
+This is a fork of "Screenshot Tile [Root]" but it does not require root.
 
 Source code: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Original app: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
