@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile</string>
-    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
+    <string name="app_name_long">Screenshot Tile (Bez roota)</string>
     <string name="tile_label">Zrzut ekranu</string>
     <string name="tile_floating">Pływający przycisk zrzutu ekranu</string>
     <string name="tile_floating_label">Pływający</string>
@@ -20,7 +20,7 @@
     <string name="show_count_down">Pokaż odliczanie</string>
     <string name="use_native_screenshot">Użyj natywnej metody wykonywania zrzutów ekranu</string>
     <string name="use_native_screenshot_summary">Symuluj naciśnięcie przycisków Home i zasilania</string>
-    <string name="use_native_screenshot_unsupported">Wymaga systemu Android 9 Pie</string>
+    <string name="use_native_screenshot_unsupported">Wymagany Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">Usługa ułatwień dostępu jest wyłączona</string>
     <string name="use_native_screenshot_option_default">Metoda natywna używa domyślnych ustawień systemu</string>
     <string name="use_native_screenshot_option_android11">Wyłącz najpierw \'Użyj domyślnych ustawień systemu\', aby użyć tego</string>
@@ -135,7 +135,7 @@
     <string name="googleplay_consent_line_3">Ta aplikacja wymaga dostępu do API Usług Dostępności aby zrobić zrzut ekranu, gdy aplikacja nie jest w użyciu.</string>
     <string name="googleplay_consent_line_4">Dostęp do Usług Dostępności API umożliwi aplikacji nagrywanie ekranu.</string>
     <string name="googleplay_consent_line_5">Nagrania ekranu będą używane do tworzenia obrazów zrzutu ekranu.</string>
-    <string name="googleplay_consent_line_6">Dane nie są ani gromadzone ani udostępniane przez tę aplikację przy użyciu możliwości dostępności.</string>
+    <string name="googleplay_consent_line_6">Dane nie są ani gromadzone, ani udostępniane przez tę aplikację przy użyciu funkcji ułatwień dostępu.</string>
     <string name="googleplay_consent_line_7">Czy zgadzasz się na autoryzację tej aplikacji w celu uzyskania dostępu do API Usług Dostępności i wykorzystania możliwości dostępności do nagrywania ekranu?</string>
     <string name="googleplay_consent_yes">Zgadzam się</string>
     <string name="googleplay_consent_no">Odmawiam</string>
