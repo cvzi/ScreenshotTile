@@ -1,21 +1,16 @@
 package com.github.cvzi.screenshottile.activities
 
-import android.app.StatusBarManager
-import android.content.ComponentName
 import android.view.View
 import android.view.ViewGroup
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Espresso.pressBack
+import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.scrollTo
 import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.rule.ActivityTestRule
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
@@ -35,27 +30,42 @@ class MainActivityTest {
         }
     }
 
-    @Rule
-    @JvmField
-    var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
+    @get:Rule
+    val activityRule = activityScenarioRule<MainActivity>()
+
 
     @Test
     fun mainActivityTest() {
 
+        val scenario = activityRule.scenario
+
+        var stringMoreSetting = ""
+        var stringSettingPostActions = ""
+        var stringFloatingButtonSettings = ""
+        var stringButtonHistory = ""
+        var stringTutorial = ""
+        scenario.onActivity { activity ->
+            stringMoreSetting = activity.getString(R.string.more_setting)
+            stringSettingPostActions = activity.getString(R.string.setting_post_actions)
+            stringFloatingButtonSettings = activity.getString(R.string.floating_button_settings)
+            stringButtonHistory = activity.getString(R.string.button_history)
+            stringTutorial = activity.getString(R.string.tutorial)
+        }
+
         val materialButton = onView(
             allOf(
-                withId(R.id.buttonSettings),
-                withText(mActivityTestRule.activity.getString(R.string.more_setting)),
-                childAtPosition(
+                withId(R.id.buttonSettings), withText(stringMoreSetting), childAtPosition(
                     childAtPosition(
-                        withClassName(`is`("android.widget.LinearLayout")),
-                        1
-                    ),
-                    0
-                ),
-                isDisplayed()
+                        withClassName(`is`("android.widget.LinearLayout")), 1
+                    ), 0
+                ), isDisplayed()
             )
         )
+
+        while (stringMoreSetting.isBlank()) {
+            Thread.sleep(1000)
+        }
+
         materialButton.perform(click())
 
         pressBack()
@@ -64,14 +74,10 @@ class MainActivityTest {
 
         val materialButtonPostSettings = onView(
             allOf(
-                withId(R.id.buttonPostActions),
-                withText(mActivityTestRule.activity.getString(R.string.setting_post_actions)),
-                childAtPosition(
+                withId(R.id.buttonPostActions), withText(stringSettingPostActions), childAtPosition(
                     childAtPosition(
-                        withClassName(`is`("androidx.cardview.widget.CardView")),
-                        0
-                    ),
-                    2
+                        withClassName(`is`("androidx.cardview.widget.CardView")), 0
+                    ), 2
                 )
             )
         )
@@ -85,13 +91,11 @@ class MainActivityTest {
         val materialButtonFloatingButtonSettings = onView(
             allOf(
                 withId(R.id.buttonFloatingButtonSettings),
-                withText(mActivityTestRule.activity.getString(R.string.floating_button_settings)),
+                withText(stringFloatingButtonSettings),
                 childAtPosition(
                     childAtPosition(
-                        withClassName(`is`("androidx.cardview.widget.CardView")),
-                        0
-                    ),
-                    2
+                        withClassName(`is`("androidx.cardview.widget.CardView")), 0
+                    ), 2
                 )
             )
         )
@@ -104,14 +108,10 @@ class MainActivityTest {
 
         val materialButtonHistory = onView(
             allOf(
-                withId(R.id.buttonHistory),
-                withText(mActivityTestRule.activity.getString(R.string.button_history)),
-                childAtPosition(
+                withId(R.id.buttonHistory), withText(stringButtonHistory), childAtPosition(
                     childAtPosition(
-                        withClassName(`is`("androidx.cardview.widget.CardView")),
-                        0
-                    ),
-                    2
+                        withClassName(`is`("androidx.cardview.widget.CardView")), 0
+                    ), 2
                 )
             )
         )
@@ -122,14 +122,10 @@ class MainActivityTest {
 
         val materialButtonTutorial = onView(
             allOf(
-                withId(R.id.buttonTutorial),
-                withText(mActivityTestRule.activity.getString(R.string.tutorial)),
-                childAtPosition(
+                withId(R.id.buttonTutorial), withText(stringTutorial), childAtPosition(
                     childAtPosition(
-                        withClassName(`is`("androidx.cardview.widget.CardView")),
-                        0
-                    ),
-                    2
+                        withClassName(`is`("androidx.cardview.widget.CardView")), 0
+                    ), 2
                 )
             )
         )
@@ -139,14 +135,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView.perform(click())
@@ -155,14 +148,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView2.perform(click())
@@ -171,14 +161,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView3.perform(click())
@@ -187,14 +174,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView4.perform(click())
@@ -203,14 +187,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView5.perform(click())
@@ -219,14 +200,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView6.perform(click())
@@ -235,14 +213,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView7.perform(click())
@@ -251,14 +226,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView8.perform(click())
@@ -267,14 +239,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView9.perform(click())
@@ -283,14 +252,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView10.perform(click())
@@ -299,14 +265,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView11.perform(click())
@@ -315,14 +278,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView12.perform(click())
@@ -331,14 +291,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView13.perform(click())
@@ -347,14 +304,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView14.perform(click())
@@ -363,14 +317,11 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView15.perform(click())
@@ -379,19 +330,18 @@ class MainActivityTest {
             allOf(
                 withParent(
                     allOf(
-                        withId(R.id.viewPager),
-                        childAtPosition(
-                            withClassName(`is`("android.widget.LinearLayout")),
-                            2
+                        withId(R.id.viewPager), childAtPosition(
+                            withClassName(`is`("android.widget.LinearLayout")), 2
                         )
                     )
-                ),
-                isDisplayed()
+                ), isDisplayed()
             )
         )
         clickableImageView16.perform(click())
 
         pressBack()
+
+
     }
 
     private fun childAtPosition(
@@ -406,8 +356,9 @@ class MainActivityTest {
 
             public override fun matchesSafely(view: View): Boolean {
                 val parent = view.parent
-                return parent is ViewGroup && parentMatcher.matches(parent)
-                        && view == parent.getChildAt(position)
+                return parent is ViewGroup && parentMatcher.matches(parent) && view == parent.getChildAt(
+                    position
+                )
             }
         }
     }
