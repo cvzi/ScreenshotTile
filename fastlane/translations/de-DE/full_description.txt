@@ -6,7 +6,7 @@ Nach der Installation müssen Sie die Schaltfläche/Kachel zu Ihren Schnelleinst
 ✓ Kein Root benötigt
 ✓ Nach den Screenshot wird eine Benachrichtigung angezeigt (deaktivierbar)
 ✓ Teilen, Bearbeiten oder Löschen direkt aus der Benachrichtigung
-✓ Bearbeite den Screenshot mit dem mitgelieferten Bildbearbeitungsprogramm
+Falls du Root Zugriff hast, solltest du die <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">originale App</a> verwenden.
 ✓ Schwebender Auslöseknopf (ähnlich wie eine Chat bubble)
 ✓ Aktiviere als Assistent-App um Screenshots aufzunehmen (langes Drücken der Home-Taste)
 ✓ Aufnehmen von bestimmten Bereichen des Bildschirms (lange auf die Kachel drücken)
