@@ -24,6 +24,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
@@ -279,8 +280,11 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun askToAddTiles() {
+        if (BuildConfig.TESTING_MODE.value) {
+            return
+        }
         if (ScreenshotTileService.instance == null) {
-            val statusBarManager = getSystemService(Context.STATUS_BAR_SERVICE) as StatusBarManager
+            val statusBarManager = getSystemService(StatusBarManager::class.java)
             // Firstly, ask for normal screenshot tile
             statusBarManager.requestAddTileService(
                 ComponentName(this, ScreenshotTileService::class.java),

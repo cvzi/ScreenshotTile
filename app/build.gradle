@@ -26,6 +26,7 @@ android {
         versionCode 85
         versionName '2.0.2'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        buildConfigField "com.github.cvzi.screenshottile.MutableBoolean", "TESTING_MODE", "new com.github.cvzi.screenshottile.MutableBoolean(false)"
     }
     namespace 'com.github.cvzi.screenshottile'
     buildTypes {
