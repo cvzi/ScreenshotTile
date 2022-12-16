@@ -135,7 +135,7 @@
     <string name="googleplay_consent_line_3">Ta aplikacja wymaga dostępu do API Usług Dostępności aby zrobić zrzut ekranu, gdy aplikacja nie jest w użyciu.</string>
     <string name="googleplay_consent_line_4">Dostęp do Usług Dostępności API umożliwi aplikacji nagrywanie ekranu.</string>
     <string name="googleplay_consent_line_5">Nagrania ekranu będą używane do tworzenia obrazów zrzutu ekranu.</string>
-    <string name="googleplay_consent_line_6">Dane nie są ani gromadzone, ani udostępniane przez tę aplikację przy użyciu funkcji ułatwień dostępu.</string>
+    <string name="googleplay_consent_line_6">Dane nie są ani gromadzone ani udostępniane przez tę aplikację przy użyciu możliwości dostępności.</string>
     <string name="googleplay_consent_line_7">Czy zgadzasz się na autoryzację tej aplikacji w celu uzyskania dostępu do API Usług Dostępności i wykorzystania możliwości dostępności do nagrywania ekranu?</string>
     <string name="googleplay_consent_yes">Zgadzam się</string>
     <string name="googleplay_consent_no">Odmawiam</string>
