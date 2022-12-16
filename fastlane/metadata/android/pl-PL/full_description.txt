@@ -2,12 +2,11 @@ Dodaje przycisk/kafelek wykonywania zrzutu ekranu do panelu szybkich ustawień.
 
 Po zainstalowaniu musisz dodać kafelek/przycisk do szybkich ustawień, a następnie przydzielić uprawnienia do nagrywania ekranu i zapisywania obrazów do pamięci wewnętrznej.
 
-Jeśli aplikacja zawiesza się w systemie Android 9/Pie lub 10, możesz spróbować włączyć opcję "Użyj natywnej metody wykonywania zrzutów ekranu" w ustawieniach aplikacji.
-
 <h2>Funkcje:</h2>✓ Wykonywanie zrzutów ekranu z panelu szybkich ustawień
 ✓ Nie wymaga root'a
 ✓ Powiadomienie po wykonaniu zrzutu ekranu (może zostać wyłączone)
 ✓ Natychmiast udostępniaj, edytuj lub usuń zrzut ekranu bezpośrednio z powiadomienia
+✓ Edytuj zrzuty ekranu we wbudowanym edytorze obrazów
 ✓ Pływający przycisk/Nakładka podobna do dymka czatu (Android 9+)
 ✓ Użyj jako aplikacji wspomagającej, aby zrobić zrzut ekranu (przytrzymaj przycisk główny)
 ✓ Wykonywanie zrzutu tylko określonego fragmentu ekranu (długie naciśnięcie kafelka)
@@ -17,7 +16,7 @@ Jeśli aplikacja zawiesza się w systemie Android 9/Pie lub 10, możesz spróbow
 ✓ Wykonywanie automatycznych zrzutów ekranu, za pomocą aplikacji takich jak Tasker lub MacroDroid
 ✓ Darmowy, open-source, bez reklam
 
-To jest fork aplikacji "Screenshot Tile [Root]", z tym że nie wymaga root'a. Jeśli masz dostęp do roota, powinieneś użyć <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">oryginalnej aplikacji</a> od ipcjs, jest szybsza i bardziej niezawodna niż ten fork.
+To jest fork aplikacji "Screenshot Tile [Root]", z tym że nie wymaga root'a.
 
 Kod źródłowy: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Oryginalna aplikacja: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -39,3 +38,5 @@ Od systemu Android 9/Pie to uprawnienie jest wymagane do wykonywania zrzutów ek
 <h2>Ukrywanie ikony aplikacji:</h2>W ustawienia aplikacji możesz ukryć ikonę tej aplikacji z ekranu wszystkich aplikacji. Nadal możesz uzyskać dostęp do aplikacji poprzez długie naciśniecie kafelka w szybkich ustawieniach. Niestety, system Android 10 nie pozwala na ukrywanie aplikacji.
 
 <h2>🌎 Wsparcie i tłumaczenia</h2>Jeśli wystąpił problem lub chcesz pomóc w tłumaczeniu tej aplikacji na swój język, skontaktuj się ze mną na <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> lub weź udział w tłumaczeniu na <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Ta aplikacja ma dostęp do <a href="https://support.google.com/googleplay/android-developer/answer/10964491">Accessibility Services API</a>, który umożliwia tej aplikacji nagrywanie ekranu. Dane nie są ani gromadzone, ani udostępniane przez tę aplikację przy użyciu funkcji ułatwień dostępu.

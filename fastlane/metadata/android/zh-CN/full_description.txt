@@ -2,12 +2,11 @@
 
 安装后，您需要将按钮/图块添加到快速设置，然后授予录制屏幕并保存图像到内部存储的权限。
 
-如果应用在 Android 9/Pie 或 10 上崩溃，您可以尝试在应用设置中启用“使用原生截图方法”。
-
 <h2>特点：</h2>✓ 从快速设置中获取屏幕截图
 ✓ 不需要 root 权限
 ✓ 屏幕截图后通知（可禁用）
 ✓ 从通知中立即分享、编辑或删除屏幕截图
+✓ 使用包含的图像编辑器编辑截图
 ✓ 浮动按钮/叠加按钮，类似聊天气泡 (Android 9+)
 ✓ 用作助理应用以进行截图（长按主屏幕按钮）
 ✓ 只对屏幕上的某个特定区域进行屏幕截图（长按磁贴）
@@ -17,7 +16,7 @@
 ✓ 使用 Tasker 或 MacroDroid 等应用自动截图
 ✓ 免费，开源，没有广告
 
-这是一个 "Screenshot Tile [Root]" 的分叉但不需要 root 权限。 如果您拥有 root 权限，您应该使用 ipcjs 的 <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">原始应用</a> ，它比这个分支更加快捷可靠。
+这是一个 "Screenshot Tile [Root]" 的分叉但不需要 root 权限。 原应用： <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
 
 源代码：<a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 原应用： <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -31,11 +30,13 @@
 这是在您设备的内部存储中保存屏幕截图文件所必需的。
 
 ❏ <i>android.permission.FOREGROUND_SERVICE</i>
-从 Android 9/Pie 起需要此权限进行屏幕截图。 这基本上意味着这个应用可以在不显示自己的情况下运行。 然而，应用将在运行时始终显示通知。
+从 Android 9/Pie 起需要此权限进行屏幕截图。 这基本上意味着这个应用可以在不显示自己的情况下运行。 然而，应用将在运行时始终显示通知。 这基本上意味着这个应用可以在不显示自己的情况下运行。 然而，应用将在运行时始终显示通知。
 
 <h2>自动屏幕截图：</h2>如果你想要从另一个应用自动进行屏幕截图，如 MacroDroid 或 Tasker，你可以在这里找到一个分步指南：
 <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-ints</a>
 
-<h2>隐藏应用图标：</h2>在应用设置中，您可以从启动器中隐藏应用图标。 您仍然可以在快速设置中长按图块访问应用。 不幸的是，Android 10 不再允许隐藏一个应用。
+<h2>隐藏应用图标：</h2>在应用设置中，您可以从启动器中隐藏应用图标。 您仍然可以在快速设置中长按图块访问应用。 不幸的是，Android 10 不再允许隐藏一个应用。 您仍然可以在快速设置中长按磁贴访问应用。 不幸的是，Android 10 不再允许隐藏一个应用。
 
 <h2>🌎 支持和翻译</h2>如果有问题或想要帮助将此应用翻译成你的语言，请在 <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> 上联系我或在 <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a> 上贡献翻译
+
+此应用可以访问 <a href="https://support.google.com/googleplay/android-developer/answer/10964491">无障碍服务 API</a> ，它允许此应用录制屏幕。 此应用程序不使用无障碍功能收集和共享数据。

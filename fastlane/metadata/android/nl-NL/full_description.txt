@@ -2,12 +2,11 @@ Voegt een knop/tegel toe aan het snelle-instellingenpaneel om schermafbeeldingen
 
 Na installatie moet u de knop/tegel toevoegen aan uw snelle instellingen en vervolgens de machtiging geven om schermafdrukken te maken en afbeeldingen op te slaan in de interne opslag.
 
-Als de app crasht op Android 9/Pie of 10, kunt u proberen “Gebruik ingebouwde methode” te activeren in de app-instellingen.
-
 <h2>Functies:</h2>✓ Schermafdrukken maken vanuit de snelle instellingen
 ✓ Geen root nodig
 ✓ Melding nadat een schermafdruk is genomen (kan worden uitgeschakeld)
 ✓ Onmiddellijk delen, bewerken of verwijderen van een schermafdruk vanuit de melding
+✓ De schermafdruk met de bijgevoegde beeldbewerker bewerken
 ✓ Zwevende knop/Overlay-knop zoals een chatbubbel (Android 9+)
 ✓ Use as assist app to take a screenshot (long-press the Home button)
 ✓ Alleen een schermafdruk maken van een specifiek gebied van het scherm (lang indrukken van de tegel)
@@ -17,7 +16,7 @@ Als de app crasht op Android 9/Pie of 10, kunt u proberen “Gebruik ingebouwde 
 ✓ Automatische schermafdrukken maken met apps als Tasker of MacroDroid
 ✓ Gratis, open-source, geen advertenties
 
-Dit is een vork van “Screenshot Tile [Root]” maar heeft geen root nodig. Als je root-toegang hebt, kan je beter de <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">originele app</a> van ipcjs gebruiken, deze is sneller en betrouwbaarder dan deze vork.
+Dit is een vork van “Screenshot Tile [Root]” maar heeft geen root nodig.
 
 Broncode: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Originele app: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -39,3 +38,5 @@ Sinds Android 9/Pie is deze toestemming vereist voor het maken van screenshots. 
 <h2>Het app-pictogram verbergen:</h2>In de instellingen van de app kan je het app-pictogram verbergen van je launcher. Je hebt nog steeds toegang tot de app door lang op de tegel te drukken in je snelle instellingen. Helaas staat Android 10 het verbergen van een app niet meer toe.
 
 <h2>🌎 Ondersteuning en vertalingen</h2>Als er een probleem is of je wil helpen deze app te vertalen in jouw taal, neem contact met me op via <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> of draag een vertaling bij op <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Deze app heeft toegang tot de <a href="https://support.google.com/googleplay/android-developer/answer/10964491">Toegankelijkheidsdiensten-API</a>, waardoor deze app het scherm kan opnemen. Deze app verzameld noch deelt gegevens met behulp van de toegankelijkheidsmogelijkheden.
