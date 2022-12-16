@@ -2,12 +2,11 @@ Legger til en knapp/tile i hurtiginnstillingspanelet for å ta skjermbilder.
 
 Etter installasjonen må du legge til knappen/tilen i hurtiginnstillingene og deretter gi tillatelse til opptak av skjermbilder og lagre bilder i intern lagring.
 
-Hvis appen krasjer på Android 9/Pie eller 10, kan du prøve å aktivere "Bruk naturlig skjermdum" i appinnstillingene.
-
 <h2>Funksjoner:</h2>✓ Ta skjermbilder fra hurtiginnstillingene
 ✓ Ingen rot kreves
 ✓ Varsel etter at et skjermbilde ble tatt (kan deaktiveres)
 ✓ Umiddelbart, rediger eller slett et skjermbilde fra varselet
+✓ Rediger skjermbildet med inkludert bilde editor
 ✓ Flytende knapp/Overleggsknapp som en chatte boble (Android 9+)
 ✓ Bruk som hjelpeapp for å ta et skjermbilde (lang-trykk på Hjem-knappen)
 ✓ Bare ta skjermbilde av et spesifikt område av skjermen (lenge trykk på fletten)
@@ -17,7 +16,7 @@ Hvis appen krasjer på Android 9/Pie eller 10, kan du prøve å aktivere "Bruk n
 ✓ Ta automatisk skjermbilder med apper som Tasker eller MacroDroid
 ✓ Gratis, åpen kildekode, ingen annonser
 
-Dette er en gaffel av "Skjermskutt linje [Root]", men det krever ikke root. Hvis du har root-tilgang bør du bruke <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">original app</a> via ipcjs, det er raskere og mer pålitelig enn denne forken.
+Dette er en gaffel av "Skjermskutt linje [Root]", men det krever ikke root.
 
 Kildekode: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Originalapp: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -39,3 +38,5 @@ Siden Android 9/Pie er denne tillatelsen nødvendig for å ta skjermbilder. Det 
 <h2>Skjuler appikonet:</h2>I appinnstillingene kan du skjule appikonet fra oppstartskjerm. Du kan fortsatt få tilgang til appen ved å trykke lenge på flisen i hurtiginnstillingene dine. Android 10 tillater dessverre ikke lenger en app.
 
 <h2>🌎 Støtte og oversettelser</h2>Hvis det er et problem, eller du ønsker å hjelpe å oversette denne appen til ditt språk, vennligst kontakt meg på <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> eller bidra med en oversettelse på <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Denne appen har tilgang til <a href="https://support.google.com/googleplay/android-developer/answer/10964491">Accessibility Services API</a> som tillater denne appen å spille inn skjermen. Dataene blir verken samlet inn eller delt av denne appen ut fra tilgjengelighetsevnen.
