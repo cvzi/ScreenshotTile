@@ -12,8 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.EditImageActivity
-import com.github.cvzi.screenshottile.App
-import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.activities.PostActivity.Companion.newIntentSingleImage
 import com.github.cvzi.screenshottile.utils.*
 import java.util.*

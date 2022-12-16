@@ -7,6 +7,7 @@ import android.media.Image
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import com.github.cvzi.screenshottile.SaveImageResult
 
 
 /**

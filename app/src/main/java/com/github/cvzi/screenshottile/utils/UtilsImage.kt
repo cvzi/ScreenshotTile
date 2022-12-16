@@ -12,9 +12,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.WindowManager
 import androidx.documentfile.provider.DocumentFile
-import com.github.cvzi.screenshottile.App
-import com.github.cvzi.screenshottile.BuildConfig
-import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import java.io.File
 import java.io.InputStream

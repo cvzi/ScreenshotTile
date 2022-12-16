@@ -20,9 +20,7 @@ import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.burhanrashid52.photoediting.EditImageActivity.Companion.ACTION_NEXTGEN_EDIT
-import com.github.cvzi.screenshottile.App
-import com.github.cvzi.screenshottile.BuildConfig
-import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
 import com.github.cvzi.screenshottile.utils.*
 

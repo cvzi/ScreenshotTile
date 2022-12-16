@@ -49,7 +49,7 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.GenericPostActivity
 import com.github.cvzi.screenshottile.activities.GenericPostActivity.Companion.OPEN_IMAGE_FROM_URI
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
-import com.github.cvzi.screenshottile.utils.SaveImageResultSuccess
+import com.github.cvzi.screenshottile.SaveImageResultSuccess
 import com.github.cvzi.screenshottile.utils.SingleImage.Companion.loadBitmapFromDisk
 import com.github.cvzi.screenshottile.utils.formatFileName
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment

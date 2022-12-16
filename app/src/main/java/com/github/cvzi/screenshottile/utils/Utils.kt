@@ -30,9 +30,7 @@ import android.widget.Toast
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.DialogFragment
 import com.burhanrashid52.photoediting.EditImageActivity
-import com.github.cvzi.screenshottile.App
-import com.github.cvzi.screenshottile.BuildConfig
-import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.activities.GenericPostActivity
 import com.github.cvzi.screenshottile.activities.PostActivity
 import com.github.cvzi.screenshottile.activities.PostCropActivity
@@ -111,32 +109,6 @@ fun createAppDataImageFile(context: Context, filename: String): File {
 }
 
 /**
- * Represents a file format and a quality setting for compression. See https://developer.android.com/reference/kotlin/android/graphics/Bitmap#compress
- */
-class CompressionOptions(var fileExtension: String = "png", val quality: Int = 100) {
-    val format = when (fileExtension) {
-        "jpg" -> Bitmap.CompressFormat.JPEG
-        "webp" -> {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                if (quality == 100) {
-                    Bitmap.CompressFormat.WEBP_LOSSLESS
-                } else {
-                    Bitmap.CompressFormat.WEBP_LOSSY
-                }
-            } else {
-                @Suppress("DEPRECATION")
-                Bitmap.CompressFormat.WEBP
-            }
-        }
-        else -> {
-            fileExtension = "png"
-            Bitmap.CompressFormat.PNG
-        }
-    }
-    val mimeType = mimeFromFileExtension(fileExtension)
-}
-
-/**
  * Get mime type from file extension
  */
 fun mimeFromFileExtension(fileExtension: String): String {
@@ -169,58 +141,6 @@ fun compressionPreference(
     return CompressionOptions(prefFileFormat, quality)
 }
 
-/**
- * Result of saveImageToFile()
- */
-open class SaveImageResult(
-    val errorMessage: String = "",
-    val success: Boolean = false
-) : Serializable {
-    /**
-     * Returns string representation
-     */
-    override fun toString(): String = "SaveImageResult($errorMessage)"
-}
-
-/**
- * Successful result of saveImageToFile()
- */
-data class SaveImageResultSuccess(
-    val bitmap: Bitmap,
-    val mimeType: String,
-    val file: File?,
-    val uri: Uri? = null,
-    val fileTitle: String? = null,
-    val dummyPath: String = ""
-) : SaveImageResult("", true) {
-    override fun toString(): String = "SaveImageResultSuccess($file)"
-}
-
-/**
- * Result of createOutputStream()
- */
-open class OutputStreamResult(
-    val errorMessage: String = "",
-    val success: Boolean = false
-) : Serializable {
-    /**
-     * Returns string representation
-     */
-    override fun toString(): String = "OutputStreamResult($errorMessage)"
-}
-
-/**
- * Successful Result of createOutputStream()
- */
-data class OutputStreamResultSuccess(
-    val fileOutputStream: OutputStream,
-    val imageFile: File?,
-    val uri: Uri? = null,
-    val contentValues: ContentValues? = null,
-    val dummyPath: String = ""
-) : OutputStreamResult("", true) {
-    override fun toString(): String = "OutputStreamResultSuccess()"
-}
 
 /**
  * Get output stream for an image file
@@ -770,10 +690,6 @@ fun isNewAppInstallation(context: Context): Boolean {
     }
 }
 
-data class ClickableStringResult(
-    val builder: SpannableStringBuilder,
-    val activities: List<String>
-)
 
 /**
  * Make activity links clickable. Example: "This is a link [Tutorial,.TutorialActivity] to the tutorial"
@@ -836,12 +752,6 @@ fun hasFdroid(context: Context): Boolean {
     return false
 }
 
-/**
- * Category of a toast message, so messages can be hidden by category
- */
-enum class ToastType {
-    SUCCESS, ERROR, NAGGING, ACTIVITY
-}
 
 /**
  * Show a string as a Toast message

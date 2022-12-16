@@ -13,6 +13,7 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.HistoryActivity
 import com.github.cvzi.screenshottile.activities.PostActivity
 import kotlinx.coroutines.CoroutineScope

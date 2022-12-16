@@ -20,12 +20,10 @@ import android.view.*
 import android.widget.Toast
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
-import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.App.resetMediaProjection
 import com.github.cvzi.screenshottile.App.setScreenshotPermission
-import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID
-import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
 import com.github.cvzi.screenshottile.services.BasicForegroundService

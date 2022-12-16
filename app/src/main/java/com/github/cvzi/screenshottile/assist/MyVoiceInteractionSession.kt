@@ -18,9 +18,7 @@ import android.view.WindowManager
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.github.cvzi.screenshottile.App
-import com.github.cvzi.screenshottile.BuildConfig
-import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView

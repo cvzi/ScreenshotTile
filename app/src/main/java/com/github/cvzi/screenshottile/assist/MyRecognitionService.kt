@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.speech.RecognitionService
 import android.speech.SpeechRecognizer
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.utils.ToastType
+import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.utils.toastMessage
 
 /**

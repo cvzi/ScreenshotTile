@@ -16,10 +16,10 @@ import android.widget.Toast;
 import com.github.cvzi.screenshottile.App;
 import com.github.cvzi.screenshottile.BuildConfig;
 import com.github.cvzi.screenshottile.R;
+import com.github.cvzi.screenshottile.ToastType;
 import com.github.cvzi.screenshottile.services.BasicForegroundService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
-import com.github.cvzi.screenshottile.utils.ToastType;
 
 /**
  * Empty activity that is used to collapse the quick settings panel, finishes itself in onCreate
