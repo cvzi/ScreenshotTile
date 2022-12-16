@@ -6,7 +6,7 @@ Dopo l'installazione è necessario aggiungere il pulsante/tile alle impostazioni
 ✓ Nessuna root richiesta
 ✓ Notifica dopo uno screenshot (può essere disabilitata)
 ✓ Condividi, modifica o elimina immediatamente uno screenshot dalla notifica
-Se hai accesso root, dovresti usare <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">l'app originale</a> da ipcjs, è più veloce e più affidabile di questo fork.
+✓ Modifica lo screenshot con l'editor di immagini incluso
 Pulsante mobile / pulsante di sovrapposizione come una bolla di chat (Android 9+)
 ✓ Use as assist app to take a screenshot (long-press the Home button)
 ✓ Prendi solo uno screenshot di un'area specifica dello schermo (premere a lungo il tile)
