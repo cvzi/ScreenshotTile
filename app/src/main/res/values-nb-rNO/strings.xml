@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Mappen som bildene skal lagres i</string>
     <string name="setting_file_name_pattern">Filnavn</string>
     <string name="setting_file_name_placeholders_title">Bruk disse plassholderne i filnavnet</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tid i yyyy-MM-dd_HH-mm-ss
-%counter% - teller antall skjermbilder
-%random% - en tilfeldig UUID
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tid i yyyy-MM-dd_HH-mm-ss\n
+%counter% - teller antall skjermbilder\n
+%random% - en tilfeldig UUID\n
 %randint% - et tilfeldig tall]]></string>
     <string name="setting_tile_action">Flislegg handling</string>
     <string name="setting_floating_action">Flytende knapp-handling</string>
