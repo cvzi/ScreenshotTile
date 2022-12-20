@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Složka pro uložení snímků obrazovky do</string>
     <string name="setting_file_name_pattern">Název souboru</string>
     <string name="setting_file_name_placeholders_title">Použít tyto zástupné symboly v názvu souboru</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - čas jako yyyy-MM-dd_HH-mm-ss
-%counter% - počítá počet snímků obrazovky
-%random% - náhodný UUID
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - čas jako yyyy-MM-dd_HH-mm-ss\n
+%counter% - počítá počet snímků obrazovky\n
+%random% - náhodný UUID\n
 %randint% - náhodné číslo]]></string>
     <string name="setting_tile_action">Akce dlaždice</string>
     <string name="setting_floating_action">Akce plovoucího tlačítka</string>
