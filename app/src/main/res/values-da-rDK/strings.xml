@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Mappe til at gemme skærmfotos i</string>
     <string name="setting_file_name_pattern">Fil navn</string>
     <string name="setting_file_name_placeholders_title">Brug disse pladsholdere i filnavnet</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tid som yyyyy-MM-dd_HH-mm-ss
-%counter% - tæller antallet af skærmbilleder
-%random% - et tilfældigt UUID
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tid som yyyyy-MM-dd_HH-mm-ss\n
+%counter% - tæller antallet af skærmbilleder\n
+%random% - et tilfældigt UUID\n
 %randint% - et tilfældigt tal]]></string>
     <string name="setting_tile_action">Flise handling</string>
     <string name="setting_floating_action">Flydende knap handling</string>
