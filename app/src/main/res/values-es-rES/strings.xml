@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Carpeta para guardar capturas</string>
     <string name="setting_file_name_pattern">Nombre del archivo</string>
     <string name="setting_file_name_placeholders_title">Usa las siguientes variables en el nombre del archivo</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tiempo como yyyy-MM-dd_HH-mm-ss
-%counter% - cuenta el número de capturas de pantalla
-%random% - un UUID aleatorio
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tiempo como yyyy-MM-dd_HH-mm-ss\n
+%counter% - cuenta el número de capturas de pantalla\n
+%random% - un UUID aleatorio\n
 %randint% - un número aleatorio]]></string>
     <string name="setting_tile_action">Acción del mosaico</string>
     <string name="setting_floating_action">Acción del botón flotante</string>
