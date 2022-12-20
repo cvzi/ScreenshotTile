@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Director pentru salvarea capturilor de ecran</string>
     <string name="setting_file_name_pattern">Numele fișierului</string>
     <string name="setting_file_name_placeholders_title">Utilizați aceste caractere de poziție în numele fișierului</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - ora ca yyyy-MM-dd_HH-mm-ss
-%counter% - numără numărul de capturi de ecran
-%random% - un UUID aleatoriu
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - ora ca yyyy-MM-dd_HH-mm-ss\n
+%counter% - numără numărul de capturi de ecran\n
+%random% - un UUID aleatoriu\n
 %randint% - un număr aleatoriu]]></string>
     <string name="setting_tile_action">Acțiunea plăcutei</string>
     <string name="setting_floating_action">Acțiunea butonului flotant</string>
