@@ -2,12 +2,11 @@ Adiciona um botão ao painel de ajustes rápidos para fazer as Capturas da tela.
 
 Após a instalação, você precisa adicionar um botão de ação ao menu de ajustes rápidos e conceder as permissões para poder fazer as Capturas da tela e salvar as imagens no armazenamento do dispositivo.
 
-Se o app apresentar problemas no Android 9/Pie ou 10, você pode tentar "Usar o método integrado de captura da tela" em configurações do app.
-
 <h2>Funcionalidades:</h2>
 ✓ Sem privilégios root
 ✓ Notificação após cada Captura da tela (pode ser desativada)
 ✓ Pode imediatamente compartilhar, editar ou excluir a Captura da tela via notificação
+✓ Editar a captura de tela com o editor de imagem incluído
 ✓ Botão flutuante, tipo um balão do chat (Android 9+)
 ✓ Use como app de assistência para fazer uma captura de tela (toque longo no botão de início)
 ✓ Capturas da tela de uma área específica (toque longo no botão)
@@ -17,7 +16,7 @@ Se o app apresentar problemas no Android 9/Pie ou 10, você pode tentar "Usar o 
 ✓ Faça as Capturas automáticas via apps como Tasker ou MacroDroid
 ✓ Gratuito, de software livre e sem anúncios
 
-Esta é uma modificação do "Screenshot Tile [Root]" mas não exige privilégios root. Se você tiver acesso root, deveria usar o <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">app original</a> do ipcjs, é mais rápido e mais estável que esta modificação.
+Esta é uma modificação do "Screenshot Tile [Root]" mas não exige privilégios root.
 
 Código fonte: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 App original: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -39,3 +38,5 @@ Desde o Android 9/Pie, esta permissão é necessária para fazer as Capturas. Is
 <h2>Esconder o ícone do app:</h2>Em configurações do app, você pode esconder o ícone do aplicativo no lançador. No entanto você pode acessar o app via toque longo no botão em ajustes rápidos. Infelizmente, o Android 10 não permite mais esconder nenhum app.
 
 <h2>🌎 Suporte e traduções</h2>Se houver algum problema ou se quiser ajudar a traduzir este App para seu idioma, entre em contato comigo no <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> ou para contribuir com uma tradução visite o site <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Este aplicativo pode acessar a <a href="https://support.google.com/googleplay/android-developer/answer/10964491">API de Serviços de Acessibilidade</a> que permite que este aplicativo grave a tela. Os dados não são coletados nem compartilhados por este app ao usar as funcionalidades de acessibilidade.
