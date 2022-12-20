@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Тека для збереження знімків екрана</string>
     <string name="setting_file_name_pattern">Назва файлу</string>
     <string name="setting_file_name_placeholders_title">У назві файлу доступні такі заповнювачі</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% — час як yyyy-MM-dd_H-mm-ss
-%counter% — рахує кількість знімків екрана
-%random% — випадковий UUID
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% — час як yyyy-MM-dd_H-mm-ss\n
+%counter% — рахує кількість знімків екрана\n
+%random% — випадковий UUID\n
 %randint% — випадкове число]]></string>
     <string name="setting_tile_action">Дія плитки</string>
     <string name="setting_floating_action">Дія для рухомої кнопки</string>
