@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name">אריח צילום מסך</string>
     <string name="app_name_long">אריח צילום מסך (ללא רוט)</string>
     <string name="tile_label">צילום מסך</string>
     <string name="tile_floating">כפתור צף לצילום מסך</string>
@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">בחר את המיקום עבור קבצי התמונה</string>
     <string name="setting_file_name_pattern">שם קובץ</string>
     <string name="setting_file_name_placeholders_title">השתמש במצייני מיקום אלה בשם הקובץ</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - זמן כמו yyyy-MM-dd_HH-mm-ss
-%counter% - סופר את מספר צילומי המסך 
-%random% - אקראי UUID
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - זמן כמו yyyy-MM-dd_HH-mm-ss\n
+%counter% - סופר את מספר צילומי המסך \n
+%random% - אקראי UUID\n
 %randint% - מספר אקראי]]></string>
     <string name="setting_tile_action">פעולה הכפתור האריח</string>
     <string name="setting_floating_action">פעולה הכפתור הצף</string>
