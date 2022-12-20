@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Cartella in cui salvare gli screenshot</string>
     <string name="setting_file_name_pattern">Nome del file</string>
     <string name="setting_file_name_placeholders_title">Usa le seguenti variabili nel nome del file</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tempo come yyyy-MM-dd_HH-mm-ss
-%counter% - conta il numero di screenshot
-%random% - un UUID casuale
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tempo come yyyy-MM-dd_HH-mm-ss\n
+%counter% - conta il numero di screenshot\n
+%random% - un UUID casuale\n
 %randint% - un numero casuale]]></string>
     <string name="setting_tile_action">Azione del pulsante/tile</string>
     <string name="setting_floating_action">Azione del pulsante fluttuante</string>
