@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Thư mục lưu ảnh chụp màn hình</string>
     <string name="setting_file_name_pattern">Tên tệp</string>
     <string name="setting_file_name_placeholders_title">Sử dụng các chỗ giữ chỗ này trong tên tệp</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - thời gian dưới dạng yyyy-MM-dd_HH-mm-ss
-%counter% - đếm số lượng ảnh chụp màn hình
-%random% - UUID ngẫu nhiên
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - thời gian dưới dạng yyyy-MM-dd_HH-mm-ss\n
+%counter% - đếm số lượng ảnh chụp màn hình\n
+%random% - UUID ngẫu nhiên\n
 %randint% - số ngẫu nhiên]]></string>
     <string name="setting_tile_action">Hành động của ô</string>
     <string name="setting_floating_action">Hành động nút nổi</string>
