@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Kansio kuvakaappausten tallentamiseen</string>
     <string name="setting_file_name_pattern">Tiedoston nimi</string>
     <string name="setting_file_name_placeholders_title">Käytä näitä paikkamerkkejä tiedoston nimessä</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - aika yyyy-MM-dd_HH-mm-ss
-%counter% - laskee kuvakaappausten määrän
-%random% - satunnainen UUID
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - aika yyyy-MM-dd_HH-mm-ss\n
+%counter% - laskee kuvakaappausten määrän\n
+%random% - satunnainen UUID\n
 %randint% - satunnainen numero]]></string>
     <string name="setting_tile_action">Laatikon toiminta</string>
     <string name="setting_floating_action">Kelluvan painikkeen toiminto</string>
