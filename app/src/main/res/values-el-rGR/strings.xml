@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Φάκελος για αποθήκευση στιγμιοτύπων οθόνης</string>
     <string name="setting_file_name_pattern">Όνομα αρχείου</string>
     <string name="setting_file_name_placeholders_title">Χρήση αυτών των κράτησης θέσης στο όνομα αρχείου</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - χρόνος ως yyyy-MM-dd_HH-mm-ss
-%counter% - μετράει τον αριθμό των στιγμιότυπων οθόνης
-%random% - ένα τυχαίο UID
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - χρόνος ως yyyy-MM-dd_HH-mm-ss\n
+%counter% - μετράει τον αριθμό των στιγμιότυπων οθόνης\n
+%random% - ένα τυχαίο UID\n
 %randint% - ένας τυχαίος αριθμός]]></string>
     <string name="setting_tile_action">Ενέργεια κουμπιού</string>
     <string name="setting_floating_action">Ενέργεια αιωρούμενου κουμπιού</string>
