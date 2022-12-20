@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Ordner, wo Screenshots gespeichert werden</string>
     <string name="setting_file_name_pattern">Dateiname</string>
     <string name="setting_file_name_placeholders_title">Verwende diese Platzhalter im Dateinamen</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - Zeit als yyyy-MM-dd_HH-mm-ss
-%counter% - zählt die Anzahl der Screenshots
-%random% - eine zufällige UUID
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - Zeit als yyyy-MM-dd_HH-mm-ss\n
+%counter% - zählt die Anzahl der Screenshots\n
+%random% - eine zufällige UUID\n
 %randint% - eine zufällige Zahl]]></string>
     <string name="setting_tile_action">Kachelaktion</string>
     <string name="setting_floating_action">Aktion des schwebenden Screenshot Auslösers</string>
