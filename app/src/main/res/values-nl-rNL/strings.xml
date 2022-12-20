@@ -49,9 +49,9 @@
     <string name="setting_storage_directory_description">Map om schermafdrukken in op te slaan</string>
     <string name="setting_file_name_pattern">Bestandsnaam</string>
     <string name="setting_file_name_placeholders_title">Deze tijdelijke aanduidingen in de bestandsnaam gebruiken</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% – tijd als yyyy-MM-dd_HH-mm-ss
-%counter% – telt het aantal screenshots
-%random% – een willekeurig UUID
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% – tijd als yyyy-MM-dd_HH-mm-ss\n
+%counter% – telt het aantal screenshots\n
+%random% – een willekeurig UUID\n
 %randint% – een willekeurig getal]]></string>
     <string name="setting_tile_action">Tegelactie</string>
     <string name="setting_floating_action">Actie voor zwevende knop</string>
