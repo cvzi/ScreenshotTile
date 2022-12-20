@@ -23,8 +23,8 @@ android {
         applicationId 'com.github.cvzi.screenshottile'
         minSdkVersion 24
         targetSdkVersion 33
-        versionCode 85
-        versionName '2.0.2'
+        versionCode 86
+        versionName '2.0.3'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         buildConfigField "com.github.cvzi.screenshottile.MutableBoolean", "TESTING_MODE", "new com.github.cvzi.screenshottile.MutableBoolean(false)"
     }
