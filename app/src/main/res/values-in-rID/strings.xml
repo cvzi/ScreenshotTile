@@ -48,6 +48,10 @@
     <string name="setting_storage_directory_description">Folder untuk menyimpan tangkapan layar</string>
     <string name="setting_file_name_pattern">Nama file</string>
     <string name="setting_file_name_placeholders_title">Gunakan placeholder ini dalam nama file</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - waktu sebagai yyyy-MM-dd HH-mm-ss\n
+%counter% - menghitung jumlah tangkapan layar\n
+%random% - UUID acak\n
+%randint% - nomor acak]]></string>
     <string name="setting_tile_action">Aksi ubin</string>
     <string name="setting_floating_action">Tindakan tombol mengambang</string>
     <string name="setting_voice_interaction_action">Tindakan asisten</string>
