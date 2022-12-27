@@ -163,7 +163,7 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
             dialogMessage = getString(
                 R.string.setting_keep_app_data_max_dialog,
                 getString(R.string.post_action_save_to_storage),
-                getString(R.string.pref_key_keep_app_data_max_default)
+                getString(R.string.pref_keep_app_data_max_default)
             )
             if (switchEvent) {
                 this@SettingAdvancedFragment.context?.let {

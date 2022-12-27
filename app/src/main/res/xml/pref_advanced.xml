@@ -102,7 +102,7 @@
         app:iconSpaceReserved="false" />
 
     <androidx.preference.EditTextPreference
-        android:defaultValue="20"
+        android:defaultValue="@string/pref_keep_app_data_max_default"
         android:dialogMessage="@string/setting_keep_app_data_max_dialog"
         android:key="@string/pref_key_keep_app_data_max"
         android:summary="@string/setting_keep_app_data_max_dialog"
