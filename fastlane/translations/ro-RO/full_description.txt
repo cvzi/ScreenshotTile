@@ -2,12 +2,11 @@ Adaugă în panoul de setări rapide un buton/un panou pentru a face capturi de 
 
 După instalare, trebuie să adăugați butonul/țigla la setările rapide și apoi să acordați permisiunile de înregistrare a capturilor de ecran și de salvare a imaginilor în memoria internă.
 
-Dacă aplicația se blochează pe Android 9/Pie sau 10, puteți încerca să activați "Utilizați metoda nativă de captură de ecran" în setările aplicației.
-
 <h2>Caracteristici:</h2>✓ Faceți capturi de ecran din setările rapide
 ✓ Nu este nevoie de root
 ✓ Notificare după ce a fost făcută o captură de ecran (poate fi dezactivată)
 ✓ Partajați, editați sau ștergeți o captură de ecran pe loc din notificare
+✓ Editați captura de ecran cu editorul de imagini inclus
 ✓ Buton flotant / buton de suprapunere ca un balon de chat (Android 9+)
 ✓ Utilizați ca aplicație de asistență pentru a face o captură de ecran (apăsați lung pe butonul Acasă)
 ✓ Efectuați capturi de ecran numai într-o anumită zonă a ecranului (apăsați lung pe dală)
@@ -17,7 +16,7 @@ Dacă aplicația se blochează pe Android 9/Pie sau 10, puteți încerca să act
 ✓ Efectuați capturi de ecran automate cu aplicații precum Tasker sau MacroDroid
 ✓ Gratuit, open-source, fără reclame
 
-Aceasta este o variantă a "Screenshot Tile [Root]", dar care nu necesită root. Dacă aveți acces root, puteți folosi <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">aplicația originală</a> de ipcjs, care este mai rapidă și mai fiabilă decât versiunea aceasta.
+Aceasta este o variantă a "Screenshot Tile [Root]", dar care nu necesită root.
 
 Cod sursă: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Aplicația originală: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -39,3 +38,5 @@ Această permisiune este necesară pentru a salva fișierele de captură ecran �
 <h2>Ascunderea iconiței aplicației:</h2>Din setările aplicației poți ascunde iconița aplicației din lansator. Chiar daca e ascunsa puteți accesa aplicația apăsând lung pe dală în setările rapide. Din păcate, lansatorul din Android 10 nu mai permite ascunderea unei aplicații. Folositi un lansator alternativ.
 
 <h2>🌎 Suport și traduceri</h2>Dacă există o problemă sau doriți să ajutați la traducerea acestei aplicații în limba dvs., vă rog să mă contactați pe <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> sau să contribuiți cu o traducere pe <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Această aplicație poate accesa <a href="https://support.google.com/googleplay/android-developer/answer/10964491">Accessibility Services API</a> care permite acestei aplicații să înregistreze ecranul. Datele nu sunt nici colectate, nici partajate de această aplicație care utilizează capacitățile de accesibilitate.
