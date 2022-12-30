@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.4
+*   Unify keepAppDataMax's defaultValue [#262](https://github.com/cvzi/ScreenshotTile/issues/262)
+*   Add meta-data for `android.speech` [recognition_service.xml](app/src/main/res/xml/recognition_service.xml)
+
 ## 2.0.3
 *   Translations updated from crowdin
 
