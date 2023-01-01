@@ -60,7 +60,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Transparent"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="s">
+        tools:targetApi="tiramisu">
         <activity
             android:name="com.github.cvzi.screenshottile.activities.MainActivity"
             android:exported="true"
@@ -300,12 +300,15 @@
             android:permission="android.permission.BIND_VOICE_INTERACTION" />
         <service
             android:name=".assist.MyRecognitionService"
+            android:label="[Do not select this]"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.speech.RecognitionService" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <meta-data android:name="android.speech" android:resource="@xml/recognition_service" />
+            <meta-data
+                android:name="android.speech"
+                android:resource="@xml/recognition_service" />
         </service>
 
         <activity
