@@ -21,13 +21,6 @@ import com.github.cvzi.screenshottile.utils.toastMessage
  * https://github.com/cvzi/ScreenshotTile/issues/190
  */
 class MyRecognitionService : RecognitionService() {
-    override fun onCheckRecognitionSupport(
-        recognizerIntent: Intent,
-        supportCallback: SupportCallback
-    ) {
-        super.onCheckRecognitionSupport(recognizerIntent, supportCallback)
-    }
-
     override fun onStartListening(intent: Intent, callback: Callback) {
         val errorMsg =
             "The default assistant app \"${getString(R.string.app_name)}\" does not offer speech recognition!"
