@@ -57,7 +57,6 @@ class EditingToolsAdapter(private val mOnItemSelected: OnItemSelected) :
     }
 
     init {
-        mToolList.add(ToolModel(R.string.label_oval, R.drawable.ic_oval, ToolType.SHAPE))
         mToolList.add(ToolModel(R.string.label_shape, R.drawable.ic_oval, ToolType.SHAPE))
         mToolList.add(ToolModel(R.string.label_text, R.drawable.ic_text, ToolType.TEXT))
         mToolList.add(ToolModel(R.string.label_eraser, R.drawable.ic_eraser, ToolType.ERASER))
