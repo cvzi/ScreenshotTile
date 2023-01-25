@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.6
+*   Fix for shape button appeared twice in photo editor [#277](https://github.com/cvzi/ScreenshotTile/issues/277)
+
 ## 2.0.5
 *   Label RecognitionService as `[Do not select this]` [#266](https://github.com/cvzi/ScreenshotTile/issues/266)
 
