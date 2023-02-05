@@ -142,6 +142,7 @@
     <!-- About -->
     <string name="about_app_title">概要</string>
     <string name="about_app_1">これは\ngithub.com/ipcjs/ScreenshotTile のフォークです</string>
+    <string name="about_app_3">詳しい情報およびバグの報告はこちらまで: \ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">ライセンス</string>
     <string name="about_license_1">GNU General Public License バージョン 3</string>
     <string name="about_app_2">このアプリにはまだいくつかの問題があり、開発中です。\nお使いの携帯電話にrootアクセス権がある場合は、ipcjsのバージョンを使用してください。</string>
@@ -154,6 +155,8 @@
     <string name="main_floating_button_title">フローティングボタン</string>
     <string name="main_general_text">このアプリを使用する前に、クイック設定にタイル/ボタンを追加する必要があります。 方法がわからない場合は、\nをご覧ください [チュートリアル,.TutorialActivity]。\n\nこのアプリはスクリーンショットを撮るための2つの異なる方法をサポートしています:</string>
     <string name="main_legacy_method_title">従来の方法</string>
+    <string name="main_legacy_method_text">Androidの画面録画機能を使用する方法です。スクリーンショットの保存時に音は鳴りません。\n
+サイレント通知が表示され、保存した画像の表示、編集および共有ができます。設定からアプリ通知をオフにすることができます。\nスクリーンショットを保存する前に、本アプリのタイルをクイックメニューに追加し、画面の録画およびメディアストレージへのアクセスを許可する必要があります。\n詳しい設定方法についてはチュートリアルをご覧ください。\n\n一部の機種 (特にAndroid9.0以降の機種) では、スクリーンショットを保存するごとに毎回権限の許可の確認が行われるなどの不具合を起こし、正常に使用できないことがあります。その場合は、ネイティブメソッドをご利用ください。</string>
     <string name="main_native_method_title">ネイティブメソッド</string>
     <string name="main_native_method_text">ネイティブのスクリーンショットを取る方法は、Home+Powerボタンの押下をシミュレートし、お使いのデバイスのスクリーンショット方法を使用します。\n{main_native_method_text_android_version}\n\nスクリーンショットを撮る前に、電話設定でアクセシビリティサービスを有効にする必要があります。 下のボタンを押してアクセシビリティ設定を開きます。</string>
     <string name="main_native_method_text_android_pre_11">スクリーンショットを撮ると、サウンドを再生したり、スクリーンショットエディタを表示することがあります。スクリーンショットは標準フォルダに保存されます。 これはお使いの携帯電話によって異なり、このアプリでは変更できません。お使いの携帯電話の設定で動作を変更できる可能性があります。</string>
@@ -219,6 +222,7 @@
     <string name="setting_delay_custom_summary">タイルのカスタム遅延を選択してください（秒単位）</string>
     <string name="setting_floating_button_delay_custom_summary">フローティングボタンのカスタム遅延を選択してください（秒単位）</string>
     <string name="setting_format_quality">ファイル形式の品質</string>
+    <string name="setting_format_quality_dialog">ファイルの圧縮/品質:　(0から100)\n0にすると最小サイズに圧縮します。100にすると最高画質で圧縮します。\nデフォルト値で使用するには空欄にしてください。</string>
     <string name="setting_keep_app_data_max">最大スクリーンショット数:</string>
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">\"%1$s\" を無効にした場合 その後、スクリーンショットは一時的に「Android/data/」フォルダに保存され、最大ファイル数に達すると定期的に削除されます。 format@@0\n-1は無制限の\nデフォルト値 [%2$s ] を表します。</string>
     <string name="setting_keep_screenshot_history">スクリーンショットの履歴を保持する</string>
