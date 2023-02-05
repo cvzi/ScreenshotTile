@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.7
+*   Fix image size in landscape orientation [#283](https://github.com/cvzi/ScreenshotTile/issues/283)
+
 ## 2.0.6
 *   Fix for shape button appeared twice in photo editor [#277](https://github.com/cvzi/ScreenshotTile/issues/277)
 

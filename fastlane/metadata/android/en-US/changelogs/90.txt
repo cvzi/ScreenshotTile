@@ -1,0 +1,1 @@
+Fix image size in landscape orientation on Android 12/13
