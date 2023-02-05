@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
+import android.view.Surface
 import android.view.WindowManager
 import androidx.documentfile.provider.DocumentFile
 import com.github.cvzi.screenshottile.*
@@ -627,7 +628,7 @@ fun appUsableScreenSize(context: Context): Point {
 }
 
 /**
- * Full screen size including cutouts
+ * Full screen size including cutouts, adapted to screen orientation
  */
 fun realScreenSize(context: Context): Point {
     val windowManager =
@@ -636,10 +637,20 @@ fun realScreenSize(context: Context): Point {
     return Point().apply {
         when {
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+                // display.mode.physical is independent of screen orientation
                 context.display?.mode?.let {
-                    x = it.physicalWidth
-                    y = it.physicalHeight
+                    when (context.display?.rotation) {
+                        Surface.ROTATION_90, Surface.ROTATION_270 -> {
+                            y = it.physicalWidth
+                            x = it.physicalHeight
+                        }
+                        else -> {
+                            x = it.physicalWidth
+                            y = it.physicalHeight
+                        }
+                    }
                 } ?: run {
+                    // windowManager.currentWindowMetrics.bounds is already adapted to screen orientation
                     windowManager.currentWindowMetrics.bounds.let {
                         x = it.width()
                         y = it.height()
