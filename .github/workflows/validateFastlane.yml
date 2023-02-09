@@ -1,6 +1,10 @@
-on: [pull_request]
+on:
+  workflow_dispatch:
+  pull_request:
+
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
-    - uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2
+  validateFastlane:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2
