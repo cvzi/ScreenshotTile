@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.8
+*   Fix build [#286](https://github.com/cvzi/ScreenshotTile/issues/286) & [76b57bf4#note_1272968846](https://gitlab.com/fdroid/fdroiddata/-/commit/76b57bf4dd561605c4e1c6d743b9b20536b1e742#note_1272968846)
+
 ## 2.0.7
 *   Fix image size in landscape orientation [#283](https://github.com/cvzi/ScreenshotTile/issues/283)
 
