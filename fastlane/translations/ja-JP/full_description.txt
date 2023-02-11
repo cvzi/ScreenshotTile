@@ -1,0 +1,42 @@
+クイック設定パネルにボタン/タイルを追加してスクリーンショットを撮影します。
+
+インストール後、クイック設定にボタン/タイルを追加し、画面キャプチャを記録し、内部ストレージに画像を保存する権限を付与する必要があります。
+
+<h2>Features:</h2>✓ クイック設定からスクリーンショットを撮影
+✓ root は必要ありません
+✓ スクリーンショット撮影後の通知 (無効にすることができます)
+✓ 通知からスクリーンショットを共有、編集、削除
+✓ Edit the screenshot with the included image editor
+✓ チャットバブルのようなフローティングボタン/オーバーレイボタン (Android 9+)
+✓ アシストアプリを使ってスクリーンショットを撮る（ホームボタンの長押し）
+✓ 画面の特定の領域のスクリーンショットのみを撮る（タイルを長押し）
+✓ スクリーンショット撮影の遅延
+✓ 任意のストレージ上の任意のフォルダに保存できます。例えば、 SD カード
+✓ さまざまなファイル形式に保存できます：png、jpg や webp
+✓ Tasker や MacroDroid などのアプリで自動スクリーンショットを撮ることができます
+✓ 無料、オープンソース、広告なし
+
+これは「Screenshot Tile [Root]」のフォークですが、ルートを必要としません。
+
+ソースコード：<a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
+元のアプリ：<a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
+オープンソースライセンスは GNU GPLv3 です
+
+<u>注意：</u>
+:シネマ: スクリーンショットを撮るとき。 <b>"Google Cast" アイコン</b> がステータスバーに表示され、スクリーンショット画像に表示されます。
+アイコンを非表示にしたい場合は、ここに説明があります: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
+
+<h2>パーミッション:</h2><unk> <i>android.permission.WRITE_EXTERNAL_STORAGE 「写真/メディア/ファイルとストレージ」</i>
+これはスクリーンショットファイルをデバイスの内部ストレージに保存するために必要です。
+
+<unk> <i>android.permission.FOREGROUND_SERVICE</i>
+Android 9/Pie 以来、この権限はスクリーンショットを取得するために必要です。 これは基本的に、このアプリが自分自身を表示せずに実行できることを意味します。 ただし、実行中のアプリは常に通知を表示します。
+
+<h2>自動スクリーンショット:</h2>MacroDroidやTaskerなどの他のアプリからスクリーンショットを自動化したい場合は、こちらからステップバイステップのガイドをご覧ください。
+<a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
+
+<h2>アプリのアイコンを非表示にする:</h2>アプリの設定で、アプリのアイコンをランチャーから非表示にできます。 クイック設定でタイルを長押ししてもアプリにアクセスできます。 残念ながら、Android 10 ではアプリを非表示にすることはできません。
+
+<h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+This app can access the <a href="https://support.google.com/googleplay/android-developer/answer/10964491">Accessibility Services API</a> which allows this app to record the screen. アクセシビリティ機能を使用してデータを収集したり、このアプリで共有したりすることはありません。
