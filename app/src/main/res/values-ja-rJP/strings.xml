@@ -12,7 +12,7 @@
     <string name="floating_button_settings">フローティングボタンの設定</string>
     <string name="left_screenshot_right_menu">左：スクリーンショット，右：設定</string>
     <string name="partial_screenshot">範囲の選択</string>
-    <string name="file_format">ファイル形式</string>
+    <string name="file_format">フォーマット</string>
     <string name="setting_delay_entry_default">すぐ</string>
     <string name="setting_delay_entry_1s">1秒</string>
     <string name="setting_delay_entry_2s">2秒</string>
@@ -27,15 +27,15 @@
     <string name="accessibility_service_description">このサービスが有効になっている場合、アプリは電源ボタンとホームボタンの押下をシミュレートしてスクリーンショットを撮ることができます。\nこの方法を有効にしているデバイスによっては、既定の方法よりも安定しているか、速くなっている場合があります。 \n\n\nここでサービスを有効にする場合は、アプリ設定で「ネイティブメソッド」も有効にする必要があります。</string>
     <string name="use_system_defaults">システムの既定を使用</string>
     <string name="use_system_defaults_summary">Android 11 が必要です</string>
-    <string name="use_system_defaults_summary_on">保存先、フォーマット、編集、通知にシステムのデフォルト設定を使用します</string>
-    <string name="use_system_defaults_summary_off">アプリ内の設定を使用します</string>
+    <string name="use_system_defaults_summary_on">デフォルトのストレージディレクトリ、フォーマット、スクリーンショットエディター、通知</string>
+    <string name="use_system_defaults_summary_off">アプリの設定を使用</string>
     <string name="setting_floating_button">フローティングボタン</string>
     <string name="setting_floating_button_summary">クイック設定タイルからオン/オフを切り替えることもできます</string>
     <string name="setting_floating_button_unavailable">アクセシビリティサービスは無効です</string>
     <string name="setting_floating_button_unsupported">Android 9 Pie が必要です</string>
     <string name="setting_floating_button_scale">フローティングボタンのサイズ</string>
     <string name="setting_floating_button_scale_summary">フローティングボタンのサイズを調整する</string>
-    <string name="setting_floating_button_hide_after">スクリーンショットを保存時にフローティングボタンを隠す</string>
+    <string name="setting_floating_button_hide_after">スクリーンショットの後にフローティングボタンを隠す</string>
     <string name="setting_floating_button_hide_after_summary">スクリーンショットを撮った後、フローティングボタンを自動的に削除します</string>
     <string name="setting_floating_button_show_close">フローティングボタンの横に [X]/closeボタンを表示する</string>
     <string name="setting_floating_button_show_close_summary">クイック設定を開かずにフローティングボタンを削除できます。</string>
@@ -45,8 +45,8 @@
     <string name="setting_floating_button_delay">遅延 (フローティングボタン)</string>
     <string name="setting_broadcast_secret">ブロードキャストインテントパスワード</string>
     <string name="setting_broadcast_secret_description">他のアプリケーション（MacroDroidやTaskerなど）がスクリーンショットを開始できるようにする秘密のフレーズです</string>
-    <string name="setting_storage_directory">ファイルの保存先</string>
-    <string name="setting_storage_directory_description">スクリーンショットを保存するフォルダを設定します</string>
+    <string name="setting_storage_directory">保存場所</string>
+    <string name="setting_storage_directory_description">写真を保存するフォルダを決めます</string>
     <string name="setting_file_name_pattern">ファイル名</string>
     <string name="setting_file_name_placeholders_title">ファイル名にこれらのプレースホルダを使用する</string>
     <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - yyyy-MM-dd_HH-mm-ss\n
@@ -155,8 +155,7 @@
     <string name="main_floating_button_title">フローティングボタン</string>
     <string name="main_general_text">このアプリを使用する前に、クイック設定にタイル/ボタンを追加する必要があります。 方法がわからない場合は、\nをご覧ください [チュートリアル,.TutorialActivity]。\n\nこのアプリはスクリーンショットを撮るための2つの異なる方法をサポートしています:</string>
     <string name="main_legacy_method_title">従来の方法</string>
-    <string name="main_legacy_method_text">Androidの画面録画機能を使用する方法です。スクリーンショットの保存時に音は鳴りません。\n
-サイレント通知が表示され、保存した画像の表示、編集および共有ができます。設定からアプリ通知をオフにすることができます。\nスクリーンショットを保存する前に、本アプリのタイルをクイックメニューに追加し、画面の録画およびメディアストレージへのアクセスを許可する必要があります。\n詳しい設定方法についてはチュートリアルをご覧ください。\n\n一部の機種 (特にAndroid9.0以降の機種) では、スクリーンショットを保存するごとに毎回権限の許可の確認が行われるなどの不具合を起こし、正常に使用できないことがあります。その場合は、ネイティブメソッドをご利用ください。</string>
+    <string name="main_legacy_method_text">Androidの画面録画機能を使用する方法です。スクリーンショットの保存時に音は鳴りません。\n サイレント通知が表示され、保存した画像の表示、編集および共有ができます。設定からアプリ通知をオフにすることができます。\nスクリーンショットを保存する前に、本アプリのタイルをクイックメニューに追加し、画面の録画およびメディアストレージへのアクセスを許可する必要があります。\n詳しい設定方法についてはチュートリアルをご覧ください。\n\n一部の機種 (特にAndroid9.0以降の機種) では、スクリーンショットを保存するごとに毎回権限の許可の確認が行われるなどの不具合を起こし、正常に使用できないことがあります。その場合は、ネイティブメソッドをご利用ください。</string>
     <string name="main_native_method_title">ネイティブメソッド</string>
     <string name="main_native_method_text">ネイティブのスクリーンショットを取る方法は、Home+Powerボタンの押下をシミュレートし、お使いのデバイスのスクリーンショット方法を使用します。\n{main_native_method_text_android_version}\n\nスクリーンショットを撮る前に、電話設定でアクセシビリティサービスを有効にする必要があります。 下のボタンを押してアクセシビリティ設定を開きます。</string>
     <string name="main_native_method_text_android_pre_11">スクリーンショットを撮ると、サウンドを再生したり、スクリーンショットエディタを表示することがあります。スクリーンショットは標準フォルダに保存されます。 これはお使いの携帯電話によって異なり、このアプリでは変更できません。お使いの携帯電話の設定で動作を変更できる可能性があります。</string>
@@ -222,7 +221,7 @@
     <string name="setting_delay_custom_summary">タイルのカスタム遅延を選択してください（秒単位）</string>
     <string name="setting_floating_button_delay_custom_summary">フローティングボタンのカスタム遅延を選択してください（秒単位）</string>
     <string name="setting_format_quality">ファイル形式の品質</string>
-    <string name="setting_format_quality_dialog">ファイルの圧縮/品質:　(0から100)\n0にすると最小サイズに圧縮します。100にすると最高画質で圧縮します。\nデフォルト値で使用するには空欄にしてください。</string>
+    <string name="setting_format_quality_dialog">ファイルの圧縮/品質:\n(0から100)\n0にすると最小サイズに圧縮します。100にすると最高画質で圧縮します。\nデフォルト値で使用するには空欄にしてください。</string>
     <string name="setting_keep_app_data_max">最大スクリーンショット数:</string>
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">\"%1$s\" を無効にした場合 その後、スクリーンショットは一時的に「Android/data/」フォルダに保存され、最大ファイル数に達すると定期的に削除されます。 format@@0\n-1は無制限の\nデフォルト値 [%2$s ] を表します。</string>
     <string name="setting_keep_screenshot_history">スクリーンショットの履歴を保持する</string>
