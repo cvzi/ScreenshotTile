@@ -50,9 +50,9 @@
     <string name="setting_file_name_pattern">Nazwa pliku</string>
     <string name="setting_file_name_placeholders_title">Użyj tych symboli zastępczych w nazwie pliku</string>
     <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - czas w postaci yyyy-MM-dd_HH-mm-ss\n
-%counter% - zlicza ilość zrzutów ekranu\n
-%random% - losowy UUID\n
-%randint% - losowy numer]]></string>
+%counter% - zlicza liczbę zrzutów ekranu\n
+%random% - losowy identyfikator UUID\n
+%randint% - losowa liczba]]></string>
     <string name="setting_tile_action">Akcja kafelka</string>
     <string name="setting_floating_action">Działanie pływającego przycisku</string>
     <string name="setting_voice_interaction_action">Akcje Asystenta</string>
