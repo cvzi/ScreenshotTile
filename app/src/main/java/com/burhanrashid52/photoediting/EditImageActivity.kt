@@ -273,7 +273,12 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 val intent = Intent()
                 intent.type = "image/*"
                 intent.action = Intent.ACTION_GET_CONTENT
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_REQUEST)
+                startActivityForResult(
+                    Intent.createChooser(
+                        intent,
+                        getString(R.string.msg_choose_image)
+                    ), PICK_REQUEST
+                )
             }
         }
     }
