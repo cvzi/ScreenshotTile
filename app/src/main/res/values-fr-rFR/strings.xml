@@ -181,6 +181,7 @@
     <string name="label_oval">Ovale</string>
     <string name="label_rectangle">Rectangle</string>
     <string name="label_line">Lignes</string>
+    <string name="label_arrow">Flèche</string>
     <string name="label_emoji">Emoji</string>
     <string name="label_eraser">Eraser</string>
     <string name="label_eraser_mode">Mode gomme</string>
