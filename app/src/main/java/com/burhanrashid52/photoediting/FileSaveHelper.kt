@@ -7,12 +7,18 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.MutableLiveData
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.*
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Observer
+import kotlin.Throws
 import java.io.IOException
+import java.lang.Exception
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
-
 
 /**
  * General contract of this class is to
@@ -26,8 +32,7 @@ import java.util.concurrent.Executors
  * Remember! in order to shutdown executor call [FileSaveHelper.addObserver] or
  * create object with the [FileSaveHelper]
  */
-class FileSaveHelper(private val mContentResolver: ContentResolver) : LifecycleObserver,
-    DefaultLifecycleObserver {
+class FileSaveHelper(private val mContentResolver: ContentResolver) : LifecycleObserver {
     private val executor: ExecutorService? = Executors.newSingleThreadExecutor()
     private val fileCreatedResult: MutableLiveData<FileMeta> = MutableLiveData()
     private var resultListener: OnFileCreateResult? = null
@@ -51,7 +56,8 @@ class FileSaveHelper(private val mContentResolver: ContentResolver) : LifecycleO
         lifecycleOwner.lifecycle.addObserver(this)
     }
 
-    override fun onDestroy(owner: LifecycleOwner) {
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    fun release() {
         executor?.shutdownNow()
     }
 
@@ -150,7 +156,7 @@ class FileSaveHelper(private val mContentResolver: ContentResolver) : LifecycleO
          * @param created  whether file creation is success or failure
          * @param filePath filepath on disk. null in case of failure
          * @param error    in case file creation is failed . it would represent the cause
-         * @param uri      Uri to the newly created file. null in case of failure
+         * @param Uri      Uri to the newly created file. null in case of failure
          */
         fun onFileCreateResult(created: Boolean, filePath: String?, error: String?, uri: Uri?)
     }
