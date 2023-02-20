@@ -18,7 +18,7 @@ class EditingToolsAdapter(private val mOnItemSelected: OnItemSelected) :
     private val mToolList: MutableList<ToolModel> = ArrayList()
 
     interface OnItemSelected {
-        fun onToolSelected(toolType: ToolType?)
+        fun onToolSelected(toolType: ToolType)
     }
 
     internal inner class ToolModel(
