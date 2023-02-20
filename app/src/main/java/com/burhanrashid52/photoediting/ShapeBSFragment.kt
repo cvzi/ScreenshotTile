@@ -20,7 +20,7 @@ class ShapeBSFragment : BottomSheetDialogFragment(), SeekBar.OnSeekBarChangeList
         fun onColorChanged(colorCode: Int)
         fun onOpacityChanged(opacity: Int)
         fun onShapeSizeChanged(shapeSize: Int)
-        fun onShapePicked(shapeType: ShapeType?)
+        fun onShapePicked(shapeType: ShapeType)
     }
 
     override fun onCreateView(
@@ -42,27 +42,32 @@ class ShapeBSFragment : BottomSheetDialogFragment(), SeekBar.OnSeekBarChangeList
         shapeGroup.setOnCheckedChangeListener { _: RadioGroup?, checkedId: Int ->
             when (checkedId) {
                 R.id.lineRadioButton -> {
-                    mProperties!!.onShapePicked(ShapeType.LINE)
+                    mProperties!!.onShapePicked(ShapeType.Line)
+                }
+                R.id.arrowRadioButton -> {
+                    mProperties!!.onShapePicked(ShapeType.Arrow())
                 }
                 R.id.ovalRadioButton -> {
-                    mProperties!!.onShapePicked(ShapeType.OVAL)
+                    mProperties!!.onShapePicked(ShapeType.Oval)
                 }
                 R.id.rectRadioButton -> {
-                    mProperties!!.onShapePicked(ShapeType.RECTANGLE)
+                    mProperties!!.onShapePicked(ShapeType.Rectangle)
                 }
                 else -> {
-                    mProperties!!.onShapePicked(ShapeType.BRUSH)
+                    mProperties!!.onShapePicked(ShapeType.Brush)
                 }
             }
         }
         sbOpacity.setOnSeekBarChangeListener(this)
         sbBrushSize.setOnSeekBarChangeListener(this)
 
+        val activity = requireActivity()
+
         // TODO(lucianocheng): Move layoutManager to a xml file.
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         rvColor.layoutManager = layoutManager
         rvColor.setHasFixedSize(true)
-        val colorPickerAdapter = ColorPickerAdapter(requireActivity())
+        val colorPickerAdapter = ColorPickerAdapter(activity)
         colorPickerAdapter.setOnColorPickerClickListener(object : OnColorPickerClickListener {
             override fun onColorPickerClickListener(colorCode: Int) {
                 if (mProperties != null) {
