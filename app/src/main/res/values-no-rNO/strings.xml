@@ -181,6 +181,7 @@
     <string name="label_oval">Oval</string>
     <string name="label_rectangle">Rektangel</string>
     <string name="label_line">Linje</string>
+    <string name="label_arrow">Pil</string>
     <string name="label_emoji">Emoji</string>
     <string name="label_eraser">Eraser</string>
     <string name="label_eraser_mode">Viskelær Modus</string>
