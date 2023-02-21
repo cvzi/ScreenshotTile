@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.0
+*   Include new shape "arrow" in PhotoEditor [burhanrashid52/PhotoEditor#492](https://github.com/burhanrashid52/PhotoEditor/pull/492)
+*   Update [PhotoEditor](https://github.com/burhanrashid52/PhotoEditor) to [3.0.0](https://github.com/burhanrashid52/PhotoEditor/releases/tag/v.3.0.0)
+*   Bugfix: The settings button in the Android assistant settings opened an empty activity
+*   Bugfix: On Android 9 and lower lossless WebP is not available [#296](https://github.com/cvzi/ScreenshotTile/issues/296)
+*   Update Gradle to 8.x
+*   Fix publishing [`54ad55a`](https://github.com/cvzi/ScreenshotTile/commit/54ad55aa775627b887f3fa81d384a003b8bf67d7)
+*   Translations updated from crowdin
+
 ## 2.0.8
 *   Fix build [#286](https://github.com/cvzi/ScreenshotTile/issues/286) & [76b57bf4#note_1272968846](https://gitlab.com/fdroid/fdroiddata/-/commit/76b57bf4dd561605c4e1c6d743b9b20536b1e742#note_1272968846)
 
