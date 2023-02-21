@@ -18,6 +18,7 @@ class SettingsActivity : AppCompatActivity() {
     companion object {
         const val EXTRA_FRAGMENT_NAME = "fragment_name"
         const val EXTRA_ARGS = "args"
+        private val defaultFragment = SettingFragment::class.java
 
         /**
          * Get intent
@@ -38,7 +39,7 @@ class SettingsActivity : AppCompatActivity() {
          */
         fun start(
             ctx: Context,
-            fragmentClass: Class<out Fragment> = SettingFragment::class.java,
+            fragmentClass: Class<out Fragment> = defaultFragment,
             args: Bundle? = null
         ) {
             ctx.startActivity(
@@ -55,7 +56,7 @@ class SettingsActivity : AppCompatActivity() {
          */
         fun startNewTask(
             ctx: Context,
-            fragmentClass: Class<out Fragment> = SettingFragment::class.java,
+            fragmentClass: Class<out Fragment> = defaultFragment,
             args: Bundle? = null
         ) {
             ctx.startActivity(
@@ -72,8 +73,8 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val fragmentClass = intent.getStringExtra(EXTRA_FRAGMENT_NAME)
-        if (savedInstanceState == null && fragmentClass != null) {
+        val fragmentClass = intent.getStringExtra(EXTRA_FRAGMENT_NAME) ?: defaultFragment.name
+        if (savedInstanceState == null) {
             val args = intent.getBundleExtra(EXTRA_ARGS)
             val fragment: Fragment? = try {
                 val fragment = FragmentFactory.loadFragmentClass(
