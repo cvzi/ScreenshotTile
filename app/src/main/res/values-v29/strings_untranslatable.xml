@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="setting_file_format_entry_webp" translatable="false">WebP (lossless)</string>
+</resources>

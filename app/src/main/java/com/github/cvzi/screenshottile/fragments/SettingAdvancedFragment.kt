@@ -183,15 +183,15 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
             "PNG (quality parameter has no effect)"
         } else if (compressionOptions.format == Bitmap.CompressFormat.WEBP) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && compressionOptions.quality == 100) {
-                "WEBP (Lossless 100%)"
+                "WebP (Lossless 100%)"
             } else {
-                "WEBP (Lossy ${compressionOptions.quality}%)"
+                "WebP (Lossy ${compressionOptions.quality}%)"
             }
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (compressionOptions.format == Bitmap.CompressFormat.WEBP_LOSSY) {
-                "WEBP (Lossy ${compressionOptions.quality}%)"
+                "WebP (Lossy ${compressionOptions.quality}%)"
             } else if (compressionOptions.format == Bitmap.CompressFormat.WEBP_LOSSLESS) {
-                "WEBP (Lossless ${compressionOptions.quality}%)"
+                "WebP (Lossless ${compressionOptions.quality}%)"
             } else {
                 "${compressionOptions.format.name} ${compressionOptions.quality}%"
             }
