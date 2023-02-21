@@ -3,6 +3,15 @@ task sourcesJar(type: Jar) {
     archiveClassifier = 'sources'
 }
 
+android {
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+}
+
 afterEvaluate {
     publishing {
         repositories {
@@ -17,7 +26,7 @@ afterEvaluate {
         }
         publications {
             release(MavenPublication) {
-                from components.release_apk
+                from components.release
                 groupId = 'com.github.cvzi'
                 artifactId = 'screenshottile'
                 version = android.defaultConfig.versionName
