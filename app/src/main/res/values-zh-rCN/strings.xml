@@ -181,6 +181,7 @@
     <string name="label_oval">椭圆</string>
     <string name="label_rectangle">矩形</string>
     <string name="label_line">线条</string>
+    <string name="label_arrow">箭头</string>
     <string name="label_emoji">表情符号</string>
     <string name="label_eraser">橡皮擦</string>
     <string name="label_eraser_mode">擦除模式</string>
