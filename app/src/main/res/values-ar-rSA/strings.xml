@@ -181,6 +181,7 @@
     <string name="label_oval">بيضاوي</string>
     <string name="label_rectangle">مستطيل</string>
     <string name="label_line">خط</string>
+    <string name="label_arrow">سهم</string>
     <string name="label_emoji">الوجوه التعبيرية</string>
     <string name="label_eraser">ممحاة</string>
     <string name="label_eraser_mode">وضع المسح</string>
