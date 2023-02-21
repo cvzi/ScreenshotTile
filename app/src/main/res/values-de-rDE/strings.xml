@@ -181,6 +181,7 @@
     <string name="label_oval">Oval</string>
     <string name="label_rectangle">Rechteck</string>
     <string name="label_line">Linie</string>
+    <string name="label_arrow">Pfeil</string>
     <string name="label_emoji">Emoji</string>
     <string name="label_eraser">Radierer</string>
     <string name="label_eraser_mode">Radiermodus</string>
