@@ -181,6 +181,7 @@
     <string name="label_oval">Овал</string>
     <string name="label_rectangle">Прямокутник</string>
     <string name="label_line">Лінія</string>
+    <string name="label_arrow">Стрілка</string>
     <string name="label_emoji">Емоджі</string>
     <string name="label_eraser">Гумка</string>
     <string name="label_eraser_mode">Режим гумки</string>
