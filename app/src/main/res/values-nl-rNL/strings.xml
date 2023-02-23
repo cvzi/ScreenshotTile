@@ -181,6 +181,7 @@
     <string name="label_oval">Ovaal</string>
     <string name="label_rectangle">Rechthoek</string>
     <string name="label_line">Lijn</string>
+    <string name="label_arrow">Pijl</string>
     <string name="label_emoji">Emoji</string>
     <string name="label_eraser">Eraser</string>
     <string name="label_eraser_mode">Wisser modus</string>
