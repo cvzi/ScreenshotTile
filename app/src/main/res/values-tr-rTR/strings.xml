@@ -135,7 +135,6 @@
     <string name="about_app_3">Daha fazla bilgi ve hata raporları için şu adresi ziyaret edin:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Lisans</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="about_app_2">Bu uygulamanın bazı hataları var ve şuan bakımda. Eğer root giriş iznin varsa telefonunda, lütfen ipcjs versiyonu kullan , daha güvenilir ve daha hızlı.</string>
     <string name="about_privacy_title">Gizlilik Politikası</string>
     <string name="about_open_source_title">Kullanılan açık kaynak(lar)</string>
     <string name="about_advanced_settings_button">Gelişmiş ayarlar</string>

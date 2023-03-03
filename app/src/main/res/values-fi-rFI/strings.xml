@@ -145,7 +145,6 @@
     <string name="about_app_3">Lisätietoja ja vikailmoituksia varten:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Lisenssi</string>
     <string name="about_license_1">GNU GENERAL JULKINEN LISENSE Versio 3</string>
-    <string name="about_app_2">Tällä sovelluksella on edelleen ongelmia ja sitä kehitetään parhaillaan.\nJos sinulla on pääkäyttäjän oikeudet puhelimessa, käytä ipcjs-versiota, se on nopeampi ja luotettavampi.</string>
     <string name="about_privacy_title">Yksityisyyden Suoja</string>
     <string name="about_open_source_title">Käytetty avoin lähdekoodi</string>
     <string name="about_advanced_settings_button">Edistyneet asetukset</string>

@@ -145,7 +145,6 @@
     <string name="about_app_3">لمزيد من المعلومات وتقارير الأخطاء:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">الترخيص</string>
     <string name="about_license_1">رخصة جنو العمومية الإصدار٣</string>
-    <string name="about_app_2">لا يزال هذا التطبيق يواجه بعض المشكلات وهو قيد التطوير. \n إذا كان لديك حق الوصول إلى الجذر على هاتفك ، فالرجاء استخدام إصدار ipcjs ، فهو أسرع وأكثر اعتمادًا.</string>
     <string name="about_privacy_title">سياسة الخصوصية</string>
     <string name="about_open_source_title">المصادر المفتوحة المستخدمة</string>
     <string name="about_advanced_settings_button">الإعدادات المتقدمة</string>

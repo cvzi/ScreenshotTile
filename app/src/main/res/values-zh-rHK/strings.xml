@@ -102,7 +102,6 @@
     <string name="about_app_3">获取更多信息及错误报告请访问：\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">许可证</string>
     <string name="about_license_1">GNU 通用公共許可證 第 3 版</string>
-    <string name="about_app_2">此应用仍然存在一些问题并且正在开发中。\n如果你的设备拥有 root 权限，请使用 ipcjs 的版本，更快速可靠。</string>
     <string name="about_advanced_settings_button">進階設定</string>
     <string name="about_update_check_button">檢查更新</string>
     <!-- First screen -->

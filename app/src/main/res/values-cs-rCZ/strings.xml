@@ -145,7 +145,6 @@
     <string name="about_app_3">Pro více informací a hlášení chyb navštivte:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Licence</string>
     <string name="about_license_1">GNU GENERÁLNÍ VEŘEJNÁ LICENSE verze 3</string>
-    <string name="about_app_2">Tato aplikace má stále některé problémy a je ve vývoji.\nPokud máte root přístup na svém telefonu, použijte prosím verzi ipcjs, je to rychlejší a spolehlivější.</string>
     <string name="about_privacy_title">Ochrana osobních údajů</string>
     <string name="about_open_source_title">Použitý Open source</string>
     <string name="about_advanced_settings_button">Pokročilé nastavení</string>

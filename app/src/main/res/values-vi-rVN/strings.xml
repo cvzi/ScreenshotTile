@@ -145,7 +145,6 @@
     <string name="about_app_3">Để biết thêm thông tin và báo cáo lỗi, hãy đi đến:\nngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Giấy phép</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE phiên bản 3</string>
-    <string name="about_app_2">Ứng dụng này vẫn có một số vấn đề và đang được phát triển.\nNếu bạn có quyền truy cập root trên điện thoại của bạn thì vui lòng sử dụng phiên bản của ipcjs, nó nhanh hơn và đáng tin cậy hơn.</string>
     <string name="about_privacy_title">Chính sách riêng tư</string>
     <string name="about_open_source_title">Phần mềm mã nguồn mở được sử dụng</string>
     <string name="about_advanced_settings_button">Cài đặt nâng cao</string>

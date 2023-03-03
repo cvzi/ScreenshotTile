@@ -140,7 +140,6 @@
     <string name="about_app_3">برای اطلاعات بیشتر و گزارش‌های اشکال، به آدرس زیر مراجعه کنید:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">مجوز</string>
     <string name="about_license_1">پروانه عمومی همگانی گنو نسخه ۳</string>
-    <string name="about_app_2">این برنامه همچنان مشکلاتی دارد و در حال توسعه است.\nاگر در تلفن خود دسترسی ریشته دارید لطفا از ورژن ipcjs\' استفاده کنید،سریع تر و قابل اطمینان تر است.</string>
     <string name="about_privacy_title">سیاست حریم خصوصی</string>
     <string name="about_open_source_title">متن باز های استفاده شده</string>
     <string name="about_advanced_settings_button">تنظیمات پیشرفته</string>

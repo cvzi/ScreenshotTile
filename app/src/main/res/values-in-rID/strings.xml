@@ -122,7 +122,6 @@
     <string name="about_app_3">Untuk informasi dan laporan masalah\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Lisensi</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Versi 3</string>
-    <string name="about_app_2">Aplikasi ini masih memiliki banyak masalah dan sedang dalam pengembangan.\nJika telepon anda memiliki akses root, silakan gunakan ipcjs\' merupakan versi yang lebih baik.</string>
     <string name="about_advanced_settings_button">Pengaturan lanjutan</string>
     <string name="about_update_check_button">Periksa pembaruan</string>
     <!-- First screen -->

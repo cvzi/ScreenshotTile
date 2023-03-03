@@ -145,7 +145,6 @@
     <string name="about_app_3">Для отримання додаткової інформації, або якщо ви хочете повідомити про помилку, перейдіть: \ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Ліцензія</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="about_app_2">Цей застосунок все ще має деякі проблеми та перебуває в розробці.\nЯкщо у вас є root-доступ до вашого телефона, використовуйте версію ipcjs, вона швидша та надійніша.</string>
     <string name="about_privacy_title">Політика приватності</string>
     <string name="about_open_source_title">Використано відкритий код</string>
     <string name="about_advanced_settings_button">Додаткові налаштування</string>

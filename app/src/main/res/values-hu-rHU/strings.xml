@@ -97,7 +97,6 @@
     <string name="about_app_3">További információ és hibajelentések:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Licenc</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Verzió 3</string>
-    <string name="about_app_2">Ennek az alkalmazásnak még mindig vannak problémái és fejlesztés alatt áll.\nHa root hozzáféréssel rendelkezik telefonján, kérjük, használja az ipcjs verzióját, amely gyorsabb és megbízhatóbb.</string>
     <string name="about_privacy_title">Adatvédelmi irányelvek</string>
     <string name="about_open_source_title">Nyílt forráskódú</string>
     <!-- First screen -->

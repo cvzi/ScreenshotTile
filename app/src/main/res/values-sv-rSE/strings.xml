@@ -145,7 +145,6 @@
     <string name="about_app_3">För mer information och felrapporter besök:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Licens</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="about_app_2">Denna app har fortfarande vissa problem och är under utveckling.\nOm du har root-åtkomst på din telefon kan du använda ipcjs version, den är snabbare och mer tillförlitlig.</string>
     <string name="about_privacy_title">Integritetspolicy</string>
     <string name="about_open_source_title">Användning av öppen källkod</string>
     <string name="about_advanced_settings_button">Avancerade inställningar</string>

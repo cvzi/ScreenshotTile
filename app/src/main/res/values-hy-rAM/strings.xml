@@ -119,7 +119,6 @@
     <string name="about_app_3">Այլ տվյալների կամ վրիպակների զեկույցների համար համար այցելեք՝\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Արտոնագիր</string>
     <string name="about_license_1">GNU Համապարփակ հրապարակային արտոնագիր, 3-րդ տարբերակ</string>
-    <string name="about_app_2">Այս հավելվածը դեռ ունի որոշ խնդիրներ և գտնվում է ակտիվ ծրագրավորման մեջ։\nԵթե ունեք «root» մատչում, օգտագործեք «ipcjs»-ի տարբերակը, որն ավելի արագ և ստաբիլ է աշխատում։</string>
     <string name="about_advanced_settings_button">Այլ կարգավորումներ</string>
     <string name="about_update_check_button">Ստանալ թարմացումներ</string>
     <!-- First screen -->

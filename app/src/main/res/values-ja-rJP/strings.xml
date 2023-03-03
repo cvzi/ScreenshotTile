@@ -145,7 +145,6 @@
     <string name="about_app_3">詳しい情報およびバグの報告はこちらまで: \ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">ライセンス</string>
     <string name="about_license_1">GNU General Public License バージョン 3</string>
-    <string name="about_app_2">このアプリにはまだいくつかの問題があり、開発中です。\nお使いの携帯電話にrootアクセス権がある場合は、ipcjsのバージョンを使用してください。</string>
     <string name="about_privacy_title">プライバシーポリシー</string>
     <string name="about_open_source_title">使用されたオープンソース</string>
     <string name="about_advanced_settings_button">詳細設定</string>

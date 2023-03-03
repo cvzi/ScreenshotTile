@@ -210,7 +210,6 @@
 
     <!-- About in settings -->
     <string name="pref_static_field_key_about_app_1" translatable="false">pref_static_field_key_about_app_1</string>
-    <string name="pref_static_field_key_about_app_2" translatable="false">pref_static_field_key_about_app_2</string>
     <string name="pref_static_field_key_about_app_3" translatable="false">pref_static_field_key_about_app_3</string>
     <string name="pref_static_field_key_about_license_1" translatable="false">pref_static_field_key_about_license_1</string>
     <string name="pref_static_field_key_about_open_source" translatable="false">pref_static_field_key_about_open_source</string>

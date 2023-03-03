@@ -75,7 +75,6 @@
     <string name="about_app_1">ଏହା ହେଉଛି\ngithub.com/ipcjs/ScreenshotTile ର ଏକ ଫର୍କ‍୍</string>
     <string name="about_license_title">ଲାଇସେନ୍ସ</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE ସଂସ୍କରଣ 3</string>
-    <string name="about_app_2">ଏହି ଆପରେ ଏପର୍ଯ୍ୟନ୍ତ କିଛି ସମସ୍ୟା ରହିଛି ଏବଂ ବିକାଶରେ ଅଛି।\nଯଦି ଆପଣଙ୍କ ଫୋନରେ ରୁଟ୍ ଆକସେସ୍ ଅଛି, ଦୟାକରି ipcjsଙ୍କ ସଂସ୍କରଣ ବ୍ୟବହାର କରନ୍ତୁ, ଯାହା ଦ୍ରୁତ ଏବଂ ଅଧିକ ନିର୍ଭରଶୀଳ ଅଟେ।</string>
     <string name="about_privacy_title">ଗୋପନୀୟତା ନୀତି</string>
     <string name="about_open_source_title">ବ୍ୟବହୃତ ଖୋଲା ଉତ୍ସ</string>
     <string name="about_advanced_settings_button">ବିକଶିତ ସେଟିଂସ୍</string>

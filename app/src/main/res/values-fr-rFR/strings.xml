@@ -145,7 +145,6 @@
     <string name="about_app_3">Pour plus d\'informations et de rapports de bugs, visitez:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Licence</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3</string>
-    <string name="about_app_2">Cette app a encore quelques problèmes et est en cours de développement.\nSi vous avez l\'accès root, veuillez utiliser la version de ipcjs, sa version est plus rapide et plus fiable.</string>
     <string name="about_privacy_title">Politique de confidentialité</string>
     <string name="about_open_source_title">Open source utilisé</string>
     <string name="about_advanced_settings_button">Paramètres avancés</string>

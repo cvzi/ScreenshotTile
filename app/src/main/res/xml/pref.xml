@@ -201,14 +201,6 @@
         app:icon="@android:drawable/ic_menu_info_details" />
 
     <androidx.preference.Preference
-        android:key="@string/pref_static_field_key_about_app_2"
-        android:persistent="false"
-        android:selectable="false"
-        android:summary="@string/about_app_2"
-        android:title="@string/empty_string"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_app_3"
         android:persistent="false"
         android:selectable="true"

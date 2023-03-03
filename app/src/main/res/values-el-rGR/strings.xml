@@ -145,7 +145,6 @@
     <string name="about_app_3">Για περισσότερες πληροφορίες και αναφορές σφαλμάτων επισκεφθείτε:\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Άδεια</string>
     <string name="about_license_1">ΓΕΝΙΚΗ ΑΔΕΙΑ ΔΗΜΟΣΙΑΣ ΧΡΗΣΗΣ GNU 3η Έκδοση</string>
-    <string name="about_app_2">Αυτή η εφαρμογή εξακολουθεί να έχει κάποια προβλήματα και βρίσκεται υπό ανάπτυξη.\nΕάν είστε υπερχρήστης (root), παρακαλώ χρησιμοποιήστε την έκδοση του ipcjs, είναι ταχύτερη και πιο αξιόπιστη.</string>
     <string name="about_privacy_title">Πολιτική Απορρήτου</string>
     <string name="about_open_source_title">Ανοικτός κώδικας που χρησιμοποιείται</string>
     <string name="about_advanced_settings_button">Ρυθμίσεις για προχωρημένους</string>
