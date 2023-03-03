@@ -1,6 +1,7 @@
 package com.github.cvzi.screenshottile.utils
 
 import android.app.Dialog
+import android.app.KeyguardManager
 import android.content.ContentValues
 import android.content.Context
 import android.content.DialogInterface
@@ -972,4 +973,19 @@ fun parseColorString(colorString: String?): Int? {
         Log.e(UTILSKT, "Could not parse color '$colorString'")
     }
     return null
+}
+
+/**
+ * Show toast error that the phone is locked and no screenshot was taken
+ * (Toast messages are probably not shown on lock-screen though)
+ */
+fun toastDeviceIsLocked(context: Context) {
+    context.toastMessage("Screenshot prevented: Device is locked", ToastType.ERROR)
+}
+
+/**
+ * Check if the phone is currently locked
+ */
+fun isDeviceLocked(context: Context) : Boolean {
+    return (context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager).isDeviceLocked
 }

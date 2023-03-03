@@ -626,4 +626,12 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value
         ).apply()
 
+    var preventIfLocked: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_prevent_if_locked), false)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_prevent_if_locked),
+            value
+        ).apply()
+
+
 }

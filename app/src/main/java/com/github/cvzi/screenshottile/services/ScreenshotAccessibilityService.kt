@@ -212,6 +212,11 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         buttonClose?.alpha = alpha
 
         buttonScreenshot.setOnClickListener {
+            if (isDeviceLocked(this) && App.getInstance().prefManager.preventIfLocked) {
+                toastDeviceIsLocked(this)
+                return@setOnClickListener
+            }
+
             if (App.getInstance().prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_partial)) {
                 App.getInstance().screenshotPartial(this)
                 return@setOnClickListener

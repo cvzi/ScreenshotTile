@@ -45,6 +45,7 @@
     <string name="setting_file_name_pattern_value_default" formatted="false" translatable="false">Screenshot_%timestamp%</string>
     <string name="pref_key_file_names_recent" translatable="false">file_names_recent</string>
     <string name="pref_key_file_names_starred" translatable="false">file_names_starred</string>
+    <string name="pref_key_prevent_if_locked" translatable="false">prevent_if_locked</string>
 
     <string name="setting_file_format_value_default" translatable="false">png</string>
     <string-array name="setting_file_format_entries" translatable="false">

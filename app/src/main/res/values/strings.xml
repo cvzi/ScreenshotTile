@@ -62,6 +62,8 @@
     <string name="setting_notification_buttons">Notification buttons</string>
     <string name="setting_notification_buttons_description">Select up to three buttons that appear below the screenshot notification</string>
     <string name="setting_notification_buttons_max_three">Please choose a maximum of three buttons</string>
+    <string name="setting_prevent_if_locked">Prevent screenshots if the device is locked</string>
+    <string name="setting_prevent_if_locked_summary">No more accidental \"pocket dialing\" screenshots</string>
     <string name="notification_settings">Notifications</string>
     <string name="notification_settings_on">Enabled</string>
     <string name="notification_settings_off">Disabled</string>

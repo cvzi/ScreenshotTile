@@ -54,12 +54,16 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         if (bitmap == null) {
             Log.w(TAG, "onHandleScreenshot: bitmap is null")
         }
-
         screenshotSelectorActive = false
 
         if (saveImageHandler.isRunning()) {
             Log.e(TAG, "onHandleScreenshot: Thread is already running")
             hide()
+            return
+        }
+
+        if (isDeviceLocked(App.getInstance()) && App.getInstance().prefManager.preventIfLocked) {
+            toastDeviceIsLocked(App.getInstance())
             return
         }
 

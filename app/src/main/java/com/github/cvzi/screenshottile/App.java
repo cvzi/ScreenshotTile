@@ -2,6 +2,8 @@ package com.github.cvzi.screenshottile;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.cleanUpAppData;
+import static com.github.cvzi.screenshottile.utils.UtilsKt.isDeviceLocked;
+import static com.github.cvzi.screenshottile.utils.UtilsKt.toastDeviceIsLocked;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.tryNativeScreenshot;
 
 import android.annotation.SuppressLint;
@@ -316,6 +318,11 @@ public class App extends Application {
      * @param context Context
      */
     public void screenshot(Context context) {
+        if (isDeviceLocked(context) && prefManager.getPreventIfLocked()) {
+            toastDeviceIsLocked(context);
+            return;
+        }
+
         if (prefManager.getShowCountDown()) {
             screenshotShowCountdown(context);
         } else {
@@ -329,6 +336,11 @@ public class App extends Application {
      * @param context Context
      */
     public void screenshotPartial(Context context) {
+        if (isDeviceLocked(context) && prefManager.getPreventIfLocked()) {
+            toastDeviceIsLocked(context);
+            return;
+        }
+
         Intent intent = NoDisplayActivity.newPartialIntent(context);
         if (!(context instanceof Activity)) {
             intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
@@ -342,6 +354,11 @@ public class App extends Application {
      * @param context Context
      */
     public void screenshotPartial(TileService context) {
+        if (isDeviceLocked(context) && prefManager.getPreventIfLocked()) {
+            toastDeviceIsLocked(context);
+            return;
+        }
+
         Intent intent = NoDisplayActivity.newPartialIntent(context);
         intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
         context.startActivityAndCollapse(intent);
