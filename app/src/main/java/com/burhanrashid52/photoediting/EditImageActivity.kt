@@ -82,6 +82,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     private val mConstraintSet = ConstraintSet()
     private var mIsFilterVisible = false
     private var currentUri: Uri? = null
+    private var isRotated = false
 
     private lateinit var startForPickFolder: ActivityResultLauncher<Intent>
     private val onBackInvokedCallback: OnBackInvokedCallback? =
@@ -172,9 +173,11 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                     var bitmap = lastBitmap ?: loadBitmapFromDisk(contentResolver, uri, true)
 
                     // Try to rotate image
+                    isRotated = false
                     val screenWidth = realScreenSize(this).x
                     if (App.getInstance().prefManager.photoEditorAutoRotateLandscape && bitmap.width > bitmap.height && bitmap.width > screenWidth) {
                         bitmap = bitmap.rotate(90f)
+                        isRotated = true
                     }
 
                     source.setImageBitmap(bitmap)
@@ -193,6 +196,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 if (intentType != null && intentType.startsWith("image/")) {
                     source.setImageURI(uri)
                     currentUri = uri
+                    isRotated = false
                     return true
                 }
             }
@@ -378,9 +382,15 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                     return
                 }
 
+                val bitmap = if (isRotated) {
+                    saveBitmap.rotate(-90f)
+                } else  {
+                    saveBitmap
+                }
+
                 SaveImageHandler(Looper.getMainLooper()).storeBitmap(
                     this@EditImageActivity,
-                    saveBitmap,
+                    bitmap,
                     null,
                     fileName,
                     useAppData = false,
@@ -393,6 +403,8 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                         showSnackbar(getString(R.string.msg_image_saved))
                         mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
                         mPhotoEditorView.source.setImageURI(mSaveImageUri)
+                        currentUri = null
+                        isRotated = false
                     } else {
                         hideLoading()
                         showSnackbar(getString(R.string.msg_failed_to_save))
@@ -433,6 +445,8 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                     showSnackbar(getString(R.string.msg_image_saved))
                     mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
                     mPhotoEditorView.source.setImageURI(mSaveImageUri)
+                    currentUri = mSaveImageUri
+                    isRotated = false
                 } else {
                     hideLoading()
                     showSnackbar(getString(R.string.msg_failed_to_save))
@@ -452,12 +466,18 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                         return
                     }
 
+                    val bitmap = if (isRotated) {
+                        saveBitmap.rotate(-90f)
+                    } else  {
+                        saveBitmap
+                    }
+
                     val uri = currentUri
                     if (uri != null && App.getInstance().prefManager.photoEditorOverwriteFile) {
                         // Try to overwrite the existing uri
                         SaveImageHandler(Looper.getMainLooper()).storeBitmap(
                             this@EditImageActivity,
-                            saveBitmap,
+                            bitmap,
                             null,
                             uri
                         ) {
@@ -468,7 +488,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                                 // Try again without overwriting
                                 SaveImageHandler(Looper.getMainLooper()).storeBitmap(
                                     this@EditImageActivity,
-                                    saveBitmap,
+                                    bitmap,
                                     null,
                                     App.getInstance().prefManager.fileNamePattern,
                                     useAppData = false,
@@ -482,7 +502,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
 
                     SaveImageHandler(Looper.getMainLooper()).storeBitmap(
                         this@EditImageActivity,
-                        saveBitmap,
+                        bitmap,
                         null,
                         App.getInstance().prefManager.fileNamePattern,
                         useAppData = false,
@@ -506,6 +526,8 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     //                     See https://developer.android.com/training/basics/intents/result
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        currentUri = null
+        isRotated = false
         if (resultCode == RESULT_OK) {
             when (requestCode) {
                 CAMERA_REQUEST -> {

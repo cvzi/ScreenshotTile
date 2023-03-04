@@ -580,7 +580,7 @@ fun saveBitmapToFile(
                 PrefManager.ScreenshotHistoryItem(
                     result.uri,
                     Date(),
-                    result.imageFile
+                    null
                 )
             )
             SaveImageResultSuccess(
@@ -672,6 +672,11 @@ fun saveBitmapToFile(
                 try {
                     val contentValues = ContentValues().apply {
                         put(Images.ImageColumns.DATE_MODIFIED, Date().time)
+                        put(Images.ImageColumns.WIDTH, bitmap.width)
+                        put(Images.ImageColumns.HEIGHT, bitmap.height)
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                            put(Images.ImageColumns.RESOLUTION, "${bitmap.width}\u00d7${bitmap.height}")
+                        }
                     }
                     context.contentResolver.update(result.uri, contentValues, null, null)
                     context.contentResolver.notifyChange(result.uri, null)
