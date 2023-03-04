@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Aviseringsknappar</string>
     <string name="setting_notification_buttons_description">Välj upp till tre knappar som visas under skärmdumpsaviseringen</string>
     <string name="setting_notification_buttons_max_three">Välj högst tre knappar</string>
+    <string name="setting_prevent_if_locked">Förhindra skärmdumpar när enheten är låst</string>
+    <string name="setting_prevent_if_locked_summary">Inga fler oavsiktliga \"fickringnings\"-skärmdumpar</string>
+    <string name="setting_pe_overwrite_file">Skriv över fil</string>
+    <string name="setting_pe_overwrite_file_summary">Den medföljande fotoredigeraren försöker skriva över den aktuella bilden istället för att skapa en ny fil</string>
     <string name="notification_settings">Aviseringar</string>
     <string name="notification_settings_on">Aktiverad</string>
     <string name="notification_settings_off">Inaktiverad</string>
@@ -180,6 +184,7 @@
     <string name="label_oval">Oval</string>
     <string name="label_rectangle">Rektangel</string>
     <string name="label_line">Linje</string>
+    <string name="label_arrow">Pil</string>
     <string name="label_emoji">Emoji</string>
     <string name="label_eraser">Suddgummi</string>
     <string name="label_eraser_mode">Suddgummiläge</string>
@@ -225,4 +230,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Om du inaktiverade \"%1$s\" lagras skärmdumpar tillfälligt i mappen \"Android/data/\" och raderas regelbundet när det maximala antalet filer uppnås.\n-1 betyder att behålla obegränsat\nStandardvärde %2$s</string>
     <string name="setting_keep_screenshot_history">Håll historik över skärmdumpar</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Lagrar filnamnen på skärmdumpar i en lista. Detta krävs för funktionen \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Fotoredigerare: Rotera liggande bilder</string>
 </resources>
