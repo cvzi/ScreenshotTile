@@ -377,6 +377,34 @@ fun createOutputStreamMediaStore(
 }
 
 /**
+ * Get output stream for an existing uri
+ * @throws SecurityException if not allowed to write to Uri
+ */
+fun createOutputStreamForExistingUri(
+    context: Context,
+    uri: Uri
+): OutputStreamResult {
+    val outputStream = try {
+        context.contentResolver.openOutputStream(uri)
+    } catch (e: FileNotFoundException) {
+        Log.e(UTILSKT, "createOutputStreamForExistingUri(): ", e)
+        null
+    } catch (e: IOException) {
+        Log.e(UTILSKT, "createOutputStreamForExistingUri(): ", e)
+        null
+    }
+        ?: return OutputStreamResult("Could not open output stream from MediaStore for uri: $uri")
+    return OutputStreamResultSuccess(
+        outputStream,
+        null,
+        uri,
+        null,
+        ""
+    )
+}
+
+
+/**
  * Format the filename
  */
 fun formatFileName(fileNamePattern: String, date: Date): String {
@@ -567,6 +595,104 @@ fun saveBitmapToFile(
         else -> SaveImageResult("Could not save image file, no URI")
     }
 }
+
+
+/**
+ * Save image to existing uri
+ */
+fun saveBitmapToFile(
+    context: Context,
+    fullBitmap: Bitmap,
+    uri: Uri,
+    compressionOptions: CompressionOptions = CompressionOptions(),
+    cutOutRect: Rect?
+): SaveImageResult {
+    val bitmap = cutOutBitmap(fullBitmap, cutOutRect)
+
+    val outputStreamResult = try {
+        createOutputStreamForExistingUri(context, uri)
+    } catch (e: SecurityException) {
+        Log.e(UTILSKT, "Failed to create output stream for $uri", e)
+        null
+    } ?: return SaveImageResult("Could not overwrite file, permission denied.")
+
+    if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
+        Log.e(UTILSKT, "saveImageToFile() outputStreamResult.success is false")
+        return SaveImageResult(outputStreamResult.errorMessage)
+    }
+
+    val result =
+        (outputStreamResult as? OutputStreamResultSuccess?)
+            ?: return SaveImageResult("Could not create output stream")
+
+    val outputStream: OutputStream = result.fileOutputStream
+
+    // Save image
+    if (bitmap.width == 0 || bitmap.height == 0) {
+        Log.e(UTILSKT, "saveImageToFile() Bitmap width or height is 0")
+        return SaveImageResult("Bitmap is empty")
+    }
+
+    val bytes = ByteArrayOutputStream()
+
+    bitmap.compress(compressionOptions.format, compressionOptions.quality, bytes)
+
+    var success = false
+    var error = ""
+    try {
+        outputStream.write(bytes.toByteArray())
+        success = true
+    } catch (e: FileNotFoundException) {
+        error = e.toString()
+        Log.e(UTILSKT, "saveImageToFile() $error")
+    } catch (e: SecurityException) {
+        error = e.toString()
+        Log.e(UTILSKT, "saveImageToFile() $error")
+    } catch (e: IOException) {
+        error = e.toString()
+        Log.e(UTILSKT, "saveImageToFile() $error")
+        if (error.contains("enospc", ignoreCase = true)) {
+            error = "No space left on internal device storage"
+        }
+
+    } catch (e: NullPointerException) {
+        error = e.toString()
+        Log.e(UTILSKT, "saveImageToFile() $error")
+    } finally {
+        outputStream.close()
+    }
+
+    if (!success) {
+        return SaveImageResult("Could not save image file:\n$error")
+    }
+
+    return when {
+        result.uri != null -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                try {
+                    val contentValues = ContentValues().apply {
+                        put(Images.ImageColumns.DATE_MODIFIED, Date().time)
+                    }
+                    context.contentResolver.update(result.uri, contentValues, null, null)
+                    context.contentResolver.notifyChange(result.uri, null)
+                } catch (e: UnsupportedOperationException) {
+                    Log.e(UTILSKT, e.stackTraceToString())
+                }
+            }
+
+            SaveImageResultSuccess(
+                bitmap,
+                compressionOptions.mimeType,
+                null,
+                result.uri,
+                "Existing file",
+                "Overwriting existing file",
+            )
+        }
+        else -> SaveImageResult("Could not save image file, no URI")
+    }
+}
+
 
 /**
  * Save image to jpg file in default "Picture" storage.
@@ -986,6 +1112,6 @@ fun toastDeviceIsLocked(context: Context) {
 /**
  * Check if the phone is currently locked
  */
-fun isDeviceLocked(context: Context) : Boolean {
+fun isDeviceLocked(context: Context): Boolean {
     return (context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager).isDeviceLocked
 }

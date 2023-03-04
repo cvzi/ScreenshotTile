@@ -43,10 +43,9 @@ import com.burhanrashid52.photoediting.filters.FilterViewAdapter
 import com.burhanrashid52.photoediting.tools.EditingToolsAdapter
 import com.burhanrashid52.photoediting.tools.EditingToolsAdapter.OnItemSelected
 import com.burhanrashid52.photoediting.tools.ToolType
-import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.SaveImageResultSuccess
 import com.github.cvzi.screenshottile.activities.GenericPostActivity
 import com.github.cvzi.screenshottile.activities.GenericPostActivity.Companion.OPEN_IMAGE_FROM_URI
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
@@ -80,6 +79,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     private lateinit var mRootView: ConstraintLayout
     private val mConstraintSet = ConstraintSet()
     private var mIsFilterVisible = false
+    private var currentUri: Uri? = null
 
     private lateinit var startForPickFolder: ActivityResultLauncher<Intent>
     private val onBackInvokedCallback: OnBackInvokedCallback? =
@@ -169,6 +169,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 try {
                     val bitmap = lastBitmap ?: loadBitmapFromDisk(contentResolver, uri, true)
                     source.setImageBitmap(bitmap)
+                    currentUri = uri
                     return true
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -182,6 +183,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 val intentType = intent.type
                 if (intentType != null && intentType.startsWith("image/")) {
                     source.setImageURI(uri)
+                    currentUri = uri
                     return true
                 }
             }
@@ -414,6 +416,24 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 .setTransparencyEnabled(true)
                 .build()
 
+            val onFileSaved = fun(r: SaveImageResult?) {
+                hideLoading()
+                val result = r as? SaveImageResultSuccess?
+                if (result != null) {
+                    hideLoading()
+                    showSnackbar(getString(R.string.msg_image_saved))
+                    mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
+                    mPhotoEditorView.source.setImageURI(mSaveImageUri)
+                } else {
+                    hideLoading()
+                    showSnackbar(getString(R.string.msg_failed_to_save))
+                    Log.e(
+                        TAG,
+                        "saveAsBitmap -> storeBitmap -> SaveImageResult Error ${r?.errorMessage}"
+                    )
+                }
+            }
+
             mPhotoEditor.saveAsBitmap(saveSettings, object : OnSaveBitmap {
                 override fun onBitmapReady(saveBitmap: Bitmap?) {
                     if (saveBitmap == null) {
@@ -423,30 +443,43 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                         return
                     }
 
+                    val uri = currentUri
+                    if (uri != null && App.getInstance().prefManager.photoEditorOverwriteFile) {
+                        // Try to overwrite the existing uri
+                        SaveImageHandler(Looper.getMainLooper()).storeBitmap(
+                            this@EditImageActivity,
+                            saveBitmap,
+                            null,
+                            uri
+                        ) {
+                            val result = it as? SaveImageResultSuccess?
+                            if (result != null) {
+                                onFileSaved(result)
+                            } else {
+                                // Try again without overwriting
+                                SaveImageHandler(Looper.getMainLooper()).storeBitmap(
+                                    this@EditImageActivity,
+                                    saveBitmap,
+                                    null,
+                                    App.getInstance().prefManager.fileNamePattern,
+                                    useAppData = false,
+                                    directory = null,
+                                    onFileSaved
+                                )
+                            }
+                        }
+                        return
+                    }
+
                     SaveImageHandler(Looper.getMainLooper()).storeBitmap(
                         this@EditImageActivity,
                         saveBitmap,
                         null,
                         App.getInstance().prefManager.fileNamePattern,
                         useAppData = false,
-                        directory = null
-                    ) {
-                        hideLoading()
-                        val result = it as? SaveImageResultSuccess?
-                        if (result != null) {
-                            hideLoading()
-                            showSnackbar(getString(R.string.msg_image_saved))
-                            mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
-                            mPhotoEditorView.source.setImageURI(mSaveImageUri)
-                        } else {
-                            hideLoading()
-                            showSnackbar(getString(R.string.msg_failed_to_save))
-                            Log.e(
-                                TAG,
-                                "saveAsBitmap -> storeBitmap -> SaveImageResult Error ${it?.errorMessage}"
-                            )
-                        }
-                    }
+                        directory = null,
+                        onFileSaved
+                    )
                 }
 
                 override fun onFailure(e: Exception?) {

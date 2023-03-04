@@ -64,6 +64,8 @@
     <string name="setting_notification_buttons_max_three">Please choose a maximum of three buttons</string>
     <string name="setting_prevent_if_locked">Prevent screenshots if the device is locked</string>
     <string name="setting_prevent_if_locked_summary">No more accidental \"pocket dialing\" screenshots</string>
+    <string name="setting_pe_overwrite_file">Overwrite file</string>
+    <string name="setting_pe_overwrite_file_summary">The included photo editor tries to overwrite the current image instead of creating a new file</string>
     <string name="notification_settings">Notifications</string>
     <string name="notification_settings_on">Enabled</string>
     <string name="notification_settings_off">Disabled</string>

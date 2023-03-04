@@ -200,6 +200,20 @@
         app:iconSpaceReserved="false" />
 
     <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_pe_settings"
+        android:persistent="false"
+        android:selectable="false"
+        android:title="@string/notification_photo_editor_screenshot"
+        app:icon="@mipmap/ic_launcher_photo_editor"/>
+
+    <androidx.preference.SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_key_pe_overwrite_file"
+        android:summary="@string/setting_pe_overwrite_file_summary"
+        android:title="@string/setting_pe_overwrite_file"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_app_1"
         android:persistent="false"
         android:selectable="true"

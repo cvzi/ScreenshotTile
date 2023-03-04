@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Rect
 import android.media.Image
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
@@ -67,6 +68,31 @@ class SaveImageHandler(looper: Looper) :
         }
         sendEmptyMessage(THREAD_START)
     }
+
+    /**
+     * Store the bitmap to an existing Uri
+     */
+    fun storeBitmap(
+        context: Context,
+        bitmap: Bitmap,
+        cutOutRect: Rect?,
+        uri: Uri,
+        onFileSaved: (SaveImageResult?) -> Unit
+    ) {
+        onSaved = onFileSaved
+        thread = Thread {
+            saveImageResult = saveBitmapToFile(
+                context,
+                bitmap,
+                uri,
+                compressionPreference(context),
+                cutOutRect,
+            )
+            sendEmptyMessage(THREAD_FINISHED)
+        }
+        sendEmptyMessage(THREAD_START)
+    }
+
 
     /**
      * Convert image to bitmap and store to file system

@@ -633,5 +633,12 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value
         ).apply()
 
+    var photoEditorOverwriteFile: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_pe_overwrite_file), false)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_pe_overwrite_file),
+            value
+        ).apply()
+
 
 }
