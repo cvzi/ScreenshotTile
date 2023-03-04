@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.2.0
+*   Add option to prevent screenshots when phone is locked [#301](https://github.com/cvzi/ScreenshotTile/issues/301)
+*   Add option to override original file in photo editor [#300](https://github.com/cvzi/ScreenshotTile/issues/300)
+*   Rotate landscape images in photo editor [#280](https://github.com/cvzi/ScreenshotTile/issues/280)
+*   Add donation link to about section
+
 ## 2.1.0
 *   Include new shape "arrow" in PhotoEditor [burhanrashid52/PhotoEditor#492](https://github.com/burhanrashid52/PhotoEditor/pull/492)
 *   Update [PhotoEditor](https://github.com/burhanrashid52/PhotoEditor) to [3.0.0](https://github.com/burhanrashid52/PhotoEditor/releases/tag/v.3.0.0)
