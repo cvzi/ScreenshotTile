@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Benachrichtigungsschaltflächen</string>
     <string name="setting_notification_buttons_description">Wähle bis zu drei Schaltflächen aus die unter der Screenshot Benachrichtigung erscheinen</string>
     <string name="setting_notification_buttons_max_three">Bitte wähle maximal drei Schaltflächen aus</string>
+    <string name="setting_prevent_if_locked">Screenshots verhindern, wenn das Gerät gesperrt ist</string>
+    <string name="setting_prevent_if_locked_summary">Keine versehentlichen Screenshots in der Tasche mehr</string>
+    <string name="setting_pe_overwrite_file">Datei überschreiben</string>
+    <string name="setting_pe_overwrite_file_summary">Der mitgelieferte Foto-Editor versucht, das aktuelle Bild zu überschreiben, anstatt eine neue Datei zu erstellen</string>
     <string name="notification_settings">Benachrichtigungen</string>
     <string name="notification_settings_on">Aktiviert</string>
     <string name="notification_settings_off">Deaktiviert</string>
@@ -226,4 +230,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Wenn Sie \"%1$s\" deaktiviert haben, dann werden Screenshots temporär im Ordner \"Android/data/\" gespeichert und periodisch gelöscht, wenn die maximale Anzahl an Dateien erreicht ist.\n-1 bedeutet unbegrenzt\nStandardwert %2$s</string>
     <string name="setting_keep_screenshot_history">Verlauf der Screenshots behalten</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Speichert die Dateinamen von Screenshots in einer Liste. Dies ist erforderlich für die Funktion \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Foto-Editor: Querformat drehen</string>
 </resources>
