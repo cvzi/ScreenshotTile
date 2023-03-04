@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Botones de la notificación</string>
     <string name="setting_notification_buttons_description">Seleccionar hasta tres botones que aparecen debajo de la notificación de captura de pantalla</string>
     <string name="setting_notification_buttons_max_three">Por favor elige como máximo tres botones</string>
+    <string name="setting_prevent_if_locked">Evitar capturas de pantalla si el dispositivo está bloqueado</string>
+    <string name="setting_prevent_if_locked_summary">No más capturas accidentales de pantalla en tu bolsillo o bolso</string>
+    <string name="setting_pe_overwrite_file">Sobrescribir archivo</string>
+    <string name="setting_pe_overwrite_file_summary">El editor de fotos incluido intenta sobrescribir la imagen actual en vez de crear un nuevo archivo</string>
     <string name="notification_settings">Notificaciones</string>
     <string name="notification_settings_on">Activado</string>
     <string name="notification_settings_off">Desactivado</string>
@@ -226,4 +230,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Si ha deshabilitado \"%1$s\", luego las capturas de pantalla se almacenan temporalmente en la carpeta \"Android/data/\" y se borran periódicamente cuando se alcanza el número máximo de archivos.\n-1 significa mantener ilimitado\nValor predeterminado %2$s</string>
     <string name="setting_keep_screenshot_history">Mantener historial de capturas de pantalla</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Guarda los nombres de los archivos de las capturas de pantalla en una lista. Esto es necesario para la función \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Editor de fotos: Rotar imágenes horizontales</string>
 </resources>
