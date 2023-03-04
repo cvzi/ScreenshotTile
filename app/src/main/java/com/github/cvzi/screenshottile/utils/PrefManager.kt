@@ -2,6 +2,7 @@ package com.github.cvzi.screenshottile.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Resources
 import android.graphics.Point
 import android.net.Uri
 import android.util.Log
@@ -33,6 +34,14 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         context,
         PreferenceManager.getDefaultSharedPreferences(context)
     )
+
+    private fun getBooleanRes(resId: Int, default: Boolean): Boolean {
+        return try {
+            context.resources.getBoolean(resId)
+        } catch (e: Resources.NotFoundException) {
+            default
+        }
+    }
 
     var delay: Int
         get() = pref.getString(
@@ -640,5 +649,14 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value
         ).apply()
 
+    var photoEditorAutoRotateLandscape: Boolean
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_pe_auto_rotate_landscape),
+            getBooleanRes(R.bool.pref_pe_auto_rotate_landscape_default, true)
+        )
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_pe_auto_rotate_landscape),
+            value
+        ).apply()
 
 }

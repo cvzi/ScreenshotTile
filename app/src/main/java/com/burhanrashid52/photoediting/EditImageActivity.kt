@@ -51,6 +51,8 @@ import com.github.cvzi.screenshottile.activities.GenericPostActivity.Companion.O
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.SingleImage.Companion.loadBitmapFromDisk
 import com.github.cvzi.screenshottile.utils.formatFileName
+import com.github.cvzi.screenshottile.utils.realScreenSize
+import com.github.cvzi.screenshottile.utils.rotate
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import ja.burhanrashid52.photoeditor.*
 import ja.burhanrashid52.photoeditor.shape.ShapeBuilder
@@ -167,7 +169,14 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                     null
                 }
                 try {
-                    val bitmap = lastBitmap ?: loadBitmapFromDisk(contentResolver, uri, true)
+                    var bitmap = lastBitmap ?: loadBitmapFromDisk(contentResolver, uri, true)
+
+                    // Try to rotate image
+                    val screenWidth = realScreenSize(this).x
+                    if (App.getInstance().prefManager.photoEditorAutoRotateLandscape && bitmap.width > bitmap.height && bitmap.width > screenWidth) {
+                        bitmap = bitmap.rotate(90f)
+                    }
+
                     source.setImageBitmap(bitmap)
                     currentUri = uri
                     return true

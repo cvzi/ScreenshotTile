@@ -731,3 +731,12 @@ fun scaleRect(rect: Rect, factor: Float): Rect {
         (rect.bottom * factor).toInt()
     )
 }
+
+/**
+ * Create new rotated bitmap
+ */
+fun Bitmap.rotate(degrees: Float): Bitmap {
+    return Bitmap.createBitmap(this, 0, 0, width, height, Matrix().apply {
+        postRotate(degrees)
+    }, true)
+}

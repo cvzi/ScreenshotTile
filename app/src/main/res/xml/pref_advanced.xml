@@ -109,4 +109,11 @@
         android:title="@string/setting_keep_app_data_max"
         app:iconSpaceReserved="false" />
 
+    <androidx.preference.SwitchPreference
+        android:defaultValue="@bool/pref_pe_auto_rotate_landscape_default"
+        android:key="@string/pref_key_pe_auto_rotate_landscape"
+        android:summary="@string/setting_defaults_to_on"
+        android:title="@string/setting_pe_auto_rotate_landscape"
+        app:iconSpaceReserved="false" />
+
 </androidx.preference.PreferenceScreen>

@@ -235,4 +235,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">If you disabled \"%1$s\", then screenshots are temporarily stored in the \"Android/data/\" folder and periodically deleted when the maximum number of files is reached.\n-1 means keep unlimited\nDefault value %2$s</string>
     <string name="setting_keep_screenshot_history">Keep history of screenshots</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Stores the file names of screenshots in a list. This is required for the function \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Photo editor: Rotate landscape images</string>
 </resources>

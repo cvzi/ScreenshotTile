@@ -35,4 +35,7 @@
     <string name="pref_key_keep_screenshot_history" translatable="false">keep_screenshot_history</string>
     <bool name="pref_keep_screenshot_history_default">true</bool>
 
+    <string name="pref_key_pe_auto_rotate_landscape" translatable="false">pe_auto_rotate_landscape</string>
+    <bool name="pref_pe_auto_rotate_landscape_default">true</bool>
+
 </resources>
