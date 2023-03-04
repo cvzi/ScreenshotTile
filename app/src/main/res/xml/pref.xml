@@ -204,7 +204,7 @@
         android:persistent="false"
         android:selectable="false"
         android:title="@string/notification_photo_editor_screenshot"
-        app:icon="@mipmap/ic_launcher_photo_editor"/>
+        app:icon="@mipmap/ic_launcher_photo_editor" />
 
     <androidx.preference.SwitchPreference
         android:defaultValue="false"
@@ -267,5 +267,12 @@
         android:selectable="true"
         android:title="@string/about_update_check_button"
         app:icon="@android:drawable/ic_popup_sync" />
+
+    <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_about_donate"
+        android:persistent="false"
+        android:selectable="true"
+        android:title="&#x1f49c; &#xa0;&#xa0; Donate &amp; Support"
+        app:iconSpaceReserved="false" />
 
 </androidx.preference.PreferenceScreen>

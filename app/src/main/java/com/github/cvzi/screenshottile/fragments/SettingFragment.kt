@@ -206,6 +206,10 @@ class SettingFragment : PreferenceFragmentCompat() {
             R.string.pref_static_field_link_about_privacy
         )
         makeLink(
+            R.string.pref_static_field_key_about_donate,
+            R.string.pref_static_field_link_about_donate
+        )
+        makeLink(
             R.string.pref_static_field_key_about_updates,
             R.string.pref_static_field_link_about_updates,
             arrayOf(

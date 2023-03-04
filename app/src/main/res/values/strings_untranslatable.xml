@@ -218,12 +218,14 @@
     <string name="pref_static_field_key_about_open_source" translatable="false">pref_static_field_key_about_open_source</string>
     <string name="pref_static_field_key_about_privacy" translatable="false">pref_static_field_key_about_privacy</string>
     <string name="pref_static_field_key_about_updates" translatable="false">pref_static_field_key_about_updates</string>
+    <string name="pref_static_field_key_about_donate" translatable="false">pref_static_field_key_donate</string>
     <string name="pref_static_field_link_about_app_1" translatable="false">https://github.com/ipcjs/ScreenshotTile</string>
     <string name="pref_static_field_link_about_app_3" translatable="false">https://github.com/cvzi/ScreenshotTile</string>
     <string name="pref_static_field_link_about_license_1" translatable="false">https://www.gnu.org/licenses/gpl-3.0</string>
     <string name="pref_static_field_link_about_open_source" translatable="false">https://cvzi.github.io/ScreenshotTile/opensource.html</string>
     <string name="pref_static_field_link_about_privacy" translatable="false">https://cvzi.github.io/ScreenshotTile/privacy.html</string>
     <string name="pref_static_field_link_about_updates" translatable="false">https://cvzi.github.io/ScreenshotTile/updates.html?package=%1$s&amp;code=%2$s&amp;name=%3$s&amp;type=%4$s</string>
+    <string name="pref_static_field_link_about_donate" translatable="false">https://cvzi.github.io/.github/</string>
 
     <string name="about_open_source" translatable="false">Kotlin\ngradle\nMaterial Design Icons by Google\nPhotoEditor by Burhanuddin Rashid (MIT license)</string>
     <string name="about_privacy_summary" translatable="false">cvzi.github.io/ScreenshotTile/privacy.html</string>
