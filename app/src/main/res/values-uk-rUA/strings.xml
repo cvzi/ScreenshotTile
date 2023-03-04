@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Кнопки сповіщень</string>
     <string name="setting_notification_buttons_description">Виберіть до трьох кнопок, які з’являються під сповіщенням про знімок екрана</string>
     <string name="setting_notification_buttons_max_three">Виберіть до трьох кнопок</string>
+    <string name="setting_prevent_if_locked">Не дозволяти знімки екрана на заблокованому пристрої</string>
+    <string name="setting_prevent_if_locked_summary">Більше ніяких знімків екрана «в кишені»</string>
+    <string name="setting_pe_overwrite_file">Перезаписати файл</string>
+    <string name="setting_pe_overwrite_file_summary">Включений редактор світлин намагатиметься перезаписати поточне зображення замість створення нового файлу</string>
     <string name="notification_settings">Сповіщення</string>
     <string name="notification_settings_on">Увімкнені</string>
     <string name="notification_settings_off">Вимкнені</string>
@@ -226,4 +230,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Якщо вимкнути \"%1$s\", потім, знятки тимчасово зберігаються в теці \"Android/data/\" і періодично видаляються при досягненні максимальної кількості файлів.\n-1 означає зберегти необмежений\nЗначення за замовчуванням %2$s</string>
     <string name="setting_keep_screenshot_history">Зберігати історію знімків екрану</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Зберігає імена файлів скріншотів в списку. Для функції \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Редактор світлин: Обертати горизонтальні зображення</string>
 </resources>
