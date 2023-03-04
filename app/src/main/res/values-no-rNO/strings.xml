@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Varslingsknapper</string>
     <string name="setting_notification_buttons_description">Velg opptil tre knapper som vises under skjermbilde varselet</string>
     <string name="setting_notification_buttons_max_three">Velg maksimalt tre knapper</string>
+    <string name="setting_prevent_if_locked">Forhindre skjermbilder hvis enheten er låst</string>
+    <string name="setting_prevent_if_locked_summary">Ingen flere utilsiktet \"lommeringing\" skjermbilder</string>
+    <string name="setting_pe_overwrite_file">Skriv over fil</string>
+    <string name="setting_pe_overwrite_file_summary">Den inkluderte bilderedigeren prøver å overskrive gjeldende bilde i stedet for å opprette en ny fil</string>
     <string name="notification_settings">Varslinger</string>
     <string name="notification_settings_on">Aktivert</string>
     <string name="notification_settings_off">Deaktivert</string>
@@ -105,7 +109,7 @@
     <string name="notification_rename_screenshot">Omdøp</string>
     <string name="notification_screenshot_details">Detaljer</string>
     <string name="notification_crop_screenshot">Beskjær</string>
-    <string name="notification_photo_editor_screenshot">Bilde Editor</string>
+    <string name="notification_photo_editor_screenshot">Bilderedigerer</string>
     <string name="screenshot_deleted">Skjermbildet slettet</string>
     <string name="screenshot_delete_failed">Mislyktes å slette bildet</string>
     <string name="screenshot_renamed">Fil endret navn til %1s</string>
@@ -226,4 +230,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Hvis du deaktiverte \"%1$s\", deretter lagres skjermbilder midlertidig i mappen \"Android/data/\" og periodisk slettet når maksimalt antall filer er nådd.\n-1 betyr å holde ubegrenset\nstandardverdi %2$s</string>
     <string name="setting_keep_screenshot_history">Behold historikk med skjermbilder</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Lagrer filnavnene på skjermbilder i en liste. Dette kreves for funksjonen \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Bilderedigerer: Roter landskapsbilder</string>
 </resources>
