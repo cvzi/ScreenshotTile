@@ -53,6 +53,10 @@
     <string name="setting_dark_theme_system">遵循系統</string>
     <string name="setting_dark_theme_off">已禁用</string>
     <string name="setting_dark_theme_on">已啓用</string>
+    <string name="setting_prevent_if_locked">设备已锁定时防止截屏</string>
+    <string name="setting_prevent_if_locked_summary">不再因误触导致意外截屏</string>
+    <string name="setting_pe_overwrite_file">覆写文件</string>
+    <string name="setting_pe_overwrite_file_summary">内置的照片编辑器试图覆写当前图片，而不是创建新图片</string>
     <string name="notification_settings">通知</string>
     <string name="notification_settings_on">已启用</string>
     <string name="notification_settings_off">已禁用</string>
@@ -130,4 +134,5 @@
     <string name="dialog_ask_filename_hint">文件名称（不包括扩展名）</string>
     <!-- Advanced Settings -->
     <string name="setting_floating_button_color">浮动按钮颜色</string>
+    <string name="setting_pe_auto_rotate_landscape">照片编辑器：旋转横向图片</string>
 </resources>
