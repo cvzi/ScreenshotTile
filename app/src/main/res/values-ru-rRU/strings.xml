@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Кнопки в уведомлении</string>
     <string name="setting_notification_buttons_description">Выберите три кнопки, отображающиеся под уведомлением о снимке экрана</string>
     <string name="setting_notification_buttons_max_three">Выберите не более трёх кнопок, пожалуйста</string>
+    <string name="setting_prevent_if_locked">Запретить скриншоты, если устройство заблокировано</string>
+    <string name="setting_prevent_if_locked_summary">Больше никаких случайных скриншотов \"карманного набора\"</string>
+    <string name="setting_pe_overwrite_file">Перезаписать файл</string>
+    <string name="setting_pe_overwrite_file_summary">Включённый фоторедактор пытается перезаписать текущее изображение вместо создания нового файла</string>
     <string name="notification_settings">Уведомления</string>
     <string name="notification_settings_on">Включено</string>
     <string name="notification_settings_off">Отключено</string>
@@ -226,4 +230,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Если вы отключили функцию \"%1$s\", то снимки экрана временно хранятся в папке \"Android/data/\" и периодически удаляются при достижении максимального количества файлов.\n-1 означает хранить неограниченно \nЗначение по умолчанию %2$s</string>
     <string name="setting_keep_screenshot_history">Сохранение истории снимков экрана</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Сохраняет имена файлов снимков экрана в списке. Это необходимо для функции \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Фоторедактор: поворот альбомных изображений</string>
 </resources>
