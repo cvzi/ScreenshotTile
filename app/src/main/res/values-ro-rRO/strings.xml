@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Butoane de notificare</string>
     <string name="setting_notification_buttons_description">Selectați până la trei butoane care apar sub notificarea de captură de ecran</string>
     <string name="setting_notification_buttons_max_three">Vă rugăm să alegeți maximum trei butoane</string>
+    <string name="setting_prevent_if_locked">Împiedicați capturile de ecran dacă dispozitivul este blocat</string>
+    <string name="setting_prevent_if_locked_summary">Gata cu capturile de ecran accidentale de \"apelare de buzunar\"</string>
+    <string name="setting_pe_overwrite_file">Suprascrieți fișierul</string>
+    <string name="setting_pe_overwrite_file_summary">Editorul foto inclus încearcă să suprascrie imaginea curentă în loc să creeze un fișier nou</string>
     <string name="notification_settings">Notificări</string>
     <string name="notification_settings_on">Activat</string>
     <string name="notification_settings_off">Dezactivat</string>
@@ -180,6 +184,7 @@
     <string name="label_oval">Oval</string>
     <string name="label_rectangle">Dreptunghi</string>
     <string name="label_line">Linia</string>
+    <string name="label_arrow">Săgeată</string>
     <string name="label_emoji">Emoji</string>
     <string name="label_eraser">Radieră</string>
     <string name="label_eraser_mode">Modul Ștergere</string>
@@ -225,4 +230,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Dacă ați dezactivat \"%1$s\", atunci capturile de ecran sunt stocate temporar în folderul \"Android/data/\" și sunt șterse periodic atunci când este atins numărul maxim de fișiere.\n-1 înseamnă păstrare nelimitată\nValoare implicită %2$s</string>
     <string name="setting_keep_screenshot_history">Păstrați istoricul capturilor de ecran</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Stochează numele fișierelor de capturi de ecran într-o listă. Acest lucru este necesar pentru funcția \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Editor de fotografii: Rotire imagini peisaj</string>
 </resources>
