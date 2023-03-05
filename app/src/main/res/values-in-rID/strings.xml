@@ -62,6 +62,10 @@
     <string name="setting_notification_buttons">Tombol notifikasi</string>
     <string name="setting_notification_buttons_description">Pilih hingga tiga tombol yang muncul di bawah notifikasi tangkapan layar</string>
     <string name="setting_notification_buttons_max_three">Silakan pilih maksimal tiga tombol</string>
+    <string name="setting_prevent_if_locked">Cegah tangkapan layar jika perangkat terkunci</string>
+    <string name="setting_prevent_if_locked_summary">Tidak ada lagi tangkapan layar \"panggilan saku\" yang tidak disengaja</string>
+    <string name="setting_pe_overwrite_file">Timpa file</string>
+    <string name="setting_pe_overwrite_file_summary">Editor foto yang disertakan mencoba menimpa gambar saat ini alih-alih membuat file baru</string>
     <string name="notification_settings">Notifikasi</string>
     <string name="notification_settings_on">Diaktifkan</string>
     <string name="notification_settings_off">Nonaktifkan</string>
@@ -152,4 +156,5 @@
     <!-- Photo Editor-->
     <string name="label_arrow">Tanda panah</string>
     <!-- Advanced Settings -->
+    <string name="setting_pe_auto_rotate_landscape">Editor foto: Memutar gambar lanskap</string>
 </resources>
