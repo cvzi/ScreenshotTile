@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Плітка здымка экрана</string>
+    <string name="app_name_long">Плітка здымка экрана (NoRoot)</string>
+    <string name="tile_label">Здымак экрана</string>
+    <string name="tile_floating">Плаваючая кнопка здымка экрана</string>
+    <string name="tile_floating_label">Плаваючая</string>
+    <string name="tile_floating_subtitle">Кнопка здымка экрана</string>
+    <string name="title_delay">Затрымка</string>
+    <string name="more_setting">Больш налад</string>
+    <string name="open_settings">Адкрыйце налады</string>
+    <string name="floating_button_settings">Налады плаваючай кнопкі</string>
+    <string name="left_screenshot_right_menu">Злева: здымак экрана, справа: налады</string>
+    <string name="partial_screenshot">Выберыце вобласць</string>
+    <string name="file_format">Фармат файла</string>
+    <string name="setting_delay_entry_default">Імгненна</string>
+    <string name="setting_delay_entry_1s">1 сек</string>
+    <string name="setting_delay_entry_2s">2 сек</string>
+    <string name="setting_delay_entry_5s">5 сек</string>
+    <string name="show_count_down">Паказаць зваротны адлік</string>
+    <string name="use_native_screenshot">Выкарыстоўвайце ўласны метад здымка экрана</string>
+    <string name="use_native_screenshot_summary">Імітацыя націску кнопак дадому + харчавання</string>
+    <string name="use_native_screenshot_unsupported">Патрабуецца Android 9 Pie</string>
+    <string name="use_native_screenshot_unavailable">Служба спецыяльных магчымасцей адключана</string>
+    <string name="use_native_screenshot_option_default">Убудаваны метад выкарыстоўвае сістэмныя наладкі</string>
+    <string name="use_native_screenshot_option_android11">Адключыце \'Выкарыстоўваць сістэмныя налады\', каб выкарыстоўваць гэта</string>
+    <string name="accessibility_service_description">Калі гэтая служба ўключаная, прыкладанне можа сімуляваць націск камбінацыі кнопак харчавання+дадому, каб зрабіць здымак экрана.\nНа некаторых прыладах гэты метад можа быць больш стабільным або хуткім, чым метад па змаўчанні.\n\nКалі Вы ўключыце службу тут, Вам таксама трэба уключыць \"убудаваны метад\" у наладах прыкладання.</string>
+    <string name="use_system_defaults">Выкарыстоўваць сістэмныя налады</string>
+    <string name="use_system_defaults_summary">Патрабуецца Android 11</string>
+    <string name="use_system_defaults_summary_on">Выкарыстанне стандартнага каталога захоўвання, фармату, рэдактара здымкаў экрана і апавяшчэнняў</string>
+    <string name="use_system_defaults_summary_off">Выкарыстанне налад праграмы</string>
+    <string name="setting_floating_button">Плаваючая кнопка</string>
+    <string name="setting_floating_button_summary">Вы таксама можаце ўключыць/выключыць яе з пліткі хуткіх налад</string>
+    <string name="setting_floating_button_unavailable">Служба спецыяльных магчымасцей адключана</string>
+    <string name="setting_floating_button_unsupported">Патрабуецца Android 9 Pie</string>
+    <string name="setting_floating_button_scale">Памер плаваючай кнопкі</string>
+    <string name="setting_floating_button_scale_summary">Адрэгулюйце памер плаваючай кнопкі</string>
+    <string name="setting_floating_button_hide_after">Схаваць плаваючую кнопку пасля здымка экрана</string>
+    <string name="setting_floating_button_hide_after_summary">Аўтаматычна выдаліць плаваючую кнопку пасля здымка экрана</string>
+    <string name="setting_floating_button_show_close">Паказаць кнопку [X]/закрыць побач з плаваючай кнопкай</string>
+    <string name="setting_floating_button_show_close_summary">Дазваляе выдаліць плаваючую кнопку, не адкрываючы хуткія налады</string>
+    <string name="setting_floating_button_show_close_dialog_title">Эмодзі кнопкі закрыцця</string>
+    <string name="setting_floating_button_show_close_dialog_description">Увядзіце тэкст або эмодзі, які з\'явіцца ў якасці кнопкі закрыцця</string>
+    <string name="setting_floating_button_shutter">Тэма плаваючай кнопкай</string>
+    <string name="setting_floating_button_delay">Затрымка (Плаваючая кнопка)</string>
+    <string name="setting_broadcast_secret">Пароль намеру трансляцыі</string>
+    <string name="setting_broadcast_secret_description">Сакрэтная фраза, якая дазваляе іншым праграмам (напрыклад, MacroDroid або Tasker) ініцыяваць здымкі экрана</string>
+    <string name="setting_storage_directory">Захаваць месцазнаходжанне</string>
+    <string name="setting_storage_directory_description">Папка для захавання здымкаў экрана</string>
+    <string name="setting_file_name_pattern">Імя файла</string>
+    <string name="setting_file_name_placeholders_title">Выкарыстоўвайце гэтыя запаўняльнікі ў назве файла</string>
+    <string name="setting_prevent_if_locked">Прадухіліць здымкі экрана, калі прылада заблакіравана</string>
+    <string name="setting_prevent_if_locked_summary">Няма больш выпадковых здымкаў экрана \"кішэнных набораў\"</string>
+    <string name="setting_pe_overwrite_file">Перазапісаць файл</string>
+    <string name="setting_pe_overwrite_file_summary">Уключаны фота рэдактар ​​спрабуе перазапісаць бягучую выяву замест стварэння новага файла</string>
+    <string name="file_title">Здымак экрана</string>
+    <!-- About -->
+    <string name="about_app_title">Аб праграме</string>
+    <string name="about_advanced_settings_button">Дадатковыя налады</string>
+    <!-- First screen -->
+    <string name="main_floating_button_title">Плаваючая кнопка</string>
+    <!-- Photo Editor-->
+    <string name="label_arrow">Стрэлка</string>
+</resources>
