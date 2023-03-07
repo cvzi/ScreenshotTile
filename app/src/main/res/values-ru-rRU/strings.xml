@@ -66,7 +66,7 @@
     <string name="setting_prevent_if_locked">Запретить скриншоты, если устройство заблокировано</string>
     <string name="setting_prevent_if_locked_summary">Больше никаких случайных скриншотов \"карманного набора\"</string>
     <string name="setting_pe_overwrite_file">Перезаписать файл</string>
-    <string name="setting_pe_overwrite_file_summary">Включённый фоторедактор пытается перезаписать текущее изображение вместо создания нового файла</string>
+    <string name="setting_pe_overwrite_file_summary">Встроенный фоторедактор пытается перезаписать текущее изображение вместо создания нового файла</string>
     <string name="notification_settings">Уведомления</string>
     <string name="notification_settings_on">Включено</string>
     <string name="notification_settings_off">Отключено</string>
