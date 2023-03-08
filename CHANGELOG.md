@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2.1
+*   Translations updated from crowdin
+
 ## 2.2.0
 *   Add option to prevent screenshots when phone is locked [#301](https://github.com/cvzi/ScreenshotTile/issues/301)
 *   Add option to override original file in photo editor [#300](https://github.com/cvzi/ScreenshotTile/issues/300)
