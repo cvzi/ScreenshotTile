@@ -40,7 +40,8 @@ class ScreenshotHistoryAdapter(
     inner class ViewHolder(
         private var view: ViewGroup,
         private var lifecycleOwner: LifecycleOwner,
-        private val onClick: (SingleImage, View) -> Unit
+        private val onClick: (SingleImage, View) -> Unit,
+        override val lifecycle: Lifecycle
     ) :
         RecyclerView.ViewHolder(view), LifecycleOwner {
         val textViewFileName: TextView
@@ -50,7 +51,6 @@ class ScreenshotHistoryAdapter(
         private val buttonDelete: Button
         private val buttonDetails: Button
         val buttonMove: Button
-        var linearLayout: LinearLayout? = null
 
         private var currentRecord: SingleImage? = null
         private val lifecycleRegistry = LifecycleRegistry(this)
@@ -149,11 +149,6 @@ class ScreenshotHistoryAdapter(
                 lifecycleRegistry.currentState = Lifecycle.State.STARTED
             }
         }
-
-        override fun getLifecycle(): Lifecycle {
-            return lifecycleRegistry
-        }
-
     }
 
     private fun removeFromData(toRemove: SingleImage) {
@@ -176,7 +171,7 @@ class ScreenshotHistoryAdapter(
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.history_item, viewGroup, false)
-        return ViewHolder(view as ViewGroup, activity, onClick)
+        return ViewHolder(view as ViewGroup, activity, onClick, activity.lifecycle)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
