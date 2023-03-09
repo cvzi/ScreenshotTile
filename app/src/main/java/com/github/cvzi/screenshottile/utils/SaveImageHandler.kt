@@ -13,6 +13,7 @@ import com.github.cvzi.screenshottile.SaveImageResult
 
 /**
  * Store a bitmap to file system in a separate thread
+ * Can only be used once.
  */
 class SaveImageHandler(looper: Looper) :
     Handler(looper) {
@@ -28,9 +29,14 @@ class SaveImageHandler(looper: Looper) :
     override fun handleMessage(msg: Message) {
         super.handleMessage(msg)
         if (msg.what == THREAD_START) {
-            thread?.start()
+            try {
+                thread?.start()
+            } catch (e: IllegalStateException) {
+                // Thread may already be started
+            }
         } else if (msg.what == THREAD_FINISHED) {
             onSaved?.invoke(saveImageResult)
+            thread = null
         }
     }
 

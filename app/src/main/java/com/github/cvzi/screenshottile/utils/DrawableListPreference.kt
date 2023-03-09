@@ -109,7 +109,7 @@ class DrawableListPreference : ListPreference {
         var dialogIsOpen: Boolean = false,
         var selectedIndex: Int = 0
     ) :
-        Preference.BaseSavedState(superState)
+        BaseSavedState(superState)
 
     override fun onRestoreInstanceState(state: Parcelable?) {
 

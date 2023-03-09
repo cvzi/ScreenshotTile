@@ -2,6 +2,7 @@ package com.github.cvzi.screenshottile.assist
 
 import android.Manifest
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -40,22 +41,29 @@ class MyVoiceInteractionService : VoiceInteractionService() {
     override fun onReady() {
         super.onReady()
         instance = this
-        when (App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled) {
-            SettingFragment.TAG -> {
-                // Return to settings
-                App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled = null
-                SettingsActivity.startNewTask(this)
+        try {
+            when (App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled) {
+                SettingFragment.TAG -> {
+                    // Return to settings
+                    App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled = null
+                    SettingsActivity.startNewTask(this)
+                }
+                MainActivity.TAG -> {
+                    // Return to main activity
+                    App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled = null
+                    MainActivity.startNewTask(this)
+                }
+                NoDisplayActivity.TAG -> {
+                    // Return to NoDisplayActivity activity i.e. finish()
+                    App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled = null
+                    NoDisplayActivity.startNewTask(this, false)
+                }
+                else -> {
+                    // Do nothing
+                }
             }
-            MainActivity.TAG -> {
-                // Return to main activity
-                App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled = null
-                MainActivity.startNewTask(this)
-            }
-            NoDisplayActivity.TAG -> {
-                // Return to NoDisplayActivity activity i.e. finish()
-                App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled = null
-                NoDisplayActivity.startNewTask(this, false)
-            }
+        } catch (e: ActivityNotFoundException) {
+            // This seems to happen after booting
         }
 
         if (App.getInstance().prefManager.voiceInteractionAction != getString(R.string.setting_voice_interaction_action_value_native) &&
@@ -65,7 +73,11 @@ class MyVoiceInteractionService : VoiceInteractionService() {
                 packageName
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            App.requestStoragePermission(this, false)
+            try {
+                App.requestStoragePermission(this, false)
+            } catch (e: ActivityNotFoundException) {
+                // This seems to happen after booting
+            }
         }
     }
 }

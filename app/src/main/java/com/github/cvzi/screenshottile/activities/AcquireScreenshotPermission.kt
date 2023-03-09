@@ -4,6 +4,7 @@ package com.github.cvzi.screenshottile.activities
 
 import android.Manifest
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -81,7 +82,13 @@ class AcquireScreenshotPermission : Activity() {
         if (intent.getBooleanExtra(EXTRA_REQUEST_PERMISSION_SCREENSHOT, false)) {
             (getSystemService(Context.MEDIA_PROJECTION_SERVICE) as? MediaProjectionManager)?.apply {
                 App.setMediaProjectionManager(this)
-                startActivityForResult(createScreenCaptureIntent(), SCREENSHOT_REQUEST_CODE)
+                try {
+                    startActivityForResult(createScreenCaptureIntent(), SCREENSHOT_REQUEST_CODE)
+                } catch(e: ActivityNotFoundException) {
+                    Log.e(TAG, "startActivityForResult(createScreenCaptureIntent, ...) failed with", e)
+                    toastMessage(getString(R.string.permission_missing_screen_capture), ToastType.ERROR)
+                    finish()
+                }
             }
         }
     }

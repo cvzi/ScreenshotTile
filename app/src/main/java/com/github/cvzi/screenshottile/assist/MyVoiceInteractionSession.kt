@@ -33,7 +33,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         private const val TAG = "MyVoiceInSession"
     }
 
-    private val saveImageHandler = SaveImageHandler(Looper.getMainLooper())
+    private var saveImageHandler: SaveImageHandler? = null
     private val prefManager = App.getInstance().prefManager
     private var screenshotSelectorActive = false
     private var layoutView: ConstraintLayout? = null
@@ -56,7 +56,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         }
         screenshotSelectorActive = false
 
-        if (saveImageHandler.isRunning()) {
+        if (saveImageHandler?.isRunning() == true) {
             Log.e(TAG, "onHandleScreenshot: Thread is already running")
             hide()
             return
@@ -215,15 +215,17 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
      * Store the bitmap to file system in a separate thread
      */
     private fun storeBitmap(bitmap: Bitmap) {
-        saveImageHandler.storeBitmap(
-            context,
-            bitmap,
-            cutOutRect,
-            prefManager.fileNamePattern,
-            useAppData = "saveToStorage" !in prefManager.postScreenshotActions,
-            directory = null
-        ) {
-            onFileSaved(it)
+        saveImageHandler = SaveImageHandler(Looper.getMainLooper()).also { handler ->
+            handler.storeBitmap(
+                context,
+                bitmap,
+                cutOutRect,
+                prefManager.fileNamePattern,
+                useAppData = "saveToStorage" !in prefManager.postScreenshotActions,
+                directory = null
+            ) { result ->
+                onFileSaved(result)
+            }
         }
     }
 

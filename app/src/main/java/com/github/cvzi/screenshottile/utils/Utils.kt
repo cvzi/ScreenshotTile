@@ -321,7 +321,6 @@ fun createOutputStreamMediaStore(
             "${Environment.DIRECTORY_PICTURES}/${TakeScreenshotActivity.SCREENSHOT_DIRECTORY}"
     }
 
-    val resolver = context.contentResolver
     val dateMilliseconds = date.time
     val dateSeconds = dateMilliseconds / 1000
     val contentValues = ContentValues().apply {
@@ -358,13 +357,23 @@ fun createOutputStreamMediaStore(
     }
 
     val uri = if (outputStream == null) {
-        resolver.insert(storageUri, contentValues)
-            ?: return OutputStreamResult("MediaStore failed to provide a file")
+        try {
+            context.contentResolver.insert(storageUri, contentValues)
+        } catch (e: UnsupportedOperationException) {
+            Log.e(UTILSKT, e.stackTraceToString())
+            null
+        } catch (e: IllegalStateException) {
+            Log.e(UTILSKT, e.stackTraceToString())
+            null
+        } catch (e: SecurityException) {
+            Log.e(UTILSKT, e.stackTraceToString())
+            null
+        } ?: return OutputStreamResult("MediaStore failed to provide a file")
     } else {
         storageUri
     }
     if (outputStream == null) {
-        outputStream = resolver.openOutputStream(uri)
+        outputStream = context.contentResolver.openOutputStream(uri)
             ?: return OutputStreamResult("Could not open output stream from MediaStore")
     }
     return OutputStreamResultSuccess(
@@ -442,7 +451,7 @@ fun cutOutBitmap(fullBitmap: Bitmap, cutOutRect: Rect?): Bitmap {
         if (cutOutRect.top + cutOutRect.height() > fullBitmap.height) {
             cutOutRect.bottom = fullBitmap.height
         }
-        if (cutOutRect.width() > 0 && cutOutRect.height() > 0) {
+        if (cutOutRect.width() > 0 && cutOutRect.height() > 0 && cutOutRect.left >= 0 && cutOutRect.top >= 0) {
             return Bitmap.createBitmap(
                 fullBitmap,
                 cutOutRect.left,
@@ -573,6 +582,8 @@ fun saveBitmapToFile(
                         context.contentResolver.update(result.uri, this, null, null)
                     } catch (e: UnsupportedOperationException) {
                         Log.e(UTILSKT, e.stackTraceToString())
+                    } catch (e: IllegalStateException) {
+                        Log.e(UTILSKT, e.stackTraceToString())
                     }
                 }
             }
@@ -675,12 +686,17 @@ fun saveBitmapToFile(
                         put(Images.ImageColumns.WIDTH, bitmap.width)
                         put(Images.ImageColumns.HEIGHT, bitmap.height)
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                            put(Images.ImageColumns.RESOLUTION, "${bitmap.width}\u00d7${bitmap.height}")
+                            put(
+                                Images.ImageColumns.RESOLUTION,
+                                "${bitmap.width}\u00d7${bitmap.height}"
+                            )
                         }
                     }
                     context.contentResolver.update(result.uri, contentValues, null, null)
                     context.contentResolver.notifyChange(result.uri, null)
                 } catch (e: UnsupportedOperationException) {
+                    Log.e(UTILSKT, e.stackTraceToString())
+                } catch (e: IllegalStateException) {
                     Log.e(UTILSKT, e.stackTraceToString())
                 }
             }

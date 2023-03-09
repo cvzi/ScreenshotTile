@@ -42,10 +42,10 @@ fun imageToBitmap(image: Image, rect: Rect? = null): Bitmap {
     val h = image.height
     val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
     bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
-    return if (rect == null) {
-        Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
-    } else {
+    return if (rect != null && rect.left >= 0 && rect.top >= 0 && rect.width() > 0 && rect.height() > 0) {
         Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
+    } else {
+        Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
     }
 }
 
@@ -62,10 +62,10 @@ fun imageJPEGToBitmap(image: Image, rect: Rect? = null): Bitmap {
         it.rewind()
         bitmap.copyPixelsFromBuffer(it)
     }
-    return if (rect == null) {
-        Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
-    } else {
+    return if (rect != null && rect.left >= 0 && rect.top >= 0 && rect.width() > 0 && rect.height() > 0) {
         Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
+    } else {
+        Bitmap.createBitmap(bitmap, 0, 0, image.width, image.height)
     }
 }
 
@@ -81,9 +81,10 @@ fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
     val ratioX = maxSize / bitmap.width
     val ratioY = maxSize / bitmap.height
     val ratio = min(ratioX, ratioY)
-    val newWidth = (bitmap.width * ratio).toInt()
-    val newHeight = (bitmap.height * ratio).toInt()
-
+    val newWidth =
+        max((bitmap.width * ratio).toInt(), TakeScreenshotActivity.NOTIFICATION_PREVIEW_MIN_SIZE)
+    val newHeight =
+        max((bitmap.height * ratio).toInt(), TakeScreenshotActivity.NOTIFICATION_PREVIEW_MIN_SIZE)
     return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, false)
 }
 
@@ -130,7 +131,12 @@ fun addImageToGallery(
         @Suppress("DEPRECATION")
         put(MediaStore.MediaColumns.DATA, filepath)
     }
-    return context.contentResolver?.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+    return try {
+        context.contentResolver?.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+    } catch (e: Exception) {
+        Log.e(UTILSIMAGEKT, "Failed to add image to gallery:", e)
+        null
+    }
 }
 
 
@@ -372,6 +378,12 @@ fun renameContentResolver(
             "renameContentResolver() MediaStore move failed: $e\nTrying copy and delete"
         )
         0
+    } catch(e: IllegalStateException) {
+        Log.w(
+            UTILSIMAGEKT,
+            "renameContentResolver() MediaStore move failed: $e\nTrying copy and delete"
+        )
+        0
     }
     if (updatedRows > 0) {
         return Pair(true, uri)
@@ -462,6 +474,8 @@ fun copyImageContentResolver(
                 try {
                     context.contentResolver.update(outputStreamResultSuccess.uri, this, null, null)
                 } catch (e: UnsupportedOperationException) {
+                    Log.e(UTILSKT, e.stackTraceToString())
+                } catch(e: IllegalStateException) {
                     Log.e(UTILSKT, e.stackTraceToString())
                 }
             }
@@ -708,13 +722,20 @@ fun fileNameFileTitle(s: String, compressionOptions: CompressionOptions): Pair<S
  * Create new scaled Bitmap with same width/height ratio
  */
 fun scaleBitmap(bm: Bitmap, maxWidth: Int, maxHeight: Int): Pair<Bitmap, Float> {
-    val scale =
+    var scale =
         min(maxWidth.toFloat() / bm.width.toFloat(), maxHeight.toFloat() / bm.height.toFloat())
+    var newWidth = (bm.width * scale).toInt()
+    var newHeight = (bm.height * scale).toInt()
+    if (newWidth <= 0 || newHeight <= 0) {
+        newWidth = bm.width
+        newHeight = bm.height
+        scale = 1f
+    }
     return Pair(
         Bitmap.createScaledBitmap(
             bm,
-            (bm.width * scale).toInt(),
-            (bm.height * scale).toInt(),
+            newWidth,
+            newHeight,
             true
         ), scale
     )

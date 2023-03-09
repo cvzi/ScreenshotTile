@@ -75,7 +75,9 @@ open class SingleImage(
             } else {
                 @Suppress("DEPRECATION")
                 val bm = MediaStore.Images.Media.getBitmap(contentResolver, uri)
-                Bitmap.createScaledBitmap(bm, size.width, size.height, true)
+                val w = if (size.width > 0) size.width else bm.width
+                val h = if (size.height > 0) size.height else bm.height
+                Bitmap.createScaledBitmap(bm, w, h, true)
             }
         }
 

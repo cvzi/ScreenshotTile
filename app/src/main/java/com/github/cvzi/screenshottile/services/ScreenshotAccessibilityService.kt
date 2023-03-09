@@ -3,6 +3,7 @@ package com.github.cvzi.screenshottile.services
 import android.accessibilityservice.AccessibilityService
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -100,22 +101,34 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     override fun onServiceConnected() {
         instance = this
         App.getInstance()?.let { appInstance ->
-            when (appInstance.prefManager.returnIfAccessibilityServiceEnabled) {
-                SettingFragment.TAG -> {
-                    // Return to settings
-                    appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
-                    SettingsActivity.startNewTask(this)
+            try {
+                when (appInstance.prefManager.returnIfAccessibilityServiceEnabled) {
+                    SettingFragment.TAG -> {
+                        // Return to settings
+                        appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
+                        SettingsActivity.startNewTask(this)
+                    }
+                    MainActivity.TAG -> {
+                        // Return to main activity
+                        appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
+                        MainActivity.startNewTask(this)
+                    }
+                    NoDisplayActivity.TAG -> {
+                        // Return to NoDisplayActivity activity i.e. finish()
+                        appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
+                        NoDisplayActivity.startNewTask(this, false)
+                    }
+                    else -> {
+                        // Do nothing
+                    }
                 }
-                MainActivity.TAG -> {
-                    // Return to main activity
-                    appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
-                    MainActivity.startNewTask(this)
-                }
-                NoDisplayActivity.TAG -> {
-                    // Return to NoDisplayActivity activity i.e. finish()
-                    appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
-                    NoDisplayActivity.startNewTask(this, false)
-                }
+            } catch (e: ActivityNotFoundException) {
+                // This seems to happen after booting
+                Log.e(
+                    TAG,
+                    "Could not start Activity for return to '${appInstance.prefManager.returnIfAccessibilityServiceEnabled}'",
+                    e
+                )
             }
         }
 
@@ -140,14 +153,16 @@ class ScreenshotAccessibilityService : AccessibilityService() {
      * Toggle the floating button according to the current settings
      */
     fun updateFloatingButton(forceRedraw: Boolean = false) {
-        val prefValue = App.getInstance().prefManager.floatingButton
-        if (prefValue && !floatingButtonShown) {
-            showFloatingButton()
-        } else if (!prefValue && floatingButtonShown) {
-            hideFloatingButton()
-        } else if (prefValue && forceRedraw) {
-            hideFloatingButton()
-            showFloatingButton()
+        App.getInstance()?.let {
+            val prefValue = it.prefManager.floatingButton
+            if (prefValue && !floatingButtonShown) {
+                showFloatingButton()
+            } else if (!prefValue && floatingButtonShown) {
+                hideFloatingButton()
+            } else if (prefValue && forceRedraw) {
+                hideFloatingButton()
+                showFloatingButton()
+            }
         }
     }
 
@@ -493,7 +508,12 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             takeScreenshot()
             success = true
         } else {
-            success = performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)
+            success = try {
+                performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)
+            } catch(e: Exception) {
+                Log.e(TAG, "Failed to performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)", e)
+                false
+            }
             if (success) {
                 App.getInstance().prefManager.screenshotCount++
             }

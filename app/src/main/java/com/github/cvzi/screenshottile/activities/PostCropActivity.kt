@@ -135,7 +135,9 @@ class PostCropActivity : GenericPostActivity() {
             singleImage.bitmap
         } ?: return
 
-        if (screenshotSelectorView.measuredWidth < bm.width || screenshotSelectorView.measuredHeight < bm.height) {
+        if (screenshotSelectorView.measuredWidth > 0 && screenshotSelectorView.measuredHeight > 0 && (
+                    screenshotSelectorView.measuredWidth < bm.width || screenshotSelectorView.measuredHeight < bm.height)
+        ) {
             Log.d(
                 TAG,
                 "View is only ${screenshotSelectorView.measuredWidth}x${screenshotSelectorView.measuredHeight}"

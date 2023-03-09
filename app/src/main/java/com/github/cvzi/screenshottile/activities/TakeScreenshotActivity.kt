@@ -20,6 +20,7 @@ import android.view.*
 import android.widget.Toast
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
+import androidx.annotation.RequiresApi
 import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.App.resetMediaProjection
 import com.github.cvzi.screenshottile.App.setScreenshotPermission
@@ -80,6 +81,7 @@ class TakeScreenshotActivity : Activity(),
 
     private var askedForPermission = false
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private val onBackInvokedCallback: OnBackInvokedCallback? =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // Handle back button for Android 13+
