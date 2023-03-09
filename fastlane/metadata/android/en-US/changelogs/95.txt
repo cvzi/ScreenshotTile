@@ -1,0 +1,4 @@
+* Option to prevent screenshots when phone is locked
+* Option to override original file in photo editor
+* Landscape screenshots are rotated in photo editor
+* Minor bugfixes

@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2.2
+*   Minor bugfixes
+
 ## 2.2.1
 *   Translations updated from crowdin
 
