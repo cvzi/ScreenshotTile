@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">أزرار الإشعارات</string>
     <string name="setting_notification_buttons_description">حدد ما يصل إلى ثلاثة أزرار تظهر أسفل إشعار لقطة الشاشة</string>
     <string name="setting_notification_buttons_max_three">الرجاء اختيار ثلاثة أزرار كحد أقصى</string>
+    <string name="setting_prevent_if_locked">منع لقطات الشاشة إذا كان الجهاز مقفل</string>
+    <string name="setting_prevent_if_locked_summary">لا مزيد من لقطات الشاشة غير المقصودة</string>
+    <string name="setting_pe_overwrite_file">استبدال الملف</string>
+    <string name="setting_pe_overwrite_file_summary">محرر الصور المضمنة يحاول الكتابة فوق الصورة الحالية بدلا من إنشاء ملف جديد</string>
     <string name="notification_settings">الإشعارات</string>
     <string name="notification_settings_on">تم تشغيل</string>
     <string name="notification_settings_off">تم إيقاف</string>
@@ -226,4 +230,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">إذا قمت بتعطيل \"%1$s\"، ثم يتم تخزين لقطات الشاشة مؤقتاً في مجلد \"Android/data/\" ويتم حذفها دورياً عند الوصول إلى الحد الأقصى لعدد الملفات.\n-1 يعني الحفاظ على قيمة افتراضية غير محدودة\n%2$s</string>
     <string name="setting_keep_screenshot_history">الاحتفاظ بسجل لقطات الشاشة</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">يخزن أسماء الملفات لقطات الشاشة في قائمة. هذا مطلوب للوظيفة \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">محرر الصور: تدوير الصور الأفقية</string>
 </resources>
