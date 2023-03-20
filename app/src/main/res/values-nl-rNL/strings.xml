@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Meldingsknoppen</string>
     <string name="setting_notification_buttons_description">Selecteer maximaal drie knoppen om onder de schermafbeeldingnotificatie te verschijnen</string>
     <string name="setting_notification_buttons_max_three">Kies maximaal drie knoppen</string>
+    <string name="setting_prevent_if_locked">Schermafdrukken voorkomen als het apparaat is vergrendeld</string>
+    <string name="setting_prevent_if_locked_summary">Geen onbedoelde “broekzakbelletje”-schermafdrukken meer</string>
+    <string name="setting_pe_overwrite_file">Bestand overschrijven</string>
+    <string name="setting_pe_overwrite_file_summary">De meegeleverde fotobewerker probeert de huidige afbeelding te overschrijven in plaats van een nieuw bestand te maken</string>
     <string name="notification_settings">Meldingen</string>
     <string name="notification_settings_on">Ingeschakeld</string>
     <string name="notification_settings_off">Uitgeschakeld</string>
@@ -226,4 +230,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Als u \"%1$s\" uitschakelt, dan worden screenshots tijdelijk opgeslagen in de map \"Android/data/\" en periodiek verwijderd wanneer het maximale aantal bestanden is bereikt.\n-1 betekent dat onbeperkt\nstandaard waarde [%2$s ] wordt behouden</string>
     <string name="setting_keep_screenshot_history">Behoud de geschiedenis van screenshots</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Bewaart de bestandsnamen van screenshots in een lijst. Dit is vereist voor de functie \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Fotobewerker: liggende afbeeldingen draaien</string>
 </resources>
