@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.2.3
+*   Complete language list for setting per-app language
+
 ## 2.2.2
 *   Minor bugfixes
 
