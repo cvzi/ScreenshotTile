@@ -61,3 +61,11 @@ for locale in locales:
     fun %s() {
         readStringFromContext_LocalizedString()
     }''' % (locale, methodName(locale)))
+
+
+print('    <locale android:name="en" />')
+for locale in locales:
+    if len(locale) == 6:
+        locale = locale.replace('-r', '-')
+
+    print('    <locale android:name="%s" />' % (locale, ))
