@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" maxLength="50">Screenshot Tile</string>
+    <string name="app_name">Screenshot Tile</string>
     <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Captura de pantalla</string>
     <string name="tile_floating">Botón flotante de captura de pantalla</string>
@@ -9,6 +9,7 @@
     <string name="title_delay">Retraso</string>
     <string name="more_setting">Más ajustes</string>
     <string name="open_settings">Abrir ajustes</string>
+    <string name="floating_button_settings">Ajustes del botón flotante</string>
     <string name="left_screenshot_right_menu">Izquierda: Captura de pantalla, derecha: Ajustes</string>
     <string name="partial_screenshot">Seleccionar rectángulo</string>
     <string name="file_format">Formato de archivo</string>
@@ -44,11 +45,14 @@
     <string name="setting_floating_button_delay">Retraso (botón flotante)</string>
     <string name="setting_broadcast_secret">Contraseña de Broadcast intent</string>
     <string name="setting_broadcast_secret_description">Una frase secreta para permitir que otras aplicaciones (como MacroDroid o Tasker) pueden iniciar capturas de pantalla</string>
-    <string name="setting_storage_directory">Carpeta de almacenamiento</string>
-    <string name="setting_storage_directory_description">Carpeta para guardar screenshots</string>
+    <string name="setting_storage_directory">Ubicación de guardado</string>
+    <string name="setting_storage_directory_description">Carpeta para guardar capturas</string>
     <string name="setting_file_name_pattern">Nombre del archivo</string>
     <string name="setting_file_name_placeholders_title">Usa las siguientes variables en el nombre del archivo</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - tiempo como yyyy-MM-dd_HH-mm-ss\n%counter% - cuenta el número de capturas de pantalla\n%random% - un UUID aleatorio\n%randint% - un número aleatorio</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tiempo como yyyy-MM-dd_HH-mm-ss\n
+%counter% - cuenta el número de capturas de pantalla\n
+%random% - un UUID aleatorio\n
+%randint% - un número aleatorio]]></string>
     <string name="setting_tile_action">Acción del mosaico</string>
     <string name="setting_floating_action">Acción del botón flotante</string>
     <string name="setting_voice_interaction_action">Acción del asistente</string>
@@ -59,6 +63,10 @@
     <string name="setting_notification_buttons">Botones de la notificación</string>
     <string name="setting_notification_buttons_description">Seleccionar hasta tres botones que aparecen debajo de la notificación de captura de pantalla</string>
     <string name="setting_notification_buttons_max_three">Por favor elige como máximo tres botones</string>
+    <string name="setting_prevent_if_locked">Evitar capturas de pantalla si el dispositivo está bloqueado</string>
+    <string name="setting_prevent_if_locked_summary">No más capturas accidentales de pantalla en tu bolsillo o bolso</string>
+    <string name="setting_pe_overwrite_file">Sobrescribir archivo</string>
+    <string name="setting_pe_overwrite_file_summary">El editor de fotos incluido intenta sobrescribir la imagen actual en vez de crear un nuevo archivo</string>
     <string name="notification_settings">Notificaciones</string>
     <string name="notification_settings_on">Activado</string>
     <string name="notification_settings_off">Desactivado</string>
@@ -176,6 +184,7 @@
     <string name="label_oval">Oval</string>
     <string name="label_rectangle">Rectángulo</string>
     <string name="label_line">Línea</string>
+    <string name="label_arrow">Flecha</string>
     <string name="label_emoji">Emoji</string>
     <string name="label_eraser">Borrar</string>
     <string name="label_eraser_mode">Modo borrar</string>
@@ -197,4 +206,29 @@
     <string name="dialog_ask_filename_title">Guardar como</string>
     <string name="dialog_ask_filename_directory">Carpeta seleccionada:</string>
     <string name="dialog_ask_filename_hint">Nombre del archivo (sin extensión)</string>
+    <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Modo predeterminado: Activado</string>
+    <string name="setting_defaults_to_milliseconds">Predeterminado: %1$s milisegundos</string>
+    <string name="setting_toasts">Todas las notificaciones \"Toast\"</string>
+    <string name="setting_success_toasts">Notificaciones \"Toast\" para eventos exitosos</string>
+    <string name="setting_error_toasts">Notificaciones de errores \"Toast\"</string>
+    <string name="setting_select_area_shutter_delay">Retardo después de tocar el obturador (en modo \"Seleccionar área\")</string>
+    <string name="setting_select_area_shutter_delay_dialog">Esperando entre el momento en que el obturador fue tocado y la captura de pantalla se tomó. Utilice un valor más alto (por ejemplo 500) si el icono del obturador era visible en las capturas de pantalla.</string>
+    <string name="setting_original_after_permission_delay">Retraso después de que se concedió el permiso de captura de pantalla (se aplica al \"método original\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Período de espera entre el tiempo que se concedió el permiso y la captura de pantalla. Utilice un valor superior (por ejemplo 500) si el diálogo de permisos era visible en las capturas de pantalla.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Retraso después del error \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Período de espera antes de volver a intentarlo después del mensaje de error. Utilice un valor más alto (por ejemplo 500) si el mensaje de error era visible en las capturas de pantalla.</string>
+    <string name="setting_floating_button_alpha">Transparencia del botón floreciente</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (totalmente transparente) a 1.0 (totalmente opaco)</string>
+    <string name="setting_floating_button_alpha_dialog">Elige un valor más bajo para hacer el botón más transparente. Rango 0.0 a 1.0\nPredeterminado: 1.0 (completamente opaque)</string>
+    <string name="setting_floating_button_color">Color del botón floreciente</string>
+    <string name="setting_delay_custom_summary">Elegir un retraso personalizado para el mosaico (en segundos)</string>
+    <string name="setting_floating_button_delay_custom_summary">Elija un retraso personalizado para el botón flotante (en segundos)</string>
+    <string name="setting_format_quality">Calidad de formato de archivo</string>
+    <string name="setting_format_quality_dialog">Compresión/Calidad del formato de archivo: (0 a 100)\n0 significa comprimir para el tamaño más pequeño. 100 significa comprimir para máxima calidad visual.\nDejar en blanco para usar el valor predeterminado.</string>
+    <string name="setting_keep_app_data_max">Número máximo de capturas de pantalla a mantener:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Si ha deshabilitado \"%1$s\", luego las capturas de pantalla se almacenan temporalmente en la carpeta \"Android/data/\" y se borran periódicamente cuando se alcanza el número máximo de archivos.\n-1 significa mantener ilimitado\nValor predeterminado %2$s</string>
+    <string name="setting_keep_screenshot_history">Mantener historial de capturas de pantalla</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Guarda los nombres de los archivos de las capturas de pantalla en una lista. Esto es necesario para la función \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Editor de fotos: Rotar imágenes horizontales</string>
 </resources>

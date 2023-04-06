@@ -9,6 +9,7 @@
     <string name="title_delay">تأخير</string>
     <string name="more_setting">المزيد الإعدادات</string>
     <string name="open_settings">فتح الإعدادات</string>
+    <string name="floating_button_settings">إعدادات الزر العائم</string>
     <string name="left_screenshot_right_menu">اليسار: لقطة الشاشة، اليمين: الإعدادات</string>
     <string name="partial_screenshot">قص</string>
     <string name="file_format">صيغة الملف</string>
@@ -48,16 +49,46 @@
     <string name="setting_storage_directory_description">مكان المجلد لحفظ لقطات الشاشة فيه</string>
     <string name="setting_file_name_pattern">اسم الملف</string>
     <string name="setting_file_name_placeholders_title">استخدم هذه العناصر النائبة في اسم الملف</string>
-    <string name="setting_file_name_placeholders" formatted="false">%timestamp% - وقت yyy-MM-dd_HH-mm-ss\n%counter% - يحسب عدد لقطات الشاشة\n%random% - مستخدم عشوائي\n%randint% - رقم عشوائي</string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - وقت yyy-MM-dd_HH-mm-ss\n
+%counter% - يحسب عدد لقطات الشاشة\n
+%random% - مستخدم عشوائي\n
+%randint% - رقم عشوائي]]></string>
     <string name="setting_tile_action">إجراءات البلاط</string>
     <string name="setting_floating_action">إجراء الزر العائم</string>
+    <string name="setting_voice_interaction_action">إجراء زر المساعد الرقمي</string>
     <string name="setting_dark_theme">نمط داكن</string>
     <string name="setting_dark_theme_system">النظام</string>
     <string name="setting_dark_theme_off">تم إيقاف</string>
-    <string name="setting_dark_theme_on">م تشغيل</string>
+    <string name="setting_dark_theme_on">تم تشغيل</string>
+    <string name="setting_notification_buttons">أزرار الإشعارات</string>
+    <string name="setting_notification_buttons_description">حدد ما يصل إلى ثلاثة أزرار تظهر أسفل إشعار لقطة الشاشة</string>
+    <string name="setting_notification_buttons_max_three">الرجاء اختيار ثلاثة أزرار كحد أقصى</string>
+    <string name="setting_prevent_if_locked">منع لقطات الشاشة إذا كان الجهاز مقفل</string>
+    <string name="setting_prevent_if_locked_summary">لا مزيد من لقطات الشاشة غير المقصودة</string>
+    <string name="setting_pe_overwrite_file">استبدال الملف</string>
+    <string name="setting_pe_overwrite_file_summary">محرر الصور المضمنة يحاول الكتابة فوق الصورة الحالية بدلا من إنشاء ملف جديد</string>
     <string name="notification_settings">الإشعارات</string>
     <string name="notification_settings_on">تم تشغيل</string>
     <string name="notification_settings_off">تم إيقاف</string>
+    <string name="setting_post_actions">الإجراءات اللاحقة</string>
+    <string name="setting_post_actions_description">اختر ما يحدث بعد أخذ لقطة الشاشة</string>
+    <string name="button_history">لقطات الشاشة الحديثة</string>
+    <string name="button_history_description">عرض لقطات الشاشة الأخيرة الخاصة بك بما في ذلك الملفات التي لم يتم حفظها في معرض الصور</string>
+    <string name="history_title">سجل لقطات الشاشة</string>
+    <string name="restore_default_values">استعادة القيم الافتراضية</string>
+    <string name="post_action_save_to_storage">حفظ الصورة في معرض الصور</string>
+    <string name="post_action_show_toast">إظهار إشعار \"الطوابع\". منبثق صغير يختفي بعد ثواني</string>
+    <string name="post_action_show_notification">إظهار إشعار عادي. يمكنك تغيير الأزرار (تعديل,مشاركة…) تحت الإشعارات تحت \"المزيد من الإعدادات\"</string>
+    <string name="post_action_empty">لا تفتح لقطة الشاشة</string>
+    <string name="post_action_open_in_post">فتح في طريقة عرض \"التفاصيل\"</string>
+    <string name="post_action_open_in_post_crop">قص الصورة</string>
+    <string name="post_action_open_in_photo_editor">فتح محرر الصور المضمنة</string>
+    <string name="post_action_open_in_external_editor">فتح في محرر صور خارجي</string>
+    <string name="post_action_open_in_external_viewer">فتح في عارض الصور أو معرض الصور</string>
+    <string name="post_action_open_share">مشاركة لقطة الشاشة</string>
+    <string name="move_to_storage_directory">نقل إلى معرض الصور</string>
+    <string name="button_clear">مسح</string>
+    <string name="button_clear_confirm">هل تريد حذف جميع الملفات المؤقتة؟\nسيؤدي هذا إلى حذف جميع الملفات في %s\n\n(هذه الملفات عادة غير مرئية في المعرض الخاص بك)</string>
     <string name="file_title">لقطة شاشة</string>
     <string name="file_description">تم التقاط لقطة شاشة في %1$s</string>
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
@@ -75,8 +106,14 @@
     <string name="notification_delete_screenshot">حذف</string>
     <string name="notification_share_screenshot">مشاركة</string>
     <string name="notification_edit_screenshot">تعديل</string>
+    <string name="notification_rename_screenshot">إعادة تسمية</string>
+    <string name="notification_screenshot_details">التفاصيل</string>
+    <string name="notification_crop_screenshot">قص</string>
+    <string name="notification_photo_editor_screenshot">محرر الصور</string>
     <string name="screenshot_deleted">تم حذف لقطة الشاشة</string>
     <string name="screenshot_delete_failed">تعذر حذف الملف</string>
+    <string name="screenshot_renamed">تمت إعادة تسمية الملف إلى %1s</string>
+    <string name="screenshot_rename_failed">لا يمكن إعادة تسمية الملف</string>
     <string name="permission_missing_external_storage">فشل الحصول على إذن للتخزين</string>
     <string name="permission_missing_screen_capture">فشل في الحصول على إذن لتسجيل لقطة الشاشة</string>
     <string name="hide_app_from_launcher">إخفاء التطبيق من درج التطبيقات</string>
@@ -94,6 +131,18 @@
     <string name="tutorial_step11">الموافقة على الأذونات</string>
     <string name="tutorial_step16">التقاط لقطات الشاشة بالزر الجديد</string>
     <string name="take_screenshot">اخذ لقطة للشاشة</string>
+    <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_title">كشف بارز لـ Google Play &amp; متطلبات الموافقة</string>
+    <string name="googleplay_consent_line_0">يتطلب Google Play الكشف البارز عن استخدام API لخدمات إمكانية الوصول لتطبيق ليس أداة سهولة الوصول.</string>
+    <string name="googleplay_consent_line_1">هذا التطبيق - \"لقطة الشاشة [بدون جذر]\" - ليس أداة سهولة الوصول.</string>
+    <string name="googleplay_consent_line_2">بما أن المستخدمين قد لا يتوقعون بشكل معقول أن تكون بيانات المستخدمين الشخصية والحساسة مطلوبة لتوفير أو تحسين الميزات أو الوظائف المطابقة للسياسات داخل هذا التطبيق، إفصاح بارز عن استخدام API لخدمات إمكانية الوصول من قبل هذا التطبيق والإعلان عن جمع البيانات وتقاسم البيانات داخل هذا التطبيق:</string>
+    <string name="googleplay_consent_line_3">يتطلب هذا التطبيق الوصول إلى واجهة برمجة التطبيقات لخدمات الوصول من أجل التقاط لقطة شاشة عند عدم استخدام التطبيق.</string>
+    <string name="googleplay_consent_line_4">الوصول إلى خدمات الوصول API سيسمح لهذا التطبيق بتسجيل الشاشة.</string>
+    <string name="googleplay_consent_line_5">سيتم استخدام تسجيلات الشاشة لإنشاء صور لقطة الشاشة.</string>
+    <string name="googleplay_consent_line_6">البيانات لا يتم جمعها أو مشاركتها بواسطة هذا التطبيق باستخدام قدرات إمكانية الوصول.</string>
+    <string name="googleplay_consent_line_7">هل توافق على الإذن لهذا التطبيق بالوصول إلى واجهة برمجة التطبيقات لخدمات الوصول واستخدام قدرات الوصول لتسجيل الشاشة؟</string>
+    <string name="googleplay_consent_yes">موافق</string>
+    <string name="googleplay_consent_no">أرفض</string>
     <!-- About -->
     <string name="about_app_title">حول</string>
     <string name="about_app_1">هذه مبني من\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -102,6 +151,8 @@
     <string name="about_license_1">رخصة جنو العمومية الإصدار٣</string>
     <string name="about_privacy_title">سياسة الخصوصية</string>
     <string name="about_open_source_title">المصادر المفتوحة المستخدمة</string>
+    <string name="about_advanced_settings_button">الإعدادات المتقدمة</string>
+    <string name="about_update_check_button">التحقق من التحديث</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">إعدادات إمكانية الدخول</string>
     <string name="main_floating_button_title">زر عائم</string>
@@ -116,4 +167,68 @@
     <string name="main_long_press_title">الضغط المطول</string>
     <string name="main_long_press_text">الضغط المطول على السطر/الزر يفتح قائمة. يمكنك تحديد تأخير لقطة الشاشة أو قطع المستطيل من الشاشة.</string>
     <string name="main_assist_app_title">تطبيق المساعد</string>
+    <string name="main_assist_app_text">إذا قمت بتعيين هذا التطبيق كتطبيق مساعدتك، يمكنك الضغط لفترة طويلة على زر الصفحة الرئيسية لأخذ لقطة شاشة. تمكين هذا التطبيق كما تطبيق المساعدة الخاص بك سيعطل المساعدين الآخرين. يمكنك تغيير إجراء الضغط على زر الصفحة الرئيسية الطويل في إعدادات التطبيق.</string>
+    <!-- Post edit activity -->
+    <string name="post_button_save">إعادة تسمية</string>
+    <string name="post_recent_file_names_and_suggestions">أسماء الملفات والاقتراحات الأخيرة:</string>
+    <string name="post_hint_new_file_name">اسم ملف جديد</string>
+    <string name="post_rename_file">إعادة تسمية الملف:</string>
+    <string name="post_rename_error_identical">اسم الملف الجديد والقديم متطابقان</string>
+    <string name="post_hint_new_file_name_suggestion">إضافة اقتراح جديد</string>
+    <string name="post_save_a_suggestion">حفظ الاقتراح</string>
+    <string name="post_pin_to_favorites">تثبيت إلى المفضلة</string>
+    <string name="post_delete_suggestion">حذف الاقتراح</string>
+    <!-- Photo Editor-->
+    <string name="label_brush">فرشاة</string>
+    <string name="label_shape">الشكل</string>
+    <string name="label_oval">بيضاوي</string>
+    <string name="label_rectangle">مستطيل</string>
+    <string name="label_line">خط</string>
+    <string name="label_arrow">سهم</string>
+    <string name="label_emoji">الوجوه التعبيرية</string>
+    <string name="label_eraser">ممحاة</string>
+    <string name="label_eraser_mode">وضع المسح</string>
+    <string name="label_text">نص</string>
+    <string name="label_filter">فلتر</string>
+    <string name="label_adjust">تعديل</string>
+    <string name="label_rotation">التدوير</string>
+    <string name="label_opacity">الشفافية</string>
+    <string name="label_done">تم</string>
+    <string name="label_close">إغلاق</string>
+    <string name="label_save">حفظ</string>
+    <string name="label_discard">تجاهل</string>
+    <string name="msg_save_image">هل تريد الخروج دون حفظ الصورة؟</string>
+    <string name="msg_save_image_to_share">الرجاء حفظ الصورة للمشاركة</string>
+    <string name="msg_share_image">مشاركة الصورة</string>
+    <string name="msg_choose_image">اختر صورة</string>
+    <string name="msg_image_saved">تم حفظ الصورة بنجاح</string>
+    <string name="msg_failed_to_save">فشل في حفظ الصورة</string>
+    <string name="dialog_ask_filename_title">حفظ كـ</string>
+    <string name="dialog_ask_filename_directory">الدليل المحدد:</string>
+    <string name="dialog_ask_filename_hint">اسم الملف (بدون ملحق)</string>
+    <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">الوضع الافتراضي: يعمل</string>
+    <string name="setting_defaults_to_milliseconds">الافتراضي: %1$s مللي ثانية</string>
+    <string name="setting_toasts">جميع الإشعارات \"Toast\"</string>
+    <string name="setting_success_toasts">إشعارات \"Toast\" للأحداث الناجحة</string>
+    <string name="setting_error_toasts">التنبيهات \"Toast\" للأخطاء</string>
+    <string name="setting_select_area_shutter_delay">تأخير بعد النقر على المصراع (في وضع \"تحديد المنطقة\")</string>
+    <string name="setting_select_area_shutter_delay_dialog">فترة الانتظار بين الوقت الذي تم فيه النقر على المصور ثم يتم أخذ لقطة الشاشة. استخدام قيمة أعلى (على سبيل المثال 500) إذا كانت أيقونة التصوير مرئية على لقطات الشاشة.</string>
+    <string name="setting_original_after_permission_delay">التأخير بعد منح إذن لقطة الشاشة (ينطبق على \"الطريقة الأصلية\")</string>
+    <string name="setting_original_after_permission_delay_dialog">فترة الانتظار بين الوقت الذي تم فيه منح الإذن وآخر لقطة الشاشة. استخدام قيمة أعلى (على سبيل المثال 500) إذا كان مرئي على لقطات الشاشة.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">تأخير بعد خطأ \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">فترة الانتظار قبل المحاولة مرة أخرى بعد رسالة الخطأ. استخدم قيمة أعلى (على سبيل المثال 500) إذا كانت رسالة الخطأ مرئية على لقطات الشاشة.</string>
+    <string name="setting_floating_button_alpha">شفافية الزر العائم</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (شفاف تماما) إلى 1.0 (غامض)</string>
+    <string name="setting_floating_button_alpha_dialog">اختر قيمة أقل لجعل الزر أكثر شفافية. مدى 0.0 إلى 1.0\nالافتراضي: 1.0 (كامل غامض)</string>
+    <string name="setting_floating_button_color">لون الزر العائم</string>
+    <string name="setting_delay_custom_summary">اختر تأخير مخصص للبلاط (بالثواني)</string>
+    <string name="setting_floating_button_delay_custom_summary">اختر تأخير مخصص للزر العائم (بالثواني)</string>
+    <string name="setting_format_quality">جودة تنسيق الملف</string>
+    <string name="setting_format_quality_dialog">الضغط/جودة تنسيق الملف: (0 إلى 100)\n0 يعني الضغط لأصغر حجم. 100 يعني ضغطة للحصول على الحد الأقصى للجودة المرئية.\nاتركه فارغاً لاستخدام القيمة الافتراضية.</string>
+    <string name="setting_keep_app_data_max">الحد الأقصى لعدد لقطات الشاشة للاحتفاظ بها:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">إذا قمت بتعطيل \"%1$s\"، ثم يتم تخزين لقطات الشاشة مؤقتاً في مجلد \"Android/data/\" ويتم حذفها دورياً عند الوصول إلى الحد الأقصى لعدد الملفات.\n-1 يعني الحفاظ على قيمة افتراضية غير محدودة\n%2$s</string>
+    <string name="setting_keep_screenshot_history">الاحتفاظ بسجل لقطات الشاشة</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">يخزن أسماء الملفات لقطات الشاشة في قائمة. هذا مطلوب للوظيفة \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">محرر الصور: تدوير الصور الأفقية</string>
 </resources>
