@@ -31,7 +31,6 @@ open class UnitTestFileNameFormatString {
 @RunWith(AndroidJUnit4::class)
 @Config(sdk = [30])
 class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
-
     @Test
     @Config(qualifiers = "ar")
     fun ar() {
@@ -39,8 +38,8 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "ar-rSA")
-    fun arSA() {
+    @Config(qualifiers = "be")
+    fun be() {
         checkLocalizedString()
     }
 
@@ -51,26 +50,26 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "cs-rCZ")
-    fun csCZ() {
+    @Config(qualifiers = "cs")
+    fun cs() {
         checkLocalizedString()
     }
 
     @Test
-    @Config(qualifiers = "da-rDK")
-    fun daDK() {
+    @Config(qualifiers = "da")
+    fun da() {
         checkLocalizedString()
     }
 
     @Test
-    @Config(qualifiers = "de-rDE")
-    fun deDE() {
+    @Config(qualifiers = "de")
+    fun de() {
         checkLocalizedString()
     }
 
     @Test
-    @Config(qualifiers = "el-rGR")
-    fun elGR() {
+    @Config(qualifiers = "el")
+    fun el() {
         checkLocalizedString()
     }
 
@@ -81,26 +80,20 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "es-rES")
-    fun esES() {
-        checkLocalizedString()
-    }
-
-    @Test
     @Config(qualifiers = "fa")
     fun fa() {
         checkLocalizedString()
     }
 
     @Test
-    @Config(qualifiers = "fi-rFI")
-    fun fiFI() {
+    @Config(qualifiers = "fi")
+    fun fi() {
         checkLocalizedString()
     }
 
     @Test
-    @Config(qualifiers = "fr-rFR")
-    fun frFR() {
+    @Config(qualifiers = "fr")
+    fun fr() {
         checkLocalizedString()
     }
 
@@ -111,26 +104,26 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
+    @Config(qualifiers = "he")
+    fun he() {
+        checkLocalizedString()
+    }
+
+    @Test
     @Config(qualifiers = "hi")
     fun hi() {
         checkLocalizedString()
     }
 
     @Test
-    @Config(qualifiers = "hi-rIN")
-    fun hiIN() {
+    @Config(qualifiers = "hu")
+    fun hu() {
         checkLocalizedString()
     }
 
     @Test
-    @Config(qualifiers = "hu-rHU")
-    fun huHU() {
-        checkLocalizedString()
-    }
-
-    @Test
-    @Config(qualifiers = "hy-rAM")
-    fun hyAM() {
+    @Config(qualifiers = "hy")
+    fun hy() {
         checkLocalizedString()
     }
 
@@ -141,8 +134,8 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "it-rIT")
-    fun itIT() {
+    @Config(qualifiers = "it")
+    fun it() {
         checkLocalizedString()
     }
 
@@ -183,8 +176,8 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "nl-rNL")
-    fun nlNL() {
+    @Config(qualifiers = "nl")
+    fun nl() {
         checkLocalizedString()
     }
 
@@ -213,12 +206,6 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "pl-rPL")
-    fun plPL() {
-        checkLocalizedString()
-    }
-
-    @Test
     @Config(qualifiers = "pt-rBR")
     fun ptBR() {
         checkLocalizedString()
@@ -231,8 +218,8 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "ro-rRO")
-    fun roRO() {
+    @Config(qualifiers = "ro")
+    fun ro() {
         checkLocalizedString()
     }
 
@@ -243,20 +230,8 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "ru-rRU")
-    fun ruRU() {
-        checkLocalizedString()
-    }
-
-    @Test
-    @Config(qualifiers = "sv-rSE")
-    fun svSE() {
-        checkLocalizedString()
-    }
-
-    @Test
-    @Config(qualifiers = "sw")
-    fun sw() {
+    @Config(qualifiers = "sv")
+    fun sv() {
         checkLocalizedString()
     }
 
@@ -285,8 +260,8 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "tr-rTR")
-    fun trTR() {
+    @Config(qualifiers = "tr")
+    fun tr() {
         checkLocalizedString()
     }
 
@@ -297,8 +272,8 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "uk-rUA")
-    fun ukUA() {
+    @Config(qualifiers = "uk")
+    fun uk() {
         checkLocalizedString()
     }
 
@@ -309,14 +284,8 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
-    @Config(qualifiers = "vi-rVN")
-    fun viVN() {
-        checkLocalizedString()
-    }
-
-    @Test
-    @Config(qualifiers = "zh")
-    fun zh() {
+    @Config(qualifiers = "vi")
+    fun vi() {
         checkLocalizedString()
     }
 
@@ -337,5 +306,4 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     fun zhTW() {
         checkLocalizedString()
     }
-
 }

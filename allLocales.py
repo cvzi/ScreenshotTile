@@ -57,7 +57,7 @@ for filename in os.listdir("app/src/main/res"):
 for locale in locales:
     print('''
     @Test
-    @Config(qualifiers="%s")
+    @Config(qualifiers = "%s")
     fun %s() {
         readStringFromContext_LocalizedString()
     }''' % (locale, methodName(locale)))
