@@ -9,8 +9,8 @@ import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.viewbinding.BuildConfig
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
