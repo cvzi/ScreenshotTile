@@ -84,9 +84,8 @@ fun tryNativeScreenshot(): Boolean {
 /**
  * New image file in default "Picture" directory. (used only for Android P and lower)
  */
-fun createImageFileInDefaulPictureFolder(context: Context, filename: String): File {
+fun createImageFileInDefaultPictureFolder(context: Context, filename: String): File {
     var storageDir: File?
-    @Suppress("DEPRECATION")
     storageDir = getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
     if (storageDir == null) {
         // Fallback to "private" data/Package.Name/... directory
@@ -167,7 +166,15 @@ fun createOutputStream(
             directory
         )
     } else {
-        createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim, directory, forceCustomDirectory)
+        createOutputStreamMediaStore(
+            context,
+            fileTitle,
+            compressionOptions,
+            date,
+            dim,
+            directory,
+            forceCustomDirectory
+        )
     }
 }
 
@@ -209,7 +216,7 @@ fun createOutputStreamLegacy(
         }
     }
     if (imageFile == null) {
-        imageFile = createImageFileInDefaulPictureFolder(context, filename)
+        imageFile = createImageFileInDefaultPictureFolder(context, filename)
     }
 
     try {
@@ -318,7 +325,7 @@ fun createOutputStreamMediaStore(
                 }
             }
         }
-        if(forceCustomDirectory && outputStream == null) {
+        if (forceCustomDirectory && outputStream == null) {
             throw IOException("Could not create writable DocumentFile from\ndirectoryUri=$customDirectoryUri\ndocDir=$docDir")
         }
     }
@@ -579,6 +586,7 @@ fun saveBitmapToFile(
             }
             SaveImageResultSuccess(bitmap, compressionOptions.mimeType, result.imageFile)
         }
+
         result.uri != null -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 result.contentValues?.run {
@@ -609,6 +617,7 @@ fun saveBitmapToFile(
                 result.dummyPath
             )
         }
+
         else -> SaveImageResult("Could not save image file, no URI")
     }
 }
@@ -716,6 +725,7 @@ fun saveBitmapToFile(
                 "Overwriting existing file",
             )
         }
+
         else -> SaveImageResult("Could not save image file, no URI")
     }
 }
@@ -784,14 +794,14 @@ fun nicePathFromUri(documentFile: DocumentFile): String {
 }
 
 /**
- * Try to generate a foldername that can be understood by humans
+ * Try to generate a folder name that can be understood by humans
  */
 fun nicePathFromUri(uri: Uri): String {
     return nicePathFromUri(uri.toString())
 }
 
 /**
- * Try to generate a foldername that can be understood by humans
+ * Try to generate a folder name that can be understood by humans
  */
 fun nicePathFromUri(str: String?): String {
     if (str == null) {
@@ -848,7 +858,6 @@ fun niceFullPathFromUri(str: String?): String {
 
     return path
 }
-
 
 
 /**
@@ -1062,6 +1071,7 @@ fun handlePostScreenshot(
                 PostActivity.newIntentSingleImageBitmap(context, uri)
             )
         }
+
         "openInPostCrop" in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
             App.getInstance().startActivityAndCollapse(
@@ -1069,6 +1079,7 @@ fun handlePostScreenshot(
                 PostCropActivity.newIntentSingleImageBitmap(context, uri, mimeTypeNullSafe)
             )
         }
+
         "openInPhotoEditor" in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
             App.getInstance().startActivityAndCollapse(
@@ -1079,6 +1090,7 @@ fun handlePostScreenshot(
                     setDataAndNormalize(uri)
                 })
         }
+
         "openInExternalEditor" in postScreenshotActions -> {
             val editIntent = editImageChooserIntent(context, uri, mimeTypeNullSafe)
             editIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -1090,6 +1102,7 @@ fun handlePostScreenshot(
                 context.toastMessage("No suitable external photo editor found", ToastType.ERROR)
             }
         }
+
         "openInExternalViewer" in postScreenshotActions -> {
             val openImageIntent = openImageIntent(context, uri, mimeTypeNullSafe)
             if (openImageIntent.resolveActivity(context.packageManager) != null) {
@@ -1102,6 +1115,7 @@ fun handlePostScreenshot(
                 context.toastMessage("No suitable external photo viewer found", ToastType.ERROR)
             }
         }
+
         "openShare" in postScreenshotActions -> {
             val shareIntent = shareImageChooserIntent(context, uri, mimeTypeNullSafe)
             shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

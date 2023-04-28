@@ -33,7 +33,8 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
         /**
          * Get intent
          */
-        fun newIntent(ctx: Context): Intent = Intent(ctx, FloatingButtonSettingsActivity::class.java)
+        fun newIntent(ctx: Context): Intent =
+            Intent(ctx, FloatingButtonSettingsActivity::class.java)
 
         /**
          * Start activity
@@ -104,9 +105,11 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
                     R.id.radioButtonActionPartial -> {
                         R.string.setting_floating_action_value_partial
                     }
+
                     R.id.radioButtonActionLegacy -> {
                         R.string.setting_floating_action_value_legacy
                     }
+
                     else -> { // R.id.radioButtonActionNative
                         R.string.setting_floating_action_value_screenshot
                     }
@@ -246,9 +249,11 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
                 getString(R.string.setting_floating_action_value_partial) -> {
                     R.id.radioButtonActionPartial
                 }
+
                 getString(R.string.setting_floating_action_value_legacy) -> {
                     R.id.radioButtonActionLegacy
                 }
+
                 else -> R.id.radioButtonActionNative
             }
         ).isChecked = true

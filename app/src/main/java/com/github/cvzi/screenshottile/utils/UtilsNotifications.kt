@@ -460,6 +460,7 @@ fun notificationSettingsIntent(packageName: String, channelId: String? = null): 
                 }
             }
         }
+
         Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> {
             Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -469,6 +470,7 @@ fun notificationSettingsIntent(packageName: String, channelId: String? = null): 
                 }
             }
         }
+
         else -> {
             Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

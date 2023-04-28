@@ -108,16 +108,19 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                         appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
                         SettingsActivity.startNewTask(this)
                     }
+
                     MainActivity.TAG -> {
                         // Return to main activity
                         appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
                         MainActivity.startNewTask(this)
                     }
+
                     NoDisplayActivity.TAG -> {
                         // Return to NoDisplayActivity activity i.e. finish()
                         appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
                         NoDisplayActivity.startNewTask(this, false)
                     }
+
                     else -> {
                         // Do nothing
                     }
@@ -306,6 +309,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     showSettingsButton(root, buttonScreenshot)
                     true
                 }
+
                 else -> true
             }
         }
@@ -510,7 +514,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         } else {
             success = try {
                 performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)
-            } catch(e: Exception) {
+            } catch (e: Exception) {
                 Log.e(TAG, "Failed to performGlobalAction(GLOBAL_ACTION_TAKE_SCREENSHOT)", e)
                 false
             }
@@ -603,6 +607,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             result == null -> {
                 screenShotFailedToast("Failed to cast SaveImageResult")
             }
+
             result.uri != null -> {
                 // Android Q+ works with MediaStore content:// URI
                 var dummyPath =
@@ -637,6 +642,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     result.bitmap
                 )
             }
+
             result.file != null -> {
                 // Legacy behaviour until Android P, works with the real file path
                 val uri = Uri.fromFile(result.file)
@@ -667,6 +673,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     result.bitmap
                 )
             }
+
             else -> {
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")
             }

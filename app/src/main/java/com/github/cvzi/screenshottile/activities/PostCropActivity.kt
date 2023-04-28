@@ -103,6 +103,7 @@ class PostCropActivity : GenericPostActivity() {
                     openImageFromUri(it, lastBitmap)
                 }
             }
+
             else -> {
                 val intentType = intent.type
                 if (intentType != null && intentType.startsWith("image/")) {
@@ -245,6 +246,7 @@ class PostCropActivity : GenericPostActivity() {
             result == null -> {
                 onFileSaveError("Failed to cast SaveImageResult")
             }
+
             result.uri != null -> {
                 // Android Q+ works with MediaStore content:// URI
                 var dummyPath =
@@ -269,6 +271,7 @@ class PostCropActivity : GenericPostActivity() {
 
                 finish()
             }
+
             result.file != null -> {
                 // Legacy behaviour until Android P, works with the real file path
                 val uri = Uri.fromFile(result.file)
@@ -290,6 +293,7 @@ class PostCropActivity : GenericPostActivity() {
 
                 finish()
             }
+
             else -> {
                 onFileSaveError("Failed to cast SaveImageResult path/uri")
             }

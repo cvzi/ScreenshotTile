@@ -82,6 +82,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                         Log.e(TAG, "resolveActivity(shareIntent) returned null")
                     }
                 }
+
                 NOTIFICATION_ACTION_DELETE -> {
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
@@ -100,6 +101,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                         )
                     }
                 }
+
                 NOTIFICATION_ACTION_EDIT -> {
                     hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 

@@ -252,6 +252,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             result == null -> {
                 screenShotFailedToast("Failed to cast SaveImageResult")
             }
+
             result.uri != null -> {
                 // Android Q+ works with MediaStore content:// URI
                 var dummyPath =
@@ -286,6 +287,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                     result.bitmap
                 )
             }
+
             result.file != null -> {
                 // Legacy behaviour until Android P, works with the real file path
                 val uri = Uri.fromFile(result.file)
@@ -314,6 +316,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                     result.bitmap
                 )
             }
+
             else -> {
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")
             }

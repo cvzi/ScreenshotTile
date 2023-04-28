@@ -48,16 +48,19 @@ class MyVoiceInteractionService : VoiceInteractionService() {
                     App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled = null
                     SettingsActivity.startNewTask(this)
                 }
+
                 MainActivity.TAG -> {
                     // Return to main activity
                     App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled = null
                     MainActivity.startNewTask(this)
                 }
+
                 NoDisplayActivity.TAG -> {
                     // Return to NoDisplayActivity activity i.e. finish()
                     App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled = null
                     NoDisplayActivity.startNewTask(this, false)
                 }
+
                 else -> {
                     // Do nothing
                 }

@@ -95,11 +95,9 @@ open class GenericPostActivity : AppCompatActivity() {
             setDataAndTypeAndNormalize(singleImage.uri, singleImage.mimeType)
         }
 
-        findViewById<TextView>(R.id.textViewDateIso).text =
-            SimpleDateFormat(
-                "yyyy-MM-dd'T'HH:mm:ss'Z'",
-                Locale.getDefault()
-            ).format(singleImage.lastModified)
+        findViewById<TextView>(R.id.textViewDateIso).text = SimpleDateFormat(
+            "yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault()
+        ).format(singleImage.lastModified)
         findViewById<TextView>(R.id.textViewDateLocal).text =
             DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM, Locale.getDefault())
                 .format(singleImage.lastModified)
@@ -136,7 +134,14 @@ open class GenericPostActivity : AppCompatActivity() {
             toastMessage(getString(R.string.screenshot_renamed, newName), ToastType.ACTIVITY)
             finish()
             result.second?.let {
-                startActivity(newIntentSingleImage(this, it, parentFolderUri = singleImageLoaded.parentFolderUri, highlight = HIGHLIGHT_FILENAME))
+                startActivity(
+                    newIntentSingleImage(
+                        this,
+                        it,
+                        parentFolderUri = singleImageLoaded.parentFolderUri,
+                        highlight = HIGHLIGHT_FILENAME
+                    )
+                )
             }
         } else {
             toastMessage(R.string.screenshot_rename_failed, ToastType.ACTIVITY)
@@ -160,7 +165,11 @@ open class GenericPostActivity : AppCompatActivity() {
             toastMessage("Moved to\n${niceFullPathFromUri(destFolderUri)}", ToastType.ACTIVITY)
             finish()
             result.second?.let {
-                startActivity(newIntentSingleImage(this, it, parentFolderUri = destFolderUri,highlight = HIGHLIGHT_FOLDER))
+                startActivity(
+                    newIntentSingleImage(
+                        this, it, parentFolderUri = destFolderUri, highlight = HIGHLIGHT_FOLDER
+                    )
+                )
             }
         } else {
             toastMessage("Failed to move file", ToastType.ACTIVITY)

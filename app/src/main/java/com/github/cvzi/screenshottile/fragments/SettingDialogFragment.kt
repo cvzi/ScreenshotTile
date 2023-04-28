@@ -82,9 +82,11 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
                         App.getInstance().screenshot(context)
                     }
                 }
+
                 DialogInterface.BUTTON_NEUTRAL -> {
                     SettingsActivity.start(myActivity)
                 }
+
                 DialogInterface.BUTTON_NEGATIVE -> {
                     // no-op
                 }

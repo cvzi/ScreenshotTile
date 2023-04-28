@@ -84,9 +84,16 @@ class AcquireScreenshotPermission : Activity() {
                 App.setMediaProjectionManager(this)
                 try {
                     startActivityForResult(createScreenCaptureIntent(), SCREENSHOT_REQUEST_CODE)
-                } catch(e: ActivityNotFoundException) {
-                    Log.e(TAG, "startActivityForResult(createScreenCaptureIntent, ...) failed with", e)
-                    toastMessage(getString(R.string.permission_missing_screen_capture), ToastType.ERROR)
+                } catch (e: ActivityNotFoundException) {
+                    Log.e(
+                        TAG,
+                        "startActivityForResult(createScreenCaptureIntent, ...) failed with",
+                        e
+                    )
+                    toastMessage(
+                        getString(R.string.permission_missing_screen_capture),
+                        ToastType.ERROR
+                    )
                     finish()
                 }
             }

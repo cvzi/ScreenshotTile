@@ -58,7 +58,7 @@ open class SingleImage(
             return folder ?: uri.path ?: uri.toString()
         }
 
-        fun folderFromUri(uri: Uri): String? {
+        private fun folderFromUri(uri: Uri): String? {
             uri.pathSegments?.let { segments ->
                 val index = segments.indexOf("document")
                 val shortened =

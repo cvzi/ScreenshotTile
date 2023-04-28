@@ -21,7 +21,15 @@
 package com.github.cvzi.screenshottile.partial
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Point
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
+import android.graphics.Rect
+import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -229,15 +237,19 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
                     rect.bottom + 10 * m2 < this@ScreenshotSelectorView.height -> {
                         centerY = rect.bottom + 4 * m2
                     }
+
                     rect.top - 6 * m2 > 0 -> {
                         centerY = rect.top - 4 * m2
                     }
+
                     rect.right + 10 * m2 < this@ScreenshotSelectorView.width -> {
                         centerX = rect.right + 4 * m2
                     }
+
                     rect.left - 6 * m2 > 0 -> {
                         centerX = rect.left - 4 * m2
                     }
+
                     else -> {
                         showFullScreenIcon = false
                     }
@@ -443,10 +455,12 @@ class ScreenshotSelectorView(context: Context, attrs: AttributeSet? = null) : Vi
                 }
                 return true
             }
+
             MotionEvent.ACTION_MOVE -> {
                 updateSelection(event.x.toInt(), event.y.toInt())
                 return true
             }
+
             MotionEvent.ACTION_UP -> {
                 selectionRect?.run {
                     if (width() != 0 && height() != 0) {

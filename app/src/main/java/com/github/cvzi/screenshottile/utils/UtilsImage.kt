@@ -129,7 +129,6 @@ fun addImageToGallery(
             put(MediaStore.Images.ImageColumns.WIDTH, dim.x)
             put(MediaStore.Images.ImageColumns.HEIGHT, dim.y)
         }
-        @Suppress("DEPRECATION")
         put(MediaStore.MediaColumns.DATA, filepath)
     }
     return try {
@@ -243,7 +242,6 @@ fun deleteFileSystem(context: Context, file: File): Boolean {
         val externalContentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         val projection = arrayOf(MediaStore.Images.Media._ID)
 
-        @Suppress("DEPRECATION")
         val selection = MediaStore.Images.Media.DATA + " = ?"
         val queryArgs = arrayOf(file.absolutePath)
         context.contentResolver.query(
@@ -310,7 +308,7 @@ fun moveImageToStorage(context: Context, file: File, newName: String?): Pair<Boo
         return result
 
     } else { // until Android P
-        val dest = createImageFileInDefaulPictureFolder(context, newFileName)
+        val dest = createImageFileInDefaultPictureFolder(context, newFileName)
         renameFileSystem(context, file, dest)
     }
 
@@ -376,7 +374,7 @@ fun renameImage(context: Context, uri: Uri?, newName: String): Pair<Boolean, Uri
             }
 
             val file = File(path)
-            val dest = createImageFileInDefaulPictureFolder(context, newFileName)
+            val dest = createImageFileInDefaultPictureFolder(context, newFileName)
 
             return renameFileSystem(context, file, dest)
         }
@@ -399,7 +397,13 @@ fun moveContentResolver(
     newFileTitle: String
 ): Pair<Boolean, Uri?> {
     // Copy the image to a new name,
-    val result = copyImageContentResolver(context, uri, newFileTitle, destFolderUri, forceCustomDirectory = true)
+    val result = copyImageContentResolver(
+        context,
+        uri,
+        newFileTitle,
+        destFolderUri,
+        forceCustomDirectory = true
+    )
     if (!result.first) {
         return Pair(false, null)
     }
@@ -595,7 +599,6 @@ fun renameFileSystem(
         val externalContentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         val projection = arrayOf(MediaStore.Images.Media._ID)
 
-        @Suppress("DEPRECATION")
         val selection = MediaStore.Images.Media.DATA + " = ?"
         val queryArgs = arrayOf(file.absolutePath)
         context.contentResolver.query(

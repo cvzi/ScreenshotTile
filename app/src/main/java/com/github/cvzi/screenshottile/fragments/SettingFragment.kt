@@ -103,21 +103,26 @@ class SettingFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_floating_button_scale) -> updateFloatingButton(
                     switchEvent = true, forceRedraw = true
                 )
+
                 getString(R.string.pref_key_floating_button_show_close) -> updateFloatingButtonClose()
                 getString(R.string.pref_key_floating_button_shutter) -> updateFloatingButtonShutterSummary(
                     true
                 )
+
                 getString(R.string.pref_key_floating_button_delay) -> updateFloatingButtonDelaySummary(
                     prefManager.floatingButtonDelay.toString()
                 )
+
                 getString(R.string.pref_key_use_system_defaults) -> updateUseNative(switchEvent = true)
                 getString(R.string.pref_key_tile_action) -> updateTileActionSummary(prefManager.tileAction)
                 getString(R.string.pref_key_floating_action) -> updateFloatingActionSummary(
                     prefManager.floatingButtonAction
                 )
+
                 getString(R.string.pref_key_voice_interaction_action) -> updateVoiceInteractionActionSummary(
                     prefManager.voiceInteractionAction, switchEvent = true
                 )
+
                 getString(R.string.pref_key_dark_theme) -> updateDarkTheme(switchEvent = true)
                 getString(R.string.pref_key_notification_actions) -> updateNotificationActions()
             }
@@ -148,7 +153,8 @@ class SettingFragment : PreferenceFragmentCompat() {
             findPreference(getString(R.string.pref_static_field_key_notification_settings))
         postActionsPref =
             findPreference(getString(R.string.pref_static_field_key_post_actions))
-        floatingButtonSettingsPref = findPreference(getString(R.string.pref_static_field_key_floating_button_settings))
+        floatingButtonSettingsPref =
+            findPreference(getString(R.string.pref_static_field_key_floating_button_settings))
         notificationActionsPref =
             findPreference(getString(R.string.pref_key_notification_actions)) as MultiSelectListPreference?
         delayPref = findPreference(getString(R.string.pref_key_delay)) as ListPreference?
@@ -408,14 +414,17 @@ class SettingFragment : PreferenceFragmentCompat() {
                         isEnabled = false
                         summary = getString(R.string.use_native_screenshot_option_default)
                     }
+
                     Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults -> {
                         isEnabled = false
                         summary = getString(R.string.use_native_screenshot_option_android11)
                     }
+
                     notificationScreenshotTakenChannelEnabled(myActivity) -> {
                         isEnabled = true
                         summary = getString(R.string.notification_settings_on)
                     }
+
                     else -> {
                         isEnabled = true
                         summary = getString(R.string.notification_settings_off)
@@ -432,10 +441,12 @@ class SettingFragment : PreferenceFragmentCompat() {
                     isEnabled = false
                     summary = getString(R.string.use_native_screenshot_option_default)
                 }
+
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults -> {
                     isEnabled = false
                     summary = getString(R.string.use_native_screenshot_option_android11)
                 }
+
                 else -> {
                     isEnabled = true
                     summary = getString(R.string.setting_post_actions_description)
@@ -613,6 +624,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     isEnabled = false
                     summary = getString(R.string.use_native_screenshot_unsupported)
                 }
+
                 isChecked -> {
                     summary = if (ScreenshotAccessibilityService.instance == null) {
                         getString(
@@ -629,6 +641,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     updateFileFormatSummary(prefManager.fileFormat)
                     updateFileNamePatternSummary()
                 }
+
                 else -> {
                     summary = getString(R.string.use_native_screenshot_summary)
                     fileFormatPref?.isEnabled = true
@@ -693,6 +706,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     floatingButtonActionPref?.isVisible = false
                     unsupported
                 }
+
                 isChecked -> {
                     updateUseNative(switchEvent)
                     if (ScreenshotAccessibilityService.instance == null) {
@@ -704,6 +718,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                         getString(R.string.setting_floating_button_summary)
                     }
                 }
+
                 else -> {
                     getString(R.string.setting_floating_button_summary)
                 }
@@ -746,6 +761,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                         floatingButtonShowCloseAlertDialog?.safeDismiss(TAG)
                         true
                     }
+
                     else -> false
                 }
             }

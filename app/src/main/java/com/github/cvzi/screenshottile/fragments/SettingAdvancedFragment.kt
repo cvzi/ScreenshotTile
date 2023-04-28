@@ -14,7 +14,7 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.cleanUpAppData
 import com.github.cvzi.screenshottile.utils.compressionPreference
-import java.util.*
+import java.util.Locale
 
 
 /**
@@ -38,6 +38,7 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
                 getString(R.string.pref_key_floating_button_alpha) -> updateFloatingButton(
                     switchEvent = true, forceRedraw = true
                 )
+
                 getString(R.string.pref_key_format_quality) -> updateFormatQualitySummary()
                 getString(R.string.pref_key_keep_app_data_max) -> updateKeepAppDataMaxSummary(
                     switchEvent = true

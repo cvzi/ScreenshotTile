@@ -61,44 +61,16 @@ public class App extends Application {
         setInstance(this);
     }
 
-    private static void setInstance(App app) {
-        instance = app;
-    }
-
     public static App getInstance() {
         return instance;
     }
 
+    private static void setInstance(App app) {
+        instance = app;
+    }
+
     public static Intent getScreenshotPermission() {
         return screenshotPermission;
-    }
-
-    /**
-     * Get the last bitmap and remove the weak reference
-     *
-     * @return last bitmap or null
-     */
-    public @Nullable
-    Bitmap getLastScreenshot() {
-        if (lastScreenshot != null) {
-            Bitmap tmp = lastScreenshot.get();
-            lastScreenshot = null;
-            return tmp;
-        }
-        return null;
-    }
-
-    /**
-     * Set the last bitmap
-     *
-     * @param lastScreenshot The last bitmap or null to remove reference
-     */
-    public void setLastScreenshot(@Nullable Bitmap lastScreenshot) {
-        if (lastScreenshot != null) {
-            this.lastScreenshot = new WeakReference<>(lastScreenshot);
-        } else {
-            this.lastScreenshot = null;
-        }
     }
 
     /**
@@ -246,6 +218,34 @@ public class App extends Application {
 
     public static void checkAccessibilityServiceOnCollapse(boolean checkAccessibilityServiceOnCollapse) {
         App.checkAccessibilityServiceOnCollapse = checkAccessibilityServiceOnCollapse;
+    }
+
+    /**
+     * Get the last bitmap and remove the weak reference
+     *
+     * @return last bitmap or null
+     */
+    public @Nullable
+    Bitmap getLastScreenshot() {
+        if (lastScreenshot != null) {
+            Bitmap tmp = lastScreenshot.get();
+            lastScreenshot = null;
+            return tmp;
+        }
+        return null;
+    }
+
+    /**
+     * Set the last bitmap
+     *
+     * @param lastScreenshot The last bitmap or null to remove reference
+     */
+    public void setLastScreenshot(@Nullable Bitmap lastScreenshot) {
+        if (lastScreenshot != null) {
+            this.lastScreenshot = new WeakReference<>(lastScreenshot);
+        } else {
+            this.lastScreenshot = null;
+        }
     }
 
     @Override

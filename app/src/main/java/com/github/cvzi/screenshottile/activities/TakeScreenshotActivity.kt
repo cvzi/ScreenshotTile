@@ -465,6 +465,7 @@ class TakeScreenshotActivity : Activity(),
             result == null -> {
                 screenShotFailedToast("Failed to cast SaveImageResult")
             }
+
             result.uri != null -> {
                 // Android Q+ works with MediaStore content:// URI
                 var dummyPath =
@@ -498,6 +499,7 @@ class TakeScreenshotActivity : Activity(),
                     result.bitmap
                 )
             }
+
             result.file != null -> {
                 // Legacy behaviour until Android P, works with the real file path
                 val uri = Uri.fromFile(result.file)
@@ -525,6 +527,7 @@ class TakeScreenshotActivity : Activity(),
                     result.bitmap
                 )
             }
+
             else -> {
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")
             }

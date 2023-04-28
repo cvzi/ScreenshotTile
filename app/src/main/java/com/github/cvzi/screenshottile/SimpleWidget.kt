@@ -78,11 +78,13 @@ open class SimpleWidget : AppWidgetProvider() {
                 views.setContentDescription(R.id.image, context.getString(R.string.take_screenshot))
                 views.removeAllViews(R.id.linear)
             }
+
             is SimpleWidgetSettings -> {
                 views.setOnClickPendingIntent(R.id.image, settingsPendingIntent)
                 views.setContentDescription(R.id.image, context.getString(R.string.open_settings))
                 views.removeAllViews(R.id.linear)
             }
+
             is SimpleWidgetFloatingButton -> {
                 views.setOnClickPendingIntent(R.id.image, floatingButtonPendingIntent)
                 views.setContentDescription(
@@ -91,6 +93,7 @@ open class SimpleWidget : AppWidgetProvider() {
                 )
                 views.removeAllViews(R.id.linear)
             }
+
             else -> {
                 views.setOnClickPendingIntent(R.id.leftSide, screenshotPendingIntent)
                 views.setOnClickPendingIntent(R.id.rightSide, settingsPendingIntent)

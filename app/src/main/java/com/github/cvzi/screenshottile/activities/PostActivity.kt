@@ -73,7 +73,7 @@ class PostActivity : GenericPostActivity() {
     }
 
     private val prefManager = App.getInstance().prefManager
-    var recentFolders: ArrayList<RecentFolder> = ArrayList()
+    private var recentFolders: ArrayList<RecentFolder> = ArrayList()
     private lateinit var startForPickFolder: ActivityResultLauncher<Intent>
 
     @SuppressLint("SetTextI18n")

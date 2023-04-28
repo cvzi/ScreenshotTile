@@ -42,6 +42,7 @@ class CompressionOptions(var fileExtension: String = "png", val quality: Int = 1
                 Bitmap.CompressFormat.WEBP
             }
         }
+
         else -> {
             fileExtension = "png"
             Bitmap.CompressFormat.PNG

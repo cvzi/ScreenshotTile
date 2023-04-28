@@ -10,7 +10,6 @@ import android.view.View
 import android.view.Window
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.preference.ListPreference
-import androidx.preference.Preference
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.R
