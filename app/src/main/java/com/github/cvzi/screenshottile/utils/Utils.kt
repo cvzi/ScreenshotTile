@@ -153,7 +153,8 @@ fun createOutputStream(
     date: Date,
     dim: Point,
     useAppData: Boolean,
-    directory: String?
+    directory: String?,
+    forceCustomDirectory: Boolean = false
 ): OutputStreamResult {
     return if (useAppData || Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
         createOutputStreamLegacy(
@@ -166,7 +167,7 @@ fun createOutputStream(
             directory
         )
     } else {
-        createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim, directory)
+        createOutputStreamMediaStore(context, fileTitle, compressionOptions, date, dim, directory, forceCustomDirectory)
     }
 }
 
@@ -279,13 +280,15 @@ fun createOutputStreamLegacy(
 /**
  * Get output stream for an image file, Android Q+
  */
+@Throws(IOException::class)
 fun createOutputStreamMediaStore(
     context: Context,
     fileTitle: String,
     compressionOptions: CompressionOptions,
     date: Date,
     dim: Point,
-    directory: String?
+    directory: String?,
+    forceCustomDirectory: Boolean = false
 ): OutputStreamResult {
     val filename = if (fileTitle.endsWith(
             ".${compressionOptions.fileExtension}",
@@ -314,6 +317,9 @@ fun createOutputStreamMediaStore(
                     dummyPath = "${nicePathFromUri(docDir)}/$filename"
                 }
             }
+        }
+        if(forceCustomDirectory && outputStream == null) {
+            throw IOException("Could not create writable DocumentFile from\ndirectoryUri=$customDirectoryUri\ndocDir=$docDir")
         }
     }
     if (relativePath == null) {
@@ -778,14 +784,14 @@ fun nicePathFromUri(documentFile: DocumentFile): String {
 }
 
 /**
- * Try to generate a path that can be understood by humans
+ * Try to generate a foldername that can be understood by humans
  */
 fun nicePathFromUri(uri: Uri): String {
     return nicePathFromUri(uri.toString())
 }
 
 /**
- * Try to generate a path that can be understood by humans
+ * Try to generate a foldername that can be understood by humans
  */
 fun nicePathFromUri(str: String?): String {
     if (str == null) {
@@ -798,6 +804,52 @@ fun nicePathFromUri(str: String?): String {
     }
     return path
 }
+
+/**
+ * Try to generate a full path that can be understood by humans
+ */
+fun niceFullPathFromUri(uri: Uri): String {
+    return niceFullPathFromUri(uri.toString())
+}
+
+/**
+ * Try to generate a full path that can be understood by humans
+ */
+fun niceFullPathFromUri(str: String?): String {
+    if (str == null) {
+        return "null"
+    }
+    var path = URLDecoder.decode(str.toString(), "UTF-8")
+    var parts = path.split("/").toMutableList()
+
+    if (parts[3] == "tree") {
+        // e.g. content://com.android.externalstorage.documents/tree/1B1A-210F:my/test/folder
+        parts = parts.slice(4 until parts.size).toMutableList()
+    }
+    if (parts[0].endsWith(":")) { // e.g."content:"
+        parts.removeAt(0)
+    }
+    var removeUntil = -1
+    for (i in 0 until parts.size) {
+        if (parts[i].startsWith("com.android.")) {
+            removeUntil = i
+        }
+    }
+    if (removeUntil != -1) {
+        parts = parts.slice(removeUntil + 1 until parts.size).toMutableList()
+    }
+    Log.v(UTILSKT, "niceFullPathFromUri() parts: $parts")
+
+    path = parts.joinToString("/")
+
+    if (path.startsWith("primary:")) {
+        path = path.substring(8)
+    }
+
+    return path
+}
+
+
 
 /**
  * Adjust font size to fill the available space of a text view

@@ -27,23 +27,38 @@ class SingleImageLoaded(
     val size: Long?,
     file: File? = null,
     folder: String? = null,
-    isAppData: Boolean = false
-) : SingleImage(uri, file, folder, isAppData = isAppData)
+    isAppData: Boolean = false,
+    parentFolderUri: Uri? = null
+) : SingleImage(uri, file, folder, isAppData = isAppData, parentFolderUri = parentFolderUri)
 
 open class SingleImage(
     val uri: Uri,
     val file: File? = null,
     var folder: String? = null,
     open val lastModified: Date? = null,
-    val isAppData: Boolean = false
+    val isAppData: Boolean = false,
+    val parentFolderUri: Uri? = null
 ) {
     open val fileName: String? = null
     open val mimeType: String? = null
     open val bitmap: Bitmap? = null
 
     init {
-        folder = folder ?: file?.parentFile?.absolutePath
-        if (folder == null) {
+        folder = folder ?: folderName(uri, file)
+    }
+
+    companion object {
+        private const val TAG = "SingleImage"
+
+        fun folderName(uri: Uri, file: File? = null): String {
+            var folder = file?.parentFile?.absolutePath
+            if (folder == null) {
+                folder = folderFromUri(uri)
+            }
+            return folder ?: uri.path ?: uri.toString()
+        }
+
+        fun folderFromUri(uri: Uri): String? {
             uri.pathSegments?.let { segments ->
                 val index = segments.indexOf("document")
                 val shortened =
@@ -52,14 +67,11 @@ open class SingleImage(
                     } else {
                         segments.slice(0 until segments.size - 1)
                     }
-                folder = shortened.joinToString("/").removePrefix("primary:")
+                return shortened.joinToString("/").removePrefix("primary:")
             }
+            return null
         }
-        folder = folder ?: uri.path ?: uri.toString()
-    }
 
-    companion object {
-        private const val TAG = "SingleImage"
 
         /**
          * @throws FileNotFoundException
@@ -246,7 +258,8 @@ open class SingleImage(
             size = size,
             file = file,
             folder = folder?.removeSuffix(fileName),
-            isAppData = isAppData
+            isAppData = isAppData,
+            parentFolderUri = parentFolderUri
         )
     }
 

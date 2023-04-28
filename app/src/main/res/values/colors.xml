@@ -8,6 +8,7 @@
     <color name="primaryCardColor">#C3C9EE</color>
     <color name="secondaryCardColor">#DFC3EE</color>
     <color name="darkBackgroundColor">#2D1F4E</color>
+    <color name="highlightColor">#62F62D</color>
 
     <color name="ic_launcher_background">#DFC3EE</color>
     <color name="ic_launcher_photo_editor_background">#911CCB</color>

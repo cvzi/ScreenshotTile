@@ -9,7 +9,7 @@ import android.util.Log
 import androidx.preference.PreferenceManager
 import com.github.cvzi.screenshottile.R
 import java.io.File
-import java.util.*
+import java.util.Date
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -441,7 +441,9 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
     fun addRecentFileName(name: String) {
         val cleanName = cleanFileName(name)
         fileNamesRecent = fileNamesRecent.toMutableList().apply {
-            minus(cleanName)
+            while (cleanName in this) {
+                remove(cleanName)
+            }
             add(0, cleanName)
         }.toTypedArray()
     }
@@ -495,6 +497,49 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         } else {
             removeRecentFileName(fileNameSuggestion.dataIndex)
         }
+    }
+
+
+    private var recentFolders: Array<String>
+        get() {
+            return pref.getString(
+                context.getString(R.string.pref_key_recent_folders),
+                ""
+            )?.split("\n\n")?.filter { it.isNotBlank() }?.toTypedArray() ?: arrayOf()
+        }
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_recent_folders),
+            value.joinToString("\n\n")
+        ).apply()
+
+
+    private fun addRecentFolder(uriStr: String) {
+        val clean = uriStr.replace("\n\n", "")
+        recentFolders = recentFolders.toMutableList().apply {
+            while (clean in this) {
+                remove(clean)
+            }
+            add(0, clean)
+        }.toTypedArray()
+    }
+
+    fun addRecentFolder(uri: Uri) {
+        return addRecentFolder(uri.toString())
+    }
+
+    fun getRecentFolders(): Array<RecentFolder> {
+        return (recentFolders.mapIndexed { index, value ->
+            RecentFolder(value, index)
+        }).toTypedArray()
+    }
+
+    fun removeRecentFolder(recentFolder: RecentFolder) {
+        val index = recentFolder.dataIndex
+        recentFolders = recentFolders.toMutableList().apply {
+            if (index < size) {
+                removeAt(index)
+            }
+        }.toTypedArray()
     }
 
     var notificationActions: MutableSet<String>

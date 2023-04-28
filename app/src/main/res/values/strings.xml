@@ -173,6 +173,8 @@
 
     <!-- Post edit activity -->
     <string name="post_button_save">Rename</string>
+    <string name="post_button_move">Move</string>
+    <string name="post_recent_folders">Recent folders:</string>
     <string name="post_recent_file_names_and_suggestions">Recent file names and suggestions:</string>
     <string name="post_hint_new_file_name">New file name</string>
     <string name="post_rename_file">Rename file:</string>

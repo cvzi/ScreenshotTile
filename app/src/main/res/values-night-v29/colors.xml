@@ -8,5 +8,6 @@
     <color name="secondaryDarkColor">#000014</color>
     <color name="primaryCardColor">#3f053f</color>
     <color name="secondaryCardColor">#120e38</color>
+    <color name="highlightColor">#55D528</color>
 
 </resources>

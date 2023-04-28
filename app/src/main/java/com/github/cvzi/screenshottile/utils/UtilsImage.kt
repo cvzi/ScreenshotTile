@@ -12,6 +12,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Surface
 import android.view.WindowManager
+import androidx.core.net.toFile
 import androidx.documentfile.provider.DocumentFile
 import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
@@ -167,6 +168,7 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
 
             return deleteFileSystem(context, file)
         }
+
         else -> {
             Log.e(UTILSIMAGEKT, "deleteImage() Could not delete file. Unknown error. uri=$uri")
             return false
@@ -205,23 +207,18 @@ fun deleteContentResolver(context: Context, uri: Uri): Boolean {
     val deletedRows = try {
         context.contentResolver.delete(uri, null, null)
     } catch (e: UnsupportedOperationException) {
-        // Try to delete DocumentFile in custom directory
-        if (App.getInstance().prefManager.screenshotDirectory != null) {
-            return deleteDocumentFile(context, uri)
-        }
         0
     } catch (e: SecurityException) {
-        // Try to delete DocumentFile in custom directory
-        if (App.getInstance().prefManager.screenshotDirectory != null) {
-            return deleteDocumentFile(context, uri)
-        }
         0
+    }
+    if (deletedRows == 0) {
+        return deleteDocumentFile(context, uri)
     }
     if (BuildConfig.DEBUG) Log.v(
         UTILSIMAGEKT,
         "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"
     )
-    return deletedRows > 0
+    return true
 }
 
 /**
@@ -320,7 +317,41 @@ fun moveImageToStorage(context: Context, file: File, newName: String?): Pair<Boo
 }
 
 /**
- * Rename image. Return true on success, false on failure.
+ * Move image. Return true on success, false on failure.
+ * content:// Uris are moved via MediaStore if possible otherwise copied and original file deleted
+ * file:// Uris are renamed on filesystem and removed and added to MediaStore
+ */
+fun moveImage(
+    context: Context,
+    srcFileUri: Uri,
+    destFolderUri: Uri,
+    newName: String
+): Pair<Boolean, Uri?> {
+    val (newFileName, newFileTitle) = fileNameFileTitle(newName, compressionPreference(context))
+    val destFolderPath = destFolderUri.path
+    if (
+        srcFileUri.normalizeScheme().scheme == "file" && destFolderUri.normalizeScheme().scheme == "file" && destFolderPath != null) { // until Android P
+        val srcPath = srcFileUri.path
+        if (srcPath == null) {
+            Log.e(UTILSIMAGEKT, "moveImage() File path is null. srcFileUri=$srcFileUri")
+            return Pair(false, null)
+        }
+
+        val srcFile = srcFileUri.toFile()
+        val destFolderFile = File(destFolderPath)
+        val dest = File(destFolderFile, newFileName)
+        return renameFileSystem(context, srcFile, dest)
+    } else if (srcFileUri.normalizeScheme().scheme == "content") { // Android Q+
+        return moveContentResolver(context, srcFileUri, destFolderUri, newFileTitle)
+    } else {
+        Log.e(UTILSIMAGEKT, "moveImage() Could not move file. Unknown error. uri=$srcFileUri")
+        return Pair(false, null)
+    }
+}
+
+
+/**
+ * Rename image (in folder defined in app settings). Return true on success, false on failure.
  * content:// Uris are moved via MediaStore if possible otherwise copied and original file deleted
  * file:// Uris are renamed on filesystem and removed and added to MediaStore
  */
@@ -349,6 +380,7 @@ fun renameImage(context: Context, uri: Uri?, newName: String): Pair<Boolean, Uri
 
             return renameFileSystem(context, file, dest)
         }
+
         else -> {
             Log.e(UTILSIMAGEKT, "renameImage() Could not move file. Unknown error. uri=$uri")
             return Pair(false, null)
@@ -359,6 +391,28 @@ fun renameImage(context: Context, uri: Uri?, newName: String): Pair<Boolean, Uri
 
 /**
  * Move file via contentResolver
+ */
+fun moveContentResolver(
+    context: Context,
+    uri: Uri,
+    destFolderUri: Uri,
+    newFileTitle: String
+): Pair<Boolean, Uri?> {
+    // Copy the image to a new name,
+    val result = copyImageContentResolver(context, uri, newFileTitle, destFolderUri, forceCustomDirectory = true)
+    if (!result.first) {
+        return Pair(false, null)
+    }
+    // Remove the old file
+    if (!deleteImage(context, uri)) {
+        Log.e(UTILSIMAGEKT, "moveContentResolver() deleteImage failed")
+    }
+    return result
+}
+
+
+/**
+ * Rename file via contentResolver
  */
 fun renameContentResolver(
     context: Context,
@@ -378,7 +432,7 @@ fun renameContentResolver(
             "renameContentResolver() MediaStore move failed: $e\nTrying copy and delete"
         )
         0
-    } catch(e: IllegalStateException) {
+    } catch (e: IllegalStateException) {
         Log.w(
             UTILSIMAGEKT,
             "renameContentResolver() MediaStore move failed: $e\nTrying copy and delete"
@@ -404,7 +458,13 @@ fun renameContentResolver(
 /**
  * Copy file via contentResolver from uri
  */
-fun copyImageContentResolver(context: Context, uri: Uri, newName: String): Pair<Boolean, Uri?> {
+fun copyImageContentResolver(
+    context: Context,
+    uri: Uri,
+    newName: String,
+    directory: Uri? = null,
+    forceCustomDirectory: Boolean = false
+): Pair<Boolean, Uri?> {
     val inputStream: InputStream?
     try {
         inputStream = context.contentResolver.openInputStream(uri)
@@ -417,7 +477,7 @@ fun copyImageContentResolver(context: Context, uri: Uri, newName: String): Pair<
         return Pair(false, null)
     }
 
-    return copyImageContentResolver(context, inputStream, newName)
+    return copyImageContentResolver(context, inputStream, newName, directory, forceCustomDirectory)
 }
 
 /**
@@ -426,7 +486,9 @@ fun copyImageContentResolver(context: Context, uri: Uri, newName: String): Pair<
 fun copyImageContentResolver(
     context: Context,
     inputStream: InputStream,
-    newName: String
+    newName: String,
+    directory: Uri? = null,
+    forceCustomDirectory: Boolean = false
 ): Pair<Boolean, Uri?> {
     val outputStreamResult = createOutputStream(
         context,
@@ -435,7 +497,8 @@ fun copyImageContentResolver(
         Date(),
         Point(0, 0),
         useAppData = false,
-        directory = null
+        directory = directory?.toString(),
+        forceCustomDirectory
     )
     if (!outputStreamResult.success) {
         Log.e(
@@ -475,7 +538,7 @@ fun copyImageContentResolver(
                     context.contentResolver.update(outputStreamResultSuccess.uri, this, null, null)
                 } catch (e: UnsupportedOperationException) {
                     Log.e(UTILSKT, e.stackTraceToString())
-                } catch(e: IllegalStateException) {
+                } catch (e: IllegalStateException) {
                     Log.e(UTILSKT, e.stackTraceToString())
                 }
             }
@@ -658,6 +721,7 @@ fun realScreenSize(context: Context): Point {
                             y = it.physicalWidth
                             x = it.physicalHeight
                         }
+
                         else -> {
                             x = it.physicalWidth
                             y = it.physicalHeight
@@ -671,10 +735,12 @@ fun realScreenSize(context: Context): Point {
                     }
                 }
             }
+
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> {
                 @Suppress("DEPRECATION")
                 context.display?.getRealSize(this)
             }
+
             else -> {
                 @Suppress("DEPRECATION")
                 windowManager.defaultDisplay.getRealSize(this)

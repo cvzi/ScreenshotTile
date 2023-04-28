@@ -170,11 +170,44 @@
                         android:scrollHorizontally="true"
                         android:text="" />
 
-                    <Button
-                        android:id="@+id/buttonRename"
-                        android:layout_width="wrap_content"
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/post_button_save" />
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/buttonRename"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="@string/post_button_save" />
+
+                        <Button
+                            android:id="@+id/buttonMove"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_weight="1"
+                            android:text="@string/post_button_move" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/post_recent_folders"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewRecentFolders"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </androidx.recyclerview.widget.RecyclerView>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -197,6 +230,7 @@
                         android:layout_marginStart="32dp"
                         android:text=""
                         android:textSize="17sp" />
+
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerViewSuggestions"

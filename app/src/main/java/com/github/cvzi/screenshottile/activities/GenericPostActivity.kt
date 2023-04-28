@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.icu.text.DateFormat
 import android.icu.text.SimpleDateFormat
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -24,6 +25,10 @@ open class GenericPostActivity : AppCompatActivity() {
         const val OPEN_IMAGE_FROM_URI = "com.github.cvzi.screenshottile.OPEN_IMAGE_FROM_URI"
         const val BITMAP_FROM_LAST_SCREENSHOT =
             "com.github.cvzi.screenshottile.BITMAP_FROM_LAST_SCREENSHOT"
+        const val PARENT_FOLDER_URI = "com.github.cvzi.screenshottile.PARENT_FOLDER_URI"
+        const val HIGHLIGHT = "com.github.cvzi.screenshottile.HIGHLIGHT"
+        const val HIGHLIGHT_FILENAME = 1
+        const val HIGHLIGHT_FOLDER = 2
     }
 
     var singleImage: SingleImageLoaded? = null
@@ -113,15 +118,52 @@ open class GenericPostActivity : AppCompatActivity() {
             return
         }
         App.getInstance().prefManager.addRecentFileName(newName)
-        val result = renameImage(this, singleImageLoaded.uri, newName)
+
+        val result = if (singleImageLoaded.parentFolderUri != null) {
+            // Image is already in another folder, so we need to use moveImage otherwise
+            // the image would be moved back to the default folder
+            moveImage(
+                this,
+                singleImageLoaded.uri,
+                destFolderUri = singleImageLoaded.parentFolderUri,
+                newName = newName
+            )
+        } else {
+            renameImage(this, singleImageLoaded.uri, newName)
+        }
+
         if (result.first) {
             toastMessage(getString(R.string.screenshot_renamed, newName), ToastType.ACTIVITY)
             finish()
             result.second?.let {
-                startActivity(newIntentSingleImage(this, it))
+                startActivity(newIntentSingleImage(this, it, parentFolderUri = singleImageLoaded.parentFolderUri, highlight = HIGHLIGHT_FILENAME))
             }
         } else {
             toastMessage(R.string.screenshot_rename_failed, ToastType.ACTIVITY)
+        }
+    }
+
+    fun move(singleImageLoaded: SingleImageLoaded, destFolderUri: Uri) {
+        var newName: String = findViewById<EditText>(R.id.editTextNewName).text.toString().trim()
+        if (newName.isBlank()) {
+            newName = singleImageLoaded.fileName
+        }
+
+        val result = try {
+            moveImage(this, singleImageLoaded.uri, destFolderUri = destFolderUri, newName = newName)
+        } catch (e: Exception) {
+            Log.e(TAG, "moveImage failed with Exception:", e)
+            null
+        }
+        if (result?.first == true) {
+            App.getInstance().prefManager.addRecentFolder(destFolderUri)
+            toastMessage("Moved to\n${niceFullPathFromUri(destFolderUri)}", ToastType.ACTIVITY)
+            finish()
+            result.second?.let {
+                startActivity(newIntentSingleImage(this, it, parentFolderUri = destFolderUri,highlight = HIGHLIGHT_FOLDER))
+            }
+        } else {
+            toastMessage("Failed to move file", ToastType.ACTIVITY)
         }
     }
 
