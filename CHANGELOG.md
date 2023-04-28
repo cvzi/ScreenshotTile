@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.0
+*   Option to move file from "Details" activity
+*   Update [PhotoEditor](https://github.com/burhanrashid52/PhotoEditor) to [3.0.1]
+
 ## 2.2.3
 *   Complete language list for setting per-app language
 
