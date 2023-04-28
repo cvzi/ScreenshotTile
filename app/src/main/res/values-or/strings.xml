@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ସ୍କ୍ରୀନ୍‍ସଟ୍ ଟାଇଲ୍</string>
-    <string name="app_name_long">ସ୍କ୍ରୀନ୍‍ସଟ୍ ଟାଇଲ୍ (NoRoot)</string>
-    <string name="tile_label">ସ୍କ୍ରୀନ୍‍ସଟ୍</string>
-    <string name="tile_floating">ଭାସମାନ ସ୍କ୍ରୀନ୍‍ସଟ୍ ବଟନ୍</string>
+    <string name="app_name">ସ୍କ୍ରୀନ୍‌ସଟ୍ ଟାଇଲ୍</string>
+    <string name="app_name_long">ସ୍କ୍ରୀନ୍‌ସଟ୍ ଟାଇଲ୍ (NoRoot)</string>
+    <string name="tile_label">ସ୍କ୍ରୀନ୍‌ସଟ୍</string>
+    <string name="tile_floating">ଭାସମାନ ସ୍କ୍ରୀନ୍‌ସଟ୍ ବଟନ୍</string>
     <string name="tile_floating_label">ଭାସମାନ</string>
-    <string name="tile_floating_subtitle">ସ୍କ୍ରୀନ୍‍ସଟ୍ ବଟନ୍</string>
+    <string name="tile_floating_subtitle">ସ୍କ୍ରୀନ୍‌ସଟ୍ ବଟନ୍</string>
     <string name="title_delay">ବିଳମ୍ବ</string>
     <string name="more_setting">ଅଧିକ ସେଟିଂ</string>
     <string name="open_settings">ସେଟିଂ ଖୋଲନ୍ତୁ</string>
-    <string name="left_screenshot_right_menu">ଵାମ: ସ୍କ୍ରୀନ୍‍ସଟ୍, ଡାହାଣ: ସେଟିଂ</string>
-    <string name="partial_screenshot">ଆଂଶିକ ସ୍କ୍ରୀନ୍‍ସଟ୍</string>
+    <string name="floating_button_settings">Floating button settings</string>
+    <string name="left_screenshot_right_menu">ଵାମ: ସ୍କ୍ରୀନ୍‌ସଟ୍, ଡାହାଣ: ସେଟିଂ</string>
+    <string name="partial_screenshot">ଆଂଶିକ ସ୍କ୍ରୀନ୍‌ସଟ୍</string>
     <string name="file_format">ଫାଇଲ୍ ଫର୍ମାଟ୍</string>
     <string name="setting_delay_entry_default">ତତକ୍ଷଣାତ୍</string>
     <string name="setting_delay_entry_1s">୧ ସେକେଣ୍ଡ</string>
@@ -27,7 +28,7 @@
     <string name="setting_floating_button_scale">ଭାସମାନ ବଟନ୍ ଆକାର</string>
     <string name="setting_floating_button_shutter">ଭାସମାନ ବଟନ୍ ଥିମ୍</string>
     <string name="setting_floating_button_delay">ବିଳମ୍ବ (ଭାସମାନ ବଟନ୍)</string>
-    <string name="setting_storage_directory_description">ସ୍କ୍ରୀନ୍‍ସଟ୍ ସଞ୍ଚୟ କରିବା ପାଇଁ ଫୋଲ୍ଡର୍</string>
+    <string name="setting_storage_directory_description">ସ୍କ୍ରୀନ୍‌ସଟ୍ ସଞ୍ଚୟ କରିବା ପାଇଁ ଫୋଲ୍ଡର୍</string>
     <string name="setting_file_name_pattern">ଫାଇଲ୍ ନାମ</string>
     <string name="setting_tile_action">ଟାଇଲ୍ କ୍ରିୟା</string>
     <string name="setting_floating_action">ଭାସମାନ ବଟନ୍ କ୍ରିୟା</string>
@@ -38,32 +39,32 @@
     <string name="notification_settings">ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକ</string>
     <string name="notification_settings_on">ସକ୍ଷମ</string>
     <string name="notification_settings_off">ଅକ୍ଷମ</string>
-    <string name="button_history">ସାମ୍ପ୍ରତିକ ସ୍କ୍ରୀନ୍‍ସଟ୍</string>
-    <string name="history_title">ସ୍କ୍ରୀନ୍‍ସଟ୍ ଇତିଵୃତ୍ତି</string>
+    <string name="button_history">ସାମ୍ପ୍ରତିକ ସ୍କ୍ରୀନ୍‌ସଟ୍</string>
+    <string name="history_title">ସ୍କ୍ରୀନ୍‌ସଟ୍ ଇତିଵୃତ୍ତି</string>
     <string name="post_action_save_to_storage">ଗ୍ୟାଲେରୀରେ ପ୍ରତିଛଵି ସଞ୍ଚୟ କରିବା</string>
-    <string name="post_action_empty">ସ୍କ୍ରୀନ୍‍ସଟ୍ ଖୋଲନ୍ତୁନି</string>
-    <string name="post_action_open_share">ସ୍କ୍ରୀନ୍‍ସଟ୍ ଅଂଶୀଦାର କରିବା</string>
-    <string name="file_title">ସ୍କ୍ରୀନ୍‍ସଟ୍</string>
-    <string name="file_description">%1$sରେ ସ୍କ୍ରୀନ୍‍ସଟ୍ ନିଆଯାଇଛି</string>
+    <string name="post_action_empty">ସ୍କ୍ରୀନ୍‌ସଟ୍ ଖୋଲନ୍ତୁନି</string>
+    <string name="post_action_open_share">ସ୍କ୍ରୀନ୍‌ସଟ୍ ଅଂଶୀଦାର କରିବା</string>
+    <string name="file_title">ସ୍କ୍ରୀନ୍‌ସଟ୍</string>
+    <string name="file_description">%1$sରେ ସ୍କ୍ରୀନ୍‌ସଟ୍ ନିଆଯାଇଛି</string>
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
-    <string name="notification_title">ସ୍କ୍ରୀନ୍‍ସଟ୍ ନିଆଯାଇଛି</string>
+    <string name="notification_title">ସ୍କ୍ରୀନ୍‌ସଟ୍ ନିଆଯାଇଛି</string>
     <string name="notification_body">ପ୍ରତିଛଵିଟି ଦେଖିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ</string>
-    <string name="notification_channel_description">ଆପଣଙ୍କ ସ୍କ୍ରୀନ୍‍ସଟ୍ ନେବାପରେ ଏକ ଵିଜ୍ଞପ୍ତି ଦେଖାଏ</string>
-    <string name="notification_foreground_title">ସ୍କ୍ରୀନ୍‍ସଟ୍ ଉଠାଯାଉଛି…</string>
-    <string name="notification_foreground_body">ସ୍କ୍ରୀନ୍‍ସଟ୍ ପ୍ରକ୍ରିୟାରତ… ବାତିଲ୍ କରିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ</string>
-    <string name="notification_foreground_channel_description">ଆପଣ ସ୍କ୍ରୀନ୍‍ସଟ୍ ନେଲାଵେଳେ ଏକ ଵିଜ୍ଞପ୍ତି ଦେଖାଏ। ଏକ ସ୍କ୍ରୀନ୍‍ସଟ୍ ପ୍ରକ୍ରିୟା ଚାଲିଥିବାଵେଳେ ଆପ୍‍କୁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେଶନ୍ ଦ୍ୱାରା ବନ୍ଦ ହେବାରୁ ପ୍ରତିରୋଧ କରେ</string>
+    <string name="notification_channel_description">ଆପଣଙ୍କ ସ୍କ୍ରୀନ୍‌ସଟ୍ ନେବାପରେ ଏକ ଵିଜ୍ଞପ୍ତି ଦେଖାଏ</string>
+    <string name="notification_foreground_title">ସ୍କ୍ରୀନ୍‌ସଟ୍ ଉଠାଯାଉଛି…</string>
+    <string name="notification_foreground_body">ସ୍କ୍ରୀନ୍‌ସଟ୍ ପ୍ରକ୍ରିୟାରତ… ବାତିଲ୍ କରିବାକୁ ଟ୍ୟାପ୍ କରନ୍ତୁ</string>
+    <string name="notification_foreground_channel_description">ଆପଣ ସ୍କ୍ରୀନ୍‌ସଟ୍ ନେଲାଵେଳେ ଏକ ଵିଜ୍ଞପ୍ତି ଦେଖାଏ। ଏକ ସ୍କ୍ରୀନ୍‌ସଟ୍ ପ୍ରକ୍ରିୟା ଚାଲିଥିବାଵେଳେ ଆପ୍‌କୁ ବ୍ୟାଟେରୀ ଅପ୍ଟିମାଇଜେଶନ୍ ଦ୍ୱାରା ବନ୍ଦ ହେବାରୁ ପ୍ରତିରୋଧ କରେ</string>
     <string name="notification_app_chooser_share">ଏହା ସହ ଫାଇଲ୍ ଅଂଶୀଦାର କରିବା…</string>
     <string name="notification_app_chooser_edit">ଏହା ସହ ଫାଇଲ୍ ସମ୍ପାଦନ କରିବା…</string>
-    <string name="screenshot_failed">ସ୍କ୍ରୀନ୍‍ସଟ୍ ନେବାରେ ଵିଫଳ ହୋଇଛି, ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ</string>
+    <string name="screenshot_failed">ସ୍କ୍ରୀନ୍‌ସଟ୍ ନେବାରେ ଵିଫଳ ହୋଇଛି, ଦୟାକରି ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ</string>
     <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
-    <string name="screenshot_file_saved">ସ୍କ୍ରୀନ୍‍ସଟ୍ ସଞ୍ଚୟ ହୋଇଛି %1$s</string>
+    <string name="screenshot_file_saved">ସ୍କ୍ରୀନ୍‌ସଟ୍ ସଞ୍ଚୟ ହୋଇଛି %1$s</string>
     <string name="notification_delete_screenshot">ବିଲୋପ</string>
     <string name="notification_share_screenshot">ଅଂଶୀଦାର</string>
     <string name="notification_edit_screenshot">ସମ୍ପାଦନ</string>
     <string name="notification_rename_screenshot">ନାଁ ବଦଳାନ୍ତୁ</string>
     <string name="notification_screenshot_details">ଵିଵରଣୀ</string>
     <string name="notification_photo_editor_screenshot">ଫଟୋ ସମ୍ପାଦକ</string>
-    <string name="screenshot_deleted">ସ୍କ୍ରୀନ୍‍ସଟ୍ ଵିଲୋପ କରାଗଲା</string>
+    <string name="screenshot_deleted">ସ୍କ୍ରୀନ୍‌ସଟ୍ ଵିଲୋପ କରାଗଲା</string>
     <string name="screenshot_delete_failed">ଫାଇଲ୍ ଵିଲୋପ କରିହେଲା ନାହିଁ</string>
     <string name="hide_app_from_launcher">ଉନ୍ମୋଚକ ଠାରୁ ଆପ୍ ଆଇକନ୍ ଲୁଚାନ୍ତୁ</string>
     <string name="hide_app_unsupported">Android 10+ ରେ ସମର୍ଥିତ ନୁହେଁ</string>
@@ -71,14 +72,14 @@
     <string name="tutorial">ଅନୁଶିକ୍ଷଣ</string>
     <string name="tutorial_tap_for_next_step">ପରବର୍ତ୍ତୀ ଷ୍ଟେପ୍ ପାଇଁ ଟ୍ୟାପ୍ କରନ୍ତୁ</string>
     <string name="tutorial_step4">ସମ୍ପାଦନ ବଟନ୍ ଟ୍ୟାପ୍ କରନ୍ତୁ</string>
-    <string name="tutorial_step5">ନୂଆ ସ୍କ୍ରୀନ୍‍ସଟ୍ ବଟନ୍ ଖୋଜନ୍ତୁ</string>
-    <string name="take_screenshot">ସ୍କ୍ରୀନ୍‍ସଟ୍ ନେବା</string>
+    <string name="tutorial_step5">ନୂଆ ସ୍କ୍ରୀନ୍‌ସଟ୍ ବଟନ୍ ଖୋଜନ୍ତୁ</string>
+    <string name="take_screenshot">ସ୍କ୍ରୀନ୍‌ସଟ୍ ନେବା</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
-    <string name="googleplay_consent_line_1">ଏହି ଆପ୍ - “ସ୍କ୍ରୀନ୍‍ସଟ୍ ଟାଇଲ୍ [No root]“ - କୌଣସି ଅଭିଗମ୍ୟତା ଉପକରଣ ନୁହଁ।</string>
-    <string name="googleplay_consent_line_4">ଅଭିଗମ୍ୟତା ସେଵା API କୁ ଆକସେସ୍ ଦିଆଗଲେ ଏହି ଆପ୍‍କୁ ସ୍କ୍ରୀନ୍ ରେକର୍ଡ କରିବା ପାଇଁ ଅନୁମତି ମିଳିବ।</string>
-    <string name="googleplay_consent_line_5">ସ୍କ୍ରୀନ୍‍ସଟ୍ ପ୍ରତିଛଵି ତିଆରିକରିବା ପାଇଁ ସ୍କ୍ରୀନ୍ ରେକର୍ଡିଂ ଵ୍ୟଵହାର କରାଯିବ।</string>
+    <string name="googleplay_consent_line_1">ଏହି ଆପ୍ - “ସ୍କ୍ରୀନ୍‌ସଟ୍ ଟାଇଲ୍ [No root]“ - କୌଣସି ଅଭିଗମ୍ୟତା ଉପକରଣ ନୁହଁ।</string>
+    <string name="googleplay_consent_line_4">ଅଭିଗମ୍ୟତା ସେଵା APIକୁ ଆକସେସ୍ ଦିଆଗଲେ ଏହି ଆପ୍‌କୁ ସ୍କ୍ରୀନ୍ ରେକର୍ଡ କରିବା ପାଇଁ ଅନୁମତି ମିଳିବ।</string>
+    <string name="googleplay_consent_line_5">ସ୍କ୍ରୀନ୍‌ସଟ୍ ପ୍ରତିଛଵି ତିଆରିକରିବା ପାଇଁ ସ୍କ୍ରୀନ୍ ରେକର୍ଡିଂ ଵ୍ୟଵହାର କରାଯିବ।</string>
     <string name="googleplay_consent_line_6">ଅଭିଗମ୍ୟତା କ୍ଷମତା ବ୍ୟବହାର କରି ଏହି ଆପ୍ ଦ୍ୱାରା ତଥ୍ୟ ସଂଗ୍ରହ କିମ୍ବା ଅଂଶୀଦାର କରାଯାଏ ନାହିଁ।</string>
-    <string name="googleplay_consent_line_7">ଆପଣ ଏହି ଆପ୍‍କୁ ଅଭିଗମ୍ୟତା ସେଵା API କୁ ଆକସେସ୍ କରି ସ୍କ୍ରୀନ୍ ରେକର୍ଡ କରିବାଲାଗି ଅଭିଗମ୍ୟତା କ୍ଷମତା ଵ୍ୟଵହାର କରିବା ନେଇ ଅନୁମତି ଦେବାକୁ ରାଜି ତ?</string>
+    <string name="googleplay_consent_line_7">ଆପଣ ଏହି ଆପ୍‌କୁ ଅଭିଗମ୍ୟତା ସେଵା APIକୁ ଆକସେସ୍ କରି ସ୍କ୍ରୀନ୍ ରେକର୍ଡ କରିବାଲାଗି ଅଭିଗମ୍ୟତା କ୍ଷମତା ଵ୍ୟଵହାର କରିବା ନେଇ ଅନୁମତି ଦେବାକୁ ରାଜି ତ?</string>
     <!-- About -->
     <string name="about_app_title">ବିଷୟରେ</string>
     <string name="about_app_1">ଏହା \ngithub.com/ipcjs/ScreenshotTileର ଏକ ଫର୍କ‍୍ ଅଟେ</string>
@@ -91,7 +92,7 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">ଅଭିଗମ୍ୟତା ସେଟିଂ</string>
     <string name="main_floating_button_title">ଭାସମାନ ବଟନ୍</string>
-    <string name="main_general_text">ଆପଣ ଏହି ଆପ୍ ଵ୍ୟଵହାର କରିବା ଆଗରୁ, ଆପଣଙ୍କୁ ଦ୍ରୁତ ସେଟିଂରେ ଟାଇଲ୍/ବଟନ୍ ଯୋଡ଼ିବାକୁ ପଡ଼ିବ। ଯଦି ଆପଣ ଏହା କିପରି କରିବେ ତାହା ଜାଣି ନାହାନ୍ତି, ତେବେ [ଅନୁଶିକ୍ଷଣ,.TutorialActivity] ଉପରେ ଦୃଷ୍ଟି ପକାନ୍ତୁ।\n\nସ୍କ୍ରୀନ୍‍ସଟ୍ ନେବା ପାଇଁ ଏହି ଆପ୍ ଦୁଇଟି ଭିନ୍ନ ପଦ୍ଧତିକୁ ସମର୍ଥନ କରେ:</string>
+    <string name="main_general_text">ଆପଣ ଏହି ଆପ୍ ଵ୍ୟଵହାର କରିବା ଆଗରୁ, ଆପଣଙ୍କୁ ଦ୍ରୁତ ସେଟିଂରେ ଟାଇଲ୍/ବଟନ୍ ଯୋଡ଼ିବାକୁ ପଡ଼ିବ। ଯଦି ଆପଣ ଏହା କିପରି କରିବେ ତାହା ଜାଣି ନାହାନ୍ତି, ତେବେ [ଅନୁଶିକ୍ଷଣ,.TutorialActivity] ଉପରେ ଦୃଷ୍ଟି ପକାନ୍ତୁ।\n\nସ୍କ୍ରୀନ୍‌ସଟ୍ ନେବା ପାଇଁ ଏହି ଆପ୍ ଦୁଇଟି ଭିନ୍ନ ପଦ୍ଧତିକୁ ସମର୍ଥନ କରେ:</string>
     <string name="main_assist_app_title">ସହାୟକ ଆପ୍</string>
     <!-- Post edit activity -->
     <string name="post_button_save">ନାଁ ବଦଳାନ୍ତୁ</string>
