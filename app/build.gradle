@@ -86,7 +86,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
-    implementation 'com.burhanrashid52:photoeditor:3.0.0'
+    implementation 'com.burhanrashid52:photoeditor:3.0.1'
     implementation 'com.google.android.material:material:1.8.0'
 
     // Testing-only dependencies
