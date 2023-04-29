@@ -170,6 +170,8 @@
     <string name="main_assist_app_text">Dacă ați setat această aplicație ca aplicație de asistență, puteți apăsa lung pe butonul de pornire pentru a face o captură de ecran. Activarea acestei aplicații ca aplicație de asistență va dezactiva alți asistenți. Puteți modifica acțiunea de apăsare lungă a butonului Home în setările aplicației.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Redenumiți</string>
+    <string name="post_button_move">Mută</string>
+    <string name="post_recent_folders">Foldere recente:</string>
     <string name="post_recent_file_names_and_suggestions">Nume de fișiere recente și sugestii:</string>
     <string name="post_hint_new_file_name">Nume nou fișier</string>
     <string name="post_rename_file">Redenumiți fișierul:</string>
