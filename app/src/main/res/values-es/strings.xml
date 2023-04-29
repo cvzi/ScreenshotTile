@@ -170,6 +170,8 @@
     <string name="main_assist_app_text">Si configuras esta aplicación como su aplicación de asistencia, puedes mantener presionado el botón de inicio para tomar una captura de pantalla. Habilitar esta aplicación como tu aplicación de asistencia deshabilitará otros asistentes. Puedes cambiar la acción de la pulsación prolongada del botón de inicio en la configuración de la aplicación.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Renombrar</string>
+    <string name="post_button_move">Mover</string>
+    <string name="post_recent_folders">Carpetas recientes:</string>
     <string name="post_recent_file_names_and_suggestions">Nombres de archivos recientes y sugerencias:</string>
     <string name="post_hint_new_file_name">Nuevo nombre de archivo</string>
     <string name="post_rename_file">Cambiar el nombre del archivo:</string>
