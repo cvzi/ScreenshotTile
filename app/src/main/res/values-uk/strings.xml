@@ -170,6 +170,8 @@
     <string name="main_assist_app_text">Якщо ви встановите цей застосунок як допоміжний, ви можете зробити знімок екрана тривалим натиском кнопку «Додому». Увімкнення цього застосунку як допоміжного застосунку вимкне інших помічників. Змінити дію кнопки Додому можна в налаштуваннях застосунку.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Перейменувати</string>
+    <string name="post_button_move">Перемістити</string>
+    <string name="post_recent_folders">Недавні теки:</string>
     <string name="post_recent_file_names_and_suggestions">Нещодавні назви файлів і пропозиції:</string>
     <string name="post_hint_new_file_name">Нова назва файлу</string>
     <string name="post_rename_file">Перейменувати файл:</string>
