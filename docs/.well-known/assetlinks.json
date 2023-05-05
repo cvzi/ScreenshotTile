@@ -1,0 +1,17 @@
+[
+  {
+    "relation":
+    [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target":
+    {
+      "namespace": "android_app",
+      "package_name": "com.github.cvzi.screenshottile",
+      "sha256_cert_fingerprints":
+      [
+        "C1:FC:88:6A:91:28:99:95:56:B4:CC:C9:5B:03:05:8C:EE:72:DF:A4:5F:33:D9:94:43:E5:B4:81:DD:E7:88:0D"
+      ]
+    }
+  }
+]
