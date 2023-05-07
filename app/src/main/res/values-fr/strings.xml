@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Boutons de notification</string>
     <string name="setting_notification_buttons_description">Sélectionnez jusqu\'à trois boutons qui apparaissent sous la notification de capture d\'écran</string>
     <string name="setting_notification_buttons_max_three">Veuillez sélectionner un maximum de trois boutons</string>
+    <string name="setting_prevent_if_locked">Empêcher les captures d\'écran si l\'appareil est verrouillé</string>
+    <string name="setting_prevent_if_locked_summary">Plus aucune capture d\'écran \"pocket dialing\" accidentelle</string>
+    <string name="setting_pe_overwrite_file">Écraser le fichier</string>
+    <string name="setting_pe_overwrite_file_summary">L\'éditeur de photos inclus tente d\'écraser l\'image actuelle au lieu de créer un nouveau fichier</string>
     <string name="notification_settings">Notifications</string>
     <string name="notification_settings_on">Activé</string>
     <string name="notification_settings_off">Désactivé</string>
@@ -166,6 +170,8 @@
     <string name="main_assist_app_text">Si vous avez défini cette application comme application d\'assistance, vous pouvez appuyer longuement sur le bouton d\'accueil pour prendre une capture d\'écran. Activer cette application comme application d\'assistance désactivera d\'autres assistants. Vous pouvez modifier l\'action du bouton d\'accueil long appuyez dans les paramètres de l\'application.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Renommer</string>
+    <string name="post_button_move">Déplacer</string>
+    <string name="post_recent_folders">Dossiers récents:</string>
     <string name="post_recent_file_names_and_suggestions">Noms de fichiers et suggestions récents :</string>
     <string name="post_hint_new_file_name">Nouveau nom de fichier</string>
     <string name="post_rename_file">Renommer le fichier :</string>
@@ -226,4 +232,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Si vous avez désactivé \"%1$s\", puis les captures d\'écran sont temporairement stockées dans le dossier \"Android/données/\" et sont périodiquement supprimées lorsque le nombre maximum de fichiers est atteint.\n-1 signifie garder une valeur illimitée\nValeur par défaut %2$s</string>
     <string name="setting_keep_screenshot_history">Garder l\'historique des captures d\'écran</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Enregistre les noms de fichiers des captures d\'écran dans une liste. Ceci est requis pour la fonction \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Éditeur de photo: Rotation des images en paysage</string>
 </resources>
