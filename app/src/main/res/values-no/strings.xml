@@ -170,6 +170,8 @@
     <string name="main_assist_app_text">Hvis du har angitt denne appen som assistanseapp, kan du holde inne Hjem-knappen for å ta en skjermdumpe. Aktivering av denne appen som din hjelpeapp vil deaktivere andre assistenter. Du kan endre handlingen til knappen for langt hjem i appinnstillingene.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Omdøp</string>
+    <string name="post_button_move">Flytte</string>
+    <string name="post_recent_folders">Siste mapper:</string>
     <string name="post_recent_file_names_and_suggestions">Nylige filnavn og forslag:</string>
     <string name="post_hint_new_file_name">Nytt filnavn</string>
     <string name="post_rename_file">Endre filnavn:</string>
