@@ -96,6 +96,10 @@
     <string name="main_assist_app_title">ସହାୟକ ଆପ୍</string>
     <!-- Post edit activity -->
     <string name="post_button_save">ନାଁ ବଦଳାନ୍ତୁ</string>
+    <string name="post_button_move">ଘୁଞ୍ଚାଅ</string>
+    <string name="post_recent_folders">ସାମ୍ପ୍ରତିକ ଫୋଲ୍ଡର୍:</string>
+    <string name="post_hint_new_file_name">ନୂଆ ଫାଇଲ୍ ନାମ</string>
+    <string name="post_rename_file">ଫାଇଲ୍ ନାମ ବଦଳାନ୍ତୁ:</string>
     <!-- Photo Editor-->
     <string name="label_rotation">ଘୂର୍ଣ୍ଣନ</string>
     <string name="label_opacity">ଅପାରଦର୍ଶିତା</string>
