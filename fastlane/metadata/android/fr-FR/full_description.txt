@@ -2,22 +2,21 @@ Ajoute un bouton/tuile à votre panneau de paramètrage rapide pour prendre des 
 
 Après l'installation vous devrez ajouter le bouton/tuile à vos paramètres rapides puis accorder les permissions d'enregistrer l'écran et d'enregistrer les images dans le stockage interne.
 
-Si l'application plante sous Android 9/Pie ou 10, vous pouvez essayer d'activer "Utiliser la méthode de capture d'écran native" dans les paramètres de l'application.
-
 <h2>Fonctionnalités:</h2>✓ Faites des captures d'écran à partir des paramètres rapides
 ✓ Root non requis
 ✓ Notification après qu'une capture d'écran a été prise (peut être désactivée)
 ✓ Partager, modifier ou supprimer immédiatement une capture d'écran depuis la notification
+✓ Modifier la capture d'écran avec l'éditeur d'image inclus
 ✓ Bouton flottant / bouton "superposé" similaire à une bulle de discussion (Android 9+)
 ✓ Utiliser comme application d'assistance pour prendre une capture d'écran (appui long sur le bouton Accueil)
 ✓ Ne prenez en capture d'écran qu'une zone spécifique de l'écran (appuyez longuement sur la tuile)
 ✓ Retarder la prise d'une capture d'écran
-✓ Stocker dans n'importe quel dossier sur n'importe quel support, par exemple : carte SD
+✓ Stocker dans n'importe quel dossier sur n'importe quel support, par exemple:  carte SD
 ✓ Enregistrer dans différents formats: png, jpg ou webp
 ✓ Prendre automatiquement des captures d'écran avec des applications comme Tasker ou MacroDroid
 ✓ Gratuit, libre, open-source, sans publicité
 
-Ceci est un fork de "Screenshot Tile [Root]" mais qui ne requiert pas le root. Si vous avez un accès root, vous devriez utiliser l'application <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">originale</a> par ipcjs, elle est plus rapide et plus fiable que ce fork.
+Ceci est un fork de "Screenshot Tile [Root]" mais qui ne requiert pas le root.
 
 Code source : <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Application originale: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -39,3 +38,5 @@ Depuis Android 9/Pie, cette autorisation est requise pour prendre des captures d
 <h2>Cacher l'icône de l'application :</h2>Dans les paramètres de l'application, vous pouvez cacher l'icône de l'application à votre launcher. Vous pouvez toujours accéder à l'application en appuyant longuement sur la tuile dans vos paramètres rapides. Malheureusement, Android 10 ne permet plus de masquer une application.
 
 <h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Cette application peut accéder à l'API <a href="https://support.google.com/googleplay/android-developer/answer/10964491">Accessibility Services API</a> qui permet à cette application d'enregistrer l'écran. Les données ne sont ni collectées ni partagées par cette application en utilisant les capacités d'accessibilité.
