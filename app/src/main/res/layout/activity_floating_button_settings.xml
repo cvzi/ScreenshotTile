@@ -32,8 +32,8 @@
                         android:id="@+id/switchFloatingButtonEnabled"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@android:style/TextAppearance.Material.Body2"
-                        android:text="@string/main_floating_button_title" />
+                        android:text="@string/main_floating_button_title"
+                        android:textAppearance="@android:style/TextAppearance.Material.Body2" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -122,12 +122,12 @@
                                 android:text="@string/setting_floating_button_delay_custom_summary" />
 
                             <EditText
-                                android:hint="seconds"
                                 android:id="@+id/editTextFloatingButtonDelay"
                                 android:layout_width="wrap_content"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:ems="5"
+                                android:hint="seconds"
                                 android:inputType="number" />
                         </LinearLayout>
 

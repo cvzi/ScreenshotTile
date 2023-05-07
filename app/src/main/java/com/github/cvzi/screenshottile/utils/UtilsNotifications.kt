@@ -336,9 +336,6 @@ fun createNotification(
     (appContext.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.apply {
         notify(uniqueId, builder.build())
     }
-
-    largeIcon.recycle()
-    bigPicture.recycle()
 }
 
 /**
@@ -363,11 +360,16 @@ fun actionButtonIntent(
  */
 fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Intent {
     val uri = if (path.scheme == "file") {
-        FileProvider.getUriForFile(
-            context,
-            EditImageActivity.FILE_PROVIDER_AUTHORITY,
-            path.toFile()
-        )
+        try {
+            FileProvider.getUriForFile(
+                context,
+                EditImageActivity.FILE_PROVIDER_AUTHORITY,
+                path.toFile()
+            )
+        } catch (e: IllegalArgumentException) {
+            Log.w(UTILSNOTIKT, "Failed to get file uri for $path", e)
+            path
+        }
     } else {
         path
     }
@@ -387,11 +389,16 @@ fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Inte
  */
 fun editImageIntent(context: Context, path: Uri, mimeType: String?): Intent {
     val uri = if (path.scheme == "file") {
-        FileProvider.getUriForFile(
-            context,
-            EditImageActivity.FILE_PROVIDER_AUTHORITY,
-            path.toFile()
-        )
+        try {
+            FileProvider.getUriForFile(
+                context,
+                EditImageActivity.FILE_PROVIDER_AUTHORITY,
+                path.toFile()
+            )
+        } catch (e: IllegalArgumentException) {
+            Log.w(UTILSNOTIKT, "Failed to get file uri for $path", e)
+            path
+        }
     } else {
         path
     }
@@ -422,11 +429,16 @@ fun editImageChooserIntent(context: Context, path: Uri, mimeType: String?): Inte
 fun openImageIntent(context: Context, path: Uri, mimeType: String?): Intent {
     // Create intent for notification click
     val uri = if (path.scheme == "file") {
-        FileProvider.getUriForFile(
-            context,
-            EditImageActivity.FILE_PROVIDER_AUTHORITY,
-            path.toFile()
-        )
+        try {
+            FileProvider.getUriForFile(
+                context,
+                EditImageActivity.FILE_PROVIDER_AUTHORITY,
+                path.toFile()
+            )
+        } catch (e: IllegalArgumentException) {
+            Log.w(UTILSNOTIKT, "Failed to get file uri for $path", e)
+            path
+        }
     } else {
         path
     }

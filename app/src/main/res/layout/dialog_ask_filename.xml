@@ -9,11 +9,11 @@
         android:id="@+id/editTextFileName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textAutoCorrect"
+        android:contentDescription="@string/dialog_ask_filename_title"
         android:hint="@string/dialog_ask_filename_hint"
+        android:inputType="textAutoCorrect"
         android:maxLines="1"
         android:scrollHorizontally="true"
-        android:contentDescription="@string/dialog_ask_filename_title"
         android:textColorHint="#000000" />
 
     <TextView

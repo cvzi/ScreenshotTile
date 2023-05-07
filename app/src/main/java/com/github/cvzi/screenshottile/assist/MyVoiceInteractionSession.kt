@@ -366,7 +366,6 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
     }
 
     @Deprecated("Deprecated in Java")
-    @Suppress("DEPRECATION")
     override fun onBackPressed() {
         // This is no longer used on Android 13+/Tiramisu
         // See onBackInvokedCallback for Android 13+
