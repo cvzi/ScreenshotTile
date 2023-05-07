@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Pulsanti notifiche</string>
     <string name="setting_notification_buttons_description">Seleziona fino a tre pulsanti che appaiono sotto la notifica screenshot</string>
     <string name="setting_notification_buttons_max_three">Scegli un massimo di tre pulsanti</string>
+    <string name="setting_prevent_if_locked">Previeni screenshot se il dispositivo è bloccato</string>
+    <string name="setting_prevent_if_locked_summary">Non più schermate accidentali \"pocket dialing</string>
+    <string name="setting_pe_overwrite_file">Sovrascrivi file</string>
+    <string name="setting_pe_overwrite_file_summary">L\'editor di foto incluso tenta di sovrascrivere l\'immagine corrente invece di creare un nuovo file</string>
     <string name="notification_settings">Notifiche</string>
     <string name="notification_settings_on">Abilitato</string>
     <string name="notification_settings_off">Disabilitato</string>
@@ -166,6 +170,8 @@
     <string name="main_assist_app_text">Se si imposta questa app come app di assistenza, è possibile premere a lungo il pulsante home per scattare uno screenshot. Abilitare questa app come la tua app di assistenza disabiliterà altri assistenti. È possibile modificare l\'azione del pulsante home lungo premere nelle impostazioni dell\'app.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Rinomina</string>
+    <string name="post_button_move">Sposta</string>
+    <string name="post_recent_folders">Cartelle recenti:</string>
     <string name="post_recent_file_names_and_suggestions">Nomi e suggerimenti di file recenti:</string>
     <string name="post_hint_new_file_name">Nuovo nome del file</string>
     <string name="post_rename_file">Rinomina file:</string>
@@ -226,4 +232,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Se hai disabilitato \"%1$s\", quindi gli screenshot vengono temporaneamente memorizzati nella cartella \"Android/data/\" e periodicamente cancellati quando viene raggiunto il numero massimo di file.\n-1 significa mantenere illimitato\nValore predefinito %2$s</string>
     <string name="setting_keep_screenshot_history">Mantieni la cronologia degli screenshot</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Memorizza i nomi dei file degli screenshot in una lista. Ciò è necessario per la funzione \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Editor di foto: Ruota immagini in orizzontale</string>
 </resources>
