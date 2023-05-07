@@ -170,6 +170,8 @@
     <string name="main_assist_app_text">Als je deze app als assistentie-app instelt, kun je lang op de home-knop drukken om een screenshot te maken.  Door deze app in te schakelen worden andere assistenten uitgeschakeld.  U kunt de actie behorend bij lang op de thuisknop te drukken wijzigen in de app-instellingen.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Naam wijzigen</string>
+    <string name="post_button_move">Verplaatsen</string>
+    <string name="post_recent_folders">Recente mappen:</string>
     <string name="post_recent_file_names_and_suggestions">Recente bestandsnamen en suggesties:</string>
     <string name="post_hint_new_file_name">Nieuwe bestandsnaam</string>
     <string name="post_rename_file">Bestandsnaam wijzigen:</string>
