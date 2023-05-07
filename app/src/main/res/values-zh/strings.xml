@@ -170,6 +170,8 @@
     <string name="main_assist_app_text">如果您将此应用设置为您的助理应用，您可以长按主页按钮进行截图。将此应用设为您的助理应用将禁用其他助理。您可以在应用设置中更改长按主页按钮的动作。</string>
     <!-- Post edit activity -->
     <string name="post_button_save">重命名</string>
+    <string name="post_button_move">移动</string>
+    <string name="post_recent_folders">最近的文件夹:</string>
     <string name="post_recent_file_names_and_suggestions">最近文件名和建议：</string>
     <string name="post_hint_new_file_name">新文件名</string>
     <string name="post_rename_file">重命名文件：</string>
