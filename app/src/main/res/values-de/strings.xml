@@ -170,6 +170,8 @@
     <string name="main_assist_app_text">Wenn du diese App als deine Assistent-App festlegst, dann kannst du mit langem Drücken der Home-Taste einen Screenshot aufnehmen. Wenn du diese app als deine Assistent-App festlegst, werden andere Assistent-Apps deaktiviert. Du kannst die Aktion des langen Drückens der Home-Taste in den Appeinstellungen ändern.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Umbenennen</string>
+    <string name="post_button_move">Verschieben</string>
+    <string name="post_recent_folders">Zuletzt verwendete Ordner:</string>
     <string name="post_recent_file_names_and_suggestions">Zuletzt verwendete Dateinamen und Vorschläge:</string>
     <string name="post_hint_new_file_name">Neuer Dateiname</string>
     <string name="post_rename_file">Datei umbenennen:</string>
