@@ -170,6 +170,8 @@
     <string name="main_assist_app_text">Om du ställer in denna app som din assistansapp kan du långtryck på hemknappen för att ta en skärmdump. Aktivering av denna app eftersom din assistansapp kommer att inaktivera andra assistenter. Du kan ändra åtgärden av långa-hem-knappen tryck i app-inställningarna.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Byt namn</string>
+    <string name="post_button_move">Flytta</string>
+    <string name="post_recent_folders">Senaste mappar:</string>
     <string name="post_recent_file_names_and_suggestions">Senaste filnamn och förslag:</string>
     <string name="post_hint_new_file_name">Nytt filnamn</string>
     <string name="post_rename_file">Byt namn på fil:</string>
