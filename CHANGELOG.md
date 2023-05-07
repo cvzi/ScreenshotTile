@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.3.1
+*   Update dependencies
+*   Update translations
+*   Minor bugfixes for crashes reported by Google's error reports
+
 ## 2.3.0
 *   Option to move file from "Details" activity
 *   Update [PhotoEditor](https://github.com/burhanrashid52/PhotoEditor) to [3.0.1]
