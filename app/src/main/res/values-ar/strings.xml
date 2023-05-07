@@ -170,6 +170,8 @@
     <string name="main_assist_app_text">إذا قمت بتعيين هذا التطبيق كتطبيق مساعدتك، يمكنك الضغط لفترة طويلة على زر الصفحة الرئيسية لأخذ لقطة شاشة. تمكين هذا التطبيق كما تطبيق المساعدة الخاص بك سيعطل المساعدين الآخرين. يمكنك تغيير إجراء الضغط على زر الصفحة الرئيسية الطويل في إعدادات التطبيق.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">إعادة تسمية</string>
+    <string name="post_button_move">انقل</string>
+    <string name="post_recent_folders">الملفات الأخيرة:</string>
     <string name="post_recent_file_names_and_suggestions">أسماء الملفات والاقتراحات الأخيرة:</string>
     <string name="post_hint_new_file_name">اسم ملف جديد</string>
     <string name="post_rename_file">إعادة تسمية الملف:</string>
