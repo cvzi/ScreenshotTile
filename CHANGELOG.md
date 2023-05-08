@@ -176,7 +176,7 @@
 *   Custom file name [#83](https://github.com/cvzi/ScreenshotTile/issues/83)
 
 ## 1.13.4
-*   Arabic translation by Rex_sa (rex07) and Yousef Khaled Elsayed Espetan (yousef10)
+*   Arabic translation by Rex_sa (rex07) and Yousef Khaled Elsayed Espetan [@Yousefx10](https://github.com/Yousefx10)
 
 ## 1.13.3
 *   Romanian translation by [Simona Iacob](https://crowdin.com/profile/simonaiacob)
