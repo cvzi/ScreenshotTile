@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">مربع لقطة الشاشة</string>
-    <string name="app_name_long">مربع لقطة الشاشة (NoRot)</string>
+    <string name="app_name">أيقونة لقطة شاشة</string>
+    <string name="app_name_long">أيقونة لقطة الشاشة (بدون روت)</string>
     <string name="tile_label">لقطة شاشة</string>
-    <string name="tile_floating">عائمة زر لقطة الشاشة</string>
+    <string name="tile_floating">زر التقاط الشاشة العائم</string>
     <string name="tile_floating_label">عائمة</string>
     <string name="tile_floating_subtitle">زر لقطة الشاشة</string>
     <string name="title_delay">تأخير</string>
-    <string name="more_setting">المزيد الإعدادات</string>
+    <string name="more_setting">المزيد من الإعدادات</string>
     <string name="open_settings">فتح الإعدادات</string>
     <string name="floating_button_settings">إعدادات الزر العائم</string>
     <string name="left_screenshot_right_menu">اليسار: لقطة الشاشة، اليمين: الإعدادات</string>
-    <string name="partial_screenshot">قص</string>
+    <string name="partial_screenshot">تحديد المنطقة</string>
     <string name="file_format">صيغة الملف</string>
     <string name="setting_delay_entry_default">فورًا</string>
     <string name="setting_delay_entry_1s">ثانية واحدة</string>
     <string name="setting_delay_entry_2s">٢ ثانية</string>
     <string name="setting_delay_entry_5s">٥ ثانية</string>
     <string name="show_count_down">إظهار العد التنازلي</string>
-    <string name="use_native_screenshot">استخدم طريقة إلتقاط الشاشة الأصلية</string>
-    <string name="use_native_screenshot_summary">محاكاة الصفحة الرئيسية + الضغط على زر الطاقة</string>
+    <string name="use_native_screenshot">استخدام طريقة التقاط الشاشة الطبيعية</string>
+    <string name="use_native_screenshot_summary">زر المنزل + زر التشغيل</string>
     <string name="use_native_screenshot_unsupported">يتطلب نظام أندرويد 9</string>
     <string name="use_native_screenshot_unavailable">خدمة إمكانية الوصول معطلة</string>
-    <string name="use_native_screenshot_option_default">الأسلوب الأصلي يستخدم النظام الافتراضي</string>
+    <string name="use_native_screenshot_option_default">الطريقة الطبيعية تستخدم الإعدادات الافتراضية</string>
     <string name="use_native_screenshot_option_android11">قم بتعطيل \'استخدام النظام الافتراضي\' لاستخدام هذا</string>
     <string name="accessibility_service_description">إذا تم تمكين هذه الخدمة، يمكن للتطبيق محاكاة الضغط على زر التشغيل + الصفحة الرئيسية لالتقاط لقطات الشاشة.\nعلى بعض الأجهزة التي تمكن هذه الطريقة قد تكون أكثر استقرارا أو أسرع من الطريقة الافتراضية.\n\nإذا قمت بتمكين الخدمة هنا، تحتاج أيضًا إلى تمكين \"الطريقة الأصلية\" في إعدادات التطبيق.</string>
     <string name="use_system_defaults">استخدام الإعداد الافتراضي للنظام</string>
     <string name="use_system_defaults_summary">يتطلب نظام أندرويد 11</string>
-    <string name="use_system_defaults_summary_on">استخدام دليل التخزين الافتراضي والتنسيق ومحرر لقطة الشاشة والإشعارات</string>
+    <string name="use_system_defaults_summary_on">استخدام مكان التخزين الافتراضي والتنسيق ومحرر لقطة الشاشة والإشعارات</string>
     <string name="use_system_defaults_summary_off">إستخدم إعدادات التطبيق</string>
     <string name="setting_floating_button">زر عائم</string>
     <string name="setting_floating_button_summary">يمكنك أيضا تشغيلها أو إيقافها من خلال شريط قائمة الإعدادات السريعة</string>
@@ -35,20 +35,20 @@
     <string name="setting_floating_button_unsupported">يتطلب نظام أندرويد 9</string>
     <string name="setting_floating_button_scale">حجم الزر العائم</string>
     <string name="setting_floating_button_scale_summary">ضبط حجم الزر العائم</string>
-    <string name="setting_floating_button_hide_after">إخفاء الزر العائم بعد إلتقاط الشاشة</string>
-    <string name="setting_floating_button_hide_after_summary">حذف الزر العائم تلقائيا بعد إلتقاط الشاشة</string>
+    <string name="setting_floating_button_hide_after">إخفاء الزر العائم بعد التقاط الشاشة</string>
+    <string name="setting_floating_button_hide_after_summary">حذف الزر العائم تِلْقائيًا بعد التقاط الشاشة</string>
     <string name="setting_floating_button_show_close">أظهر زر [X] / زر إغلاق بجانب الزر العائم</string>
     <string name="setting_floating_button_show_close_summary">تتيح لك إزالة الزر العائم دون فتح الإعدادات السريعة</string>
-    <string name="setting_floating_button_show_close_dialog_title">زر إغلاق الرمز التعبيري</string>
+    <string name="setting_floating_button_show_close_dialog_title">الرمز التعبيري لزر الإغلاق</string>
     <string name="setting_floating_button_show_close_dialog_description">اكتب نص أو رمز تعبيري يظهر كزر الإغلاق</string>
     <string name="setting_floating_button_shutter">تخصيص تنسيق الزر العائم</string>
-    <string name="setting_floating_button_delay">تأخير (زر عائم)</string>
+    <string name="setting_floating_button_delay">التأخير (زر عائم)</string>
     <string name="setting_broadcast_secret">كلمة مرور البث</string>
     <string name="setting_broadcast_secret_description">عبارة سرية للسماح بالتطبيقات الأخرى (مثل MacroDroid أو Tasker) لبدء لقطات شاشة</string>
     <string name="setting_storage_directory">حفظ الموقع</string>
     <string name="setting_storage_directory_description">مكان المجلد لحفظ لقطات الشاشة فيه</string>
     <string name="setting_file_name_pattern">اسم الملف</string>
-    <string name="setting_file_name_placeholders_title">استخدم هذه العناصر النائبة في اسم الملف</string>
+    <string name="setting_file_name_placeholders_title">استخدم هذه الرموز في اسم الملف</string>
     <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - وقت yyy-MM-dd_HH-mm-ss\n
 %counter% - يحسب عدد لقطات الشاشة\n
 %random% - مستخدم عشوائي\n
@@ -92,8 +92,8 @@
     <string name="file_title">لقطة شاشة</string>
     <string name="file_description">تم التقاط لقطة شاشة في %1$s</string>
     <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
-    <string name="notification_title">تم حفظ لقطة الشاشة.</string>
-    <string name="notification_body">انقر لعرض لقطة الشاشة.</string>
+    <string name="notification_title">تم حفظ لقطة الشاشة</string>
+    <string name="notification_body">انقر لعرض لقطة الشاشة</string>
     <string name="notification_channel_description">أظهر إشعار عندما تأخذ لقطة شاشة</string>
     <string name="notification_foreground_title">جارٍ حفظ لقطة الشاشة…</string>
     <string name="notification_foreground_body">جارٍ حفظ لقطة الشاشة… انقر للخروج</string>
