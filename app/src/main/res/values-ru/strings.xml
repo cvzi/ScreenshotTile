@@ -170,6 +170,8 @@
     <string name="main_assist_app_text">Если вы установите это приложение в качестве приложения-помощника, вы можете долго нажимать кнопку \"Домой\", чтобы сделать снимок экрана. Включение этого приложения в качестве приложения-помощника отключит других помощников. Действие длительного нажатия кнопки \"Домой\" можно изменить в настройках приложения.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Переименовать</string>
+    <string name="post_button_move">Переместить</string>
+    <string name="post_recent_folders">Недавние папки:</string>
     <string name="post_recent_file_names_and_suggestions">Недавние имена файлов и предложений:</string>
     <string name="post_hint_new_file_name">Имя нового файла</string>
     <string name="post_rename_file">Переименовать файл:</string>
