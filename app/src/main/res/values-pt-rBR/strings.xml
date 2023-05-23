@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Botões na notificação</string>
     <string name="setting_notification_buttons_description">Selecione até 3 botões que serão exibidos na notificação após fazer uma captura de tela</string>
     <string name="setting_notification_buttons_max_three">Por favor, escolha no máximo 3 botões</string>
+    <string name="setting_prevent_if_locked">Prevenir capturas de tela se o dispositivo estiver bloqueado</string>
+    <string name="setting_prevent_if_locked_summary">Não há mais capturas acidentais de \"discagem acidental\"</string>
+    <string name="setting_pe_overwrite_file">Sobrescrever arquivo</string>
+    <string name="setting_pe_overwrite_file_summary">O editor de fotos incluído tenta substituir a imagem atual em vez de criar um novo arquivo</string>
     <string name="notification_settings">Notificações</string>
     <string name="notification_settings_on">Ativado</string>
     <string name="notification_settings_off">Desativadas</string>
@@ -166,6 +170,8 @@
     <string name="main_assist_app_text">Se você definir esse app como seu aplicativo de assistência, você vai poder fazer um toque longo no botão de início para efetuar uma captura de tela. Ao definir este app como seu app de assistência você desativará outros assistentes. Você pode alterar a ação do toque longo do botão de início em configurações do app.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Renomear</string>
+    <string name="post_button_move">Mover</string>
+    <string name="post_recent_folders">Pastas recentes:</string>
     <string name="post_recent_file_names_and_suggestions">Nomes e sugestões de arquivos recentes:</string>
     <string name="post_hint_new_file_name">Novo nome do arquivo</string>
     <string name="post_rename_file">Renomear arquivo:</string>
@@ -226,4 +232,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Se você desativou \"%1$s\", neste caso Capturas da tela serão temporariamente armazenadas na pasta \"Android/dados/\" e periodicamente apagadas, quando um número máximo de arquivos for atingido.\n-1 significa manter ilimitado\nValor Padrão %2$s</string>
     <string name="setting_keep_screenshot_history">Manter histórico de Capturas da tela</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Salva nomes de arquivos de Capturas da tela em uma lista. Isso é necessário para a opção de \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Editor de fotos: Girar imagens de paisagem</string>
 </resources>
