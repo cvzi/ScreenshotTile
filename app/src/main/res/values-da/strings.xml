@@ -63,6 +63,10 @@
     <string name="setting_notification_buttons">Notifikationsknapper</string>
     <string name="setting_notification_buttons_description">Vælg op til tre knapper, der vises under screenshot notifikationen</string>
     <string name="setting_notification_buttons_max_three">Vælg et maksimum på tre knapper</string>
+    <string name="setting_prevent_if_locked">Forhindr skærmbilleder, hvis enheden er låst</string>
+    <string name="setting_prevent_if_locked_summary">Ikke mere utilsigtet \"lomme opkald\" skærmbilleder</string>
+    <string name="setting_pe_overwrite_file">Overskriv fil</string>
+    <string name="setting_pe_overwrite_file_summary">Den inkluderede fotoeditor forsøger at overskrive det aktuelle billede i stedet for at oprette en ny fil</string>
     <string name="notification_settings">Notifikationer</string>
     <string name="notification_settings_on">Aktiveret</string>
     <string name="notification_settings_off">Deaktiveret</string>
@@ -166,6 +170,8 @@
     <string name="main_assist_app_text">Hvis du angiver denne app som din hjælpeapp, kan du længe trykke på Hjem-knappen for at tage et skærmbillede. Aktivering af denne app som din hjælpeapp vil deaktivere andre assistenter. Du kan ændre handlingen på den lange Hjem-knap tryk i app-indstillinger.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Omdøb</string>
+    <string name="post_button_move">Flyt</string>
+    <string name="post_recent_folders">Seneste mapper:</string>
     <string name="post_recent_file_names_and_suggestions">Seneste filnavne og forslag:</string>
     <string name="post_hint_new_file_name">Nyt filnavn</string>
     <string name="post_rename_file">Omdøb fil:</string>
@@ -180,6 +186,7 @@
     <string name="label_oval">Oval</string>
     <string name="label_rectangle">Rektangel</string>
     <string name="label_line">Linje</string>
+    <string name="label_arrow">Pil</string>
     <string name="label_emoji">Emoji</string>
     <string name="label_eraser">Eraser</string>
     <string name="label_eraser_mode">Viskelæder Tilstand</string>
@@ -225,4 +232,5 @@
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Hvis du har deaktiveret \"%1$s\", derefter gemmes screenshots midlertidigt i mappen \"Android/data/\" og slettes med jævne mellemrum, når det maksimale antal filer nås.\n-1 betyder at holde ubegrænset\nStandardværdi %2$s</string>
     <string name="setting_keep_screenshot_history">Behold historik for screenshots</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Gemmer filnavnene på skærmbilleder i en liste. Dette er påkrævet for funktionen \"%1$s\"</string>
+    <string name="setting_pe_auto_rotate_landscape">Foto editor: Roter liggende billeder</string>
 </resources>
