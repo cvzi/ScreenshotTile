@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.2
+*   Arabic translation improved by [@Yousefx10](https://github.com/Yousefx10)
+
 ## 2.3.1
 *   Update dependencies
 *   Update translations
