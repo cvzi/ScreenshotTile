@@ -2,12 +2,11 @@ Thêm một nút/ô vào cài đặt nhanh để chụp ảnh màn hình.
 
 Sau khi cài đặt, bạn cần phải thêm nút/ô vào cài đặt nhanh và sau đó là cấp các quyền để ghi lại chụp màn hình và lưu hình ảnh vào bộ nhớ trong.
 
-Nếu ứng dụng bị crash (văng ra) trên Android 9/Pie hoặc 10, bạn có thể thử bật "Sử dụng phương pháp chụp màn hình của hệ thống" trong cài đặt ứng dụng.
-
 <h2>Tính năng:</h2>✓ Chụp ảnh màn hình từ cài đặt nhanh
 ✓ Không yêu cầu root
 ✓ Thông báo sau khi chụp màn hình (có thể được tắt)
 ✓ Ngay lập tức chia sẻ, chỉnh sửa hoặc xoá ảnh chụp màn hình từ thông báo
+✓ Chỉnh sửa ảnh chụp màn hình bằng trình chỉnh sửa ảnh trong ứng dụng
 ✓ Nút nổi/Nút trên ứng dụng khác như bong bóng chat (Android 9+)
 ✓ Dùng làm ứng dụng trợ lý để chụp màn hình (nhấn giữ nút Home)
 ✓ Chỉ chụp ảnh màn hình một khu vực cụ thể của màn hình (nhấn giữ ô)
@@ -17,7 +16,7 @@ Nếu ứng dụng bị crash (văng ra) trên Android 9/Pie hoặc 10, bạn c�
 ✓ Tự động chụp ảnh màn hình bằng các ứng dụng như Tasker hoặc MacroDroid
 ✓ Tự do, mã nguồn mở, không có quảng cáo
 
-Đây là một fork của "Screenshot Tile [Root]" nhưng nó không yêu cầu root. Nếu bạn có quyền truy cập root, bạn nên sử dụng <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">ứng dụng gốc</a> bởi ipcjs, nó nhanh hơn và đáng tin cậy hơn fork này.
+Đây là một fork của "Screenshot Tile [Root]" nhưng nó không yêu cầu root.
 
 Mã nguồn: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Ứng dụng gốc: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -39,3 +38,5 @@ Từ Android 9/Pie quyền này được yêu cầu để chụp ảnh màn hìn
 <h2>Ẩn biểu tượng ứng dụng:</h2>Trong cài đặt ứng dụng bạn có thể ẩn biểu tượng ứng dụng khỏi launcher. Bạn vẫn có thể truy cập ứng dụng bằng cách nhấn giữ ô trong cài đặt nhanh. Không may mắn là Android 10 không cho phép ẩn ứng dụng nữa.
 
 <h2>🌎 Hỗ trợ và phiên dịch</h2>Nếu bạn gặp một vấn đề hoặc muốn giúp dịch ứng dụng này thành ngôn ngữ của bạn, vui lòng liên hệ với tôi tại <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> hoặc đóng góp một bản dịch trên <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Ứng dụng có thể truy cập <a href="https://support.google.com/googleplay/android-developer/answer/10964491">API Dịch vụ hỗ trợ truy cập</a>, điều này cho phép ứng dụng quay màn hình. Dữ liệu không được ứng dụng này thu thập hay chia sẻ bằng khả năng hỗ trợ tiếp cận này.
