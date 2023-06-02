@@ -32,7 +32,7 @@ public class NoDisplayActivity extends Activity {
     private static final String EXTRA_PARTIAL = APPLICATION_ID + ".NoDisplayActivity.EXTRA_PARTIAL";
     private static final String EXTRA_FLOATING_BUTTON = APPLICATION_ID + ".NoDisplayActivity.EXTRA_FLOATING_BUTTON";
 
-    private static NoDisplayActivity instance;
+    private static NoDisplayActivity instance = null;
 
     private Intent lastIntent = null;
 
