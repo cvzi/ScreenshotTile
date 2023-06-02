@@ -235,25 +235,25 @@ class EditImageActivityTest {
 
         // Select the emoji (delay to give time for the RecyclerView to close)
         Thread.sleep(1000)
-        Espresso.onView(ViewMatchers.withId(R.id.frmBorder)).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.frmBorder)).perform(ViewActions.click())
 
         // Capture the scale of the emoji
         var emojiFrameParentView =
-            mActivityRule.activity.findViewById<View>(R.id.frmBorder).parent as ViewGroup
+            mActivityRule.activity.findViewById<View>(ja.burhanrashid52.photoeditor.R.id.frmBorder).parent as ViewGroup
         val emojiScaleXBeforePinching = emojiFrameParentView.scaleX
         val emojiScaleYBeforePinching = emojiFrameParentView.scaleY
 
         // Scale the emoji up by pinching
-        Espresso.onView(ViewMatchers.withId(R.id.frmBorder)).perform(PinchTestHelper.pinchOut())
+        Espresso.onView(ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.frmBorder)).perform(PinchTestHelper.pinchOut())
 
         // Check if the emoji scaled up after pinching.
         emojiFrameParentView =
-            mActivityRule.activity.findViewById<View>(R.id.frmBorder).parent as ViewGroup
+            mActivityRule.activity.findViewById<View>(ja.burhanrashid52.photoeditor.R.id.frmBorder).parent as ViewGroup
         assertNotEquals(emojiScaleXBeforePinching, emojiFrameParentView.scaleX)
         assertNotEquals(emojiScaleYBeforePinching, emojiFrameParentView.scaleY)
 
         // Remove the emoji from the screen.
-        Espresso.onView(ViewMatchers.withId(R.id.imgPhotoEditorClose)).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.imgPhotoEditorClose)).perform(ViewActions.click())
 
         // Add a text to the image.
         Espresso.onView(ViewMatchers.withText(R.string.label_text)).perform(ViewActions.click())
@@ -266,12 +266,12 @@ class EditImageActivityTest {
         Espresso.onView(ViewMatchers.withId(R.id.add_text_done_tv)).perform(ViewActions.click())
 
         // Select the text box
-        val testTextBox = ViewMatchers.withId(R.id.tvPhotoEditorText)
+        val testTextBox = ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.tvPhotoEditorText)
         Espresso.onView(testTextBox).perform(ViewActions.click())
 
         // Capture the current scale of the text box
         var textFrameParentView =
-            mActivityRule.activity.findViewById<View>(R.id.frmBorder).parent as ViewGroup
+            mActivityRule.activity.findViewById<View>(ja.burhanrashid52.photoeditor.R.id.frmBorder).parent as ViewGroup
         val textScaleXBeforeScaling = textFrameParentView.scaleX
         val textScaleYBeforeScaling = textFrameParentView.scaleY
 
@@ -280,7 +280,7 @@ class EditImageActivityTest {
 
         // Validate that the text box did not scale by pinching.
         textFrameParentView =
-            mActivityRule.activity.findViewById<View>(R.id.frmBorder).parent as ViewGroup
+            mActivityRule.activity.findViewById<View>(ja.burhanrashid52.photoeditor.R.id.frmBorder).parent as ViewGroup
         assertEquals(
             textScaleXBeforeScaling.toDouble(),
             textFrameParentView.scaleX.toDouble(),
@@ -317,12 +317,12 @@ class EditImageActivityTest {
         Espresso.onView(ViewMatchers.withId(R.id.add_text_done_tv)).perform(ViewActions.click())
 
         // Select the text box
-        val testTextBox = ViewMatchers.withId(R.id.tvPhotoEditorText)
+        val testTextBox = ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.tvPhotoEditorText)
         Espresso.onView(testTextBox).perform(ViewActions.click())
 
         // Capture the current scale of the text box
         var textFrameParentView =
-            mActivityRule.activity.findViewById<View>(R.id.frmBorder).parent as ViewGroup
+            mActivityRule.activity.findViewById<View>(ja.burhanrashid52.photoeditor.R.id.frmBorder).parent as ViewGroup
         val textScaleXBeforeScaling = textFrameParentView.scaleX
         val textScaleYBeforeScaling = textFrameParentView.scaleY
 
@@ -331,7 +331,7 @@ class EditImageActivityTest {
 
         // Validate that the text box did not scale by pinching.
         textFrameParentView =
-            mActivityRule.activity.findViewById<View>(R.id.frmBorder).parent as ViewGroup
+            mActivityRule.activity.findViewById<View>(ja.burhanrashid52.photoeditor.R.id.frmBorder).parent as ViewGroup
         assertNotEquals(textScaleXBeforeScaling, textFrameParentView.scaleX)
         assertNotEquals(textScaleYBeforeScaling, textFrameParentView.scaleY)
     }
