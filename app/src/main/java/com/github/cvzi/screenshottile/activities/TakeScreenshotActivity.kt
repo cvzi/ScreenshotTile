@@ -345,7 +345,12 @@ class TakeScreenshotActivity : Activity(),
                 App.createMediaProjection()
             } catch (e: SecurityException) {
                 Log.e(TAG, "prepareForScreenSharing(): SecurityException 3")
-                null
+                Handler(Looper.getMainLooper()).postDelayed({
+                    // Something went wrong, restart everything
+                    finish()
+                    App.getInstance().screenshot(this)
+                }, 500)
+                return
             }
             if (mediaProjection == null) {
                 screenShotFailedToast("Failed to create MediaProjection", Toast.LENGTH_SHORT)
