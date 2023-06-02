@@ -34,13 +34,19 @@ class IntentHandler : BroadcastReceiver() {
             }
 
             if (intent.getBooleanExtra("partial", false)) {
-                context?.startActivity(NoDisplayActivity.newPartialIntent(context).apply {
+                NoDisplayActivity.newPartialIntent(context).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                })
+                }.let {
+                    context?.startActivity(it)
+                    NoDisplayActivity.doIntent(it)
+                }
             } else {
-                context?.startActivity(NoDisplayActivity.newIntent(context, true).apply {
+                NoDisplayActivity.newIntent(context, true).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                })
+                }.let {
+                    context?.startActivity(it)
+                    NoDisplayActivity.doIntent(it)
+                }
             }
 
         }

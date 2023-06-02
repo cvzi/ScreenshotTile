@@ -32,6 +32,16 @@ public class NoDisplayActivity extends Activity {
     private static final String EXTRA_PARTIAL = APPLICATION_ID + ".NoDisplayActivity.EXTRA_PARTIAL";
     private static final String EXTRA_FLOATING_BUTTON = APPLICATION_ID + ".NoDisplayActivity.EXTRA_FLOATING_BUTTON";
 
+    private static NoDisplayActivity instance;
+
+    private Intent lastIntent = null;
+
+    public static void doIntent(Intent intent) {
+        if (instance != null) {
+            instance.handleIntent(intent);
+        }
+    }
+
     /**
      * Open from service
      *
@@ -122,15 +132,20 @@ public class NoDisplayActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         /* If the activity is already open, we need to update the intent,
         otherwise getIntent() returns the old intent in onCreate() */
-        setIntent(intent);
         super.onNewIntent(intent);
+        setIntent(intent);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        instance = this;
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        if (intent != null) {
+        handleIntent(getIntent());
+    }
+
+    public void handleIntent(Intent intent) {
+        if (intent != null && lastIntent != intent) {
+            lastIntent = intent;
             String action = intent.getAction();
 
             if (intent.getBooleanExtra(EXTRA_PARTIAL, false)) {
@@ -189,4 +204,5 @@ public class NoDisplayActivity extends Activity {
         }
         finish();
     }
+
 }

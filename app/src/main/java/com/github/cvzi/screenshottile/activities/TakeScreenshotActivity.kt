@@ -94,8 +94,8 @@ class TakeScreenshotActivity : Activity(),
     override fun onNewIntent(intent: Intent?) {
         /* If the activity is already open, we need to update the intent,
         otherwise getIntent() returns the old intent in onCreate() */
-        setIntent(intent)
         super.onNewIntent(intent)
+        setIntent(intent)
     }
 
     @Deprecated("Deprecated in Java")
@@ -345,7 +345,12 @@ class TakeScreenshotActivity : Activity(),
                 App.createMediaProjection()
             } catch (e: SecurityException) {
                 Log.e(TAG, "prepareForScreenSharing(): SecurityException 3")
-                null
+                Handler(Looper.getMainLooper()).postDelayed({
+                    // Something went wrong, restart everything
+                    finish()
+                    App.getInstance().screenshot(this)
+                }, 500)
+                return
             }
             if (mediaProjection == null) {
                 screenShotFailedToast("Failed to create MediaProjection", Toast.LENGTH_SHORT)
