@@ -346,7 +346,6 @@ public class App extends Application {
             intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
         }
         context.startActivity(intent);
-        NoDisplayActivity.doIntent(intent);
     }
 
     /**
@@ -363,7 +362,6 @@ public class App extends Application {
         Intent intent = NoDisplayActivity.newPartialIntent(context);
         intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
         context.startActivityAndCollapse(intent);
-        NoDisplayActivity.doIntent(intent);
     }
 
 
@@ -387,7 +385,6 @@ public class App extends Application {
                 // skipcq
             } catch (NullPointerException ignored) {
             }
-            NoDisplayActivity.doIntent(intent);
         }
 
         if (!startActivityAndCollapseSucceeded) {
@@ -398,7 +395,6 @@ public class App extends Application {
                 if (!tryNativeScreenshot()) {
                     intent = NoDisplayActivity.newIntent(context, true);
                     context.startActivity(intent);
-                    NoDisplayActivity.doIntent(intent);
                 }
             }
         }
@@ -423,7 +419,6 @@ public class App extends Application {
                 } catch (NullPointerException e) {
                     Log.e(TAG, "screenshotHiddenCountdown() tileService was null");
                 }
-                NoDisplayActivity.doIntent(intent);
             }
 
             handler.removeCallbacks(screenshotRunnable);
@@ -447,7 +442,6 @@ public class App extends Application {
                 } catch (NullPointerException e) {
                     context.startActivity(intent);
                 }
-                NoDisplayActivity.doIntent(intent);
             } else {
                 if (!tryNativeScreenshot()) {
                     Intent intent = NoDisplayActivity.newIntent(context, true);
@@ -455,7 +449,6 @@ public class App extends Application {
                         intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                     }
                     context.startActivity(intent);
-                    NoDisplayActivity.doIntent(intent);
                 }
             }
         }
@@ -473,7 +466,6 @@ public class App extends Application {
             Intent intent = NoDisplayActivity.newIntent(context, true);
             intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
-            NoDisplayActivity.doIntent(intent);
         } else if (ScreenshotTileService.Companion.getInstance() != null) {
             ScreenshotTileService.Companion.getInstance().background();
         }
