@@ -171,7 +171,7 @@
     <!-- Post edit activity -->
     <string name="post_button_save">重新命名</string>
     <string name="post_button_move">移動</string>
-    <string name="post_recent_folders">最近的文件夾：</string>
+    <string name="post_recent_folders">最近的資料夾：</string>
     <string name="post_recent_file_names_and_suggestions">最近檔案名稱和建議：</string>
     <string name="post_hint_new_file_name">新檔案名稱</string>
     <string name="post_rename_file">重新命名檔案：</string>
