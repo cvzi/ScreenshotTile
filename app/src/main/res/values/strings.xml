@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Screenshot Tile</string>
     <string name="app_name_long">Screenshot Tile (NoRoot)</string>
@@ -130,7 +131,6 @@
     <string name="tutorial_step11">Accept the permissions</string>
     <string name="tutorial_step16">Take screenshots with the new button</string>
     <string name="take_screenshot">Take a screenshot</string>
-
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_title">Google Play Prominent Disclosure &amp; Consent Requirement</string>
     <string name="googleplay_consent_line_0">Google Play requires prominent disclosure of the Accessibility Services API’s use for an app that is not an accessibility tool.</string>
@@ -143,7 +143,6 @@
     <string name="googleplay_consent_line_7">Do you agree to authorize this app to gain access to the Accessibility Services API and to use the accessibility capabilities to record the screen?</string>
     <string name="googleplay_consent_yes">I agree</string>
     <string name="googleplay_consent_no">I refuse</string>
-
     <!-- About -->
     <string name="about_app_title">About</string>
     <string name="about_app_1">This is a fork of\ngithub.com/ipcjs/ScreenshotTile</string>
@@ -154,7 +153,6 @@
     <string name="about_open_source_title">Open source used</string>
     <string name="about_advanced_settings_button">Advanced settings</string>
     <string name="about_update_check_button">Update check</string>
-
     <!-- First screen -->
     <string name="main_accessibility_settings">Accessibility settings</string>
     <string name="main_floating_button_title">Floating button</string>
@@ -170,7 +168,6 @@
     <string name="main_long_press_text">Long pressing the tile/button opens a menu. You can specify a delay for the screenshot or cut out a rectangle from the screen.</string>
     <string name="main_assist_app_title">Assist app</string>
     <string name="main_assist_app_text">If you set this app as your assist app, you can long press the home button to take a screenshot. Enabling this app as your assist app will disable other assistants. You can change the action of the long home button press in the app settings.</string>
-
     <!-- Post edit activity -->
     <string name="post_button_save">Rename</string>
     <string name="post_button_move">Move</string>
@@ -183,7 +180,6 @@
     <string name="post_save_a_suggestion">Save suggestion</string>
     <string name="post_pin_to_favorites">Pin to favorites</string>
     <string name="post_delete_suggestion">Delete suggestion</string>
-
     <!-- Photo Editor-->
     <string name="label_brush">Brush</string>
     <string name="label_shape">Shape</string>
@@ -212,7 +208,6 @@
     <string name="dialog_ask_filename_title">Save as</string>
     <string name="dialog_ask_filename_directory">Selected directory:</string>
     <string name="dialog_ask_filename_hint">File name (without extension)</string>
-
     <!-- Advanced Settings -->
     <string name="setting_defaults_to_on">Default mode: On</string>
     <string name="setting_defaults_to_milliseconds">Default: %1$s milliseconds</string>
