@@ -35,6 +35,7 @@
     <string name="setting_floating_button_unsupported">Benötigt Android 9 Pie</string>
     <string name="setting_floating_button_scale">Größe des schwebenden Auslösers</string>
     <string name="setting_floating_button_scale_summary">Pass die Größe des schwebenden Auslösers an</string>
+    <string name="setting_floating_button_scale_current">Aktuelle Größe: %1$d (Standard: %2$d)</string>
     <string name="setting_floating_button_hide_after">Verstecke schwebenden Auslöser nach Screenshot</string>
     <string name="setting_floating_button_hide_after_summary">Nach einer Aufnahme wird der Auslöser automatisch deaktiviert</string>
     <string name="setting_floating_button_show_close">Zeige [x]/Schließen neben dem schwebenden Button</string>
@@ -42,6 +43,8 @@
     <string name="setting_floating_button_show_close_dialog_title">Emoji des \"Schließen\" Buttons</string>
     <string name="setting_floating_button_show_close_dialog_description">Gib einen Text oder einen Emoji ein, dieser wird als \"Schließen\" Button angezeigt</string>
     <string name="setting_floating_button_shutter">Look des schwebenden Auslösers</string>
+    <string name="setting_floating_button_shutter_square">Quadratisch</string>
+    <string name="setting_floating_button_shutter_round">Rund</string>
     <string name="setting_floating_button_delay">Verzögerung (Schwebende Schaltfläche)</string>
     <string name="setting_broadcast_secret">Passwort für Broadcast intents</string>
     <string name="setting_broadcast_secret_description">Mit dem Passwort können andere Apps (z.B. MacroDroid oder Tasker) automatisch Screenshots erstellen</string>
