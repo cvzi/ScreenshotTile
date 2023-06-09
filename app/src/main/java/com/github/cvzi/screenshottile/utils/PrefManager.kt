@@ -229,7 +229,7 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         get() {
             val d = pref.getString(
                 context.getString(R.string.pref_key_floating_button_scale),
-                "200"
+                context.getString(R.string.setting_floating_button_scale_default)
             )?.filter {
                 it.isDigit()
             }?.toIntOrNull() ?: 200

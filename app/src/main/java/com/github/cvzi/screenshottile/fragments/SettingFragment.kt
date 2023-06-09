@@ -727,7 +727,13 @@ class SettingFragment : PreferenceFragmentCompat() {
         floatingButtonScalePref?.run {
             text = prefManager.floatingButtonScale.toString()
             summary =
-                "${getString(R.string.setting_floating_button_scale_summary)}\nCurrent size: ${prefManager.floatingButtonScale} (Default: 200)"
+                "${getString(R.string.setting_floating_button_scale_summary)}\n${
+                    getString(
+                        R.string.setting_floating_button_scale_current,
+                        prefManager.floatingButtonScale,
+                        getString(R.string.setting_floating_button_scale_default).toInt()
+                    )
+                }"
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             ScreenshotAccessibilityService.instance?.updateFloatingButton(forceRedraw)

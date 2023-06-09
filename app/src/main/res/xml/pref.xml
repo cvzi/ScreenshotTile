@@ -62,7 +62,7 @@
         app:iconSpaceReserved="false" />
 
     <androidx.preference.EditTextPreference
-        android:defaultValue="200"
+        android:defaultValue="@string/setting_floating_button_scale_default"
         android:dialogMessage="@string/setting_floating_button_scale_summary"
         android:key="@string/pref_key_floating_button_scale"
         android:summary="@string/setting_floating_button_scale_summary"

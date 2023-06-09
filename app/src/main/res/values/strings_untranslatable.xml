@@ -77,6 +77,8 @@
     <string name="setting_file_format_entry_jpg_90" translatable="false">JPG (90％)</string>
     <string name="setting_file_format_entry_jpg_70" translatable="false">JPG (70％)</string>
 
+    <string name="setting_floating_button_scale_default" translatable="false">200</string>
+
     <string name="pref_static_field_key_notification_settings" translatable="false">pref_static_field_key_notification_settings</string>
 
     <string name="tutorial_step_one" translatable="false">1</string>
@@ -102,10 +104,10 @@
         <item>@array/shutter_black_dot</item>
         <item>@array/shutter_round_shutter</item>
     </integer-array>
-    <array name="shutter_names">
-        <item>square</item>
-        <item>round</item>
-    </array>
+    <string-array name="shutter_names">
+        <item>@string/setting_floating_button_shutter_square</item>
+        <item>@string/setting_floating_button_shutter_round</item>
+    </string-array>
 
     <string name="close_buttons_default" translatable="false">&#x274c;</string>
     <string-array name="close_buttons">
