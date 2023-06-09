@@ -35,6 +35,7 @@
     <string name="setting_floating_button_unsupported">Requiere Android 9 Pie</string>
     <string name="setting_floating_button_scale">Tamaño del botón flotante</string>
     <string name="setting_floating_button_scale_summary">Ajustar el tamaño del botón flotante</string>
+    <string name="setting_floating_button_scale_current">Tamaño actual: %1$d (Predeterminado: %2$d)</string>
     <string name="setting_floating_button_hide_after">Ocultar botón flotante después de una captura de pantalla</string>
     <string name="setting_floating_button_hide_after_summary">Desactive automáticamente el botón flotante después de tomar una captura de pantalla</string>
     <string name="setting_floating_button_show_close">Mostrar un botón [X]/\"cerrar\" junto al botón flotante</string>
@@ -42,6 +43,8 @@
     <string name="setting_floating_button_show_close_dialog_title">Emoji del botón cerrar</string>
     <string name="setting_floating_button_show_close_dialog_description">Escribe un texto o un emoji que aparecerá como el botón cerrar</string>
     <string name="setting_floating_button_shutter">Apariencia del botón flotante</string>
+    <string name="setting_floating_button_shutter_square">Cuadrado</string>
+    <string name="setting_floating_button_shutter_round">Redondo</string>
     <string name="setting_floating_button_delay">Retraso (botón flotante)</string>
     <string name="setting_broadcast_secret">Contraseña de Broadcast intent</string>
     <string name="setting_broadcast_secret_description">Una frase secreta para permitir que otras aplicaciones (como MacroDroid o Tasker) pueden iniciar capturas de pantalla</string>
