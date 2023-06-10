@@ -35,6 +35,7 @@
     <string name="setting_floating_button_unsupported">يتطلب نظام أندرويد 9</string>
     <string name="setting_floating_button_scale">حجم الزر العائم</string>
     <string name="setting_floating_button_scale_summary">ضبط حجم الزر العائم</string>
+    <string name="setting_floating_button_scale_current">الحجم الحالي: %1$d (الافتراضي: %2$d)</string>
     <string name="setting_floating_button_hide_after">إخفاء الزر العائم بعد التقاط الشاشة</string>
     <string name="setting_floating_button_hide_after_summary">حذف الزر العائم تِلْقائيًا بعد التقاط الشاشة</string>
     <string name="setting_floating_button_show_close">أظهر زر [X] / زر إغلاق بجانب الزر العائم</string>
@@ -42,6 +43,8 @@
     <string name="setting_floating_button_show_close_dialog_title">الرمز التعبيري لزر الإغلاق</string>
     <string name="setting_floating_button_show_close_dialog_description">اكتب نص أو رمز تعبيري يظهر كزر الإغلاق</string>
     <string name="setting_floating_button_shutter">تخصيص تنسيق الزر العائم</string>
+    <string name="setting_floating_button_shutter_square">مربع</string>
+    <string name="setting_floating_button_shutter_round">دائرية</string>
     <string name="setting_floating_button_delay">التأخير (زر عائم)</string>
     <string name="setting_broadcast_secret">كلمة مرور البث</string>
     <string name="setting_broadcast_secret_description">عبارة سرية للسماح بالتطبيقات الأخرى (مثل MacroDroid أو Tasker) لبدء لقطات شاشة</string>
