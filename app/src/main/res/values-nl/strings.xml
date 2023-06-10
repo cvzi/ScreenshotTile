@@ -35,6 +35,7 @@
     <string name="setting_floating_button_unsupported">Vereist Android 9 Pie</string>
     <string name="setting_floating_button_scale">Grootte zwevende knop</string>
     <string name="setting_floating_button_scale_summary">Grootte van zwevende knop aanpassen</string>
+    <string name="setting_floating_button_scale_current">Huidige grootte: %1$d (standaard: %2$d)</string>
     <string name="setting_floating_button_hide_after">Zwevende knop na schermafdruk verbergen</string>
     <string name="setting_floating_button_hide_after_summary">Automatisch de zwevende knop verbergen nadat je een schermafdruk genomen hebt</string>
     <string name="setting_floating_button_show_close">Een [X]/sluitknop naast zwevende knop tonen</string>
@@ -42,6 +43,8 @@
     <string name="setting_floating_button_show_close_dialog_title">Sluitknop-emoji</string>
     <string name="setting_floating_button_show_close_dialog_description">Type een tekst of een emoji die zal worden weergegeven als de sluitknop</string>
     <string name="setting_floating_button_shutter">Thema zwevende knop</string>
+    <string name="setting_floating_button_shutter_square">Vierkant</string>
+    <string name="setting_floating_button_shutter_round">Rond</string>
     <string name="setting_floating_button_delay">Vertraging (Zwevende knop)</string>
     <string name="setting_broadcast_secret">Wachtwoord voor uitzendingsintentie</string>
     <string name="setting_broadcast_secret_description">Een geheime zin om andere applicaties (zoals MacroDroid of Tasker) toe te staan schermafdrukken te starten</string>
