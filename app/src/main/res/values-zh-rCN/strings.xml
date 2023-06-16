@@ -35,7 +35,7 @@
     <string name="setting_floating_button_unsupported">需要 Android 9 Pie</string>
     <string name="setting_floating_button_scale">浮动按钮大小</string>
     <string name="setting_floating_button_scale_summary">调整浮动按钮大小</string>
-    <string name="setting_floating_button_scale_current">当前大小：%1$d (默认：%2$d)</string>
+    <string name="setting_floating_button_scale_current">当前大小：%1$d（默认：%2$d）</string>
     <string name="setting_floating_button_hide_after">屏幕截图后隐藏浮动按钮</string>
     <string name="setting_floating_button_hide_after_summary">在您截取屏幕截图后自动移除浮动按钮</string>
     <string name="setting_floating_button_show_close">在浮动按钮旁显示 [X]/关闭按钮</string>
