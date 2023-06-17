@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.4
+*   Translations improved
+
 ## 2.3.3
 *   Vietnamese translation improved
 
