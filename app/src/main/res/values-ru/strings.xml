@@ -35,6 +35,7 @@
     <string name="setting_floating_button_unsupported">Требуется Android 9 Pie</string>
     <string name="setting_floating_button_scale">Размер плавающей кнопки</string>
     <string name="setting_floating_button_scale_summary">Регулировка размера плавающей кнопки</string>
+    <string name="setting_floating_button_scale_current">Текущий размер: %1$d (По умолчанию: %2$d)</string>
     <string name="setting_floating_button_hide_after">Скрыть плавающую кнопку после снимка экрана</string>
     <string name="setting_floating_button_hide_after_summary">Автоматически удалять плавающую кнопку после того, как вы сделали снимок экрана</string>
     <string name="setting_floating_button_show_close">Показывать кнопку [X]/закрытия рядом с плавающей кнопкой</string>
@@ -42,6 +43,8 @@
     <string name="setting_floating_button_show_close_dialog_title">Эмодзи кнопки закрытия</string>
     <string name="setting_floating_button_show_close_dialog_description">Введите текст или эмодзи, который будет отображаться как кнопка закрытия</string>
     <string name="setting_floating_button_shutter">Внешний вид плавающей кнопки</string>
+    <string name="setting_floating_button_shutter_square">Квадратный</string>
+    <string name="setting_floating_button_shutter_round">Круглый</string>
     <string name="setting_floating_button_delay">Задержка (плавающая кнопка)</string>
     <string name="setting_broadcast_secret">Пароль намерения трансляции</string>
     <string name="setting_broadcast_secret_description">Секретная фраза, позволяющая другим приложениям (например, MacroDroid или Tasker) инициировать снимки экрана</string>
