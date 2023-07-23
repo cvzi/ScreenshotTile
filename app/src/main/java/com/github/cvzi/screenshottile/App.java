@@ -3,6 +3,7 @@ package com.github.cvzi.screenshottile;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.cleanUpAppData;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.isDeviceLocked;
+import static com.github.cvzi.screenshottile.utils.UtilsKt.startActivityAndCollapseCompat;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.toastDeviceIsLocked;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.tryNativeScreenshot;
 
@@ -361,7 +362,7 @@ public class App extends Application {
 
         Intent intent = NoDisplayActivity.newPartialIntent(context);
         intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-        context.startActivityAndCollapse(intent);
+        startActivityAndCollapseCompat(context, intent);
     }
 
 
@@ -380,7 +381,7 @@ public class App extends Application {
             }
             intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
             try {
-                tileService.startActivityAndCollapse(intent);
+                startActivityAndCollapseCompat(tileService, intent);
                 startActivityAndCollapseSucceeded = true;
                 // skipcq
             } catch (NullPointerException ignored) {
@@ -413,7 +414,7 @@ public class App extends Application {
                 Intent intent = NoDisplayActivity.newIntent(context, false);
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 try {
-                    tileService.startActivityAndCollapse(intent);
+                    startActivityAndCollapseCompat(tileService, intent);
                     startActivityAndCollapseSucceeded = true;
                     // skipcq
                 } catch (NullPointerException e) {
@@ -437,7 +438,7 @@ public class App extends Application {
                 }
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 try {
-                    tileService.startActivityAndCollapse(intent);
+                    startActivityAndCollapseCompat(tileService, intent);
                     // skipcq
                 } catch (NullPointerException e) {
                     context.startActivity(intent);
@@ -486,7 +487,7 @@ public class App extends Application {
             tileService = FloatingTileService.Companion.getInstance();
         }
         if (tileService != null) {
-            tileService.startActivityAndCollapse(intent);
+            startActivityAndCollapseCompat(tileService, intent);
         } else {
             context.startActivity(intent);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {

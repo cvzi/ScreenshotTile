@@ -2,6 +2,7 @@ package com.github.cvzi.screenshottile.utils
 
 import android.app.Dialog
 import android.app.KeyguardManager
+import android.app.PendingIntent
 import android.content.ContentValues
 import android.content.Context
 import android.content.DialogInterface
@@ -18,6 +19,7 @@ import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
 import android.os.StatFs
 import android.provider.MediaStore.Images
+import android.service.quicksettings.TileService
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -28,6 +30,7 @@ import android.view.View
 import android.view.ViewManager
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.DialogFragment
 import com.burhanrashid52.photoediting.EditImageActivity
@@ -1201,4 +1204,18 @@ fun toastDeviceIsLocked(context: Context) {
  */
 fun isDeviceLocked(context: Context): Boolean {
     return (context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager).isDeviceLocked
+}
+
+fun TileService.startActivityAndCollapseCompat(intent: Intent) {
+    return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.TIRAMISU) {
+        this.startActivityAndCollapse(PendingIntent.getActivity(
+            this,
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        ))
+    } else {
+        @Suppress("DEPRECATION")
+        this.startActivityAndCollapse(intent)
+    }
 }

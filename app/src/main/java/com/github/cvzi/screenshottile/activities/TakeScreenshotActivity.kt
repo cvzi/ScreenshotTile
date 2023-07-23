@@ -549,9 +549,19 @@ class TakeScreenshotActivity : Activity(),
         screenSharing = false
         mediaProjection?.stop()
         virtualDisplay?.release()
+        surface?.release()
     }
 
     private fun createVirtualDisplay(): VirtualDisplay? {
+        mediaProjection?.registerCallback(object : MediaProjection.Callback() {
+            override fun onStop() {
+                super.onStop()
+                if (screenSharing) {
+                    stopScreenSharing()
+                }
+            }
+        }, null)
+
         return mediaProjection?.createVirtualDisplay(
             "ScreenshotTaker",
             screenWidth, screenHeight, screenDensity,
