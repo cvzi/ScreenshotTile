@@ -3,7 +3,7 @@
     <string name="app_name">Screenshot Tile</string>
     <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Skärmdump</string>
-    <string name="tile_floating">Svävande Skärmbildsknapp</string>
+    <string name="tile_floating">Svävande skärmbildsknapp</string>
     <string name="tile_floating_label">Svävande</string>
     <string name="tile_floating_subtitle">Skärmbildsknapp</string>
     <string name="title_delay">Fördröjning</string>
@@ -35,6 +35,7 @@
     <string name="setting_floating_button_unsupported">Kräver Android 9</string>
     <string name="setting_floating_button_scale">Storlek på flytande knapp</string>
     <string name="setting_floating_button_scale_summary">Justera storleken på flytande knapp</string>
+    <string name="setting_floating_button_scale_current">Nuvarande storlek: %1$d (Standard: %2$d)</string>
     <string name="setting_floating_button_hide_after">Dölj flytande knapp efter skärmdump</string>
     <string name="setting_floating_button_hide_after_summary">Ta automatiskt bort den flytande knappen efter att du tagit en skärmdump</string>
     <string name="setting_floating_button_show_close">Visa ett [X]/stäng-knapp bredvid flytande knapp</string>
@@ -42,6 +43,8 @@
     <string name="setting_floating_button_show_close_dialog_title">Stängknapp emoji</string>
     <string name="setting_floating_button_show_close_dialog_description">Skriv en text eller en emoji som visas som stängknapp</string>
     <string name="setting_floating_button_shutter">Tema för flytande knapp</string>
+    <string name="setting_floating_button_shutter_square">Fyrkant</string>
+    <string name="setting_floating_button_shutter_round">Rund</string>
     <string name="setting_floating_button_delay">Fördröjning (Flytande knapp)</string>
     <string name="setting_broadcast_secret">Lösenord för utsändning</string>
     <string name="setting_broadcast_secret_description">En hemlig fras för att tillåta andra program (som MacroDroid eller Tasker) att initiera skärmdumpar</string>
