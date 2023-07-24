@@ -3,9 +3,9 @@
     <string name="app_name">Screenshot Tile</string>
     <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Skärmdump</string>
-    <string name="tile_floating">Svävande skärmbildsknapp</string>
+    <string name="tile_floating">Svävande skärmdumpsknapp</string>
     <string name="tile_floating_label">Svävande</string>
-    <string name="tile_floating_subtitle">Skärmbildsknapp</string>
+    <string name="tile_floating_subtitle">Skärmdumpsknapp</string>
     <string name="title_delay">Fördröjning</string>
     <string name="more_setting">Fler inställningar</string>
     <string name="open_settings">Öppna inställningar</string>
@@ -53,7 +53,7 @@
     <string name="setting_file_name_pattern">Filnamn</string>
     <string name="setting_file_name_placeholders_title">Använd dessa platshållare i filnamnet</string>
     <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tid som yyyy-MM-dd_HH-mm-ss\n
-%counter% - räknar antalet skärmbilder\n
+%counter% - räknar antalet skärmdumpar\n
 %random% - ett slumpmässigt UUID\n
 %randint% - ett slumpmässigt tal]]></string>
     <string name="setting_tile_action">Funktion för knapp i snabbpanel</string>
@@ -74,7 +74,7 @@
     <string name="notification_settings_on">Aktiverad</string>
     <string name="notification_settings_off">Inaktiverad</string>
     <string name="setting_post_actions">Efterföljande åtgärder</string>
-    <string name="setting_post_actions_description">Välj vad som händer efter att skärmbilden tagits</string>
+    <string name="setting_post_actions_description">Välj vad som händer efter att skärmdumpen tagits</string>
     <string name="button_history">Senaste skärmdumpar</string>
     <string name="button_history_description">Visa dina senaste skärmdumpar inklusive filer som inte har sparats i galleriet</string>
     <string name="history_title">Skärmdumpshistorik</string>
@@ -118,7 +118,7 @@
     <string name="screenshot_renamed">Fil döptes till %1s</string>
     <string name="screenshot_rename_failed">Det gick inte att byta namn på filen</string>
     <string name="permission_missing_external_storage">Det gick inte att få behörighet för lagring</string>
-    <string name="permission_missing_screen_capture">Det gick inte att få tillstånd att fånga skärmbild</string>
+    <string name="permission_missing_screen_capture">Det gick inte att få behörighet att spela in skärmen</string>
     <string name="hide_app_from_launcher">Dölj appikon i startprogrammet</string>
     <string name="hide_app_unsupported">Stöds inte på Android 10+</string>
     <string name="toggle_app_icon_failed">Det gick inte att visa/dölja app-ikonen</string>
