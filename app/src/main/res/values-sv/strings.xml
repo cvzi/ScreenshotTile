@@ -115,13 +115,13 @@
     <string name="notification_photo_editor_screenshot">Fotoredigerare</string>
     <string name="screenshot_deleted">Skärmdump borttagen</string>
     <string name="screenshot_delete_failed">Kunde inte ta bort filen</string>
-    <string name="screenshot_renamed">Fil döptes till %1s</string>
+    <string name="screenshot_renamed">Filnamn ändrat till %1s</string>
     <string name="screenshot_rename_failed">Det gick inte att byta namn på filen</string>
     <string name="permission_missing_external_storage">Det gick inte att få behörighet för lagring</string>
     <string name="permission_missing_screen_capture">Det gick inte att få behörighet att spela in skärmen</string>
     <string name="hide_app_from_launcher">Dölj appikon i startprogrammet</string>
     <string name="hide_app_unsupported">Stöds inte på Android 10+</string>
-    <string name="toggle_app_icon_failed">Det gick inte att visa/dölja app-ikonen</string>
+    <string name="toggle_app_icon_failed">Det gick inte att visa/dölja appikonen</string>
     <string name="tutorial">Handledning</string>
     <string name="tutorial_tap_for_next_step">Tryck för nästa steg</string>
     <string name="tutorial_step2">Dra ner aviseringsområdet</string>
