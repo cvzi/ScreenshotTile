@@ -137,7 +137,7 @@
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_title">Google Play Överhängande Utlämnande &amp; Samtycke Krav</string>
     <string name="googleplay_consent_line_0">Google Play kräver ett tydligt avslöjande av tillgänglighetstjänster API: s användning för en app som inte är ett verktyg för tillgänglighet.</string>
-    <string name="googleplay_consent_line_1">Denna app - ”Screenshot Tile [No root]” - är inte ett tillgänglighetsverktyg.</string>
+    <string name="googleplay_consent_line_1">Denna app – ”Screenshot Tile [No root]” – är inte ett tillgänglighetsverktyg.</string>
     <string name="googleplay_consent_line_2">Eftersom användare inte rimligen kan förvänta sig att deras personliga och känsliga användardata kommer att krävas för att tillhandahålla eller förbättra policy-kompatibla funktioner eller funktionalitet i denna app, ett framträdande avslöjande av användningen av API:et för Tillgänglighetstjänster genom denna app och en deklaration om datainsamling och datadelning i denna app krävs:</string>
     <string name="googleplay_consent_line_3">Denna app kräver åtkomst till Accessibility Services API för att ta en skärmdump när appen inte används.</string>
     <string name="googleplay_consent_line_4">Åtkomst till Accessibility Services API gör det möjligt för appen att spela in skärmen.</string>
@@ -170,7 +170,7 @@
     <string name="main_long_press_title">Långt tryck</string>
     <string name="main_long_press_text">Långtryck på kakel/knappen öppnar en meny. Du kan ange en fördröjning för skärmdumpen eller klippa ut en rektangel från skärmen.</string>
     <string name="main_assist_app_title">Assistentapp</string>
-    <string name="main_assist_app_text">Om du ställer in denna app som din assistansapp kan du långtryck på hemknappen för att ta en skärmdump. Aktivering av denna app eftersom din assistansapp kommer att inaktivera andra assistenter. Du kan ändra åtgärden av långa-hem-knappen tryck i app-inställningarna.</string>
+    <string name="main_assist_app_text">Om du ställer in denna app som din assistentapp kan du trycka länge på hemknappen för att ta en skärmdump. Aktivering av denna app som din assistentapp kommer att inaktivera andra assistenter. Du kan ändra åtgärden för långt tryck på hemknappen i appinställningarna.</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Byt namn</string>
     <string name="post_button_move">Flytta</string>
