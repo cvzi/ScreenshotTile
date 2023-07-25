@@ -1,16 +1,16 @@
 Lägger till en knapp/bricka i snabbinställningspanelen för att ta skärmdumpar.
 
-Efter installationen måste du lägga till knappen/brickan till dina snabbinställningar och sedan bevilja behörighet att spela in skärmbilder och spara bilder till den interna lagringen.
+Efter installationen måste du lägga till knappen/brickan i dina snabbinställningar, och sedan ge behörighet att spela in skärmen och spara bilder till det interna lagringsutrymmet.
 
 <h2>Funktioner:</h2>✓ Ta skärmdumpar från snabbinställningarna
 ✓ Ingen rot krävs
 ✓ Avisering efter att en skärmdump tagits (kan inaktiveras)
-✓ Omedelbart dela, redigera eller ta bort en skärmdump från aviseringen
+✓ Dela, redigera eller ta bort en skärmdump direkt från aviseringen
 ✓ Redigera skärmbilden med den medföljande bildredigeraren
-✓ Flytande knapp/Overlay knapp som en chattbubbla (Android 9+)
-✓ Använd som assistansapp för att ta en skärmdump (långtryck på Hem-knappen)
-✓ Ta bara skärmdump av ett visst område på skärmen (långtryck på kakeln)
-✓ Fördröjning med en skärmdump
+✓ Flytande knapp/overlay-knapp som en chattbubbla (Android 9+)
+✓ Använd som assistentapp för att ta en skärmdump (långtryck på hemknappen)
+✓ Ta skärmdump av ett visst område på skärmen (långtryck på knappen i snabbinställningar)
+✓ Fördröjning innan skärmdump tas
 ✓ Lagra i valfri mapp på valfri lagring t.ex. SD-kort
 ✓ Förvara i olika filformat: png, jpg eller webp
 ✓ Ta automatiska skärmdumpar med appar som Tasker eller MacroDroid
