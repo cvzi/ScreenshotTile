@@ -100,7 +100,7 @@
     <string name="notification_channel_description">Visar en avisering när du har tagit en skärmdump</string>
     <string name="notification_foreground_title">Tar en skärmdump…</string>
     <string name="notification_foreground_body">Bearbetar skärmdump… Tryck för att avbryta</string>
-    <string name="notification_foreground_channel_description">Visar en avisering när du tar en skärmdump. Förhindrar att appen avslutas av batterioptimeringen medan en skärmdump är i full gång</string>
+    <string name="notification_foreground_channel_description">Visar en avisering när du tar en skärmdump. Förhindrar att appen avslutas av batterioptimeringen under skärmdumpsprocessen</string>
     <string name="notification_app_chooser_share">Dela fil med…</string>
     <string name="notification_app_chooser_edit">Redigera fil med…</string>
     <string name="screenshot_failed">Kunde inte ta skärmdump, försök igen</string>
@@ -202,8 +202,8 @@
     <string name="label_close">Stäng</string>
     <string name="label_save">Spara</string>
     <string name="label_discard">Kasta</string>
-    <string name="msg_save_image">Vill du avsluta utan att spara ändringarna?</string>
-    <string name="msg_save_image_to_share">Vänligen spara bilden för att dela</string>
+    <string name="msg_save_image">Vill du avsluta utan att spara bilden?</string>
+    <string name="msg_save_image_to_share">Spara bilden för att dela</string>
     <string name="msg_share_image">Dela bild</string>
     <string name="msg_choose_image">Välj en bild</string>
     <string name="msg_image_saved">Bilden har sparats</string>
@@ -214,12 +214,12 @@
     <!-- Advanced Settings -->
     <string name="setting_defaults_to_on">Standardläge: På</string>
     <string name="setting_defaults_to_milliseconds">Standard: %1$s millisekunder</string>
-    <string name="setting_toasts">Alla \"Toast\"-aviseringar</string>
-    <string name="setting_success_toasts">\"Toast\" notifieringar för lyckade händelser</string>
-    <string name="setting_error_toasts">\"Toast\" notifikationer för fel</string>
+    <string name="setting_toasts">Alla \"toast-meddelanden\"</string>
+    <string name="setting_success_toasts">\"Toast-meddelanden\" för lyckade händelser</string>
+    <string name="setting_error_toasts">\"Toast-meddelanden\" för fel</string>
     <string name="setting_select_area_shutter_delay">Fördröjning efter att ha tryckt på slutaren (i \"Välj område\"-läge)</string>
     <string name="setting_select_area_shutter_delay_dialog">Väntetid mellan tiden då slutaren trycktes och skärmdumpen tas. Använd ett högre värde (till exempel 500) om slutarikonen var synlig på skärmdumpar.</string>
-    <string name="setting_original_after_permission_delay">Fördröjning efter att tillstånd beviljats (gäller för \"Ursprunglig metod\")</string>
+    <string name="setting_original_after_permission_delay">Fördröjning efter att tillstånd för skärmdumpar beviljats (gäller för \"Äldre metod\")</string>
     <string name="setting_original_after_permission_delay_dialog">Väntetid mellan den tid då tillståndet beviljades och skärmdumpen tas. Använd ett högre värde (till exempel 500) om behörighetsdialogen var synlig på skärmdumpar.</string>
     <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Fördröjning efter fel \"%1$s\"</string>
     <string name="setting_failed_virtual_display_delay_dialog">Väntetid innan du försöker igen efter felmeddelande. Använd ett högre värde (till exempel 500) om felmeddelandet var synligt på skärmdumpar.</string>
@@ -229,7 +229,7 @@
     <string name="setting_floating_button_color">Färg på flytande knapp</string>
     <string name="setting_delay_custom_summary">Välj en anpassad fördröjning för panelknappen (i sekunder)</string>
     <string name="setting_floating_button_delay_custom_summary">Välj en anpassad fördröjning för den flytande knappen (i sekunder)</string>
-    <string name="setting_format_quality">Kvalitet för filformat</string>
+    <string name="setting_format_quality">Kvalitet på filformat</string>
     <string name="setting_format_quality_dialog">Kompression / Kvalitet på filformatet: (0 till 100)\n0 betyder komprimera för den minsta storleken. 100 betyder komprimera för maximal visuell kvalitet.\nLämna tomt för att använda standardvärdet.</string>
     <string name="setting_keep_app_data_max">Maximalt antal skärmdumpar att hålla i:</string>
     <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Om du inaktiverade \"%1$s\" lagras skärmdumpar tillfälligt i mappen \"Android/data/\" och raderas regelbundet när det maximala antalet filer uppnås.\n-1 betyder att behålla obegränsat\nStandardvärde %2$s</string>
