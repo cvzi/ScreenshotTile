@@ -1,42 +1,42 @@
 Lägger till en knapp/bricka i snabbinställningspanelen för att ta skärmdumpar.
 
-Efter installationen måste du lägga till knappen/brickan till dina snabbinställningar och sedan bevilja behörighet att spela in skärmbilder och spara bilder till den interna lagringen.
+Efter installationen måste du lägga till knappen/brickan i dina snabbinställningar, och sedan ge behörighet att spela in skärmen och spara bilder till det interna lagringsutrymmet.
 
 <h2>Funktioner:</h2>✓ Ta skärmdumpar från snabbinställningarna
 ✓ Ingen rot krävs
 ✓ Avisering efter att en skärmdump tagits (kan inaktiveras)
-✓ Omedelbart dela, redigera eller ta bort en skärmdump från aviseringen
+✓ Dela, redigera eller ta bort en skärmdump direkt från aviseringen
 ✓ Redigera skärmbilden med den medföljande bildredigeraren
-✓ Flytande knapp/Overlay knapp som en chattbubbla (Android 9+)
-✓ Använd som assistansapp för att ta en skärmdump (långtryck på Hem-knappen)
-✓ Ta bara skärmdump av ett visst område på skärmen (långtryck på kakeln)
-✓ Fördröjning med en skärmdump
-✓ Lagra i valfri mapp på valfri lagring t.ex. SD-kort
-✓ Förvara i olika filformat: png, jpg eller webp
+✓ Flytande knapp/overlay-knapp som en chattbubbla (Android 9+)
+✓ Använd som assistentapp för att ta en skärmdump (långtryck på hemknappen)
+✓ Ta skärmdump av ett visst område på skärmen (långtryck på knappen i snabbinställningar)
+✓ Fördröjning innan skärmdump tas
+✓ Lagra i valfri mapp på valfritt lagringsmedium såsom SD-kort
+✓ Lagra i olika filformat: png, jpg eller webp
 ✓ Ta automatiska skärmdumpar med appar som Tasker eller MacroDroid
 ✓ Gratis, öppen källkod, ingen reklam
 
-Detta är en gaffel av "Screenshot Tile [Root]" men det kräver inte rot.
+Detta är en förgrening av "Screenshot Tile [Root]" men kräver inte rot.
 
 Källkod: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Ursprunglig app: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
-Open Source licens är GNU GPLv3
+Licensen för öppen källkod är GNU GPLv3
 
 <u>Obs:</u>
-🎦 När du tar en skärmdump, ikonen <b>"Google Cast"</b> visas i statusfältet och kommer att synas i skärmdumpsbilden.
+🎦 När du tar en skärmdump kommer ikonen för <b>"Google Cast"</b> att visas i statusfältet och synas i skärmdumpen.
 Om du vill dölja ikonen, finns det en förklaring här: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
 
-<h2>Behörigheter:</h2><unk> <i>android.permission.WRITE_EXTERNAL_STORAGE "Foton/Media/Filer och Lagring"</i>
-Detta krävs för att spara skärmdfilerna på din enhets interna lagring.
+<h2>Behörigheter:</h2><unk> <i>android.permission.WRITE_EXTERNAL_STORAGE "Foton/media/filer och lagring"</i>
+Detta krävs för att spara skärmdumparna på din enhets interna lagring.
 
 <unk> <i>android.permission.FOREGROUND_SERVICE</i>
-Sedan Android 9/Pie krävs detta tillstånd för att ta skärmdumpar. Det innebär i princip att denna app kan köras utan att visa sig själv. Appen kommer dock alltid att visa en avisering när den körs.
+Sedan Android 9/Pie krävs denna behörighet för att ta skärmdumpar. Det innebär i princip att denna app kan köras utan att visa sig själv. Appen kommer dock alltid att visa en avisering när den körs.
 
-<h2>Automatiska skärmdumpar:</h2>Om du vill automatisera skärmdumpar från en annan app, t.ex. MacroDroid eller Tasker, hittar du en steg-för-steg-guide här:
+<h2>Automatiska skärmdumpar:</h2>Om du vill automatisera skärmdumpar från en annan app, t.ex. MacroDroid eller Tasker, hittar du en steg-för-steg-instruktion här:
 <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatisk-screenshots-with-broadcast-intents</a>
 
-<h2>Göm appikonen:</h2>I appinställningarna kan du dölja app-ikonen från din launcher. Du kan fortfarande komma åt appen genom att trycka länge på rutan i dina snabbinställningar. Tyvärr tillåter Android 10 inte att dölja en app längre.
+<h2>Dölj appikonen:</h2>I appinställningarna kan du dölja appikonen från ditt startprogram. Du kan fortfarande komma åt appen genom att långtrycka på knappen i dina snabbinställningar. Tyvärr tillåter Android 10 inte att dölja en app längre.
 
-<h2>🌎 Stöd och översättningar</h2>Om det finns ett problem eller om du vill hjälpa till att översätta denna app till ditt språk, kontakta mig på <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> eller bidra med en översättning på <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+<h2>🌎 Support och översättningar</h2>Om det finns problem eller om du vill hjälpa till att översätta appen till ditt språk; kontakta mig gärna på <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> eller bidra med en översättning på <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
 
 Appen har åtkomst till <a href="https://support.google.com/googleplay/android-developer/answer/10964491">Accessibility Services API</a> som gör att appen kan spela in skärmen. Data varken samlas in eller delas av denna app med hjälp av tillgänglighetsfunktionerna.
