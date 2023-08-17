@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.5
+*   Translations improved
+*   Upgrade SDK to 34
+
 ## 2.3.4
 *   Translations improved
 
