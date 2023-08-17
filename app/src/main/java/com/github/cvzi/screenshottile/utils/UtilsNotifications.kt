@@ -17,6 +17,7 @@ import androidx.core.content.FileProvider
 import androidx.core.net.toFile
 import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.*
+import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 
 /**
@@ -107,6 +108,21 @@ fun notificationScreenshotTakenChannelEnabled(context: Context): Boolean {
     }
 }
 
+/**
+ * Return getActivity for Android Tiramisu and getBroadcast for lower Android
+ */
+fun createNotificationPendingIntent(
+    context: Context,
+    requestCode: Int,
+    intent: Intent,
+    flags: Int
+): PendingIntent {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        PendingIntent.getActivity(context, requestCode, intent, flags)
+    } else {
+        PendingIntent.getBroadcast(context, requestCode, intent, flags)
+    }
+}
 
 /**
  * Show a notification that opens the image file on tap.
@@ -175,8 +191,14 @@ fun createNotification(
     val notificationActions = App.getInstance().prefManager.notificationActions
 
     if (appContext.getString(R.string.setting_notification_action_share) in notificationActions) {
-        val shareIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_SHARE)
-        val pendingIntentShare = PendingIntent.getBroadcast(
+        val shareIntent = actionButtonIntent(
+            path,
+            mimeType,
+            uniqueId,
+            NOTIFICATION_ACTION_SHARE,
+            appContext
+        )
+        val pendingIntentShare = createNotificationPendingIntent(
             appContext,
             uniqueId + 2,
             shareIntent,
@@ -191,32 +213,37 @@ fun createNotification(
         )
     }
     if (appContext.getString(R.string.setting_notification_action_edit) in notificationActions) {
-        if (editImageIntent(
-                context,
-                path,
-                mimeType
-            ).resolveActivity(context.applicationContext.packageManager) != null
-        ) {
-            val editIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_EDIT)
-            val pendingIntentEdit = PendingIntent.getBroadcast(
-                appContext,
-                uniqueId + 3,
-                editIntent,
-                PendingIntent.FLAG_IMMUTABLE
-            )
-            builder.addAction(
-                Notification.Action.Builder(
-                    icon,
-                    appContext.getString(R.string.notification_edit_screenshot),
-                    pendingIntentEdit
-                ).build()
-            )
-        }
+        val editIntent = actionButtonIntent(
+            path,
+            mimeType,
+            uniqueId,
+            NOTIFICATION_ACTION_EDIT,
+            appContext
+        )
+        val pendingIntentEdit = createNotificationPendingIntent(
+            appContext,
+            uniqueId + 3,
+            editIntent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+        builder.addAction(
+            Notification.Action.Builder(
+                icon,
+                appContext.getString(R.string.notification_edit_screenshot),
+                pendingIntentEdit
+            ).build()
+        )
     }
 
     if (appContext.getString(R.string.setting_notification_action_delete) in notificationActions) {
-        val deleteIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_DELETE)
-        val pendingIntentDelete = PendingIntent.getBroadcast(
+        val deleteIntent = actionButtonIntent(
+            path,
+            mimeType,
+            uniqueId,
+            NOTIFICATION_ACTION_DELETE,
+            appContext
+        )
+        val pendingIntentDelete = createNotificationPendingIntent(
             appContext,
             uniqueId + 4,
             deleteIntent,
@@ -246,12 +273,17 @@ fun createNotification(
             setLabel(replyLabel)
             build()
         }
-
-        val renameIntent = actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_RENAME)
+        val renameIntent = actionButtonIntent(
+            path,
+            mimeType,
+            uniqueId,
+            NOTIFICATION_ACTION_RENAME,
+            appContext
+        )
 
         // Build a PendingIntent for the reply action to trigger.
         val replyPendingIntent: PendingIntent =
-            PendingIntent.getBroadcast(
+            createNotificationPendingIntent(
                 appContext,
                 uniqueId + 5,
                 renameIntent,
@@ -271,14 +303,18 @@ fun createNotification(
                 .addRemoteInput(remoteInput)
                 .build()
         builder.addAction(action)
-
-
     }
 
     if (appContext.getString(R.string.setting_notification_action_details) in notificationActions) {
         val detailsIntent =
-            actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_DETAILS)
-        val pendingIntentDetails = PendingIntent.getBroadcast(
+            actionButtonIntent(
+                path,
+                mimeType,
+                uniqueId,
+                NOTIFICATION_ACTION_DETAILS,
+                appContext
+            )
+        val pendingIntentDetails = createNotificationPendingIntent(
             appContext,
             uniqueId + 6,
             detailsIntent,
@@ -295,8 +331,14 @@ fun createNotification(
 
     if (appContext.getString(R.string.setting_notification_action_crop) in notificationActions) {
         val detailsIntent =
-            actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_CROP)
-        val pendingIntentDetails = PendingIntent.getBroadcast(
+            actionButtonIntent(
+                path,
+                mimeType,
+                uniqueId,
+                NOTIFICATION_ACTION_CROP,
+                context
+            )
+        val pendingIntentDetails = createNotificationPendingIntent(
             appContext,
             uniqueId + 7,
             detailsIntent,
@@ -313,8 +355,14 @@ fun createNotification(
 
     if (appContext.getString(R.string.setting_notification_action_photo_editor) in notificationActions) {
         val detailsIntent =
-            actionButtonIntent(path, mimeType, uniqueId, NOTIFICATION_ACTION_PHOTO_EDITOR)
-        val pendingIntentDetails = PendingIntent.getBroadcast(
+            actionButtonIntent(
+                path,
+                mimeType,
+                uniqueId,
+                NOTIFICATION_ACTION_PHOTO_EDITOR,
+                context
+            )
+        val pendingIntentDetails = createNotificationPendingIntent(
             appContext,
             uniqueId + 8,
             detailsIntent,
@@ -345,10 +393,18 @@ fun actionButtonIntent(
     path: Uri,
     mimeType: String,
     notificationId: Int,
-    intentAction: String
+    intentAction: String,
+    context: Context
 ): Intent {
-    return Intent().apply {
+    val intent =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Intent(context, NoDisplayActivity::class.java)
+        } else {
+            Intent()
+        }
+    return intent.apply {
         action = intentAction
+        setPackage(context.packageName)
         putExtra(NOTIFICATION_ACTION_DATA_URI, path.toString())
         putExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE, mimeType)
         putExtra(NOTIFICATION_ACTION_ID, notificationId)
@@ -359,6 +415,16 @@ fun actionButtonIntent(
  * Intent to open share chooser.
  */
 fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Intent {
+    return Intent.createChooser(
+        shareImageIntent(context, path, mimeType),
+        context.getString(R.string.notification_app_chooser_share)
+    )
+}
+
+/**
+ * Intent to share image
+ */
+fun shareImageIntent(context: Context, path: Uri, mimeType: String?): Intent {
     val uri = if (path.scheme == "file") {
         try {
             FileProvider.getUriForFile(
@@ -373,16 +439,13 @@ fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Inte
     } else {
         path
     }
-    Intent(Intent.ACTION_SEND).apply {
+    return Intent(Intent.ACTION_SEND).apply {
         type = mimeType
         putExtra(Intent.EXTRA_STREAM, uri)
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        return Intent.createChooser(
-            this,
-            context.getString(R.string.notification_app_chooser_share)
-        )
     }
 }
+
 
 /**
  * Intent to edit image.

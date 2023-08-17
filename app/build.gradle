@@ -18,11 +18,11 @@ android {
             }
         }
     }
-    compileSdkVersion 34
     defaultConfig {
         applicationId 'com.github.cvzi.screenshottile'
-        minSdkVersion 24
-        targetSdkVersion 34
+        minSdk 24
+        compileSdk 34
+        targetSdk 34
         versionCode 101
         versionName '2.3.4'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'

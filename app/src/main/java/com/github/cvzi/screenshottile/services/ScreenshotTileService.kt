@@ -131,7 +131,6 @@ class ScreenshotTileService : TileService(),
         super.onClick()
         if (BuildConfig.DEBUG) Log.v(TAG, "onClick()")
 
-        foreground()
         setState(Tile.STATE_ACTIVE)
 
         if (App.getInstance().prefManager.tileAction == getString(R.string.setting_tile_action_value_screenshot)) {

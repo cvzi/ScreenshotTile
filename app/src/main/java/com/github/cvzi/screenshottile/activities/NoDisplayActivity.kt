@@ -9,6 +9,8 @@ import android.util.Log
 import android.widget.Toast
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
+import com.github.cvzi.screenshottile.NOTIFICATION_PREFIX
+import com.github.cvzi.screenshottile.NotificationActionReceiver
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.services.BasicForegroundService
@@ -39,6 +41,7 @@ class NoDisplayActivity : Activity() {
             if (action != null && action.startsWith(NOTIFICATION_PREFIX)) {
                 // Trampoline for notification buttons, since BroadcastReceiver can't
                 // open activities anymore in Android Tiramisu
+                NotificationActionReceiver.handleIntent(this, intent, TAG)
             } else if (intent.getBooleanExtra(EXTRA_PARTIAL, false)) {
                 // make sure that a foreground service runs
                 val screenshotTileService = ScreenshotTileService.instance
@@ -110,7 +113,7 @@ class NoDisplayActivity : Activity() {
     }
 
     companion object {
-        const val TAG = "NoDisplayActivity.java"
+        const val TAG = "NoDisplayActivity"
         private const val EXTRA_SCREENSHOT =
             BuildConfig.APPLICATION_ID + ".NoDisplayActivity.EXTRA_SCREENSHOT"
         private const val EXTRA_LEGACY =
@@ -161,6 +164,7 @@ class NoDisplayActivity : Activity() {
          * @param screenshot Immediately start taking a screenshot
          * @return The intent
          */
+        @JvmStatic
         fun newIntent(context: Context?, screenshot: Boolean): Intent {
             val intent = Intent(context, NoDisplayActivity::class.java)
             intent.putExtra(EXTRA_SCREENSHOT, screenshot)
@@ -176,6 +180,7 @@ class NoDisplayActivity : Activity() {
          * @param context Context
          * @return The intent
          */
+        @JvmStatic
         fun newPartialIntent(context: Context?): Intent {
             val intent = Intent(context, NoDisplayActivity::class.java)
             intent.putExtra(EXTRA_PARTIAL, true)

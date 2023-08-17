@@ -70,7 +70,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     if (returnTo != null) {
                         App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = returnTo
                     }
-                    tileService.startActivityAndCollapseCompat(this)
+                    tileService.startActivityAndCollapseCustom(this)
                 }
             }
         }

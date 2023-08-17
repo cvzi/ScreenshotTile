@@ -3,7 +3,7 @@ package com.github.cvzi.screenshottile;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.cleanUpAppData;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.isDeviceLocked;
-import static com.github.cvzi.screenshottile.utils.UtilsKt.startActivityAndCollapseCompat;
+import static com.github.cvzi.screenshottile.utils.UtilsKt.startActivityAndCollapseCustom;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.toastDeviceIsLocked;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.tryNativeScreenshot;
 
@@ -480,20 +480,33 @@ public class App extends Application {
      * @param intent  Intent
      */
     @SuppressLint({"DEPRECATION", "MissingPermission"})
-    public void startActivityAndCollapse(Context context, Intent intent) {
+    public void startActivityAndCollapseCompat(Context context, Intent intent) {
         intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
         TileService tileService = ScreenshotTileService.Companion.getInstance();
         if (tileService == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             tileService = FloatingTileService.Companion.getInstance();
         }
         if (tileService != null) {
-            startActivityAndCollapseCompat(tileService, intent);
+            startActivityAndCollapseCustom(tileService, intent);
         } else {
             context.startActivity(intent);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
                 // skipcq
                 context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
             }
+        }
+    }
+
+    @SuppressLint({"DEPRECATION", "MissingPermission"})
+    public void startActivityAndCollapseIfNotActivity(Context context, Intent intent) {
+        if (context instanceof Activity) {
+            context.startActivity(intent);
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
+                // skipcq
+                context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+            }
+        } else {
+            startActivityAndCollapseCompat(context, intent);
         }
     }
 

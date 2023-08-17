@@ -22,18 +22,19 @@ import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.*
 
 
-const val NOTIFICATION_ACTION_SHARE = "NOTIFICATION_ACTION_SHARE"
-const val NOTIFICATION_ACTION_DELETE = "NOTIFICATION_ACTION_DELETE"
-const val NOTIFICATION_ACTION_EDIT = "NOTIFICATION_ACTION_EDIT"
-const val NOTIFICATION_ACTION_STOP = "NOTIFICATION_ACTION_STOP"
-const val NOTIFICATION_ACTION_RENAME = "NOTIFICATION_ACTION_RENAME"
-const val NOTIFICATION_ACTION_DETAILS = "NOTIFICATION_ACTION_DETAILS"
-const val NOTIFICATION_ACTION_CROP = "NOTIFICATION_ACTION_CROP"
-const val NOTIFICATION_ACTION_PHOTO_EDITOR = "NOTIFICATION_ACTION_PHOTO_EDITOR"
-const val NOTIFICATION_ACTION_DATA_URI = "NOTIFICATION_ACTION_DATA_URI"
-const val NOTIFICATION_ACTION_DATA_MIME_TYPE = "NOTIFICATION_ACTION_DATA_MIME_TYPE"
-const val NOTIFICATION_ACTION_ID = "NOTIFICATION_ACTION_ID"
-const val NOTIFICATION_ACTION_RENAME_INPUT = "NOTIFICATION_ACTION_RENAME_INPUT"
+const val NOTIFICATION_PREFIX = "NOTIFICATION"
+const val NOTIFICATION_ACTION_SHARE = NOTIFICATION_PREFIX + "_ACTION_SHARE"
+const val NOTIFICATION_ACTION_DELETE = NOTIFICATION_PREFIX + "_ACTION_DELETE"
+const val NOTIFICATION_ACTION_EDIT = NOTIFICATION_PREFIX + "_ACTION_EDIT"
+const val NOTIFICATION_ACTION_STOP = NOTIFICATION_PREFIX + "_ACTION_STOP"
+const val NOTIFICATION_ACTION_RENAME = NOTIFICATION_PREFIX + "_ACTION_RENAME"
+const val NOTIFICATION_ACTION_DETAILS = NOTIFICATION_PREFIX + "_ACTION_DETAILS"
+const val NOTIFICATION_ACTION_CROP = NOTIFICATION_PREFIX + "_ACTION_CROP"
+const val NOTIFICATION_ACTION_PHOTO_EDITOR = NOTIFICATION_PREFIX + "_ACTION_PHOTO_EDITOR"
+const val NOTIFICATION_ACTION_DATA_URI = NOTIFICATION_PREFIX + "_ACTION_DATA_URI"
+const val NOTIFICATION_ACTION_DATA_MIME_TYPE = NOTIFICATION_PREFIX + "_ACTION_DATA_MIME_TYPE"
+const val NOTIFICATION_ACTION_ID = NOTIFICATION_PREFIX + "_ACTION_ID"
+const val NOTIFICATION_ACTION_RENAME_INPUT = NOTIFICATION_PREFIX + "_ACTION_RENAME_INPUT"
 val NOTIFICATION_ACTIONS = arrayOf(
     NOTIFICATION_ACTION_SHARE,
     NOTIFICATION_ACTION_DELETE,
@@ -53,42 +54,49 @@ val NOTIFICATION_ACTIONS = arrayOf(
 class NotificationActionReceiver : BroadcastReceiver() {
     companion object {
         private const val TAG = "NotificationActionRcver"
-    }
 
-    override fun onReceive(context: Context?, intent: Intent?) {
-        context?.apply {
+        fun handleIntent(context: Context, intent: Intent, TAG: String) {
 
             var windowContext: Context = context
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                val dm: DisplayManager = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
+                val dm: DisplayManager =
+                    context.getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
                 val defaultDisplay = dm.getDisplay(Display.DEFAULT_DISPLAY)
-                windowContext = createDisplayContext(defaultDisplay)
+                windowContext = context.createDisplayContext(defaultDisplay)
             }
 
-            when (intent?.action) {
+            when (intent.action) {
                 NOTIFICATION_ACTION_SHARE -> {
-                    hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
+                    hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
                     val mimeType =
                         intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE) ?: "image/png"
 
-                    val shareIntent = shareImageChooserIntent(this, path, mimeType)
+                    val shareIntent = shareImageChooserIntent(context, path, mimeType)
                     shareIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
-
-                    if (shareIntent.resolveActivity(packageManager) != null) {
-                        App.getInstance().startActivityAndCollapse(this, shareIntent)
+                    if (shareIntent.resolveActivity(context.packageManager) != null) {
+                        App.getInstance()
+                            .startActivityAndCollapseIfNotActivity(context, shareIntent)
                     } else {
                         Log.e(TAG, "resolveActivity(shareIntent) returned null")
+                        val noChooserIntent = shareImageIntent(context, path, mimeType)
+                        noChooserIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
+                        noChooserIntent.setPackage(context.packageName)
+                        if (noChooserIntent.resolveActivity(context.packageManager) != null) {
+                            App.getInstance()
+                                .startActivityAndCollapseIfNotActivity(context, noChooserIntent)
+                        } else {
+                            Log.e(TAG, "resolveActivity(noChooserIntent) returned null")
+                        }
                     }
                 }
 
                 NOTIFICATION_ACTION_DELETE -> {
-                    hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
+                    hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
-
-                    if (path != null && deleteImage(this, path)) {
+                    if (path != null && deleteImage(context, path)) {
                         windowContext.toastMessage(
                             R.string.screenshot_deleted,
                             ToastType.SUCCESS,
@@ -103,19 +111,28 @@ class NotificationActionReceiver : BroadcastReceiver() {
                 }
 
                 NOTIFICATION_ACTION_EDIT -> {
-                    hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
+                    hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
 
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
                     val mimeType =
                         intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE) ?: "image/png"
 
-                    val editIntent = editImageChooserIntent(this, path, mimeType)
+                    val editIntent = editImageChooserIntent(context, path, mimeType)
                     editIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
-
+                    editIntent.setPackage(context.packageName)
                     if (editIntent.resolveActivity(context.packageManager) != null) {
-                        App.getInstance().startActivityAndCollapse(this, editIntent)
+                        App.getInstance().startActivityAndCollapseIfNotActivity(context, editIntent)
                     } else {
                         Log.e(TAG, "resolveActivity(editIntent) returned null")
+                        val noChooserIntent = editImageIntent(context, path, mimeType)
+                        noChooserIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
+                        noChooserIntent.setPackage(context.packageName)
+                        if (noChooserIntent.resolveActivity(context.packageManager) != null) {
+                            App.getInstance()
+                                .startActivityAndCollapseIfNotActivity(context, noChooserIntent)
+                        } else {
+                            Log.e(TAG, "resolveActivity(noChooserIntent) returned null")
+                        }
                     }
                 }
 
@@ -126,6 +143,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                             R.string.screenshot_rename_failed,
                             ToastType.ERROR
                         )
+                        hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
                         Log.e(TAG, "Rename failed: path is null")
                         return
                     }
@@ -133,9 +151,11 @@ class NotificationActionReceiver : BroadcastReceiver() {
                         ?.getString(NOTIFICATION_ACTION_RENAME_INPUT)
                     if (newName.isNullOrBlank()) {
                         Log.w(TAG, "Rename failed: New file name was empty or null")
-                        startActivity(PostActivity.newIntentSingleImage(context, path).apply {
-                            addFlags(FLAG_ACTIVITY_NEW_TASK)
-                        })
+                        hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
+                        context.startActivity(
+                            PostActivity.newIntentSingleImage(context, path).apply {
+                                addFlags(FLAG_ACTIVITY_NEW_TASK)
+                            })
                         return
                     }
                     newName = newName.trim()
@@ -147,6 +167,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                             R.string.screenshot_rename_failed,
                             ToastType.ERROR
                         )
+                        hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
                         return
                     }
 
@@ -166,7 +187,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
                     val repliedNotification = builder
                         .setSmallIcon(android.R.drawable.ic_menu_edit)
-                        .setContentText(getString(R.string.screenshot_renamed, newName))
+                        .setContentText(context.getString(R.string.screenshot_renamed, newName))
                         .build()
                     (context.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.apply {
                         notify(intent.getIntExtra(NOTIFICATION_ACTION_ID, 0), repliedNotification)
@@ -175,42 +196,42 @@ class NotificationActionReceiver : BroadcastReceiver() {
                 }
 
                 NOTIFICATION_ACTION_DETAILS -> {
-                    hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
+                    hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
                     if (path == null) {
                         Log.e(TAG, "NOTIFICATION_ACTION_DETAILS path is null")
                         return
                     }
-                    App.getInstance().startActivityAndCollapse(
-                        this,
+                    App.getInstance().startActivityAndCollapseIfNotActivity(
+                        context,
                         PostActivity.newIntentSingleImage(context, path)
                     )
                 }
 
                 NOTIFICATION_ACTION_CROP -> {
-                    hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
+                    hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
                     if (path == null) {
                         Log.e(TAG, "NOTIFICATION_ACTION_CROP path is null")
                         return
                     }
                     val mimeType = intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE)
-                    App.getInstance().startActivityAndCollapse(
-                        this,
+                    App.getInstance().startActivityAndCollapseIfNotActivity(
+                        context,
                         PostCropActivity.newIntentSingleImage(context, path, mimeType)
                     )
                 }
 
                 NOTIFICATION_ACTION_PHOTO_EDITOR -> {
-                    hideNotification(this, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
+                    hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
                     if (path == null) {
                         Log.e(TAG, "NOTIFICATION_ACTION_PHOTO_EDITOR path is null")
                         return
                     }
                     val mimeType = intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE)
-                    App.getInstance().startActivityAndCollapse(
-                        this,
+                    App.getInstance().startActivityAndCollapseIfNotActivity(
+                        context,
                         Intent(context, EditImageActivity::class.java).apply {
                             action = Intent.ACTION_EDIT
                             setDataAndTypeAndNormalize(path, mimeType)
@@ -220,10 +241,20 @@ class NotificationActionReceiver : BroadcastReceiver() {
                 NOTIFICATION_ACTION_STOP -> {
                     ScreenshotTileService.instance?.kill()
                     BasicForegroundService.instance?.background()
-                    hideNotification(this, ScreenshotTileService.FOREGROUND_NOTIFICATION_ID)
-                    hideNotification(this, BasicForegroundService.FOREGROUND_NOTIFICATION_ID)
+                    hideNotification(context, ScreenshotTileService.FOREGROUND_NOTIFICATION_ID)
+                    hideNotification(context, BasicForegroundService.FOREGROUND_NOTIFICATION_ID)
                 }
 
+            }
+
+        }
+
+    }
+
+    override fun onReceive(context: Context?, intent: Intent?) {
+        context?.let { c ->
+            intent?.let { i ->
+                handleIntent(c, i, TAG)
             }
         }
     }

@@ -1069,7 +1069,7 @@ fun handlePostScreenshot(
     when {
         "openInPost" in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
-            App.getInstance().startActivityAndCollapse(
+            App.getInstance().startActivityAndCollapseCompat(
                 context,
                 PostActivity.newIntentSingleImageBitmap(context, uri)
             )
@@ -1077,7 +1077,7 @@ fun handlePostScreenshot(
 
         "openInPostCrop" in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
-            App.getInstance().startActivityAndCollapse(
+            App.getInstance().startActivityAndCollapseCompat(
                 context,
                 PostCropActivity.newIntentSingleImageBitmap(context, uri, mimeTypeNullSafe)
             )
@@ -1085,7 +1085,7 @@ fun handlePostScreenshot(
 
         "openInPhotoEditor" in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
-            App.getInstance().startActivityAndCollapse(
+            App.getInstance().startActivityAndCollapseCompat(
                 context,
                 Intent(context, EditImageActivity::class.java).apply {
                     action = Intent.ACTION_EDIT
@@ -1099,7 +1099,7 @@ fun handlePostScreenshot(
             editIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             if (editIntent.resolveActivity(context.packageManager) != null) {
-                App.getInstance().startActivityAndCollapse(context, editIntent)
+                App.getInstance().startActivityAndCollapseCompat(context, editIntent)
             } else {
                 Log.e(UTILSKT, "openInExternalEditor: resolveActivity(editIntent) returned null")
                 context.toastMessage("No suitable external photo editor found", ToastType.ERROR)
@@ -1109,7 +1109,7 @@ fun handlePostScreenshot(
         "openInExternalViewer" in postScreenshotActions -> {
             val openImageIntent = openImageIntent(context, uri, mimeTypeNullSafe)
             if (openImageIntent.resolveActivity(context.packageManager) != null) {
-                App.getInstance().startActivityAndCollapse(context, openImageIntent)
+                App.getInstance().startActivityAndCollapseCompat(context, openImageIntent)
             } else {
                 Log.e(
                     UTILSKT,
@@ -1124,7 +1124,7 @@ fun handlePostScreenshot(
             shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             if (shareIntent.resolveActivity(context.packageManager) != null) {
-                App.getInstance().startActivityAndCollapse(context, shareIntent)
+                App.getInstance().startActivityAndCollapseCompat(context, shareIntent)
             } else {
                 Log.e(UTILSKT, "openShare: resolveActivity(shareIntent) returned null")
                 context.toastMessage("No suitable app for sharing found", ToastType.ERROR)
@@ -1206,7 +1206,7 @@ fun isDeviceLocked(context: Context): Boolean {
     return (context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager).isDeviceLocked
 }
 
-fun TileService.startActivityAndCollapseCompat(intent: Intent) {
+fun TileService.startActivityAndCollapseCustom(intent: Intent) {
     return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.TIRAMISU) {
         this.startActivityAndCollapse(PendingIntent.getActivity(
             this,

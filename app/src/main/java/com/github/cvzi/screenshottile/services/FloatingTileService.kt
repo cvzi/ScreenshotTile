@@ -14,7 +14,7 @@ import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
-import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCompat
+import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 
 
 /**
@@ -92,7 +92,7 @@ class FloatingTileService : TileService() {
             App.getInstance().prefManager.floatingButton =
                 !App.getInstance().prefManager.floatingButton
             ScreenshotAccessibilityService.instance?.updateFloatingButton()
-            startActivityAndCollapseCompat(NoDisplayActivity.newIntent(this, false).apply {
+            startActivityAndCollapseCustom(NoDisplayActivity.newIntent(this, false).apply {
                 flags = FLAG_ACTIVITY_NEW_TASK
             })
         }
