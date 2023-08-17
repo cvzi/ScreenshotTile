@@ -55,7 +55,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
     companion object {
         private const val TAG = "NotificationActionRcver"
 
-        fun handleIntent(context: Context, intent: Intent, TAG: String) {
+        fun handleIntent(context: Context, intent: Intent, tag: String) {
 
             var windowContext: Context = context
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -79,7 +79,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                         App.getInstance()
                             .startActivityAndCollapseIfNotActivity(context, shareIntent)
                     } else {
-                        Log.e(TAG, "resolveActivity(shareIntent) returned null")
+                        Log.e(tag, "resolveActivity(shareIntent) returned null")
                         val noChooserIntent = shareImageIntent(context, path, mimeType)
                         noChooserIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
                         noChooserIntent.setPackage(context.packageName)
@@ -87,7 +87,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                             App.getInstance()
                                 .startActivityAndCollapseIfNotActivity(context, noChooserIntent)
                         } else {
-                            Log.e(TAG, "resolveActivity(noChooserIntent) returned null")
+                            Log.e(tag, "resolveActivity(noChooserIntent) returned null")
                         }
                     }
                 }
@@ -123,7 +123,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     if (editIntent.resolveActivity(context.packageManager) != null) {
                         App.getInstance().startActivityAndCollapseIfNotActivity(context, editIntent)
                     } else {
-                        Log.e(TAG, "resolveActivity(editIntent) returned null")
+                        Log.e(tag, "resolveActivity(editIntent) returned null")
                         val noChooserIntent = editImageIntent(context, path, mimeType)
                         noChooserIntent.addFlags(FLAG_ACTIVITY_NEW_TASK)
                         noChooserIntent.setPackage(context.packageName)
@@ -131,7 +131,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                             App.getInstance()
                                 .startActivityAndCollapseIfNotActivity(context, noChooserIntent)
                         } else {
-                            Log.e(TAG, "resolveActivity(noChooserIntent) returned null")
+                            Log.e(tag, "resolveActivity(noChooserIntent) returned null")
                         }
                     }
                 }
@@ -144,13 +144,13 @@ class NotificationActionReceiver : BroadcastReceiver() {
                             ToastType.ERROR
                         )
                         hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
-                        Log.e(TAG, "Rename failed: path is null")
+                        Log.e(tag, "Rename failed: path is null")
                         return
                     }
                     var newName = RemoteInput.getResultsFromIntent(intent)
                         ?.getString(NOTIFICATION_ACTION_RENAME_INPUT)
                     if (newName.isNullOrBlank()) {
-                        Log.w(TAG, "Rename failed: New file name was empty or null")
+                        Log.w(tag, "Rename failed: New file name was empty or null")
                         hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
                         context.startActivity(
                             PostActivity.newIntentSingleImage(context, path).apply {
@@ -199,7 +199,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
                     if (path == null) {
-                        Log.e(TAG, "NOTIFICATION_ACTION_DETAILS path is null")
+                        Log.e(tag, "NOTIFICATION_ACTION_DETAILS path is null")
                         return
                     }
                     App.getInstance().startActivityAndCollapseIfNotActivity(
@@ -212,7 +212,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
                     if (path == null) {
-                        Log.e(TAG, "NOTIFICATION_ACTION_CROP path is null")
+                        Log.e(tag, "NOTIFICATION_ACTION_CROP path is null")
                         return
                     }
                     val mimeType = intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE)
@@ -226,7 +226,7 @@ class NotificationActionReceiver : BroadcastReceiver() {
                     hideNotification(context, intent.getIntExtra(NOTIFICATION_ACTION_ID, 0))
                     val path = Uri.parse(intent.getStringExtra(NOTIFICATION_ACTION_DATA_URI))
                     if (path == null) {
-                        Log.e(TAG, "NOTIFICATION_ACTION_PHOTO_EDITOR path is null")
+                        Log.e(tag, "NOTIFICATION_ACTION_PHOTO_EDITOR path is null")
                         return
                     }
                     val mimeType = intent.getStringExtra(NOTIFICATION_ACTION_DATA_MIME_TYPE)
