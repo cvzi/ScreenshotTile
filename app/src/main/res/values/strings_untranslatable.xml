@@ -18,6 +18,7 @@
     </string-array>
     <string name="pref_key_delay" translatable="false">delays_string</string>
     <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
+    <string name="pref_key_skip_delay_confirmation" translatable="false">skip_delay_confirmation</string>
     <string name="pref_key_use_native" translatable="false">use_native</string>
     <string name="pref_key_use_system_defaults" translatable="false">use_system_defaults</string>
     <string name="pref_key_hide_app" translatable="false">hide_app</string>

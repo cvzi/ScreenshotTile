@@ -23,6 +23,7 @@
     <string name="take_screenshot_5s_delayed">Take screenshot after 5s</string>
     <string name="toggle_floating_button">Toggle floating button</string>
     <string name="show_count_down">Show count down</string>
+    <string name="skip_delay_confirmation">Skip delay confirmation</string>
     <string name="use_native_screenshot">Use native screenshot method</string>
     <string name="use_native_screenshot_summary">Simulate home + power button press</string>
     <string name="use_native_screenshot_unsupported">Requires Android 9 Pie</string>

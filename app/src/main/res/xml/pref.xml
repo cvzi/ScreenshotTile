@@ -14,6 +14,12 @@
         android:title="@string/show_count_down"
         app:iconSpaceReserved="false" />
 
+    <androidx.preference.SwitchPreference
+        android:defaultValue="false"
+        android:key="@string/pref_key_skip_delay_confirmation"
+        android:title="@string/skip_delay_confirmation"
+        app:iconSpaceReserved="false" />
+
     <androidx.preference.ListPreference
         android:defaultValue="@string/setting_delay_value_default"
         android:entries="@array/setting_delay_entries"
