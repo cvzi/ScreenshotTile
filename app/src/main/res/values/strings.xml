@@ -18,6 +18,7 @@
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
     <string name="show_count_down">Show count down</string>
+    <string name="skip_delay_confirmation">Skip delay confirmation</string>
     <string name="use_native_screenshot">Use native screenshot method</string>
     <string name="use_native_screenshot_summary">Simulate home + power button press</string>
     <string name="use_native_screenshot_unsupported">Requires Android 9 Pie</string>

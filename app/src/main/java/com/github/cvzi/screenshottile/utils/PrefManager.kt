@@ -62,6 +62,13 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value
         ).apply()
 
+    var skipDelayConfirmation: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_skip_delay_confirmation), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_skip_delay_confirmation),
+            value
+        ).apply()
+
     var useNative: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_use_native), false)
         set(value) = pref.edit().putBoolean(
