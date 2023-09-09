@@ -24,7 +24,7 @@
     <string name="use_native_screenshot_unavailable">Tillgänglighetstjänst är inaktiverad</string>
     <string name="use_native_screenshot_option_default">Inbyggd metod använder systemets standard</string>
     <string name="use_native_screenshot_option_android11">Inaktivera \"Använd systemstandard\" för att använda detta</string>
-    <string name="accessibility_service_description">Om denna tjänst är aktiverad kan appen simulera ett power+hem-knappstryck för att ta skärmdumpar.\nPå vissa enheter kan denna metod vara stabilare eller snabbare än standardmetoden.\n\nOm du aktiverar tjänsten här måste du också aktivera \"inbyggd metod\" i appinställningarna.</string>
+    <string name="accessibility_service_description">Om denna tjänst är aktiverad kan appen simulera ett tryck på ström- och hemknappen för att ta skärmdumpar.\nPå vissa enheter kan denna metod vara stabilare eller snabbare än standardmetoden.\n\nOm du aktiverar tjänsten här måste du också aktivera \"inbyggd metod\" i appinställningarna.</string>
     <string name="use_system_defaults">Använd systemstandard</string>
     <string name="use_system_defaults_summary">Kräver Android 11</string>
     <string name="use_system_defaults_summary_on">Använder standardinställningar för lagringskatalog, format, skärmdumpsredigerare och aviseringar</string>
@@ -162,10 +162,10 @@
     <string name="main_general_text">Innan du kan använda den här appen måste du lägga till panelknappen i snabbinställningarna. Om du inte vet hur man gör detta, ta en titt på [Handledningen,.TutorialActivity].\n\nDenna app stöder två olika metoder för att ta skärmdumpar:</string>
     <string name="main_legacy_method_title">Äldre metod</string>
     <string name="main_legacy_method_text">Den äldre metoden för att ta skärmdumpar använder skärminspelningsfunktioner i Android.\nNär du tar en skärmbild spelas inget ljud. En tyst avisering visas för att öppna, dela eller redigera skärmbilden. Meddelandet kan inaktiveras i appinställningarna.\nInnan du kan ta en skärmdump måste du lägga till panelen till snabbinställningarna, acceptera behörighet att spela in skärmen och behörighet att komma åt den interna lagringsenheten för att spara bildfilen.\nSe handledningen om hur man gör det.\n\nPå vissa telefoner fungerar denna metod inte, särskilt på nyare Androids (9.0+) är det instabilt och det kan be om tillstånd på varje enskild skärmdump. Om det händer bör du använda den nativa metoden nedan.</string>
-    <string name="main_native_method_title">Nativ metod</string>
+    <string name="main_native_method_title">Inbyggd metod</string>
     <string name="main_native_method_text">Den nativa metoden för att ta skärmdumpar simulerar ett tryck på Home+Power-knappen och använder skärmdump metoden på din enhet.\n{main_native_method_text_android_version}\n\nInnan du kan ta en skärmdump måste du aktivera tillgänglighetstjänsten i telefonens inställningar. Tryck på knappen nedan för att öppna tillgänglighetsinställningarna.</string>
     <string name="main_native_method_text_android_pre_11">När du tar en skärmdump, kan det spela upp ett ljud eller visa en bildredigerare. Skärmdumpar lagras i standardmappen för bilder. Det beror på din telefon och kan inte ändras av den här appen. Du kan kanske ändra beteendet i telefonens inställningar.</string>
-    <string name="main_native_method_text_android_since_11">Du kan ändra i appinställningarna (under \"Använd systemstandard\") om du vill ha telefonens standardbeteende (aviseringar, skärmdump redaktör, standardmapp för bilder) eller om du vill använda appens inställningar (en anpassad lagringsmapp och aviseringar från den här appen).</string>
+    <string name="main_native_method_text_android_since_11">Du kan ändra i appinställningarna (under \"Använd systemstandard\") om du vill ha telefonens standardbeteende (aviseringar, skärmdumpsredigerare, standardmapp för bilder) eller om du vill använda appens inställningar (en anpassad lagringsmapp och aviseringar från den här appen).</string>
     <string name="main_floating_button_text">Om du har aktiverat den nativa metoden, kan du också använda en flytande knapp (liknande en chattbubbla) för att ta skärmdumpar.\nDu kan aktivera den med en separat panelknapp i snabbinställningarna och sedan flytta den runt på skärmen.</string>
     <string name="main_long_press_title">Långt tryck</string>
     <string name="main_long_press_text">Långtryck på kakel/knappen öppnar en meny. Du kan ange en fördröjning för skärmdumpen eller klippa ut en rektangel från skärmen.</string>
@@ -178,10 +178,10 @@
     <string name="post_recent_file_names_and_suggestions">Senaste filnamn och förslag:</string>
     <string name="post_hint_new_file_name">Nytt filnamn</string>
     <string name="post_rename_file">Byt namn på fil:</string>
-    <string name="post_rename_error_identical">Nytt och gammalt filnamn är identiskt</string>
+    <string name="post_rename_error_identical">Nytt och gammalt filnamn är identiska</string>
     <string name="post_hint_new_file_name_suggestion">Lägg till nytt förslag</string>
     <string name="post_save_a_suggestion">Spara förslag</string>
-    <string name="post_pin_to_favorites">Fäst i Favoriter</string>
+    <string name="post_pin_to_favorites">Fäst i favoriter</string>
     <string name="post_delete_suggestion">Radera förslag</string>
     <!-- Photo Editor-->
     <string name="label_brush">Pensel</string>
@@ -220,7 +220,7 @@
     <string name="setting_select_area_shutter_delay">Fördröjning efter att ha tryckt på slutaren (i \"Välj område\"-läge)</string>
     <string name="setting_select_area_shutter_delay_dialog">Väntetid mellan tiden då slutaren trycktes och skärmdumpen tas. Använd ett högre värde (till exempel 500) om slutarikonen var synlig på skärmdumpar.</string>
     <string name="setting_original_after_permission_delay">Fördröjning efter att tillstånd för skärmdumpar beviljats (gäller för \"Äldre metod\")</string>
-    <string name="setting_original_after_permission_delay_dialog">Väntetid mellan den tid då tillståndet beviljades och skärmdumpen tas. Använd ett högre värde (till exempel 500) om behörighetsdialogen var synlig på skärmdumpar.</string>
+    <string name="setting_original_after_permission_delay_dialog">Väntetid mellan att behörigheten beviljades och skärmdumpen tas. Använd ett högre värde (till exempel 500) om behörighetsdialogen var synlig på skärmdumpar.</string>
     <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Fördröjning efter fel \"%1$s\"</string>
     <string name="setting_failed_virtual_display_delay_dialog">Väntetid innan du försöker igen efter felmeddelande. Använd ett högre värde (till exempel 500) om felmeddelandet var synligt på skärmdumpar.</string>
     <string name="setting_floating_button_alpha">Genomskinlighet för flytande knapp</string>
@@ -231,9 +231,9 @@
     <string name="setting_floating_button_delay_custom_summary">Välj en anpassad fördröjning för den flytande knappen (i sekunder)</string>
     <string name="setting_format_quality">Kvalitet på filformat</string>
     <string name="setting_format_quality_dialog">Kompression / Kvalitet på filformatet: (0 till 100)\n0 betyder komprimera för den minsta storleken. 100 betyder komprimera för maximal visuell kvalitet.\nLämna tomt för att använda standardvärdet.</string>
-    <string name="setting_keep_app_data_max">Maximalt antal skärmdumpar att hålla i:</string>
-    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Om du inaktiverade \"%1$s\" lagras skärmdumpar tillfälligt i mappen \"Android/data/\" och raderas regelbundet när det maximala antalet filer uppnås.\n-1 betyder att behålla obegränsat\nStandardvärde %2$s</string>
-    <string name="setting_keep_screenshot_history">Håll historik över skärmdumpar</string>
-    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Lagrar filnamnen på skärmdumpar i en lista. Detta krävs för funktionen \"%1$s\"</string>
+    <string name="setting_keep_app_data_max">Maximalt antal skärmdumpar att behålla:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Om du inaktiverade \"%1$s\" lagras skärmdumpar tillfälligt i mappen \"Android/data/\" och raderas regelbundet när det maximala antalet filer uppnås.\n-1 står för att behålla obegränsat\nStandardvärde %2$s</string>
+    <string name="setting_keep_screenshot_history">Behåll historik över skärmdumpar</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Lagrar skärmdumpars filnamn i en lista. Detta krävs för funktionen \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Fotoredigerare: Rotera liggande bilder</string>
 </resources>
