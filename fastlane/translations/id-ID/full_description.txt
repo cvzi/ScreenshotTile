@@ -2,12 +2,11 @@ Menambahkan tombol/ubin ke panel pengaturan cepat untuk mengambil tangkapan laya
 
 Setelah menginstal, Anda perlu menambahkan tombol/ubin ke pengaturan cepat Anda dan kemudian memberikan izin untuk merekam tangkapan layar dan menyimpan gambar ke penyimpanan internal.
 
-Jika aplikasi mogok di Android 9/Pie atau 10, Anda dapat mencoba mengaktifkan "Gunakan metode tangkapan layar asli" di pengaturan aplikasi.
-
 <h2>Fitur:</h2>✓ Ambil tangkapan layar dari pengaturan cepat
 Tidak diperlukan root
 Pemberitahuan setelah tangkapan layar diambil (dapat dinonaktifkan)
 Segera bagikan, edit, atau hapus tangkapan layar dari notifikasi
+✓ Edit tangkapan layar dengan editor gambar yang disertakan
 Tombol mengambang/tombol Hamparan seperti gelembung obrolan (Android 9+)
 Gunakan sebagai aplikasi bantuan untuk mengambil tangkapan layar (tekan lama tombol Beranda)
 Hanya ambil tangkapan layar dari area tertentu di layar (tekan lama ubin)
@@ -17,7 +16,7 @@ Simpan dalam format file yang berbeda: png, jpg atau webp
 Ambil tangkapan layar otomatis dengan aplikasi seperti Tasker atau MacroDroid
 Gratis, sumber terbuka, tanpa iklan
 
-Ini adalah cabang dari "Screenshot Tile [Root]" tetapi tidak memerlukan root. Jika Anda memiliki akses root, Anda harus menggunakan <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">aplikasi asli</a> oleh ipcjs, ini lebih cepat dan lebih andal daripada cabang ini.
+Ini adalah cabang dari "Screenshot Tile [Root]" tetapi tidak memerlukan root.
 
 Kode sumber: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Kode sumber: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -38,4 +37,6 @@ Sejak Android 9/Pie izin ini diperlukan untuk mengambil tangkapan layar. Ini pad
 
 <h2>Menyembunyikan ikon aplikasi:</h2>Dalam pengaturan aplikasi, Anda dapat menyembunyikan ikon aplikasi dari peluncur. Anda masih dapat mengakses aplikasi dengan menekan lama ubin di pengaturan cepat Anda. Sayangnya, Android 10 tidak mengizinkan menyembunyikan aplikasi lagi.
 
-<h2>🌎 Support and translations</h2>If there is a problem or you want to help translate this app into your language, please contact me on <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> or contribute a translation on <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+<h2>🌎 Dukungan dan terjemahan</h2>Jika ada masalah atau Anda ingin membantu menerjemahkan aplikasi ini ke bahasa Anda, silakan hubungi saya di <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> atau berkontribusi terjemahan di <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Aplikasi ini dapat mengakses <a href="https://support.google.com/googleplay/android-developer/answer/10964491">Accessibility Services API</a> yang memungkinkan aplikasi ini merekam layar. Data tidak dikumpulkan atau dibagikan oleh aplikasi ini menggunakan kemampuan aksesibilitas.
