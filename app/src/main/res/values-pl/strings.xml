@@ -35,6 +35,7 @@
     <string name="setting_floating_button_unsupported">Wymaga Androida 9 Pie</string>
     <string name="setting_floating_button_scale">Rozmiar pływającego przycisku</string>
     <string name="setting_floating_button_scale_summary">Dostosuj rozmiar pływającego przycisku</string>
+    <string name="setting_floating_button_scale_current">Aktualny rozmiar: %1$d (Domyślnie: %2$d)</string>
     <string name="setting_floating_button_hide_after">Ukryj pływający przycisk po wykonaniu zrzutu ekranu</string>
     <string name="setting_floating_button_hide_after_summary">Automatycznie usuwa pływający przycisk po wykonaniu zrzutu ekranu</string>
     <string name="setting_floating_button_show_close">Pokaż przycisk [X]/zamknięcia obok przycisku pływającego</string>
@@ -42,6 +43,8 @@
     <string name="setting_floating_button_show_close_dialog_title">Emocji jako przycisk zamknięcia</string>
     <string name="setting_floating_button_show_close_dialog_description">Wpisz tekst lub wybierz emoji, które pojawi się jako przycisk zamykania</string>
     <string name="setting_floating_button_shutter">Motyw pływającego przycisku</string>
+    <string name="setting_floating_button_shutter_square">Kwadratowy</string>
+    <string name="setting_floating_button_shutter_round">Okrągły</string>
     <string name="setting_floating_button_delay">Opóźnienie (pływający przycisk)</string>
     <string name="setting_broadcast_secret">Hasło do Broadcast Intent</string>
     <string name="setting_broadcast_secret_description">Sekretna fraza umożliwiająca innym aplikacjom (takim jak MacroDroid lub Tasker) wykonanie zrzutu ekranu</string>
@@ -64,6 +67,7 @@
     <string name="setting_notification_buttons_description">Wybierz trzy przyciski, które pojawią się pod powiadomieniem o wykonaniu zrzutu ekranu</string>
     <string name="setting_notification_buttons_max_three">Wybierz maksymalnie trzy przyciski</string>
     <string name="setting_prevent_if_locked">Zapobiegaj zrzutom ekranu gdy urządzenie jest zablokowane</string>
+    <string name="setting_prevent_if_locked_summary">Nigdy więcej przypadkowo wykonanych zrzutów ekranów, gdy telefon znajduje się w kieszeni</string>
     <string name="setting_pe_overwrite_file">Nadpisz plik</string>
     <string name="setting_pe_overwrite_file_summary">Włączony edytor zdjęć próbuje nadpisać bieżący obraz zamiast tworzyć plik</string>
     <string name="notification_settings">Powiadomienia</string>
