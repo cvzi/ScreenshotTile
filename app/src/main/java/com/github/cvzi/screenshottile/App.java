@@ -124,6 +124,13 @@ public class App extends Application {
     @SuppressWarnings("UnusedReturnValue")
     public static MediaProjection createMediaProjection() {
         if (BuildConfig.DEBUG) Log.v(TAG, "createMediaProjection()");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            /*
+             On Android U/14 mediaProjection cannot be re-used,
+             need to create a new one with a new screenshot permission each time
+             */
+            mediaProjection = null;
+        }
         BasicForegroundService basicForegroundService = BasicForegroundService.Companion.getInstance();
         ScreenshotTileService screenshotTileService = ScreenshotTileService.Companion.getInstance();
         if (basicForegroundService != null) {
@@ -175,7 +182,14 @@ public class App extends Application {
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 BasicForegroundService.Companion.startForegroundService(context);
             }
-            mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                /*
+                 On Android U/14 mediaProjection cannot be re-used, so don't create it here already
+                 */
+                mediaProjection = null;
+            } else {
+                mediaProjection = mediaProjectionManager.getMediaProjection(Activity.RESULT_OK, (Intent) screenshotPermission.clone());
+            }
             if (onAcquireScreenshotPermissionListener != null) {
                 onAcquireScreenshotPermissionListener.onAcquireScreenshotPermission(false);
             }

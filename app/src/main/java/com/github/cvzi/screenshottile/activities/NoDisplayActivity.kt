@@ -61,15 +61,21 @@ class NoDisplayActivity : Activity() {
                     EXTRA_LEGACY, false
                 )
             ) {
-                // make sure that a foreground service runs
-                val screenshotTileService = ScreenshotTileService.instance
-                val basicForegroundService = BasicForegroundService.instance
-                if (basicForegroundService != null) {
-                    basicForegroundService.foreground()
-                } else if (screenshotTileService != null) {
-                    screenshotTileService.foreground()
-                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    startForegroundService(this)
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                    // make sure that a foreground service runs
+                    /*
+                    On Android U/14 we need to wait until we have the screenshot
+                    permission before we can start the foreground service
+                     */
+                    val screenshotTileService = ScreenshotTileService.instance
+                    val basicForegroundService = BasicForegroundService.instance
+                    if (basicForegroundService != null) {
+                        basicForegroundService.foreground()
+                    } else if (screenshotTileService != null) {
+                        screenshotTileService.foreground()
+                    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                        startForegroundService(this)
+                    }
                 }
                 if (intent.getBooleanExtra(EXTRA_LEGACY, false)) {
                     screenshotLegacyOnly(this)

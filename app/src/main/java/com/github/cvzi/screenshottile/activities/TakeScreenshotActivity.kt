@@ -120,12 +120,18 @@ class TakeScreenshotActivity : Activity(),
         StrictMode.setVmPolicy(builder.build())
         builder.detectFileUriExposure()
 
-        when {
-            BasicForegroundService.instance != null -> BasicForegroundService.instance?.foreground()
-            ScreenshotTileService.instance != null -> ScreenshotTileService.instance?.foreground()
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> BasicForegroundService.startForegroundService(
-                this
-            )
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            /*
+            On Android U/14 we need to wait until we have the screenshot
+            permission before we can start the foreground service
+             */
+            when {
+                BasicForegroundService.instance != null -> BasicForegroundService.instance?.foreground()
+                ScreenshotTileService.instance != null -> ScreenshotTileService.instance?.foreground()
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> BasicForegroundService.startForegroundService(
+                    this
+                )
+            }
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && App.getInstance().prefManager.floatingButton && ScreenshotAccessibilityService.instance != null) {
@@ -562,12 +568,19 @@ class TakeScreenshotActivity : Activity(),
             }
         }, null)
 
-        return mediaProjection?.createVirtualDisplay(
+        val virtualDisplay = mediaProjection?.createVirtualDisplay(
             "ScreenshotTaker",
             screenWidth, screenHeight, screenDensity,
             DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
             surface, null, null
         )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            // On Android U/14 the permission can only be used once, so delete it now
+            setScreenshotPermission(null)
+        }
+
+        return virtualDisplay
     }
 
     private fun screenShotFailedToast(
