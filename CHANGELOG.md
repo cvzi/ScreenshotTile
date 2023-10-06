@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.6
+*   Translations improved
+*   Improvements for Android 14/U
+
 ## 2.3.5
 *   Translations improved
 *   Upgrade SDK to 34

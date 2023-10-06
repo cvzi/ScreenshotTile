@@ -1,0 +1,9 @@
+v2.3.6
+* Translations updated
+* Improvements for Android 14/U
+v2.3.0
+* In "Details"-view you can move the image to a folder
+v2.2.0
+* Option to prevent screenshots when phone is locked
+* Option to override original file in photo editor
+* Landscape screenshots are rotated in photo editor
