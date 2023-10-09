@@ -43,4 +43,8 @@
         <item name="android:minHeight">30dp</item>
     </style>
 
+    <style name="CardViewWhite" parent="CardViewBase">
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+
 </resources>

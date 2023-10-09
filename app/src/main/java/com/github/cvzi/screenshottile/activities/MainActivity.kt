@@ -9,6 +9,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.Icon
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
@@ -135,6 +136,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonSettings)?.setOnClickListener {
             SettingsActivity.start(this)
         }
+        findViewById<Button>(R.id.buttonSettings2)?.setOnClickListener {
+            SettingsActivity.start(this)
+        }
         findViewById<Button>(R.id.buttonTutorial)?.setOnClickListener {
             TutorialActivity.start(this)
         }
@@ -166,6 +170,28 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.textDescGeneral)?.run {
             makeActivityClickable(this)
+        }
+
+        findViewById<Button>(R.id.buttonDonateMagen)?.setOnClickListener {
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://www.mdais.org/en/donation")).apply {
+                if (resolveActivity(packageManager) != null) {
+                    startActivity(this)
+                }
+            }
+        }
+        findViewById<Button>(R.id.buttonDonateGiveLively)?.setOnClickListener {
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://secure.givelively.org/donate/the-giving-back-fund-inc/help-israeli-soldiers-return-home")).apply {
+                if (resolveActivity(packageManager) != null) {
+                    startActivity(this)
+                }
+            }
+        }
+        findViewById<Button>(R.id.buttonDonateIsraelRescue)?.setOnClickListener {
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://israelrescue.org/campaign/israel-under-attack/")).apply {
+                if (resolveActivity(packageManager) != null) {
+                    startActivity(this)
+                }
+            }
         }
 
         switchLegacy.isChecked = !App.getInstance().prefManager.useNative
