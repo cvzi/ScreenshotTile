@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.7
+*   Add donation links
+
 ## 2.3.6
 *   Translations improved
 *   Improvements for Android 14/U
