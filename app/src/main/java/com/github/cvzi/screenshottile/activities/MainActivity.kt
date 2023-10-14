@@ -18,6 +18,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
@@ -65,17 +66,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if (!accessibilityConsent) {
             accessibilityConsent = hasFdroid(this)
-        }
-
-        if (accessibilityConsent) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
-                && App.getInstance().prefManager.screenshotCount == 0
-                && isNewAppInstallation(this)
-            ) {
-                // On Android Pie and higher, enable native method on first start
-                App.getInstance().prefManager.screenshotCount++
-                App.getInstance().prefManager.useNative = true
-            }
         }
 
         val textDescTranslate = findViewById<TextView>(R.id.textDescTranslate)
@@ -146,7 +136,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonAccessibilitySettings)?.setOnClickListener {
             // Open Accessibility settings
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+                informAboutRestrictedSettings()
             }
         }
 
@@ -180,14 +170,20 @@ class MainActivity : AppCompatActivity() {
             }
         }
         findViewById<Button>(R.id.buttonDonateGiveLively)?.setOnClickListener {
-            Intent(Intent.ACTION_VIEW, Uri.parse("https://secure.givelively.org/donate/the-giving-back-fund-inc/help-israeli-soldiers-return-home")).apply {
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://secure.givelively.org/donate/the-giving-back-fund-inc/help-israeli-soldiers-return-home")
+            ).apply {
                 if (resolveActivity(packageManager) != null) {
                     startActivity(this)
                 }
             }
         }
         findViewById<Button>(R.id.buttonDonateIsraelRescue)?.setOnClickListener {
-            Intent(Intent.ACTION_VIEW, Uri.parse("https://israelrescue.org/campaign/israel-under-attack/")).apply {
+            Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("https://israelrescue.org/campaign/israel-under-attack/")
+            ).apply {
                 if (resolveActivity(packageManager) != null) {
                     startActivity(this)
                 }
@@ -231,7 +227,7 @@ class MainActivity : AppCompatActivity() {
                 if (App.getInstance().prefManager.useNative) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && ScreenshotAccessibilityService.instance == null) {
                         // Open Accessibility settings
-                        ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+                        informAboutRestrictedSettings()
                     } else {
                         hintAccessibilityServiceUnavailable?.let {
                             (it.parent as? ViewGroup)?.removeView(it)
@@ -251,7 +247,7 @@ class MainActivity : AppCompatActivity() {
                 if (isChecked && ScreenshotAccessibilityService.instance == null) {
                     if (accessibilityConsent) {
                         // Open Accessibility settings
-                        ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+                        informAboutRestrictedSettings()
                     } else {
                         askToEnableAccessibility()
                     }
@@ -278,11 +274,7 @@ class MainActivity : AppCompatActivity() {
                     PackageManager.ApplicationInfoFlags.of(0)
                 ).flags
             } else {
-                @Suppress("DEPRECATION")
-                packageManager.getApplicationInfo(
-                    packageName,
-                    0
-                ).flags
+                packageManager.getApplicationInfo(packageName, 0).flags
             }
             if (flags and ApplicationInfo.FLAG_EXTERNAL_STORAGE != 0
             ) {
@@ -301,7 +293,6 @@ class MainActivity : AppCompatActivity() {
         ) {
             askToAddTiles()
         }
-
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -373,6 +364,32 @@ class MainActivity : AppCompatActivity() {
         builder.show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.P)
+    private fun informAboutRestrictedSettings() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+            return
+        }
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(R.string.main_accessibility_settings)
+        builder.setMessage(R.string.restricted_settings_text)
+        val imageView = ImageView(this)
+        imageView.setImageResource(R.drawable.restricted_settings)
+        builder.setView(imageView)
+        builder.setNeutralButton(R.string.restricted_settings_open_settings) { _, _ ->
+            val intent = Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+            intent.data = Uri.parse("package:$packageName")
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+            }
+        }
+        builder.setPositiveButton(R.string.restricted_settings_open_accessibility) { _, _ ->
+            ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+        }
+        builder.setNegativeButton(android.R.string.cancel, null)
+        builder.show()
+    }
+
     private fun updateFloatButton() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             ScreenshotAccessibilityService.instance?.updateFloatingButton()
@@ -414,10 +431,7 @@ class MainActivity : AppCompatActivity() {
                         )
                     )
                     hintAccessibilityServiceUnavailable?.setOnClickListener { _ ->
-                        ScreenshotAccessibilityService.openAccessibilitySettings(
-                            this,
-                            TAG
-                        )
+                        informAboutRestrictedSettings()
                     }
                 }
             } else if (ScreenshotAccessibilityService.instance != null && hintAccessibilityServiceUnavailable != null) {

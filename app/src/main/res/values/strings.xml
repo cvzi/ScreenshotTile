@@ -171,6 +171,10 @@
     <string name="main_long_press_text">Long pressing the tile/button opens a menu. You can specify a delay for the screenshot or cut out a rectangle from the screen.</string>
     <string name="main_assist_app_title">Assist app</string>
     <string name="main_assist_app_text">If you set this app as your assist app, you can long press the home button to take a screenshot. Enabling this app as your assist app will disable other assistants. You can change the action of the long home button press in the app settings.</string>
+    <string name="restricted_settings_open_settings">Allow restricted settings</string>
+    <string name="restricted_settings_open_accessibility">Open accessibility settings</string>
+    <string name="restricted_settings_text">You need to enable the app in the accessibility settings. If you cannot enable it, you need to allow the \"restricted settings\" first, as you can see in the screenshot:</string>
+
     <!-- Post edit activity -->
     <string name="post_button_save">Rename</string>
     <string name="post_button_move">Move</string>
