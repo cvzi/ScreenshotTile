@@ -68,6 +68,18 @@ class MainActivity : AppCompatActivity() {
             accessibilityConsent = hasFdroid(this)
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+            && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU
+            && accessibilityConsent
+            && App.getInstance().prefManager.screenshotCount == 0
+            && isNewAppInstallation(this)
+        ) {
+            // On Android Pie - Tiramisu, enable native method on first start
+            // Don't do it on Tiramisu+ because of the "restricted settings" dialog
+            App.getInstance().prefManager.screenshotCount++
+            App.getInstance().prefManager.useNative = true
+        }
+
         val textDescTranslate = findViewById<TextView>(R.id.textDescTranslate)
         textDescTranslate.movementMethod = LinkMovementMethod()
         textDescTranslate.text = Html.fromHtml(
@@ -136,7 +148,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.buttonAccessibilitySettings)?.setOnClickListener {
             // Open Accessibility settings
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                informAboutRestrictedSettings()
+                ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
             }
         }
 
@@ -227,7 +239,7 @@ class MainActivity : AppCompatActivity() {
                 if (App.getInstance().prefManager.useNative) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && ScreenshotAccessibilityService.instance == null) {
                         // Open Accessibility settings
-                        informAboutRestrictedSettings()
+                        ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
                     } else {
                         hintAccessibilityServiceUnavailable?.let {
                             (it.parent as? ViewGroup)?.removeView(it)
@@ -247,7 +259,7 @@ class MainActivity : AppCompatActivity() {
                 if (isChecked && ScreenshotAccessibilityService.instance == null) {
                     if (accessibilityConsent) {
                         // Open Accessibility settings
-                        informAboutRestrictedSettings()
+                        ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
                     } else {
                         askToEnableAccessibility()
                     }
@@ -365,13 +377,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
+    /**
+     * Does nothing until Android 13 Tiramisu
+     * Show dialog about restricted settings:
+     *   [ Displays screenshot of "App info" ]
+     *  - Button to open accessibility settings
+     *  - Cancel button
+     *  - Button to open "App info" screen with "restricted settings"
+     */
     private fun informAboutRestrictedSettings() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-            ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
             return
         }
         val builder = AlertDialog.Builder(this)
-        builder.setTitle(R.string.main_accessibility_settings)
+        builder.setTitle(R.string.restricted_settings_title)
         builder.setMessage(R.string.restricted_settings_text)
         val imageView = ImageView(this)
         imageView.setImageResource(R.drawable.restricted_settings)
@@ -431,7 +450,11 @@ class MainActivity : AppCompatActivity() {
                         )
                     )
                     hintAccessibilityServiceUnavailable?.setOnClickListener { _ ->
-                        informAboutRestrictedSettings()
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                            ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+                        } else {
+                            informAboutRestrictedSettings()
+                        }
                     }
                 }
             } else if (ScreenshotAccessibilityService.instance != null && hintAccessibilityServiceUnavailable != null) {
@@ -439,6 +462,11 @@ class MainActivity : AppCompatActivity() {
                     hintAccessibilityServiceUnavailable
                 )
                 hintAccessibilityServiceUnavailable = null
+            }
+            // User might have returned from accessibility settings without activating the service
+            // Show dialog about restricted settings
+            if (ScreenshotAccessibilityService.instance == null) {
+                informAboutRestrictedSettings()
             }
         }
 

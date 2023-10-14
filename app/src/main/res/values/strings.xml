@@ -173,7 +173,8 @@
     <string name="main_assist_app_text">If you set this app as your assist app, you can long press the home button to take a screenshot. Enabling this app as your assist app will disable other assistants. You can change the action of the long home button press in the app settings.</string>
     <string name="restricted_settings_open_settings">Allow restricted settings</string>
     <string name="restricted_settings_open_accessibility">Open accessibility settings</string>
-    <string name="restricted_settings_text">You need to enable the app in the accessibility settings. If you cannot enable it, you need to allow the \"restricted settings\" first, as you can see in the screenshot:</string>
+    <string name="restricted_settings_title">Enable accessibility settings</string>
+    <string name="restricted_settings_text">If the accessibility settings are grayed out, you will need to allow the \"restricted settings\" first. The \"restricted settings\" can be found in the \"App info\":</string>
 
     <!-- Post edit activity -->
     <string name="post_button_save">Rename</string>
