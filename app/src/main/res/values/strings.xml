@@ -12,11 +12,16 @@
     <string name="floating_button_settings">Floating button settings</string>
     <string name="left_screenshot_right_menu">Left: Screenshot, right: Settings</string>
     <string name="partial_screenshot">Select area</string>
+    <string name="options_dialog">Show options</string>
     <string name="file_format">File format</string>
     <string name="setting_delay_entry_default">Instant</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
+    <string name="take_screenshot_1s_delayed">Take screenshot after 1s</string>
+    <string name="take_screenshot_2s_delayed">Take screenshot after 2s</string>
+    <string name="take_screenshot_5s_delayed">Take screenshot after 5s</string>
+    <string name="toggle_floating_button">Toggle floating button</string>
     <string name="show_count_down">Show count down</string>
     <string name="use_native_screenshot">Use native screenshot method</string>
     <string name="use_native_screenshot_summary">Simulate home + power button press</string>
@@ -57,6 +62,7 @@
 %random% - a random UUID\n
 %randint% - a random number]]></string>
     <string name="setting_tile_action">Tile action</string>
+    <string name="setting_tile_long_press_action">Tile long-press action</string>
     <string name="setting_floating_action">Floating button action</string>
     <string name="setting_voice_interaction_action">Assistant action</string>
     <string name="setting_dark_theme">Dark theme</string>
