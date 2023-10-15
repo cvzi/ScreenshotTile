@@ -12,11 +12,16 @@
     <string name="floating_button_settings">浮动按钮设置</string>
     <string name="left_screenshot_right_menu">左：屏幕截图，右：设置</string>
     <string name="partial_screenshot">选择区域</string>
+    <string name="options_dialog">显示选项</string>
     <string name="file_format">文件格式</string>
     <string name="setting_delay_entry_default">立即</string>
     <string name="setting_delay_entry_1s">1 秒</string>
     <string name="setting_delay_entry_2s">2 秒</string>
     <string name="setting_delay_entry_5s">5 秒</string>
+    <string name="take_screenshot_1s_delayed">1 秒后截屏</string>
+    <string name="take_screenshot_2s_delayed">2 秒后截屏</string>
+    <string name="take_screenshot_5s_delayed">5 秒后截屏</string>
+    <string name="toggle_floating_button">切换悬浮按钮</string>
     <string name="show_count_down">显示倒计时</string>
     <string name="use_native_screenshot">使用原生屏幕截图方式</string>
     <string name="use_native_screenshot_summary">模拟 home + 电源键按压</string>
@@ -57,6 +62,7 @@
 %random% - 随机的 UUID\n
 %randint% - 随机数字]]></string>
     <string name="setting_tile_action">磁贴操作</string>
+    <string name="setting_tile_long_press_action">长按瓷贴操作</string>
     <string name="setting_floating_action">浮动按钮操作</string>
     <string name="setting_voice_interaction_action">助理操作</string>
     <string name="setting_dark_theme">深色主题</string>
@@ -171,6 +177,10 @@
     <string name="main_long_press_text">长按图块/按钮打开菜单。您可以指定屏幕截图延迟或从屏幕截取矩形区域。</string>
     <string name="main_assist_app_title">助理应用</string>
     <string name="main_assist_app_text">如果您将此应用设置为您的助理应用，您可以长按主页按钮进行截图。将此应用设为您的助理应用将禁用其他助理。您可以在应用设置中更改长按主页按钮的动作。</string>
+    <string name="restricted_settings_open_settings">允许受限制的设置</string>
+    <string name="restricted_settings_open_accessibility">打开无障碍设置</string>
+    <string name="restricted_settings_title">允许受限制的设置</string>
+    <string name="restricted_settings_text">如果无障碍设置变灰，您需要先允许 “受限制设置”。 \"受限制设置\" 可以在 “应用信息” 中找到：</string>
     <!-- Post edit activity -->
     <string name="post_button_save">重命名</string>
     <string name="post_button_move">移动</string>
