@@ -15,15 +15,6 @@
         app:iconSpaceReserved="false" />
 
     <androidx.preference.ListPreference
-        android:defaultValue="@string/setting_tile_action_value_options"
-        android:entries="@array/setting_tile_long_press_action_entries"
-        android:entryValues="@array/setting_tile_long_press_action_values"
-        android:key="@string/pref_key_tile_long_press_action"
-        android:summary="@string/options_dialog"
-        android:title="@string/setting_tile_long_press_action"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.ListPreference
         android:defaultValue="@string/setting_delay_value_default"
         android:entries="@array/setting_delay_entries"
         android:entryValues="@array/setting_delay_values"
@@ -182,6 +173,15 @@
         android:key="@string/pref_key_tile_action"
         android:summary="@string/take_screenshot"
         android:title="@string/setting_tile_action"
+        app:iconSpaceReserved="false" />
+
+    <androidx.preference.ListPreference
+        android:defaultValue="@string/setting_tile_action_value_options"
+        android:entries="@array/setting_tile_long_press_action_entries"
+        android:entryValues="@array/setting_tile_long_press_action_values"
+        android:key="@string/pref_key_tile_long_press_action"
+        android:summary="@string/options_dialog"
+        android:title="@string/setting_tile_long_press_action"
         app:iconSpaceReserved="false" />
 
     <androidx.preference.Preference

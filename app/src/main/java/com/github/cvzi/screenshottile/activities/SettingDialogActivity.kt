@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
@@ -11,10 +12,14 @@ import com.github.cvzi.screenshottile.fragments.SettingDialogFragment
 import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
-
+import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.services.FloatingTileService
+import com.github.cvzi.screenshottile.utils.screenshot
 
 /**
  * Holds the dialog fragment for delaying the screenshot
+ * Opened by long pressing the screenshot-tile in the quick settings
+ * Depending on the settings, this shows a dialog or performs an action directly
  *
  * Created by ipcjs on 2017/8/16.
  * Changes by cuzi (cuzi@openmail.cc)
@@ -37,11 +42,49 @@ class SettingDialogActivity : AppCompatActivity() {
         }
     }
 
+    private val pref by lazy { App.getInstance().prefManager }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
-            SettingDialogFragment.newInstance()
-                .show(supportFragmentManager, SettingDialogFragment::class.java.name)
+
+            when (App.getInstance().prefManager.tileLongPressAction) {
+                getString(R.string.setting_tile_action_value_options) -> {
+                    SettingDialogFragment.newInstance()
+                        .show(supportFragmentManager, SettingDialogFragment::class.java.name)
+                }
+                getString(R.string.setting_tile_action_value_screenshot) -> {
+                    if (pref.delay == 0) {
+                        screenshot(this, false)
+                    } else {
+                        App.getInstance().screenshot(this)
+                    }
+                    finish()
+                }
+                getString(R.string.setting_tile_action_value_toggle_floating_button) -> {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        FloatingTileService.toggleFloatingButton(this)
+                    }
+                    finish()
+                }
+                getString(R.string.setting_tile_action_value_partial) -> {
+                    App.getInstance().screenshotPartial(this)
+                    finish()
+                }
+                getString(R.string.setting_tile_action_value_delayed_1s_screenshot) -> {
+                    App.getInstance().screenshot(this, 1)
+                    finish()
+                }
+                getString(R.string.setting_tile_action_value_delayed_2s_screenshot) -> {
+                    App.getInstance().screenshot(this, 2)
+                    finish()
+                }
+                getString(R.string.setting_tile_action_value_delayed_5s_screenshot) -> {
+                    App.getInstance().screenshot(this, 5)
+                    finish()
+                }
+            }
+
         }
 
         /*

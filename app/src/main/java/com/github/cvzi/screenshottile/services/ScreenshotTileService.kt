@@ -16,6 +16,7 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.SettingDialogActivity
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.utils.foregroundNotification
+import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 
 
 /**
@@ -138,7 +139,7 @@ class ScreenshotTileService : TileService(),
             getString(R.string.setting_tile_action_value_options) -> {
                 SettingDialogActivity.newIntent(this).run {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(this)
+                    startActivityAndCollapseCustom(this)
                 }
             }
             getString(R.string.setting_tile_action_value_partial) -> {
