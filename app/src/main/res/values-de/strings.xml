@@ -12,11 +12,16 @@
     <string name="floating_button_settings">Einstellungen der schwebenden Taste</string>
     <string name="left_screenshot_right_menu">Links: Screenshot, rechts: Einstellungen</string>
     <string name="partial_screenshot">Bereich auswählen</string>
+    <string name="options_dialog">Optionen anzeigen</string>
     <string name="file_format">Dateiformat</string>
     <string name="setting_delay_entry_default">Sofort</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
+    <string name="take_screenshot_1s_delayed">Screenshot um eine Sekunde verzögern</string>
+    <string name="take_screenshot_2s_delayed">Screenshot um zwei Sekunden verzögern</string>
+    <string name="take_screenshot_5s_delayed">Screenshot um fünf Sekunden verzögern</string>
+    <string name="toggle_floating_button">Schwebender Screenshot Auslöser an/aus</string>
     <string name="show_count_down">Countdown anzeigen</string>
     <string name="use_native_screenshot">Native Screenshotaufnahme</string>
     <string name="use_native_screenshot_summary">Simuliert einen Tastendruck: home + power</string>
@@ -57,6 +62,7 @@
 %random% - eine zufällige UUID\n
 %randint% - eine zufällige Zahl]]></string>
     <string name="setting_tile_action">Kachelaktion</string>
+    <string name="setting_tile_long_press_action">Kachelaktion bei langem Drücken</string>
     <string name="setting_floating_action">Aktion des schwebenden Screenshot Auslösers</string>
     <string name="setting_voice_interaction_action">Assistentaktion</string>
     <string name="setting_dark_theme">Dunkles Farbschema</string>
@@ -171,6 +177,10 @@
     <string name="main_long_press_text">Durch langes Drücken auf die Kachel/Button in den Schnelleinstellungen wird ein Menü geöffnet. Dort kann eine Verzögerung ausgewählt werden oder ein Rechteck aus dem Bildschirm ausgeschnitten werden.</string>
     <string name="main_assist_app_title">Assistent-App</string>
     <string name="main_assist_app_text">Wenn du diese App als deine Assistent-App festlegst, dann kannst du mit langem Drücken der Home-Taste einen Screenshot aufnehmen. Wenn du diese app als deine Assistent-App festlegst, werden andere Assistent-Apps deaktiviert. Du kannst die Aktion des langen Drückens der Home-Taste in den Appeinstellungen ändern.</string>
+    <string name="restricted_settings_open_settings">Eingeschränkte Einstellungen zulassen</string>
+    <string name="restricted_settings_open_accessibility">Bedienungshilfen Einstellungen öffnen</string>
+    <string name="restricted_settings_title">Bedienungshilfen aktivieren</string>
+    <string name="restricted_settings_text">Wenn die Bedienungshilfen-Einstellungen ausgegraut sind, musst du zuerst die \"Eingeschränkten Einstellungen\" zulassen. Die \"Eingeschränkten Einstellungen\" findest du in der \"App Info\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Umbenennen</string>
     <string name="post_button_move">Verschieben</string>
