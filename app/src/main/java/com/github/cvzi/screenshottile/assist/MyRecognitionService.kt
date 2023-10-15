@@ -2,8 +2,10 @@ package com.github.cvzi.screenshottile.assist
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.RemoteException
 import android.speech.RecognitionService
 import android.speech.SpeechRecognizer
+import android.util.Log
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.utils.toastMessage
@@ -25,9 +27,13 @@ class MyRecognitionService : RecognitionService() {
         val errorMsg =
             "The default assistant app \"${getString(R.string.app_name)}\" does not offer speech recognition!"
 
-        callback.results(Bundle().apply {
-            putStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION, arrayListOf(errorMsg))
-        })
+        try {
+            callback.results(Bundle().apply {
+                putStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION, arrayListOf(errorMsg))
+            })
+        } catch (e: RemoteException) {
+            Log.e("MyRecognitionService", "callback.results: RemoteException", e)
+        }
 
         toastMessage("⚠️ $errorMsg", ToastType.ERROR)
     }
