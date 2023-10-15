@@ -32,7 +32,7 @@ Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTil
 - [Automatic screenshots](#automatic-screenshots-with-broadcast-intents)
 - [Miscellaneous data](#miscellaneous-data)
 
-[Changelog](CHANGELOG.md) • [View older releases](https://keybase.pub/cuzi/ScreenshotTileNoRoot_bin/) • [Google store](https://play.google.com/store/apps/details?id=com.github.cvzi.screenshottile)
+[Changelog](CHANGELOG.md) • [View older releases](https://gitlab.com/cvzi/binaries/-/tree/main/ScreenshotTile) • [Google store](https://play.google.com/store/apps/details?id=com.github.cvzi.screenshottile)
 
 
 ## Languages
