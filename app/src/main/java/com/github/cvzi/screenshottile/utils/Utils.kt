@@ -30,7 +30,6 @@ import android.view.View
 import android.view.ViewManager
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.DialogFragment
 import com.burhanrashid52.photoediting.EditImageActivity
@@ -1208,12 +1207,14 @@ fun isDeviceLocked(context: Context): Boolean {
 
 fun TileService.startActivityAndCollapseCustom(intent: Intent) {
     return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.TIRAMISU) {
-        this.startActivityAndCollapse(PendingIntent.getActivity(
-            this,
-            0,
-            intent,
-            PendingIntent.FLAG_IMMUTABLE
-        ))
+        this.startActivityAndCollapse(
+            PendingIntent.getActivity(
+                this,
+                0,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE
+            )
+        )
     } else {
         @Suppress("DEPRECATION")
         this.startActivityAndCollapse(intent)
