@@ -12,11 +12,16 @@
     <string name="floating_button_settings">Налаштування рухомої кнопки</string>
     <string name="left_screenshot_right_menu">Ліворуч: Знімок екрана, праворуч: Налаштування</string>
     <string name="partial_screenshot">Обрати ділянку</string>
+    <string name="options_dialog">Показати параметри</string>
     <string name="file_format">Формат файлу</string>
     <string name="setting_delay_entry_default">Без затримки</string>
     <string name="setting_delay_entry_1s">1 с</string>
     <string name="setting_delay_entry_2s">2 с</string>
     <string name="setting_delay_entry_5s">5 с</string>
+    <string name="take_screenshot_1s_delayed">Зробити знімок екрана за 1 с</string>
+    <string name="take_screenshot_2s_delayed">Зробити знімок екрана за 2 с</string>
+    <string name="take_screenshot_5s_delayed">Зробити знімок екрана за 5 с</string>
+    <string name="toggle_floating_button">Перемкнути пересувну кнопку</string>
     <string name="show_count_down">Показувати зворотній відлік</string>
     <string name="use_native_screenshot">Використовувати вбудований метод знімка екрану</string>
     <string name="use_native_screenshot_summary">Імітація натискання кнопок додому + живлення</string>
@@ -57,6 +62,7 @@
 %random% — випадковий UUID\n
 %randint% — випадкове число]]></string>
     <string name="setting_tile_action">Дія плитки</string>
+    <string name="setting_tile_long_press_action">Дія затискання плитки</string>
     <string name="setting_floating_action">Дія для рухомої кнопки</string>
     <string name="setting_voice_interaction_action">Дія помічника</string>
     <string name="setting_dark_theme">Нічний режим</string>
@@ -171,6 +177,10 @@
     <string name="main_long_press_text">Тривале натискання на плитку/кнопку відкриває меню. В цьому меню ви можете вказати затримку перед зняттям екрана або зробити знімок вибраної частини екрана.</string>
     <string name="main_assist_app_title">Помічник</string>
     <string name="main_assist_app_text">Якщо ви встановите цей застосунок як допоміжний, ви можете зробити знімок екрана тривалим натиском кнопку «Додому». Увімкнення цього застосунку як допоміжного застосунку вимкне інших помічників. Змінити дію кнопки Додому можна в налаштуваннях застосунку.</string>
+    <string name="restricted_settings_open_settings">Дозволити налаштування з обмеженнями</string>
+    <string name="restricted_settings_open_accessibility">Відкрити налаштування доступності</string>
+    <string name="restricted_settings_title">Увімкнути налаштування доступності</string>
+    <string name="restricted_settings_text">Якщо ввімкнено налаштування доступності, спершу вам необхідно дозволити \"налаштування з обмеженнями\". Їх можна знайти у розділі \"Інформація про застосунок\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Перейменувати</string>
     <string name="post_button_move">Перемістити</string>
