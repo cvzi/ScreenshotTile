@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.4.0
+*   Custom action when long-pressing the quick settings tile [#376](https://github.com/cvzi/ScreenshotTile/pull/376) [#426](https://github.com/cvzi/ScreenshotTile/issues/426)
+*   Show an explanation for "restricted settings" in Android 13+ [#410](https://github.com/cvzi/ScreenshotTile/issues/410)
+
 ## 2.3.7
 *   Add donation links
 
