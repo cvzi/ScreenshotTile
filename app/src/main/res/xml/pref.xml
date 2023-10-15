@@ -14,10 +14,13 @@
         android:title="@string/show_count_down"
         app:iconSpaceReserved="false" />
 
-    <androidx.preference.SwitchPreference
-        android:defaultValue="false"
-        android:key="@string/pref_key_skip_delay_confirmation"
-        android:title="@string/skip_delay_confirmation"
+    <androidx.preference.ListPreference
+        android:defaultValue="@string/setting_tile_action_value_options"
+        android:entries="@array/setting_tile_long_press_action_entries"
+        android:entryValues="@array/setting_tile_long_press_action_values"
+        android:key="@string/pref_key_tile_long_press_action"
+        android:summary="@string/options_dialog"
+        android:title="@string/setting_tile_long_press_action"
         app:iconSpaceReserved="false" />
 
     <androidx.preference.ListPreference

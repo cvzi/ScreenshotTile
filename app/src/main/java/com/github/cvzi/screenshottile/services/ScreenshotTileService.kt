@@ -13,6 +13,7 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.activities.SettingDialogActivity
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.utils.foregroundNotification
 
@@ -133,10 +134,19 @@ class ScreenshotTileService : TileService(),
 
         setState(Tile.STATE_ACTIVE)
 
-        if (App.getInstance().prefManager.tileAction == getString(R.string.setting_tile_action_value_screenshot)) {
-            App.getInstance().screenshot(this)
-        } else {
-            App.getInstance().screenshotPartial(this)
+        when(App.getInstance().prefManager.tileAction) {
+            getString(R.string.setting_tile_action_value_options) -> {
+                SettingDialogActivity.newIntent(this).run {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(this)
+                }
+            }
+            getString(R.string.setting_tile_action_value_partial) -> {
+                App.getInstance().screenshotPartial(this)
+            }
+            else -> {
+                App.getInstance().screenshot(this)
+            }
         }
     }
 

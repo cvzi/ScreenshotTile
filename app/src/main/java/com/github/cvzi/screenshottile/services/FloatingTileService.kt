@@ -1,5 +1,6 @@
 package com.github.cvzi.screenshottile.services
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Build
@@ -28,6 +29,32 @@ class FloatingTileService : TileService() {
     companion object {
         private const val TAG = "FloatingTileService"
         var instance: FloatingTileService? = null
+
+        fun toggleFloatingButton(context: Context) {
+            if (ScreenshotAccessibilityService.instance == null) {
+                // Always enable if accessibility service is not yet running
+                App.getInstance().prefManager.floatingButton = true
+                if (context is Activity) {
+                    openAccessibilitySettings(context)
+                } else if (context is TileService) {
+                    openAccessibilitySettings(context)
+                }
+            } else {
+                // Toggle if accessibility service is running
+                App.getInstance().prefManager.floatingButton =
+                    !App.getInstance().prefManager.floatingButton
+                ScreenshotAccessibilityService.instance?.updateFloatingButton()
+
+                val intent = NoDisplayActivity.newIntent(context, false).apply {
+                    flags = FLAG_ACTIVITY_NEW_TASK
+                }
+                if (context is TileService) {
+                    context.startActivityAndCollapseCustom(intent)
+                } else {
+                    context.startActivity(intent)
+                }
+            }
+        }
     }
 
     override fun attachBaseContext(base: Context?) {
@@ -83,19 +110,7 @@ class FloatingTileService : TileService() {
     override fun onClick() {
         super.onClick()
         if (BuildConfig.DEBUG) Log.v(TAG, "onClick()")
-        if (ScreenshotAccessibilityService.instance == null) {
-            // Always enable if accessibility service is not yet running
-            App.getInstance().prefManager.floatingButton = true
-            openAccessibilitySettings(this)
-        } else {
-            // Toggle if accessibility service is running
-            App.getInstance().prefManager.floatingButton =
-                !App.getInstance().prefManager.floatingButton
-            ScreenshotAccessibilityService.instance?.updateFloatingButton()
-            startActivityAndCollapseCustom(NoDisplayActivity.newIntent(this, false).apply {
-                flags = FLAG_ACTIVITY_NEW_TASK
-            })
-        }
+        toggleFloatingButton(this)
         updateTileState()
     }
 

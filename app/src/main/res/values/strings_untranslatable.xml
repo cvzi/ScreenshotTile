@@ -18,7 +18,7 @@
     </string-array>
     <string name="pref_key_delay" translatable="false">delays_string</string>
     <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
-    <string name="pref_key_skip_delay_confirmation" translatable="false">skip_delay_confirmation</string>
+    <string name="pref_key_tile_long_press_action" translatable="false">tile_long_press_action</string>
     <string name="pref_key_use_native" translatable="false">use_native</string>
     <string name="pref_key_use_system_defaults" translatable="false">use_system_defaults</string>
     <string name="pref_key_hide_app" translatable="false">hide_app</string>
@@ -123,14 +123,40 @@
 
     <string name="setting_tile_action_value_screenshot" translatable="false">screenshot</string>
     <string name="setting_tile_action_value_partial" translatable="false">partial</string>
+    <string name="setting_tile_action_value_options" translatable="false">options</string>
+    <string name="setting_tile_action_value_toggle_floating_button" translatable="false">toggle_floating_button</string>
+    <string name="setting_tile_action_value_delayed_1s_screenshot" translatable="false">delayed_1s_screenshot</string>
+    <string name="setting_tile_action_value_delayed_2s_screenshot" translatable="false">delayed_2s_screenshot</string>
+    <string name="setting_tile_action_value_delayed_5s_screenshot" translatable="false">delayed_5s_screenshot</string>
     <string-array name="setting_tile_action_values" translatable="false">
         <item>@string/setting_tile_action_value_screenshot</item>
         <item>@string/setting_tile_action_value_partial</item>
+        <item>@string/setting_tile_action_value_options</item>
     </string-array>
     <string name="pref_key_tile_action" translatable="false">tile_action</string>
     <string-array name="setting_tile_action_entries" translatable="false">
         <item>@string/take_screenshot</item>
         <item>@string/partial_screenshot</item>
+        <item>@string/options_dialog</item>
+    </string-array>
+
+    <string-array name="setting_tile_long_press_action_values" translatable="false">
+        <item>@string/setting_tile_action_value_screenshot</item>
+        <item>@string/setting_tile_action_value_partial</item>
+        <item>@string/setting_tile_action_value_options</item>
+        <item>@string/setting_tile_action_value_toggle_floating_button</item>
+        <item>@string/setting_tile_action_value_delayed_1s_screenshot</item>
+        <item>@string/setting_tile_action_value_delayed_2s_screenshot</item>
+        <item>@string/setting_tile_action_value_delayed_5s_screenshot</item>
+    </string-array>
+    <string-array name="setting_tile_long_press_action_entries" translatable="false">
+        <item>@string/take_screenshot</item>
+        <item>@string/partial_screenshot</item>
+        <item>@string/options_dialog</item>
+        <item>@string/toggle_floating_button</item>
+        <item>@string/take_screenshot_1s_delayed</item>
+        <item>@string/take_screenshot_2s_delayed</item>
+        <item>@string/take_screenshot_5s_delayed</item>
     </string-array>
 
     <string name="setting_floating_action_value_screenshot" translatable="false">screenshot</string>

@@ -61,7 +61,7 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
                     safeDismiss(TAG)
                 }
                 .setPositiveButton(
-                    if (pref.tileAction == getString(R.string.setting_tile_action_value_screenshot)) R.string.partial_screenshot else R.string.take_screenshot,
+                    if (pref.tileAction != getString(R.string.setting_tile_action_value_screenshot)) R.string.take_screenshot else R.string.partial_screenshot,
                     this
                 )
                 .setNeutralButton(R.string.more_setting, this)
@@ -76,10 +76,10 @@ class SettingDialogFragment : DialogFragment(), DialogInterface.OnClickListener 
         myActivity?.let {
             when (which) {
                 DialogInterface.BUTTON_POSITIVE -> {
-                    if (pref.tileAction == getString(R.string.setting_tile_action_value_screenshot)) {
-                        App.getInstance().screenshotPartial(context)
-                    } else {
+                    if (pref.tileAction != getString(R.string.setting_tile_action_value_screenshot)) {
                         App.getInstance().screenshot(context)
+                    } else {
+                        App.getInstance().screenshotPartial(context)
                     }
                 }
 

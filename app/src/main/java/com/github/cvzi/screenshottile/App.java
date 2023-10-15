@@ -331,18 +331,26 @@ public class App extends Application {
      * taken by TileService.onStopListening() when the panel is collapsed.
      *
      * @param context Context
+     * @param delay Delay in seconds, if -1 the delay from the preferences will be used
      */
-    public void screenshot(Context context) {
+    public void screenshot(Context context, int delay) {
         if (isDeviceLocked(context) && prefManager.getPreventIfLocked()) {
             toastDeviceIsLocked(context);
             return;
         }
 
         if (prefManager.getShowCountDown()) {
-            screenshotShowCountdown(context);
+            screenshotShowCountdown(context, delay);
         } else {
-            screenshotHiddenCountdown(context, false, false);
+            screenshotHiddenCountdown(context, delay, false, false);
         }
+    }
+
+    /**
+     * Take a screenshot (with delay from preferences if a delay was configured)
+     **/
+    public void screenshot(Context context) {
+        screenshot(context, -1);
     }
 
     /**
@@ -380,8 +388,10 @@ public class App extends Application {
     }
 
 
-    private void screenshotShowCountdown(Context context) {
-        int delay = prefManager.getDelay();
+    private void screenshotShowCountdown(Context context, int delay) {
+        if (delay == -1) {
+            delay = prefManager.getDelay();
+        }
         Intent intent;
         boolean startActivityAndCollapseSucceeded = false;
         if (context instanceof ScreenshotTileService || ScreenshotTileService.Companion.getInstance() != null) {
@@ -415,8 +425,10 @@ public class App extends Application {
         }
     }
 
-    private void screenshotHiddenCountdown(Context context, boolean now, boolean alreadyCollapsed) {
-        int delay = prefManager.getDelay();
+    private void screenshotHiddenCountdown(Context context, int delay, boolean now, boolean alreadyCollapsed) {
+        if (delay == -1) {
+            delay = prefManager.getDelay();
+        }
         if (now) {
             delay = 0;
         }
@@ -540,7 +552,7 @@ public class App extends Application {
 
             count--;
             if (count < 0) {
-                screenshotHiddenCountdown(ctx, true, alreadyCollapsed);
+                screenshotHiddenCountdown(ctx, -1,true, alreadyCollapsed);
             } else {
                 handler.postDelayed(this, 1000);
             }

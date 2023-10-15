@@ -62,10 +62,13 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value
         ).apply()
 
-    var skipDelayConfirmation: Boolean
-        get() = pref.getBoolean(context.getString(R.string.pref_key_skip_delay_confirmation), true)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_skip_delay_confirmation),
+    var tileLongPressAction: String
+        get() = pref.getString(
+            context.getString(R.string.pref_key_tile_long_press_action),
+            context.getString(R.string.setting_tile_action_value_screenshot)
+        ) ?: context.getString(R.string.setting_tile_action_value_options)
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_tile_long_press_action),
             value
         ).apply()
 
