@@ -82,6 +82,25 @@ Properties:
 *   Custom format
 *   Custom notification
 
+### Restricted Settings
+
+On Android 13 and above, device manufacturers may restrict the settings that can be enabled for an app. In such cases, the option to enable the app in the accessibility settings will appear grayed out. This means that both the "floating button" and the "native method" cannot be enabled. Notably, this is the case on Pixel phones running Android 14:
+
+![Grayed Out Accessibility Settings](/docs/imgs/AccessibilityOff.png)
+
+To circumvent this protection, you need to enable the "restricted settings" option. First, try to enable the accessibility service. Tap on the grayed-out option, and you will see a dialog regarding the restricted settings:
+
+![Dialog About Restricted Settings](/docs/imgs/AccessibilityGrayedOut.png)
+
+Now, open the Android system settings and go to "Apps" > "All apps." Find "ScreenshotTile," and in the app info, tap the three dots in the top right corner, and select "Allow Restricted Settings":
+
+![Allow Restricted Settings](/docs/imgs/AllowRestrictedSettings.png)
+
+With "restricted settings" allowed, you can reopen the app and enable either the "native method" or the "floating button." The accessibility settings will open, and you can enable the app.
+
+Read more about this: https://support.google.com/android/answer/12623953#allowrestrictedsettings
+
+
 ## <a name="icon">Cast icon:</a> ![cast icon](/docs/imgs/casticon.png) (only Legacy method)
 
 If you don't want to see the cast icon in the status bar on every screenshot, you can turn
