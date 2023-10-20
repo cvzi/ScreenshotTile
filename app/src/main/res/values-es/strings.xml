@@ -12,11 +12,16 @@
     <string name="floating_button_settings">Configuraciones del botón flotante</string>
     <string name="left_screenshot_right_menu">A la Izquierda: Captura de pantalla, A la derecha: Configuraciones</string>
     <string name="partial_screenshot">Selección de área rectangular</string>
+    <string name="options_dialog">Mostrar opciones</string>
     <string name="file_format">Formato del documento final</string>
     <string name="setting_delay_entry_default">Al instante</string>
     <string name="setting_delay_entry_1s">1 s Un Segundo</string>
     <string name="setting_delay_entry_2s">2 s Dos Segundos</string>
     <string name="setting_delay_entry_5s">5 s Cinco Segundos</string>
+    <string name="take_screenshot_1s_delayed">Captura de pantalla después de 1s</string>
+    <string name="take_screenshot_2s_delayed">Captura de pantalla después de 2s</string>
+    <string name="take_screenshot_5s_delayed">Captura de pantalla después de 5s</string>
+    <string name="toggle_floating_button">Des/activar botón flotante</string>
     <string name="show_count_down">Mostrar cuenta atrás</string>
     <string name="use_native_screenshot">Utilice el método nativo de captura de pantalla</string>
     <string name="use_native_screenshot_summary">Simule los botones de inicio + encendido siendo pulsados</string>
@@ -57,6 +62,7 @@
 %random% - un UUID aleatorio\n
 %randint% - un número aleatorio]]></string>
     <string name="setting_tile_action">Acción del mosaico</string>
+    <string name="setting_tile_long_press_action">Acción de pulsación larga del mosaico</string>
     <string name="setting_floating_action">Acción del botón flotante</string>
     <string name="setting_voice_interaction_action">Acción del asistente</string>
     <string name="setting_dark_theme">Tema oscuro</string>
@@ -82,6 +88,7 @@
     <string name="post_action_save_to_storage">Guardar imagen en la galería</string>
     <string name="post_action_show_toast">Mostrar una notificación de \"Toast\". Un pequeño popup que desaparece después de 2 segundos</string>
     <string name="post_action_show_notification">Mostrar una notificación regular. Puede cambiar los botones (Editar, Compartir, …) debajo de la notificación en \"Más ajustes\"</string>
+    <string name="post_action_play_tone">Reproducir un sonido</string>
     <string name="post_action_empty">No abrir la captura de pantalla</string>
     <string name="post_action_open_in_post">Abrir en la vista \"Detalles\"</string>
     <string name="post_action_open_in_post_crop">Recortar imagen</string>
@@ -89,6 +96,9 @@
     <string name="post_action_open_in_external_editor">Abrir en un editor de fotos externo</string>
     <string name="post_action_open_in_external_viewer">Abrir en un visor de fotos o en la galería</string>
     <string name="post_action_open_share">Compartir la captura de pantalla</string>
+    <string name="post_settings_audio_output_stream">Flujo de salida de audio:</string>
+    <string name="post_settings_audio_tone_duration">Duración del tono:</string>
+    <string name="post_settings_audio_tone_select">Tono:</string>
     <string name="move_to_storage_directory">Mover en la galería</string>
     <string name="button_clear">Borrar</string>
     <string name="button_clear_confirm">¿Quieres eliminar todos los archivos temporales?\nEsto eliminará todos los archivos en %s\n\n(Estos archivos normalmente no son visibles en la galería)</string>
@@ -158,6 +168,7 @@
     <string name="about_update_check_button">Comprobación de actualización</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Configuración de accesibilidad</string>
+    <string name="toast_open_accessibility_settings">Por favor, activa \"%1s\" en la configuración de accesibilidad</string>
     <string name="main_floating_button_title">Botón Flotante</string>
     <string name="main_general_text">Antes de poder usar esta aplicación, debes agregar el mosaico/botón a la configuración rápida. Si no sabes cómo hacer esto, echa un vistazo al [Instrucciones,.TutorialActivity].\n\nEsta aplicación admite dos métodos diferentes para tomar capturas de pantalla:</string>
     <string name="main_legacy_method_title">Método original</string>
@@ -171,6 +182,10 @@
     <string name="main_long_press_text">Al presionar prolongadamente el mosaico/botón se abre un menú. En el menú puedes especificar un retraso para la captura de pantalla o recortar un rectángulo de la pantalla.</string>
     <string name="main_assist_app_title">Aplicación de asistencia</string>
     <string name="main_assist_app_text">Si configuras esta aplicación como su aplicación de asistencia, puedes mantener presionado el botón de inicio para tomar una captura de pantalla. Habilitar esta aplicación como tu aplicación de asistencia deshabilitará otros asistentes. Puedes cambiar la acción de la pulsación prolongada del botón de inicio en la configuración de la aplicación.</string>
+    <string name="restricted_settings_open_settings">Permitir ajustes restringidos</string>
+    <string name="restricted_settings_open_accessibility">Abrir configuración de accesibilidad</string>
+    <string name="restricted_settings_title">Activar servicio de accesibilidad</string>
+    <string name="restricted_settings_text">Si la configuración de accesibilidad está grisácea, primero tendrás que permitir los \"ajustes restringidos\". La \"configuración restringida\" se puede encontrar en la \"Información de la aplicación\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Renombrar</string>
     <string name="post_button_move">Mover</string>
