@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.5.0
+*   Play a sound after a successful screenshot [#431](https://github.com/cvzi/ScreenshotTile/issues/431)
+*   Show a toast message when opening the accessibility settings [#359](https://github.com/cvzi/ScreenshotTile/issues/359)
+*   Allow hiding the donation links
+*   Use view binding
+
 ## 2.4.0
 *   Custom action when long-pressing the quick settings tile [#376](https://github.com/cvzi/ScreenshotTile/pull/376) [#426](https://github.com/cvzi/ScreenshotTile/issues/426)
 *   Show an explanation for "restricted settings" in Android 13+ [#410](https://github.com/cvzi/ScreenshotTile/issues/410)

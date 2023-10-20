@@ -1,0 +1,7 @@
+v2.5.0
+* Option to play a sound after a successful screenshot
+v2.4.0
+* Custom action when long-pressing the quick settings tile
+* Improvements for "restricted settings" in Android 13 and 14
+v2.3.0
+* In "Details"-view you can move the image to a folder
