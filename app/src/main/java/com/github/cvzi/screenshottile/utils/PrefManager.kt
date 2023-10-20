@@ -746,4 +746,12 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             context.getString(R.string.pref_key_sound_notification_duration),
             value.toString()
         ).apply()
+
+    var showDonationLinks12600: Boolean
+        get() = pref.getBoolean("show_donation_links_12600", true)
+        set(value) = pref.edit().putBoolean(
+            "show_donation_links_12600",
+            value
+        ).apply()
+
 }

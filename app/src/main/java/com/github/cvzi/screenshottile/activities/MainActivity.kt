@@ -15,6 +15,7 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -25,11 +26,13 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.updateLayoutParams
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
+import com.github.cvzi.screenshottile.databinding.ActivityMainBinding
 import com.github.cvzi.screenshottile.services.FloatingTileService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
@@ -58,12 +61,14 @@ class MainActivity : AppCompatActivity() {
         var accessibilityConsent = false
     }
 
+    private lateinit var binding: ActivityMainBinding
     private var hintAccessibilityServiceUnavailable: TextView? = null
     private var askedForStoragePermission = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
         if (!accessibilityConsent) {
             accessibilityConsent = hasFdroid(this)
         }
@@ -199,6 +204,17 @@ class MainActivity : AppCompatActivity() {
                 if (resolveActivity(packageManager) != null) {
                     startActivity(this)
                 }
+            }
+        }
+
+        binding.imageButtonDonateClose.setOnClickListener {
+            binding.donationLinks.removeAllViews()
+            App.getInstance().prefManager.showDonationLinks12600 = false
+        }
+        if (!App.getInstance().prefManager.showDonationLinks12600) {
+            binding.donationLinks.removeAllViews()
+            binding.scrollView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                setMargins(0,0,0,0)
             }
         }
 

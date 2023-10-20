@@ -9,6 +9,7 @@
     tools:context=".activities.MainActivity">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/donationLinks"
         style="@style/CardViewWhite"
         android:layout_marginStart="13dp"
         android:layout_marginEnd="12dp"
@@ -28,12 +29,27 @@
                 android:gravity="center"
                 android:textAppearance="@android:style/TextAppearance.Material.Title"
                 android:textColor="#0038b8" />
-            <TextView
-                android:singleLine="true"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Donate to:"
-                android:textColor="#0038b8" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="Donate to:"
+                    android:textColor="#0038b8" />
+
+                <ImageButton
+                    android:id="@+id/imageButtonDonateClose"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="240dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_close" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,6 +75,7 @@
                     android:layout_height="wrap_content"
                     android:text="israelrescue.org"
                     android:textSize="14sp" />
+
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
