@@ -117,6 +117,23 @@
                                 android:text="@string/post_action_show_notification" />
                         </TableRow>
 
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchPlayTone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:text="@string/post_action_play_tone" />
+                        </TableRow>
                     </TableLayout>
 
                     <RadioGroup
@@ -202,6 +219,117 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewAudio"
+                style="@style/CardViewSecondary">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="800dp"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/post_action_play_tone"
+                        android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                    <ImageButton
+                        android:id="@+id/imageButtonPlay"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginEnd="0dp"
+                        android:contentDescription="Preview tone"
+                        android:keepScreenOn="true"
+                        android:src="@android:drawable/ic_media_play"
+                        tools:ignore="HardcodedText" />
+
+                </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/post_settings_audio_output_stream" />
+
+                        <Spinner
+                            android:id="@+id/spinnerAudioSink"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/post_settings_audio_tone_duration" />
+
+                            <TextView
+                                android:id="@+id/textViewAudioDuration"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:text="" />
+                        </LinearLayout>
+
+                        <com.google.android.material.slider.Slider
+                            android:id="@+id/sliderAudioDuration"
+                            android:contentDescription="@string/post_settings_audio_tone_duration"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:stepSize="20"
+                            android:valueFrom="40"
+                            android:valueTo="2000" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewAudioTone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:text="@string/post_settings_audio_tone_select" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/toneRecyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
     </ScrollView>

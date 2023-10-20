@@ -46,7 +46,6 @@ import java.util.*
 import kotlin.math.max
 import kotlin.random.Random
 
-
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.
  */
@@ -1065,6 +1064,9 @@ fun handlePostScreenshot(
     val app = App.getInstance()
     app.lastScreenshot = null
     val mimeTypeNullSafe = mimeType ?: "image/*"
+    if ("playTone" in postScreenshotActions) {
+        Sound.playTone()
+    }
     when {
         "openInPost" in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap

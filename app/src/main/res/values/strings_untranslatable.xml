@@ -50,6 +50,9 @@
     <string name="pref_key_prevent_if_locked" translatable="false">prevent_if_locked</string>
     <string name="pref_static_field_key_pe_settings" translatable="false">pref_static_field_key_pe_settings</string>
     <string name="pref_key_pe_overwrite_file" translatable="false">pe_overwrite_file</string>
+    <string name="pref_key_sound_notification_sink" translatable="false">sound_notification_sink</string>
+    <string name="pref_key_sound_notification_tone" translatable="false">sound_notification_tone</string>
+    <string name="pref_key_sound_notification_duration" translatable="false">sound_notification_duration</string>
 
     <string name="setting_file_format_value_default" translatable="false">png</string>
     <string-array name="setting_file_format_entries" translatable="false">

@@ -1,18 +1,31 @@
 package com.github.cvzi.screenshottile.activities
 
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.widget.Button
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.CompoundButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.databinding.ActivityPostSettingsBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
+import com.github.cvzi.screenshottile.utils.Sound
+import com.github.cvzi.screenshottile.utils.Sound.Companion.allAudioSinks
 import com.github.cvzi.screenshottile.utils.nicePathFromUri
+import java.lang.Float.max
+
 
 /**
  * Settings for what happens after a screenshot is taken
@@ -22,23 +35,94 @@ class PostSettingsActivity : AppCompatActivity() {
         const val TAG = "PostSettingsActivity"
     }
 
+    private lateinit var binding: ActivityPostSettingsBinding
+    private val audioSinkKeys = allAudioSinks.keys.toTypedArray()
+    private lateinit var tonesRecyclerViewAdapter: TonesRecyclerViewAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_post_settings)
+        binding = ActivityPostSettingsBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
 
-        findViewById<Button>(R.id.buttonResetValues).setOnClickListener {
-            findViewById<CompoundButton>(R.id.radioButtonEmpty).isChecked = true
+        binding.buttonResetValues.setOnClickListener {
+            binding.radioButtonEmpty.isChecked = true
             App.getInstance().prefManager.postScreenshotActionsReset()
             loadSettings()
         }
 
-        findViewById<Button>(R.id.buttonSettings).setOnClickListener {
+        binding.buttonSettings.setOnClickListener {
             SettingsActivity.start(this)
         }
 
-        findViewById<Button>(R.id.buttonHistory).setOnClickListener {
+        binding.buttonHistory.setOnClickListener {
             startActivity(Intent(this, HistoryActivity::class.java))
         }
+
+        // Create RecyclerView with all available tones
+        binding.toneRecyclerView.apply {
+            layoutManager = LinearLayoutManager(this@PostSettingsActivity)
+            tonesRecyclerViewAdapter =
+                TonesRecyclerViewAdapter(
+                    this@PostSettingsActivity,
+                    Sound.allTones,
+                    Sound.selectedToneName()
+                ) { _, _, name ->
+                    onToneClick(name)
+                }
+            adapter = tonesRecyclerViewAdapter
+        }
+
+        // Create Spinner with all available audio sinks
+        binding.spinnerAudioSink.apply {
+            adapter =
+                ArrayAdapter(
+                    this@PostSettingsActivity,
+                    android.R.layout.simple_spinner_dropdown_item,
+                    audioSinkKeys
+                )
+            onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    view: AdapterView<*>?,
+                    itemView: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    App.getInstance().prefManager.soundNotificationSink = audioSinkKeys[position]
+                }
+
+                override fun onNothingSelected(view: AdapterView<*>?) {
+                    App.getInstance().prefManager.soundNotificationSink = ""
+                }
+
+            }
+        }
+
+        binding.sliderAudioDuration.addOnChangeListener { _, value, _ ->
+            val ms = value.toInt()
+            App.getInstance().prefManager.soundNotificationDuration = ms
+            @SuppressLint("SetTextI18n")
+            binding.textViewAudioDuration.text = "${ms}ms"
+        }
+
+        // Hide sound panel if playTone is deactivated
+        binding.switchPlayTone.setOnClickListener { switch ->
+            val cardView = binding.cardViewAudio
+            if ((switch as? CompoundButton?)?.isChecked == false) {
+                cardView.visibility = View.INVISIBLE
+            } else {
+                cardView.visibility = View.VISIBLE
+                switch.postDelayed({
+                    binding.scrollView.scrollTo(0, cardView.top + 100)
+                }, 300)
+            }
+        }
+
+        // Preview play button
+        binding.imageButtonPlay.setOnClickListener {
+            Sound.playTone()
+        }
+
     }
 
     override fun onResume() {
@@ -50,18 +134,17 @@ class PostSettingsActivity : AppCompatActivity() {
     private fun loadSettings() {
         val prefManager = App.getInstance().prefManager
 
-        findViewById<TextView>(R.id.textDescGeneral).apply {
-            text =
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                    getString(R.string.use_native_screenshot_option_default)
-                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
-                    getString(R.string.use_native_screenshot_option_android11)
-                } else {
-                    getString(R.string.setting_post_actions_description)
-                }
-        }
+        binding.textDescGeneral.text =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                getString(R.string.use_native_screenshot_option_default)
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
+                getString(R.string.use_native_screenshot_option_android11)
+            } else {
+                getString(R.string.setting_post_actions_description)
+            }
 
-        findViewById<TextView>(R.id.textViewSaveImageLocation).text =
+
+        binding.textViewSaveImageLocation.text =
             if (prefManager.screenshotDirectory != null) {
                 nicePathFromUri(prefManager.screenshotDirectory)
             } else {
@@ -71,57 +154,76 @@ class PostSettingsActivity : AppCompatActivity() {
         val postScreenshotActions = prefManager.postScreenshotActions
 
         initSimpleActionSwitch(
-            R.id.switchSaveToStorage,
+            binding.switchSaveToStorage,
             "saveToStorage",
             "saveToStorage" in postScreenshotActions
         )
         initSimpleActionSwitch(
-            R.id.switchShowToast,
+            binding.switchShowToast,
             "showToast",
             "showToast" in postScreenshotActions
         )
         initSimpleActionSwitch(
-            R.id.switchShowNotification,
+            binding.switchPlayTone,
+            "playTone",
+            "playTone" in postScreenshotActions
+        )
+        initSimpleActionSwitch(
+            binding.switchShowNotification,
             "showNotification",
             "showNotification" in postScreenshotActions
         )
         initSimpleActionSwitch(
-            R.id.radioButtonOpenInPost,
+            binding.radioButtonOpenInPost,
             "openInPost",
             "openInPost" in postScreenshotActions
         )
         initSimpleActionSwitch(
-            R.id.radioButtonOpenInPostCrop,
+            binding.radioButtonOpenInPostCrop,
             "openInPostCrop",
             "openInPostCrop" in postScreenshotActions
         )
         initSimpleActionSwitch(
-            R.id.radioButtonOpenInPhotoEditor,
+            binding.radioButtonOpenInPhotoEditor,
             "openInPhotoEditor",
             "openInPhotoEditor" in postScreenshotActions
         )
         initSimpleActionSwitch(
-            R.id.radioButtonOpenInExternalEditor,
+            binding.radioButtonOpenInExternalEditor,
             "openInExternalEditor",
             "openInExternalEditor" in postScreenshotActions
         )
         initSimpleActionSwitch(
-            R.id.radioButtonOpenInExternalViewer,
+            binding.radioButtonOpenInExternalViewer,
             "openInExternalViewer",
             "openInExternalViewer" in postScreenshotActions
         )
         initSimpleActionSwitch(
-            R.id.radioButtonOpenShare,
+            binding.radioButtonOpenShare,
             "openShare",
             "openShare" in postScreenshotActions
         )
+
+        binding.spinnerAudioSink.setSelection(audioSinkKeys.indexOf(App.getInstance().prefManager.soundNotificationSink))
+        App.getInstance().prefManager.soundNotificationDuration.also { ms ->
+            binding.sliderAudioDuration.value =
+                max(ms.toFloat(), binding.sliderAudioDuration.valueFrom)
+            @SuppressLint("SetTextI18n")
+            binding.textViewAudioDuration.text = "${ms}ms"
+        }
+        binding.toneRecyclerView.scrollToPosition(tonesRecyclerViewAdapter.selectedIndex)
     }
 
-    private fun initSimpleActionSwitch(id: Int, actionKey: String, initValue: Boolean) {
-        val switch = findViewById<CompoundButton>(id)
-        switch.isChecked = initValue
-        switch.setTag(R.id.tag_action_key, actionKey)
-        switch.setOnCheckedChangeListener(onActionCheckedChange)
+    private fun initSimpleActionSwitch(
+        compoundButton: CompoundButton,
+        actionKey: String,
+        initValue: Boolean
+    ) {
+        compoundButton.apply {
+            isChecked = initValue
+            setTag(R.id.tag_action_key, actionKey)
+            setOnCheckedChangeListener(onActionCheckedChange)
+        }
     }
 
     private val onActionCheckedChange =
@@ -135,6 +237,48 @@ class PostSettingsActivity : AppCompatActivity() {
             }
             App.getInstance().prefManager.postScreenshotActions = postScreenshotActions
         }
+
+    private fun onToneClick(name: String) {
+        App.getInstance().prefManager.soundNotificationTone = "tone:$name"
+        Sound.playTone()
+    }
 }
 
+class TonesRecyclerViewAdapter internal constructor(
+    context: Context,
+    tonesHashMap: HashMap<String, Int>,
+    selectedToneName: String,
+    private val clickListener: (view: View, position: Int, name: String) -> Unit
+) : RecyclerView.Adapter<TonesRecyclerViewAdapter.ViewHolder>() {
+    private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
+    private var toneNames: List<String> = tonesHashMap.keys.toList().sorted()
+    var selectedIndex = toneNames.indexOf(selectedToneName)
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        ViewHolder(layoutInflater.inflate(R.layout.tone_selector_list_item, parent, false))
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.textView.text = toneNames[position].replace("_", " ")
+        holder.view.isSelected = selectedIndex == position
+    }
+
+    override fun getItemCount() = toneNames.size
+
+    inner class ViewHolder internal constructor(val view: View) : RecyclerView.ViewHolder(view),
+        View.OnClickListener {
+        val textView: TextView = view.findViewById<TextView>(R.id.toneName).apply {
+            setOnClickListener(this@ViewHolder)
+        }
+
+        override fun onClick(view: View) {
+            val oldSelectedIndex = selectedIndex
+            selectedIndex = adapterPosition
+            clickListener(view, adapterPosition, toneNames[adapterPosition])
+            notifyItemChanged(oldSelectedIndex)
+            notifyItemChanged(selectedIndex)
+
+        }
+
+    }
+
+}

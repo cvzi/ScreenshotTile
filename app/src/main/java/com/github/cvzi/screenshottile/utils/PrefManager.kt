@@ -8,6 +8,7 @@ import android.net.Uri
 import android.util.Log
 import androidx.preference.PreferenceManager
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.utils.Sound.Companion.defaultAudioSink
 import java.io.File
 import java.util.Date
 
@@ -20,7 +21,7 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
     companion object {
         const val TAG = "PrefManager.kt"
         val POST_ACTIONS = arrayOf(
-            "saveToStorage", "showToast", "showNotification",
+            "saveToStorage", "showToast", "showNotification", "playTone",
             // The following are exclusive in the sense that only the first selected will be run
             "openInPost", "openInPostCrop", "openInPhotoEditor",
             "openInExternalEditor", "openInExternalViewer", "openShare"
@@ -713,5 +714,36 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             context.getString(R.string.pref_key_pe_auto_rotate_landscape),
             value
         ).apply()
+    var soundNotificationSink: String
+        get() = pref.getString(
+            context.getString(R.string.pref_key_sound_notification_sink),
+            defaultAudioSink
+        ) ?: defaultAudioSink
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_sound_notification_sink),
+            value
+        ).apply()
 
+    /**
+     * The tones from Sound.allTones are stored with prefix "tone:" e.g. "tone:CDMA_ABBR_ALERT"
+     */
+    var soundNotificationTone: String
+        get() = pref.getString(
+            context.getString(R.string.pref_key_sound_notification_tone),
+            ""
+        ) ?: ""
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_sound_notification_tone),
+            value
+        ).apply()
+
+    var soundNotificationDuration: Int
+        get() = pref.getString(
+            context.getString(R.string.pref_key_sound_notification_duration),
+            "200"
+        )?.toIntOrNull() ?: 200
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_sound_notification_duration),
+            value.toString()
+        ).apply()
 }

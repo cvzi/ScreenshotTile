@@ -88,6 +88,7 @@
     <string name="post_action_save_to_storage">Save image to gallery</string>
     <string name="post_action_show_toast">Show a \"Toast\" notification. A small popup that disappears after 2 seconds</string>
     <string name="post_action_show_notification">Show a regular notification. You can change the buttons (Edit,Share,…) below the notification under \"More Settings\"</string>
+    <string name="post_action_play_tone">Play a sound</string>
     <string name="post_action_empty">Don\'t open the screenshot</string>
     <string name="post_action_open_in_post">Open in \"Details\" view</string>
     <string name="post_action_open_in_post_crop">Crop the image</string>
@@ -95,6 +96,9 @@
     <string name="post_action_open_in_external_editor">Open in an external photo editor</string>
     <string name="post_action_open_in_external_viewer">Open in a photo viewer or the gallery</string>
     <string name="post_action_open_share">Share the screenshot</string>
+    <string name="post_settings_audio_output_stream">Audio output stream:</string>
+    <string name="post_settings_audio_tone_duration">Tone duration:</string>
+    <string name="post_settings_audio_tone_select">Tone:</string>
     <string name="move_to_storage_directory">Move into gallery</string>
     <string name="button_clear">Clear</string>
     <string name="button_clear_confirm">Do you want to delete all temporary files?\nThis will delete all files in %s\n\n(These files are usually not visible in your gallery)</string>
@@ -194,6 +198,7 @@
     <string name="post_save_a_suggestion">Save suggestion</string>
     <string name="post_pin_to_favorites">Pin to favorites</string>
     <string name="post_delete_suggestion">Delete suggestion</string>
+
     <!-- Photo Editor-->
     <string name="label_brush">Brush</string>
     <string name="label_shape">Shape</string>
