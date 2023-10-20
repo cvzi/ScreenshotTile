@@ -331,7 +331,7 @@ public class App extends Application {
      * taken by TileService.onStopListening() when the panel is collapsed.
      *
      * @param context Context
-     * @param delay Delay in seconds, if -1 the delay from the preferences will be used
+     * @param delay   Delay in seconds, if -1 the delay from the preferences will be used
      */
     public void screenshot(Context context, int delay) {
         if (isDeviceLocked(context) && prefManager.getPreventIfLocked()) {
@@ -463,10 +463,14 @@ public class App extends Application {
                     intent = NoDisplayActivity.newIntent(context, false);
                 }
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-                try {
-                    startActivityAndCollapseCompat(tileService, intent);
-                    // skipcq
-                } catch (NullPointerException e) {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                    try {
+                        startActivityAndCollapseCompat(tileService, intent);
+                        // skipcq
+                    } catch (NullPointerException e) {
+                        context.startActivity(intent);
+                    }
+                } else {
                     context.startActivity(intent);
                 }
             } else {
@@ -552,7 +556,7 @@ public class App extends Application {
 
             count--;
             if (count < 0) {
-                screenshotHiddenCountdown(ctx, -1,true, alreadyCollapsed);
+                screenshotHiddenCountdown(ctx, -1, true, alreadyCollapsed);
             } else {
                 handler.postDelayed(this, 1000);
             }

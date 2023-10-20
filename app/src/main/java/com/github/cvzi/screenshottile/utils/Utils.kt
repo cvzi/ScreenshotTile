@@ -1045,7 +1045,6 @@ fun PackageManager.getPackageInfo(packageName: String): PackageInfo? {
             PackageManager.PackageInfoFlags.of(0)
         )
     } else {
-        @Suppress("DEPRECATION")
         getPackageInfo(packageName, 0)
     }
 }
@@ -1070,7 +1069,7 @@ fun handlePostScreenshot(
     when {
         "openInPost" in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
-            App.getInstance().startActivityAndCollapseCompat(
+            App.getInstance().startActivityAndCollapseIfNotActivity(
                 context,
                 PostActivity.newIntentSingleImageBitmap(context, uri)
             )
@@ -1078,7 +1077,7 @@ fun handlePostScreenshot(
 
         "openInPostCrop" in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
-            App.getInstance().startActivityAndCollapseCompat(
+            App.getInstance().startActivityAndCollapseIfNotActivity(
                 context,
                 PostCropActivity.newIntentSingleImageBitmap(context, uri, mimeTypeNullSafe)
             )
@@ -1086,7 +1085,7 @@ fun handlePostScreenshot(
 
         "openInPhotoEditor" in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
-            App.getInstance().startActivityAndCollapseCompat(
+            App.getInstance().startActivityAndCollapseIfNotActivity(
                 context,
                 Intent(context, EditImageActivity::class.java).apply {
                     action = Intent.ACTION_EDIT
@@ -1100,7 +1099,7 @@ fun handlePostScreenshot(
             editIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             if (editIntent.resolveActivity(context.packageManager) != null) {
-                App.getInstance().startActivityAndCollapseCompat(context, editIntent)
+                App.getInstance().startActivityAndCollapseIfNotActivity(context, editIntent)
             } else {
                 Log.e(UTILSKT, "openInExternalEditor: resolveActivity(editIntent) returned null")
                 context.toastMessage("No suitable external photo editor found", ToastType.ERROR)
@@ -1110,7 +1109,7 @@ fun handlePostScreenshot(
         "openInExternalViewer" in postScreenshotActions -> {
             val openImageIntent = openImageIntent(context, uri, mimeTypeNullSafe)
             if (openImageIntent.resolveActivity(context.packageManager) != null) {
-                App.getInstance().startActivityAndCollapseCompat(context, openImageIntent)
+                App.getInstance().startActivityAndCollapseIfNotActivity(context, openImageIntent)
             } else {
                 Log.e(
                     UTILSKT,
@@ -1125,7 +1124,7 @@ fun handlePostScreenshot(
             shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             if (shareIntent.resolveActivity(context.packageManager) != null) {
-                App.getInstance().startActivityAndCollapseCompat(context, shareIntent)
+                App.getInstance().startActivityAndCollapseIfNotActivity(context, shareIntent)
             } else {
                 Log.e(UTILSKT, "openShare: resolveActivity(shareIntent) returned null")
                 context.toastMessage("No suitable app for sharing found", ToastType.ERROR)
