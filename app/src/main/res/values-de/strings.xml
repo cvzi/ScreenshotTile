@@ -88,6 +88,7 @@
     <string name="post_action_save_to_storage">Bild in Galerie speichern</string>
     <string name="post_action_show_toast">Zeige eine \"Toast\"-Benachrichtigung. Ein kleines Popup, das nach 2 Sekunden verschwindet</string>
     <string name="post_action_show_notification">Zeige eine normale Benachrichtigung. Die Schaltflächen (Bearbeiten, Teilen) unter der Benachrichtigung können unter \"Mehr Einstellungen\" ändern</string>
+    <string name="post_action_play_tone">Einen Ton abspielen</string>
     <string name="post_action_empty">Screenshot nicht öffnen</string>
     <string name="post_action_open_in_post">In \"Details\" öffnen</string>
     <string name="post_action_open_in_post_crop">Bild zuschneiden</string>
@@ -95,6 +96,9 @@
     <string name="post_action_open_in_external_editor">In einem externen Foto-Editor öffnen</string>
     <string name="post_action_open_in_external_viewer">In einem Foto-Viewer oder in der Galerie öffnen</string>
     <string name="post_action_open_share">Screenshot teilen</string>
+    <string name="post_settings_audio_output_stream">Audioausgabe-Stream:</string>
+    <string name="post_settings_audio_tone_duration">Tondauer:</string>
+    <string name="post_settings_audio_tone_select">Ton:</string>
     <string name="move_to_storage_directory">In Galerie verschieben</string>
     <string name="button_clear">Leeren</string>
     <string name="button_clear_confirm">Möchtest du alle temporären Dateien löschen?\nDies löscht alle Dateien in %s\n\n(Diese Dateien sind normalerweise nicht in der Galerie sichtbar)</string>
@@ -164,6 +168,7 @@
     <string name="about_update_check_button">Update-Check</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Bedienungshilfen Einstellungen</string>
+    <string name="toast_open_accessibility_settings">Bitte aktiviere \"%1s\" in den Bedienungshilfen Einstellungen</string>
     <string name="main_floating_button_title">Schwebender Auslöser</string>
     <string name="main_general_text">Bevor du diese App nutzen kannst, musst du die Kachel/Button zu den Schnelleinstellungen hinzufügen. Wenn du nicht weißt wie das geht, schau dir das [Tutorial,.TutorialActivity] an.\n\nDiese App unterstützt zwei unterschiedliche Methoden um Screenshots zu erstellen:</string>
     <string name="main_legacy_method_title">Ursprüngliche Methode</string>
