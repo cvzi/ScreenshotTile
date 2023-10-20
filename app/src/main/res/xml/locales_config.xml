@@ -17,8 +17,10 @@
     <locale android:name="hi" />
     <locale android:name="hu" />
     <locale android:name="hy" />
+    <locale android:name="id" />
     <locale android:name="in" />
     <locale android:name="it" />
+    <locale android:name="iw" />
     <locale android:name="ja" />
     <locale android:name="kn" />
     <locale android:name="mr" />
