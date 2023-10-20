@@ -9,10 +9,10 @@ import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.collection.LruCache
@@ -20,6 +20,7 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.databinding.ActivityTutorialBinding
 
 
 /**
@@ -85,40 +86,34 @@ class TutorialActivity : AppCompatActivity() {
 
     private lateinit var bitmapCache: BitmapCache
 
-    private lateinit var viewPager: ViewPager
-    private lateinit var textViewStep: TextView
-    private lateinit var textViewFooter: TextView
-
+    private lateinit var binding: ActivityTutorialBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tutorial)
+        binding = ActivityTutorialBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
 
         val cacheSize = (Runtime.getRuntime().maxMemory() / 1024).toInt() / 4
         bitmapCache = BitmapCache(cacheSize)
-
-        textViewStep = findViewById(R.id.textViewStep)
-        textViewFooter = findViewById(R.id.textViewFooter)
-
-        viewPager = findViewById(R.id.viewPager)
-        viewPager.adapter = TutorialPagerAdapter()
+        
+        binding.viewPager.adapter = TutorialPagerAdapter()
 
         if (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) {
             // Night Mode -> Background is black so transparency makes the images darker
-            viewPager.alpha = 0.7f
+            binding.viewPager.alpha = 0.7f
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            // Disable back gesture (slide from right edge to left) on viewPager
-            viewPager.systemGestureExclusionRects =
-                listOf(Rect(0, 0, viewPager.width, viewPager.height))
-            viewPager.addOnLayoutChangeListener { v, _, _, _, _, _, _, _, _ ->
-                viewPager.systemGestureExclusionRects = listOf(Rect(0, 0, v.width, v.height))
+            // Disable back gesture (slide from right edge to left) on binding.viewPager
+            binding.viewPager.systemGestureExclusionRects =
+                listOf(Rect(0, 0, binding.viewPager.width, binding.viewPager.height))
+            binding.viewPager.addOnLayoutChangeListener { v, _, _, _, _, _, _, _, _ ->
+                binding.viewPager.systemGestureExclusionRects = listOf(Rect(0, 0, v.width, v.height))
             }
         }
 
-        viewPager.setOnClickListener {
-            viewPager.setCurrentItem(viewPager.currentItem + 1 % images.size, true)
+        binding.viewPager.setOnClickListener {
+            binding.viewPager.setCurrentItem(binding.viewPager.currentItem + 1 % images.size, true)
         }
-        viewPager.addOnPageChangeListener(object : OnPageChangeListener {
+        binding.viewPager.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
                 // no-op
             }
@@ -133,8 +128,8 @@ class TutorialActivity : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {
                 @SuppressLint("SetTextI18n")
-                textViewStep.text = (position + 1).toString()
-                textViewFooter.text = if (position >= 0 && position < descriptions.size) {
+                binding.textViewStep.text = (position + 1).toString()
+                binding.textViewFooter.text = if (position >= 0 && position < descriptions.size) {
                     getString(descriptions[position])
                 } else {
                     getString(descriptions[0])
@@ -142,7 +137,7 @@ class TutorialActivity : AppCompatActivity() {
             }
         })
 
-        findViewById<Button>(R.id.buttonSettings)?.setOnClickListener {
+        binding.buttonSettings.setOnClickListener {
             SettingsActivity.start(this)
         }
     }
@@ -150,7 +145,7 @@ class TutorialActivity : AppCompatActivity() {
     private inner class ClickableImageView(context: Context) : AppCompatImageView(context) {
         init {
             setOnClickListener {
-                viewPager.setCurrentItem((viewPager.currentItem + 1) % images.size, true)
+                binding.viewPager.setCurrentItem((binding.viewPager.currentItem + 1) % images.size, true)
             }
         }
     }

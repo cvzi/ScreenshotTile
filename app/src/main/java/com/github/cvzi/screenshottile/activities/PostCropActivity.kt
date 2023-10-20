@@ -12,16 +12,15 @@ import android.os.Bundle
 import android.os.Environment
 import android.os.Looper
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.TextView
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.burhanrashid52.photoediting.EditImageActivity.Companion.ACTION_NEXTGEN_EDIT
 import com.github.cvzi.screenshottile.*
-import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
+import com.github.cvzi.screenshottile.databinding.ActivityPostCropBinding
 import com.github.cvzi.screenshottile.utils.*
 
 class PostCropActivity : GenericPostActivity() {
@@ -50,9 +49,7 @@ class PostCropActivity : GenericPostActivity() {
          * @return The intent
          */
         fun newIntentSingleImageBitmap(
-            context: Context,
-            uri: Uri,
-            mimeType: String? = null
+            context: Context, uri: Uri, mimeType: String? = null
         ): Intent {
             val intent = Intent(context, PostCropActivity::class.java)
             intent.action = OPEN_IMAGE_FROM_URI
@@ -62,9 +59,7 @@ class PostCropActivity : GenericPostActivity() {
         }
     }
 
-    private lateinit var layoutView: ConstraintLayout
-    private lateinit var screenshotSelectorView: ScreenshotSelectorView
-    private lateinit var statusTextView: TextView
+    private lateinit var binding: ActivityPostCropBinding
     private val prefManager = App.getInstance().prefManager
     private var screenshotSelectorActive = false
     private var cutOutRect: Rect? = null
@@ -81,14 +76,10 @@ class PostCropActivity : GenericPostActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityPostCropBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
 
-        setContentView(R.layout.activity_post_crop)
-
-        layoutView = findViewById(R.id.layout_view)
-        screenshotSelectorView = findViewById(R.id.global_screenshot_selector)
-        statusTextView = findViewById(R.id.textViewStatus)
-
-        statusTextView.text = ""
+        binding.textViewStatus.text = ""
 
         when (intent.action) {
             Intent.ACTION_SEND, Intent.ACTION_EDIT, ACTION_NEXTGEN_EDIT, OPEN_IMAGE_FROM_URI -> {
@@ -120,14 +111,14 @@ class PostCropActivity : GenericPostActivity() {
         goFullscreen()
         if (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) {
             // Night Mode
-            layoutView.setBackgroundColor(Color.BLACK)
+            binding.layoutView.setBackgroundColor(Color.BLACK)
         } else {
-            layoutView.setBackgroundColor(Color.WHITE)
+            binding.layoutView.setBackgroundColor(Color.WHITE)
         }
 
         Log.v(
             TAG,
-            "view before: ${screenshotSelectorView.measuredWidth}x${screenshotSelectorView.measuredHeight}"
+            "view before: ${binding.globalScreenshotSelector.measuredWidth}x${binding.globalScreenshotSelector.measuredHeight}"
         )
 
         var bm: Bitmap = if (BuildConfig.DEBUG && singleImage.bitmap.isMutable) {
@@ -136,17 +127,15 @@ class PostCropActivity : GenericPostActivity() {
             singleImage.bitmap
         } ?: return
 
-        if (screenshotSelectorView.measuredWidth > 0 && screenshotSelectorView.measuredHeight > 0 && (
-                    screenshotSelectorView.measuredWidth < bm.width || screenshotSelectorView.measuredHeight < bm.height)
-        ) {
+        if (binding.globalScreenshotSelector.measuredWidth > 0 && binding.globalScreenshotSelector.measuredHeight > 0 && (binding.globalScreenshotSelector.measuredWidth < bm.width || binding.globalScreenshotSelector.measuredHeight < bm.height)) {
             Log.d(
                 TAG,
-                "View is only ${screenshotSelectorView.measuredWidth}x${screenshotSelectorView.measuredHeight}"
+                "View is only ${binding.globalScreenshotSelector.measuredWidth}x${binding.globalScreenshotSelector.measuredHeight}"
             )
             val scaleResult = scaleBitmap(
                 bm,
-                screenshotSelectorView.measuredWidth,
-                screenshotSelectorView.measuredHeight
+                binding.globalScreenshotSelector.measuredWidth,
+                binding.globalScreenshotSelector.measuredHeight
             )
             bm = scaleResult.first
             scale = scaleResult.second
@@ -155,7 +144,7 @@ class PostCropActivity : GenericPostActivity() {
             scale = null
         }
 
-        screenshotSelectorView.apply {
+        binding.globalScreenshotSelector.apply {
             bitmap = bm
 
             // Center bitmap in view
@@ -191,14 +180,13 @@ class PostCropActivity : GenericPostActivity() {
                 runOnUiThread {
                     singleImage = singleImageLoaded
                     loadScreenshotSelectorView(singleImageLoaded)
-                    screenshotSelectorView.setBackgroundColor(if (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) Color.BLACK else Color.WHITE)
+                    binding.globalScreenshotSelector.setBackgroundColor(if (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) Color.BLACK else Color.WHITE)
                 }
             }, { error ->
                 runOnUiThread {
                     Log.e(TAG, "Failed to load image:", error)
-                    screenshotSelectorView.visibility = View.GONE
-                    statusTextView.text =
-                        "Failed to load image\n$error"
+                    binding.globalScreenshotSelector.visibility = View.GONE
+                    binding.textViewStatus.text = "Failed to load image\n$error"
                 }
             })
         }
@@ -255,17 +243,11 @@ class PostCropActivity : GenericPostActivity() {
                     dummyPath = result.dummyPath
                 }
                 toastMessage(
-                    getString(R.string.screenshot_file_saved, dummyPath),
-                    ToastType.SUCCESS
+                    getString(R.string.screenshot_file_saved, dummyPath), ToastType.SUCCESS
                 )
 
                 createNotification(
-                    this,
-                    result.uri,
-                    result.bitmap,
-                    screenDensity,
-                    result.mimeType,
-                    dummyPath
+                    this, result.uri, result.bitmap, screenDensity, result.mimeType, dummyPath
                 )
                 prefManager.screenshotCount++
 
@@ -278,16 +260,11 @@ class PostCropActivity : GenericPostActivity() {
                 val path = result.file.absolutePath
 
                 toastMessage(
-                    getString(R.string.screenshot_file_saved, path),
-                    ToastType.SUCCESS
+                    getString(R.string.screenshot_file_saved, path), ToastType.SUCCESS
                 )
 
                 createNotification(
-                    this,
-                    uri,
-                    result.bitmap,
-                    screenDensity,
-                    result.mimeType
+                    this, uri, result.bitmap, screenDensity, result.mimeType
                 )
                 prefManager.screenshotCount++
 
@@ -306,7 +283,7 @@ class PostCropActivity : GenericPostActivity() {
             toastMessage(msg, ToastType.ERROR)
         }
         Log.e(TAG, "Failed to save image: $msg")
-        statusTextView.text = "Failed to save image\n$msg"
+        binding.textViewStatus.text = "Failed to save image\n$msg"
     }
 
 
@@ -314,8 +291,7 @@ class PostCropActivity : GenericPostActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
-            @Suppress("DEPRECATION")
-            window.setFlags(
+            @Suppress("DEPRECATION") window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
@@ -325,8 +301,7 @@ class PostCropActivity : GenericPostActivity() {
             window.statusBarColor = Color.TRANSPARENT
             window.setDecorFitsSystemWindows(true)
         } else {
-            @Suppress("DEPRECATION")
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            @Suppress("DEPRECATION") window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -348,8 +323,8 @@ class PostCropActivity : GenericPostActivity() {
 
     private fun resetSelection() {
         Log.v(TAG, "resetSelection()")
-        if (singleImage != null && !screenshotSelectorView.defaultState) {
-            screenshotSelectorView.reset()
+        if (singleImage != null && !binding.globalScreenshotSelector.defaultState) {
+            binding.globalScreenshotSelector.reset()
         }
         // Remove handler for back button on Android 13
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -366,7 +341,7 @@ class PostCropActivity : GenericPostActivity() {
         Log.v(TAG, "onBackPressed()")
         // This is no longer used on Android 13+/Tiramisu
         // See onBackInvokedCallback for Android 13+
-        if (screenshotSelectorActive && singleImage != null && !screenshotSelectorView.defaultState) {
+        if (screenshotSelectorActive && singleImage != null && !binding.globalScreenshotSelector.defaultState) {
             resetSelection()
         } else {
             super.onBackPressed()

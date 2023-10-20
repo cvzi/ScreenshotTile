@@ -7,6 +7,7 @@ import android.content.res.Configuration
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.os.*
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup.LayoutParams
 import android.widget.*
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonSettingsBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.ShutterCollection
 import com.github.cvzi.screenshottile.utils.fillTextHeight
@@ -70,25 +72,27 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
 
     private lateinit var shutterCollection: ShutterCollection
 
+    private lateinit var binding: ActivityFloatingButtonSettingsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_floating_button_settings)
+        binding = ActivityFloatingButtonSettingsBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
 
         shutterCollection = ShutterCollection(this, R.array.shutters, R.array.shutter_names)
-        switchFloatingButtonEnabled = findViewById(R.id.switchFloatingButtonEnabled)
-        imageViewFloatingButton = findViewById(R.id.imageViewFloatingButton)
-        textViewCloseButton = findViewById(R.id.imageViewCloseButton)
-        switchFloatingButtonColorTint = findViewById(R.id.switchFloatingButtonColorTint)
-        switchFloatingButtonAlpha = findViewById(R.id.switchFloatingButtonAlpha)
-        radioGroupAction = findViewById(R.id.radioGroupAction)
-        radioGroupShutterTheme = findViewById(R.id.radioGroupShutterTheme)
-        switchFloatingButtonDelay = findViewById(R.id.switchFloatingButtonDelay)
-        editTextFloatingButtonDelay = findViewById(R.id.editTextFloatingButtonDelay)
-        seekBarFloatingButtonTintH = findViewById(R.id.seekBarFloatingButtonTintH)
-        seekBarFloatingButtonTintV = findViewById(R.id.seekBarFloatingButtonTintV)
-        seekBarFloatingButtonAlpha = findViewById(R.id.seekBarFloatingButtonAlpha)
-        seekBarFloatingButtonScale = findViewById(R.id.seekBarFloatingButtonScale)
+        switchFloatingButtonEnabled = binding.switchFloatingButtonEnabled
+        imageViewFloatingButton = binding.imageViewFloatingButton
+        textViewCloseButton = binding.imageViewCloseButton
+        switchFloatingButtonColorTint = binding.switchFloatingButtonColorTint
+        switchFloatingButtonAlpha = binding.switchFloatingButtonAlpha
+        radioGroupAction = binding.radioGroupAction
+        radioGroupShutterTheme = binding.radioGroupShutterTheme
+        switchFloatingButtonDelay = binding.switchFloatingButtonDelay
+        editTextFloatingButtonDelay = binding.editTextFloatingButtonDelay
+        seekBarFloatingButtonTintH = binding.seekBarFloatingButtonTintH
+        seekBarFloatingButtonTintV = binding.seekBarFloatingButtonTintV
+        seekBarFloatingButtonAlpha = binding.seekBarFloatingButtonAlpha
+        seekBarFloatingButtonScale = binding.seekBarFloatingButtonScale
 
         switchFloatingButtonEnabled.setOnCheckedChangeListener { _, isChecked ->
             prefManager.floatingButton = isChecked
@@ -117,7 +121,7 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
             )
         }
 
-        findViewById<SwitchMaterial>(R.id.switchFloatingButtonHideAfter).setOnCheckedChangeListener { _, isChecked ->
+        binding.switchFloatingButtonHideAfter.setOnCheckedChangeListener { _, isChecked ->
             prefManager.floatingButtonHideAfter = isChecked
         }
 
@@ -135,7 +139,7 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
         }
 
 
-        findViewById<LinearLayout>(R.id.linearLayoutPreview).background =
+        binding.linearLayoutPreview.background =
             BitmapDrawable(resources, checkeredBackground()).apply {
                 setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT)
                 setTargetDensity(resources.displayMetrics.densityDpi * 2)
@@ -194,7 +198,7 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
             }
             ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
-        findViewById<SwitchMaterial>(R.id.switchFloatingButtonShowClose).setOnCheckedChangeListener { _, isChecked ->
+        binding.switchFloatingButtonShowClose.setOnCheckedChangeListener { _, isChecked ->
             prefManager.floatingButtonShowClose = isChecked
             updateCloseButton()
             ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
@@ -221,10 +225,10 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
             ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
 
-        findViewById<Button>(R.id.buttonRefresh).setOnClickListener {
+        binding.buttonRefresh.setOnClickListener {
             ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
-        findViewById<Button>(R.id.buttonMoreSettings).setOnClickListener {
+        binding.buttonMoreSettings.setOnClickListener {
             SettingsActivity.start(this)
         }
     }
@@ -258,7 +262,7 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
             }
         ).isChecked = true
 
-        findViewById<SwitchMaterial>(R.id.switchFloatingButtonHideAfter).isChecked =
+        binding.switchFloatingButtonHideAfter.isChecked =
             prefManager.floatingButtonHideAfter
 
         editTextFloatingButtonDelay.setText(prefManager.floatingButtonDelay.toString())
@@ -279,7 +283,7 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
             this, imageViewFloatingButton, shutterCollection.current().normal
         )
 
-        findViewById<SwitchMaterial>(R.id.switchFloatingButtonShowClose).isChecked =
+        binding.switchFloatingButtonShowClose.isChecked =
             prefManager.floatingButtonShowClose
 
         radioGroupShutterTheme.removeAllViews()

@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import android.view.LayoutInflater
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.databinding.ActivityHistoryBinding
 import com.github.cvzi.screenshottile.utils.ScreenshotHistoryAdapter
 import com.github.cvzi.screenshottile.utils.SingleImage
 import com.github.cvzi.screenshottile.utils.cleanUpAppData
@@ -31,15 +33,17 @@ class HistoryActivity : AppCompatActivity() {
         const val TAG = "HistoryActivity.kt"
     }
 
+    private lateinit var binding: ActivityHistoryBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_history)
+        binding = ActivityHistoryBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
 
-        findViewById<Button>(R.id.buttonClear).setOnClickListener {
+        binding.buttonClear.setOnClickListener {
             clear()
         }
 
-        findViewById<SwitchMaterial>(R.id.switchKeepHistory).setOnCheckedChangeListener { v, isChecked ->
+        binding.switchKeepHistory.setOnCheckedChangeListener { v, isChecked ->
             val prefManager = App.getInstance().prefManager
             if (isChecked != prefManager.keepScreenshotHistory) {
                 v.setText(if (isChecked) R.string.notification_settings_on else R.string.notification_settings_off)
@@ -62,7 +66,7 @@ class HistoryActivity : AppCompatActivity() {
             dialog.dismiss()
             cleanUpAppData(this@HistoryActivity, 0) {
                 val adapter =
-                    findViewById<RecyclerView>(R.id.recyclerView).adapter as? ScreenshotHistoryAdapter
+                    binding.recyclerView.adapter as? ScreenshotHistoryAdapter
                 adapter?.run {
                     dataSet = loadImageList()
                     notifyDataSetChanged()
@@ -76,7 +80,7 @@ class HistoryActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        val recyclerView: RecyclerView = binding.recyclerView
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = LinearLayoutManager.VERTICAL
@@ -89,7 +93,7 @@ class HistoryActivity : AppCompatActivity() {
         }
         recyclerView.adapter = adapter
 
-        findViewById<SwitchMaterial>(R.id.switchKeepHistory).isChecked =
+        binding.switchKeepHistory.isChecked =
             App.getInstance().prefManager.keepScreenshotHistory
     }
 

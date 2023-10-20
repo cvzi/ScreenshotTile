@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.DocumentsContract
 import android.util.Log
 import android.util.Size
+import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
@@ -22,6 +23,7 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_RENAME_INPUT
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
+import com.github.cvzi.screenshottile.databinding.ActivityPostBinding
 import com.github.cvzi.screenshottile.utils.*
 
 
@@ -72,6 +74,7 @@ class PostActivity : GenericPostActivity() {
         }
     }
 
+    private lateinit var binding: ActivityPostBinding
     private val prefManager = App.getInstance().prefManager
     private var recentFolders: ArrayList<RecentFolder> = ArrayList()
     private lateinit var startForPickFolder: ActivityResultLauncher<Intent>
@@ -79,7 +82,8 @@ class PostActivity : GenericPostActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_post)
+        binding = ActivityPostBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
 
         intent?.run {
             val imagePath = getStringExtra(NOTIFICATION_ACTION_RENAME_INPUT)
@@ -106,10 +110,9 @@ class PostActivity : GenericPostActivity() {
                             { error ->
                                 runOnUiThread {
                                     Log.e(TAG, "Failed to load image: $error")
-                                    findViewById<ImageView>(R.id.imageView).setImageResource(android.R.drawable.stat_notify_error)
-                                    findViewById<TextView>(R.id.textViewFileName).text =
-                                        "Failed to load image"
-                                    findViewById<TextView>(R.id.textViewFileSize).text = ""
+                                    binding.imageView.setImageResource(android.R.drawable.stat_notify_error)
+                                    binding.textViewFileName.text = "Failed to load image"
+                                    binding.textViewFileSize.text = ""
                                 }
                             })
                     }
@@ -118,10 +121,10 @@ class PostActivity : GenericPostActivity() {
 
             when (getIntExtra(HIGHLIGHT, -1)) {
                 HIGHLIGHT_FILENAME ->
-                    findViewById<TextView>(R.id.textViewFileName).setTextColor(getColor(R.color.highlightColor))
+                    binding.textViewFileName.setTextColor(getColor(R.color.highlightColor))
 
                 HIGHLIGHT_FOLDER ->
-                    findViewById<TextView>(R.id.textViewFileFolder).setTextColor(getColor(R.color.highlightColor))
+                    binding.textViewFileFolder.setTextColor(getColor(R.color.highlightColor))
 
                 else -> {
                     // Do nothing
@@ -130,28 +133,28 @@ class PostActivity : GenericPostActivity() {
 
         }
 
-        findViewById<Button>(R.id.buttonShare).setOnClickListener {
+        binding.buttonShare.setOnClickListener {
             shareIntent?.let { intent ->
                 openIntent(intent)
             }
         }
-        findViewById<Button>(R.id.buttonEdit).setOnClickListener {
+        binding.buttonEdit.setOnClickListener {
             editIntent?.let { intent ->
                 openIntent(intent)
             }
         }
-        findViewById<Button>(R.id.buttonPhotoEditor).setOnClickListener {
+        binding.buttonPhotoEditor.setOnClickListener {
             photoEditorIntent?.let { intent ->
                 openIntent(intent)
             }
         }
-        findViewById<Button>(R.id.buttonCrop).setOnClickListener {
+        binding.buttonCrop.setOnClickListener {
             cropIntent?.let { intent ->
                 openIntent(intent)
             }
         }
 
-        findViewById<Button>(R.id.buttonDelete).setOnClickListener {
+        binding.buttonDelete.setOnClickListener {
             singleImage?.let { singleImageLoaded ->
                 if (deleteImage(this, singleImageLoaded.uri)) {
                     toastMessage(
@@ -160,9 +163,9 @@ class PostActivity : GenericPostActivity() {
                         Toast.LENGTH_SHORT
                     )
                     // Show delete icon and close activity
-                    findViewById<ImageView>(R.id.imageView).setImageResource(android.R.drawable.ic_menu_delete)
-                    findViewById<TextView>(R.id.textViewFileName).setText(R.string.screenshot_deleted)
-                    findViewById<TextView>(R.id.textViewFileSize).text = "0"
+                    binding.imageView.setImageResource(android.R.drawable.ic_menu_delete)
+                    binding.textViewFileName.setText(R.string.screenshot_deleted)
+                    binding.textViewFileSize.text = "0"
                     it.postDelayed({
                         finish()
                     }, 1000L)
@@ -174,12 +177,12 @@ class PostActivity : GenericPostActivity() {
                 }
             }
         }
-        findViewById<Button>(R.id.buttonRename).setOnClickListener {
+        binding.buttonRename.setOnClickListener {
             singleImage?.let { singleImageLoaded ->
                 rename(singleImageLoaded)
             }
         }
-        findViewById<Button>(R.id.buttonMove).setOnClickListener {
+        binding.buttonMove.setOnClickListener {
             val lastDir = prefManager.getRecentFolders().firstOrNull()?.uri
             Intent(Intent.ACTION_OPEN_DOCUMENT_TREE).apply {
                 addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
@@ -210,7 +213,7 @@ class PostActivity : GenericPostActivity() {
                     }
                 }
             }
-        findViewById<EditText>(R.id.editTextNewName).setOnEditorActionListener { _, actionId, _ ->
+        binding.editTextNewName.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEND) {
                 singleImage?.let { singleImageLoaded ->
                     rename(singleImageLoaded)
@@ -218,7 +221,7 @@ class PostActivity : GenericPostActivity() {
             }
             return@setOnEditorActionListener false
         }
-        findViewById<RecyclerView>(R.id.recyclerViewRecentFolders).apply {
+        binding.recyclerViewRecentFolders.apply {
             layoutManager = LinearLayoutManager(context)
             recentFolders.clear()
             recentFolders.addAll(prefManager.getRecentFolders())
@@ -237,14 +240,13 @@ class PostActivity : GenericPostActivity() {
                 }
             }
         }
-        findViewById<RecyclerView>(R.id.recyclerViewSuggestions).apply {
+        binding.recyclerViewSuggestions.apply {
             layoutManager = LinearLayoutManager(context)
             suggestions.clear()
             suggestions.addAll(prefManager.getFileNameSuggestions())
             adapter = SuggestionsAdapter(suggestions).apply {
                 onTextClickListener = { _: View, index: Int ->
-                    this@PostActivity.findViewById<EditText>(R.id.editTextNewName)
-                        .setText(suggestions[index].value)
+                    binding.editTextNewName.setText(suggestions[index].value)
                 }
                 onDeleteClickListener = { _: View, index: Int ->
                     prefManager.run {
@@ -262,23 +264,21 @@ class PostActivity : GenericPostActivity() {
                 }
             }
         }
-        findViewById<ImageButton>(R.id.imageButtonSaveSuggestion).setOnClickListener {
+        binding.imageButtonSaveSuggestion.setOnClickListener {
             saveNewSuggestions()
         }
-        findViewById<EditText>(R.id.editTextAddSuggestion).setOnEditorActionListener { _, actionId, _ ->
+        binding.editTextAddSuggestion.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEND) {
                 saveNewSuggestions()
             }
             return@setOnEditorActionListener false
         }
 
-        findViewById<TextView>(R.id.textViewDateIso).setOnClickListener {
-            findViewById<EditText>(R.id.editTextNewName)
-                .setText((it as TextView).text)
+        binding.textViewDateIso.setOnClickListener {
+            binding.editTextNewName.setText((it as TextView).text)
         }
-        findViewById<TextView>(R.id.textViewDateLocal).setOnClickListener {
-            findViewById<EditText>(R.id.editTextNewName)
-                .setText((it as TextView).text)
+        binding.textViewDateLocal.setOnClickListener {
+            binding.editTextNewName.setText((it as TextView).text)
         }
 
     }
@@ -291,10 +291,10 @@ class PostActivity : GenericPostActivity() {
     override fun restoreSavedInstanceValues() {
         savedInstanceState?.run {
             getString("editText_${R.id.editTextNewName}", null)?.let {
-                findViewById<EditText>(R.id.editTextNewName).setText(it)
+                binding.editTextNewName.setText(it)
             }
             getString("editText_${R.id.editTextAddSuggestion}", null)?.let {
-                findViewById<EditText>(R.id.editTextAddSuggestion).setText(it)
+                binding.editTextAddSuggestion.setText(it)
             }
         }
     }
@@ -302,11 +302,11 @@ class PostActivity : GenericPostActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putString(
             "editText_${R.id.editTextNewName}",
-            findViewById<EditText>(R.id.editTextNewName)?.text.toString()
+            binding.editTextNewName.text.toString()
         )
         outState.putString(
             "editText_${R.id.editTextAddSuggestion}",
-            findViewById<EditText>(R.id.editTextAddSuggestion)?.text.toString()
+            binding.editTextAddSuggestion.text.toString()
         )
         super.onSaveInstanceState(outState)
     }
