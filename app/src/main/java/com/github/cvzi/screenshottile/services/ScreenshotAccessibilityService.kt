@@ -26,12 +26,14 @@ import android.view.accessibility.AccessibilityEvent
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.activities.*
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
+import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.toastMessageAccessibility
 import com.github.cvzi.screenshottile.utils.*
 
 
@@ -55,7 +57,14 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     if (returnTo != null) {
                         App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = returnTo
                     }
+                    context.toastMessageAccessibility()
                     context.startActivity(this)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        context.toastMessageAccessibility()
+                    }, 1000)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        context.toastMessageAccessibility()
+                    }, 3000)
                 }
             }
         }
@@ -70,9 +79,28 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     if (returnTo != null) {
                         App.getInstance().prefManager.returnIfAccessibilityServiceEnabled = returnTo
                     }
+                    tileService.toastMessageAccessibility()
                     tileService.startActivityAndCollapseCustom(this)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        tileService.toastMessageAccessibility()
+                    }, 1000)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        tileService.toastMessageAccessibility()
+                    }, 3000)
                 }
             }
+        }
+
+        /**
+         * Inform user that they should enable the accessibility service
+         */
+        private fun Context.toastMessageAccessibility() {
+            toastMessage(
+                getString(
+                    R.string.toast_open_accessibility_settings,
+                    getString(R.string.app_name)
+                ), ToastType.ACTIVITY, Toast.LENGTH_LONG
+            )
         }
 
         fun setShutterDrawable(context: Context, button: ImageView, res: Int) {
