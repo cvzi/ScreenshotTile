@@ -168,7 +168,7 @@
     <string name="about_update_check_button">Update check</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Accessibility settings</string>
-    <string name="toast_open_accessibility_settings">Please activate "%1s" in the accessibility settings</string>
+    <string name="toast_open_accessibility_settings">Please activate \"%1s\" in the accessibility settings</string>
     <string name="main_floating_button_title">Floating button</string>
     <string name="main_general_text">Before you can use this app, you need to add the tile/button to the quick settings. If you don\'t know how to do this, take a look at the [Tutorial,.TutorialActivity].\n\nThis app supports two different methods to take screenshots:</string>
     <string name="main_legacy_method_title">Legacy Method</string>
