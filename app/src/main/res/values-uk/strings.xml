@@ -88,6 +88,7 @@
     <string name="post_action_save_to_storage">Зберегти до галереї</string>
     <string name="post_action_show_toast">Показувати сповіщення «Тост». Коротке спливне вікно, що зникає за 2 секунди</string>
     <string name="post_action_show_notification">Показувати звичайне сповіщення. Ви можете змінити кнопки (Редагувати, Поділитися,…) під сповіщенням у розділі «Налаштування»</string>
+    <string name="post_action_play_tone">Відтворювати звук</string>
     <string name="post_action_empty">Не відкривати знімок екрана</string>
     <string name="post_action_open_in_post">Відкрити в режимі «Подробиці»</string>
     <string name="post_action_open_in_post_crop">Обрізати зображення</string>
@@ -95,6 +96,9 @@
     <string name="post_action_open_in_external_editor">Відкрити у зовнішньому фоторедакторі</string>
     <string name="post_action_open_in_external_viewer">Відкрити у переглядачі світлин або галереї</string>
     <string name="post_action_open_share">Поділитися знімком екрана</string>
+    <string name="post_settings_audio_output_stream">Потік виводу звуку:</string>
+    <string name="post_settings_audio_tone_duration">Тривалість тону:</string>
+    <string name="post_settings_audio_tone_select">Тон:</string>
     <string name="move_to_storage_directory">Перемістити до галереї</string>
     <string name="button_clear">Очистити</string>
     <string name="button_clear_confirm">Видалити всі тимчасові файли?\nЦе видалить усі файли у %s\n\n(Ці файли зазвичай не показуються у вашій галереї)</string>
@@ -164,6 +168,7 @@
     <string name="about_update_check_button">Перевірка наявності оновлень</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Налаштування спеціальних можливостей</string>
+    <string name="toast_open_accessibility_settings">Активуйте \"%1s\" в налаштуваннях доступності</string>
     <string name="main_floating_button_title">Рухома кнопка</string>
     <string name="main_general_text">Перш ніж користуватися цим застосунком, потрібно додати плитку/кнопку до швидких налаштувань. Якщо ви не знаєте, як це зробити, прочитайте посібник [Посібник,.TutorialActivity].\n\nЦей застосунок підтримує два різні методи зняття знімка екрана:</string>
     <string name="main_legacy_method_title">Оригінальний метод</string>
@@ -179,7 +184,7 @@
     <string name="main_assist_app_text">Якщо ви встановите цей застосунок як допоміжний, ви можете зробити знімок екрана тривалим натиском кнопку «Додому». Увімкнення цього застосунку як допоміжного застосунку вимкне інших помічників. Змінити дію кнопки Додому можна в налаштуваннях застосунку.</string>
     <string name="restricted_settings_open_settings">Дозволити налаштування з обмеженнями</string>
     <string name="restricted_settings_open_accessibility">Відкрити налаштування доступності</string>
-    <string name="restricted_settings_title">Увімкнути налаштування доступності</string>
+    <string name="restricted_settings_title">Увімкнути службу доступності</string>
     <string name="restricted_settings_text">Якщо ввімкнено налаштування доступності, спершу вам необхідно дозволити \"налаштування з обмеженнями\". Їх можна знайти у розділі \"Інформація про застосунок\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Перейменувати</string>
