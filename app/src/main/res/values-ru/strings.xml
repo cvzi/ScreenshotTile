@@ -12,11 +12,16 @@
     <string name="floating_button_settings">Настройки плавающей кнопки</string>
     <string name="left_screenshot_right_menu">Слева: Снимок экрана, справа: Настройки</string>
     <string name="partial_screenshot">Выбрать область</string>
+    <string name="options_dialog">Отображать параметры</string>
     <string name="file_format">Формат файла</string>
     <string name="setting_delay_entry_default">Без задержки</string>
     <string name="setting_delay_entry_1s">1 с.</string>
     <string name="setting_delay_entry_2s">2 с.</string>
     <string name="setting_delay_entry_5s">5 с.</string>
+    <string name="take_screenshot_1s_delayed">Сделать снимок экрана через 1 с</string>
+    <string name="take_screenshot_2s_delayed">Сделать снимок экрана через 2 с</string>
+    <string name="take_screenshot_5s_delayed">Сделать снимок экрана через 5 с</string>
+    <string name="toggle_floating_button">Переключить плавающую кнопку</string>
     <string name="show_count_down">Показывать обратный отсчёт</string>
     <string name="use_native_screenshot">Использовать встроенный метод снимка экрана</string>
     <string name="use_native_screenshot_summary">Имитация нажатия кнопок домой + питания</string>
@@ -57,6 +62,7 @@
 %random% - случайный UUID\n
 %randint% - случайное число]]></string>
     <string name="setting_tile_action">Действие плитки</string>
+    <string name="setting_tile_long_press_action">Действие при длительном нажатии на плитку</string>
     <string name="setting_floating_action">Действие плавающей кнопки</string>
     <string name="setting_voice_interaction_action">Действия помощника</string>
     <string name="setting_dark_theme">Ночной режим</string>
@@ -171,6 +177,7 @@
     <string name="main_long_press_text">Длительное нажатие плитки/кнопки открывает меню. Вы можете указать задержку для снимка экрана или вырезать прямоугольник с экрана.</string>
     <string name="main_assist_app_title">Помощник</string>
     <string name="main_assist_app_text">Если вы установите это приложение в качестве приложения-помощника, вы можете долго нажимать кнопку \"Домой\", чтобы сделать снимок экрана. Включение этого приложения в качестве приложения-помощника отключит других помощников. Действие длительного нажатия кнопки \"Домой\" можно изменить в настройках приложения.</string>
+    <string name="restricted_settings_open_settings">Разрешить доступ к настройкам</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Переименовать</string>
     <string name="post_button_move">Переместить</string>
