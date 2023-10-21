@@ -184,7 +184,7 @@
     <string name="main_assist_app_text">Wenn du diese App als deine Assistent-App festlegst, dann kannst du mit langem Drücken der Home-Taste einen Screenshot aufnehmen. Wenn du diese app als deine Assistent-App festlegst, werden andere Assistent-Apps deaktiviert. Du kannst die Aktion des langen Drückens der Home-Taste in den Appeinstellungen ändern.</string>
     <string name="restricted_settings_open_settings">Eingeschränkte Einstellungen zulassen</string>
     <string name="restricted_settings_open_accessibility">Bedienungshilfen Einstellungen öffnen</string>
-    <string name="restricted_settings_title">Bedienungshilfen aktivieren</string>
+    <string name="restricted_settings_title">Bedienungshilfen-Dienst aktivieren</string>
     <string name="restricted_settings_text">Wenn die Bedienungshilfen-Einstellungen ausgegraut sind, musst du zuerst die \"Eingeschränkten Einstellungen\" zulassen. Die \"Eingeschränkten Einstellungen\" findest du in der \"App Info\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Umbenennen</string>
