@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.5.1
+*   Translations updated from crowdin
+
 ## 2.5.0
 *   Play a sound after a successful screenshot [#431](https://github.com/cvzi/ScreenshotTile/issues/431)
 *   Show a toast message when opening the accessibility settings [#359](https://github.com/cvzi/ScreenshotTile/issues/359)
