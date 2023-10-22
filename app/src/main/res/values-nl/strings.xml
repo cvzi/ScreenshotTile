@@ -82,6 +82,7 @@
     <string name="post_action_save_to_storage">Afbeelding opslaan in galerij</string>
     <string name="post_action_show_toast">Een “Toast”-melding tonen: een kleine pop-up die na 2 seconden verdwijnt</string>
     <string name="post_action_show_notification">Een gewone melding tonen. Je kan de knoppen onder de notificatie (Bewerken, Delen,…)  wijzigen in “Meer Instellingen”</string>
+    <string name="post_action_play_tone">Een geluid afspelen</string>
     <string name="post_action_empty">Schermafdruk niet openen</string>
     <string name="post_action_open_in_post">In “Details”-weergave openen</string>
     <string name="post_action_open_in_post_crop">Afbeelding bijsnijden</string>
@@ -89,6 +90,9 @@
     <string name="post_action_open_in_external_editor">In een externe fotobewerker openen</string>
     <string name="post_action_open_in_external_viewer">In een fotoviewer of de galerij openen</string>
     <string name="post_action_open_share">Schermafdruk delen</string>
+    <string name="post_settings_audio_output_stream">Audio-uitvoerstream:</string>
+    <string name="post_settings_audio_tone_duration">Toonduur:</string>
+    <string name="post_settings_audio_tone_select">Toon:</string>
     <string name="move_to_storage_directory">Naar galerij verplaatsen</string>
     <string name="button_clear">Wissen</string>
     <string name="button_clear_confirm">Wil je alle tijdelijke bestanden verwijderen?\nDit verwijdert alle bestanden in %s\n\n(Deze bestanden zijn meestal niet zichtbaar in je galerij.)</string>
@@ -158,6 +162,7 @@
     <string name="about_update_check_button">Zoeken naar updates</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Toegankelijkheidsinstellingen</string>
+    <string name="toast_open_accessibility_settings">Activeer “%1s” in de toegankelijkheidsinstellingen</string>
     <string name="main_floating_button_title">Zwevende knop</string>
     <string name="main_general_text">Voordat je deze app kunt gebruiken, moet je de tegel/knop toevoegen aan de snelle instellingen. Als je niet weet hoe je dit moet doen, bekijk dan de [Handleiding,.TutorialActivity].\n\nDeze app ondersteunt twee verschillende methoden voor het maken van schermafdrukken:</string>
     <string name="main_legacy_method_title">Verouderde methode</string>
@@ -171,6 +176,8 @@
     <string name="main_long_press_text">Lang indrukken van de tegel/knop opent een menu. Je kunt een vertraging opgeven voor de schermafdruk of een rechthoek uitknippen van het scherm.</string>
     <string name="main_assist_app_title">App voor assistentie</string>
     <string name="main_assist_app_text">Als je deze app als assistentie-app instelt, kun je lang op de home-knop drukken om een screenshot te maken.  Door deze app in te schakelen worden andere assistenten uitgeschakeld.  U kunt de actie behorend bij lang op de thuisknop te drukken wijzigen in de app-instellingen.</string>
+    <string name="restricted_settings_open_settings">Beperkte instellingen toestaan</string>
+    <string name="restricted_settings_title">Toegankelijkheidsdienst activeren</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Naam wijzigen</string>
     <string name="post_button_move">Verplaatsen</string>
