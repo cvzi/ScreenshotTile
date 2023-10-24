@@ -12,11 +12,16 @@
     <string name="floating_button_settings">Instellingen voor zwevende knop</string>
     <string name="left_screenshot_right_menu">Links: Schermafdruk, Rechts: Instellingen</string>
     <string name="partial_screenshot">Gebied selecteren</string>
+    <string name="options_dialog">Opties tonen</string>
     <string name="file_format">Bestandsindeling</string>
     <string name="setting_delay_entry_default">Onmiddellijk</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
+    <string name="take_screenshot_1s_delayed">Schermafdruk maken na 1s</string>
+    <string name="take_screenshot_2s_delayed">Schermafdruk maken na 2s</string>
+    <string name="take_screenshot_5s_delayed">Schermafdruk maken na 5s</string>
+    <string name="toggle_floating_button">Zwevende knop aan/uit</string>
     <string name="show_count_down">Afteller tonen</string>
     <string name="use_native_screenshot">Ingebouwde schermafdrukmethode gebruiken</string>
     <string name="use_native_screenshot_summary">Indrukken van thuis- en aan-uit-knop simuleren</string>
@@ -57,6 +62,7 @@
 %random% – een willekeurig UUID\n
 %randint% – een willekeurig getal]]></string>
     <string name="setting_tile_action">Tegelactie</string>
+    <string name="setting_tile_long_press_action">Actie bij lang indrukken tegel</string>
     <string name="setting_floating_action">Actie voor zwevende knop</string>
     <string name="setting_voice_interaction_action">Actie van assistent</string>
     <string name="setting_dark_theme">Donker thema</string>
@@ -177,7 +183,9 @@
     <string name="main_assist_app_title">App voor assistentie</string>
     <string name="main_assist_app_text">Als je deze app als assistentie-app instelt, kun je lang op de home-knop drukken om een screenshot te maken.  Door deze app in te schakelen worden andere assistenten uitgeschakeld.  U kunt de actie behorend bij lang op de thuisknop te drukken wijzigen in de app-instellingen.</string>
     <string name="restricted_settings_open_settings">Beperkte instellingen toestaan</string>
+    <string name="restricted_settings_open_accessibility">Toegankelijkheidsinstellingen openen</string>
     <string name="restricted_settings_title">Toegankelijkheidsdienst activeren</string>
+    <string name="restricted_settings_text">Als de toegankelijkheidsinstellingen grijs zijn, moet u eerst de “beperkte instellingen” toestaan. De “beperkte instellingen” zijn te vinden in de “App-informatie”:</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Naam wijzigen</string>
     <string name="post_button_move">Verplaatsen</string>
