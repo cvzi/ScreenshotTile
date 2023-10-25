@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.6.0
+*   Floating button can be placed over camera hole / cutout notch  [#453](https://github.com/cvzi/ScreenshotTile/issues/453)
+*   Only show accessibility toast when accessibility service is inactive
+*   Translations updated from crowdin
+
 ## 2.5.2
 *   Translations updated from crowdin
 
