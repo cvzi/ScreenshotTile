@@ -267,18 +267,22 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value.coerceIn(0f, 1f).toString()
         ).apply()
 
+    /**
+     * Default to (50, 150) to avoid having the floating button
+     * stuck on the camera notch when it is added the first time
+     */
     var floatingButtonPosition: Point
         get() {
             val s = pref.getString(
                 context.getString(R.string.pref_key_floating_button_position),
-                "0,0"
-            ) ?: "0,0"
+                "50,150"
+            ) ?: "50,150"
             val parts = s.split(",")
             if (parts.size != 2) {
-                return Point(0, 0)
+                return Point(50, 150)
             }
-            val x = parts[0].toIntOrNull() ?: 0
-            val y = parts[1].toIntOrNull() ?: 0
+            val x = parts[0].toIntOrNull() ?: 50
+            val y = parts[1].toIntOrNull() ?: 150
             return Point(x, y)
         }
         set(point) = pref.edit().putString(
