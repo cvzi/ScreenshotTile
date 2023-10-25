@@ -514,6 +514,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             gravity = Gravity.TOP or Gravity.LEFT
             this.x = x
             this.y = y
+            // Allow the floating button to cover the camera notch/cutout
+            layoutInDisplayCutoutMode =
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+
         }
     }
 
