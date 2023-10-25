@@ -33,7 +33,6 @@ import com.github.cvzi.screenshottile.*
 import com.github.cvzi.screenshottile.activities.*
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
-import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.toastMessageAccessibility
 import com.github.cvzi.screenshottile.utils.*
 
 
@@ -61,10 +60,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     context.startActivity(this)
                     Handler(Looper.getMainLooper()).postDelayed({
                         context.toastMessageAccessibility()
-                    }, 1000)
+                    }, 2000)
                     Handler(Looper.getMainLooper()).postDelayed({
                         context.toastMessageAccessibility()
-                    }, 3000)
+                    }, 4000)
                 }
             }
         }
@@ -83,10 +82,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     tileService.startActivityAndCollapseCustom(this)
                     Handler(Looper.getMainLooper()).postDelayed({
                         tileService.toastMessageAccessibility()
-                    }, 1000)
+                    }, 2000)
                     Handler(Looper.getMainLooper()).postDelayed({
                         tileService.toastMessageAccessibility()
-                    }, 3000)
+                    }, 4000)
                 }
             }
         }
@@ -95,12 +94,14 @@ class ScreenshotAccessibilityService : AccessibilityService() {
          * Inform user that they should enable the accessibility service
          */
         private fun Context.toastMessageAccessibility() {
-            toastMessage(
-                getString(
-                    R.string.toast_open_accessibility_settings,
-                    getString(R.string.app_name)
-                ), ToastType.ACTIVITY, Toast.LENGTH_LONG
-            )
+            if (instance == null) {
+                toastMessage(
+                    getString(
+                        R.string.toast_open_accessibility_settings,
+                        getString(R.string.app_name)
+                    ), ToastType.ACTIVITY, Toast.LENGTH_LONG
+                )
+            }
         }
 
         fun setShutterDrawable(context: Context, button: ImageView, res: Int) {
