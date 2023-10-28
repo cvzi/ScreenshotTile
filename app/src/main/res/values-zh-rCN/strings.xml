@@ -24,7 +24,7 @@
     <string name="toggle_floating_button">切换悬浮按钮</string>
     <string name="show_count_down">显示倒计时</string>
     <string name="use_native_screenshot">使用原生屏幕截图方式</string>
-    <string name="use_native_screenshot_summary">模拟 home + 电源键按压</string>
+    <string name="use_native_screenshot_summary">模拟按下 Home 键 + 电源键</string>
     <string name="use_native_screenshot_unsupported">需要 Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">无障碍服务已禁用</string>
     <string name="use_native_screenshot_option_default">原生方式使用系统默认</string>
@@ -184,7 +184,7 @@
     <string name="main_assist_app_text">如果您将此应用设置为您的助理应用，您可以长按主页按钮进行截图。将此应用设为您的助理应用将禁用其他助理。您可以在应用设置中更改长按主页按钮的动作。</string>
     <string name="restricted_settings_open_settings">允许受限制的设置</string>
     <string name="restricted_settings_open_accessibility">打开无障碍设置</string>
-    <string name="restricted_settings_title">允许受限制的设置</string>
+    <string name="restricted_settings_title">启用无障碍服务</string>
     <string name="restricted_settings_text">如果无障碍设置变灰，您需要先允许 “受限制设置”。 \"受限制设置\" 可以在 “应用信息” 中找到：</string>
     <!-- Post edit activity -->
     <string name="post_button_save">重命名</string>
