@@ -2,27 +2,24 @@ package com.github.cvzi.screenshottile.activities
 
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityPostSettingsBinding
-import com.github.cvzi.screenshottile.databinding.ToneSelectorListItemBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.Sound
 import com.github.cvzi.screenshottile.utils.Sound.Companion.allAudioSinks
+import com.github.cvzi.screenshottile.utils.TonesRecyclerViewAdapter
 import com.github.cvzi.screenshottile.utils.nicePathFromUri
 import java.lang.Float.max
 
@@ -241,44 +238,5 @@ class PostSettingsActivity : AppCompatActivity() {
     private fun onToneClick(name: String) {
         App.getInstance().prefManager.soundNotificationTone = "tone:$name"
         Sound.playTone()
-    }
-}
-
-class TonesRecyclerViewAdapter internal constructor(
-    context: Context,
-    tonesHashMap: HashMap<String, Int>,
-    selectedToneName: String,
-    private val clickListener: (view: View, position: Int, name: String) -> Unit
-) : RecyclerView.Adapter<TonesRecyclerViewAdapter.ViewHolder>() {
-    private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
-    private var toneNames: List<String> = tonesHashMap.keys.toList().sorted()
-    var selectedIndex = toneNames.indexOf(selectedToneName)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(ToneSelectorListItemBinding.inflate(layoutInflater, parent, false))
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.onBind(position)
-
-    override fun getItemCount() = toneNames.size
-
-    inner class ViewHolder internal constructor(private val binding: ToneSelectorListItemBinding) :
-        RecyclerView.ViewHolder(binding.root),
-        View.OnClickListener {
-        init {
-            this.itemView.setOnClickListener(this@ViewHolder)
-        }
-
-        fun onBind(position: Int) {
-            binding.textView.text = toneNames[position].replace("_", " ")
-            itemView.isSelected = selectedIndex == position
-        }
-
-        override fun onClick(view: View) {
-            val oldSelectedIndex = selectedIndex
-            selectedIndex = adapterPosition
-            clickListener(view, adapterPosition, toneNames[adapterPosition])
-            notifyItemChanged(oldSelectedIndex)
-            notifyItemChanged(selectedIndex)
-        }
     }
 }
