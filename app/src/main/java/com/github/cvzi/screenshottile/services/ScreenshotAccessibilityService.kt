@@ -515,9 +515,12 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             this.x = x
             this.y = y
             // Allow the floating button to cover the camera notch/cutout
-            layoutInDisplayCutoutMode =
+            flags = flags or WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+            layoutInDisplayCutoutMode = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
+            } else {
                 WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
-
+            }
         }
     }
 
