@@ -13,13 +13,13 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityPostSettingsBinding
+import com.github.cvzi.screenshottile.databinding.ToneSelectorListItemBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.Sound
 import com.github.cvzi.screenshottile.utils.Sound.Companion.allAudioSinks
@@ -255,19 +255,22 @@ class TonesRecyclerViewAdapter internal constructor(
     var selectedIndex = toneNames.indexOf(selectedToneName)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(layoutInflater.inflate(R.layout.tone_selector_list_item, parent, false))
+        ViewHolder(ToneSelectorListItemBinding.inflate(layoutInflater, parent, false))
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = toneNames[position].replace("_", " ")
-        holder.view.isSelected = selectedIndex == position
-    }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.onBind(position)
 
     override fun getItemCount() = toneNames.size
 
-    inner class ViewHolder internal constructor(val view: View) : RecyclerView.ViewHolder(view),
+    inner class ViewHolder internal constructor(private val binding: ToneSelectorListItemBinding) :
+        RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
-        val textView: TextView = view.findViewById<TextView>(R.id.toneName).apply {
-            setOnClickListener(this@ViewHolder)
+        init {
+            this.itemView.setOnClickListener(this@ViewHolder)
+        }
+
+        fun onBind(position: Int) {
+            binding.textView.text = toneNames[position].replace("_", " ")
+            itemView.isSelected = selectedIndex == position
         }
 
         override fun onClick(view: View) {
@@ -276,9 +279,6 @@ class TonesRecyclerViewAdapter internal constructor(
             clickListener(view, adapterPosition, toneNames[adapterPosition])
             notifyItemChanged(oldSelectedIndex)
             notifyItemChanged(selectedIndex)
-
         }
-
     }
-
 }
