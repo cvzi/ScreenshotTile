@@ -16,17 +16,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:singleLine="true"
                 android:text="🇮🇱 Stand with Israel 🇮🇱"
-                android:gravity="center"
                 android:textAppearance="@android:style/TextAppearance.Material.Title"
                 android:textColor="#0038b8" />
 
@@ -50,10 +52,12 @@
                     android:layout_marginEnd="10dp"
                     android:src="@drawable/ic_close" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/buttonDonateMagen"
                     style="@style/SmallButton"
@@ -61,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:text="mdais.org"
                     android:textSize="14sp" />
+
                 <Button
                     android:id="@+id/buttonDonateGiveLively"
                     style="@style/SmallButton"
@@ -68,6 +73,7 @@
                     android:layout_height="wrap_content"
                     android:text="givelively.org"
                     android:textSize="14sp" />
+
                 <Button
                     android:id="@+id/buttonDonateIsraelRescue"
                     style="@style/SmallButton"
@@ -445,8 +451,8 @@
                         android:textAppearance="@android:style/TextAppearance.Material.Body1" />
 
                     <Button
-                        style="@android:style/Widget.Holo.Button"
                         android:id="@+id/buttonSettings2"
+                        style="@android:style/Widget.Holo.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/more_setting" />

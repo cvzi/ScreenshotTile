@@ -231,30 +231,30 @@
                     android:padding="10dp">
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/post_action_play_tone"
-                        android:textAppearance="@android:style/TextAppearance.Material.Title" />
+                        android:orientation="horizontal">
 
-                    <ImageButton
-                        android:id="@+id/imageButtonPlay"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="48dp"
-                        android:layout_marginEnd="0dp"
-                        android:contentDescription="Preview tone"
-                        android:keepScreenOn="true"
-                        android:src="@android:drawable/ic_media_play"
-                        tools:ignore="HardcodedText" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/post_action_play_tone"
+                            android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
-                </LinearLayout>
+                        <ImageButton
+                            android:id="@+id/imageButtonPlay"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="48dp"
+                            android:layout_marginEnd="0dp"
+                            android:contentDescription="Preview tone"
+                            android:keepScreenOn="true"
+                            android:src="@android:drawable/ic_media_play"
+                            tools:ignore="HardcodedText" />
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -300,9 +300,9 @@
 
                         <com.google.android.material.slider.Slider
                             android:id="@+id/sliderAudioDuration"
-                            android:contentDescription="@string/post_settings_audio_tone_duration"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:contentDescription="@string/post_settings_audio_tone_duration"
                             android:stepSize="20"
                             android:valueFrom="40"
                             android:valueTo="2000" />
