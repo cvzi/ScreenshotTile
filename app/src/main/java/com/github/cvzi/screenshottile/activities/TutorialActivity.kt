@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.collection.LruCache
@@ -94,7 +93,7 @@ class TutorialActivity : AppCompatActivity() {
 
         val cacheSize = (Runtime.getRuntime().maxMemory() / 1024).toInt() / 4
         bitmapCache = BitmapCache(cacheSize)
-        
+
         binding.viewPager.adapter = TutorialPagerAdapter()
 
         if (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) {
@@ -106,7 +105,8 @@ class TutorialActivity : AppCompatActivity() {
             binding.viewPager.systemGestureExclusionRects =
                 listOf(Rect(0, 0, binding.viewPager.width, binding.viewPager.height))
             binding.viewPager.addOnLayoutChangeListener { v, _, _, _, _, _, _, _, _ ->
-                binding.viewPager.systemGestureExclusionRects = listOf(Rect(0, 0, v.width, v.height))
+                binding.viewPager.systemGestureExclusionRects =
+                    listOf(Rect(0, 0, v.width, v.height))
             }
         }
 
@@ -145,7 +145,10 @@ class TutorialActivity : AppCompatActivity() {
     private inner class ClickableImageView(context: Context) : AppCompatImageView(context) {
         init {
             setOnClickListener {
-                binding.viewPager.setCurrentItem((binding.viewPager.currentItem + 1) % images.size, true)
+                binding.viewPager.setCurrentItem(
+                    (binding.viewPager.currentItem + 1) % images.size,
+                    true
+                )
             }
         }
     }

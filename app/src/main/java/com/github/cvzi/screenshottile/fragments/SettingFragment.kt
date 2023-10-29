@@ -116,7 +116,10 @@ class SettingFragment : PreferenceFragmentCompat() {
 
                 getString(R.string.pref_key_use_system_defaults) -> updateUseNative(switchEvent = true)
                 getString(R.string.pref_key_tile_action) -> updateTileActionSummary(prefManager.tileAction)
-                getString(R.string.pref_key_tile_long_press_action) -> updateTileLongPressActionSummary(prefManager.tileLongPressAction)
+                getString(R.string.pref_key_tile_long_press_action) -> updateTileLongPressActionSummary(
+                    prefManager.tileLongPressAction
+                )
+
                 getString(R.string.pref_key_floating_action) -> updateFloatingActionSummary(
                     prefManager.floatingButtonAction
                 )
@@ -181,7 +184,8 @@ class SettingFragment : PreferenceFragmentCompat() {
         floatingButtonDelay =
             findPreference(getString(R.string.pref_key_floating_button_delay)) as ListPreference?
         tileActionPref = findPreference(getString(R.string.pref_key_tile_action)) as ListPreference?
-        tileLongPressActionPref = findPreference(getString(R.string.pref_key_tile_long_press_action)) as ListPreference?
+        tileLongPressActionPref =
+            findPreference(getString(R.string.pref_key_tile_long_press_action)) as ListPreference?
         floatingButtonActionPref =
             findPreference(getString(R.string.pref_key_floating_action)) as ListPreference?
         voiceInteractionActionPref =

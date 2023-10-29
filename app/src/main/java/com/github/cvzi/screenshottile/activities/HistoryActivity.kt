@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import android.view.LayoutInflater
-import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
@@ -20,7 +19,6 @@ import com.github.cvzi.screenshottile.databinding.ActivityHistoryBinding
 import com.github.cvzi.screenshottile.utils.ScreenshotHistoryAdapter
 import com.github.cvzi.screenshottile.utils.SingleImage
 import com.github.cvzi.screenshottile.utils.cleanUpAppData
-import com.google.android.material.switchmaterial.SwitchMaterial
 import java.io.File
 import java.util.*
 

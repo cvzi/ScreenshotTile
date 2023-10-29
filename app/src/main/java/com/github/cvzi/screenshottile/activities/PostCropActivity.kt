@@ -125,7 +125,7 @@ class PostCropActivity : GenericPostActivity() {
             tintImage(singleImage.bitmap, color = 0xFF006622)
         } else {
             singleImage.bitmap
-        } ?: return
+        }
 
         if (binding.globalScreenshotSelector.measuredWidth > 0 && binding.globalScreenshotSelector.measuredHeight > 0 && (binding.globalScreenshotSelector.measuredWidth < bm.width || binding.globalScreenshotSelector.measuredHeight < bm.height)) {
             Log.d(

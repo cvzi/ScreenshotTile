@@ -135,16 +135,18 @@ class ScreenshotTileService : TileService(),
 
         setState(Tile.STATE_ACTIVE)
 
-        when(App.getInstance().prefManager.tileAction) {
+        when (App.getInstance().prefManager.tileAction) {
             getString(R.string.setting_tile_action_value_options) -> {
                 SettingDialogActivity.newIntent(this).run {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivityAndCollapseCustom(this)
                 }
             }
+
             getString(R.string.setting_tile_action_value_partial) -> {
                 App.getInstance().screenshotPartial(this)
             }
+
             else -> {
                 App.getInstance().screenshot(this)
             }

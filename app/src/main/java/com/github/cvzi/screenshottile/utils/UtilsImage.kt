@@ -755,7 +755,7 @@ fun realScreenSize(context: Context): Point {
 /**
  * Tint image (for debugging)
  */
-fun tintImage(bitmap: Bitmap, color: Long): Bitmap? {
+fun tintImage(bitmap: Bitmap, color: Long): Bitmap {
     val newBitmap = Bitmap.createBitmap(bitmap.width, bitmap.height, Bitmap.Config.ARGB_8888)
     Canvas(newBitmap).drawBitmap(bitmap, 0f, 0f, Paint().apply {
         colorFilter = PorterDuffColorFilter(color.toInt(), PorterDuff.Mode.ADD)
