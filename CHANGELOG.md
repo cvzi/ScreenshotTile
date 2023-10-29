@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.6.1
+*   Floating button on camera hole for Android 12 and lower [#453](https://github.com/cvzi/ScreenshotTile/issues/453)
+*   Whole row is clickable in sound selector [#431](https://github.com/cvzi/ScreenshotTile/issues/431)
+*   Translations updated from crowdin
+
 ## 2.6.0
 *   Floating button can be placed over camera hole / cutout notch  [#453](https://github.com/cvzi/ScreenshotTile/issues/453)
 *   Only show accessibility toast when accessibility service is inactive
