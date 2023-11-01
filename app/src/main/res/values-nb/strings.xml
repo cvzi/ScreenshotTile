@@ -12,11 +12,16 @@
     <string name="floating_button_settings">Flytende knapp-innstillinger</string>
     <string name="left_screenshot_right_menu">Venstre: Screenshot, høyre: Innstillinger</string>
     <string name="partial_screenshot">Velg område</string>
+    <string name="options_dialog">Vis muligheter</string>
     <string name="file_format">Filformat</string>
     <string name="setting_delay_entry_default">Øyeblikkelig</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
+    <string name="take_screenshot_1s_delayed">Ta skjermbilde etter 1s</string>
+    <string name="take_screenshot_2s_delayed">Ta skjermbilde etter 2s</string>
+    <string name="take_screenshot_5s_delayed">Ta skjermbilde etter 5s</string>
+    <string name="toggle_floating_button">De/aktiver flytende skjermbilde knapp</string>
     <string name="show_count_down">Vis countdown</string>
     <string name="use_native_screenshot">Bruk naturlig skjermbilde metode</string>
     <string name="use_native_screenshot_summary">Simuler hjem- + strøm-knappen trykk</string>
@@ -57,6 +62,7 @@
 %random% - en tilfeldig UUID\n
 %randint% - et tilfeldig tall]]></string>
     <string name="setting_tile_action">Flislegg handling</string>
+    <string name="setting_tile_long_press_action">Flislegg langt trykk handling</string>
     <string name="setting_floating_action">Flytende knapp-handling</string>
     <string name="setting_voice_interaction_action">Assistent handling</string>
     <string name="setting_dark_theme">Mørkt tema</string>
@@ -82,6 +88,7 @@
     <string name="post_action_save_to_storage">Lagre bilde i galleriet</string>
     <string name="post_action_show_toast">Vis en \"Toast\"-varsel. En liten sprettoppmelding som forsvinner etter 2 sekunder</string>
     <string name="post_action_show_notification">Vis en vanlig varsel. Du kan endre knappene (Rediger, Del,…) under varselet under \"Flere Innstillinger\"</string>
+    <string name="post_action_play_tone">Spill av en lyd</string>
     <string name="post_action_empty">Ikke åpne skjermbildet</string>
     <string name="post_action_open_in_post">Åpne i \"Detaljer\" visning</string>
     <string name="post_action_open_in_post_crop">Beskjær bildet</string>
@@ -89,6 +96,9 @@
     <string name="post_action_open_in_external_editor">Åpne i en eksternt bilderedigerer</string>
     <string name="post_action_open_in_external_viewer">Åpne i en fotograf eller galleriet</string>
     <string name="post_action_open_share">Del skjermbildet</string>
+    <string name="post_settings_audio_output_stream">Lyd output stream:</string>
+    <string name="post_settings_audio_tone_duration">Lengde av lyd:</string>
+    <string name="post_settings_audio_tone_select">Lyd:</string>
     <string name="move_to_storage_directory">Flytt til galleri</string>
     <string name="button_clear">Tøm</string>
     <string name="button_clear_confirm">Vil du slette alle midlertidige filer?\nDette vil slette alle filene i %s\n\n(Disse filene er vanligvis ikke synlige i galleriet)</string>
@@ -158,6 +168,7 @@
     <string name="about_update_check_button">Oppdater sjekk</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Tilgjengelige innstillinger</string>
+    <string name="toast_open_accessibility_settings">Aktiver \"%1s\" i tilgjengelighetsinnstillingene</string>
     <string name="main_floating_button_title">Flytende knapp</string>
     <string name="main_general_text">Før du kan bruke denne appen, må du legge til tips/knappen til hurtiginnstillingene. Hvis du ikke vet hvordan du gjør dette, ta en titt på [Opplæringsaktivitet,.TutorialActivity].\n\nDenne appen støtter to forskjellige metoder for å ta skjermbilder:</string>
     <string name="main_legacy_method_title">Eldre metode</string>
@@ -171,6 +182,10 @@
     <string name="main_long_press_text">Langt trykk på tile/knappen åpner en meny. Du kan angi en forsinkelse for skjermdumpen, eller klippe ut et rektangel fra skjermen.</string>
     <string name="main_assist_app_title">Assistentapp</string>
     <string name="main_assist_app_text">Hvis du har angitt denne appen som assistanseapp, kan du holde inne Hjem-knappen for å ta en skjermdumpe. Aktivering av denne appen som din hjelpeapp vil deaktivere andre assistenter. Du kan endre handlingen til knappen for langt hjem i appinnstillingene.</string>
+    <string name="restricted_settings_open_settings">Tillat begrensede innstillinger</string>
+    <string name="restricted_settings_open_accessibility">Åpne tilgjengelighetsinnstillinger</string>
+    <string name="restricted_settings_title">Aktiver tilgjengelighets-service</string>
+    <string name="restricted_settings_text">Hvis tilgjengelighetsinnstillingene er utplassert, må du først tillate \"begrenset innstillinger\". De \"begrensede innstillinger\" kan bli funnet i \"App-info\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Omdøp</string>
     <string name="post_button_move">Flytte</string>
