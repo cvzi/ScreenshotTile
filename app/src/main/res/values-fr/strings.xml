@@ -12,11 +12,16 @@
     <string name="floating_button_settings">Paramètres du bouton flottant</string>
     <string name="left_screenshot_right_menu">À gauche : Capture d\'écran, à droite : Paramètres</string>
     <string name="partial_screenshot">Rogner</string>
+    <string name="options_dialog">Montrer les options</string>
     <string name="file_format">Format du fichier</string>
     <string name="setting_delay_entry_default">Tout de suite</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
+    <string name="take_screenshot_1s_delayed">Capture d\'écran après 1s</string>
+    <string name="take_screenshot_2s_delayed">Capture d\'écran après 2s</string>
+    <string name="take_screenshot_5s_delayed">Capture d\'écran après 5s</string>
+    <string name="toggle_floating_button">Activer/désactiver le bouton flottant</string>
     <string name="show_count_down">Afficher le décompte</string>
     <string name="use_native_screenshot">Utiliser la méthode de capture d\'écran native</string>
     <string name="use_native_screenshot_summary">Simuler un appui sur le bouton home + power</string>
@@ -57,6 +62,7 @@
 %random% - un UUID aléatoire\n
 %randint% - un nombre aléatoire]]></string>
     <string name="setting_tile_action">Action de la tuile/du bouton</string>
+    <string name="setting_tile_long_press_action">Action appui long sur la tuile/il bouton</string>
     <string name="setting_floating_action">Action du bouton flottant</string>
     <string name="setting_voice_interaction_action">Action de l\'assistant</string>
     <string name="setting_dark_theme">Mode nuit</string>
@@ -82,6 +88,7 @@
     <string name="post_action_save_to_storage">Enregistrer l\'image dans la galerie</string>
     <string name="post_action_show_toast">Afficher une notification \"Toast\". Une petite fenêtre qui disparaît après 2 secondes</string>
     <string name="post_action_show_notification">Afficher une notification normale. Vous pouvez modifier les boutons (Éditer, Partager, …) sous la notification dans \"Plus de paramètres\"</string>
+    <string name="post_action_play_tone">Jouer un son</string>
     <string name="post_action_empty">Ne pas ouvrir la capture d\'écran</string>
     <string name="post_action_open_in_post">Ouvrir en vue \"Détails\"</string>
     <string name="post_action_open_in_post_crop">Rogner l’image</string>
@@ -89,6 +96,9 @@
     <string name="post_action_open_in_external_editor">Ouvrir dans un éditeur de photos externe</string>
     <string name="post_action_open_in_external_viewer">Ouvrir dans une visionneuse de photos ou dans la galerie</string>
     <string name="post_action_open_share">Partager la capture d\'écran</string>
+    <string name="post_settings_audio_output_stream">Sortie audio:</string>
+    <string name="post_settings_audio_tone_duration">Durée du son:</string>
+    <string name="post_settings_audio_tone_select">Son:</string>
     <string name="move_to_storage_directory">Déplacer dans la galerie</string>
     <string name="button_clear">Nettoyer</string>
     <string name="button_clear_confirm">Voulez-vous supprimer tous les fichiers temporaires ?\nCeci supprimera tous les fichiers dans %s\n\n(Ces fichiers ne sont généralement pas visibles dans votre galerie)</string>
@@ -158,6 +168,7 @@
     <string name="about_update_check_button">Vérification des mises à jour</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Paramètres d\'accessibilité</string>
+    <string name="toast_open_accessibility_settings">Activez \"%1s\" dans les paramètres d\'accessibilité</string>
     <string name="main_floating_button_title">Bouton flottant</string>
     <string name="main_general_text">Avant de pouvoir utiliser cette application, vous devez ajouter la tuile/bouton aux paramètres rapides. Si vous ne savez pas comment le faire, jetez un coup d\'œil au [Tutoriel,.TutorialActivity].\n\nCette application prend en charge deux méthodes différentes pour prendre des captures d’écran :</string>
     <string name="main_legacy_method_title">Méthode \"legacy\"</string>
@@ -171,6 +182,10 @@
     <string name="main_long_press_text">Un appui prolongé sur la tuile/bouton ouvre un menu. Vous pouvez spécifier un délai pour la capture d\'écran ou sélectionner une zone de l\'écran à capturer.</string>
     <string name="main_assist_app_title">Application d\'assistance</string>
     <string name="main_assist_app_text">Si vous avez défini cette application comme application d\'assistance, vous pouvez appuyer longuement sur le bouton d\'accueil pour prendre une capture d\'écran. Activer cette application comme application d\'assistance désactivera d\'autres assistants. Vous pouvez modifier l\'action du bouton d\'accueil long appuyez dans les paramètres de l\'application.</string>
+    <string name="restricted_settings_open_settings">Autoriser les paramètres restreints</string>
+    <string name="restricted_settings_open_accessibility">Ouvrir les paramètres d\'accessibilité</string>
+    <string name="restricted_settings_title">Activer le service d\'accessibilité</string>
+    <string name="restricted_settings_text">Si les paramètres d\'accessibilité sont grisés, tu devras d\'abord autoriser les \"paramètres restreints\". Les \"paramètres restreints\" se trouvent dans les \"infos de l\'application\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Renommer</string>
     <string name="post_button_move">Déplacer</string>
