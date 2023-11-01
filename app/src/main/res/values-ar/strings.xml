@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">أيقونة لقطة شاشة</string>
-    <string name="app_name_long">أيقونة لقطة الشاشة (بدون روت)</string>
+    <string name="app_name">بلاط لقطة الشاشة</string>
+    <string name="app_name_long">بلاط لقطة الشاشة (NoRot)</string>
     <string name="tile_label">لقطة شاشة</string>
     <string name="tile_floating">زر التقاط الشاشة العائم</string>
     <string name="tile_floating_label">عائمة</string>
@@ -12,11 +12,16 @@
     <string name="floating_button_settings">إعدادات الزر العائم</string>
     <string name="left_screenshot_right_menu">اليسار: لقطة الشاشة، اليمين: الإعدادات</string>
     <string name="partial_screenshot">تحديد المنطقة</string>
+    <string name="options_dialog">عرض الخيارات</string>
     <string name="file_format">صيغة الملف</string>
     <string name="setting_delay_entry_default">فورًا</string>
     <string name="setting_delay_entry_1s">ثانية واحدة</string>
     <string name="setting_delay_entry_2s">٢ ثانية</string>
     <string name="setting_delay_entry_5s">٥ ثانية</string>
+    <string name="take_screenshot_1s_delayed">التقاط لقطة للشاشة بعد 1 ثانية</string>
+    <string name="take_screenshot_2s_delayed">التقاط لقطة للشاشة بعد 2 ثانية</string>
+    <string name="take_screenshot_5s_delayed">التقاط لقطة الشاشة بعد 5 ثوان</string>
+    <string name="toggle_floating_button">تبديل الزر العائم</string>
     <string name="show_count_down">إظهار العد التنازلي</string>
     <string name="use_native_screenshot">استخدام طريقة التقاط الشاشة الطبيعية</string>
     <string name="use_native_screenshot_summary">زر المنزل + زر التشغيل</string>
@@ -57,6 +62,7 @@
 %random% - مستخدم عشوائي\n
 %randint% - رقم عشوائي]]></string>
     <string name="setting_tile_action">إجراءات البلاط</string>
+    <string name="setting_tile_long_press_action">إجراء الضغط الطويل على البلاط</string>
     <string name="setting_floating_action">إجراء الزر العائم</string>
     <string name="setting_voice_interaction_action">إجراء زر المساعد الرقمي</string>
     <string name="setting_dark_theme">نمط داكن</string>
@@ -82,6 +88,7 @@
     <string name="post_action_save_to_storage">حفظ الصورة في معرض الصور</string>
     <string name="post_action_show_toast">إظهار إشعار \"الطوابع\". منبثق صغير يختفي بعد ثواني</string>
     <string name="post_action_show_notification">إظهار إشعار عادي. يمكنك تغيير الأزرار (تعديل,مشاركة…) تحت الإشعارات تحت \"المزيد من الإعدادات\"</string>
+    <string name="post_action_play_tone">تشغيل صوت</string>
     <string name="post_action_empty">لا تفتح لقطة الشاشة</string>
     <string name="post_action_open_in_post">فتح في طريقة عرض \"التفاصيل\"</string>
     <string name="post_action_open_in_post_crop">قص الصورة</string>
@@ -89,6 +96,9 @@
     <string name="post_action_open_in_external_editor">فتح في محرر صور خارجي</string>
     <string name="post_action_open_in_external_viewer">فتح في عارض الصور أو معرض الصور</string>
     <string name="post_action_open_share">مشاركة لقطة الشاشة</string>
+    <string name="post_settings_audio_output_stream">بث إخراج الصوت:</string>
+    <string name="post_settings_audio_tone_duration">مدة النغمة:</string>
+    <string name="post_settings_audio_tone_select">النغمة:</string>
     <string name="move_to_storage_directory">نقل إلى معرض الصور</string>
     <string name="button_clear">مسح</string>
     <string name="button_clear_confirm">هل تريد حذف جميع الملفات المؤقتة؟\nسيؤدي هذا إلى حذف جميع الملفات في %s\n\n(هذه الملفات عادة غير مرئية في المعرض الخاص بك)</string>
@@ -158,6 +168,7 @@
     <string name="about_update_check_button">التحقق من التحديث</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">إعدادات إمكانية الدخول</string>
+    <string name="toast_open_accessibility_settings">الرجاء تفعيل \"%1s\" في إعدادات الوصول</string>
     <string name="main_floating_button_title">زر عائم</string>
     <string name="main_general_text">قبل أن تتمكن من استخدام هذا التطبيق، تحتاج إلى إضافة /زر إلى الإعدادات السريعة. إذا كنت لا تعرف كيفية القيام بذلك، ألقي نظرة على [البرنامج التعليمي,.TutorialActivity] النشاط\n\nيدعم هذا التطبيق طريقتين مختلفتين للالتقاط لقطات الشاشة:</string>
     <string name="main_legacy_method_title">الأسلوب القديم</string>
@@ -171,6 +182,10 @@
     <string name="main_long_press_text">الضغط المطول على السطر/الزر يفتح قائمة. يمكنك تحديد تأخير لقطة الشاشة أو قطع المستطيل من الشاشة.</string>
     <string name="main_assist_app_title">تطبيق المساعد</string>
     <string name="main_assist_app_text">إذا قمت بتعيين هذا التطبيق كتطبيق مساعدتك، يمكنك الضغط لفترة طويلة على زر الصفحة الرئيسية لأخذ لقطة شاشة. تمكين هذا التطبيق كما تطبيق المساعدة الخاص بك سيعطل المساعدين الآخرين. يمكنك تغيير إجراء الضغط على زر الصفحة الرئيسية الطويل في إعدادات التطبيق.</string>
+    <string name="restricted_settings_open_settings">السماح بالإعدادات المحظورة</string>
+    <string name="restricted_settings_open_accessibility">فتح إعدادات إمكانية الوصول</string>
+    <string name="restricted_settings_title">تمكين إمكانية الوصول</string>
+    <string name="restricted_settings_text">إذا كانت إعدادات الوصول رمادية، سوف تحتاج إلى السماح \"الإعدادات المقيدة\" أولاً. يمكن العثور على \"الإعدادات المقيدة\" في \"معلومات التطبيق\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">إعادة تسمية</string>
     <string name="post_button_move">انقل</string>
