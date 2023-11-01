@@ -12,11 +12,16 @@
     <string name="floating_button_settings">Impostazioni pulsante fluttuante</string>
     <string name="left_screenshot_right_menu">Sinistra: Schermata; a destra: Impostazioni</string>
     <string name="partial_screenshot">Seleziona l\'area</string>
+    <string name="options_dialog">Mostra opzioni</string>
     <string name="file_format">Formato file</string>
     <string name="setting_delay_entry_default">Istantanea</string>
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
+    <string name="take_screenshot_1s_delayed">Cattura screenshot dopo 1s</string>
+    <string name="take_screenshot_2s_delayed">Cattura screenshot dopo 2s</string>
+    <string name="take_screenshot_5s_delayed">Cattura screenshot dopo 5s</string>
+    <string name="toggle_floating_button">Attiva/disattiva pulsante fluttuante</string>
     <string name="show_count_down">Mostra count down</string>
     <string name="use_native_screenshot">Usa screenshot nativo</string>
     <string name="use_native_screenshot_summary">Simula la home + tasto di accensione</string>
@@ -35,6 +40,7 @@
     <string name="setting_floating_button_unsupported">Richiede Android 9 Pie</string>
     <string name="setting_floating_button_scale">Dimensione pulsante fluttuante</string>
     <string name="setting_floating_button_scale_summary">Regola la dimensione del pulsante fluttuante</string>
+    <string name="setting_floating_button_scale_current">Dimensione attuale: %1$d (Predefinito: %2$d)</string>
     <string name="setting_floating_button_hide_after">Nascondi il pulsante fluttuante dopo lo screenshot</string>
     <string name="setting_floating_button_hide_after_summary">Rimuovere automaticamente il pulsante fluttuante dopo aver preso uno screenshot</string>
     <string name="setting_floating_button_show_close">Mostra un pulsante [X]/chiudi accanto al pulsante fluttuante</string>
@@ -42,6 +48,8 @@
     <string name="setting_floating_button_show_close_dialog_title">Emoji del pulsante di chiusura</string>
     <string name="setting_floating_button_show_close_dialog_description">Scrivi un testo o un emoji che appare come pulsante di chiusura</string>
     <string name="setting_floating_button_shutter">Tema del pulsante fluttuante</string>
+    <string name="setting_floating_button_shutter_square">Quadrato</string>
+    <string name="setting_floating_button_shutter_round">Rotonde</string>
     <string name="setting_floating_button_delay">Ritardo (pulsante fluttuante)</string>
     <string name="setting_broadcast_secret">Password dell\'intento di trasmissione</string>
     <string name="setting_broadcast_secret_description">Una frase segreta per consentire ad altre applicazioni (come MacroDroid o Tasker) di effettuare screenshot</string>
@@ -54,6 +62,7 @@
 %random% - un UUID casuale\n
 %randint% - un numero casuale]]></string>
     <string name="setting_tile_action">Azione del pulsante/tile</string>
+    <string name="setting_tile_long_press_action">Azione pressione prolungata del pulsante/tile</string>
     <string name="setting_floating_action">Azione del pulsante fluttuante</string>
     <string name="setting_voice_interaction_action">Azione dell\'assistente</string>
     <string name="setting_dark_theme">Modalità notturna</string>
@@ -79,6 +88,7 @@
     <string name="post_action_save_to_storage">Salva immagine nella galleria</string>
     <string name="post_action_show_toast">Mostra una notifica \"Toast\". Un piccolo popup che scompare dopo 2 secondi</string>
     <string name="post_action_show_notification">Mostra una notifica regolare. È possibile modificare i pulsanti (Edito,Condividi,…) sotto la notifica sotto \"Altre impostazioni\"</string>
+    <string name="post_action_play_tone">Riproduce un tono</string>
     <string name="post_action_empty">Non aprire lo screenshot</string>
     <string name="post_action_open_in_post">Apri nella vista \"Dettagli\"</string>
     <string name="post_action_open_in_post_crop">Ritaglia l\'immagine</string>
@@ -86,6 +96,9 @@
     <string name="post_action_open_in_external_editor">Apri in un editor di foto esterno</string>
     <string name="post_action_open_in_external_viewer">Apri in un visualizzatore di foto o in una galleria</string>
     <string name="post_action_open_share">Condividi lo screenshot</string>
+    <string name="post_settings_audio_output_stream">Stream di uscita audio:</string>
+    <string name="post_settings_audio_tone_duration">Durata tono:</string>
+    <string name="post_settings_audio_tone_select">Tono:</string>
     <string name="move_to_storage_directory">Sposta nella galleria</string>
     <string name="button_clear">Pulisci</string>
     <string name="button_clear_confirm">Vuoi eliminare tutti i file temporanei?\nQuesto eliminerà tutti i file in %s\n\n(Questi file di solito non sono visibili nella tua galleria)</string>
@@ -155,6 +168,7 @@
     <string name="about_update_check_button">Controllo aggiornamento</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Impostazioni di accessibilità</string>
+    <string name="toast_open_accessibility_settings">Attiva \"%1s\" nelle impostazioni di accessibilità</string>
     <string name="main_floating_button_title">Pulsante fluttuante</string>
     <string name="main_general_text">Prima di poter utilizzare questa app, è necessario aggiungere il tile/pulsante alle impostazioni rapide. Se non sai come farlo, dai un\'occhiata al [Tutorial,.TutorialActivity].\n\nQuesta app supporta due metodi diversi per scattare screenshot:</string>
     <string name="main_legacy_method_title">Metodo Legacy</string>
@@ -168,6 +182,10 @@
     <string name="main_long_press_text">Premendo a lungo il bottone si apre un menu. È possibile specificare un ritardo per lo screenshot o tagliare un rettangolo dallo schermo.</string>
     <string name="main_assist_app_title">App di assistenza</string>
     <string name="main_assist_app_text">Se si imposta questa app come app di assistenza, è possibile premere a lungo il pulsante home per scattare uno screenshot. Abilitare questa app come la tua app di assistenza disabiliterà altri assistenti. È possibile modificare l\'azione del pulsante home lungo premere nelle impostazioni dell\'app.</string>
+    <string name="restricted_settings_open_settings">Consenti impostazioni con limitazioni</string>
+    <string name="restricted_settings_open_accessibility">Apri impostazioni di accessibilità</string>
+    <string name="restricted_settings_title">Abilitar servizio accessibilità</string>
+    <string name="restricted_settings_text">Se le impostazioni di accessibilità sono disabilitate, dovrai prima consentire le \"impostazioni limitate\". Le \"impostazioni limitate\" possono essere trovate nella sezione \"Info app\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Rinomina</string>
     <string name="post_button_move">Sposta</string>
