@@ -1,0 +1,7 @@
+v2.6.2
+* Floating button can be placed over camera hole / cutout notch to allow "tap on camera"
+v2.5.2
+* Option to play a sound after a successful screenshot
+v2.4.0
+* Custom action when long-pressing the quick settings tile
+* Improvements for "restricted settings" in Android 13 and 14
