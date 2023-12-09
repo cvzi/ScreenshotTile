@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.7.0
+*   Option to disable instantly taking a screenshot when tapping the count down [#465](https://github.com/cvzi/ScreenshotTile/issues/465)
+*   Allow `partial` to be a string or boolean value for automatic screenshots [#473](https://github.com/cvzi/ScreenshotTile/issues/473)
+
 ## 2.6.2
 *   Translations updated from crowdin
 
