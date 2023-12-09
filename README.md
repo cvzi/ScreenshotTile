@@ -176,5 +176,22 @@ Now you can **add a macro** to MacroDroid:
 
 ![Macro intent screenshot](/docs/imgs/MacroDroid_SendIntent.png)
 
+## <a name="terminal">Automatic screenshots from terminal</a>
+
+You can also take screenshots from the terminal:
+
+```bash
+# Take a screenshot
+am broadcast -a com.github.cvzi.screenshottile.SCREENSHOT -e secret MY_PASSWORD com.github.cvzi.screenshottile
+# Open the area selector for a partial screenshot
+am broadcast -a com.github.cvzi.screenshottile.SCREENSHOT -e secret MY_PASSWORD --ez partial true com.github.cvzi.screenshottile
+```
+
+Or via [adb](https://developer.android.com/tools/adb) from a computer:
+
+```bash
+adb shell am broadcast -a com.github.cvzi.screenshottile.SCREENSHOT -e secret MY_PASSWORD com.github.cvzi.screenshottile
+```
+
 ## Miscellaneous data
 Some miscellaneous files (mostly images) that don't need to be in the main repository of ScreenshotTile were moved to a separate repository: https://github.com/cvzi/ScreenshotTile_miscellaneous
