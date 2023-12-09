@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.databinding.ActivityDelayBinding
 import com.github.cvzi.screenshottile.utils.screenshot
 
@@ -60,8 +61,10 @@ class DelayScreenshotActivity : Activity() {
         setContentView(binding.root)
 
         count = intent.getIntExtra(EXTRA_DELAY, count)
-        binding.view.setOnClickListener {
-            postScreenshotAndFinish()
+        if (App.getInstance().prefManager.tapToCancelCountDown) {
+            binding.view.setOnClickListener {
+                postScreenshotAndFinish()
+            }
         }
         binding.view.post(countDownRunnable)
     }

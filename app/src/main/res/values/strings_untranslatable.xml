@@ -18,6 +18,7 @@
     </string-array>
     <string name="pref_key_delay" translatable="false">delays_string</string>
     <string name="pref_key_show_count_down" translatable="false">show_count_down</string>
+    <string name="pref_key_cancel_count_down" translatable="false">cancel_count_down</string>
     <string name="pref_key_tile_long_press_action" translatable="false">tile_long_press_action</string>
     <string name="pref_key_use_native" translatable="false">use_native</string>
     <string name="pref_key_use_system_defaults" translatable="false">use_system_defaults</string>

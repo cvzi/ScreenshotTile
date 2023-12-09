@@ -63,6 +63,14 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value
         ).apply()
 
+    var tapToCancelCountDown: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_cancel_count_down), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_cancel_count_down),
+            value
+        ).apply()
+
+
     var tileLongPressAction: String
         get() = pref.getString(
             context.getString(R.string.pref_key_tile_long_press_action),
