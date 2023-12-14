@@ -35,13 +35,13 @@ jobs:
       run: ./gradlew build
     - name: 💬 Upload Lint report
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: lint-results.html
         path: app/build/reports/lint-results*.html
     - name: 💬 Upload tests report
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: reports-tests
         path: app/build/reports/tests/
