@@ -60,7 +60,7 @@
 
                 <Button
                     android:id="@+id/buttonDonateMagen"
-                    style="@style/Widget.Material3.Button"
+                    style="@style/Widget.Material3.Button.ElevatedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="mdais.org"
@@ -68,7 +68,7 @@
 
                 <Button
                     android:id="@+id/buttonDonateGiveLively"
-                    style="@style/Widget.Material3.Button"
+                    style="@@style/Widget.Material3.Button.ElevatedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="givelively.org"
@@ -76,7 +76,7 @@
 
                 <Button
                     android:id="@+id/buttonDonateIsraelRescue"
-                    style="@style/Widget.Material3.Button"
+                    style="@style/Widget.Material3.Button.ElevatedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="israelrescue.org"
