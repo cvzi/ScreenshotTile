@@ -62,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="mdais.org"
-                    android:textSize="11sp" 
+                    android:textSize="10sp" 
                />
                <Button
                    style="@style/Widget.Material3.Button"
@@ -70,7 +70,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="givelively.org"
-                   android:textSize="11sp" 
+                   android:textSize="10sp" 
                />
                <Button
                    style="@style/Widget.Material3.Button"
@@ -78,7 +78,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:text="israelrescue.org"
-                   android:textSize="10.5sp" 
+                   android:textSize="10sp" 
                />
           </com.google.android.material.button.MaterialButtonToggleGroup>
         </LinearLayout>
