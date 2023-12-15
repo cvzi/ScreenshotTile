@@ -48,16 +48,9 @@
                     android:id="@+id/imageButtonDonateClose"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:layout_marginStart="240dp"
+                    android:layout_marginStart="220dp"
                     android:layout_marginEnd="10dp"
                     android:src="@drawable/ic_close" />
-                <Button
-                    style="?attr/materialIconButtonFilledTonalStyle"
-                    android:id="@+id/iconButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_close"
-                />
             </LinearLayout>
             <com.google.android.material.button.MaterialButtonToggleGroup
                 android:id="@+id/toggleButton"
