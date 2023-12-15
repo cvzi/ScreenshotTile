@@ -45,9 +45,5 @@ jobs:
       with:
         name: reports-tests
         path: app/build/reports/tests/
-    - name: 📦 Upload APK File
-      uses: actions/upload-artifact@v3.1.3
-      with:
-        name: app_debug
-        path: app/build/outputs/apk/debug/
+  
         
