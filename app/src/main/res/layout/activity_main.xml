@@ -52,7 +52,32 @@
                     android:layout_marginEnd="10dp"
                     android:src="@drawable/ic_close" />
             </LinearLayout>
-
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:id="@+id/button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Button 1"
+               />
+               <Button
+                   style="?attr/materialButtonOutlinedStyle"
+                   android:id="@+id/button2"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Button 2"
+               />
+               <Button
+                   style="?attr/materialButtonOutlinedStyle"
+                   android:id="@+id/button3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Button 3"
+               />
+          </com.google.android.material.button.MaterialButtonToggleGroup>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
