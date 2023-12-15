@@ -131,7 +131,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/more_setting"
-                                android:textSize="11sp" />
+                                android:textSize="13sp" />
                         </RelativeLayout>
 
 
@@ -190,7 +190,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tutorial"
-                        android:textSize="11sp" />
+                        android:textSize="13sp" />
 
                 </LinearLayout>
 
@@ -242,7 +242,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/main_accessibility_settings"
-                        android:textSize="11sp" />
+                        android:textSize="13sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -291,7 +291,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/floating_button_settings"
-                        android:textSize="11sp" />
+                        android:textSize="13sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -391,7 +391,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/setting_post_actions" 
-                        android:textSize="11sp" />
+                        android:textSize="13sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -424,7 +424,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/button_history"
-                        android:textSize="11sp" />
+                        android:textSize="13sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -461,7 +461,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/more_setting"
-                        android:textSize="11sp" />
+                        android:textSize="13sp" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
