@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="mdais.org"
-                    android:textSize="14sp" />
+                    android:textSize="10sp" />
 
                 <Button
                     android:id="@+id/buttonDonateGiveLively"
@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="givelively.org"
-                    android:textSize="14sp" />
+                    android:textSize="10sp" />
 
                 <Button
                     android:id="@+id/buttonDonateIsraelRescue"
@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="israelrescue.org"
-                    android:textSize="14sp" />
+                    android:textSize="10sp" />
 
             </LinearLayout>
         </LinearLayout>
@@ -189,7 +189,8 @@
                         style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/tutorial" />
+                        android:text="@string/tutorial"
+                        android:textSize="11sp" />
 
                 </LinearLayout>
 
@@ -240,7 +241,8 @@
                         style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/main_accessibility_settings" />
+                        android:text="@string/main_accessibility_settings"
+                        android:textSize="11sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -288,7 +290,8 @@
                         style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/floating_button_settings" />
+                        android:text="@string/floating_button_settings"
+                        android:textSize="11sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -387,7 +390,8 @@
                         style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/setting_post_actions" />
+                        android:text="@string/setting_post_actions" 
+                        android:textSize="11sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -419,7 +423,8 @@
                         style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/button_history" />
+                        android:text="@string/button_history"
+                        android:textSize="11sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -455,7 +460,8 @@
                         style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/more_setting" />
+                        android:text="@string/more_setting"
+                        android:textSize="11sp" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
