@@ -60,7 +60,7 @@
 
                 <Button
                     android:id="@+id/buttonDonateMagen"
-                    style="@style/Widget.Material3.Button.Icon"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="mdais.org"
@@ -68,7 +68,7 @@
 
                 <Button
                     android:id="@+id/buttonDonateGiveLively"
-                    style="@style/Widget.Material3.Button.Icon"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="givelively.org"
@@ -76,7 +76,7 @@
 
                 <Button
                     android:id="@+id/buttonDonateIsraelRescue"
-                    style="@style/Widget.Material3.Button.Icon"
+                    style="@style/Widget.Material3.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="israelrescue.org"
@@ -127,11 +127,11 @@
 
                             <Button
                                 android:id="@+id/buttonSettings"
-                                style="@style/Widget.Material3.Button.Icon"
+                                style="@style/Widget.Material3.Button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/more_setting"
-                                android:textSize="14sp" />
+                                android:textSize="11sp" />
                         </RelativeLayout>
 
 
@@ -186,7 +186,7 @@
 
                     <Button
                         android:id="@+id/buttonTutorial"
-                        style="@style/Widget.Material3.Button.Icon"
+                        style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tutorial" />
@@ -237,7 +237,7 @@
 
                     <Button
                         android:id="@+id/buttonAccessibilitySettings"
-                        style="@style/Widget.Material3.Button.Icon"
+                        style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/main_accessibility_settings" />
@@ -285,7 +285,7 @@
 
                     <Button
                         android:id="@+id/buttonFloatingButtonSettings"
-                        style="@style/Widget.Material3.Button.Icon"
+                        style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/floating_button_settings" />
@@ -384,7 +384,7 @@
 
                     <Button
                         android:id="@+id/buttonPostActions"
-                        style="@style/Widget.Material3.Button.Icon"
+                        style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/setting_post_actions" />
@@ -416,7 +416,7 @@
 
                     <Button
                         android:id="@+id/buttonHistory"
-                        style="@style/Widget.Material3.Button.Icon"
+                        style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/button_history" />
@@ -452,7 +452,7 @@
 
                     <Button
                         android:id="@+id/buttonSettings2"
-                        style="@style/Widget.Material3.Button.Icon"
+                        style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/more_setting" />
