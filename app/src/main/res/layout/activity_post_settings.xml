@@ -217,7 +217,7 @@
 
                     <Button
                         android:id="@+id/buttonHistory"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
