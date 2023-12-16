@@ -203,7 +203,7 @@
                         android:id="@+id/buttonResetValues"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         style="@style/Widget.Material3.Button"
                         android:text="@string/restore_default_values" />
 
@@ -211,7 +211,7 @@
                         android:id="@+id/buttonSettings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         style="@style/Widget.Material3.Button"
                         android:text="@string/more_setting" />
 
