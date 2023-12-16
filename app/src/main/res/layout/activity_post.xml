@@ -90,7 +90,8 @@
 
                         <Button
                             android:id="@+id/buttonShare"
-                            style="?android:attr/buttonBarButtonStyle"
+                            style="@style/Widget.Material3.Button"
+                            android:textSize="10sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -98,7 +99,8 @@
 
                         <Button
                             android:id="@+id/buttonEdit"
-                            style="?android:attr/buttonBarButtonStyle"
+                            style="@style/Widget.Material3.Button"
+                            android:textSize="10sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -106,7 +108,8 @@
 
                         <Button
                             android:id="@+id/buttonDelete"
-                            style="?android:attr/buttonBarButtonStyle"
+                            style="@style/Widget.Material3.Button"
+                            android:textSize="10sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -121,7 +124,8 @@
 
                         <Button
                             android:id="@+id/buttonPhotoEditor"
-                            style="?android:attr/buttonBarButtonStyle"
+                            style="@style/Widget.Material3.Button"
+                            android:textSize="10sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -129,7 +133,8 @@
 
                         <Button
                             android:id="@+id/buttonCrop"
-                            style="?android:attr/buttonBarButtonStyle"
+                            style="@style/Widget.Material3.Button"
+                            android:textSize="10sp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -183,6 +188,8 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginEnd="5dp"
                             android:layout_weight="1"
+                            style="@style/Widget.Material3.Button"
+                            android:textSize="10sp"
                             android:text="@string/post_button_save" />
 
                         <Button
@@ -192,6 +199,8 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginEnd="5dp"
                             android:layout_weight="1"
+                            style="@style/Widget.Material3.Button"
+                            android:textSize="10sp"
                             android:text="@string/post_button_move" />
 
                     </LinearLayout>
