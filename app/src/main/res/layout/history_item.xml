@@ -51,7 +51,7 @@
                     android:id="@+id/buttonDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="120dp"
+                    android:layout_marginEnd="10dp"
                     style="@style/Widget.Material3.Button"
                     android:textSize="12sp"
                     android:text="@string/notification_screenshot_details" />
@@ -71,7 +71,7 @@
                 android:id="@+id/buttonMove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 style="@style/Widget.Material3.Button"
                 android:text="@string/move_to_storage_directory" />
 
