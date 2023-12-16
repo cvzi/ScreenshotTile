@@ -203,16 +203,22 @@
                         android:id="@+id/buttonResetValues"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        style="@style/Widget.Material3.Button"
                         android:text="@string/restore_default_values" />
 
                     <Button
                         android:id="@+id/buttonSettings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        style="@style/Widget.Material3.Button"
                         android:text="@string/more_setting" />
 
                     <Button
                         android:id="@+id/buttonHistory"
+                        android:textSize="10sp"
+                        style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/history_title" />
