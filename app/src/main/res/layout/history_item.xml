@@ -61,6 +61,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
+                    android:textSize="10sp"
+                    style="@style/Widget.Material3.Button"
                     android:text="@string/notification_delete_screenshot" />
 
             </LinearLayout>
@@ -69,6 +71,8 @@
                 android:id="@+id/buttonMove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="10sp"
+                style="@style/Widget.Material3.Button"
                 android:text="@string/move_to_storage_directory" />
 
         </LinearLayout>
