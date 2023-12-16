@@ -321,7 +321,7 @@
                         android:id="@+id/buttonRefresh"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="13sp"
                         style="@style/Widget.Material3.Button"
                         android:text="🔄" />
 
@@ -329,7 +329,7 @@
                         android:id="@+id/buttonMoreSettings"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="12.1sp"
                         style="@style/Widget.Material3.Button"
                         android:text="@string/more_setting" />
 
