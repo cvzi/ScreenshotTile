@@ -51,9 +51,9 @@
                     android:id="@+id/buttonDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="120dp"
                     style="@style/Widget.Material3.Button"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:text="@string/notification_screenshot_details" />
 
                 <Button
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     style="@style/Widget.Material3.Button"
                     android:text="@string/notification_delete_screenshot" />
 
