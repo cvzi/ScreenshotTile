@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.8.0
+*   Material3 (Material You) contributed by [@user0-tb](https://github.com/user0-tb)
+
 ## 2.7.0
 *   Option to disable instantly taking a screenshot when tapping the count down [#465](https://github.com/cvzi/ScreenshotTile/issues/465)
 *   Allow `partial` to be a string or boolean value for automatic screenshots [#473](https://github.com/cvzi/ScreenshotTile/issues/473)
