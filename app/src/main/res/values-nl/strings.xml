@@ -23,6 +23,8 @@
     <string name="take_screenshot_5s_delayed">Schermafdruk maken na 5s</string>
     <string name="toggle_floating_button">Zwevende knop aan/uit</string>
     <string name="show_count_down">Afteller tonen</string>
+    <string name="cancel_count_down">Tik om vertraging te annuleren</string>
+    <string name="cancel_count_down_summary">Tik op het scherm om meteen een schermafdruk te maken voordat het aftellen eindigt</string>
     <string name="use_native_screenshot">Ingebouwde schermafdrukmethode gebruiken</string>
     <string name="use_native_screenshot_summary">Indrukken van thuis- en aan-uit-knop simuleren</string>
     <string name="use_native_screenshot_unsupported">Vereist Android 9 Pie</string>

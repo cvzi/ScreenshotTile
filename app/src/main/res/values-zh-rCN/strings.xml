@@ -23,6 +23,8 @@
     <string name="take_screenshot_5s_delayed">5 秒后截屏</string>
     <string name="toggle_floating_button">切换悬浮按钮</string>
     <string name="show_count_down">显示倒计时</string>
+    <string name="cancel_count_down">轻按取消延迟</string>
+    <string name="cancel_count_down_summary">轻按屏幕在倒计时结束前立即截图</string>
     <string name="use_native_screenshot">使用原生屏幕截图方式</string>
     <string name="use_native_screenshot_summary">模拟按下 Home 键 + 电源键</string>
     <string name="use_native_screenshot_unsupported">需要 Android 9 Pie</string>

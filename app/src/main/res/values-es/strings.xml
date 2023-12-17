@@ -23,6 +23,8 @@
     <string name="take_screenshot_5s_delayed">Captura de pantalla después de 5s</string>
     <string name="toggle_floating_button">Des/activar botón flotante</string>
     <string name="show_count_down">Mostrar cuenta atrás</string>
+    <string name="cancel_count_down">Toca para cancelar el retraso</string>
+    <string name="cancel_count_down_summary">Toca la pantalla para hacer una captura de pantalla inmediatamente antes de que termine la cuenta atrás</string>
     <string name="use_native_screenshot">Utilice el método nativo de captura de pantalla</string>
     <string name="use_native_screenshot_summary">Simule los botones de inicio + encendido siendo pulsados</string>
     <string name="use_native_screenshot_unsupported">Requiere Android 9 Pie en adelante</string>

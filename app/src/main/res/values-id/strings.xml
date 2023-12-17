@@ -12,12 +12,19 @@
     <string name="floating_button_settings">Pengaturan tombol mengambang</string>
     <string name="left_screenshot_right_menu">Kiri: Tangkap layar, kanan: Pengaturan</string>
     <string name="partial_screenshot">Pilih area</string>
+    <string name="options_dialog">Tampilkan opsi</string>
     <string name="file_format">Format file</string>
     <string name="setting_delay_entry_default">Langsung</string>
     <string name="setting_delay_entry_1s">1 detik</string>
     <string name="setting_delay_entry_2s">2 detik</string>
     <string name="setting_delay_entry_5s">5 detik</string>
+    <string name="take_screenshot_1s_delayed">Ambil tangkapan layar setelah 1detik</string>
+    <string name="take_screenshot_2s_delayed">Ambil tangkapan layar setelah 2detik</string>
+    <string name="take_screenshot_5s_delayed">Ambil tangkapan layar setelah 5detik</string>
+    <string name="toggle_floating_button">Alihkan tombol mengambang</string>
     <string name="show_count_down">Perlihatkan hitungan mundur</string>
+    <string name="cancel_count_down">Ketuk untuk membatalkan penundaan</string>
+    <string name="cancel_count_down_summary">Ketuk layar untuk segera mengambil tangkapan layar sebelum hitungan mundur berakhir</string>
     <string name="use_native_screenshot">Gunakan metode tangkapan layar natural</string>
     <string name="use_native_screenshot_summary">Mensimulasikan Home + Tombol matikan daya</string>
     <string name="use_native_screenshot_unsupported">Membutuhkan Android 9 Pie</string>
@@ -40,7 +47,7 @@
     <string name="setting_floating_button_hide_after_summary">Otomatis menghapus tombol apung setelah anda menangkap layar</string>
     <string name="setting_floating_button_show_close">Tunjukan tombol tutup [X] disebelah tombol apung</string>
     <string name="setting_floating_button_show_close_summary">Membolehkan anda menghapus tombol apung tanpa membuka pengaturan cepat</string>
-    <string name="setting_floating_button_show_close_dialog_title">Emoji tombol tutup</string>
+    <string name="setting_floating_button_show_close_dialog_title">Tombol tutup emoji</string>
     <string name="setting_floating_button_show_close_dialog_description">Ketik teks atau emoji yang akan muncul sebagai tombol tutup</string>
     <string name="setting_floating_button_shutter">Tema tombol apung</string>
     <string name="setting_floating_button_shutter_square">Persegi</string>
@@ -57,6 +64,7 @@
 %random% - UUID acak\n
 %randint% - nomor acak]]></string>
     <string name="setting_tile_action">Aksi ubin</string>
+    <string name="setting_tile_long_press_action">Ubin tindakan tekan lama</string>
     <string name="setting_floating_action">Tindakan tombol mengambang</string>
     <string name="setting_voice_interaction_action">Tindakan asisten</string>
     <string name="setting_dark_theme">Tema Gelap</string>
@@ -82,6 +90,7 @@
     <string name="post_action_save_to_storage">Simpan gambar ke galeri</string>
     <string name="post_action_show_toast">Tampilkan notifikasi \"Toast\". Munculan kecil yang hilang setelah 2 detik</string>
     <string name="post_action_show_notification">Tampilkan pemberitahuan reguler. Anda dapat mengubah tombol (Edit, Bagikan,…) di bawah notifikasi pada \"Pengaturan Lainnya\"</string>
+    <string name="post_action_play_tone">Putar suara</string>
     <string name="post_action_empty">Jangan buka tangkapan layarnya</string>
     <string name="post_action_open_in_post">Buka dalam tampilan \"Detail\"</string>
     <string name="post_action_open_in_post_crop">Pangkas gambarnya</string>
@@ -89,6 +98,9 @@
     <string name="post_action_open_in_external_editor">Buka di editor foto eksternal</string>
     <string name="post_action_open_in_external_viewer">Buka di penampil foto atau galeri</string>
     <string name="post_action_open_share">Bagikan tangkapan layarnya</string>
+    <string name="post_settings_audio_output_stream">Aliran keluaran audio:</string>
+    <string name="post_settings_audio_tone_duration">Durasi nada:</string>
+    <string name="post_settings_audio_tone_select">Nada:</string>
     <string name="move_to_storage_directory">Pindah ke galeri</string>
     <string name="button_clear">Bersihkan</string>
     <string name="button_clear_confirm">Apakah Anda ingin menghapus semua file sementara?\nIni akan menghapus semua file di %s\n\n(File-file ini biasanya tidak terlihat di galeri Anda)</string>
@@ -171,6 +183,7 @@
     <string name="main_long_press_text">Menekan lama ubin/tombol akan membuka menu. Anda dapat menentukan penundaan untuk tangkapan layar atau memotong persegi panjang dari layar.</string>
     <string name="main_assist_app_title">Aplikasi bantuan</string>
     <string name="main_assist_app_text">Jika Anda menetapkan aplikasi ini sebagai aplikasi bantuan, Anda dapat menekan lama tombol beranda untuk mengambil tangkapan layar. Mengaktifkan aplikasi ini sebagai aplikasi bantuan Anda akan menonaktifkan asisten lain. Anda dapat mengubah tindakan menekan tombol beranda yang lama di pengaturan aplikasi.</string>
+    <string name="restricted_settings_open_settings">Izinkan setelan terbatas</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Ganti nama</string>
     <string name="post_button_move">Pindah</string>

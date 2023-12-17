@@ -23,6 +23,8 @@
     <string name="take_screenshot_5s_delayed">التقاط لقطة الشاشة بعد 5 ثوان</string>
     <string name="toggle_floating_button">تبديل الزر العائم</string>
     <string name="show_count_down">إظهار العد التنازلي</string>
+    <string name="cancel_count_down">اضغط لإلغاء التأخير</string>
+    <string name="cancel_count_down_summary">اضغط على الشاشة لالتقاط لقطة على الفور قبل انتهاء العد التنازلي</string>
     <string name="use_native_screenshot">استخدام طريقة التقاط الشاشة الطبيعية</string>
     <string name="use_native_screenshot_summary">زر المنزل + زر التشغيل</string>
     <string name="use_native_screenshot_unsupported">يتطلب نظام أندرويد 9</string>
