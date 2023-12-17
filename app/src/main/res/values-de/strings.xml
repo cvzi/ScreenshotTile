@@ -23,6 +23,8 @@
     <string name="take_screenshot_5s_delayed">Screenshot um fünf Sekunden verzögern</string>
     <string name="toggle_floating_button">Schwebender Screenshot Auslöser an/aus</string>
     <string name="show_count_down">Countdown anzeigen</string>
+    <string name="cancel_count_down">Tippen, um den Countdown abzubrechen</string>
+    <string name="cancel_count_down_summary">Tippen Sie auf den Bildschirm, um sofort einen Screenshot zu machen, bevor der Countdown endet</string>
     <string name="use_native_screenshot">Native Screenshotaufnahme</string>
     <string name="use_native_screenshot_summary">Simuliert einen Tastendruck: home + power</string>
     <string name="use_native_screenshot_unsupported">Benötigt Android 9 Pie</string>
@@ -153,8 +155,8 @@
     <string name="googleplay_consent_line_4">Der Zugriff auf die API für Accessibility Services ermöglicht dieser App das Aufzeichnen des Bildschirms.</string>
     <string name="googleplay_consent_line_5">Bildschirmaufnahmen werden zum Erstellen von Screenshots verwendet.</string>
     <string name="googleplay_consent_line_6">Von dieser App werden mithilfe der Bedienungshilfefunktionen weder personenbezogene noch vertrauliche Nutzerdaten gesammelt oder geteilt.</string>
-    <string name="googleplay_consent_line_7">Sind Sie damit einverstanden, dieser App den Zugriff auf die API für Accessibility Services zu autorisieren und die Bedienungshilfefunktionen zu nutzen um den Bildschirm aufzuzeichnen?</string>
-    <string name="googleplay_consent_yes">Zustimmen</string>
+    <string name="googleplay_consent_line_7">Sind Sie damit einverstanden, dieser App den Zugriff auf die API für Accessibility Services zu autorisieren und die Bedienungshilfefunktionen zu nutzen, um den Bildschirm aufzuzeichnen?</string>
+    <string name="googleplay_consent_yes">Ich stimme zu</string>
     <string name="googleplay_consent_no">Ablehnen</string>
     <!-- About -->
     <string name="about_app_title">Info</string>
@@ -172,7 +174,7 @@
     <string name="main_floating_button_title">Schwebender Auslöser</string>
     <string name="main_general_text">Bevor du diese App nutzen kannst, musst du die Kachel/Button zu den Schnelleinstellungen hinzufügen. Wenn du nicht weißt wie das geht, schau dir das [Tutorial,.TutorialActivity] an.\n\nDiese App unterstützt zwei unterschiedliche Methoden um Screenshots zu erstellen:</string>
     <string name="main_legacy_method_title">Ursprüngliche Methode</string>
-    <string name="main_legacy_method_text">Die ursprüngliche Methode um Screenshots zu erstellen benutzt die Bildschirmaufnahmefunktion von Android.\nWenn du einen Screenshot machst, wird kein Ton abgespielt und nur eine lautlose Benachrichtigung zum Teilen, Bearbeiten und Öffnen angezeigt. Die Benachrichtigung kann in den Einstellungen deaktiviert werden.\nBevor du einen Screenshot erstellen kannst, musst du die Kachel zu den Schnelleinstellungen hinzufügen, die Berechtigungen für die Bildschirmaufnahme und die Berechtigung um auf den Telefonspeicher zuzugreifen akzeptieren.\nSchau das Tutorial an wenn du Hilfe brauchst.\n\nAuf manchen Geräten ist diese Methode instabil vor allem bei neuen Android (Adnroid 9.0+) kann es sein, dass vor jedem Screenshot erneut die Berechtigung erfragt wird. In diesem Fall kann die Native Methode (siehe unten) benutzt werden.</string>
+    <string name="main_legacy_method_text">Die ursprüngliche Methode um Screenshots zu erstellen benutzt die Bildschirmaufnahmefunktion von Android.\nWenn du einen Screenshot machst, wird kein Ton abgespielt und nur eine lautlose Benachrichtigung zum Teilen, Bearbeiten und Öffnen angezeigt. Die Benachrichtigung kann in den Einstellungen deaktiviert werden.\nBevor du einen Screenshot erstellen kannst, musst du die Kachel zu den Schnelleinstellungen hinzufügen, die Berechtigungen für die Bildschirmaufnahme und die Berechtigung um auf den Telefonspeicher zuzugreifen akzeptieren.\nSchau das Tutorial an wenn du Hilfe brauchst.\n\nAuf manchen Geräten ist diese Methode instabil vor allem bei neuen Android (Android 9.0+) kann es sein, dass vor jedem Screenshot erneut die Berechtigung erfragt wird. In diesem Fall kann die Native Methode (siehe unten) benutzt werden.</string>
     <string name="main_native_method_title">Native Methode</string>
     <string name="main_native_method_text">Die native Screenshotmethode simuliert einen Tastendruck von Power und Home button und benutzt die standard Bildschirmaufnahme des Gerätes.\n{main_native_method_text_android_version}\n\nBevor du Screenshots aufnehmen kannst, musst du diese App in den Bedienungshilfen Einstellungen aktivieren. Drück den Knopf unten um die Bedienungshilfen Einstellungen zu öffnen.</string>
     <string name="main_native_method_text_android_pre_11">Wenn ein Screenshot aufgenommen wird, kann es sein, dass ein Ton abgespielt wird oder ein Editor sich öffnet. Screenshots werden im standard Verzeichnis für Bilder gespeichert. Das hängt vom Gerät ab und kann von dieser App nicht beeinflusst werden. Es kann eventuell in den Telefoneinstellungen geändert werden.\n\n</string>
