@@ -23,6 +23,8 @@
     <string name="take_screenshot_5s_delayed">Cattura screenshot dopo 5s</string>
     <string name="toggle_floating_button">Attiva/disattiva pulsante fluttuante</string>
     <string name="show_count_down">Mostra count down</string>
+    <string name="cancel_count_down">Tocca per annullare il ritardo</string>
+    <string name="cancel_count_down_summary">Toccare lo schermo per scattare immediatamente uno screenshot prima della fine del conto alla rovescia</string>
     <string name="use_native_screenshot">Usa screenshot nativo</string>
     <string name="use_native_screenshot_summary">Simula la home + tasto di accensione</string>
     <string name="use_native_screenshot_unsupported">Richiede Android 9 Pie</string>
