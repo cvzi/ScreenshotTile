@@ -23,6 +23,8 @@
     <string name="take_screenshot_5s_delayed">Ta skärmdump efter 5 s</string>
     <string name="toggle_floating_button">Växla flytande knapp</string>
     <string name="show_count_down">Visa nedräkning</string>
+    <string name="cancel_count_down">Tryck för att avbryta fördröjning</string>
+    <string name="cancel_count_down_summary">Tryck på skärmen för att genast ta en skärmdump innan nedräkningen avslutas</string>
     <string name="use_native_screenshot">Använd inbyggd skärmdumpsmetod</string>
     <string name="use_native_screenshot_summary">Simulera hem + strömknappstryck</string>
     <string name="use_native_screenshot_unsupported">Kräver Android 9 Pie</string>
