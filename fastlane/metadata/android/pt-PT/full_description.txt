@@ -2,22 +2,21 @@ Adiciona um botão no painel de configurações rápidas para fazer capturas de 
 
 Após a instalação, tem de adicionar o botão nas configurações rápidas e, em seguida, conceder as permissões para gravar capturas de ecrã e guardar imagens no armazenamento interno.
 
-Se a aplicação falhar no Android 9/Pie ou 10, pode tentar ativar a opçã "Usar método de captura de ecrã nativo" nas configurações da aplicação.
-
 <h2>Funcionalidades:</h2>✓ Faça capturas de ecrã nas configurações rápidas
 ✓ Não é necessário o acesso root
 ✓ Notificação após uma captura de ecrã (pode ser desativada)
 ✓ Partilhe imediatamente, edite ou elimine uma captura de ecrã na notificação
-✓ Botão flutuante, como uma bolha de bate-papo (Android 9+)
-✓ Use as assist app to take a screenshot (long-press the Home button)
+✓ Edite a captura de ecrã com o editor de imagem incluído
+✓ Botão flutuante, como uma bolha de conversas (Android 9+)
+✓ Use como uma aplicação de assistência para fazer uma captura de ecrã (toque longo no botão Início)
 ✓ Faça uma captura de ecrã de uma área específica do ecrã (toque longo no botão)
-✓ Tire capturas de ecrã automáticas com aplicações como o Tasker ou o MacroDroid
+✓ Atraso para tirar uma captura de ecrã
 ✓ Armazene em qualquer pasta em qualquer armazenamento, por exemplo no cartão SD externo
 ✓ Armazene em diferentes formatos de ficheiros: png, jpg ou webp
-<h2>Capturas de ecrã automáticas:</h2> se quer automatizar capturas de ecrã de outra aplicação, por exemplo, MacroDroid ou Tasker, pode encontrar um guia passo-a-passo aqui:
-✓ Gratuito, com código aberto e sem publicidade
+✓ Tire capturas de ecrã automáticas com aplicações como o Tasker ou o MacroDroid
+✓ Gratuito, com código-fonte aberto e sem publicidade
 
-Isto é uma bifurcação (fork) de "Screenshot Tile [Root]", mas não requer acesso root. Se tem acesso root, deve usar a <a href="https://play.google.com/store/apps/details?id=com.github.ipcjs.screenshottile">aplicação original</a> por ipcjs, é mais rápida e mais estável do que este fork.
+Isto é uma bifurcação (fork) de "Screenshot Tile [Root]", mas não requer acesso root.
 
 Código-fonte: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Aplicação original: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
@@ -27,15 +26,17 @@ A licença Open Source é a GNU GPLv3
 🎦 Quando fizer uma captura de ecrã, o <b>ícone "Google Cast"</b> aparecerá na barra de estado e estará visível na imagem do ecrã.
 Se quiser ocultar o ícone, há uma explicação: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
 
-<h2>Permições:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Photos/Media/Files and Storage"</i>
+<h2>Permições:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Fotos/media/ficheiros e armazenamento"</i>
 Isto é necessário para guardar os ficheiros de captura do ecrã no armazenamento interno do seu dispositivo.
 
 ❏ <i>android.permission.FOREGROUND_SERVICE</i>
 Desde a versão Android 9/Pie que esta permissão é necessária para tirar capturas de ecrã. Isso significa basicamente que esta aplicação pode ser executada sem estar visível. No entanto, a aplicação mostrará sempre uma notificação quando estiver em execução.
 
-<h2>Capturas de ecrã automáticas:</h2> se quer automatizar capturas de ecrã de outra aplicação, por exemplo, MacroDroid ou Tasker, pode encontrar um guia passo-a-passo aqui:
+<h2>Capturas de ecrã automáticas:</h2> se quer automatizar capturas de ecrã de outra aplicação, por exemplo, MacroDroid ou Tasker, pode encontrar um guia passo-a-passo em:
 <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents</a>
 
 <h2>Esconder o ícone da aplicação:</h2> nas configurações da aplicação, pode ocultar o ícone da aplicação do seu launcher. Ainda pode aceder à aplicação mantendo pressionado o botão nas configurações rápidas. Infelizmente, o Android 10 já não permite ocultar uma aplicação.
 
-<h2>🌎 Suporte e traduções</h2>Se houver um problema ou quiser ajudar a traduzir esta aplicação para o seu idioma, por favor entre em contacto comigo em <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> ou contribua numa tradução em <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+<h2>🌎 Ajuda e traduções</h2>Se houver um problema ou quiser ajudar a traduzir esta aplicação para o seu idioma, por favor contacte-me em <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> ou contribua com a tradução em <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+
+Esta aplicação pode aceder à <a href="https://support.google.com/googleplay/android-developer/answer/10964491">API de Serviços de Acessibilidade</a> para permitir que esta aplicação grave o ecrã. Os dados não são recolhidos nem partilhados por esta aplicação usando as funcionalidades de acessibilidade.
