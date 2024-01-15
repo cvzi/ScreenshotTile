@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.8.1
+*   Translations updated from crowdin
+
 ## 2.8.0
 *   Material3 (Material You) contributed by [@user0-tb](https://github.com/user0-tb)
 
