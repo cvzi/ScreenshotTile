@@ -14,7 +14,7 @@ Após a instalação, tem de adicionar o botão nas configurações rápidas e, 
 ✓ Armazene em qualquer pasta em qualquer armazenamento, por exemplo no cartão SD externo
 ✓ Armazene em diferentes formatos de ficheiros: png, jpg ou webp
 ✓ Tire capturas de ecrã automáticas com aplicações como o Tasker ou o MacroDroid
-✓ Gratuito, com código aberto e sem publicidade
+✓ Gratuito, com código-fonte aberto e sem publicidade
 
 Isto é uma bifurcação (fork) de "Screenshot Tile [Root]", mas não requer acesso root.
 
@@ -39,4 +39,4 @@ Desde a versão Android 9/Pie que esta permissão é necessária para tirar capt
 
 <h2>🌎 Ajuda e traduções</h2>Se houver um problema ou quiser ajudar a traduzir esta aplicação para o seu idioma, por favor contacte-me em <a href="https://github.com/cvzi/ScreenshotTile/issues">github.com/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> ou contribua com a tradução em <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
 
-Esta aplicação pode aceder à <a href="https://support.google.com/googleplay/android-developer/answer/10964491">API de Serviços de Acessibilidade</a> o que permite a esta aplicação gravar o ecrã. Os dados não são recolhidos nem partilhados por esta aplicação usando as capacidades de acessibilidade.
+Esta aplicação pode aceder à <a href="https://support.google.com/googleplay/android-developer/answer/10964491">API de Serviços de Acessibilidade</a> para permitir que esta aplicação grave o ecrã. Os dados não são recolhidos nem partilhados por esta aplicação usando as funcionalidades de acessibilidade.

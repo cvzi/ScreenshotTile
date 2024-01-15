@@ -23,6 +23,8 @@
     <string name="take_screenshot_5s_delayed">Зробити знімок екрана за 5 с</string>
     <string name="toggle_floating_button">Перемкнути пересувну кнопку</string>
     <string name="show_count_down">Показувати зворотній відлік</string>
+    <string name="cancel_count_down">Торкніться, щоб скасувати затримку</string>
+    <string name="cancel_count_down_summary">Торкніться екрана, щоб негайно зробити знімок екрана перед закінченням відліку</string>
     <string name="use_native_screenshot">Використовувати вбудований метод знімка екрану</string>
     <string name="use_native_screenshot_summary">Імітація натискання кнопок додому + живлення</string>
     <string name="use_native_screenshot_unsupported">Необхідний Android 9 Pie</string>
