@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Créenseos Tile</string>
     <string name="app_name_long">Azulejo de captura (NoRoot)</string>
-    <string name="tile_label">Captura de pantalla</string>
+    <string name="tile_label">Capturas de pantalla</string>
     <string name="tile_floating">Botón flotante de captura de pantalla</string>
     <string name="tile_floating_label">Modo Flotante</string>
     <string name="tile_floating_subtitle">Botón para Captura de pantalla</string>
