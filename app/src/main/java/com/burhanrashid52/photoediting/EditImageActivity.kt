@@ -229,45 +229,45 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         imgShare.setOnClickListener(this)
     }
 
-    override fun onEditTextChangeListener(rootView: View?, text: String?, colorCode: Int) {
+    override fun onEditTextChangeListener(rootView: View, text: String, colorCode: Int) {
         val textEditorDialogFragment =
             TextEditorDialogFragment.show(this, text.toString(), colorCode)
         textEditorDialogFragment.setOnTextEditorListener(object :
             TextEditorDialogFragment.TextEditorListener {
             override fun onDone(inputText: String?, colorCode: Int) {
-                val styleBuilder = TextStyleBuilder()
-                styleBuilder.withTextColor(colorCode)
-                if (rootView != null) {
-                    mPhotoEditor.editText(rootView, inputText, styleBuilder)
+                inputText?.let {
+                    val styleBuilder = TextStyleBuilder()
+                    styleBuilder.withTextColor(colorCode)
+                    mPhotoEditor.editText(rootView, it, styleBuilder)
+                    mTxtCurrentTool.setText(R.string.label_text)
                 }
-                mTxtCurrentTool.setText(R.string.label_text)
             }
         })
     }
 
-    override fun onAddViewListener(viewType: ViewType?, numberOfAddedViews: Int) {
+    override fun onAddViewListener(viewType: ViewType, numberOfAddedViews: Int) {
         Log.d(
             TAG,
             "onAddViewListener() called with: viewType = [$viewType], numberOfAddedViews = [$numberOfAddedViews]"
         )
     }
 
-    override fun onRemoveViewListener(viewType: ViewType?, numberOfAddedViews: Int) {
+    override fun onRemoveViewListener(viewType: ViewType, numberOfAddedViews: Int) {
         Log.d(
             TAG,
             "onRemoveViewListener() called with: viewType = [$viewType], numberOfAddedViews = [$numberOfAddedViews]"
         )
     }
 
-    override fun onStartViewChangeListener(viewType: ViewType?) {
+    override fun onStartViewChangeListener(viewType: ViewType) {
         Log.d(TAG, "onStartViewChangeListener() called with: viewType = [$viewType]")
     }
 
-    override fun onStopViewChangeListener(viewType: ViewType?) {
+    override fun onStopViewChangeListener(viewType: ViewType) {
         Log.d(TAG, "onStopViewChangeListener() called with: viewType = [$viewType]")
     }
 
-    override fun onTouchSourceImage(event: MotionEvent?) {
+    override fun onTouchSourceImage(event: MotionEvent) {
         Log.d(TAG, "onTouchView() called with: event = [$event]")
     }
 
@@ -374,14 +374,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
             .build()
 
         mPhotoEditor.saveAsBitmap(saveSettings, object : OnSaveBitmap {
-            override fun onBitmapReady(saveBitmap: Bitmap?) {
-                if (saveBitmap == null) {
-                    Log.e(TAG, "saveAsBitmap -> onBitmapReady(null)")
-                    hideLoading()
-                    showSnackbar(getString(R.string.msg_failed_to_save))
-                    return
-                }
-
+            override fun onBitmapReady(saveBitmap: Bitmap) {
                 val bitmap = if (isRotated) {
                     saveBitmap.rotate(-90f)
                 } else  {
@@ -414,12 +407,6 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                         )
                     }
                 }
-            }
-
-            override fun onFailure(e: Exception?) {
-                hideLoading()
-                showSnackbar(getString(R.string.msg_failed_to_save))
-                Log.e(TAG, "saveAsBitmap -> onFailure", e)
             }
         })
     }
@@ -458,14 +445,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
             }
 
             mPhotoEditor.saveAsBitmap(saveSettings, object : OnSaveBitmap {
-                override fun onBitmapReady(saveBitmap: Bitmap?) {
-                    if (saveBitmap == null) {
-                        Log.e(TAG, "saveAsBitmap -> onBitmapReady(null)")
-                        hideLoading()
-                        showSnackbar(getString(R.string.msg_failed_to_save))
-                        return
-                    }
-
+                override fun onBitmapReady(saveBitmap: Bitmap) {
                     val bitmap = if (isRotated) {
                         saveBitmap.rotate(-90f)
                     } else  {
@@ -509,12 +489,6 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                         directory = null,
                         onFileSaved
                     )
-                }
-
-                override fun onFailure(e: Exception?) {
-                    hideLoading()
-                    showSnackbar(getString(R.string.msg_failed_to_save))
-                    Log.e(TAG, "saveAsBitmap -> onFailure", e)
                 }
             })
         } else {
@@ -569,8 +543,10 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     }
 
     override fun onEmojiClick(emojiUnicode: String?) {
-        mPhotoEditor.addEmoji(emojiUnicode)
-        mTxtCurrentTool.setText(R.string.label_emoji)
+        emojiUnicode?.let {
+            mPhotoEditor.addEmoji(it)
+            mTxtCurrentTool.setText(R.string.label_emoji)
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -608,10 +584,12 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 textEditorDialogFragment.setOnTextEditorListener(object :
                     TextEditorDialogFragment.TextEditorListener {
                     override fun onDone(inputText: String?, colorCode: Int) {
-                        val styleBuilder = TextStyleBuilder()
-                        styleBuilder.withTextColor(colorCode)
-                        mPhotoEditor.addText(inputText, styleBuilder)
-                        mTxtCurrentTool.setText(R.string.label_text)
+                        inputText?.let {
+                            val styleBuilder = TextStyleBuilder()
+                            styleBuilder.withTextColor(colorCode)
+                            mPhotoEditor.addText(it, styleBuilder)
+                            mTxtCurrentTool.setText(R.string.label_text)
+                        }
                     }
                 })
             }
