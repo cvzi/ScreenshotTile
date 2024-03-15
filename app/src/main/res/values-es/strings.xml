@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Captura de pantalla de lo desplegado</string>
-    <string name="app_name_long">Captura de pantalla de lo Desplegado (sin superusuario)</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
     <string name="tile_label">Captura de pantalla</string>
     <string name="tile_floating">Botón flotante de captura de pantalla</string>
     <string name="tile_floating_label">Modo Flotante</string>
@@ -15,9 +15,9 @@
     <string name="options_dialog">Mostrar opciones</string>
     <string name="file_format">Formato del documento final</string>
     <string name="setting_delay_entry_default">Al instante</string>
-    <string name="setting_delay_entry_1s">1 s Un Segundo</string>
-    <string name="setting_delay_entry_2s">2 s Dos Segundos</string>
-    <string name="setting_delay_entry_5s">5 s Cinco Segundos</string>
+    <string name="setting_delay_entry_1s">1s</string>
+    <string name="setting_delay_entry_2s">2s</string>
+    <string name="setting_delay_entry_5s">5s</string>
     <string name="take_screenshot_1s_delayed">Captura de pantalla después de 1s</string>
     <string name="take_screenshot_2s_delayed">Captura de pantalla después de 2s</string>
     <string name="take_screenshot_5s_delayed">Captura de pantalla después de 5s</string>
