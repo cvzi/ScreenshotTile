@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">مربع لقطة الشاشة</string>
+    <string name="app_name">بلاط لقطة الشاشة</string>
     <string name="app_name_long">بلاط لقطة الشاشة (NoRot)</string>
     <string name="tile_label">لقطة شاشة</string>
     <string name="tile_floating">زر التقاط الشاشة العائم</string>
