@@ -12,11 +12,15 @@
     <string name="floating_button_settings">Ustawienia pływającego przycisku</string>
     <string name="left_screenshot_right_menu">Lewo: zrzut ekranu, prawo: ustawienia</string>
     <string name="partial_screenshot">Wybierz obszar</string>
+    <string name="options_dialog">Pokaż opcje</string>
     <string name="file_format">Format pliku</string>
     <string name="setting_delay_entry_default">Bez opóźnienia</string>
     <string name="setting_delay_entry_1s">1 sekunda</string>
     <string name="setting_delay_entry_2s">2 sekundy</string>
     <string name="setting_delay_entry_5s">5 sekund</string>
+    <string name="take_screenshot_1s_delayed">Zrób zrzut ekranu za 1 sek.</string>
+    <string name="take_screenshot_2s_delayed">Zrób zrzut ekranu za 2 sek.</string>
+    <string name="take_screenshot_5s_delayed">Zrób zrzut ekranu za 5 sek.</string>
     <string name="show_count_down">Pokaż odliczanie</string>
     <string name="use_native_screenshot">Użyj natywnej metody wykonywania zrzutów ekranu</string>
     <string name="use_native_screenshot_summary">Symuluj naciśnięcie przycisków Home i zasilania</string>
@@ -82,6 +86,7 @@
     <string name="post_action_save_to_storage">Zapisz obraz w galerii</string>
     <string name="post_action_show_toast">Pokaż powiadomienie \"Toast\". Małe okienko, które zniknie po 2 sekundach</string>
     <string name="post_action_show_notification">Pokaż regularne powiadomienie. Możesz zmienić przyciski (Edyt, Udostępnij,…) pod powiadomieniem w \"Więcej ustawień\"</string>
+    <string name="post_action_play_tone">Odtwórz dźwięk</string>
     <string name="post_action_empty">Nie otwieraj zrzutu ekranu</string>
     <string name="post_action_open_in_post">Otwórz panel \"Szczegóły\"</string>
     <string name="post_action_open_in_post_crop">Przytnij obraz</string>
@@ -171,6 +176,9 @@
     <string name="main_long_press_text">Długie naciśnięcie kafelka/przycisku otwiera menu. Możesz określić opóźnienie zrzutu ekranu lub wyciąć prostokątny fragment ekranu.</string>
     <string name="main_assist_app_title">Aplikacja asystująca</string>
     <string name="main_assist_app_text">Jeśli ustawisz tę aplikację jako aplikację pomocniczą, możesz przytrzymać przycisk home aby zrobić zrzut ekranu. Włączenie tej aplikacji jako aplikacji pomocniczej wyłączy innych asystentów. Możesz zmienić działanie długiego przycisku Home w ustawieniach aplikacji.</string>
+    <string name="restricted_settings_open_settings">Zezwól na ustawienia z ograniczonym dostępem</string>
+    <string name="restricted_settings_open_accessibility">Otwórz ustawienia ułatwień dostępu</string>
+    <string name="restricted_settings_title">Włącz usługi ułatwień dostępu</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Zmień nazwę</string>
     <string name="post_button_move">Przenieś</string>
