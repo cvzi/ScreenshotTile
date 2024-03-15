@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.8.2
+*   Translations updated from crowdin
+*   Dependencies updated
+
 ## 2.8.1
 *   Translations updated from crowdin
 
