@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Créenseos Tile</string>
-    <string name="app_name_long">Azulejo de captura (NoRoot)</string>
-    <string name="tile_label">Capturas de pantalla</string>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
+    <string name="tile_label">Captura de pantalla</string>
     <string name="tile_floating">Botón flotante de captura de pantalla</string>
     <string name="tile_floating_label">Modo Flotante</string>
     <string name="tile_floating_subtitle">Botón para Captura de pantalla</string>
@@ -16,8 +16,8 @@
     <string name="file_format">Formato del documento final</string>
     <string name="setting_delay_entry_default">Al instante</string>
     <string name="setting_delay_entry_1s">1s</string>
-    <string name="setting_delay_entry_2s">2 s Dos Segundos</string>
-    <string name="setting_delay_entry_5s">5 s Cinco Segundos</string>
+    <string name="setting_delay_entry_2s">2s</string>
+    <string name="setting_delay_entry_5s">5s</string>
     <string name="take_screenshot_1s_delayed">Captura de pantalla después de 1s</string>
     <string name="take_screenshot_2s_delayed">Captura de pantalla después de 2s</string>
     <string name="take_screenshot_5s_delayed">Captura de pantalla después de 5s</string>
