@@ -128,13 +128,24 @@ class PostSettingsActivity : AppCompatActivity() {
         loadSettings()
     }
 
+    private fun disableUseSystemDefaults() {
+        App.getInstance().prefManager.useSystemDefaults = false
+        binding.textDescGeneral.setTextColor(getColor(R.color.colorPrimary))
+        binding.textDescGeneral.text = getString(R.string.setting_post_actions_description)
+    }
+
     private fun loadSettings() {
         val prefManager = App.getInstance().prefManager
 
         binding.textDescGeneral.text =
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                binding.textDescGeneral.setTextColor(getColor(R.color.colorAccent))
                 getString(R.string.use_native_screenshot_option_default)
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
+                binding.textDescGeneral.setTextColor(getColor(R.color.colorAccent))
+                binding.textDescGeneral.setOnClickListener {
+                    disableUseSystemDefaults()
+                }
                 getString(R.string.use_native_screenshot_option_android11)
             } else {
                 getString(R.string.setting_post_actions_description)
@@ -225,6 +236,8 @@ class PostSettingsActivity : AppCompatActivity() {
 
     private val onActionCheckedChange =
         CompoundButton.OnCheckedChangeListener { compoundButton, isChecked ->
+            val prefManager = App.getInstance().prefManager
+
             val actionKey = compoundButton.getTag(R.id.tag_action_key) as String
             val postScreenshotActions = App.getInstance().prefManager.postScreenshotActions
             if (isChecked && actionKey !in postScreenshotActions) {
@@ -232,7 +245,12 @@ class PostSettingsActivity : AppCompatActivity() {
             } else if (!isChecked && actionKey in postScreenshotActions) {
                 postScreenshotActions.remove(actionKey)
             }
-            App.getInstance().prefManager.postScreenshotActions = postScreenshotActions
+            prefManager.postScreenshotActions = postScreenshotActions
+
+            /* Disable "use system defaults" */
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
+                disableUseSystemDefaults()
+            }
         }
 
     private fun onToneClick(name: String) {
