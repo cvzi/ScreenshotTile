@@ -509,15 +509,11 @@ public class App extends Application {
      * @param context Context
      * @param intent  Intent
      */
-    @SuppressLint({"DEPRECATION", "MissingPermission"})
+    @SuppressLint({"MissingPermission"})
     public void startActivityAndCollapseCompat(Context context, Intent intent) {
         intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-        TileService tileService = ScreenshotTileService.Companion.getInstance();
-        if (tileService == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            tileService = FloatingTileService.Companion.getInstance();
-        }
-        if (tileService != null) {
-            startActivityAndCollapseCustom(tileService, intent);
+        if (context instanceof TileService) {
+            startActivityAndCollapseCustom((TileService) context, intent);
         } else {
             context.startActivity(intent);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
