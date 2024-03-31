@@ -23,8 +23,8 @@ android {
         minSdk 24
         compileSdk 34
         targetSdk 34
-        versionCode 115
-        versionName '2.8.2'
+        versionCode 116
+        versionName '2.8.3'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         buildConfigField 'com.github.cvzi.screenshottile.MutableBoolean', 'TESTING_MODE', 'new com.github.cvzi.screenshottile.MutableBoolean(false)'
     }

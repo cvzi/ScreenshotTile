@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.8.3
+*   Fix `%random%` in file name pattern [#480](https://github.com/cvzi/ScreenshotTile/issues/480)
+*   Fix opening activity after screenshot failed [#503](https://github.com/cvzi/ScreenshotTile/issues/503)
+
 ## 2.8.2
 *   Translations updated from crowdin
 *   Dependencies updated

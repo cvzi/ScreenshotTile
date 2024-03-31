@@ -1,0 +1,10 @@
+v2.8.3
+* Minor bugfixes
+v2.8.0
+* Material3 (Material You) contributed by user0-tb
+v2.7.0
+* Option to disable instantly taking a screenshot when tapping the count down
+v2.6.2
+* Floating button can be placed over camera hole / cutout notch to allow "tap on camera"
+v2.5.2
+* Option to play a sound after a successful screenshot
