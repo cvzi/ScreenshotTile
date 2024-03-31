@@ -442,7 +442,7 @@ fun formatFileName(fileNamePattern: String, date: Date): String {
         fileName = fileName.replaceFirst("%randint%", randInt)
     }
     while (fileName.contains("%random%")) {
-        fileName.replaceFirst("%random%", UUID.randomUUID().toString())
+        fileName = fileName.replaceFirst("%random%", UUID.randomUUID().toString())
     }
     return fileName
 }
