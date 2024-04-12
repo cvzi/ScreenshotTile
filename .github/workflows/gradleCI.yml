@@ -30,7 +30,7 @@ jobs:
     - name: Add exec permission
       run: chmod +x gradlew
     - name: Validate Gradle Wrapper
-      uses: gradle/wrapper-validation-action@v2
+      uses: gradle/wrapper-validation-action@v3
     - name: 🔨 Build
       run: ./gradlew build
     - name: 💬 Upload Lint report
