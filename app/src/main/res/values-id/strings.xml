@@ -170,6 +170,7 @@
     <string name="about_update_check_button">Periksa pembaruan</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Setelan aksesibilitas</string>
+    <string name="toast_open_accessibility_settings">Harap aktifkan \"%1s\" di pengaturan aksesibilitas</string>
     <string name="main_floating_button_title">Tombol apung</string>
     <string name="main_general_text">Sebelum Anda dapat menggunakan aplikasi ini, Anda perlu menambahkan ubin/tombol ke pengaturan cepat. Jika Anda tidak tahu cara melakukannya, lihat [Tutorial,.TutorialActivity].\n\nAplikasi ini mendukung dua metode berbeda untuk mengambil tangkapan layar:</string>
     <string name="main_legacy_method_title">Metode Warisan</string>
@@ -184,6 +185,9 @@
     <string name="main_assist_app_title">Aplikasi bantuan</string>
     <string name="main_assist_app_text">Jika Anda menetapkan aplikasi ini sebagai aplikasi bantuan, Anda dapat menekan lama tombol beranda untuk mengambil tangkapan layar. Mengaktifkan aplikasi ini sebagai aplikasi bantuan Anda akan menonaktifkan asisten lain. Anda dapat mengubah tindakan menekan tombol beranda yang lama di pengaturan aplikasi.</string>
     <string name="restricted_settings_open_settings">Izinkan setelan terbatas</string>
+    <string name="restricted_settings_open_accessibility">Buka pengaturan aksesibilitas</string>
+    <string name="restricted_settings_title">Aktifkan Layanan Aksesibilitas</string>
+    <string name="restricted_settings_text">Jika pengaturan aksesibilitas berwarna abu-abu, Anda harus mengizinkan \"pengaturan terbatas\" terlebih dahulu. \"Pengaturan terbatas\" dapat ditemukan di \"Info aplikasi\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Ganti nama</string>
     <string name="post_button_move">Pindah</string>
