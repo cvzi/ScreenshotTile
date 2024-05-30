@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.8.4
+*   Floating button position on Android 14 improved  [#462](https://github.com/cvzi/ScreenshotTile/issues/462)
+*   Translations updated from crowdin
+*   Dependencies updated
+
 ## 2.8.3
 *   Fix `%random%` in file name pattern [#480](https://github.com/cvzi/ScreenshotTile/issues/480)
 *   Fix opening activity after screenshot failed [#503](https://github.com/cvzi/ScreenshotTile/issues/503)
