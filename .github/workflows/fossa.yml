@@ -21,6 +21,8 @@ jobs:
       run: chmod +x gradlew
     - name: Validate Gradle Wrapper
       uses: gradle/actions/wrapper-validation@v3
+    - name: Disable configuration cache
+      run: echo -e "\norg.gradle.unsafe.configuration-cache=false\n" >> gradle.properties
     #- name: Generate dependencies report
     #  run: ./gradlew :app:dependencies > dependencies.txt
     - name: FOSSA Action
