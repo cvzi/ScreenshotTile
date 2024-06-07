@@ -21,8 +21,8 @@ jobs:
       run: chmod +x gradlew
     - name: Validate Gradle Wrapper
       uses: gradle/actions/wrapper-validation@v3
-    - name: Generate dependencies report
-      run: ./gradlew app:dependencies > dependencies.txt
+    #- name: Generate dependencies report
+    #  run: ./gradlew :app:dependencies > dependencies.txt
     - name: FOSSA Action
       uses: fossas/fossa-action@v1
       with:
