@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.PixelFormat
 import android.graphics.Point
@@ -19,8 +20,13 @@ import android.os.Looper
 import android.provider.Settings
 import android.service.quicksettings.TileService
 import android.util.Log
-import android.view.*
 import android.view.Display.DEFAULT_DISPLAY
+import android.view.DragEvent
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowManager
 import android.view.WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
 import android.view.accessibility.AccessibilityEvent
 import android.widget.ImageView
@@ -29,11 +35,30 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
-import com.github.cvzi.screenshottile.*
-import com.github.cvzi.screenshottile.activities.*
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.SaveImageResult
+import com.github.cvzi.screenshottile.SaveImageResultSuccess
+import com.github.cvzi.screenshottile.ToastType
+import com.github.cvzi.screenshottile.activities.FloatingButtonSettingsActivity
+import com.github.cvzi.screenshottile.activities.MainActivity
+import com.github.cvzi.screenshottile.activities.NoDisplayActivity
+import com.github.cvzi.screenshottile.activities.SettingsActivity
+import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
-import com.github.cvzi.screenshottile.utils.*
+import com.github.cvzi.screenshottile.utils.ShutterCollection
+import com.github.cvzi.screenshottile.utils.compressionPreference
+import com.github.cvzi.screenshottile.utils.createNotification
+import com.github.cvzi.screenshottile.utils.fillTextHeight
+import com.github.cvzi.screenshottile.utils.handlePostScreenshot
+import com.github.cvzi.screenshottile.utils.isDeviceLocked
+import com.github.cvzi.screenshottile.utils.parseColorString
+import com.github.cvzi.screenshottile.utils.safeRemoveView
+import com.github.cvzi.screenshottile.utils.saveBitmapToFile
+import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
+import com.github.cvzi.screenshottile.utils.toastDeviceIsLocked
+import com.github.cvzi.screenshottile.utils.toastMessage
 
 
 /**
@@ -123,6 +148,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
     private var screenDensity: Int = 0
+    private var screenOrientation: Int = 1
     private var floatingButtonShown = false
     private var binding: AccessibilityBarBinding? = null
     private var useThis = false
@@ -210,8 +236,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
     private fun configureFloatingButton(root: ViewGroup) {
-        val position = App.getInstance().prefManager.floatingButtonPosition
+        screenOrientation = resources.configuration.orientation
 
+        val position = App.getInstance().prefManager.getFloatingButtonPosition(screenOrientation)
         val shutterCollection = ShutterCollection(this, R.array.shutters, R.array.shutter_names)
 
         addWindowViewAt(root, position.x, position.y)
@@ -315,7 +342,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             val y: Int
                             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.TIRAMISU || event.action == DragEvent.ACTION_DROP) {
                                 // x and y are relative to the inside of the view's bounding box
-                                val old = App.getInstance().prefManager.floatingButtonPosition
+                                val old = App.getInstance().prefManager.getFloatingButtonPosition(
+                                    resources.configuration.orientation
+                                )
                                 x = (old.x - v.measuredWidth / 2.0 + event.x).toInt()
                                 y = (old.y - v.measuredHeight / 2.0 + event.y).toInt()
                             } else {
@@ -325,8 +354,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             }
                             dragDone = true
                             updateWindowViewPosition(it, x, y)
-                            App.getInstance().prefManager.floatingButtonPosition =
-                                Point(x, y)
+                            App.getInstance().prefManager.setFloatingButtonPosition(
+                                Point(x, y),
+                                resources.configuration.orientation
+                            )
                         }
                         setShutterDrawable(
                             this,
@@ -723,6 +754,26 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             ""
         }
         getWinContext().toastMessage(message, ToastType.ERROR)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        if (screenOrientation != newConfig.orientation) {
+            screenOrientation = newConfig.orientation
+            val positions = App.getInstance().prefManager.getFloatingButtonPositions()
+            if (screenOrientation !in positions &&
+                ((screenOrientation == 2 && 1 in positions) || (screenOrientation == 1 && 2 in positions))
+            ) {
+                // Try to restore the position from the other orientation
+                var x = positions[1]?.x ?: positions[2]?.x ?: 150
+                var y = positions[1]?.y ?: positions[2]?.x ?: 50
+                val ratio = resources.displayMetrics.widthPixels.toFloat() / resources.displayMetrics.heightPixels.toFloat()
+                x = (x * ratio).toInt()
+                y = (y / ratio).toInt()
+                App.getInstance().prefManager.setFloatingButtonPosition(Point(x, y), 2)
+            }
+            updateFloatingButton(forceRedraw = true)
+        }
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {

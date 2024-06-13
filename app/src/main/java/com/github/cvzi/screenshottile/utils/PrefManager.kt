@@ -276,27 +276,61 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         ).apply()
 
     /**
-     * Default to (50, 150) to avoid having the floating button
+     * Default to 50,150,1 to avoid having the floating button
      * stuck on the camera notch when it is added the first time
+     * Data format: x1,y1,orientation1;x2,y2,orientation2;...
+     * if the requested orientation is not available,
+     * another pair is used or a default value
      */
-    var floatingButtonPosition: Point
-        get() {
-            val s = pref.getString(
-                context.getString(R.string.pref_key_floating_button_position),
-                "50,150"
-            ) ?: "50,150"
-            val parts = s.split(",")
-            if (parts.size != 2) {
-                return Point(50, 150)
+    fun getFloatingButtonPositions(): MutableMap<Int, Point> {
+        val positionsStr = pref.getString(context.getString(R.string.pref_key_floating_button_position), "") ?: ""
+        val positionsParts =  positionsStr.split(";")
+        val resultMap = mutableMapOf<Int, Point>()
+        for (positionStr in positionsParts ) {
+            if (positionStr.isBlank()) {
+                continue
             }
-            val x = parts[0].toIntOrNull() ?: 50
-            val y = parts[1].toIntOrNull() ?: 150
-            return Point(x, y)
+            val parts = positionStr.split(",")
+            when (parts.size) {
+                2 -> {
+                    // for backwards compatibility
+                    val x = parts[0].toIntOrNull() ?: 50
+                    val y = parts[1].toIntOrNull() ?: 150
+                    resultMap[1] = Point(x, y)
+                }
+
+                3 -> {
+                    val x = parts[0].toIntOrNull() ?: 50
+                    val y = parts[1].toIntOrNull() ?: 150
+                    val orientation = parts[2].toIntOrNull() ?: 1
+                    resultMap[orientation] = Point(x, y)
+                }
+                 else -> {
+                    Log.e(TAG, "getFloatingButtonPositions parts.size != 3")
+                 }
+            }
         }
-        set(point) = pref.edit().putString(
+
+        return resultMap
+    }
+
+    fun getFloatingButtonPosition(orientation: Int): Point {
+        val map = getFloatingButtonPositions()
+        return map[orientation] ?: if (map.isNotEmpty())
+            map.values.first()
+        else
+            Point(50, 150)
+    }
+
+    fun setFloatingButtonPosition(point: Point, orientation: Int) {
+        val map = getFloatingButtonPositions()
+        map[orientation] = point
+        val dataStr = map.map { "${it.value.x},${it.value.y},${it.key}" }.joinToString(";")
+        pref.edit().putString(
             context.getString(R.string.pref_key_floating_button_position),
-            "${point.x},${point.y}"
+            dataStr
         ).apply()
+    }
 
     var floatingButtonShutter: Int
         get() = pref.getString(
