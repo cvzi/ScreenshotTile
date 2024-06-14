@@ -1,6 +1,10 @@
 package com.github.cvzi.screenshottile.utils
 
-import android.app.*
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.RemoteInput
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -16,7 +20,20 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.FileProvider
 import androidx.core.net.toFile
 import com.burhanrashid52.photoediting.EditImageActivity
-import com.github.cvzi.screenshottile.*
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_CROP
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_DATA_MIME_TYPE
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_DATA_URI
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_DELETE
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_DETAILS
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_EDIT
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_ID
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_PHOTO_EDITOR
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_RENAME
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_RENAME_INPUT
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_SHARE
+import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_STOP
+import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 

@@ -31,7 +31,6 @@ import com.github.cvzi.screenshottile.activities.DelayScreenshotActivity;
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity;
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener;
 import com.github.cvzi.screenshottile.services.BasicForegroundService;
-import com.github.cvzi.screenshottile.services.FloatingTileService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
 import com.github.cvzi.screenshottile.utils.PrefManager;

@@ -7,7 +7,12 @@ import android.app.AlertDialog
 import android.content.ComponentName
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
-import android.content.Intent.*
+import android.content.Intent.ACTION_OPEN_DOCUMENT_TREE
+import android.content.Intent.ACTION_VIEW
+import android.content.Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
+import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
+import android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+import android.content.Intent.createChooser
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -27,8 +32,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import androidx.preference.*
+import androidx.preference.EditTextPreference
+import androidx.preference.ListPreference
+import androidx.preference.MultiSelectListPreference
+import androidx.preference.Preference
 import androidx.preference.Preference.OnPreferenceClickListener
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreference
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
@@ -39,7 +49,13 @@ import com.github.cvzi.screenshottile.activities.PostSettingsActivity
 import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
-import com.github.cvzi.screenshottile.utils.*
+import com.github.cvzi.screenshottile.utils.ShutterCollection
+import com.github.cvzi.screenshottile.utils.createNotificationScreenshotTakenChannel
+import com.github.cvzi.screenshottile.utils.nicePathFromUri
+import com.github.cvzi.screenshottile.utils.notificationScreenshotTakenChannelEnabled
+import com.github.cvzi.screenshottile.utils.notificationSettingsIntent
+import com.github.cvzi.screenshottile.utils.safeDismiss
+import com.github.cvzi.screenshottile.utils.toastMessage
 import java.lang.ref.WeakReference
 
 

@@ -283,10 +283,11 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
      * another pair is used or a default value
      */
     fun getFloatingButtonPositions(): MutableMap<Int, Point> {
-        val positionsStr = pref.getString(context.getString(R.string.pref_key_floating_button_position), "") ?: ""
-        val positionsParts =  positionsStr.split(";")
+        val positionsStr =
+            pref.getString(context.getString(R.string.pref_key_floating_button_position), "") ?: ""
+        val positionsParts = positionsStr.split(";")
         val resultMap = mutableMapOf<Int, Point>()
-        for (positionStr in positionsParts ) {
+        for (positionStr in positionsParts) {
             if (positionStr.isBlank()) {
                 continue
             }
@@ -305,9 +306,10 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
                     val orientation = parts[2].toIntOrNull() ?: 1
                     resultMap[orientation] = Point(x, y)
                 }
-                 else -> {
+
+                else -> {
                     Log.e(TAG, "getFloatingButtonPositions parts.size != 3")
-                 }
+                }
             }
         }
 
@@ -377,27 +379,39 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         ).apply()
 
     var floatingButtonWhenUnLocked: Boolean
-        get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button_when_unlocked), true)
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_floating_button_when_unlocked),
+            true
+        )
         set(value) = pref.edit().putBoolean(
             context.getString(R.string.pref_key_floating_button_when_unlocked),
             value
         ).apply()
 
     var floatingButtonWhenLocked: Boolean
-        get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button_when_locked), true)
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_floating_button_when_locked),
+            true
+        )
         set(value) = pref.edit().putBoolean(
             context.getString(R.string.pref_key_floating_button_when_locked),
             value
         ).apply()
 
     var floatingButtonWhenPortrait: Boolean
-        get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button_when_portrait), true)
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_floating_button_when_portrait),
+            true
+        )
         set(value) = pref.edit().putBoolean(
             context.getString(R.string.pref_key_floating_button_when_portrait),
             value
         ).apply()
     var floatingButtonWhenLandscape: Boolean
-        get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button_when_landscape), true)
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_floating_button_when_landscape),
+            true
+        )
         set(value) = pref.edit().putBoolean(
             context.getString(R.string.pref_key_floating_button_when_landscape),
             value

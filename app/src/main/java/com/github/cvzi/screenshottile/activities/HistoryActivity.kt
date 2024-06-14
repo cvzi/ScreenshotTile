@@ -20,7 +20,7 @@ import com.github.cvzi.screenshottile.utils.ScreenshotHistoryAdapter
 import com.github.cvzi.screenshottile.utils.SingleImage
 import com.github.cvzi.screenshottile.utils.cleanUpAppData
 import java.io.File
-import java.util.*
+import java.util.Date
 
 
 /**

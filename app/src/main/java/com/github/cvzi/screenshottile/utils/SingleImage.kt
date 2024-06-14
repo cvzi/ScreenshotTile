@@ -15,7 +15,7 @@ import com.github.cvzi.screenshottile.BuildConfig
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.IOException
-import java.util.*
+import java.util.Date
 
 
 class SingleImageLoaded(

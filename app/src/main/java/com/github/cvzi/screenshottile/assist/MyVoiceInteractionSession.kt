@@ -18,12 +18,23 @@ import android.view.WindowManager
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.github.cvzi.screenshottile.*
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BuildConfig
+import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.SaveImageResult
+import com.github.cvzi.screenshottile.SaveImageResultSuccess
+import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
-import com.github.cvzi.screenshottile.utils.*
+import com.github.cvzi.screenshottile.utils.SaveImageHandler
+import com.github.cvzi.screenshottile.utils.createNotification
+import com.github.cvzi.screenshottile.utils.handlePostScreenshot
+import com.github.cvzi.screenshottile.utils.isDeviceLocked
+import com.github.cvzi.screenshottile.utils.tintImage
+import com.github.cvzi.screenshottile.utils.toastDeviceIsLocked
+import com.github.cvzi.screenshottile.utils.toastMessage
 
 /**
  * A session is started when the home button is long pressed
@@ -125,8 +136,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
     @SuppressLint("InflateParams")
     override fun onCreateContentView(): View {
         val constraintLayout = layoutInflater.inflate(R.layout.image_crop, null) as ConstraintLayout
-        screenshotSelectorView =
-            constraintLayout.findViewById(R.id.global_screenshot_selector) as ScreenshotSelectorView
+        screenshotSelectorView = constraintLayout.findViewById(R.id.global_screenshot_selector)
         screenshotSelectorView?.run {
             visibility = View.GONE
             text = context.getString(R.string.take_screenshot)

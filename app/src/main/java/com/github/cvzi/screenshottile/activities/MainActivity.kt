@@ -33,7 +33,10 @@ import com.github.cvzi.screenshottile.databinding.ActivityMainBinding
 import com.github.cvzi.screenshottile.services.FloatingTileService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
-import com.github.cvzi.screenshottile.utils.*
+import com.github.cvzi.screenshottile.utils.hasFdroid
+import com.github.cvzi.screenshottile.utils.isNewAppInstallation
+import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
+import com.github.cvzi.screenshottile.utils.toastMessage
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 

@@ -14,23 +14,41 @@ import android.hardware.display.VirtualDisplay
 import android.media.ImageReader
 import android.media.projection.MediaProjection
 import android.net.Uri
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.Environment
+import android.os.Handler
+import android.os.Looper
+import android.os.StrictMode
 import android.util.Log
-import android.view.*
+import android.view.Surface
+import android.view.View
+import android.view.Window
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.Toast
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.annotation.RequiresApi
-import com.github.cvzi.screenshottile.*
+import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.App.resetMediaProjection
 import com.github.cvzi.screenshottile.App.setScreenshotPermission
+import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID
+import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.SaveImageResult
+import com.github.cvzi.screenshottile.SaveImageResultSuccess
+import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
 import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
-import com.github.cvzi.screenshottile.utils.*
+import com.github.cvzi.screenshottile.utils.SaveImageHandler
+import com.github.cvzi.screenshottile.utils.createNotification
+import com.github.cvzi.screenshottile.utils.handlePostScreenshot
+import com.github.cvzi.screenshottile.utils.realScreenSize
+import com.github.cvzi.screenshottile.utils.toastMessage
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.

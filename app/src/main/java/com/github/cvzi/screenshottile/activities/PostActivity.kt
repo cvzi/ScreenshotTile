@@ -13,7 +13,8 @@ import android.util.Size
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.*
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,7 +24,12 @@ import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_RENAME_INPUT
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.databinding.ActivityPostBinding
-import com.github.cvzi.screenshottile.utils.*
+import com.github.cvzi.screenshottile.utils.RecentFolder
+import com.github.cvzi.screenshottile.utils.RecentFoldersAdapter
+import com.github.cvzi.screenshottile.utils.SingleImage
+import com.github.cvzi.screenshottile.utils.SuggestionsAdapter
+import com.github.cvzi.screenshottile.utils.deleteImage
+import com.github.cvzi.screenshottile.utils.toastMessage
 
 
 class PostActivity : GenericPostActivity() {

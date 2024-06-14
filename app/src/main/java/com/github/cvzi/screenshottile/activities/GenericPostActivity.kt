@@ -13,10 +13,20 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.EditImageActivity
-import com.github.cvzi.screenshottile.*
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.PostActivity.Companion.newIntentSingleImage
-import com.github.cvzi.screenshottile.utils.*
-import java.util.*
+import com.github.cvzi.screenshottile.utils.FileNameSuggestion
+import com.github.cvzi.screenshottile.utils.SingleImageLoaded
+import com.github.cvzi.screenshottile.utils.SuggestionsAdapter
+import com.github.cvzi.screenshottile.utils.editImageChooserIntent
+import com.github.cvzi.screenshottile.utils.moveImage
+import com.github.cvzi.screenshottile.utils.niceFullPathFromUri
+import com.github.cvzi.screenshottile.utils.renameImage
+import com.github.cvzi.screenshottile.utils.shareImageChooserIntent
+import com.github.cvzi.screenshottile.utils.toastMessage
+import java.util.Locale
 
 
 open class GenericPostActivity : AppCompatActivity() {

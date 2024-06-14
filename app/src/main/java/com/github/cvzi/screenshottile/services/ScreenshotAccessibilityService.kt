@@ -815,10 +815,12 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     screenLocked = false
                     updateFloatingButton()
                 }
+
                 Intent.ACTION_SCREEN_OFF -> {
                     screenLocked = true
                     updateFloatingButton()
                 }
+
                 Intent.ACTION_SCREEN_ON -> {
                     screenLocked = isDeviceLocked(this@ScreenshotAccessibilityService)
                     updateFloatingButton()
