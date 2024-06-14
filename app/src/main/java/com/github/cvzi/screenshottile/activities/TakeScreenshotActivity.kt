@@ -317,6 +317,7 @@ class TakeScreenshotActivity : Activity(),
             mediaProjection?.stop()
             mediaProjection = null
         }
+        instance = null
     }
 
     private fun prepareForScreenSharing() {

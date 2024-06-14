@@ -94,4 +94,9 @@ class BasicForegroundService : Service() {
         }
         stopForeground(STOP_FOREGROUND_REMOVE)
     }
+
+    override fun onDestroy() {
+        instance = null
+        super.onDestroy()
+    }
 }

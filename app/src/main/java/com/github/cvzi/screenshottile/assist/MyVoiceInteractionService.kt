@@ -83,4 +83,9 @@ class MyVoiceInteractionService : VoiceInteractionService() {
             }
         }
     }
+
+    override fun onDestroy() {
+        instance = null
+        super.onDestroy()
+    }
 }

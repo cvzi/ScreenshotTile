@@ -918,6 +918,7 @@ class SettingFragment : PreferenceFragmentCompat() {
     override fun onDestroy() {
         floatingButtonShowCloseAlertDialog?.cancel()
         floatingButtonShowCloseAlertDialog = null
+        instance?.clear()
         super.onDestroy()
         pref?.unregisterOnSharedPreferenceChangeListener(prefListener)
     }
