@@ -786,10 +786,6 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
 
-        // TODO detect when device is locked?
-        Log.v(TAG, "onConfigurationChanged: locked=${isDeviceLocked(this)}")
-
-
         if (screenOrientation != newConfig.orientation) {
             screenOrientation = newConfig.orientation
             val positions = App.getInstance().prefManager.getFloatingButtonPositions()
@@ -814,27 +810,20 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
         private var registered = false
         override fun onReceive(context: Context?, intent: Intent?) {
-            // TODO check that this also works, if there is no locksreen or a timeout till locking
             when (intent?.action) {
                 Intent.ACTION_USER_PRESENT -> {
-                    Log.v(TAG, "onReceive: ACTION_USER_PRESENT")
                     screenLocked = false
                     updateFloatingButton()
                 }
-
                 Intent.ACTION_SCREEN_OFF -> {
-                    Log.v(TAG, "onReceive: ACTION_SCREEN_OFF")
                     screenLocked = true
                     updateFloatingButton()
                 }
-
                 Intent.ACTION_SCREEN_ON -> {
                     screenLocked = isDeviceLocked(this@ScreenshotAccessibilityService)
-                    Log.v(TAG, "onReceive: ACTION_SCREEN_ON locked=$screenLocked")
                     updateFloatingButton()
                 }
             }
-
         }
 
         fun register() {
@@ -864,12 +853,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     fun onDeviceLockedFromTileService() {
         screenLocked = true
         updateFloatingButton()
-        Log.v(TAG, "onDeviceLockedFromTileService()")
     }
 
 
     private fun listenForScreenLock() {
-        // TODO need to call this if the setting is changed
         if (onUnLockBroadcastReceiver == null) {
             onUnLockBroadcastReceiver = OnUnLockBroadcastReceiver()
         }
