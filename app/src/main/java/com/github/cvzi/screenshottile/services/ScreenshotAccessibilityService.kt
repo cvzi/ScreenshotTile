@@ -4,8 +4,10 @@ import android.accessibilityservice.AccessibilityService
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ActivityNotFoundException
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.PixelFormat
@@ -149,46 +151,51 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     private var screenDensity: Int = 0
     private var screenOrientation: Int = 1
+    private var screenLocked = false
     private var floatingButtonShown = false
     private var binding: AccessibilityBarBinding? = null
     private var useThis = false
+    private var onUnLockBroadcastReceiver: OnUnLockBroadcastReceiver? = null
 
     override fun onServiceConnected() {
         instance = this
-        App.getInstance()?.let { appInstance ->
-            try {
-                when (appInstance.prefManager.returnIfAccessibilityServiceEnabled) {
-                    SettingFragment.TAG -> {
-                        // Return to settings
-                        appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
-                        SettingsActivity.startNewTask(this)
-                    }
+        val prefManager = App.getInstance().prefManager
 
-                    MainActivity.TAG -> {
-                        // Return to main activity
-                        appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
-                        MainActivity.startNewTask(this)
-                    }
+        updateLockscreenSetting()
 
-                    NoDisplayActivity.TAG -> {
-                        // Return to NoDisplayActivity activity i.e. finish()
-                        appInstance.prefManager.returnIfAccessibilityServiceEnabled = null
-                        NoDisplayActivity.startNewTask(this, false)
-                    }
-
-                    else -> {
-                        // Do nothing
-                    }
+        try {
+            when (prefManager.returnIfAccessibilityServiceEnabled) {
+                SettingFragment.TAG -> {
+                    // Return to settings
+                    prefManager.returnIfAccessibilityServiceEnabled = null
+                    SettingsActivity.startNewTask(this)
                 }
-            } catch (e: ActivityNotFoundException) {
-                // This seems to happen after booting
-                Log.e(
-                    TAG,
-                    "Could not start Activity for return to '${appInstance.prefManager.returnIfAccessibilityServiceEnabled}'",
-                    e
-                )
+
+                MainActivity.TAG -> {
+                    // Return to main activity
+                    prefManager.returnIfAccessibilityServiceEnabled = null
+                    MainActivity.startNewTask(this)
+                }
+
+                NoDisplayActivity.TAG -> {
+                    // Return to NoDisplayActivity activity i.e. finish()
+                    prefManager.returnIfAccessibilityServiceEnabled = null
+                    NoDisplayActivity.startNewTask(this, false)
+                }
+
+                else -> {
+                    // Do nothing
+                }
             }
+        } catch (e: ActivityNotFoundException) {
+            // This seems to happen after booting
+            Log.e(
+                TAG,
+                "Could not start Activity for return to '${prefManager.returnIfAccessibilityServiceEnabled}'",
+                e
+            )
         }
+
 
         updateFloatingButton()
     }
@@ -211,18 +218,38 @@ class ScreenshotAccessibilityService : AccessibilityService() {
      * Toggle the floating button according to the current settings
      */
     fun updateFloatingButton(forceRedraw: Boolean = false) {
-        App.getInstance()?.let {
-            val prefValue = it.prefManager.floatingButton
-            if (prefValue && !floatingButtonShown) {
-                showFloatingButton()
-            } else if (!prefValue && floatingButtonShown) {
-                hideFloatingButton()
-            } else if (prefValue && forceRedraw) {
-                hideFloatingButton()
-                showFloatingButton()
-            }
+        val prefManager = App.getInstance().prefManager
+        val hideInThisMode =
+            (screenLocked && !prefManager.floatingButtonWhenLocked)
+                    || (!screenLocked && !prefManager.floatingButtonWhenUnLocked)
+                    || (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE && !prefManager.floatingButtonWhenLandscape)
+                    || (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT && !prefManager.floatingButtonWhenPortrait)
+
+        val shouldBeShown = prefManager.floatingButton && !hideInThisMode
+        if (shouldBeShown && !floatingButtonShown) {
+            showFloatingButton()
+        } else if (!shouldBeShown && floatingButtonShown) {
+            hideFloatingButton()
+        } else if (shouldBeShown && forceRedraw) {
+            hideFloatingButton()
+            showFloatingButton()
         }
     }
+
+    /**
+     * Update listeners for screen lock changes
+     */
+    fun updateLockscreenSetting() {
+        App.getInstance().prefManager.run {
+            if (!floatingButton || (floatingButtonWhenLocked && floatingButtonWhenUnLocked)) {
+                stopListeningForScreenLock()
+            } else {
+                listenForScreenLock()
+            }
+        }
+        updateFloatingButton(forceRedraw = true)
+    }
+
 
     private fun showFloatingButton() {
         floatingButtonShown = true
@@ -758,6 +785,11 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
+
+        // TODO detect when device is locked?
+        Log.v(TAG, "onConfigurationChanged: locked=${isDeviceLocked(this)}")
+
+
         if (screenOrientation != newConfig.orientation) {
             screenOrientation = newConfig.orientation
             val positions = App.getInstance().prefManager.getFloatingButtonPositions()
@@ -767,13 +799,98 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 // Try to restore the position from the other orientation
                 var x = positions[1]?.x ?: positions[2]?.x ?: 150
                 var y = positions[1]?.y ?: positions[2]?.x ?: 50
-                val ratio = resources.displayMetrics.widthPixels.toFloat() / resources.displayMetrics.heightPixels.toFloat()
+                val ratio =
+                    resources.displayMetrics.widthPixels.toFloat() / resources.displayMetrics.heightPixels.toFloat()
                 x = (x * ratio).toInt()
                 y = (y / ratio).toInt()
                 App.getInstance().prefManager.setFloatingButtonPosition(Point(x, y), 2)
             }
             updateFloatingButton(forceRedraw = true)
         }
+    }
+
+
+    inner class OnUnLockBroadcastReceiver : BroadcastReceiver() {
+
+        private var registered = false
+        override fun onReceive(context: Context?, intent: Intent?) {
+            // TODO check that this also works, if there is no locksreen or a timeout till locking
+            when (intent?.action) {
+                Intent.ACTION_USER_PRESENT -> {
+                    Log.v(TAG, "onReceive: ACTION_USER_PRESENT")
+                    screenLocked = false
+                    updateFloatingButton()
+                }
+
+                Intent.ACTION_SCREEN_OFF -> {
+                    Log.v(TAG, "onReceive: ACTION_SCREEN_OFF")
+                    screenLocked = true
+                    updateFloatingButton()
+                }
+
+                Intent.ACTION_SCREEN_ON -> {
+                    screenLocked = isDeviceLocked(this@ScreenshotAccessibilityService)
+                    Log.v(TAG, "onReceive: ACTION_SCREEN_ON locked=$screenLocked")
+                    updateFloatingButton()
+                }
+            }
+
+        }
+
+        fun register() {
+            if (registered) {
+                return
+            }
+            registerReceiver(this, IntentFilter().apply {
+                addAction(Intent.ACTION_USER_PRESENT)
+                addAction(Intent.ACTION_SCREEN_OFF)
+                addAction(Intent.ACTION_SCREEN_ON)
+            })
+            registered = true
+        }
+
+        fun unregister() {
+            try {
+                unregisterReceiver(this)
+            } catch (e: IllegalArgumentException) {
+                Log.e(TAG, "IllegalArgumentException in OnUnLockBroadcastReceiver", e)
+            } catch (e: RuntimeException) {
+                Log.e(TAG, "RuntimeException in OnUnLockBroadcastReceiver", e)
+            }
+            registered = false
+        }
+    }
+
+    fun onDeviceLockedFromTileService() {
+        screenLocked = true
+        updateFloatingButton()
+        Log.v(TAG, "onDeviceLockedFromTileService()")
+    }
+
+
+    private fun listenForScreenLock() {
+        // TODO need to call this if the setting is changed
+        if (onUnLockBroadcastReceiver == null) {
+            onUnLockBroadcastReceiver = OnUnLockBroadcastReceiver()
+        }
+        onUnLockBroadcastReceiver?.register()
+
+        FloatingTileService.informAccessibilityServiceOnLocked = true
+        ScreenshotTileService.informAccessibilityServiceOnLocked = true
+    }
+
+    private fun stopListeningForScreenLock() {
+        onUnLockBroadcastReceiver?.unregister()
+        onUnLockBroadcastReceiver = null
+        FloatingTileService.informAccessibilityServiceOnLocked = false
+        ScreenshotTileService.informAccessibilityServiceOnLocked = false
+    }
+
+
+    override fun onDestroy() {
+        stopListeningForScreenLock()
+        instance = null
+        super.onDestroy()
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {

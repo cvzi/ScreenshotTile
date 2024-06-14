@@ -16,6 +16,7 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.SettingDialogActivity
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.utils.foregroundNotification
+import com.github.cvzi.screenshottile.utils.isDeviceLocked
 import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 
 
@@ -35,6 +36,7 @@ class ScreenshotTileService : TileService(),
             APPLICATION_ID + "ScreenshotTileService.FOREGROUND_ON_START"
         var instance: ScreenshotTileService? = null
         var screenshotPermission: Intent? = null
+        var informAccessibilityServiceOnLocked = false
     }
 
     var takeScreenshotOnStopListening = false
@@ -95,6 +97,13 @@ class ScreenshotTileService : TileService(),
         super.onStartListening()
         if (BuildConfig.DEBUG) Log.v(TAG, "onStartListening()")
         setState(Tile.STATE_INACTIVE)
+        Log.v(TAG, "informAccessibilityServiceOnLocked: $informAccessibilityServiceOnLocked")
+        Log.v(TAG, "isDeviceLocked: ${isDeviceLocked(this)}")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
+            && informAccessibilityServiceOnLocked && isDeviceLocked(this)
+        ) {
+            ScreenshotAccessibilityService.instance?.onDeviceLockedFromTileService()
+        }
     }
 
     override fun onStopListening() {
@@ -184,5 +193,9 @@ class ScreenshotTileService : TileService(),
     fun kill() {
         background()
         stopSelf()
+    }
+
+    override fun onDestroy() {
+        instance = null
     }
 }

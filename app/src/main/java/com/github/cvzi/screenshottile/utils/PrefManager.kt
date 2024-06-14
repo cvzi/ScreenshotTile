@@ -376,6 +376,33 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value ?: ""
         ).apply()
 
+    var floatingButtonWhenUnLocked: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button_when_unlocked), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button_when_unlocked),
+            value
+        ).apply()
+
+    var floatingButtonWhenLocked: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button_when_locked), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button_when_locked),
+            value
+        ).apply()
+
+    var floatingButtonWhenPortrait: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button_when_portrait), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button_when_portrait),
+            value
+        ).apply()
+    var floatingButtonWhenLandscape: Boolean
+        get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button_when_landscape), true)
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button_when_landscape),
+            value
+        ).apply()
+
     var voiceInteractionAction: String
         get() = pref.getString(
             context.getString(R.string.pref_key_voice_interaction_action),

@@ -231,6 +231,24 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
         binding.buttonMoreSettings.setOnClickListener {
             SettingsActivity.start(this)
         }
+
+        binding.switchFloatingButtonOnUnLocked.setOnCheckedChangeListener { _, isChecked ->
+            prefManager.floatingButtonWhenUnLocked = isChecked
+            ScreenshotAccessibilityService.instance?.updateLockscreenSetting()
+        }
+        binding.switchFloatingButtonOnLocked.setOnCheckedChangeListener { _, isChecked ->
+            prefManager.floatingButtonWhenLocked = isChecked
+            ScreenshotAccessibilityService.instance?.updateLockscreenSetting()
+        }
+        binding.switchFloatingButtonOnPortrait.setOnCheckedChangeListener { _, isChecked ->
+            prefManager.floatingButtonWhenPortrait = isChecked
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
+        }
+        binding.switchFloatingButtonOnLandscape.setOnCheckedChangeListener { _, isChecked ->
+            prefManager.floatingButtonWhenLandscape = isChecked
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
+        }
+
     }
 
     private fun onSelectColor(h: Float?, v: Float?) {
@@ -304,6 +322,11 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
 
         seekBarFloatingButtonAlpha.progress = (100 * alpha).toInt()
         switchFloatingButtonAlpha.isChecked = alpha < 0.98
+
+        binding.switchFloatingButtonOnUnLocked.isChecked = prefManager.floatingButtonWhenUnLocked
+        binding.switchFloatingButtonOnLocked.isChecked = prefManager.floatingButtonWhenLocked
+        binding.switchFloatingButtonOnPortrait.isChecked = prefManager.floatingButtonWhenPortrait
+        binding.switchFloatingButtonOnLandscape.isChecked = prefManager.floatingButtonWhenLandscape
 
         restoreSavedInstanceValues()
 
@@ -394,6 +417,7 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean("tintEnabled", switchFloatingButtonColorTint.isChecked)
         outState.putInt("tintH", seekBarFloatingButtonTintH.progress)
         outState.putInt("tintV", seekBarFloatingButtonTintV.progress)
         outState.putInt("alpha", seekBarFloatingButtonAlpha.progress)
@@ -419,6 +443,10 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
                     seekBarFloatingButtonTintV.progress = it
                     onSelectColor(h = null, v = 0.5f + 0.001f * it)
                 }
+            }
+            getBoolean("tintEnabled", false).let {
+                // This needs to be done after the tintH/tintV, otherwise it is overwritten
+                switchFloatingButtonColorTint.isChecked = it
             }
             getInt("alpha", -1).let {
                 if (it > -1) {

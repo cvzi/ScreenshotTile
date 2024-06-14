@@ -15,6 +15,7 @@ import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
+import com.github.cvzi.screenshottile.utils.isDeviceLocked
 import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 
 
@@ -29,6 +30,7 @@ class FloatingTileService : TileService() {
     companion object {
         private const val TAG = "FloatingTileService"
         var instance: FloatingTileService? = null
+        var informAccessibilityServiceOnLocked = false
 
         fun toggleFloatingButton(context: Context) {
             if (ScreenshotAccessibilityService.instance == null) {
@@ -92,6 +94,9 @@ class FloatingTileService : TileService() {
         super.onStartListening()
         if (BuildConfig.DEBUG) Log.v(TAG, "onStartListening()")
         updateTileState()
+        if (informAccessibilityServiceOnLocked && isDeviceLocked(this)) {
+            ScreenshotAccessibilityService.instance?.onDeviceLockedFromTileService()
+        }
     }
 
     override fun onStopListening() {
@@ -123,6 +128,10 @@ class FloatingTileService : TileService() {
                 Tile.STATE_INACTIVE
             }
         )
+    }
+
+    override fun onDestroy() {
+        instance = null
     }
 
 }
