@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.9.0
+*   Remember floating button position separately for landscape and portrait orientation
+*   Option to disable floating button on lockscreen
+*   Option to disable floating button in portrait/landscape orientation
+
 ## 2.8.4
 *   Floating button position on Android 14 improved  [#462](https://github.com/cvzi/ScreenshotTile/issues/462)
 *   Translations updated from crowdin

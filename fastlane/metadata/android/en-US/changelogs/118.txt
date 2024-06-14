@@ -1,0 +1,4 @@
+v2.9.0
+* Separate floating button position for landscape and portrait orientation
+* Option to disable floating button on lockscreen
+* Option to disable floating button in portrait/landscape orientation
