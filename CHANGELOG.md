@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.9.1
+*   Crop function on Android 14 improved [#535](https://github.com/cvzi/ScreenshotTile/issues/535) [#462](https://github.com/cvzi/ScreenshotTile/issues/462)
+
 ## 2.9.0
 *   Remember floating button position separately for landscape and portrait orientation
 *   Option to disable floating button on lockscreen
