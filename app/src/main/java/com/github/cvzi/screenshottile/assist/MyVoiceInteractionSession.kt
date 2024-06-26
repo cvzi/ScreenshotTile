@@ -145,10 +145,12 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             onShutter = {
                 val bitmap = currentBitmap
                 if (bitmap != null) {
-                    // If there is a cutout or status bars, the view might have a offset
-                    val selectorViewOffset = intArrayOf(0, 0)
-                    getLocationOnScreen(selectorViewOffset)
-                    it.offset(selectorViewOffset[0], selectorViewOffset[1])
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                        // If there is a cutout or status bars, the view might have a offset
+                        val selectorViewOffset = intArrayOf(0, 0)
+                        getLocationOnScreen(selectorViewOffset)
+                        it.offset(selectorViewOffset[0], selectorViewOffset[1])
+                    }
                     cutOutRect = it
                     visibility = View.GONE
                     storeBitmap(bitmap)
