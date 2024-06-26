@@ -17,7 +17,6 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
@@ -26,7 +25,7 @@ import com.github.cvzi.screenshottile.SaveImageResultSuccess
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
-import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
+import com.github.cvzi.screenshottile.databinding.ImageCropBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.createNotification
@@ -47,11 +46,10 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
     private var saveImageHandler: SaveImageHandler? = null
     private val prefManager = App.getInstance().prefManager
     private var screenshotSelectorActive = false
-    private var layoutView: ConstraintLayout? = null
-    private var screenshotSelectorView: ScreenshotSelectorView? = null
     private var cutOutRect: Rect? = null
     private var currentBitmap: Bitmap? = null
     private var partial = false
+    private var binding: ImageCropBinding? = null
     private val onBackInvokedCallback: OnBackInvokedCallback? =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // Handle back button for Android 13+
@@ -135,9 +133,9 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
 
     @SuppressLint("InflateParams")
     override fun onCreateContentView(): View {
-        val constraintLayout = layoutInflater.inflate(R.layout.image_crop, null) as ConstraintLayout
-        screenshotSelectorView = constraintLayout.findViewById(R.id.global_screenshot_selector)
-        screenshotSelectorView?.run {
+        val binding = ImageCropBinding.inflate(layoutInflater)
+        this.binding = binding
+        binding.globalScreenshotSelector.run {
             visibility = View.GONE
             text = context.getString(R.string.take_screenshot)
             shutter = R.drawable.ic_stat_name
@@ -162,9 +160,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             }
         }
 
-
-        layoutView = constraintLayout
-        return constraintLayout
+        return binding.root
     }
 
     /**
@@ -175,12 +171,12 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
 
         if (context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK == Configuration.UI_MODE_NIGHT_YES) {
             // Night Mode
-            layoutView?.setBackgroundColor(Color.BLACK)
+            binding?.root?.setBackgroundColor(Color.BLACK)
         } else {
-            layoutView?.setBackgroundColor(Color.WHITE)
+            binding?.root?.setBackgroundColor(Color.WHITE)
         }
 
-        screenshotSelectorView?.run {
+        binding?.globalScreenshotSelector?.run {
             screenshotSelectorActive = true
             this.bitmap = if (BuildConfig.DEBUG) {
                 tintImage(bitmap, color = 0xFF006622)
@@ -364,9 +360,9 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
     }
 
     private fun resetSelection() {
-        val selectorView = screenshotSelectorView
+        val selectorView = binding?.globalScreenshotSelector
         if (partial && selectorView != null && !selectorView.defaultState) {
-            screenshotSelectorView?.reset()
+            selectorView.reset()
         }
         // Remove handler for back button on Android 13
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -381,7 +377,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
     override fun onBackPressed() {
         // This is no longer used on Android 13+/Tiramisu
         // See onBackInvokedCallback for Android 13+
-        val selectorView = screenshotSelectorView
+        val selectorView = binding?.globalScreenshotSelector
         if (screenshotSelectorActive && selectorView != null && !selectorView.defaultState) {
             resetSelection()
         } else {
