@@ -33,6 +33,11 @@ jobs:
       uses: gradle/actions/wrapper-validation@v3
     - name: 🔨 Build
       run: ./gradlew build
+    - name: Upload .apk files
+      uses: actions/upload-artifact@v4
+      with:
+        name: apk-files
+        path: app/build/outputs/apk/**/*.apk
     - name: 💬 Upload Lint report
       if: always()
       uses: actions/upload-artifact@v4

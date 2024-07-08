@@ -1,0 +1,91 @@
+[versions]
+agp = "8.5.0"
+annotation = "1.8.0"
+appcompat = "1.7.0"
+cardview = "1.0.0"
+constraintlayout = "2.1.4"
+core = "1.6.1"
+espressoCore = "3.6.1"
+junit = "1.2.1"
+junitVersion = "4.13.2"
+kotlin = "2.0.0"
+kotlinBom = "2.0.0"
+kotlinxCoroutinesAndroid = "1.8.1"
+lifecycleViewmodelKtx = "2.8.3"
+material = "1.12.0"
+photoeditor = "3.0.2"
+preferenceKtx = "1.2.1"
+robolectric = "4.12.2"
+sdk-compile = "35"
+sdk-min = "28"
+sdk-target = "35"
+sonarqube = "5.1.0.4882"
+truth = "1.6.0"
+viewpager = "1.0.0"
+
+[libraries]
+annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+core = { module = "androidx.test:core", version.ref = "core" }
+core-ktx = { module = "androidx.test:core-ktx", version.ref = "core" }
+espresso-contrib = { module = "androidx.test.espresso:espresso-contrib", version.ref = "espressoCore" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
+espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espressoCore" }
+junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
+junit-junit = { module = "junit:junit", version.ref = "junitVersion" }
+junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "junit" }
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlinBom" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+photoeditor = { module = "com.burhanrashid52:photoeditor", version.ref = "photoeditor" }
+preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+rules = { module = "androidx.test:rules", version.ref = "core" }
+runner = { module = "androidx.test:runner", version.ref = "core" }
+truth = { module = "androidx.test.ext:truth", version.ref = "truth" }
+viewpager = { module = "androidx.viewpager:viewpager", version.ref = "viewpager" }
+
+
+[bundles]
+implementation-app = [
+    "kotlinx-coroutines-android",
+    "annotation",
+    "appcompat",
+    "cardview",
+    "constraintlayout",
+    "lifecycle-viewmodel-ktx",
+    "preference-ktx",
+    "viewpager",
+    "photoeditor",
+    "material"
+]
+
+android-test = [
+    "core",
+    "core-ktx",
+    "espresso-core",
+    "espresso-contrib",
+    "junit",
+    "junit-ktx",
+    "rules",
+    "runner"
+]
+
+test = [
+    "core",
+    "core-ktx",
+    "espresso-core",
+    "espresso-intents",
+    "junit",
+    "junit-junit",
+    "robolectric",
+    "truth"
+]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
