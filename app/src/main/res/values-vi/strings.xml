@@ -12,12 +12,19 @@
     <string name="floating_button_settings">Cài đặt nút nổi</string>
     <string name="left_screenshot_right_menu">Trái: Chụp màn hình, phải: Cài đặt</string>
     <string name="partial_screenshot">Chọn khu vực</string>
+    <string name="options_dialog">Hiện các tùy chọn</string>
     <string name="file_format">Định dạng tệp</string>
     <string name="setting_delay_entry_default">Ngay lập tức</string>
     <string name="setting_delay_entry_1s">1 giây</string>
     <string name="setting_delay_entry_2s">2 giây</string>
     <string name="setting_delay_entry_5s">5 giây</string>
+    <string name="take_screenshot_1s_delayed">Chụp màn hình sau 1s</string>
+    <string name="take_screenshot_2s_delayed">Chụp màn hình sau 2s</string>
+    <string name="take_screenshot_5s_delayed">Chụp màn hình sau 5s</string>
+    <string name="toggle_floating_button">Bật/tắt nút nổi</string>
     <string name="show_count_down">Hiện đếm ngược</string>
+    <string name="cancel_count_down">Nhấn để hủy độ trễ</string>
+    <string name="cancel_count_down_summary">Nhấn màn hình để chụp màn hình ngay lập tức trước khi hết thời gian đếm ngược</string>
     <string name="use_native_screenshot">Sử dụng phương pháp chụp màn hình của hệ thống</string>
     <string name="use_native_screenshot_summary">Mô phỏng nhấn nút home + nút nguồn</string>
     <string name="use_native_screenshot_unsupported">Yêu cầu Android 9 Pie</string>
@@ -35,6 +42,7 @@
     <string name="setting_floating_button_unsupported">Yêu cầu Android 9 Pie</string>
     <string name="setting_floating_button_scale">Kích cỡ nút nổi</string>
     <string name="setting_floating_button_scale_summary">Điều chỉnh kích cỡ của nút nổi</string>
+    <string name="setting_floating_button_scale_current">Kích thước hiện tại: %1$d (Mặc định: %2$d)</string>
     <string name="setting_floating_button_hide_after">Ẩn nút nổi sau khi chụp màn hình</string>
     <string name="setting_floating_button_hide_after_summary">Tự động loại bỏ nút nổi sau khi bạn chụp màn hình</string>
     <string name="setting_floating_button_show_close">Hiện nút [X]/đóng bên cạnh nút nổi</string>
@@ -42,6 +50,8 @@
     <string name="setting_floating_button_show_close_dialog_title">Emoji nút đóng</string>
     <string name="setting_floating_button_show_close_dialog_description">Nhập một văn bản hoặc emoji, nó sẽ hiện lên là nút đóng</string>
     <string name="setting_floating_button_shutter">Chủ đề nút nổi</string>
+    <string name="setting_floating_button_shutter_square">Hình vuông</string>
+    <string name="setting_floating_button_shutter_round">Hình tròn</string>
     <string name="setting_floating_button_delay">Độ trễ (Nút nổi)</string>
     <string name="setting_broadcast_secret">Mật khẩu intent truyền phát</string>
     <string name="setting_broadcast_secret_description">Một cụm từ bí mật để cho phép các ứng dụng khác (như MacroDroid hoặc Tasker) chụp màn hình</string>
@@ -54,6 +64,7 @@
 %random% - UUID ngẫu nhiên\n
 %randint% - số ngẫu nhiên]]></string>
     <string name="setting_tile_action">Hành động của ô</string>
+    <string name="setting_tile_long_press_action">Hành động nhấn giữ ô</string>
     <string name="setting_floating_action">Hành động nút nổi</string>
     <string name="setting_voice_interaction_action">Hành động trợ lý</string>
     <string name="setting_dark_theme">Chủ đề tối</string>
@@ -79,6 +90,7 @@
     <string name="post_action_save_to_storage">Lưu hình ảnh vào thư viện</string>
     <string name="post_action_show_toast">Hiện thông báo \"Toast\" - khu vực thông báo nhỏ biến mất sau 2 giây</string>
     <string name="post_action_show_notification">Hiện thông báo bình thường. Bạn có thể thay đổi các nút (Sửa, Chia sẻ,…) ở dưới thông báo trong mục \"Thêm tùy chọn\"</string>
+    <string name="post_action_play_tone">Phát âm thanh</string>
     <string name="post_action_empty">Không mở ảnh chụp màn hình</string>
     <string name="post_action_open_in_post">Xem trong chế độ \"Chi tiết\"</string>
     <string name="post_action_open_in_post_crop">Cắt ảnh</string>
@@ -155,6 +167,7 @@
     <string name="about_update_check_button">Kiểm tra cập nhật</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Cài đặt hỗ trợ tiếp cận</string>
+    <string name="toast_open_accessibility_settings">Vui lòng kích hoạt \"%1s\" trong cài đặt hỗ trợ tiếp cận</string>
     <string name="main_floating_button_title">Nút nổi</string>
     <string name="main_general_text">Trước khi bạn có thể sử dụng ứng dụng này, bạn cần phải thêm ô/nút vào cài đặt nhanh. Nếu bạn không biết cách làm việc đó, hãy xem [Hướng dẫn,.TutorialActivity].\n\nỨng dụng này hỗ trợ hai phương pháp chụp ảnh màn hình khác nhau:</string>
     <string name="main_legacy_method_title">Phương pháp cũ</string>
@@ -168,6 +181,10 @@
     <string name="main_long_press_text">Nhấn giữ ô/nút để mở một menu. Bạn có thể chỉ định độ trễ chụp màn hình hoặc cắt một hình chữ nhật khỏi màn hình.</string>
     <string name="main_assist_app_title">Ứng dụng trợ lý</string>
     <string name="main_assist_app_text">Nếu bạn đặt ứng dụng này làm ứng dụng trợ lý, bạn có thể nhấn giữ nút home để chụp màn hình. Việc bật ứng dụng này làm ứng dụng trợ lý sẽ tắt các ứng dụng trợ lý khác. Bạn có thể thay đổi hành động khi nhấn giữ nút home ở cài đặt ứng dụng.</string>
+    <string name="restricted_settings_open_settings">Cho phép các chế độ cài đặt bị hạn chế</string>
+    <string name="restricted_settings_open_accessibility">Mở cài đặt trợ năng</string>
+    <string name="restricted_settings_title">Bật dịch vụ hỗ trợ tiếp cận</string>
+    <string name="restricted_settings_text">Nếu cài đặt hỗ trợ tiếp cận bị bôi xám, trước tiên bạn sẽ cần phải cho phép \"cài đặt bị hạn chế\". \"Cài đặt bị hạn chế\" có thể được tìm thấy trong \"Thông tin ứng dụng\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Đổi tên</string>
     <string name="post_button_move">Di chuyển</string>
