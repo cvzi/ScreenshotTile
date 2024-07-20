@@ -9,14 +9,22 @@
     <string name="title_delay">Penundaan</string>
     <string name="more_setting">Pengaturan lain</string>
     <string name="open_settings">Buka pengaturan</string>
+    <string name="floating_button_settings">Pengaturan tombol mengambang</string>
     <string name="left_screenshot_right_menu">Kiri: Tangkap layar, kanan: Pengaturan</string>
     <string name="partial_screenshot">Pilih area</string>
+    <string name="options_dialog">Tampilkan opsi</string>
     <string name="file_format">Format file</string>
     <string name="setting_delay_entry_default">Langsung</string>
     <string name="setting_delay_entry_1s">1 detik</string>
     <string name="setting_delay_entry_2s">2 detik</string>
     <string name="setting_delay_entry_5s">5 detik</string>
+    <string name="take_screenshot_1s_delayed">Ambil tangkapan layar setelah 1detik</string>
+    <string name="take_screenshot_2s_delayed">Ambil tangkapan layar setelah 2detik</string>
+    <string name="take_screenshot_5s_delayed">Ambil tangkapan layar setelah 5detik</string>
+    <string name="toggle_floating_button">Alihkan tombol mengambang</string>
     <string name="show_count_down">Perlihatkan hitungan mundur</string>
+    <string name="cancel_count_down">Ketuk untuk membatalkan penundaan</string>
+    <string name="cancel_count_down_summary">Ketuk layar untuk segera mengambil tangkapan layar sebelum hitungan mundur berakhir</string>
     <string name="use_native_screenshot">Gunakan metode tangkapan layar natural</string>
     <string name="use_native_screenshot_summary">Mensimulasikan Home + Tombol matikan daya</string>
     <string name="use_native_screenshot_unsupported">Membutuhkan Android 9 Pie</string>
@@ -34,13 +42,16 @@
     <string name="setting_floating_button_unsupported">Membutuhkan Android 9 Pie</string>
     <string name="setting_floating_button_scale">Ukuran tombol melayang</string>
     <string name="setting_floating_button_scale_summary">Atur ukuran dari tombol melayang</string>
+    <string name="setting_floating_button_scale_current">Ukuran terkini:%1$d (Bawaan: %2$d)</string>
     <string name="setting_floating_button_hide_after">Sembunyikan tombol apung setelah menangkap layar</string>
     <string name="setting_floating_button_hide_after_summary">Otomatis menghapus tombol apung setelah anda menangkap layar</string>
     <string name="setting_floating_button_show_close">Tunjukan tombol tutup [X] disebelah tombol apung</string>
     <string name="setting_floating_button_show_close_summary">Membolehkan anda menghapus tombol apung tanpa membuka pengaturan cepat</string>
-    <string name="setting_floating_button_show_close_dialog_title">Emoji tombol tutup</string>
+    <string name="setting_floating_button_show_close_dialog_title">Tombol tutup emoji</string>
     <string name="setting_floating_button_show_close_dialog_description">Ketik teks atau emoji yang akan muncul sebagai tombol tutup</string>
     <string name="setting_floating_button_shutter">Tema tombol apung</string>
+    <string name="setting_floating_button_shutter_square">Persegi</string>
+    <string name="setting_floating_button_shutter_round">Bulat</string>
     <string name="setting_floating_button_delay">Delay (Tombol apung)</string>
     <string name="setting_broadcast_secret">Siarkan kata sandi</string>
     <string name="setting_broadcast_secret_description">Frasa rahasia untuk mengizinkan aplikasi lain (seperti MacroDroid atau Tasker) untuk memulai tangkapan layar</string>
@@ -53,6 +64,7 @@
 %random% - UUID acak\n
 %randint% - nomor acak]]></string>
     <string name="setting_tile_action">Aksi ubin</string>
+    <string name="setting_tile_long_press_action">Ubin tindakan tekan lama</string>
     <string name="setting_floating_action">Tindakan tombol mengambang</string>
     <string name="setting_voice_interaction_action">Tindakan asisten</string>
     <string name="setting_dark_theme">Tema Gelap</string>
@@ -69,8 +81,32 @@
     <string name="notification_settings">Notifikasi</string>
     <string name="notification_settings_on">Diaktifkan</string>
     <string name="notification_settings_off">Nonaktifkan</string>
+    <string name="setting_post_actions">Tindakan selanjutnya</string>
+    <string name="setting_post_actions_description">Pilih apa yang terjadi setelah tangkapan layar diambil</string>
+    <string name="button_history">Tangkapan layar terbaru</string>
+    <string name="button_history_description">Lihat tangkapan layar terbaru Anda termasuk file yang tidak disimpan ke galeri</string>
+    <string name="history_title">Riwayat tangkapan layar</string>
+    <string name="restore_default_values">Kembalikan nilai bawaan</string>
+    <string name="post_action_save_to_storage">Simpan gambar ke galeri</string>
+    <string name="post_action_show_toast">Tampilkan notifikasi \"Toast\". Munculan kecil yang hilang setelah 2 detik</string>
+    <string name="post_action_show_notification">Tampilkan pemberitahuan reguler. Anda dapat mengubah tombol (Edit, Bagikan,…) di bawah notifikasi pada \"Pengaturan Lainnya\"</string>
+    <string name="post_action_play_tone">Putar suara</string>
+    <string name="post_action_empty">Jangan buka tangkapan layarnya</string>
+    <string name="post_action_open_in_post">Buka dalam tampilan \"Detail\"</string>
+    <string name="post_action_open_in_post_crop">Pangkas gambarnya</string>
+    <string name="post_action_open_in_photo_editor">Buka editor foto yang disertakan</string>
+    <string name="post_action_open_in_external_editor">Buka di editor foto eksternal</string>
+    <string name="post_action_open_in_external_viewer">Buka di penampil foto atau galeri</string>
+    <string name="post_action_open_share">Bagikan tangkapan layarnya</string>
+    <string name="post_settings_audio_output_stream">Aliran keluaran audio:</string>
+    <string name="post_settings_audio_tone_duration">Durasi nada:</string>
+    <string name="post_settings_audio_tone_select">Nada:</string>
+    <string name="move_to_storage_directory">Pindah ke galeri</string>
+    <string name="button_clear">Bersihkan</string>
+    <string name="button_clear_confirm">Apakah Anda ingin menghapus semua file sementara?\nIni akan menghapus semua file di %s\n\n(File-file ini biasanya tidak terlihat di galeri Anda)</string>
     <string name="file_title">Tangkapan layar</string>
     <string name="file_description">Tangkapan layar diambil pada %1$s</string>
+    <string name="file_description_simple_date_format">yyyy/MM/dd HH:mm:ss</string>
     <string name="notification_title">Tangkapan layar diambil</string>
     <string name="notification_body">Sentuh untuk melihat gambar</string>
     <string name="notification_channel_description">Memperlihatkan pemberitahuan saat menangkap layar</string>
@@ -87,6 +123,8 @@
     <string name="notification_edit_screenshot">Sunting</string>
     <string name="notification_rename_screenshot">Ganti nama</string>
     <string name="notification_screenshot_details">Detail</string>
+    <string name="notification_crop_screenshot">Pangkas</string>
+    <string name="notification_photo_editor_screenshot">Editor Foto</string>
     <string name="screenshot_deleted">Tangkapan layar dihapus</string>
     <string name="screenshot_delete_failed">Tidak dapat menghapus file</string>
     <string name="screenshot_renamed">File diganti namanya menjadi %1s</string>
@@ -126,10 +164,13 @@
     <string name="about_app_3">Untuk informasi dan laporan masalah\ngithub.com/cvzi/ScreenshotTile</string>
     <string name="about_license_title">Lisensi</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Versi 3</string>
+    <string name="about_privacy_title">Kebijakan Privasi</string>
+    <string name="about_open_source_title">Penggunaan sumber terbuka</string>
     <string name="about_advanced_settings_button">Pengaturan lanjutan</string>
     <string name="about_update_check_button">Periksa pembaruan</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Setelan aksesibilitas</string>
+    <string name="toast_open_accessibility_settings">Harap aktifkan \"%1s\" di pengaturan aksesibilitas</string>
     <string name="main_floating_button_title">Tombol apung</string>
     <string name="main_general_text">Sebelum Anda dapat menggunakan aplikasi ini, Anda perlu menambahkan ubin/tombol ke pengaturan cepat. Jika Anda tidak tahu cara melakukannya, lihat [Tutorial,.TutorialActivity].\n\nAplikasi ini mendukung dua metode berbeda untuk mengambil tangkapan layar:</string>
     <string name="main_legacy_method_title">Metode Warisan</string>
@@ -143,8 +184,14 @@
     <string name="main_long_press_text">Menekan lama ubin/tombol akan membuka menu. Anda dapat menentukan penundaan untuk tangkapan layar atau memotong persegi panjang dari layar.</string>
     <string name="main_assist_app_title">Aplikasi bantuan</string>
     <string name="main_assist_app_text">Jika Anda menetapkan aplikasi ini sebagai aplikasi bantuan, Anda dapat menekan lama tombol beranda untuk mengambil tangkapan layar. Mengaktifkan aplikasi ini sebagai aplikasi bantuan Anda akan menonaktifkan asisten lain. Anda dapat mengubah tindakan menekan tombol beranda yang lama di pengaturan aplikasi.</string>
+    <string name="restricted_settings_open_settings">Izinkan setelan terbatas</string>
+    <string name="restricted_settings_open_accessibility">Buka pengaturan aksesibilitas</string>
+    <string name="restricted_settings_title">Aktifkan Layanan Aksesibilitas</string>
+    <string name="restricted_settings_text">Jika pengaturan aksesibilitas berwarna abu-abu, Anda harus mengizinkan \"pengaturan terbatas\" terlebih dahulu. \"Pengaturan terbatas\" dapat ditemukan di \"Info aplikasi\":</string>
     <!-- Post edit activity -->
     <string name="post_button_save">Ganti nama</string>
+    <string name="post_button_move">Pindah</string>
+    <string name="post_recent_folders">Folder terbaru:</string>
     <string name="post_recent_file_names_and_suggestions">Nama dan saran file terbaru:</string>
     <string name="post_hint_new_file_name">Nama file baru</string>
     <string name="post_rename_file">Ganti nama berkas:</string>
@@ -154,7 +201,56 @@
     <string name="post_pin_to_favorites">Tambahkan ke favorit</string>
     <string name="post_delete_suggestion">Hapus saran</string>
     <!-- Photo Editor-->
+    <string name="label_brush">Kuas</string>
+    <string name="label_shape">Bentuk</string>
+    <string name="label_oval">Oval</string>
+    <string name="label_rectangle">Persegi Panjang</string>
+    <string name="label_line">Garis</string>
     <string name="label_arrow">Tanda panah</string>
+    <string name="label_emoji">Emoji</string>
+    <string name="label_eraser">Penghapus</string>
+    <string name="label_eraser_mode">Mode Penghapus</string>
+    <string name="label_text">Teks</string>
+    <string name="label_filter">Saring</string>
+    <string name="label_adjust">Menyesuaikan</string>
+    <string name="label_rotation">Rotasi</string>
+    <string name="label_opacity">Opasitas</string>
+    <string name="label_done">Selesai</string>
+    <string name="label_close">Tutup</string>
+    <string name="label_save">Simpan</string>
+    <string name="label_discard">Buang</string>
+    <string name="msg_save_image">Apakah Anda ingin keluar tanpa menerapkan perubahan?</string>
+    <string name="msg_save_image_to_share">Tolong Simpan Gambar Untuk Berbagi</string>
+    <string name="msg_share_image">Bagikan Gambar</string>
+    <string name="msg_choose_image">Pilih gambar</string>
+    <string name="msg_image_saved">Gambar berhasil disimpan</string>
+    <string name="msg_failed_to_save">Gagal menyimpan gambar</string>
+    <string name="dialog_ask_filename_title">Simpan sebagai</string>
+    <string name="dialog_ask_filename_directory">Pilih Direktori:</string>
+    <string name="dialog_ask_filename_hint">Nama berkas (tanpa ekspresi)</string>
     <!-- Advanced Settings -->
+    <string name="setting_defaults_to_on">Mode bawaan: Hidup</string>
+    <string name="setting_defaults_to_milliseconds">Bawaan: %1$s milidetik</string>
+    <string name="setting_toasts">Semua pemberitahuan \"Toast\"</string>
+    <string name="setting_success_toasts">Pemberitahuan \"Toast\" untuk peristiwa yang berhasil</string>
+    <string name="setting_error_toasts">Pemberitahuan \"Toast\" untuk kesalahan</string>
+    <string name="setting_select_area_shutter_delay">Penundaan setelah mengetuk rana (dalam mode \"Pilih area\")</string>
+    <string name="setting_select_area_shutter_delay_dialog">Masa tunggu antara saat rana diketuk dan tangkapan layar diambil. Gunakan nilai yang lebih tinggi (misalnya 500) jika ikon rana terlihat di tangkapan layar.</string>
+    <string name="setting_original_after_permission_delay">Penundaan setelah izin tangkapan layar diberikan (berlaku untuk \"Metode asli\")</string>
+    <string name="setting_original_after_permission_delay_dialog">Masa tunggu antara waktu izin diberikan dan tangkapan layar diambil. Gunakan nilai yang lebih tinggi (misalnya 500) jika dialog izin terlihat di tangkapan layar.</string>
+    <string name="setting_failed_virtual_display_delay" comment="The place holder is the name of the error: `Failed to start virtual display`">Penundaan setelah kesalahan \"%1$s\"</string>
+    <string name="setting_failed_virtual_display_delay_dialog">Masa tunggu sebelum mencoba lagi setelah pesan kesalahan. Gunakan nilai yang lebih tinggi (misalnya 500) jika pesan kesalahan terlihat di tangkapan layar.</string>
+    <string name="setting_floating_button_alpha">Transparansi tombol mengambang</string>
+    <string name="setting_floating_button_alpha_summary">0.0 (sepenuhnya transparan) hingga 1.0 (sepenuhnya tidak transparan)</string>
+    <string name="setting_floating_button_alpha_dialog">Pilih nilai yang lebih rendah untuk membuat tombol lebih transparan. Rentang 0,0 hingga 1,0\nDefault: 1,0 (buram penuh)</string>
+    <string name="setting_floating_button_color">Warna tombol mengambang</string>
+    <string name="setting_delay_custom_summary">Pilih penundaan khusus untuk ubin (dalam hitungan detik)</string>
+    <string name="setting_floating_button_delay_custom_summary">Pilih penundaan khusus untuk tombol mengambang (dalam hitungan detik)</string>
+    <string name="setting_format_quality">Kualitas format file</string>
+    <string name="setting_format_quality_dialog">Kompresi/Kualitas format file: (0 hingga 100)\n0 berarti kompres untuk ukuran terkecil. 100 berarti kompres untuk kualitas visual maksimal.\nBiarkan kosong untuk menggunakan nilai bawaan.</string>
+    <string name="setting_keep_app_data_max">Maks. jumlah tangkapan layar yang perlu disimpan:</string>
+    <string name="setting_keep_app_data_max_dialog" comment="Placeholder is replaced with the translation of `Save image to gallery`">Jika Anda menonaktifkan \"%1$s\", maka tangkapan layar sementara disimpan di folder \"Android/data/\" dan dihapus secara berkala ketika jumlah file maksimum tercapai.\n-1 berarti tidak terbatas\nNilai default %2$s</string>
+    <string name="setting_keep_screenshot_history">Simpan riwayat tangkapan layar</string>
+    <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Menyimpan nama file tangkapan layar dalam daftar. Ini diperlukan untuk fungsi \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Editor foto: Memutar gambar lanskap</string>
 </resources>
