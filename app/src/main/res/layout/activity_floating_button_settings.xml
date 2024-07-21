@@ -320,12 +320,10 @@
                     android:orientation="vertical">
 
 
-
                     <TableLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp">
-
 
 
                         <TableRow
@@ -345,6 +343,7 @@
                                 android:layout_weight="1"
                                 android:text="@string/setting_show_in_portrait_orientation" />
                         </TableRow>
+
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
@@ -418,40 +417,36 @@
                         </TableRow>
 
                         <TableRow
+                            android:id="@+id/tableRowQuickSettingsWarning"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/tableRowQuickSettingsWarning">
+                            android:layout_height="wrap_content">
 
                             <TextView
-                                android:layout_span="2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_span="2"
                                 android:layout_weight="1"
-                                android:text="One of the tiles of the app must be added to the quick settings, otherwise the floating button cannot be hidden when the quick settings are pulled down" />
+                                android:text="@string/setting_quick_settings_warning" />
                         </TableRow>
 
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
+
                             <Button
                                 android:id="@+id/buttonOpenPackageFilter"
+                                style="@style/Widget.Material3.Button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_span="2"
-                                android:textSize="13sp"
-                                style="@style/Widget.Material3.Button"
-                                android:text="@string/setting_show_hide_in_specific_apps" />
+                                android:text="@string/setting_show_hide_in_specific_apps"
+                                android:textSize="13sp" />
 
                         </TableRow>
 
-
-
-
                     </TableLayout>
 
-
                 </LinearLayout>
-
 
             </androidx.cardview.widget.CardView>
 
@@ -465,20 +460,20 @@
 
                     <Button
                         android:id="@+id/buttonRefresh"
+                        style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="13sp"
-                        style="@style/Widget.Material3.Button"
                         android:text="🔄"
+                        android:textSize="13sp"
                         tools:ignore="HardcodedText" />
 
                     <Button
                         android:id="@+id/buttonMoreSettings"
+                        style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12.1sp"
-                        style="@style/Widget.Material3.Button"
-                        android:text="@string/more_setting" />
+                        android:text="@string/more_setting"
+                        android:textSize="12.1sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
