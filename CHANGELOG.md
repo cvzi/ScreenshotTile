@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.10.0
+*   Select apps where floating button is automatically shown/hidden
+
 ## 2.9.2
 *   Crop function on Android 14 in assistant mode [#535](https://github.com/cvzi/ScreenshotTile/issues/535) [#462](https://github.com/cvzi/ScreenshotTile/issues/462)
 
