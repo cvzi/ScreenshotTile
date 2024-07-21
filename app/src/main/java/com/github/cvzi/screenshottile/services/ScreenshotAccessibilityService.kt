@@ -38,6 +38,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.PackageNameFilterMode
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.SaveImageResult
 import com.github.cvzi.screenshottile.SaveImageResultSuccess
@@ -152,16 +153,26 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     private var screenDensity: Int = 0
     private var screenOrientation: Int = 1
     private var screenLocked = false
-    private var floatingButtonShown = false
+    var floatingButtonShown = false
+        private set
     private var binding: AccessibilityBarBinding? = null
     private var useThis = false
     private var onUnLockBroadcastReceiver: OnUnLockBroadcastReceiver? = null
+    private var packageFilterEnabled = false
+    private var packageFilterTempForceShow: Boolean = false
+    private var packageFilterTempForceHide: Boolean = false
+    private var packageFilterTempOverrideTime: Long = 0L
+    private var packageFilterMode = PackageNameFilterMode.BLACKLIST
+    private val packageFilterNameList: HashSet<String> = HashSet()
+    private var lastPackageName: CharSequence = ""
+    private var prefManager = App.getInstance().prefManager
 
     override fun onServiceConnected() {
         instance = this
-        val prefManager = App.getInstance().prefManager
 
         updateLockscreenSetting()
+
+        updatePackageFilter()
 
         try {
             when (prefManager.returnIfAccessibilityServiceEnabled) {
@@ -217,8 +228,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     /**
      * Toggle the floating button according to the current settings
      */
-    fun updateFloatingButton(forceRedraw: Boolean = false) {
-        val prefManager = App.getInstance().prefManager
+    fun updateFloatingButton(forceRedraw: Boolean = false, animate: Boolean = true) {
         val hideInThisMode =
             (screenLocked && !prefManager.floatingButtonWhenLocked)
                     || (!screenLocked && !prefManager.floatingButtonWhenUnLocked)
@@ -227,12 +237,12 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
         val shouldBeShown = prefManager.floatingButton && !hideInThisMode
         if (shouldBeShown && !floatingButtonShown) {
-            showFloatingButton()
+            showFloatingButton(animate)
         } else if (!shouldBeShown && floatingButtonShown) {
             hideFloatingButton()
         } else if (shouldBeShown && forceRedraw) {
             hideFloatingButton()
-            showFloatingButton()
+            showFloatingButton(animate)
         }
     }
 
@@ -240,7 +250,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
      * Update listeners for screen lock changes
      */
     fun updateLockscreenSetting() {
-        App.getInstance().prefManager.run {
+        prefManager.run {
             if (!floatingButton || (floatingButtonWhenLocked && floatingButtonWhenUnLocked)) {
                 stopListeningForScreenLock()
             } else {
@@ -251,21 +261,21 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
 
-    private fun showFloatingButton() {
+    private fun showFloatingButton(animate: Boolean = true) {
         floatingButtonShown = true
 
         binding =
             AccessibilityBarBinding.inflate(getWinContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
 
         binding?.root?.let { root ->
-            configureFloatingButton(root)
+            configureFloatingButton(root, animate)
         }
     }
 
-    private fun configureFloatingButton(root: ViewGroup) {
+    private fun configureFloatingButton(root: ViewGroup, animate: Boolean = true) {
         screenOrientation = resources.configuration.orientation
 
-        val position = App.getInstance().prefManager.getFloatingButtonPosition(screenOrientation)
+        val position = prefManager.getFloatingButtonPosition(screenOrientation)
         val shutterCollection = ShutterCollection(this, R.array.shutters, R.array.shutter_names)
 
         addWindowViewAt(root, position.x, position.y)
@@ -273,8 +283,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         val buttonScreenshot = root.findViewById<ImageView>(R.id.buttonScreenshot)
         setShutterDrawable(this, buttonScreenshot, shutterCollection.current().normal)
         var buttonClose: TextView? = null
-
-        val scale = App.getInstance().prefManager.floatingButtonScale
+        val scale = prefManager.floatingButtonScale
         if (scale != 100) {
             // Scale button
             buttonScreenshot.post {
@@ -294,36 +303,36 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }
         }
 
-        if (App.getInstance().prefManager.floatingButtonShowClose && App.getInstance().prefManager.floatingButtonCloseEmoji.isNotBlank()) {
+        if (prefManager.floatingButtonShowClose && prefManager.floatingButtonCloseEmoji.isNotBlank()) {
             buttonClose = TextView(root.context)
-            buttonClose.text = App.getInstance().prefManager.floatingButtonCloseEmoji
+            buttonClose.text = prefManager.floatingButtonCloseEmoji
             val linearLayout = root.findViewById<LinearLayout>(R.id.linearLayoutOuter)
             linearLayout.addView(buttonClose)
             buttonClose.layoutParams = LinearLayout.LayoutParams(buttonClose.layoutParams).apply {
                 height = ViewGroup.LayoutParams.MATCH_PARENT
             }
             buttonClose.setOnClickListener {
-                App.getInstance().prefManager.floatingButton = false
+                prefManager.floatingButton = false
                 hideFloatingButton()
                 SettingFragment.instance?.get()?.updateFloatingButtonFromService()
             }
         }
-        val alpha = App.getInstance().prefManager.floatingButtonAlpha
+        val alpha = prefManager.floatingButtonAlpha
         buttonScreenshot.alpha = alpha
         buttonClose?.alpha = alpha
 
         buttonScreenshot.setOnClickListener {
-            if (isDeviceLocked(this) && App.getInstance().prefManager.preventIfLocked) {
+            if (isDeviceLocked(this) && prefManager.preventIfLocked) {
                 toastDeviceIsLocked(this)
                 return@setOnClickListener
             }
 
-            if (App.getInstance().prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_partial)) {
+            if (prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_partial)) {
                 App.getInstance().screenshotPartial(this)
                 return@setOnClickListener
             }
 
-            val delayInSeconds = App.getInstance().prefManager.floatingButtonDelay.toLong()
+            val delayInSeconds = prefManager.floatingButtonDelay.toLong()
             val delayInMilliSeconds = if (delayInSeconds > 0) {
                 1000L * delayInSeconds
             } else {
@@ -342,14 +351,14 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }
             root.postDelayed({
                 val legacyMethod =
-                    App.getInstance().prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_legacy)
+                    prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_legacy)
                 if (legacyMethod) {
                     NoDisplayActivity.startNewTaskLegacyScreenshot(this)
                 } else {
                     simulateScreenshotButton(autoHideButton = false, autoUnHideButton = false)
                 }
-                if (App.getInstance().prefManager.floatingButtonHideAfter) {
-                    App.getInstance().prefManager.floatingButton = false
+                if (prefManager.floatingButtonHideAfter) {
+                    prefManager.floatingButton = false
                     hideFloatingButton()
                 } else if (!legacyMethod) {
                     Handler(Looper.getMainLooper()).postDelayed({
@@ -369,7 +378,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             val y: Int
                             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.TIRAMISU || event.action == DragEvent.ACTION_DROP) {
                                 // x and y are relative to the inside of the view's bounding box
-                                val old = App.getInstance().prefManager.getFloatingButtonPosition(
+                                val old = prefManager.getFloatingButtonPosition(
                                     resources.configuration.orientation
                                 )
                                 x = (old.x - v.measuredWidth / 2.0 + event.x).toInt()
@@ -381,7 +390,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             }
                             dragDone = true
                             updateWindowViewPosition(it, x, y)
-                            App.getInstance().prefManager.setFloatingButtonPosition(
+                            prefManager.setFloatingButtonPosition(
                                 Point(x, y),
                                 resources.configuration.orientation
                             )
@@ -391,7 +400,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             buttonScreenshot,
                             shutterCollection.current().normal
                         )
-                        buttonScreenshot.alpha = App.getInstance().prefManager.floatingButtonAlpha
+                        buttonScreenshot.alpha = prefManager.floatingButtonAlpha
                     }
                     showSettingsButton(root, buttonScreenshot)
                     true
@@ -409,7 +418,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             it.startDragAndDrop(null, View.DragShadowBuilder(root), null, 0)
         }
 
-        (buttonScreenshot.drawable as? Animatable)?.start()
+        if (animate) {
+            (buttonScreenshot.drawable as? Animatable)?.start()
+        }
     }
 
     private fun showCountDown(
@@ -445,6 +456,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         return textView
     }
 
+
     private fun showSettingsButton(root: ViewGroup, buttonScreenshot: View) {
         val linearLayout = root.findViewById<LinearLayout>(R.id.linearLayoutOuter)
         if (linearLayout.findViewWithTag<View>(SETTINGS_BUTTON_TAG) != null) {
@@ -452,7 +464,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
         val textView = TextView(root.context)
         textView.tag = SETTINGS_BUTTON_TAG
-        textView.alpha = App.getInstance().prefManager.floatingButtonAlpha
+        textView.alpha = prefManager.floatingButtonAlpha
         @SuppressLint("SetTextI18n")
         textView.text = "\u2699\uFE0F"
         linearLayout.addView(textView)
@@ -460,6 +472,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             height = ViewGroup.LayoutParams.MATCH_PARENT
         }
         textView.setOnClickListener {
+            @SuppressLint("SetTextI18n")
             textView.text = "\u23F3"
             FloatingButtonSettingsActivity.startNewTask(it.context)
         }
@@ -475,6 +488,54 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         textView.postDelayed({
             linearLayout.safeRemoveView(textView, TAG)
         }, 2000)
+
+        if (prefManager.packageNameFilterEnabled && lastPackageName.isNotBlank()) {
+            // Show Blacklist/Whitelist this app button
+            val buttonBlackWhiteList = TextView(root.context).apply {
+                linearLayout.addView(this)
+                setPadding(2, 3, 2, 3)
+
+                setBackgroundColor(0xffffffff.toInt())
+                setTextColor(0xffaaaaaa.toInt())
+                setOnClickListener { v ->
+                    prefManager.packageNameFilterList = prefManager.packageNameFilterList.apply {
+                        if (contains(lastPackageName)) {
+                            remove(lastPackageName.toString())
+                        } else {
+                            add(lastPackageName.toString())
+                        }
+                        (v as? TextView?)?.text = "✅"
+                    }
+                    updatePackageFilter()
+                }
+                alpha = prefManager.floatingButtonAlpha
+            }
+
+
+            if (prefManager.packageNameFilterList.contains(lastPackageName)) {
+                // This app is in the filter list
+                if (prefManager.packageNameFilterMode == PackageNameFilterMode.BLACKLIST) {
+                    buttonBlackWhiteList.text = "➖ Blacklist"
+                } else {
+                    buttonBlackWhiteList.text = "➖ Whitelist"
+                }
+            } else {
+                // This app is not in the filter list
+                if (prefManager.packageNameFilterMode == PackageNameFilterMode.BLACKLIST) {
+                    buttonBlackWhiteList.text = "➕ Blacklist"
+                } else {
+                    buttonBlackWhiteList.text = "➕ Whitelist"
+                }
+            }
+            buttonScreenshot.post {
+                buttonBlackWhiteList.textSize = textView.textSize / 4
+            }
+            buttonBlackWhiteList.postDelayed({
+                linearLayout.safeRemoveView(buttonBlackWhiteList, TAG)
+            }, 2000)
+
+        }
+
 
     }
 
@@ -600,7 +661,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
 
         val success: Boolean
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && useTakeScreenshotMethod && !App.getInstance().prefManager.useSystemDefaults) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && useTakeScreenshotMethod && !prefManager.useSystemDefaults) {
             // We don't need to check storage permission first, because this permission is not
             // necessary since Android Q and this function is only available since Android R
             takeScreenshot()
@@ -613,7 +674,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 false
             }
             if (success) {
-                App.getInstance().prefManager.screenshotCount++
+                prefManager.screenshotCount++
             }
             if (autoUnHideButton) {
                 Handler(Looper.getMainLooper()).postDelayed({
@@ -649,10 +710,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                         val saveImageResult = saveBitmapToFile(
                             this@ScreenshotAccessibilityService,
                             bitmap,
-                            App.getInstance().prefManager.fileNamePattern,
+                            prefManager.fileNamePattern,
                             compressionPreference(applicationContext),
                             null,
-                            useAppData = "saveToStorage" !in App.getInstance().prefManager.postScreenshotActions,
+                            useAppData = "saveToStorage" !in prefManager.postScreenshotActions,
                             directory = null
                         )
                         Handler(Looper.getMainLooper()).post {
@@ -694,7 +755,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
         screenDensity = resources.configuration.densityDpi
 
-        val postScreenshotActions = App.getInstance().prefManager.postScreenshotActions
+        val postScreenshotActions = prefManager.postScreenshotActions
 
         val result = saveImageResult as? SaveImageResultSuccess?
         when {
@@ -727,7 +788,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                         dummyPath
                     )
                 }
-                App.getInstance().prefManager.screenshotCount++
+                prefManager.screenshotCount++
                 handlePostScreenshot(
                     this,
                     postScreenshotActions,
@@ -758,7 +819,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                         result.mimeType
                     )
                 }
-                App.getInstance().prefManager.screenshotCount++
+                prefManager.screenshotCount++
                 handlePostScreenshot(
                     this,
                     postScreenshotActions,
@@ -788,7 +849,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
         if (screenOrientation != newConfig.orientation) {
             screenOrientation = newConfig.orientation
-            val positions = App.getInstance().prefManager.getFloatingButtonPositions()
+            val positions = prefManager.getFloatingButtonPositions()
             if (screenOrientation !in positions &&
                 ((screenOrientation == 2 && 1 in positions) || (screenOrientation == 1 && 2 in positions))
             ) {
@@ -799,7 +860,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     resources.displayMetrics.widthPixels.toFloat() / resources.displayMetrics.heightPixels.toFloat()
                 x = (x * ratio).toInt()
                 y = (y / ratio).toInt()
-                App.getInstance().prefManager.setFloatingButtonPosition(Point(x, y), 2)
+                prefManager.setFloatingButtonPosition(Point(x, y), 2)
             }
             updateFloatingButton(forceRedraw = true)
         }
@@ -882,8 +943,65 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         super.onDestroy()
     }
 
+    fun updatePackageFilter() {
+        val prefManager = prefManager
+        packageFilterNameList.clear()
+        packageFilterEnabled = prefManager.packageNameFilterEnabled
+        if (packageFilterEnabled) {
+            packageFilterNameList.addAll(prefManager.packageNameFilterList)
+            packageFilterMode = prefManager.packageNameFilterMode
+        }
+    }
+
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
-        // No op
+        if (packageFilterEnabled &&
+            event.isFullScreen &&
+            event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED &&
+            event.packageName != lastPackageName
+        ) {
+            lastPackageName = event.packageName
+
+            if (packageFilterTempForceShow) {
+                // Temporary show floating button despite filter until the next app change but at least 60s
+                if (System.currentTimeMillis() - packageFilterTempOverrideTime < 60000) {
+                    return
+                } else {
+                    packageFilterTempForceShow = false
+                }
+            } else if (packageFilterTempForceHide) {
+                // Temporary hide floating button despite filter until the next app change but at least 60s
+                if (System.currentTimeMillis() - packageFilterTempOverrideTime < 60000) {
+                    return
+                } else {
+                    packageFilterTempForceHide = false
+                }
+            }
+            if (packageFilterMode == PackageNameFilterMode.BLACKLIST) {
+                if (floatingButtonShown && packageFilterNameList.contains(event.packageName)) {
+                    hideFloatingButton()
+                } else if (!floatingButtonShown) {
+                    updateFloatingButton(animate = false)
+                }
+            } else {
+                if (!floatingButtonShown && packageFilterNameList.contains(event.packageName)) {
+                    updateFloatingButton(animate = false)
+                } else if (floatingButtonShown) {
+                    hideFloatingButton()
+                }
+            }
+        }
+    }
+
+    fun overridePackageFilterTempShow() {
+        packageFilterTempForceShow = true
+        packageFilterTempOverrideTime = System.currentTimeMillis()
+        showFloatingButton()
+    }
+
+    fun overridePackageFilterTempHide() {
+        packageFilterTempForceShow = false
+        packageFilterTempOverrideTime = System.currentTimeMillis()
+        hideFloatingButton()
     }
 
     override fun onInterrupt() {

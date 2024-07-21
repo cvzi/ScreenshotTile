@@ -14,6 +14,7 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
+import com.github.cvzi.screenshottile.activities.NoDisplayActivity.Companion.EXTRA_HIDE_QUICK_SETTINGS_PANEL
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
 import com.github.cvzi.screenshottile.utils.isDeviceLocked
 import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
@@ -33,21 +34,36 @@ class FloatingTileService : TileService() {
         var informAccessibilityServiceOnLocked = false
 
         fun toggleFloatingButton(context: Context) {
+            val prefManager = App.getInstance().prefManager
             if (ScreenshotAccessibilityService.instance == null) {
                 // Always enable if accessibility service is not yet running
-                App.getInstance().prefManager.floatingButton = true
+                prefManager.floatingButton = true
                 if (context is Activity) {
                     openAccessibilitySettings(context)
                 } else if (context is TileService) {
                     openAccessibilitySettings(context)
                 }
             } else {
-                // Toggle if accessibility service is running
-                App.getInstance().prefManager.floatingButton =
-                    !App.getInstance().prefManager.floatingButton
-                ScreenshotAccessibilityService.instance?.updateFloatingButton()
+                if (prefManager.floatingButton && prefManager.packageNameFilterEnabled && ScreenshotAccessibilityService.instance?.floatingButtonShown == false) {
+                    // Floating button is currently hidden by package filter
+                    // -> Temporary show it
+                    ScreenshotAccessibilityService.instance?.overridePackageFilterTempShow()
+                }
 
+                else if (prefManager.floatingButton && prefManager.packageNameFilterEnabled && ScreenshotAccessibilityService.instance?.floatingButtonShown == true) {
+                    // Floating button is currently shown through package filter
+                    // -> Temporary hide it
+                    ScreenshotAccessibilityService.instance?.overridePackageFilterTempHide()
+                } else {
+                    // Toggle
+                    prefManager.floatingButton =
+                        !prefManager.floatingButton
+                    ScreenshotAccessibilityService.instance?.updateFloatingButton()
+                }
+
+                // Close quick settings panel
                 val intent = NoDisplayActivity.newIntent(context, false).apply {
+                    action = EXTRA_HIDE_QUICK_SETTINGS_PANEL
                     flags = FLAG_ACTIVITY_NEW_TASK
                 }
                 if (context is TileService) {

@@ -111,6 +111,12 @@ class NoDisplayActivity : Activity() {
                         Toast.LENGTH_LONG
                     )
                 }
+            } else if (action == EXTRA_HIDE_QUICK_SETTINGS_PANEL || intent.getBooleanExtra(
+                    EXTRA_FLOATING_BUTTON,
+                    false
+                )
+            ) {
+                // no-op
             } else {
                 if (BuildConfig.DEBUG) Log.v(TAG, "onCreate() no valid action or EXTRA_* found")
             }
@@ -128,6 +134,8 @@ class NoDisplayActivity : Activity() {
             BuildConfig.APPLICATION_ID + ".NoDisplayActivity.EXTRA_PARTIAL"
         private const val EXTRA_FLOATING_BUTTON =
             BuildConfig.APPLICATION_ID + ".NoDisplayActivity.EXTRA_FLOATING_BUTTON"
+        const val EXTRA_HIDE_QUICK_SETTINGS_PANEL =
+            BuildConfig.APPLICATION_ID + ".NoDisplayActivity.EXTRA_HIDE_QUICK_SETTINGS_PANEL"
 
         /**
          * Open from service

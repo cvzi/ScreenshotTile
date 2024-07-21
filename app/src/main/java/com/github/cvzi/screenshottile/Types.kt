@@ -9,6 +9,8 @@ import com.github.cvzi.screenshottile.utils.mimeFromFileExtension
 import java.io.File
 import java.io.OutputStream
 import java.io.Serializable
+import kotlin.math.max
+import kotlin.math.min
 
 /**
  * Holds a single boolean value
@@ -21,6 +23,19 @@ class MutableBoolean(var value: Boolean)
  */
 enum class ToastType {
     SUCCESS, ERROR, NAGGING, ACTIVITY
+}
+
+enum class PackageNameFilterMode {
+    BLACKLIST, WHITELIST;
+
+    companion object {
+        fun fromInt(i: Int): PackageNameFilterMode {
+            return entries.getOrElse(i) { entries[0] }
+        }
+        fun fromString(s: String): PackageNameFilterMode? {
+            return entries.firstOrNull { it.name == s }
+        }
+    }
 }
 
 

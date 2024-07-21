@@ -7,6 +7,7 @@ import android.graphics.Point
 import android.net.Uri
 import android.util.Log
 import androidx.preference.PreferenceManager
+import com.github.cvzi.screenshottile.PackageNameFilterMode
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.utils.Sound.Companion.defaultAudioSink
 import java.io.File
@@ -840,5 +841,52 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             "show_donation_links_12600",
             value
         ).apply()
+
+
+    var packageNameFilterList: ArrayList<String>
+        get() {
+            val raw = pref.getString(
+                context.getString(R.string.pref_key_package_name_filter_list), ""
+            ) ?: ""
+            val result = ArrayList<String>()
+            raw.split("////").forEach {
+                val packageName = it.trim()
+                if (packageName.isNotBlank()) {
+                    result.add(packageName)
+                }
+            }
+            return result
+        }
+        set(values) = pref.edit()
+            .putString(
+                context.getString(R.string.pref_key_package_name_filter_list),
+                LinkedHashSet(values).filter{ !it.contains("////")}.joinToString("////")
+            ).apply()
+
+    fun addPackageNameToFilterList(packageName: String) {
+        val t = packageNameFilterList
+        t.add(packageName)
+        packageNameFilterList = t
+    }
+    var packageNameFilterEnabled: Boolean
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_package_name_filter_enabled),
+            false
+        )
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_package_name_filter_enabled),
+            value
+        ).apply()
+
+    var packageNameFilterMode: PackageNameFilterMode
+        get() = PackageNameFilterMode.fromInt(pref.getString(
+            context.getString(R.string.pref_key_package_name_filter_mode),
+            "0"
+        )?.toIntOrNull() ?: 0)
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_package_name_filter_mode),
+            value.ordinal.toString()
+        ).apply()
+
 
 }

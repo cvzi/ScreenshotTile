@@ -1,5 +1,6 @@
 package com.github.cvzi.screenshottile.utils
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.app.KeyguardManager
 import android.app.PendingIntent
@@ -1206,6 +1207,7 @@ fun isDeviceLocked(context: Context): Boolean {
     return (context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager).isDeviceLocked
 }
 
+@SuppressLint("StartActivityAndCollapseDeprecated")
 fun TileService.startActivityAndCollapseCustom(intent: Intent) {
     return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.TIRAMISU) {
         this.startActivityAndCollapse(
@@ -1221,3 +1223,8 @@ fun TileService.startActivityAndCollapseCustom(intent: Intent) {
         this.startActivityAndCollapse(intent)
     }
 }
+
+/**
+ * Returns true if this set contains the specified CharsSequence as a String.
+ */
+fun HashSet<String>.contains(seq: CharSequence): Boolean = this.contains(seq.toString())
