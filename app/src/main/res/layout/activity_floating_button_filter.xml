@@ -81,7 +81,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Show/Hide in specific apps" />
+                            android:text="@string/setting_show_hide_in_specific_apps" />
                     </LinearLayout>
 
                     <RadioGroup
@@ -94,13 +94,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:tag="BLACKLIST"
-                            android:text="Blacklist" />
+                            android:text="@string/setting_filtermode_blacklist" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:tag="WHITELIST"
-                            android:text="Whitelist" />
+                            android:text="@string/setting_filtermode_whitelist" />
 
                     </RadioGroup>
 
@@ -123,7 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:text="Select apps" />
+                        android:text="@string/setting_filtermode_select_apps" />
 
                     <EditText
                         android:id="@+id/editTextSearch"
@@ -131,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="text"
-                        android:hint="Search" />
+                        android:hint="@string/setting_filtermode_search" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/packagesRecyclerView"
@@ -147,13 +147,13 @@
                             android:id="@+id/buttonSelectAll"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Select all" />
+                            android:text="@string/setting_filtermode_select_all" />
 
                         <Button
                             android:id="@+id/buttonInvertSelection"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Invert selection" />
+                            android:text="@string/setting_filtermode_invert_selection" />
 
                     </LinearLayout>
 

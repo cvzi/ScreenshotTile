@@ -255,4 +255,16 @@
     <string name="setting_keep_screenshot_history">Keep history of screenshots</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Stores the file names of screenshots in a list. This is required for the function \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Photo editor: Rotate landscape images</string>
+    <string name="setting_show_in_portrait_orientation">Show in portrait orientation</string>
+    <string name="setting_show_in_landscape_orientation">Show in landscape orientation</string>
+    <string name="setting_show_when_device_is_unlocked">Show when device is unlocked</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Show when device is locked (on the lock-screen)</string>
+    <string name="setting_show_hide_in_specific_apps">Show/Hide in specific apps</string>
+    <string name="setting_filtermode_blacklist">Blacklist</string>
+    <string name="setting_filtermode_whitelist">Whitelist</string>
+    <string name="setting_filtermode_select_apps">Select apps</string>
+    <string name="setting_filtermode_search">Search</string>
+    <string name="setting_filtermode_select_all">Select all</string>
+    <string name="setting_filtermode_invert_selection">Invert selection</string>
+    <string name="setting_show_floating_buttons_quick_settings">Show floating buttons when quick settings are pulled down</string>
 </resources>

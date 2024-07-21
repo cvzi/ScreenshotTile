@@ -128,7 +128,8 @@
                                 android:layout_weight="1"
                                 android:ems="5"
                                 android:hint="seconds"
-                                android:inputType="number" />
+                                android:inputType="number"
+                                tools:ignore="HardcodedText" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -295,12 +296,14 @@
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="dummy theme" />
+                            android:text="dummy theme"
+                            tools:ignore="HardcodedText" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="test theme" />
+                            android:text="test theme"
+                            tools:ignore="HardcodedText" />
 
                     </RadioGroup>
 
@@ -340,7 +343,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:text="Show in portrait orientation" />
+                                android:text="@string/setting_show_in_portrait_orientation" />
                         </TableRow>
                         <TableRow
                             android:layout_width="match_parent"
@@ -357,7 +360,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:text="Show in landscape orientation" />
+                                android:text="@string/setting_show_in_landscape_orientation" />
                         </TableRow>
 
                         <TableRow
@@ -375,7 +378,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:text="Show when device is unlocked" />
+                                android:text="@string/setting_show_when_device_is_unlocked" />
                         </TableRow>
 
                         <TableRow
@@ -393,7 +396,38 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:text="Show when device is locked (on the lock-screen)" />
+                                android:text="@string/setting_show_when_device_is_locked_on_the_lock_screen" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchFloatingButtonOnQuickSettings"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:text="@string/setting_show_floating_buttons_quick_settings" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tableRowQuickSettingsWarning">
+
+                            <TextView
+                                android:layout_span="2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="One of the tiles of the app must be added to the quick settings, otherwise the floating button cannot be hidden when the quick settings are pulled down" />
                         </TableRow>
 
                         <TableRow
@@ -406,7 +440,7 @@
                                 android:layout_span="2"
                                 android:textSize="13sp"
                                 style="@style/Widget.Material3.Button"
-                                android:text="Show/Hide in specific apps" />
+                                android:text="@string/setting_show_hide_in_specific_apps" />
 
                         </TableRow>
 
@@ -435,7 +469,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="13sp"
                         style="@style/Widget.Material3.Button"
-                        android:text="🔄" />
+                        android:text="🔄"
+                        tools:ignore="HardcodedText" />
 
                     <Button
                         android:id="@+id/buttonMoreSettings"

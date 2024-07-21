@@ -417,6 +417,16 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             context.getString(R.string.pref_key_floating_button_when_landscape),
             value
         ).apply()
+    var floatingButtonWhenQuickSettings: Boolean
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_floating_button_when_quick_settings),
+            false
+        )
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button_when_quick_settings),
+            value
+        ).apply()
+
 
     var voiceInteractionAction: String
         get() = pref.getString(

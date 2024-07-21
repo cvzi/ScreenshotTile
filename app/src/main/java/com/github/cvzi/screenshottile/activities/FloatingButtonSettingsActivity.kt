@@ -30,7 +30,9 @@ import androidx.core.widget.doAfterTextChanged
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonSettingsBinding
+import com.github.cvzi.screenshottile.services.FloatingTileService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
+import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.ShutterCollection
 import com.github.cvzi.screenshottile.utils.fillTextHeight
 import com.github.cvzi.screenshottile.utils.parseColorString
@@ -265,7 +267,9 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
             prefManager.floatingButtonWhenLandscape = isChecked
             ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
-
+        binding.switchFloatingButtonOnQuickSettings.setOnCheckedChangeListener { _, isChecked ->
+            prefManager.floatingButtonWhenQuickSettings = isChecked
+        }
     }
 
     private fun onSelectColor(h: Float?, v: Float?) {
@@ -344,6 +348,15 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
         binding.switchFloatingButtonOnLocked.isChecked = prefManager.floatingButtonWhenLocked
         binding.switchFloatingButtonOnPortrait.isChecked = prefManager.floatingButtonWhenPortrait
         binding.switchFloatingButtonOnLandscape.isChecked = prefManager.floatingButtonWhenLandscape
+        binding.switchFloatingButtonOnQuickSettings.isChecked =
+            prefManager.floatingButtonWhenQuickSettings
+
+        binding.tableRowQuickSettingsWarning.visibility =
+            if (!prefManager.floatingButtonWhenQuickSettings && FloatingTileService.instance == null && ScreenshotTileService.instance == null) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
 
         restoreSavedInstanceValues()
 

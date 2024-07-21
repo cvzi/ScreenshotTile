@@ -111,6 +111,9 @@ class FloatingTileService : TileService() {
         if (informAccessibilityServiceOnLocked && isDeviceLocked(this)) {
             ScreenshotAccessibilityService.instance?.onDeviceLockedFromTileService()
         }
+        if (ScreenshotTileService.instance == null && ScreenshotAccessibilityService.instance != null && !App.getInstance().prefManager.floatingButtonWhenQuickSettings) {
+            ScreenshotAccessibilityService.instance?.hideFloatingButton()
+        }
     }
 
     override fun onStopListening() {
@@ -123,6 +126,9 @@ class FloatingTileService : TileService() {
                     openAccessibilitySettings(this)
                 }
             }, 5000)
+        }
+        if (ScreenshotTileService.instance == null && ScreenshotAccessibilityService.instance != null && !App.getInstance().prefManager.floatingButtonWhenQuickSettings) {
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(animate = false)
         }
     }
 

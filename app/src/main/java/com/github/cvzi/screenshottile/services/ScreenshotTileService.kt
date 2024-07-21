@@ -104,6 +104,9 @@ class ScreenshotTileService : TileService(),
         ) {
             ScreenshotAccessibilityService.instance?.onDeviceLockedFromTileService()
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && ScreenshotAccessibilityService.instance != null && !App.getInstance().prefManager.floatingButtonWhenQuickSettings) {
+            ScreenshotAccessibilityService.instance?.hideFloatingButton()
+        }
     }
 
     override fun onStopListening() {
@@ -136,6 +139,9 @@ class ScreenshotTileService : TileService(),
             background()
         }
         setState(Tile.STATE_INACTIVE)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && ScreenshotAccessibilityService.instance != null && !App.getInstance().prefManager.floatingButtonWhenQuickSettings) {
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(animate = false)
+        }
     }
 
     override fun onClick() {

@@ -457,6 +457,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     private fun showSettingsButton(root: ViewGroup, buttonScreenshot: View) {
         val linearLayout = root.findViewById<LinearLayout>(R.id.linearLayoutOuter)
         if (linearLayout.findViewWithTag<View>(SETTINGS_BUTTON_TAG) != null) {
@@ -515,16 +516,20 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             if (prefManager.packageNameFilterList.contains(lastPackageName)) {
                 // This app is in the filter list
                 if (prefManager.packageNameFilterMode == PackageNameFilterMode.BLACKLIST) {
-                    buttonBlackWhiteList.text = "➖ Blacklist"
+                    buttonBlackWhiteList.text =
+                        "➖ ${getString(R.string.setting_filtermode_blacklist)}"
                 } else {
-                    buttonBlackWhiteList.text = "➖ Whitelist"
+                    buttonBlackWhiteList.text =
+                        "➖ ${getString(R.string.setting_filtermode_whitelist)}"
                 }
             } else {
                 // This app is not in the filter list
                 if (prefManager.packageNameFilterMode == PackageNameFilterMode.BLACKLIST) {
-                    buttonBlackWhiteList.text = "➕ Blacklist"
+                    buttonBlackWhiteList.text =
+                        "➕ ${getString(R.string.setting_filtermode_blacklist)}"
                 } else {
-                    buttonBlackWhiteList.text = "➕ Whitelist"
+                    buttonBlackWhiteList.text =
+                        "➕ ${getString(R.string.setting_filtermode_whitelist)}"
                 }
             }
             buttonScreenshot.post {
@@ -536,13 +541,12 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
         }
 
-
     }
 
     /**
      * Remove view if it exists
      */
-    private fun hideFloatingButton() {
+    fun hideFloatingButton() {
         floatingButtonShown = false
         binding?.root?.let {
             getWinManager().safeRemoveView(it, TAG)
