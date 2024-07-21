@@ -48,9 +48,7 @@ class FloatingTileService : TileService() {
                     // Floating button is currently hidden by package filter
                     // -> Temporary show it
                     ScreenshotAccessibilityService.instance?.overridePackageFilterTempShow()
-                }
-
-                else if (prefManager.floatingButton && prefManager.packageNameFilterEnabled && ScreenshotAccessibilityService.instance?.floatingButtonShown == true) {
+                } else if (prefManager.floatingButton && prefManager.packageNameFilterEnabled && ScreenshotAccessibilityService.instance?.floatingButtonShown == true) {
                     // Floating button is currently shown through package filter
                     // -> Temporary hide it
                     ScreenshotAccessibilityService.instance?.overridePackageFilterTempHide()

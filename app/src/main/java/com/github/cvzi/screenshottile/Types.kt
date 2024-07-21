@@ -9,8 +9,6 @@ import com.github.cvzi.screenshottile.utils.mimeFromFileExtension
 import java.io.File
 import java.io.OutputStream
 import java.io.Serializable
-import kotlin.math.max
-import kotlin.math.min
 
 /**
  * Holds a single boolean value
@@ -32,6 +30,7 @@ enum class PackageNameFilterMode {
         fun fromInt(i: Int): PackageNameFilterMode {
             return entries.getOrElse(i) { entries[0] }
         }
+
         fun fromString(s: String): PackageNameFilterMode? {
             return entries.firstOrNull { it.name == s }
         }

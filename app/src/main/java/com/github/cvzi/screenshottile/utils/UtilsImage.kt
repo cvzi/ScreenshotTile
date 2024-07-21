@@ -731,8 +731,8 @@ fun realScreenSize(context: Context): Point {
         when {
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
                 // display.mode.physical is independent of screen orientation
-                context.display?.mode?.let {
-                    when (context.display?.rotation) {
+                context.display.mode?.let {
+                    when (context.display.rotation) {
                         Surface.ROTATION_90, Surface.ROTATION_270 -> {
                             y = it.physicalWidth
                             x = it.physicalHeight
@@ -754,7 +754,7 @@ fun realScreenSize(context: Context): Point {
 
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> {
                 @Suppress("DEPRECATION")
-                context.display?.getRealSize(this)
+                (context.display.getRealSize(this))
             }
 
             else -> {

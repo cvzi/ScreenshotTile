@@ -860,7 +860,7 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         set(values) = pref.edit()
             .putString(
                 context.getString(R.string.pref_key_package_name_filter_list),
-                LinkedHashSet(values).filter{ !it.contains("////")}.joinToString("////")
+                LinkedHashSet(values).filter { !it.contains("////") }.joinToString("////")
             ).apply()
 
     fun addPackageNameToFilterList(packageName: String) {
@@ -868,6 +868,7 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         t.add(packageName)
         packageNameFilterList = t
     }
+
     var packageNameFilterEnabled: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_package_name_filter_enabled),
@@ -879,10 +880,12 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         ).apply()
 
     var packageNameFilterMode: PackageNameFilterMode
-        get() = PackageNameFilterMode.fromInt(pref.getString(
-            context.getString(R.string.pref_key_package_name_filter_mode),
-            "0"
-        )?.toIntOrNull() ?: 0)
+        get() = PackageNameFilterMode.fromInt(
+            pref.getString(
+                context.getString(R.string.pref_key_package_name_filter_mode),
+                "0"
+            )?.toIntOrNull() ?: 0
+        )
         set(value) = pref.edit().putString(
             context.getString(R.string.pref_key_package_name_filter_mode),
             value.ordinal.toString()
