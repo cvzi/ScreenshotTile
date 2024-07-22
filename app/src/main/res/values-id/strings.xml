@@ -253,4 +253,17 @@
     <string name="setting_keep_screenshot_history">Simpan riwayat tangkapan layar</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Menyimpan nama file tangkapan layar dalam daftar. Ini diperlukan untuk fungsi \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Editor foto: Memutar gambar lanskap</string>
+    <string name="setting_show_in_portrait_orientation">Tampilkan dalam orientasi potret</string>
+    <string name="setting_show_in_landscape_orientation">Tampilkan dalam orientasi lanskap</string>
+    <string name="setting_show_when_device_is_unlocked">Tampilkan saat perangkat tidak terkunci</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Tampilkan saat perangkat terkunci (di layar kunci)</string>
+    <string name="setting_show_hide_in_specific_apps">Tampilkan/Sembunyikan dalam aplikasi khusus</string>
+    <string name="setting_filtermode_blacklist">Daftar hitam</string>
+    <string name="setting_filtermode_whitelist">Daftar putih</string>
+    <string name="setting_filtermode_select_apps">Pilih aplikasi</string>
+    <string name="setting_filtermode_search">Cari</string>
+    <string name="setting_filtermode_select_all">Pilih semua</string>
+    <string name="setting_filtermode_invert_selection">Balik Pilihan</string>
+    <string name="setting_show_floating_buttons_quick_settings">Tampilkan tombol mengambang saat pengaturan cepat ditarik ke bawah</string>
+    <string name="setting_quick_settings_warning">Salah satu ubin aplikasi harus ditambahkan ke pengaturan cepat, jika tidak, tombol mengambang tidak dapat disembunyikan ketika pengaturan cepat ditarik ke bawah</string>
 </resources>
