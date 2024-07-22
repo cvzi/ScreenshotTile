@@ -253,4 +253,17 @@
     <string name="setting_keep_screenshot_history">保留截图历史</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">将屏幕截图的文件名存储在列表中，这是功能\"%1$s\" 所必需的。</string>
     <string name="setting_pe_auto_rotate_landscape">照片编辑器：旋转横向图像</string>
+    <string name="setting_show_in_portrait_orientation">竖屏状态下显示</string>
+    <string name="setting_show_in_landscape_orientation">横屏状态下显示</string>
+    <string name="setting_show_when_device_is_unlocked">设备已解锁后显示</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">设备未解锁（锁屏）时显示</string>
+    <string name="setting_show_hide_in_specific_apps">在特定应用中显示</string>
+    <string name="setting_filtermode_blacklist">黑名单</string>
+    <string name="setting_filtermode_whitelist">白名单</string>
+    <string name="setting_filtermode_select_apps">选择应用</string>
+    <string name="setting_filtermode_search">搜索</string>
+    <string name="setting_filtermode_select_all">全选</string>
+    <string name="setting_filtermode_invert_selection">反选</string>
+    <string name="setting_show_floating_buttons_quick_settings">在快速设置下拉时显示浮动按钮</string>
+    <string name="setting_quick_settings_warning">必须添加本应用的磁贴到快速设置，否则无法在快速设置被拉下时隐藏浮动按钮</string>
 </resources>
