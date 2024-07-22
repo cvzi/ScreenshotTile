@@ -253,4 +253,17 @@
     <string name="setting_keep_screenshot_history">الاحتفاظ بسجل لقطات الشاشة</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">يخزن أسماء الملفات لقطات الشاشة في قائمة. هذا مطلوب للوظيفة \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">محرر الصور: تدوير الصور الأفقية</string>
+    <string name="setting_show_in_portrait_orientation">عرض في الاتجاه الرأسي</string>
+    <string name="setting_show_in_landscape_orientation">عرض في الاتجاه الأفقي</string>
+    <string name="setting_show_when_device_is_unlocked">إظهار عند إلغاء قفل الجهاز</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">إظهار عندما يكون الجهاز مقفل (على شاشة القفل)</string>
+    <string name="setting_show_hide_in_specific_apps">إظهار/إخفاء في تطبيقات معينة</string>
+    <string name="setting_filtermode_blacklist">القائمة السوداء</string>
+    <string name="setting_filtermode_whitelist">القائمة البيضاء</string>
+    <string name="setting_filtermode_select_apps">حدد التطبيقات</string>
+    <string name="setting_filtermode_search">بحث</string>
+    <string name="setting_filtermode_select_all">حدد الكل</string>
+    <string name="setting_filtermode_invert_selection">عكس التحديد</string>
+    <string name="setting_show_floating_buttons_quick_settings">إظهار الأزرار العائمة عند سحب الإعدادات السريعة للأسفل</string>
+    <string name="setting_quick_settings_warning">يجب إضافة واحدة من البلاطات في التطبيق إلى الإعدادات السريعة، خلاف ذلك، لا يمكن إخفاء الزر العائم عندما يتم سحب الإعدادات السريعة للأسفل</string>
 </resources>
