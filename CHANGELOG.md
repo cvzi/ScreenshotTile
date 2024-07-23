@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.11.0
+*   Option to disable floating button when quick settings are pulled down
+
 ## 2.10.0
 *   Select apps where floating button is automatically shown/hidden
 
