@@ -1,6 +1,6 @@
 [versions]
 agp = "8.5.1"
-annotation = "1.8.0"
+annotation = "1.8.1"
 appcompat = "1.7.0"
 cardview = "1.0.0"
 constraintlayout = "2.1.4"
