@@ -253,4 +253,17 @@
     <string name="setting_keep_screenshot_history">Verlauf der Screenshots behalten</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Speichert die Dateinamen von Screenshots in einer Liste. Dies ist erforderlich für die Funktion \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Foto-Editor: Querformat drehen</string>
+    <string name="setting_show_in_portrait_orientation">Im Hochformat anzeigen</string>
+    <string name="setting_show_in_landscape_orientation">Im Querformat anzeigen</string>
+    <string name="setting_show_when_device_is_unlocked">Anzeigen, wenn Gerät entsperrt ist</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Anzeigen, wenn Gerät gesperrt ist (auf dem Sperrbildschirm)</string>
+    <string name="setting_show_hide_in_specific_apps">In bestimmten Apps anzeigen/verstecken</string>
+    <string name="setting_filtermode_blacklist">Blacklist</string>
+    <string name="setting_filtermode_whitelist">Whitelist</string>
+    <string name="setting_filtermode_select_apps">Apps auswählen</string>
+    <string name="setting_filtermode_search">Suche</string>
+    <string name="setting_filtermode_select_all">Alle auswählen</string>
+    <string name="setting_filtermode_invert_selection">Auswahl umkehren</string>
+    <string name="setting_show_floating_buttons_quick_settings">Zeige SchwebendenScreenshot Button, wenn Schnelleinstellungen heruntergezogen sind</string>
+    <string name="setting_quick_settings_warning">Eine der Kacheln der App muss zu den Schnelleinstellungen hinzugefügt werden, andernfalls kann der schwebende Button nicht ausgeblendet werden, wenn die Schnelleinstellungen nach unten gezogen werden</string>
 </resources>
