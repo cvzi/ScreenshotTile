@@ -103,13 +103,28 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         var success = false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P &&
             ScreenshotAccessibilityService.instance != null &&
-            (bitmap == null || prefManager.voiceInteractionAction == context.getString(R.string.setting_voice_interaction_action_value_native))
+            (bitmap == null
+                    || prefManager.voiceInteractionAction == context.getString(R.string.setting_voice_interaction_action_value_native)
+                    /* Android 10 and 11 have a bug where bitmap is distorted https://github.com/cvzi/ScreenshotTile/issues/556 */
+                    || Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && Build.VERSION.SDK_INT <= Build.VERSION_CODES.R
+                    )
         ) {
             if (BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: simulateScreenshotButton()")
+            // If this method was chosen because of the above mentioned bug, override the default settings
+            // so that the native method with custom settings is used, to emulate the expected behavior
+            val useSystemDefaults = if (prefManager.voiceInteractionAction == context.getString(
+                    R.string.setting_voice_interaction_action_value_provided
+                )
+            ) false else null
+
+            val useTakeScreenshotMethod =
+                prefManager.voiceInteractionAction == context.getString(R.string.setting_voice_interaction_action_value_native)
+                        || prefManager.voiceInteractionAction == context.getString(R.string.setting_voice_interaction_action_value_provided)
             success = ScreenshotAccessibilityService.instance?.simulateScreenshotButton(
                 autoHideButton = true,
                 autoUnHideButton = true,
-                useTakeScreenshotMethod = false
+                useTakeScreenshotMethod = useTakeScreenshotMethod,
+                useSystemDefaults = useSystemDefaults
             ) == true
         }
         if (success) {

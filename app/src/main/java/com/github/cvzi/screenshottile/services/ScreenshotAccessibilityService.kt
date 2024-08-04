@@ -655,7 +655,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     fun simulateScreenshotButton(
         autoHideButton: Boolean,
         autoUnHideButton: Boolean,
-        useTakeScreenshotMethod: Boolean = true
+        useTakeScreenshotMethod: Boolean = true,
+        useSystemDefaults: Boolean? = null
     ): Boolean {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             return false
@@ -664,8 +665,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             temporaryHideFloatingButton()
         }
 
+        val isUseSystemDefaults = useSystemDefaults ?: prefManager.useSystemDefaults
+
         val success: Boolean
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && useTakeScreenshotMethod && !prefManager.useSystemDefaults) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && useTakeScreenshotMethod && !isUseSystemDefaults) {
             // We don't need to check storage permission first, because this permission is not
             // necessary since Android Q and this function is only available since Android R
             takeScreenshot()
