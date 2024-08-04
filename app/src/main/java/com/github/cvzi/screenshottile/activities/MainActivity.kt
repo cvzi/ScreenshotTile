@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var hintAccessibilityServiceUnavailable: TextView? = null
+    private var hintAssistBugAndroid1011: TextView? = null
     private var askedForStoragePermission = false
     private var restrictedSettingsAlertDialog: AlertDialog? = null
 
@@ -495,6 +496,32 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             switchFloatingButton.isChecked =
                 ScreenshotAccessibilityService.instance != null && App.getInstance().prefManager.floatingButton
+        }
+
+        // Warn about bug in Android 10 and 11 https://github.com/cvzi/ScreenshotTile/issues/556
+        val showAssistHint =
+            switchAssist.isChecked
+                    && App.getInstance().prefManager.voiceInteractionAction == getString(R.string.setting_voice_interaction_action_value_provided)
+                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && Build.VERSION.SDK_INT <= Build.VERSION_CODES.R
+                    && ScreenshotAccessibilityService.instance == null
+
+        if (showAssistHint && hintAssistBugAndroid1011 == null) {
+            binding.linearLayoutAssist.let {
+                hintAssistBugAndroid1011 = TextView(this)
+                it.addView(hintAssistBugAndroid1011, 1)
+                hintAssistBugAndroid1011?.text = getString(
+                    R.string.emoji_warning,
+                    "Please tap here to enable the Accessibility Service to avoid a bug in Android 10 and 11\n\nSee https://github.com/cvzi/ScreenshotTile/issues/556 for more information\n---"
+                )
+                hintAssistBugAndroid1011?.setOnClickListener { _ ->
+                    ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
+                }
+            }
+        } else if (!showAssistHint) {
+            hintAssistBugAndroid1011?.let {
+                (it.parent as? ViewGroup)?.removeView(it)
+            }
+            hintAssistBugAndroid1011 = null
         }
     }
 
