@@ -188,16 +188,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        binding.buttonDonateGiveLively.setOnClickListener {
-            Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://secure.givelively.org/donate/the-giving-back-fund-inc/help-israeli-soldiers-return-home")
-            ).apply {
-                if (resolveActivity(packageManager) != null) {
-                    startActivity(this)
-                }
-            }
-        }
         binding.buttonDonateIsraelRescue.setOnClickListener {
             Intent(
                 Intent.ACTION_VIEW,

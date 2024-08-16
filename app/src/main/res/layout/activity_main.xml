@@ -66,14 +66,6 @@
                />
                <Button
                    style="@style/Widget.Material3.Button"
-                   android:id="@+id/buttonDonateGiveLively"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="givelively.org"
-                   android:textSize="10sp" 
-               />
-               <Button
-                   style="@style/Widget.Material3.Button"
                    android:id="@+id/buttonDonateIsraelRescue"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
