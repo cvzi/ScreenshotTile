@@ -16,6 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <!-- Note: if this is removed, the "Advertising Anti-Feature can be removed from F-Droid -->
 
         <LinearLayout
             android:layout_width="match_parent"
