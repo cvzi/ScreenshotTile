@@ -253,4 +253,15 @@
     <string name="setting_keep_screenshot_history">Зберігати історію знімків екрану</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Зберігає імена файлів скріншотів в списку. Для функції \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Редактор світлин: Обертати горизонтальні зображення</string>
+    <string name="setting_show_in_portrait_orientation">Показувати у книжковій орієнтації</string>
+    <string name="setting_show_in_landscape_orientation">Показувати в альбомній орієнтації</string>
+    <string name="setting_show_when_device_is_unlocked">Показувати, коли пристрій розблоковано</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Показувати, коли пристрій заблоковано (на екрані блокування)</string>
+    <string name="setting_show_hide_in_specific_apps">Показати/Сховати в певних застосунках</string>
+    <string name="setting_filtermode_blacklist">Чорний список</string>
+    <string name="setting_filtermode_whitelist">Білий список</string>
+    <string name="setting_filtermode_select_apps">Вибрати застосунки</string>
+    <string name="setting_filtermode_search">Пошук</string>
+    <string name="setting_filtermode_select_all">Вибрати все</string>
+    <string name="setting_filtermode_invert_selection">Скасувати вибір</string>
 </resources>
