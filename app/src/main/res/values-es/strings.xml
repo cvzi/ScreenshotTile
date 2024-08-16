@@ -29,10 +29,10 @@
     <string name="use_native_screenshot_summary">Simule los botones de inicio + encendido siendo pulsados</string>
     <string name="use_native_screenshot_unsupported">Requiere Android 9 Pie en adelante</string>
     <string name="use_native_screenshot_unavailable">Servicio de accesibilidad deshabilitado</string>
-    <string name="use_native_screenshot_option_default">El método nativo usa el sistema por defecto de fábrica</string>
-    <string name="use_native_screenshot_option_android11">Deshabilitar \'Usar por defecto de fábrica\' para usar este</string>
+    <string name="use_native_screenshot_option_default">Método nativo utiliza los preajustes del sistema</string>
+    <string name="use_native_screenshot_option_android11">Deshabilitar \'Usar predeterminados del sistema\' para usar este</string>
     <string name="accessibility_service_description">Si este servicio está habilitado, la aplicación puede simular encendido+inicio pulsados para capturar la pantalla varias veces.\nEn algunos dispositivos, habilitando este método podría ser más estable o menos lento que el método por defecto.\n\nSi habilita el servicio por aquí, también necesitará habilitar el \"método nativo\" en los ajustes de la aplicación.</string>
-    <string name="use_system_defaults">Usar por el defecto del sistema</string>
+    <string name="use_system_defaults">Usar predeterminados del sistema</string>
     <string name="use_system_defaults_summary">Requiere Android 11 en adelante</string>
     <string name="use_system_defaults_summary_on">Utilizando directorio de almacenamiento predeterminado, formato predeterminado, editor de capturas de pantalla y notificaciones predeterminadas</string>
     <string name="use_system_defaults_summary_off">Usando los ajustes de la aplicación</string>
@@ -253,4 +253,17 @@
     <string name="setting_keep_screenshot_history">Mantener historial de capturas de pantalla</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Guarda los nombres de los archivos de las capturas de pantalla en una lista. Esto es necesario para la función \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Editor de fotos: Rotar imágenes horizontales</string>
+    <string name="setting_show_in_portrait_orientation">Mostrar en orientación vertical</string>
+    <string name="setting_show_in_landscape_orientation">Mostrar en orientación vertical</string>
+    <string name="setting_show_when_device_is_unlocked">Mostrar cuando el dispositivo está desbloqueado</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Mostrar cuando el dispositivo está bloqueado (en la pantalla de bloqueo)</string>
+    <string name="setting_show_hide_in_specific_apps">Mostrar/Ocultar en aplicaciones específicas</string>
+    <string name="setting_filtermode_blacklist">Blacklist</string>
+    <string name="setting_filtermode_whitelist">Whitelist</string>
+    <string name="setting_filtermode_select_apps">Seleccionar aplicaciones</string>
+    <string name="setting_filtermode_search">Buscar</string>
+    <string name="setting_filtermode_select_all">Seleccionar todas</string>
+    <string name="setting_filtermode_invert_selection">Invertir selección</string>
+    <string name="setting_show_floating_buttons_quick_settings">Mostrar botones flotantes cuando los ajustes rápidos son desplegados hacia abajo</string>
+    <string name="setting_quick_settings_warning">Uno de los mosaicos de la aplicación debe ser añadido a los ajustes rápidos, de lo contrario el botón flotante no puede ocultarse cuando los ajustes rápidos son pulsados abajo</string>
 </resources>
