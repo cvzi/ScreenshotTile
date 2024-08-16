@@ -5,6 +5,7 @@ appcompat = "1.7.0"
 cardview = "1.0.0"
 constraintlayout = "2.1.4"
 core = "1.6.1"
+runner = "1.6.2"
 espressoCore = "3.6.1"
 junit = "1.2.1"
 junitVersion = "4.13.2"
@@ -44,7 +45,7 @@ photoeditor = { module = "com.burhanrashid52:photoeditor", version.ref = "photoe
 preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 rules = { module = "androidx.test:rules", version.ref = "core" }
-runner = { module = "androidx.test:runner", version.ref = "core" }
+runner = { module = "androidx.test:runner", version.ref = "runner" }
 truth = { module = "androidx.test.ext:truth", version.ref = "truth" }
 viewpager = { module = "androidx.viewpager:viewpager", version.ref = "viewpager" }
 
