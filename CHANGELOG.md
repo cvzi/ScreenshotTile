@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.11.2
+*   Restore floating button position periodically [#562](https://github.com/cvzi/ScreenshotTile/issues/562)
+*   Update translations from crowdin
+
 ## 2.11.1
 *   Work-around for distorted screenshots in assistant mode in Android 10 and 11 [#556](https://github.com/cvzi/ScreenshotTile/issues/556)
 
