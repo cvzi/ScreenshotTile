@@ -421,6 +421,35 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         if (animate) {
             (buttonScreenshot.drawable as? Animatable)?.start()
         }
+
+        // Only Android 13+:
+        // Periodically check if the button is still at correct position and reposition it if necessary
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            Handler(Looper.getMainLooper()).apply {
+                removeCallbacks(checkPositionRunnable)
+                postDelayed(checkPositionRunnable, 10000)
+            }
+        }
+    }
+
+    private val checkPositionRunnable = Runnable {
+        checkAndCorrectPosition()
+    }
+
+    private fun checkAndCorrectPosition() {
+        // Check if the floating button is still at the correct position and reposition it if necessary
+        if (!floatingButtonShown) {
+            return
+        }
+        val root = binding?.root ?: return
+        val p = prefManager.getFloatingButtonPosition(screenOrientation)
+        val x = p.x
+        val y = p.y
+        val layoutParams = root.layoutParams as WindowManager.LayoutParams
+        if (layoutParams.x != x || layoutParams.y != y) {
+            updateWindowViewPosition(root, x, y)
+        }
+        Handler(Looper.getMainLooper()).postDelayed(checkPositionRunnable, 10000)
     }
 
     private fun showCountDown(
