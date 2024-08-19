@@ -264,4 +264,6 @@
     <string name="setting_filtermode_search">Пошук</string>
     <string name="setting_filtermode_select_all">Вибрати все</string>
     <string name="setting_filtermode_invert_selection">Скасувати вибір</string>
+    <string name="setting_show_floating_buttons_quick_settings">Показувати рухомі кнопки коли відкрито швидкі налаштування</string>
+    <string name="setting_quick_settings_warning">Одна з плиток застосунку повинна бути додана до швидких налаштувань інакше плавуча кнопка не може бути схована, коли відкрито швидкі налаштування</string>
 </resources>
