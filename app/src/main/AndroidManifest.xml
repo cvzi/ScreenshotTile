@@ -100,7 +100,12 @@
             android:exported="true"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.NOTIFICATION_PREFERENCES" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.github.cvzi.screenshottile.activities.SettingDialogActivity"
             android:excludeFromRecents="true"
