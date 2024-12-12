@@ -22,7 +22,7 @@ sdk-min = "24"
 sdk-target = "35"
 sonarqube = "5.1.0.4882"
 truth = "1.6.0"
-viewpager = "1.0.0"
+viewpager = "1.1.0"
 
 [libraries]
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
