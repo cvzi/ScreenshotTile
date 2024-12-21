@@ -176,6 +176,8 @@ Now you can **add a macro** to MacroDroid:
 
 ![Macro intent screenshot](/docs/imgs/MacroDroid_SendIntent.png)
 
+For [Automate](https://llamalab.com/automate/) by LlamaLab there is a flow available: https://llamalab.com/automate/community/flows/42819
+
 ## <a name="terminal">Automatic screenshots from terminal</a>
 
 You can also take screenshots from the terminal:
@@ -195,3 +197,7 @@ adb shell am broadcast -a com.github.cvzi.screenshottile.SCREENSHOT -e secret MY
 
 ## Miscellaneous data
 Some miscellaneous files (mostly images) that don't need to be in the main repository of ScreenshotTile were moved to a separate repository: https://github.com/cvzi/ScreenshotTile_miscellaneous
+
+---
+
+[![updatestar](https://updatestar.cuzi.workers.dev/screenshot-tile-no-root/)](https://screenshot-tile-no-root.updatestar.com/)
