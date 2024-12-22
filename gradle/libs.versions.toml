@@ -2,6 +2,7 @@
 agp = "8.7.3"
 annotation = "1.9.1"
 appcompat = "1.7.0"
+bcutilJdk18on = "1.79"
 cardview = "1.0.0"
 constraintlayout = "2.2.0"
 core = "1.6.1"
@@ -27,6 +28,7 @@ viewpager = "1.1.0"
 [libraries]
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+bcutil-jdk18on = { module = "org.bouncycastle:bcutil-jdk18on", version.ref = "bcutilJdk18on" }
 cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 core = { module = "androidx.test:core", version.ref = "core" }

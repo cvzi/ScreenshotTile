@@ -1,6 +1,7 @@
 buildscript {
     dependencies {
-        classpath("org.bouncycastle:bcutil-jdk18on:1.79")
+        // Necessary for sonarqube v6 https://issuetracker.google.com/issues/380600747
+        classpath(libs.bcutil.jdk18on)
     }
 }
 

@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.11.3
+*   Dependencies updated
+
 ## 2.11.2
 *   Restore floating button position periodically [#562](https://github.com/cvzi/ScreenshotTile/issues/562)
 *   Update translations from crowdin
