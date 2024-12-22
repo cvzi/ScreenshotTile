@@ -1,3 +1,9 @@
+buildscript {
+    dependencies {
+        classpath("org.bouncycastle:bcutil-jdk18on:1.79")
+    }
+}
+
 plugins {
     alias libs.plugins.android.application apply false
     alias libs.plugins.kotlin.android apply false
