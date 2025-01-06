@@ -868,13 +868,17 @@ class SettingFragment : PreferenceFragmentCompat() {
     }
 
     private fun updateDarkTheme(switchEvent: Boolean = false) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             darkThemePref?.apply {
                 isVisible = false
             }
         } else {
             darkThemePref?.apply {
-                summary = entries[findIndexOfValue(value)]
+                if (Build.VERSION.SDK_INT == Build.VERSION_CODES.P && !entries[0].contains("Not supported on Android 9")) {
+                    // Android 9 P supports dark mode but does not support the follow system setting MODE_NIGHT_FOLLOW_SYSTEM
+                    entries[0] = "${entries[0]} (Not supported on Android 9)"
+                }
+                summary = entries[findIndexOfValue(value).takeIf { it != -1 } ?: 0]
             }
             if (switchEvent) {
                 App.getInstance().applyDayNightMode()

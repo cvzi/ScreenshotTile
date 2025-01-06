@@ -1,0 +1,6 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/darkBackgroundColor</item>
+    </style>
+</resources>

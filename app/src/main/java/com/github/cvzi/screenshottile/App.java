@@ -306,7 +306,9 @@ public class App extends Application {
      * Apply the current MODE_NIGHT_FOLLOW_SYSTEM mode from the preferences
      */
     public void applyDayNightMode() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+            // Android 8 and below do not support dark mode
+            // Android 9 P supports dark mode but does not support the follow system setting MODE_NIGHT_FOLLOW_SYSTEM
             return;
         }
         int mode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
