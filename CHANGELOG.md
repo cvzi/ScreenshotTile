@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.11.4
+*   Fix dark mode on Android 9 [#596](https://github.com/cvzi/ScreenshotTile/issues/596)
+
 ## 2.11.3
 *   Dependencies updated
 
