@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.3"
+agp = "8.8.0"
 annotation = "1.9.1"
 appcompat = "1.7.0"
 bcutilJdk18on = "1.79"
