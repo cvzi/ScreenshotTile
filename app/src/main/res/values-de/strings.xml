@@ -18,7 +18,7 @@
     <string name="setting_delay_entry_1s">1s</string>
     <string name="setting_delay_entry_2s">2s</string>
     <string name="setting_delay_entry_5s">5s</string>
-    <string name="take_screenshot_1s_delayed">Screenshot um zwei Sekunden verzögern</string>
+    <string name="take_screenshot_1s_delayed">Screenshot um eine Sekunde verzögern</string>
     <string name="take_screenshot_2s_delayed">Screenshot um zwei Sekunden verzögern</string>
     <string name="take_screenshot_5s_delayed">Screenshot um fünf Sekunden verzögern</string>
     <string name="toggle_floating_button">Schwebender Screenshot Auslöser an/aus</string>
@@ -28,7 +28,7 @@
     <string name="use_native_screenshot">Native Screenshotaufnahme</string>
     <string name="use_native_screenshot_summary">Simuliert einen Tastendruck: home + power</string>
     <string name="use_native_screenshot_unsupported">Benötigt Android 9 Pie</string>
-    <string name="use_native_screenshot_unavailable">Accessibility service is disabled</string>
+    <string name="use_native_screenshot_unavailable">Bedienungshilfen-Dienst ist deaktiviert</string>
     <string name="use_native_screenshot_option_default">Die native Screenshotaufnahme benutzt die Systemeinstellungen</string>
     <string name="use_native_screenshot_option_android11">Trifft nicht zu wenn \"Verwende die Systemeinstellungen\" aktiviert ist</string>
     <string name="accessibility_service_description">Wenn dieser Service aktiviert ist, kann die App einen Tastendruck von Power und Home button simulieren um Screenshots mit der Android Systemfunktion aufzunehmen.\nAuf manchen Geräten kann diese Methode schneller oder stabiler sein.\n\nWenn du den Service hier aktivierst musst du in der Appeinstellungen auch noch den nativen Modus aktivieren.</string>
@@ -44,7 +44,7 @@
     <string name="setting_floating_button_scale_summary">Pass die Größe des schwebenden Auslösers an</string>
     <string name="setting_floating_button_scale_current">Aktuelle Größe: %1$d (Standard: %2$d)</string>
     <string name="setting_floating_button_hide_after">Verstecke schwebenden Auslöser nach Screenshot</string>
-    <string name="setting_floating_button_hide_after_summary">Automatically remove the floating button after you took a screenshot</string>
+    <string name="setting_floating_button_hide_after_summary">Nach einer Aufnahme wird der Auslöser automatisch deaktiviert</string>
     <string name="setting_floating_button_show_close">Zeige [x]/Schließen neben dem schwebenden Button</string>
     <string name="setting_floating_button_show_close_summary">Damit kannst du den schwebenden Auslöser deaktivieren ohne die Schnelleinstellungen zu öffnen</string>
     <string name="setting_floating_button_show_close_dialog_title">Emoji des \"Schließen\" Buttons</string>
