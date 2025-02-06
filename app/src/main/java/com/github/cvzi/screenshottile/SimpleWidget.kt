@@ -7,6 +7,8 @@ import android.content.Context
 import android.widget.RemoteViews
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.SettingDialogActivity
+import com.github.cvzi.screenshottile.utils.getLocalizedString
+import com.github.cvzi.screenshottile.utils.setUserLanguage
 
 /**
  * Widget with settings (right) and screenshot (left) button
@@ -37,6 +39,7 @@ open class SimpleWidget : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
+        context.setUserLanguage()
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId)
@@ -75,13 +78,13 @@ open class SimpleWidget : AppWidgetProvider() {
         when (this) {
             is SimpleWidgetScreenshot -> {
                 views.setOnClickPendingIntent(R.id.image, screenshotPendingIntent)
-                views.setContentDescription(R.id.image, context.getString(R.string.take_screenshot))
+                views.setContentDescription(R.id.image, context.getLocalizedString(R.string.take_screenshot))
                 views.removeAllViews(R.id.linear)
             }
 
             is SimpleWidgetSettings -> {
                 views.setOnClickPendingIntent(R.id.image, settingsPendingIntent)
-                views.setContentDescription(R.id.image, context.getString(R.string.open_settings))
+                views.setContentDescription(R.id.image, context.getLocalizedString(R.string.open_settings))
                 views.removeAllViews(R.id.linear)
             }
 
@@ -89,7 +92,7 @@ open class SimpleWidget : AppWidgetProvider() {
                 views.setOnClickPendingIntent(R.id.image, floatingButtonPendingIntent)
                 views.setContentDescription(
                     R.id.image,
-                    context.getString(R.string.setting_floating_button)
+                    context.getLocalizedString(R.string.setting_floating_button)
                 )
                 views.removeAllViews(R.id.linear)
             }

@@ -10,7 +10,6 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
@@ -21,6 +20,7 @@ import com.github.cvzi.screenshottile.utils.FileNameSuggestion
 import com.github.cvzi.screenshottile.utils.SingleImageLoaded
 import com.github.cvzi.screenshottile.utils.SuggestionsAdapter
 import com.github.cvzi.screenshottile.utils.editImageChooserIntent
+import com.github.cvzi.screenshottile.utils.formatLocalizedString
 import com.github.cvzi.screenshottile.utils.moveImage
 import com.github.cvzi.screenshottile.utils.niceFullPathFromUri
 import com.github.cvzi.screenshottile.utils.renameImage
@@ -29,7 +29,7 @@ import com.github.cvzi.screenshottile.utils.toastMessage
 import java.util.Locale
 
 
-open class GenericPostActivity : AppCompatActivity() {
+open class GenericPostActivity : BaseAppCompatActivity() {
     companion object {
         private const val TAG = "GenericPostActivity"
         const val OPEN_IMAGE_FROM_URI = "com.github.cvzi.screenshottile.OPEN_IMAGE_FROM_URI"
@@ -141,7 +141,7 @@ open class GenericPostActivity : AppCompatActivity() {
         }
 
         if (result.first) {
-            toastMessage(getString(R.string.screenshot_renamed, newName), ToastType.ACTIVITY)
+            toastMessage(formatLocalizedString(R.string.screenshot_renamed, newName), ToastType.ACTIVITY)
             finish()
             result.second?.let {
                 startActivity(

@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
@@ -34,8 +35,10 @@ import com.github.cvzi.screenshottile.services.BasicForegroundService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
 import com.github.cvzi.screenshottile.utils.PrefManager;
+import com.github.cvzi.screenshottile.utils.Texts;
 
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -56,6 +59,8 @@ public class App extends Application {
     private PrefManager prefManager;
     private Runnable screenshotRunnable;
     private WeakReference<Bitmap> lastScreenshot = null;
+    public static final Texts texts = new Texts();
+    public static final HashMap<String, Resources> resources = new HashMap<>();
 
     public App() {
         setInstance(this);

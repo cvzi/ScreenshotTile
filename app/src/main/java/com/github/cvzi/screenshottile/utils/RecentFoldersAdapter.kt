@@ -8,9 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.documentfile.provider.DocumentFile
 import androidx.recyclerview.widget.RecyclerView
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.databinding.HistoryItemBinding
+import com.github.cvzi.screenshottile.databinding.RecentFolderItemBinding
 
 /**
  * A single recent folder item
@@ -42,7 +47,7 @@ class RecentFoldersAdapter(
         this.data.clear()
         this.data.addAll(newData.filter {
             val docDir = DocumentFile.fromTreeUri(context, it.uri)
-            docDir?.canWrite() ?: false
+            docDir?.canWrite() == true
         })
         notifyDataSetChanged()
     }
@@ -73,10 +78,9 @@ class RecentFoldersAdapter(
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.recent_folder_item, viewGroup, false)
-        return ViewHolder(view)
-
+        val itemBinding = DataBindingUtil.inflate<RecentFolderItemBinding>(LayoutInflater.from(viewGroup.context), R.layout.recent_folder_item, viewGroup, false)
+        itemBinding .setVariable(BR.strings, App.texts)
+        return ViewHolder(itemBinding.root)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {

@@ -9,8 +9,8 @@
         android:id="@+id/buttonScreenshot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@string/take_screenshot"
+        android:contentDescription="@{strings.take_screenshot}"
         android:src="@drawable/ic_black_dot_animate_shutter"
-        android:text="@string/take_screenshot" />
+        android:text="@{strings.take_screenshot}" />
 
 </LinearLayout>

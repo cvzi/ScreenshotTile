@@ -27,8 +27,11 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
+import androidx.databinding.DataBindingUtil
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonFilterBinding
 import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonSettingsBinding
 import com.github.cvzi.screenshottile.services.FloatingTileService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
@@ -43,7 +46,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
  * Change settings of the floating button
  */
 @RequiresApi(Build.VERSION_CODES.P)
-class FloatingButtonSettingsActivity : AppCompatActivity() {
+class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
     companion object {
         const val TAG = "FloatingButtonSettings"
 
@@ -91,8 +94,8 @@ class FloatingButtonSettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityFloatingButtonSettingsBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView<ActivityFloatingButtonSettingsBinding>(this, R.layout.activity_floating_button_settings)
+        binding.setVariable(BR.strings, App.texts)
 
         shutterCollection = ShutterCollection(this, R.array.shutters, R.array.shutter_names)
         switchFloatingButtonEnabled = binding.switchFloatingButtonEnabled

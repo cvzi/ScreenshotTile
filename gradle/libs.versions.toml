@@ -2,7 +2,7 @@
 agp = "8.8.0"
 annotation = "1.9.1"
 appcompat = "1.7.0"
-bcutilJdk18on = "1.79"
+bcutilJdk18on = "1.80"
 cardview = "1.0.0"
 constraintlayout = "2.2.0"
 core = "1.6.1"
@@ -10,8 +10,8 @@ runner = "1.6.2"
 espressoCore = "3.6.1"
 junit = "1.2.1"
 junitVersion = "4.13.2"
-kotlin = "2.1.0"
-kotlinBom = "2.1.0"
+kotlin = "2.1.10"
+kotlinBom = "2.1.10"
 kotlinxCoroutinesAndroid = "1.10.1"
 lifecycleViewmodelKtx = "2.8.7"
 material = "1.12.0"
@@ -91,4 +91,5 @@ test = [
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }

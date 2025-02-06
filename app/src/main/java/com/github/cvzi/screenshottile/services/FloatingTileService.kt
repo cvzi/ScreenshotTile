@@ -16,7 +16,9 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity.Companion.EXTRA_HIDE_QUICK_SETTINGS_PANEL
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.isDeviceLocked
+import com.github.cvzi.screenshottile.utils.setUserLanguage
 import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 
 
@@ -76,6 +78,7 @@ class FloatingTileService : TileService() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         instance = this
+        setUserLanguage()
     }
 
     private fun setState(newState: Int) {
@@ -83,8 +86,8 @@ class FloatingTileService : TileService() {
             qsTile?.run {
                 state = newState
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                    qsTile.label = getString(R.string.tile_floating_label)
-                    qsTile.subtitle = getString(R.string.tile_floating_subtitle)
+                    qsTile.label = getLocalizedString(R.string.tile_floating_label)
+                    qsTile.subtitle = getLocalizedString(R.string.tile_floating_subtitle)
                 }
                 updateTile()
             }

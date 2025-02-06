@@ -18,6 +18,7 @@ import com.github.cvzi.screenshottile.App.setScreenshotPermission
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.toastMessage
 
 
@@ -25,7 +26,7 @@ import com.github.cvzi.screenshottile.utils.toastMessage
  * Created by cuzi (cuzi@openmail.cc) on 2019/03/05.
  */
 
-class AcquireScreenshotPermission : Activity() {
+class AcquireScreenshotPermission : BaseActivity() {
     companion object {
         private const val TAG = "AcquireScreenshotPrmssn"
         const val EXTRA_REQUEST_PERMISSION_SCREENSHOT = "extra_request_permission_screenshot"
@@ -80,7 +81,7 @@ class AcquireScreenshotPermission : Activity() {
 
         // Request screenshot permission
         if (intent.getBooleanExtra(EXTRA_REQUEST_PERMISSION_SCREENSHOT, false)) {
-            (getSystemService(Context.MEDIA_PROJECTION_SERVICE) as? MediaProjectionManager)?.apply {
+            (getSystemService(MEDIA_PROJECTION_SERVICE) as? MediaProjectionManager)?.apply {
                 App.setMediaProjectionManager(this)
                 try {
                     startActivityForResult(createScreenCaptureIntent(), SCREENSHOT_REQUEST_CODE)
@@ -91,7 +92,7 @@ class AcquireScreenshotPermission : Activity() {
                         e
                     )
                     toastMessage(
-                        getString(R.string.permission_missing_screen_capture),
+                        getLocalizedString(R.string.permission_missing_screen_capture),
                         ToastType.ERROR
                     )
                     finish()
@@ -122,7 +123,7 @@ class AcquireScreenshotPermission : Activity() {
                     TAG,
                     "onActivityResult() No screen capture permission: resultCode==$resultCode"
                 )
-                toastMessage(getString(R.string.permission_missing_screen_capture), ToastType.ERROR)
+                toastMessage(getLocalizedString(R.string.permission_missing_screen_capture), ToastType.ERROR)
             }
         }
         finish()
@@ -152,7 +153,7 @@ class AcquireScreenshotPermission : Activity() {
                     "onRequestPermissionsResult() Expected PERMISSION_GRANTED for WRITE_EXTERNAL_STORAGE"
                 )
                 toastMessage(
-                    getString(R.string.permission_missing_external_storage),
+                    getLocalizedString(R.string.permission_missing_external_storage),
                     ToastType.ERROR
                 )
             }

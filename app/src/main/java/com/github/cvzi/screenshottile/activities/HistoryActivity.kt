@@ -10,15 +10,20 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityHistoryBinding
+import com.github.cvzi.screenshottile.databinding.ActivityMainBinding
 import com.github.cvzi.screenshottile.utils.ScreenshotHistoryAdapter
 import com.github.cvzi.screenshottile.utils.SingleImage
 import com.github.cvzi.screenshottile.utils.cleanUpAppData
+import com.github.cvzi.screenshottile.utils.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import java.io.File
 import java.util.Date
 
@@ -26,7 +31,7 @@ import java.util.Date
 /**
  * View recent screenshots especially files in /Android/data folder
  */
-class HistoryActivity : AppCompatActivity() {
+class HistoryActivity : BaseAppCompatActivity() {
     companion object {
         const val TAG = "HistoryActivity.kt"
     }
@@ -34,8 +39,8 @@ class HistoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHistoryBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHistoryBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView<ActivityHistoryBinding>(this, R.layout.activity_history)
+        binding.setVariable(BR.strings, App.texts)
 
         binding.buttonClear.setOnClickListener {
             clear()
@@ -58,8 +63,8 @@ class HistoryActivity : AppCompatActivity() {
         val folder = getExternalFilesDir(Environment.DIRECTORY_PICTURES)?.toString()
             ?: "Android/data/com.github.cvzi.screenshottile/..."
         AlertDialog.Builder(this).apply {
-            title = getString(R.string.button_clear)
-            setMessage(getString(R.string.button_clear_confirm, folder))
+            title = getLocalizedString(R.string.button_clear)
+            setMessage(formatLocalizedString(R.string.button_clear_confirm, folder))
         }.setPositiveButton(android.R.string.ok) { dialog, _ ->
             dialog.dismiss()
             cleanUpAppData(this@HistoryActivity, 0) {

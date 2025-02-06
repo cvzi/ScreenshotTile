@@ -66,7 +66,7 @@ class EditImageActivityTest {
 
     @Test
     fun checkIfShapeIsEnabledWhenClickedOnBrushTool() {
-        val editImageActivity = mActivityRule.launchActivity(null)
+        mActivityRule.launchActivity(null)
         Espresso.onView(ViewMatchers.withText(R.string.label_shape)).perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withText(R.string.label_shape)).check(
             ViewAssertions.matches(

@@ -17,6 +17,7 @@ import com.github.cvzi.screenshottile.activities.SettingDialogActivity
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.utils.foregroundNotification
 import com.github.cvzi.screenshottile.utils.isDeviceLocked
+import com.github.cvzi.screenshottile.utils.setUserLanguage
 import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 
 
@@ -67,6 +68,7 @@ class ScreenshotTileService : TileService(),
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         instance = this
+        setUserLanguage()
         if (screenshotPermission == null && App.getInstance() != null) {
             screenshotPermission = App.getScreenshotPermission()
         }
@@ -97,8 +99,10 @@ class ScreenshotTileService : TileService(),
         super.onStartListening()
         if (BuildConfig.DEBUG) Log.v(TAG, "onStartListening()")
         setState(Tile.STATE_INACTIVE)
-        Log.v(TAG, "informAccessibilityServiceOnLocked: $informAccessibilityServiceOnLocked")
-        Log.v(TAG, "isDeviceLocked: ${isDeviceLocked(this)}")
+        if (BuildConfig.DEBUG) {
+            Log.v(TAG, "informAccessibilityServiceOnLocked: $informAccessibilityServiceOnLocked")
+            Log.v(TAG, "isDeviceLocked: ${isDeviceLocked(this)}")
+        }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
             && informAccessibilityServiceOnLocked && isDeviceLocked(this)
         ) {

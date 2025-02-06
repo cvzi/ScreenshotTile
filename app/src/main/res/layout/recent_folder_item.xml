@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_folder_move"
-        android:clickable="true"
-        android:contentDescription="@string/post_button_move"
-        android:focusable="true" />
+    <data>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_weight="1"
-        android:clickable="true"
-        android:focusable="true"
-        android:text=""
-        android:textSize="17sp" />
+        <variable
+            name="strings"
+            type="com.github.cvzi.screenshottile.utils.Texts" />
+    </data>
 
-    <ImageButton
-        android:id="@+id/imageButtonDelete"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/ic_delete"
-        android:contentDescription="@string/post_delete_suggestion" />
-</LinearLayout>
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_folder_move"
+            android:clickable="true"
+            android:contentDescription="@{strings.post_button_move}"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:text=""
+            android:textSize="17sp" />
+
+        <ImageButton
+            android:id="@+id/imageButtonDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/ic_delete"
+            android:contentDescription="@{strings.post_delete_suggestion}" />
+    </LinearLayout>
+</layout>

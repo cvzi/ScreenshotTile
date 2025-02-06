@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Screenshot Tile</string>
+    <string name="app_name_long">Screenshot Tile (NoRoot)</string>
+    <string name="more_setting">Siesie i ye ekun</string>
+    <string name="open_settings">Tike naan siesie i ye</string>
+    <string name="floating_button_settings">Butɔn ng\'ɔ sende lɛ ngbɛn\'n</string>
+    <string name="partial_screenshot">Jɛ i bue kan</string>
+    <string name="options_dialog">Kle i yolɛ wafa wie ekun</string>
+    <string name="file_format">I klɛlɛ wafa</string>
+    <string name="setting_delay_entry_default">Ka lɛ fite</string>
+    <string name="setting_delay_entry_1s">Ɔ di dɔ</string>
+    <string name="setting_delay_entry_2s">Ɔ di dɔ nɲɔn</string>
+    <string name="setting_delay_entry_5s">Ɔ di dɔ nnun</string>
+    <string name="take_screenshot_1s_delayed">Sɛ ɔ di segɔndu kun\'n ɔ́ cí foto\'n</string>
+    <string name="take_screenshot_2s_delayed">Sɛ ɔ di segɔndu nɲɔn\'n ɔ́ cí foto\'n</string>
+    <string name="take_screenshot_5s_delayed">Sɛ ɔ di segɔndu nnun\'n ɔ́ cí foto\'n</string>
+    <string name="show_count_down">Kle blɛ ng\'ɔ ka\'n</string>
+    <string name="cancel_count_down">Tin su naan blɛ\'n i su kpɛ</string>
+</resources>

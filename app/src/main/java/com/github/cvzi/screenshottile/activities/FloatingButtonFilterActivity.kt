@@ -11,10 +11,14 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.core.widget.addTextChangedListener
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.PackageNameFilterMode
+import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonFilterBinding
+import com.github.cvzi.screenshottile.databinding.ActivityMainBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.PackagesRecyclerViewAdapter
 
@@ -23,7 +27,7 @@ import com.github.cvzi.screenshottile.utils.PackagesRecyclerViewAdapter
  * Change settings of the floating button
  */
 @RequiresApi(Build.VERSION_CODES.P)
-class FloatingButtonFilterActivity : AppCompatActivity() {
+class FloatingButtonFilterActivity : BaseAppCompatActivity() {
     companion object {
         const val TAG = "FloatingButtonFilter"
 
@@ -55,8 +59,10 @@ class FloatingButtonFilterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityFloatingButtonFilterBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
+
+        binding = DataBindingUtil.setContentView<ActivityFloatingButtonFilterBinding>(this, R.layout.activity_floating_button_filter)
+        binding.setVariable(BR.strings, App.texts)
+
 
         binding.buttonMoreSettings.setOnClickListener {
             SettingsActivity.start(this)

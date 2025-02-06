@@ -14,6 +14,7 @@ import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.SettingsActivity
 import com.github.cvzi.screenshottile.fragments.SettingFragment
+import com.github.cvzi.screenshottile.utils.setUserLanguage
 
 /**
  * Service that is started when the assist app is selected
@@ -40,6 +41,7 @@ class MyVoiceInteractionService : VoiceInteractionService() {
 
     override fun onReady() {
         super.onReady()
+        setUserLanguage()
         instance = this
         try {
             when (App.getInstance().prefManager.returnIfVoiceInteractionServiceEnabled) {

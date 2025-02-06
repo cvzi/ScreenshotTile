@@ -24,6 +24,6 @@
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:background="@color/primaryColor"
-        android:contentDescription="@string/setting_floating_button_shutter" />
+        android:contentDescription="@{strings.setting_floating_button_shutter}" />
 
 </RelativeLayout>

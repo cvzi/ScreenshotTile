@@ -9,13 +9,16 @@ import android.view.View
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.databinding.ActivityDelayBinding
 import com.github.cvzi.screenshottile.utils.screenshot
+import androidx.databinding.DataBindingUtil
+import com.github.cvzi.screenshottile.BR
+import com.github.cvzi.screenshottile.R
 
 /**
  * Created by ipcjs on 2017/8/15.
  * Changes by cuzi@openmail.cc
  */
 
-class DelayScreenshotActivity : Activity() {
+class DelayScreenshotActivity : BaseActivity() {
     companion object {
         const val EXTRA_DELAY = "delay"
 
@@ -57,8 +60,10 @@ class DelayScreenshotActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDelayBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
+
+        binding = DataBindingUtil.setContentView<ActivityDelayBinding>(this, R.layout.activity_delay)
+        binding.setVariable(BR.strings, App.texts)
+
 
         count = intent.getIntExtra(EXTRA_DELAY, count)
         if (App.getInstance().prefManager.tapToCancelCountDown) {

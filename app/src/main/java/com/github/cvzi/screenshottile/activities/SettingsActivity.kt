@@ -14,7 +14,7 @@ import com.github.cvzi.screenshottile.fragments.SettingFragment
  * Changes by cuzi (cuzi@openmail.cc)
  */
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : BaseAppCompatActivity() {
     companion object {
         const val EXTRA_FRAGMENT_NAME = "fragment_name"
         const val EXTRA_ARGS = "args"

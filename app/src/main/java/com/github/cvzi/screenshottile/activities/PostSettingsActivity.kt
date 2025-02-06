@@ -12,14 +12,19 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.databinding.ActivityLanguageBinding
+import com.github.cvzi.screenshottile.databinding.ActivityPostCropBinding
 import com.github.cvzi.screenshottile.databinding.ActivityPostSettingsBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.Sound
 import com.github.cvzi.screenshottile.utils.Sound.Companion.allAudioSinks
 import com.github.cvzi.screenshottile.utils.TonesRecyclerViewAdapter
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.nicePathFromUri
 import java.lang.Float.max
 
@@ -27,7 +32,7 @@ import java.lang.Float.max
 /**
  * Settings for what happens after a screenshot is taken
  */
-class PostSettingsActivity : AppCompatActivity() {
+class PostSettingsActivity : BaseAppCompatActivity() {
     companion object {
         const val TAG = "PostSettingsActivity"
     }
@@ -39,8 +44,8 @@ class PostSettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPostSettingsBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView<ActivityPostSettingsBinding>(this, R.layout.activity_post_settings)
+        binding.setVariable(BR.strings, App.texts)
 
         binding.buttonResetValues.setOnClickListener {
             binding.radioButtonEmpty.isChecked = true
@@ -131,7 +136,7 @@ class PostSettingsActivity : AppCompatActivity() {
     private fun disableUseSystemDefaults() {
         App.getInstance().prefManager.useSystemDefaults = false
         binding.textDescGeneral.setTextColor(getColor(R.color.colorPrimary))
-        binding.textDescGeneral.text = getString(R.string.setting_post_actions_description)
+        binding.textDescGeneral.text = getLocalizedString(R.string.setting_post_actions_description)
     }
 
     private fun loadSettings() {
@@ -140,15 +145,15 @@ class PostSettingsActivity : AppCompatActivity() {
         binding.textDescGeneral.text =
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 binding.textDescGeneral.setTextColor(getColor(R.color.colorAccent))
-                getString(R.string.use_native_screenshot_option_default)
+                getLocalizedString(R.string.use_native_screenshot_option_default)
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
                 binding.textDescGeneral.setTextColor(getColor(R.color.colorAccent))
                 binding.textDescGeneral.setOnClickListener {
                     disableUseSystemDefaults()
                 }
-                getString(R.string.use_native_screenshot_option_android11)
+                getLocalizedString(R.string.use_native_screenshot_option_android11)
             } else {
-                getString(R.string.setting_post_actions_description)
+                getLocalizedString(R.string.setting_post_actions_description)
             }
 
 

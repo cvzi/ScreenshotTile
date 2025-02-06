@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="strings"
+            type="com.github.cvzi.screenshottile.utils.Texts" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingStart="5dp"
@@ -30,7 +39,7 @@
                         android:id="@+id/textDescGeneral"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/setting_post_actions_description"
+                        android:text="@{strings.setting_post_actions_description}"
                         android:textAppearance="@android:style/TextAppearance.Material.Body2" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -68,7 +77,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/post_action_save_to_storage" />
+                                    android:text="@{strings.post_action_save_to_storage}" />
 
                                 <TextView
                                     android:id="@+id/textViewSaveImageLocation"
@@ -96,7 +105,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:text="@string/post_action_show_toast" />
+                                android:text="@{strings.post_action_show_toast}" />
                         </TableRow>
 
                         <TableRow
@@ -114,7 +123,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:text="@string/post_action_show_notification" />
+                                android:text="@{strings.post_action_show_notification}" />
                         </TableRow>
 
                         <TableRow
@@ -132,7 +141,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:text="@string/post_action_play_tone" />
+                                android:text="@{strings.post_action_play_tone}" />
                         </TableRow>
                     </TableLayout>
 
@@ -145,44 +154,44 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
-                            android:text="@string/post_action_empty" />
+                            android:text="@{strings.post_action_empty}" />
 
                         <RadioButton
                             android:id="@+id/radioButtonOpenInPost"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/post_action_open_in_post" />
+                            android:text="@{strings.post_action_open_in_post}" />
 
                         <RadioButton
                             android:id="@+id/radioButtonOpenInPostCrop"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/post_action_open_in_post_crop" />
+                            android:text="@{strings.post_action_open_in_post_crop}" />
 
                         <RadioButton
                             android:id="@+id/radioButtonOpenInPhotoEditor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/post_action_open_in_photo_editor" />
+                            android:text="@{strings.post_action_open_in_photo_editor}" />
 
                         <RadioButton
                             android:id="@+id/radioButtonOpenInExternalEditor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/post_action_open_in_external_editor" />
+                            android:text="@{strings.post_action_open_in_external_editor}" />
 
                         <RadioButton
                             android:id="@+id/radioButtonOpenInExternalViewer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/post_action_open_in_external_viewer" />
+                            android:text="@{strings.post_action_open_in_external_viewer}" />
 
 
                         <RadioButton
                             android:id="@+id/radioButtonOpenShare"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/post_action_open_share" />
+                            android:text="@{strings.post_action_open_share}" />
 
                     </RadioGroup>
 
@@ -205,7 +214,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
                         style="@style/Widget.Material3.Button"
-                        android:text="@string/restore_default_values" />
+                        android:text="@{strings.restore_default_values}" />
 
                     <Button
                         android:id="@+id/buttonSettings"
@@ -213,7 +222,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
                         style="@style/Widget.Material3.Button"
-                        android:text="@string/more_setting" />
+                        android:text="@{strings.more_setting}" />
 
                     <Button
                         android:id="@+id/buttonHistory"
@@ -221,7 +230,7 @@
                         style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/history_title" />
+                        android:text="@{strings.history_title}" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -246,7 +255,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:text="@string/post_action_play_tone"
+                            android:text="@{strings.post_action_play_tone}"
                             android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
                         <ImageButton
@@ -271,7 +280,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/post_settings_audio_output_stream" />
+                            android:text="@{strings.post_settings_audio_output_stream}" />
 
                         <Spinner
                             android:id="@+id/spinnerAudioSink"
@@ -293,7 +302,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/post_settings_audio_tone_duration" />
+                                android:text="@{strings.post_settings_audio_tone_duration}" />
 
                             <TextView
                                 android:id="@+id/textViewAudioDuration"
@@ -308,7 +317,7 @@
                             android:id="@+id/sliderAudioDuration"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:contentDescription="@string/post_settings_audio_tone_duration"
+                            android:contentDescription="@{strings.post_settings_audio_tone_duration}"
                             android:stepSize="20"
                             android:valueFrom="40"
                             android:valueTo="2000" />
@@ -325,7 +334,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:padding="10dp"
-                            android:text="@string/post_settings_audio_tone_select" />
+                            android:text="@{strings.post_settings_audio_tone_select}" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/toneRecyclerView"
@@ -342,3 +351,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

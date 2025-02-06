@@ -901,5 +901,14 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             value.ordinal.toString()
         ).apply()
 
+    var userLanguages: String?
+        get() = pref.getString(
+            context.getString(R.string.pref_key_user_languages),
+            null
+        )
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_user_languages),
+            value
+        ).apply()
 
 }

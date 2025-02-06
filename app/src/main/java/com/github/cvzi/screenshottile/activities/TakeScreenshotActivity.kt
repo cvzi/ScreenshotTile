@@ -46,6 +46,8 @@ import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.createNotification
+import com.github.cvzi.screenshottile.utils.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.handlePostScreenshot
 import com.github.cvzi.screenshottile.utils.realScreenSize
 import com.github.cvzi.screenshottile.utils.toastMessage
@@ -55,7 +57,7 @@ import com.github.cvzi.screenshottile.utils.toastMessage
  */
 
 
-class TakeScreenshotActivity : Activity(),
+class TakeScreenshotActivity : BaseActivity(),
     OnAcquireScreenshotPermissionListener {
 
     companion object {
@@ -158,7 +160,7 @@ class TakeScreenshotActivity : Activity(),
             }
         }
 
-        partial = intent?.getBooleanExtra(EXTRA_PARTIAL, false) ?: false
+        partial = intent?.getBooleanExtra(EXTRA_PARTIAL, false) == true
         screenDensity = resources.configuration.densityDpi
         realScreenSize(this).run {
             screenWidth = x
@@ -244,7 +246,7 @@ class TakeScreenshotActivity : Activity(),
 
         findViewById<ScreenshotSelectorView>(R.id.global_screenshot_selector).apply {
             screenshotSelectorView = this
-            text = getString(R.string.take_screenshot)
+            text = getLocalizedString(R.string.take_screenshot)
             shutter = R.drawable.ic_stat_name
             fullScreenIcon = R.drawable.ic_fullscreen
             onSelect = {
@@ -506,7 +508,7 @@ class TakeScreenshotActivity : Activity(),
 
                 if ("showToast" in postScreenshotActions) {
                     toastMessage(
-                        getString(R.string.screenshot_file_saved, dummyPath),
+                        formatLocalizedString(R.string.screenshot_file_saved, dummyPath),
                         ToastType.SUCCESS
                     )
                 }
@@ -536,7 +538,7 @@ class TakeScreenshotActivity : Activity(),
                 val path = result.file.absolutePath
 
                 if ("showToast" in postScreenshotActions) {
-                    toastMessage(getString(R.string.screenshot_file_saved, path), ToastType.SUCCESS)
+                    toastMessage(formatLocalizedString(R.string.screenshot_file_saved, path), ToastType.SUCCESS)
                 }
 
                 if ("showNotification" in postScreenshotActions) {
@@ -606,7 +608,7 @@ class TakeScreenshotActivity : Activity(),
         errorMessage: String? = null,
         duration: Int = Toast.LENGTH_LONG
     ) {
-        val message = getString(R.string.screenshot_failed) + if (errorMessage != null) {
+        val message = getLocalizedString(R.string.screenshot_failed) + if (errorMessage != null) {
             "\n$errorMessage"
         } else {
             ""

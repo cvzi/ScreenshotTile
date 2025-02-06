@@ -188,6 +188,14 @@
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name="com.github.cvzi.screenshottile.activities.LanguageActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:parentActivityName="com.github.cvzi.screenshottile.activities.MainActivity"
+            android:taskAffinity="${applicationId}.task"
+            android:theme="@style/AppTheme">
+        </activity>
 
         <service
             android:name="com.github.cvzi.screenshottile.services.ScreenshotTileService"

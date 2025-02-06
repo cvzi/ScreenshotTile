@@ -14,11 +14,15 @@ import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.burhanrashid52.photoediting.ColorPickerAdapter.OnColorPickerClickListener
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.databinding.AddTextDialogBinding
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.BR
 
 /**
  * Created by Burhanuddin Rashid on 1/16/2018.
@@ -51,7 +55,9 @@ class TextEditorDialogFragment : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.add_text_dialog, container, false)
+        return DataBindingUtil.inflate<AddTextDialogBinding>(inflater, R.layout.add_text_dialog, container, false).apply {
+            setVariable(BR.strings, App.texts)
+        }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -32,6 +32,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.ChangeBounds
@@ -48,9 +49,14 @@ import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.GenericPostActivity
 import com.github.cvzi.screenshottile.activities.GenericPostActivity.Companion.OPEN_IMAGE_FROM_URI
+import com.github.cvzi.screenshottile.databinding.ActivityEditImageBinding
+import com.github.cvzi.screenshottile.databinding.ActivityMainBinding
+import com.github.cvzi.screenshottile.databinding.AddTextDialogBinding
+import com.github.cvzi.screenshottile.databinding.DialogAskFilenameBinding
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.SingleImage.Companion.loadBitmapFromDisk
 import com.github.cvzi.screenshottile.utils.formatFileName
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.realScreenSize
 import com.github.cvzi.screenshottile.utils.rotate
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -105,6 +111,11 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         makeFullScreen()
         setContentView(R.layout.activity_edit_image)
 
+
+        val binding = DataBindingUtil.setContentView<ActivityEditImageBinding>(this, R.layout.activity_edit_image)
+        binding.setVariable(BR.strings, App.texts)
+
+
         initViews()
         if (!handleIntentImage(mPhotoEditorView.source)) {
             mPhotoEditorView.source.setImageResource(android.R.drawable.stat_notify_error)
@@ -147,7 +158,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
 
         startForPickFolder =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-                if (result.resultCode == Activity.RESULT_OK) {
+                if (result.resultCode == RESULT_OK) {
                     result.data?.data?.let { uri ->
                         askForFilename(uri)
                     }
@@ -291,7 +302,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 startActivityForResult(
                     Intent.createChooser(
                         intent,
-                        getString(R.string.msg_choose_image)
+                        getLocalizedString(R.string.msg_choose_image)
                     ), PICK_REQUEST
                 )
             }
@@ -301,14 +312,14 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     private fun shareImage() {
         val saveImageUri = mSaveImageUri
         if (saveImageUri == null) {
-            showSnackbar(getString(R.string.msg_save_image_to_share))
+            showSnackbar(getLocalizedString(R.string.msg_save_image_to_share))
             return
         }
 
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "image/*"
         intent.putExtra(Intent.EXTRA_STREAM, buildFileProviderUri(saveImageUri))
-        startActivity(Intent.createChooser(intent, getString(R.string.msg_share_image)))
+        startActivity(Intent.createChooser(intent, getLocalizedString(R.string.msg_share_image)))
     }
 
     private fun buildFileProviderUri(uri: Uri): Uri {
@@ -330,21 +341,18 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         val filenameSuggestion = formatFileName(fileNamePattern, Date())
 
         AlertDialog.Builder(this).apply {
-            val editText: EditText
-
             @SuppressLint("InflateParams")
-            val linearLayout: View =
-                layoutInflater.inflate(R.layout.dialog_ask_filename, null).apply {
-                    editText = findViewById(R.id.editTextFileName)
-                    editText.setText(filenameSuggestion)
-                    findViewById<TextView>(R.id.textViewFolder).text =
-                        folder.path ?: folder.toString()
-                }
+            val dialogBinding = DataBindingUtil.inflate<DialogAskFilenameBinding>(layoutInflater, R.layout.dialog_ask_filename, null, false).apply {
+                setVariable(BR.strings, App.texts)
+                editTextFileName.setText(filenameSuggestion)
+                textViewFolder.text = folder.path ?: folder.toString()
+            }
+
             setTitle(R.string.dialog_ask_filename_title)
             setMessage(R.string.dialog_ask_filename_hint)
-            setView(linearLayout)
+            setView(dialogBinding.root)
             setPositiveButton(android.R.string.ok) { dialog, _ ->
-                val filename = editText.text.toString()
+                val filename = dialogBinding.editTextFileName.text.toString()
                 dialog.dismiss()
                 if (filename.isNotBlank()) {
                     saveImageInFolder(folder, filename.trim())
@@ -362,6 +370,8 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
             addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
             if (resolveActivity(packageManager) != null) {
                 startForPickFolder.launch(Intent.createChooser(this, "Choose directory"))
+            } else {
+                Log.e(TAG, "No activity found to open document tree. Did you uninstall Files app?")
             }
         }
     }
@@ -393,14 +403,14 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                     val result = it as? SaveImageResultSuccess?
                     if (result != null) {
                         hideLoading()
-                        showSnackbar(getString(R.string.msg_image_saved))
+                        showSnackbar(getLocalizedString(R.string.msg_image_saved))
                         mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
                         mPhotoEditorView.source.setImageURI(mSaveImageUri)
                         currentUri = null
                         isRotated = false
                     } else {
                         hideLoading()
-                        showSnackbar(getString(R.string.msg_failed_to_save))
+                        showSnackbar(getLocalizedString(R.string.msg_failed_to_save))
                         Log.e(
                             TAG,
                             "saveAsBitmap -> storeBitmap -> SaveImageResult Error ${it?.errorMessage}"
@@ -429,14 +439,14 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 val result = r as? SaveImageResultSuccess?
                 if (result != null) {
                     hideLoading()
-                    showSnackbar(getString(R.string.msg_image_saved))
+                    showSnackbar(getLocalizedString(R.string.msg_image_saved))
                     mSaveImageUri = result.uri ?: Uri.fromFile(result.file)
                     mPhotoEditorView.source.setImageURI(mSaveImageUri)
                     currentUri = mSaveImageUri
                     isRotated = false
                 } else {
                     hideLoading()
-                    showSnackbar(getString(R.string.msg_failed_to_save))
+                    showSnackbar(getLocalizedString(R.string.msg_failed_to_save))
                     Log.e(
                         TAG,
                         "saveAsBitmap -> storeBitmap -> SaveImageResult Error ${r?.errorMessage}"
@@ -559,7 +569,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
     @SuppressLint("MissingPermission")
     private fun showSaveDialog() {
         val builder = AlertDialog.Builder(this)
-        builder.setMessage(getString(R.string.msg_save_image))
+        builder.setMessage(getLocalizedString(R.string.msg_save_image))
         builder.setPositiveButton(R.string.label_save) { _: DialogInterface?, _: Int -> saveImage() }
         builder.setNegativeButton(android.R.string.cancel) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
         builder.setNeutralButton(R.string.label_discard) { _: DialogInterface?, _: Int -> finish() }

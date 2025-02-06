@@ -15,17 +15,22 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.collection.LruCache
+import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.databinding.ActivityLanguageBinding
 import com.github.cvzi.screenshottile.databinding.ActivityTutorialBinding
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 
 
 /**
  * Shows a how-to tutorial.
  */
-class TutorialActivity : AppCompatActivity() {
+class TutorialActivity : BaseAppCompatActivity() {
     companion object {
         /**
          * New Intent for the TutorialActivity
@@ -88,8 +93,8 @@ class TutorialActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTutorialBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTutorialBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView<ActivityTutorialBinding>(this, R.layout.activity_tutorial)
+        binding.setVariable(BR.strings, App.texts)
 
         val cacheSize = (Runtime.getRuntime().maxMemory() / 1024).toInt() / 4
         bitmapCache = BitmapCache(cacheSize)
@@ -130,9 +135,9 @@ class TutorialActivity : AppCompatActivity() {
                 @SuppressLint("SetTextI18n")
                 binding.textViewStep.text = (position + 1).toString()
                 binding.textViewFooter.text = if (position >= 0 && position < descriptions.size) {
-                    getString(descriptions[position])
+                    getLocalizedString(descriptions[position])
                 } else {
-                    getString(descriptions[0])
+                    getLocalizedString(descriptions[0])
                 }
             }
         })

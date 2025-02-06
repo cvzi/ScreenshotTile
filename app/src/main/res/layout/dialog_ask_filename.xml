@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="strings"
+            type="com.github.cvzi.screenshottile.utils.Texts" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
 
-    <EditText
-        android:id="@+id/editTextFileName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/dialog_ask_filename_title"
-        android:hint="@string/dialog_ask_filename_hint"
-        android:inputType="textAutoCorrect"
-        android:maxLines="1"
-        android:scrollHorizontally="true"
-        android:textColorHint="#000000" />
+        <EditText
+            android:id="@+id/editTextFileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@{strings.dialog_ask_filename_title}"
+            android:hint="@{strings.dialog_ask_filename_hint}"
+            android:inputType="textAutoCorrect"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:textColorHint="#000000" />
 
-    <TextView
-        android:id="@+id/textViewMessageFolder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dialog_ask_filename_directory" />
+        <TextView
+            android:id="@+id/textViewMessageFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{strings.dialog_ask_filename_directory}" />
 
-    <TextView
-        android:id="@+id/textViewFolder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/dialog_ask_filename_directory"
-        android:text="" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/textViewFolder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@{strings.dialog_ask_filename_directory}"
+            android:text="" />
+    </LinearLayout>
+</layout>

@@ -25,7 +25,7 @@ import com.github.cvzi.screenshottile.utils.toastMessage
 /**
  * Empty activity that is used to collapse the quick settings panel, finishes itself in onCreate
  */
-class NoDisplayActivity : Activity() {
+class NoDisplayActivity : BaseActivity() {
     override fun onNewIntent(intent: Intent) {
         /* If the activity is already open, we need to update the intent,
         otherwise getIntent() returns the old intent in onCreate() */

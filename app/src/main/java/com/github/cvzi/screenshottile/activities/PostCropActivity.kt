@@ -30,6 +30,8 @@ import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.SingleImage
 import com.github.cvzi.screenshottile.utils.SingleImageLoaded
 import com.github.cvzi.screenshottile.utils.createNotification
+import com.github.cvzi.screenshottile.utils.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.scaleBitmap
 import com.github.cvzi.screenshottile.utils.scaleRect
 import com.github.cvzi.screenshottile.utils.tintImage
@@ -164,7 +166,7 @@ class PostCropActivity : GenericPostActivity() {
             offsetTop = (measuredHeight - bm.height) / 2f
 
             visibility = View.VISIBLE
-            text = context.getString(R.string.take_screenshot)
+            text = context.getLocalizedString(R.string.take_screenshot)
             shutter = R.drawable.ic_stat_name
             fullScreenIcon = R.drawable.ic_fullscreen
             onShutter = {
@@ -257,7 +259,7 @@ class PostCropActivity : GenericPostActivity() {
                     dummyPath = result.dummyPath
                 }
                 toastMessage(
-                    getString(R.string.screenshot_file_saved, dummyPath), ToastType.SUCCESS
+                    formatLocalizedString(R.string.screenshot_file_saved, dummyPath), ToastType.SUCCESS
                 )
 
                 createNotification(
@@ -274,7 +276,7 @@ class PostCropActivity : GenericPostActivity() {
                 val path = result.file.absolutePath
 
                 toastMessage(
-                    getString(R.string.screenshot_file_saved, path), ToastType.SUCCESS
+                    formatLocalizedString(R.string.screenshot_file_saved, path), ToastType.SUCCESS
                 )
 
                 createNotification(

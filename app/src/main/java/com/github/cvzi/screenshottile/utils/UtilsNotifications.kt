@@ -51,10 +51,10 @@ const val UTILSNOTIKT = "UtilsNotifications.kt"
 fun createNotificationScreenshotTakenChannel(context: Context): String {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-        val channelName = context.getString(R.string.notification_channel_description)
-        val notificationTitle = context.getString(R.string.notification_title)
+        val channelName = context.getLocalizedString(R.string.notification_channel_description)
+        val notificationTitle = context.getLocalizedString(R.string.notification_title)
         val channelDescription =
-            context.getString(R.string.notification_channel_description) + "\n'$notificationTitle'"
+            context.getLocalizedString(R.string.notification_channel_description) + "\n'$notificationTitle'"
 
         context.applicationContext.getSystemService(NotificationManager::class.java)?.run {
             if (getNotificationChannel(TakeScreenshotActivity.NOTIFICATION_CHANNEL_SCREENSHOT_TAKEN) == null) {
@@ -81,10 +81,10 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
 fun createNotificationForegroundServiceChannel(context: Context): String {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-        val channelName = context.getString(R.string.notification_foreground_channel_description)
-        val notificationTitle = context.getString(R.string.notification_foreground_title)
+        val channelName = context.getLocalizedString(R.string.notification_foreground_channel_description)
+        val notificationTitle = context.getLocalizedString(R.string.notification_foreground_title)
         val channelDescription =
-            context.getString(R.string.notification_foreground_channel_description) + "\n'$notificationTitle'"
+            context.getLocalizedString(R.string.notification_foreground_channel_description) + "\n'$notificationTitle'"
 
         context.applicationContext.getSystemService(NotificationManager::class.java)?.run {
             if (getNotificationChannel(TakeScreenshotActivity.NOTIFICATION_CHANNEL_FOREGROUND) == null) {
@@ -180,8 +180,8 @@ fun createNotification(
     builder.apply {
         setWhen(Calendar.getInstance().timeInMillis)
         setShowWhen(true)
-        setContentTitle(appContext.getString(R.string.notification_title))
-        setContentText(appContext.getString(R.string.notification_body))
+        setContentTitle(appContext.getLocalizedString(R.string.notification_title))
+        setContentText(appContext.getLocalizedString(R.string.notification_body))
         //if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) { // TODO why is this crashing
         //    setSmallIcon(R.drawable.stat_notify_image)
         //} else {
@@ -224,7 +224,7 @@ fun createNotification(
         builder.addAction(
             Notification.Action.Builder(
                 icon,
-                appContext.getString(R.string.notification_share_screenshot),
+                appContext.getLocalizedString(R.string.notification_share_screenshot),
                 pendingIntentShare
             ).build()
         )
@@ -246,7 +246,7 @@ fun createNotification(
         builder.addAction(
             Notification.Action.Builder(
                 icon,
-                appContext.getString(R.string.notification_edit_screenshot),
+                appContext.getLocalizedString(R.string.notification_edit_screenshot),
                 pendingIntentEdit
             ).build()
         )
@@ -269,7 +269,7 @@ fun createNotification(
         builder.addAction(
             Notification.Action.Builder(
                 icon,
-                appContext.getString(R.string.notification_delete_screenshot),
+                appContext.getLocalizedString(R.string.notification_delete_screenshot),
                 pendingIntentDelete
             ).build()
         )
@@ -314,7 +314,7 @@ fun createNotification(
         val action: Notification.Action =
             Notification.Action.Builder(
                 icon,
-                appContext.getString(R.string.notification_rename_screenshot),
+                appContext.getLocalizedString(R.string.notification_rename_screenshot),
                 replyPendingIntent
             )
                 .addRemoteInput(remoteInput)
@@ -340,7 +340,7 @@ fun createNotification(
         builder.addAction(
             Notification.Action.Builder(
                 icon,
-                appContext.getString(R.string.notification_screenshot_details),
+                appContext.getLocalizedString(R.string.notification_screenshot_details),
                 pendingIntentDetails
             ).build()
         )
@@ -364,7 +364,7 @@ fun createNotification(
         builder.addAction(
             Notification.Action.Builder(
                 icon,
-                appContext.getString(R.string.notification_crop_screenshot),
+                appContext.getLocalizedString(R.string.notification_crop_screenshot),
                 pendingIntentDetails
             ).build()
         )
@@ -388,7 +388,7 @@ fun createNotification(
         builder.addAction(
             Notification.Action.Builder(
                 icon,
-                appContext.getString(R.string.notification_photo_editor_screenshot),
+                appContext.getLocalizedString(R.string.notification_photo_editor_screenshot),
                 pendingIntentDetails
             ).build()
         )
@@ -434,7 +434,7 @@ fun actionButtonIntent(
 fun shareImageChooserIntent(context: Context, path: Uri, mimeType: String): Intent {
     return Intent.createChooser(
         shareImageIntent(context, path, mimeType),
-        context.getString(R.string.notification_app_chooser_share)
+        context.getLocalizedString(R.string.notification_app_chooser_share)
     )
 }
 
@@ -499,7 +499,7 @@ fun editImageIntent(context: Context, path: Uri, mimeType: String?): Intent {
  */
 fun editImageChooserIntent(context: Context, path: Uri, mimeType: String?): Intent {
     editImageIntent(context, path, mimeType).apply {
-        return Intent.createChooser(this, context.getString(R.string.notification_app_chooser_edit))
+        return Intent.createChooser(this, context.getLocalizedString(R.string.notification_app_chooser_edit))
     }
 }
 
@@ -581,8 +581,8 @@ fun foregroundNotification(context: Context, notificationId: Int): Notification.
     return Notification.Builder(context, createNotificationForegroundServiceChannel(context))
         .apply {
             setShowWhen(false)
-            setContentTitle(context.getString(R.string.notification_foreground_title))
-            setContentText(context.getString(R.string.notification_foreground_body))
+            setContentTitle(context.getLocalizedString(R.string.notification_foreground_title))
+            setContentText(context.getLocalizedString(R.string.notification_foreground_body))
             setAutoCancel(true)
             //if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) { // TODO why is this crashing
             //    setSmallIcon(R.drawable.transparent_icon)

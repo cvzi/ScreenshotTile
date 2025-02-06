@@ -1,60 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.TutorialActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="strings"
+            type="com.github.cvzi.screenshottile.utils.Texts" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        tools:context=".activities.TutorialActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:weightSum="4">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/tutorial"
-                android:textAppearance="@android:style/TextAppearance.Material.Title" />
-
-            <TextView
-                android:id="@+id/textViewStep"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
                 android:gravity="center_horizontal"
-                android:singleLine="true"
-                android:text="@string/tutorial_step_one"
-                android:textAppearance="@android:style/TextAppearance.Material.Title" />
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-            <Button
-                android:id="@+id/buttonSettings"
-                style="@style/Widget.Material3.Button"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{strings.tutorial}"
+                    android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                <TextView
+                    android:id="@+id/textViewStep"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal"
+                    android:singleLine="true"
+                    android:text="@{strings.tutorial_step_one}"
+                    android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                <Button
+                    android:id="@+id/buttonSettings"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@{strings.more_setting}"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewFooter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="12sp"
-                android:text="@string/more_setting" />
+                android:text="@{strings.tutorial_tap_for_next_step}"
+                android:textSize="18sp" />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent" />
+
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textViewFooter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tutorial_tap_for_next_step"
-            android:textSize="18sp" />
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent" />
-
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,465 +1,421 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingStart="5dp"
-    android:paddingEnd="5dp"
-    tools:context=".activities.MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="strings"
+            type="com.github.cvzi.screenshottile.utils.Texts" />
+    </data>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/donationLinks"
-        style="@style/CardViewWhite"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <!-- Note: if this is removed, the "Advertising Anti-Feature can be removed from F-Droid -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:singleLine="true"
-                android:text="🇮🇱 Stand with Israel 🇮🇱"
-                android:textAppearance="@android:style/TextAppearance.Material.Title"
-                android:textColor="#0038b8" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"
-                    android:text="Donate to:"
-                    android:textColor="#0038b8" />
-
-                <ImageButton
-                    android:id="@+id/imageButtonDonateClose"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="220dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/ic_close" />
-            </LinearLayout>
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/toggleButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <Button
-                    style="@style/Widget.Material3.Button"
-                    android:id="@+id/buttonDonateMagen"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="mdais.org"
-                    android:textSize="10sp" 
-               />
-               <Button
-                   style="@style/Widget.Material3.Button"
-                   android:id="@+id/buttonDonateIsraelRescue"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="israelrescue.org"
-                   android:textSize="10sp" 
-               />
-          </com.google.android.material.button.MaterialButtonToggleGroup>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <ScrollView
-        android:id="@+id/scrollView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="120dp">
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        tools:context=".activities.MainActivity">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical|center_horizontal"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="start"
-                            android:text="@string/app_name_long"
-                            android:textAppearance="@android:style/TextAppearance.Material.Title" />
+                            android:gravity="center_vertical|center_horizontal"
+                            android:orientation="horizontal">
 
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="end">
-
-                            <Button
-                                android:id="@+id/buttonSettings"
-                                style="@style/Widget.Material3.Button"
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/more_setting"
-                                android:textSize="11.7sp" />
-                        </RelativeLayout>
+                                android:layout_weight="1"
+                                android:gravity="start"
+                                android:text="@{strings.app_name}"
+                                android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="end">
+
+                                <Button
+                                    android:id="@+id/buttonSettings"
+                                    style="@style/Widget.Material3.Button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{strings.more_setting}"
+                                    android:textSize="11.7sp" />
+                            </RelativeLayout>
 
 
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/textDescGeneral"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="@string/main_general_text"
+                            android:textAppearance="@android:style/TextAppearance.Material.Body2" />
                     </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/textDescGeneral"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/main_general_text"
-                        android:textAppearance="@android:style/TextAppearance.Material.Body2" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
-            <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/switchLegacy"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:contentDescription="@string/main_legacy_method_title" />
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchLegacy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@{strings.main_legacy_method_title}" />
+
+                            <TextView
+                                android:id="@+id/textTitleLegacy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:singleLine="true"
+                                android:text="@{strings.main_legacy_method_title}"
+                                android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/textTitleLegacy"
+                            android:id="@+id/textDescLegacy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.main_legacy_method_text}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                        <Button
+                            android:id="@+id/buttonTutorial"
+                            style="@style/Widget.Material3.Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="@string/main_legacy_method_title"
-                            android:textAppearance="@android:style/TextAppearance.Material.Title" />
-
+                            android:text="@{strings.tutorial}"
+                            android:textSize="13sp" />
 
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textDescLegacy"
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/nativeCardView"
+                    style="@style/CardViewSecondary">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutNative"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/main_legacy_method_text"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                    <Button
-                        android:id="@+id/buttonTutorial"
-                        style="@style/Widget.Material3.Button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/tutorial"
-                        android:textSize="13sp" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                </LinearLayout>
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchNative"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@{strings.main_native_method_title}" />
+
+                            <TextView
+                                android:id="@+id/textTitleNative"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:singleLine="true"
+                                android:text="@{strings.main_native_method_title}"
+                                android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/textDescNative"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="@string/main_native_method_text"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                        <Button
+                            android:id="@+id/buttonAccessibilitySettings"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.main_accessibility_settings}"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
 
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/nativeCardView"
-                style="@style/CardViewSecondary">
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutNative"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/floatingButtonCardView"
+                    style="@style/CardViewPrimary">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/switchNative"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:contentDescription="@string/main_native_method_title" />
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchFloatingButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@{strings.main_floating_button_title}" />
+
+                            <TextView
+                                android:id="@+id/textTitleFloatingButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:singleLine="true"
+                                android:text="@{strings.main_floating_button_title}"
+                                android:textAppearance="@android:style/TextAppearance.Material.Title" />
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/textTitleNative"
+                            android:id="@+id/textDescFloatingButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.main_floating_button_text}"
+                            android:textAppearance="@android:style/TextAppearance.Material.Body1" />
+
+                        <Button
+                            android:id="@+id/buttonFloatingButtonSettings"
+                            style="@style/Widget.Material3.Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:text="@string/main_native_method_title"
-                            android:textAppearance="@android:style/TextAppearance.Material.Title" />
+                            android:text="@{strings.floating_button_settings}"
+                            android:textSize="13sp" />
 
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:id="@+id/textDescNative"
+                <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutAssist"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/main_native_method_text"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                    <Button
-                        android:id="@+id/buttonAccessibilitySettings"
-                        style="@style/Widget.Material3.Button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/main_accessibility_settings"
-                        android:textSize="13sp" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchAssist"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:contentDescription="@{strings.main_assist_app_title}" />
 
+                            <TextView
+                                android:id="@+id/textTitleAssist"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:singleLine="true"
+                                android:text="@{strings.main_assist_app_title}"
+                                android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/floatingButtonCardView"
-                style="@style/CardViewPrimary">
+                        </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                        <TextView
+                            android:id="@+id/textDescAssist"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.main_assist_app_text}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/switchFloatingButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/main_floating_button_title" />
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
                         <TextView
-                            android:id="@+id/textTitleFloatingButton"
+                            android:id="@+id/textTitleLongPress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:singleLine="true"
-                            android:text="@string/main_floating_button_title"
+                            android:text="@{strings.main_long_press_title}"
                             android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                        <TextView
+                            android:id="@+id/textDescLongPress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.main_long_press_text}"
+                            android:textAppearance="@android:style/TextAppearance.Material.Body1" />
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textDescFloatingButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/main_floating_button_text"
-                        android:textAppearance="@android:style/TextAppearance.Material.Body1" />
+                </androidx.cardview.widget.CardView>
 
-                    <Button
-                        android:id="@+id/buttonFloatingButtonSettings"
-                        style="@style/Widget.Material3.Button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/floating_button_settings"
-                        android:textSize="13sp" />
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutAssist"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+                <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/switchAssist"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/main_assist_app_title" />
 
                         <TextView
-                            android:id="@+id/textTitleAssist"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:singleLine="true"
-                            android:text="@string/main_assist_app_title"
+                            android:text="@{strings.setting_post_actions}"
                             android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.setting_post_actions_description}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                        <Button
+                            android:id="@+id/buttonPostActions"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.setting_post_actions}"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@{strings.button_history}"
+                            android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.button_history_description}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                        <Button
+                            android:id="@+id/buttonHistory"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.button_history}"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    style="@style/CardViewSecondary"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <Button
+                            android:id="@+id/buttonChangeLanguage"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ic_translate"
+                            android:text="Change Language"
+                            android:textSize="13sp"
+                            tools:ignore="RtlHardcoded" />
+
+                        <TextView
+                            android:id="@+id/textTitleTranslate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@{strings.translate_this_app}"
+                            android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                        <TextView
+                            android:id="@+id/textDescTranslate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="@string/translate_this_app_text"
+                            android:textAppearance="@android:style/TextAppearance.Material.Body1" />
+
+                        <Button
+                            android:id="@+id/buttonSettings2"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.more_setting}"
+                            android:textSize="13sp" />
+
+                        <Button
+                            android:id="@+id/buttonUpdateCheck"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.about_update_check_button}"
+                            android:textSize="13sp" />
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textDescAssist"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/main_assist_app_text"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/textTitleLongPress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/main_long_press_title"
-                        android:textAppearance="@android:style/TextAppearance.Material.Title" />
-
-                    <TextView
-                        android:id="@+id/textDescLongPress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/main_long_press_text"
-                        android:textAppearance="@android:style/TextAppearance.Material.Body1" />
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
 
-            <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
+            </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
+        </ScrollView>
 
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/setting_post_actions"
-                        android:textAppearance="@android:style/TextAppearance.Material.Title" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_post_actions_description"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-                    <Button
-                        android:id="@+id/buttonPostActions"
-                        style="@style/Widget.Material3.Button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/setting_post_actions" 
-                        android:textSize="13sp" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/button_history"
-                        android:textAppearance="@android:style/TextAppearance.Material.Title" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/button_history_description"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-                    <Button
-                        android:id="@+id/buttonHistory"
-                        style="@style/Widget.Material3.Button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/button_history"
-                        android:textSize="13sp" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewSecondary"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="50dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/textTitleTranslate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@string/translate_this_app"
-                        android:textAppearance="@android:style/TextAppearance.Material.Title" />
-
-                    <TextView
-                        android:id="@+id/textDescTranslate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/translate_this_app_text"
-                        android:textAppearance="@android:style/TextAppearance.Material.Body1" />
-
-                    <Button
-                        android:id="@+id/buttonSettings2"
-                        style="@style/Widget.Material3.Button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/more_setting"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

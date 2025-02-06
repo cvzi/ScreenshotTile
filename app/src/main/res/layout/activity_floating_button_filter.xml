@@ -1,171 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="1"
-    android:paddingStart="5dp"
-    android:paddingEnd="5dp"
-    tools:context=".activities.MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
-        android:id="@+id/scrollView"
+    <data>
+
+        <variable
+            name="strings"
+            type="com.github.cvzi.screenshottile.utils.Texts" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="5dp">
+        android:layout_weight="1"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        tools:context=".activities.MainActivity">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="5dp">
 
-            <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchFloatingButtonEnabled"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/main_floating_button_title"
-                        android:textAppearance="@android:style/TextAppearance.Material.Body2" />
+                <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/buttonMoreSettings"
-                            style="@style/Widget.Material3.Button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/more_setting"
-                            android:textSize="12.1sp" />
-
-                        <Button
-                            android:id="@+id/buttonFloatingButtonSettings"
-                            style="@style/Widget.Material3.Button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/floating_button_settings"
-                            android:textSize="12.1sp" />
-
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/switchFloatingFilterEnabled"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/switchFloatingButtonEnabled"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:text="@{strings.main_floating_button_title}"
                             android:textAppearance="@android:style/TextAppearance.Material.Body2" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/buttonMoreSettings"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.more_setting}"
+                                android:textSize="12.1sp" />
+
+                            <Button
+                                android:id="@+id/buttonFloatingButtonSettings"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.floating_button_settings}"
+                                android:textSize="12.1sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchFloatingFilterEnabled"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@android:style/TextAppearance.Material.Body2" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.setting_show_hide_in_specific_apps}" />
+                        </LinearLayout>
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupFilterMode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:tag="BLACKLIST"
+                                android:text="@{strings.setting_filtermode_blacklist}" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:tag="WHITELIST"
+                                android:text="@{strings.setting_filtermode_whitelist}" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/setting_show_hide_in_specific_apps" />
-                    </LinearLayout>
+                            android:padding="10dp"
+                            android:text="@{strings.setting_filtermode_select_apps}" />
 
-                    <RadioGroup
-                        android:id="@+id/radioGroupFilterMode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
+                        <EditText
+                            android:id="@+id/editTextSearch"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:tag="BLACKLIST"
-                            android:text="@string/setting_filtermode_blacklist" />
+                            android:ems="10"
+                            android:hint="@{strings.setting_filtermode_search}"
+                            android:inputType="text" />
 
-                        <RadioButton
-                            android:layout_width="wrap_content"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/packagesRecyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:tag="WHITELIST"
-                            android:text="@string/setting_filtermode_whitelist" />
+                            android:orientation="horizontal">
 
-                    </RadioGroup>
+                            <Button
+                                android:id="@+id/buttonSelectAll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.setting_filtermode_select_all}" />
 
-                </LinearLayout>
+                            <Button
+                                android:id="@+id/buttonInvertSelection"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.setting_filtermode_invert_selection}" />
 
-
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="@string/setting_filtermode_select_apps" />
-
-                    <EditText
-                        android:id="@+id/editTextSearch"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:hint="@string/setting_filtermode_search" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/packagesRecyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/buttonSelectAll"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/setting_filtermode_select_all" />
-
-                        <Button
-                            android:id="@+id/buttonInvertSelection"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/setting_filtermode_invert_selection" />
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
 
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+        </ScrollView>
 
 
-        </LinearLayout>
-
-    </ScrollView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

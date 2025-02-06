@@ -8,6 +8,8 @@ import android.speech.SpeechRecognizer
 import android.util.Log
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
+import com.github.cvzi.screenshottile.utils.getLocalizedString
+import com.github.cvzi.screenshottile.utils.setUserLanguage
 import com.github.cvzi.screenshottile.utils.toastMessage
 
 /**
@@ -24,8 +26,9 @@ import com.github.cvzi.screenshottile.utils.toastMessage
  */
 class MyRecognitionService : RecognitionService() {
     override fun onStartListening(intent: Intent, callback: Callback) {
+        setUserLanguage()
         val errorMsg =
-            "The default assistant app \"${getString(R.string.app_name)}\" does not offer speech recognition!"
+            "The default assistant app \"${getLocalizedString(R.string.app_name)}\" does not offer speech recognition!"
 
         try {
             callback.results(Bundle().apply {

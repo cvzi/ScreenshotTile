@@ -1,114 +1,158 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="1"
-    android:paddingStart="5dp"
-    android:paddingEnd="5dp"
-    tools:context=".activities.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
-        android:id="@+id/scrollView"
+    <data>
+
+        <variable
+            name="strings"
+            type="com.github.cvzi.screenshottile.utils.Texts" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="5dp">
+        android:layout_weight="1"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        tools:context=".activities.MainActivity">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="5dp">
 
-            <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switchFloatingButtonEnabled"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/main_floating_button_title"
-                        android:textAppearance="@android:style/TextAppearance.Material.Body2" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-
-            <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:text="@string/setting_floating_action" />
-
-                    <RadioGroup
-                        android:id="@+id/radioGroupAction"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <RadioButton
-                            android:id="@+id/radioButtonActionNative"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/use_native_screenshot" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonActionPartial"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/partial_screenshot" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonActionLegacy"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/main_legacy_method_title" />
-
-                    </RadioGroup>
+                <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/switchFloatingButtonHideAfter"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/switchFloatingButtonEnabled"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="" />
+                            android:text="@{strings.main_floating_button_title}"
+                            android:textAppearance="@android:style/TextAppearance.Material.Body2" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:labelFor="@id/switchFloatingButtonHideAfter"
-                            android:text="@string/setting_floating_button_hide_after" />
+                            android:layout_height="0dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="@{strings.setting_floating_action}" />
 
+                        <RadioGroup
+                            android:id="@+id/radioGroupAction"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonActionNative"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.use_native_screenshot}" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonActionPartial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.partial_screenshot}" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonActionLegacy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.main_legacy_method_title}" />
+
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchFloatingButtonHideAfter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:labelFor="@id/switchFloatingButtonHideAfter"
+                                android:text="@{strings.setting_floating_button_hide_after}" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchFloatingButtonDelay"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:labelFor="@id/switchFloatingButtonDelay"
+                                    android:text="@{strings.setting_floating_button_delay_custom_summary}" />
+
+                                <EditText
+                                    android:id="@+id/editTextFloatingButtonDelay"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1"
+                                    android:ems="5"
+                                    android:hint="seconds"
+                                    android:inputType="number"
+                                    tools:ignore="HardcodedText" />
+                            </LinearLayout>
+
+                        </LinearLayout>
                     </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/switchFloatingButtonDelay"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="" />
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -116,371 +160,337 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:labelFor="@id/switchFloatingButtonDelay"
-                                android:text="@string/setting_floating_button_delay_custom_summary" />
-
-                            <EditText
-                                android:id="@+id/editTextFloatingButtonDelay"
+                                android:id="@+id/textViewFloatingButtonScale"
                                 android:layout_width="wrap_content"
                                 android:layout_height="0dp"
+                                android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:ems="5"
-                                android:hint="seconds"
-                                android:inputType="number"
-                                tools:ignore="HardcodedText" />
+                                android:text="@{strings.setting_floating_button_scale}" />
+
+                            <SeekBar
+                                android:id="@+id/seekBarFloatingButtonScale"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
 
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutPreview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageViewFloatingButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center|center_vertical"
+                                android:contentDescription="@{strings.floating_button_settings}"
+                                app:srcCompat="@drawable/ic_round_shutter_animate_shutter" />
+
+                            <TextView
+                                android:id="@+id/imageViewCloseButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center|center_vertical"
+                                android:text=""
+                                android:textColor="@android:color/black" />
+                        </LinearLayout>
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp">
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/switchFloatingButtonAlpha"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textViewFloatingButtonAlpha"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="0dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:text="@{strings.setting_floating_button_alpha}" />
+
+                                    <SeekBar
+                                        android:id="@+id/seekBarFloatingButtonAlpha"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/switchFloatingButtonColorTint"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textViewFloatingButtonTint"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="0dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:text="@{strings.setting_floating_button_color}" />
+
+                                    <SeekBar
+                                        android:id="@+id/seekBarFloatingButtonTintH"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                    <SeekBar
+                                        android:id="@+id/seekBarFloatingButtonTintV"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </LinearLayout>
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/switchFloatingButtonShowClose"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:text="@{strings.setting_floating_button_show_close}" />
+                            </TableRow>
+
+                        </TableLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="@{strings.setting_floating_button_shutter}" />
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupShutterTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="dummy theme"
+                                tools:ignore="HardcodedText" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="test theme"
+                                tools:ignore="HardcodedText" />
+
+                        </RadioGroup>
+
                     </LinearLayout>
-                </LinearLayout>
 
 
-            </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/textViewFloatingButtonScale"
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:text="@string/setting_floating_button_scale" />
 
-                        <SeekBar
-                            android:id="@+id/seekBarFloatingButtonScale"
+                        <TableLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:padding="10dp">
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/switchFloatingButtonOnPortrait"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:text="@{strings.setting_show_in_portrait_orientation}" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/switchFloatingButtonOnLandscape"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:text="@{strings.setting_show_in_landscape_orientation}" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/switchFloatingButtonOnUnLocked"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:text="@{strings.setting_show_when_device_is_unlocked}" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/switchFloatingButtonOnLocked"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:text="@{strings.setting_show_when_device_is_locked_on_the_lock_screen}" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/switchFloatingButtonOnQuickSettings"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:text="@{strings.setting_show_floating_buttons_quick_settings}" />
+                            </TableRow>
+
+                            <TableRow
+                                android:id="@+id/tableRowQuickSettingsWarning"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_span="2"
+                                    android:layout_weight="1"
+                                    android:text="@{strings.setting_quick_settings_warning}" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <Button
+                                    android:id="@+id/buttonOpenPackageFilter"
+                                    style="@style/Widget.Material3.Button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_span="2"
+                                    android:text="@{strings.setting_show_hide_in_specific_apps}"
+                                    android:textSize="13sp" />
+
+                            </TableRow>
+
+                        </TableLayout>
+
                     </LinearLayout>
 
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutPreview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                        <ImageView
-                            android:id="@+id/imageViewFloatingButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center|center_vertical"
-                            android:contentDescription="@string/floating_button_settings"
-                            app:srcCompat="@drawable/ic_round_shutter_animate_shutter" />
-
-                        <TextView
-                            android:id="@+id/imageViewCloseButton"
+                        <Button
+                            android:id="@+id/buttonRefresh"
+                            style="@style/Widget.Material3.Button"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center|center_vertical"
-                            android:text=""
-                            android:textColor="@android:color/black" />
+                            android:layout_height="wrap_content"
+                            android:text="🔄"
+                            android:textSize="13sp"
+                            tools:ignore="HardcodedText" />
+
+                        <Button
+                            android:id="@+id/buttonMoreSettings"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.more_setting}"
+                            android:textSize="12.1sp" />
+
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                    <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp">
+            </LinearLayout>
 
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+        </ScrollView>
 
-                            <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:id="@+id/switchFloatingButtonAlpha"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/textViewFloatingButtonAlpha"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="0dp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_weight="1"
-                                    android:text="@string/setting_floating_button_alpha" />
-
-                                <SeekBar
-                                    android:id="@+id/seekBarFloatingButtonAlpha"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-                            </LinearLayout>
-
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:id="@+id/switchFloatingButtonColorTint"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/textViewFloatingButtonTint"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="0dp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_weight="1"
-                                    android:text="@string/setting_floating_button_color" />
-
-                                <SeekBar
-                                    android:id="@+id/seekBarFloatingButtonTintH"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-
-                                <SeekBar
-                                    android:id="@+id/seekBarFloatingButtonTintV"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" />
-
-                            </LinearLayout>
-
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:id="@+id/switchFloatingButtonShowClose"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="1"
-                                android:text="@string/setting_floating_button_show_close" />
-                        </TableRow>
-
-                    </TableLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:text="@string/setting_floating_button_shutter" />
-
-                    <RadioGroup
-                        android:id="@+id/radioGroupShutterTheme"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="dummy theme"
-                            tools:ignore="HardcodedText" />
-
-                        <RadioButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="test theme"
-                            tools:ignore="HardcodedText" />
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-                    <TableLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp">
-
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:id="@+id/switchFloatingButtonOnPortrait"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="1"
-                                android:text="@string/setting_show_in_portrait_orientation" />
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:id="@+id/switchFloatingButtonOnLandscape"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="1"
-                                android:text="@string/setting_show_in_landscape_orientation" />
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:id="@+id/switchFloatingButtonOnUnLocked"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="1"
-                                android:text="@string/setting_show_when_device_is_unlocked" />
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:id="@+id/switchFloatingButtonOnLocked"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="1"
-                                android:text="@string/setting_show_when_device_is_locked_on_the_lock_screen" />
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.switchmaterial.SwitchMaterial
-                                android:id="@+id/switchFloatingButtonOnQuickSettings"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_weight="1"
-                                android:text="@string/setting_show_floating_buttons_quick_settings" />
-                        </TableRow>
-
-                        <TableRow
-                            android:id="@+id/tableRowQuickSettingsWarning"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_span="2"
-                                android:layout_weight="1"
-                                android:text="@string/setting_quick_settings_warning" />
-                        </TableRow>
-
-                        <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <Button
-                                android:id="@+id/buttonOpenPackageFilter"
-                                style="@style/Widget.Material3.Button"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_span="2"
-                                android:text="@string/setting_show_hide_in_specific_apps"
-                                android:textSize="13sp" />
-
-                        </TableRow>
-
-                    </TableLayout>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView style="@style/CardViewPrimary">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <Button
-                        android:id="@+id/buttonRefresh"
-                        style="@style/Widget.Material3.Button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🔄"
-                        android:textSize="13sp"
-                        tools:ignore="HardcodedText" />
-
-                    <Button
-                        android:id="@+id/buttonMoreSettings"
-                        style="@style/Widget.Material3.Button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/more_setting"
-                        android:textSize="12.1sp" />
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

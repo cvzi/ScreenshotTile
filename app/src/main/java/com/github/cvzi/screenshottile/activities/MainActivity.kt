@@ -1,10 +1,12 @@
 package com.github.cvzi.screenshottile.activities
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.StatusBarManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.Intent.ACTION_VIEW
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -15,15 +17,15 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.util.Log
-import android.view.LayoutInflater
+
+import androidx.databinding.DataBindingUtil
+import com.github.cvzi.screenshottile.BR
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.updateLayoutParams
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
@@ -33,6 +35,8 @@ import com.github.cvzi.screenshottile.databinding.ActivityMainBinding
 import com.github.cvzi.screenshottile.services.FloatingTileService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
+import com.github.cvzi.screenshottile.utils.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.hasFdroid
 import com.github.cvzi.screenshottile.utils.isNewAppInstallation
 import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
@@ -40,10 +44,11 @@ import com.github.cvzi.screenshottile.utils.toastMessage
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 
+
 /**
  * Launcher activity. Explanations and selector for legacy/native method
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseAppCompatActivity() {
     companion object {
         const val TAG = "MainActivity.kt"
 
@@ -69,8 +74,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        binding.setVariable(BR.strings, App.texts)
 
         if (!accessibilityConsent) {
             accessibilityConsent = hasFdroid(this)
@@ -91,7 +96,7 @@ class MainActivity : AppCompatActivity() {
         val textDescTranslate = binding.textDescTranslate
         textDescTranslate.movementMethod = LinkMovementMethod()
         textDescTranslate.text = Html.fromHtml(
-            getString(R.string.translate_this_app_text),
+            getLocalizedString(R.string.translate_this_app_text),
             Html.FROM_HTML_SEPARATOR_LINE_BREAK_DIV
         )
 
@@ -109,9 +114,9 @@ class MainActivity : AppCompatActivity() {
             binding.linearLayoutNative.let {
                 val hint = TextView(this)
                 it.addView(hint, 1)
-                hint.text = getString(
+                hint.text = formatLocalizedString(
                     R.string.emoji_forbidden,
-                    getString(R.string.use_native_screenshot_unsupported)
+                    getLocalizedString(R.string.use_native_screenshot_unsupported)
                 )
             }
             switchNative.isEnabled = false
@@ -127,15 +132,15 @@ class MainActivity : AppCompatActivity() {
         }
         binding.textDescNative.text =
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
-                getString(R.string.main_native_method_text).replace(
+                getLocalizedString(R.string.main_native_method_text).replace(
                     "{main_native_method_text_android_version}",
-                    getString(R.string.main_native_method_text_android_pre_11)
+                    getLocalizedString(R.string.main_native_method_text_android_pre_11)
                 )
 
             } else {
-                getString(R.string.main_native_method_text).replace(
+                getLocalizedString(R.string.main_native_method_text).replace(
                     "{main_native_method_text_android_version}",
-                    getString(R.string.main_native_method_text_android_since_11)
+                    getLocalizedString(R.string.main_native_method_text_android_since_11)
                 )
             }
 
@@ -178,35 +183,27 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.textDescGeneral.run {
-            makeActivityClickable(this)
+            makeActivityClickable(this, getLocalizedString(R.string.main_general_text))
         }
 
-        binding.buttonDonateMagen.setOnClickListener {
-            Intent(Intent.ACTION_VIEW, Uri.parse("https://www.mdais.org/en/donation")).apply {
+        binding.buttonChangeLanguage.setOnClickListener {
+            LanguageActivity.start(this)
+        }
+
+        binding.buttonUpdateCheck.setOnClickListener {
+            val args = arrayOf(
+                packageName ?: "com.github.cvzi.screenshottile",
+                BuildConfig.VERSION_CODE,
+                BuildConfig.VERSION_NAME,
+                BuildConfig.BUILD_TYPE
+            ).map { Uri.encode(it.toString()) }.toTypedArray()
+
+            @SuppressLint("StringFormatMatches")
+            val uri = Uri.parse(formatLocalizedString(R.string.pref_static_field_link_about_updates, *args))
+            Intent(ACTION_VIEW, uri).apply {
                 if (resolveActivity(packageManager) != null) {
                     startActivity(this)
                 }
-            }
-        }
-        binding.buttonDonateIsraelRescue.setOnClickListener {
-            Intent(
-                Intent.ACTION_VIEW,
-                Uri.parse("https://israelrescue.org/campaign/israel-under-attack/")
-            ).apply {
-                if (resolveActivity(packageManager) != null) {
-                    startActivity(this)
-                }
-            }
-        }
-
-        binding.imageButtonDonateClose.setOnClickListener {
-            binding.donationLinks.removeAllViews()
-            App.getInstance().prefManager.showDonationLinks12600 = false
-        }
-        if (!App.getInstance().prefManager.showDonationLinks12600) {
-            binding.donationLinks.removeAllViews()
-            binding.scrollView.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                setMargins(0, 0, 0, 0)
             }
         }
 
@@ -325,7 +322,7 @@ class MainActivity : AppCompatActivity() {
             // Firstly, ask for normal screenshot tile
             statusBarManager.requestAddTileService(
                 ComponentName(this, ScreenshotTileService::class.java),
-                getString(R.string.tile_label),
+                getLocalizedString(R.string.tile_label),
                 Icon.createWithResource(this, R.drawable.ic_stat_name),
                 {
                     it.run()
@@ -335,7 +332,7 @@ class MainActivity : AppCompatActivity() {
                     if (FloatingTileService.instance == null) {
                         statusBarManager.requestAddTileService(
                             ComponentName(this, FloatingTileService::class.java),
-                            getString(R.string.tile_floating),
+                            getLocalizedString(R.string.tile_floating),
                             Icon.createWithResource(this, R.drawable.ic_tile_float),
                             {},
                             {})
@@ -358,17 +355,17 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.googleplay_consent_title)
         builder.setMessage(
-            "${getString(R.string.googleplay_consent_line_0)} " +
-                    "${getString(R.string.googleplay_consent_line_1)} " +
-                    "${getString(R.string.googleplay_consent_line_2)}\n" +
-                    "${getString(R.string.googleplay_consent_line_3)} " +
-                    "${getString(R.string.googleplay_consent_line_4)} " +
-                    "${getString(R.string.googleplay_consent_line_5)} " +
-                    "${getString(R.string.googleplay_consent_line_6)}\n" +
+            "${getLocalizedString(R.string.googleplay_consent_line_0)} " +
+                    "${getLocalizedString(R.string.googleplay_consent_line_1)} " +
+                    "${getLocalizedString(R.string.googleplay_consent_line_2)}\n" +
+                    "${getLocalizedString(R.string.googleplay_consent_line_3)} " +
+                    "${getLocalizedString(R.string.googleplay_consent_line_4)} " +
+                    "${getLocalizedString(R.string.googleplay_consent_line_5)} " +
+                    "${getLocalizedString(R.string.googleplay_consent_line_6)}\n" +
                     "\n" +
-                    getString(R.string.googleplay_consent_line_7)
+                    getLocalizedString(R.string.googleplay_consent_line_7)
         )
-        builder.setPositiveButton(getString(R.string.googleplay_consent_yes)) { _, _ ->
+        builder.setPositiveButton(getLocalizedString(R.string.googleplay_consent_yes)) { _, _ ->
             accessibilityConsent = true
             if (binding.switchNative.isChecked && ScreenshotAccessibilityService.instance == null) {
                 ScreenshotAccessibilityService.openAccessibilitySettings(this, TAG)
@@ -455,8 +452,8 @@ class MainActivity : AppCompatActivity() {
                 binding.linearLayoutNative.let {
                     hintAccessibilityServiceUnavailable = TextView(this)
                     it.addView(hintAccessibilityServiceUnavailable, 1)
-                    hintAccessibilityServiceUnavailable?.text = getString(
-                        R.string.emoji_warning, getString(
+                    hintAccessibilityServiceUnavailable?.text = formatLocalizedString(
+                        R.string.emoji_warning, getLocalizedString(
                             R.string.use_native_screenshot_unavailable
                         )
                     )
@@ -499,7 +496,7 @@ class MainActivity : AppCompatActivity() {
             binding.linearLayoutAssist.let {
                 hintAssistBugAndroid1011 = TextView(this)
                 it.addView(hintAssistBugAndroid1011, 1)
-                hintAssistBugAndroid1011?.text = getString(
+                hintAssistBugAndroid1011?.text = formatLocalizedString(
                     R.string.emoji_warning,
                     "Please tap here to enable the Accessibility Service to avoid a bug in Android 10 and 11\n\nSee https://github.com/cvzi/ScreenshotTile/issues/556 for more information\n---"
                 )
@@ -515,9 +512,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun makeActivityClickable(textView: TextView) {
+    private fun makeActivityClickable(textView: TextView, str: String) {
         textView.apply {
-            text = makeActivityClickableFromText(text.toString(), this@MainActivity).builder
+            text = makeActivityClickableFromText(str, this@MainActivity).builder
             movementMethod = LinkMovementMethod()
             highlightColor = Color.BLUE
         }

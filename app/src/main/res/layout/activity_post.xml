@@ -1,283 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingStart="5dp"
-    android:paddingEnd="5dp"
-    tools:context=".activities.MainActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
-        android:id="@+id/scrollView"
+    <data>
+
+        <variable
+            name="strings"
+            type="com.github.cvzi.screenshottile.utils.Texts" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        tools:context=".activities.MainActivity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp">
 
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewSecondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <TextView
-                        android:id="@+id/textViewFileName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text=""
-                        android:textAlignment="center"
-                        android:textColor="#1E88E5" />
-
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="#1E88E5"
-                        android:contentDescription="Screenshot"
-                        android:maxWidth="400dp"
-                        android:maxHeight="200dp"
-                        android:paddingHorizontal="1dp"
-                        android:paddingVertical="2dp"
-                        android:src="@android:drawable/ic_popup_sync"
-                        tools:ignore="HardcodedText" />
-
-                    <TextView
-                        android:id="@+id/textViewFileSize"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:text=""
-                        android:textAlignment="textEnd" />
-
-                    <TextView
-                        android:id="@+id/textViewFileFolder"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:text=""
-                        android:textAlignment="textStart" />
-
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewPrimary"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp">
+                android:layout_marginTop="1dp"
+                android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
+                    style="@style/CardViewSecondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        tools:ignore="UseCompoundDrawables"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewFileName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text=""
+                            android:textAlignment="center"
+                            android:textColor="#1E88E5" />
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            tools:ignore="HardcodedText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="#1E88E5"
+                            android:contentDescription="Screenshot"
+                            android:maxWidth="400dp"
+                            android:maxHeight="200dp"
+                            android:paddingHorizontal="1dp"
+                            android:paddingVertical="2dp"
+                            android:src="@android:drawable/ic_popup_sync" />
+
+                        <TextView
+                            android:id="@+id/textViewFileSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:text=""
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/textViewFileFolder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:text=""
+                            android:textAlignment="textStart" />
+
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    style="@style/CardViewPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="7dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <Button
-                            android:id="@+id/buttonShare"
-                            style="@style/Widget.Material3.Button"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/notification_share_screenshot" />
+                            android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/buttonEdit"
-                            style="@style/Widget.Material3.Button"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
+                            <Button
+                                android:id="@+id/buttonShare"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{strings.notification_share_screenshot}"
+                                android:textSize="12sp" />
+
+                            <Button
+                                android:id="@+id/buttonEdit"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{strings.notification_edit_screenshot}"
+                                android:textSize="12sp" />
+
+                            <Button
+                                android:id="@+id/buttonDelete"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{strings.notification_delete_screenshot}"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/notification_edit_screenshot" />
+                            android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/buttonDelete"
-                            style="@style/Widget.Material3.Button"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/notification_delete_screenshot" />
+                            <Button
+                                android:id="@+id/buttonPhotoEditor"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{strings.notification_photo_editor_screenshot}"
+                                android:textSize="12sp" />
 
+                            <Button
+                                android:id="@+id/buttonCrop"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{strings.notification_crop_screenshot}"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                </androidx.cardview.widget.CardView>
 
-                        <Button
-                            android:id="@+id/buttonPhotoEditor"
-                            style="@style/Widget.Material3.Button"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/notification_photo_editor_screenshot" />
-
-                        <Button
-                            android:id="@+id/buttonCrop"
-                            style="@style/Widget.Material3.Button"
-                            android:textSize="12sp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/notification_crop_screenshot" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                style="@style/CardViewSecondary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp">
-
-                <LinearLayout
+                <androidx.cardview.widget.CardView
+                    style="@style/CardViewSecondary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/post_rename_file"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/editTextNewName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:autofillHints=""
-                        android:hint="@string/post_hint_new_file_name"
-                        android:imeActionLabel="Rename"
-                        android:imeOptions="actionSend"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:scrollHorizontally="true"
-                        android:text="" />
-
+                    android:layout_marginTop="7dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <Button
-                            android:id="@+id/buttonRename"
-                            android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
-                            style="@style/Widget.Material3.Button"
-                            android:textSize="12sp"
-                            android:text="@string/post_button_save" />
-
-                        <Button
-                            android:id="@+id/buttonMove"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_weight="1"
-                            style="@style/Widget.Material3.Button"
-                            android:textSize="12sp"
-                            android:text="@string/post_button_move" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/post_recent_folders"
-                        android:textStyle="bold" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewRecentFolders"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/post_recent_file_names_and_suggestions"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewDateIso"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
-                        android:text=""
-                        android:textSize="17sp" />
-
-                    <TextView
-                        android:id="@+id/textViewDateLocal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
-                        android:text=""
-                        android:textSize="17sp" />
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewSuggestions"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                            android:text="@{strings.post_rename_file}"
+                            android:textStyle="bold" />
 
                         <EditText
-                            android:id="@+id/editTextAddSuggestion"
-                            android:layout_width="0dp"
+                            android:id="@+id/editTextNewName"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="2"
                             android:autofillHints=""
-                            android:hint="@string/post_hint_new_file_name_suggestion"
-                            android:imeActionLabel="Save"
+                            android:hint="@{strings.post_hint_new_file_name}"
+                            android:imeActionLabel="Rename"
                             android:imeOptions="actionSend"
                             android:inputType="text"
                             android:maxLines="1"
                             android:scrollHorizontally="true"
                             android:text="" />
 
-                        <ImageButton
-                            android:id="@+id/imageButtonSaveSuggestion"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@android:drawable/ic_menu_add"
-                            android:contentDescription="@string/post_save_a_suggestion" />
-                    </LinearLayout>
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/buttonRename"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_weight="1"
+                                android:text="@{strings.post_button_save}"
+                                android:textSize="12sp" />
+
+                            <Button
+                                android:id="@+id/buttonMove"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_weight="1"
+                                android:text="@{strings.post_button_move}"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.post_recent_folders}"
+                            android:textStyle="bold" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewRecentFolders"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.post_recent_file_names_and_suggestions}"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textViewDateIso"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="32dp"
+                            android:text=""
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/textViewDateLocal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="32dp"
+                            android:text=""
+                            android:textSize="17sp" />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewSuggestions"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/editTextAddSuggestion"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:autofillHints=""
+                                android:hint="@{strings.post_hint_new_file_name_suggestion}"
+                                android:imeActionLabel="Save"
+                                android:imeOptions="actionSend"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:scrollHorizontally="true"
+                                android:text="" />
+
+                            <ImageButton
+                                android:id="@+id/imageButtonSaveSuggestion"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:drawable/ic_menu_add"
+                                android:contentDescription="@{strings.post_save_a_suggestion}" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

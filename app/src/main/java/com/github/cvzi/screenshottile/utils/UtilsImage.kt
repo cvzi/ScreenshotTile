@@ -640,11 +640,11 @@ fun renameFileSystem(
         addImageToGallery(
             context,
             dest.absolutePath,
-            context.getString(R.string.file_title),
-            context.getString(
+            context.getLocalizedString(R.string.file_title),
+            context.formatLocalizedString(
                 R.string.file_description,
                 SimpleDateFormat(
-                    context.getString(R.string.file_description_simple_date_format),
+                    context.getLocalizedString(R.string.file_description_simple_date_format),
                     Locale.getDefault()
                 ).format(
                     date

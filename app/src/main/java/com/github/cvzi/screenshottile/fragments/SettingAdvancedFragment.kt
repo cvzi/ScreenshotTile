@@ -14,6 +14,8 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.cleanUpAppData
 import com.github.cvzi.screenshottile.utils.compressionPreference
+import com.github.cvzi.screenshottile.utils.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import java.util.Locale
 
 
@@ -77,37 +79,37 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
 
     private fun otherSummaries() {
         findPreference<DialogPreference>(getString(R.string.pref_key_select_area_shutter_delay))?.apply {
-            val defaultStr = getString(
+            val defaultStr = context.formatLocalizedString(
                 R.string.setting_defaults_to_milliseconds,
-                getString(R.string.pref_select_area_shutter_delay_default)
+                context.getLocalizedString(R.string.pref_select_area_shutter_delay_default)
             )
             summary = defaultStr
             dialogMessage =
-                "${getString(R.string.setting_select_area_shutter_delay_dialog)}\n$defaultStr"
+                "${context.getLocalizedString(R.string.setting_select_area_shutter_delay_dialog)}\n$defaultStr"
         }
 
         findPreference<DialogPreference>(getString(R.string.pref_key_original_after_permission_delay))?.apply {
-            val defaultStr = getString(
+            val defaultStr = context.formatLocalizedString(
                 R.string.setting_defaults_to_milliseconds,
-                getString(R.string.pref_original_after_permission_delay_default)
+                context.getLocalizedString(R.string.pref_original_after_permission_delay_default)
             )
             summary = defaultStr
             dialogMessage =
-                "${getString(R.string.setting_original_after_permission_delay_dialog)}\n$defaultStr"
+                "${context.getLocalizedString(R.string.setting_original_after_permission_delay_dialog)}\n$defaultStr"
         }
 
         findPreference<DialogPreference>(getString(R.string.pref_key_failed_virtual_display_delay))?.apply {
-            val defaultStr = getString(
+            val defaultStr = context.formatLocalizedString(
                 R.string.setting_defaults_to_milliseconds,
-                getString(R.string.pref_failed_virtual_display_delay_default)
+                context.getLocalizedString(R.string.pref_failed_virtual_display_delay_default)
             )
             summary = defaultStr
             dialogMessage =
-                "${getString(R.string.setting_failed_virtual_display_delay_dialog)}\n$defaultStr"
+                "${context.getLocalizedString(R.string.setting_failed_virtual_display_delay_dialog)}\n$defaultStr"
         }
 
         findPreference<DialogPreference>(getString(R.string.pref_key_failed_virtual_display_delay))?.apply {
-            getString(
+            context.formatLocalizedString(
                 R.string.setting_failed_virtual_display_delay,
                 "Failed to start virtual display"
             ).let {
@@ -117,9 +119,9 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
         }
 
         findPreference<SwitchPreference>(getString(R.string.pref_key_keep_screenshot_history))?.summary =
-            getString(
+            context?.formatLocalizedString(
                 R.string.setting_keep_screenshot_history_summary,
-                getString(R.string.button_history)
+                context?.getLocalizedString(R.string.button_history) ?: ""
             )
     }
 
@@ -135,7 +137,7 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
         } else {
             floatingButtonAlphaPref?.apply {
                 isEnabled = false
-                summary = getString(R.string.use_native_screenshot_unsupported)
+                summary = context.getLocalizedString(R.string.use_native_screenshot_unsupported)
                 isVisible = false
             }
         }
@@ -147,7 +149,7 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
             val currentCompression = compressionPreference(context, forceDefaultQuality = false)
 
             formatQualityPref?.apply {
-                summary = getString(
+                summary = context.formatLocalizedString(
                     R.string.setting_format_quality_summary,
                     compressionFormatToString(currentCompression),
                     compressionFormatToString(defaultCompression)
@@ -161,10 +163,10 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
         keepAppDataMaxPref?.apply {
             val folder = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
             summary = folder?.absolutePath ?: "Android/data/${context.packageName}/files/Pictures"
-            dialogMessage = getString(
+            dialogMessage = context.formatLocalizedString(
                 R.string.setting_keep_app_data_max_dialog,
-                getString(R.string.post_action_save_to_storage),
-                getString(R.string.pref_keep_app_data_max_default)
+                context.getLocalizedString(R.string.post_action_save_to_storage),
+                context.getLocalizedString(R.string.pref_keep_app_data_max_default)
             )
             if (switchEvent) {
                 this@SettingAdvancedFragment.context?.let {

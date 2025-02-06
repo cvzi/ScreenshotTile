@@ -6,8 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.databinding.RecentFolderItemBinding
+import com.github.cvzi.screenshottile.databinding.SuggestionItemBinding
 
 typealias OnItemClickListener = (v: View, index: Int) -> Unit
 
@@ -66,9 +71,9 @@ class SuggestionsAdapter(private var data: ArrayList<FileNameSuggestion>) :
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.suggestion_item, viewGroup, false)
-        return ViewHolder(view)
+        val itemBinding = DataBindingUtil.inflate<SuggestionItemBinding>(LayoutInflater.from(viewGroup.context), R.layout.suggestion_item, viewGroup, false)
+        itemBinding .setVariable(BR.strings, App.texts)
+        return ViewHolder(itemBinding.root)
 
     }
 

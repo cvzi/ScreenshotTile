@@ -276,6 +276,12 @@
         android:title="@string/about_advanced_settings_button"
         app:icon="@android:drawable/ic_menu_manage" />
 
+    <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_about_change_language"
+        android:persistent="false"
+        android:selectable="true"
+        android:title="Change language"
+        app:icon="@drawable/ic_translate" />
 
     <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_updates"

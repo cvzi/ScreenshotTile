@@ -54,11 +54,14 @@ import com.github.cvzi.screenshottile.utils.ShutterCollection
 import com.github.cvzi.screenshottile.utils.compressionPreference
 import com.github.cvzi.screenshottile.utils.createNotification
 import com.github.cvzi.screenshottile.utils.fillTextHeight
+import com.github.cvzi.screenshottile.utils.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.handlePostScreenshot
 import com.github.cvzi.screenshottile.utils.isDeviceLocked
 import com.github.cvzi.screenshottile.utils.parseColorString
 import com.github.cvzi.screenshottile.utils.safeRemoveView
 import com.github.cvzi.screenshottile.utils.saveBitmapToFile
+import com.github.cvzi.screenshottile.utils.setUserLanguage
 import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 import com.github.cvzi.screenshottile.utils.toastDeviceIsLocked
 import com.github.cvzi.screenshottile.utils.toastMessage
@@ -124,9 +127,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         private fun Context.toastMessageAccessibility() {
             if (instance == null) {
                 toastMessage(
-                    getString(
+                    formatLocalizedString(
                         R.string.toast_open_accessibility_settings,
-                        getString(R.string.app_name)
+                        getLocalizedString(R.string.app_name)
                     ), ToastType.ACTIVITY, Toast.LENGTH_LONG
                 )
             }
@@ -169,6 +172,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     override fun onServiceConnected() {
         instance = this
+
+        setUserLanguage()
 
         updateLockscreenSetting()
 
@@ -214,7 +219,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     private fun getWinContext(): Context {
         var windowContext: Context = this
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !useThis) {
-            val dm: DisplayManager = getSystemService(Context.DISPLAY_SERVICE) as DisplayManager
+            val dm: DisplayManager = getSystemService(DISPLAY_SERVICE) as DisplayManager
             val defaultDisplay = dm.getDisplay(DEFAULT_DISPLAY)
             windowContext = createDisplayContext(defaultDisplay)
         }
@@ -222,7 +227,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
     private fun getWinManager(): WindowManager {
-        return getWinContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        return getWinContext().getSystemService(WINDOW_SERVICE) as WindowManager
     }
 
     /**
@@ -265,7 +270,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         floatingButtonShown = true
 
         binding =
-            AccessibilityBarBinding.inflate(getWinContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+            AccessibilityBarBinding.inflate(getWinContext().getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater)
 
         binding?.root?.let { root ->
             configureFloatingButton(root, animate)
@@ -546,19 +551,19 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 // This app is in the filter list
                 if (prefManager.packageNameFilterMode == PackageNameFilterMode.BLACKLIST) {
                     buttonBlackWhiteList.text =
-                        "➖ ${getString(R.string.setting_filtermode_blacklist)}"
+                        "➖ ${getLocalizedString(R.string.setting_filtermode_blacklist)}"
                 } else {
                     buttonBlackWhiteList.text =
-                        "➖ ${getString(R.string.setting_filtermode_whitelist)}"
+                        "➖ ${getLocalizedString(R.string.setting_filtermode_whitelist)}"
                 }
             } else {
                 // This app is not in the filter list
                 if (prefManager.packageNameFilterMode == PackageNameFilterMode.BLACKLIST) {
                     buttonBlackWhiteList.text =
-                        "➕ ${getString(R.string.setting_filtermode_blacklist)}"
+                        "➕ ${getLocalizedString(R.string.setting_filtermode_blacklist)}"
                 } else {
                     buttonBlackWhiteList.text =
-                        "➕ ${getString(R.string.setting_filtermode_whitelist)}"
+                        "➕ ${getLocalizedString(R.string.setting_filtermode_whitelist)}"
                 }
             }
             buttonScreenshot.post {
@@ -809,7 +814,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
                 if ("showToast" in postScreenshotActions) {
                     getWinContext().toastMessage(
-                        getString(R.string.screenshot_file_saved, dummyPath),
+                        formatLocalizedString(R.string.screenshot_file_saved, dummyPath),
                         ToastType.SUCCESS
                     )
                 }
@@ -841,7 +846,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
                 if ("showToast" in postScreenshotActions) {
                     getWinContext().toastMessage(
-                        getString(R.string.screenshot_file_saved, path),
+                        formatLocalizedString(R.string.screenshot_file_saved, path),
                         ToastType.SUCCESS
                     )
                 }
@@ -872,7 +877,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
     private fun screenShotFailedToast(errorMessage: String? = null) {
-        val message = getString(R.string.screenshot_failed) + if (errorMessage != null) {
+        val message = getLocalizedString(R.string.screenshot_failed) + if (errorMessage != null) {
             "\n$errorMessage"
         } else {
             ""

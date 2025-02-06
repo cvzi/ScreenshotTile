@@ -29,6 +29,8 @@ import com.github.cvzi.screenshottile.databinding.ImageCropBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.createNotification
+import com.github.cvzi.screenshottile.utils.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.handlePostScreenshot
 import com.github.cvzi.screenshottile.utils.isDeviceLocked
 import com.github.cvzi.screenshottile.utils.tintImage
@@ -152,7 +154,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         this.binding = binding
         binding.globalScreenshotSelector.run {
             visibility = View.GONE
-            text = context.getString(R.string.take_screenshot)
+            text = context.getLocalizedString(R.string.take_screenshot)
             shutter = R.drawable.ic_stat_name
             fullScreenIcon = R.drawable.ic_fullscreen
             onShutter = {
@@ -286,7 +288,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
 
                 if ("showToast" in postScreenshotActions) {
                     context.toastMessage(
-                        context.getString(R.string.screenshot_file_saved, dummyPath),
+                        context.formatLocalizedString(R.string.screenshot_file_saved, dummyPath),
                         ToastType.SUCCESS
                     )
                 }
@@ -318,7 +320,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
 
                 if ("showToast" in postScreenshotActions) {
                     context.toastMessage(
-                        context.getString(R.string.screenshot_file_saved, path),
+                        context.formatLocalizedString(R.string.screenshot_file_saved, path),
                         ToastType.SUCCESS
                     )
                 }
@@ -355,7 +357,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
     }
 
     private fun screenShotFailedToast(errorMessage: String? = null) {
-        val message = context.getString(R.string.screenshot_failed) + if (errorMessage != null) {
+        val message = context.getLocalizedString(R.string.screenshot_failed) + if (errorMessage != null) {
             "\n$errorMessage"
         } else {
             ""

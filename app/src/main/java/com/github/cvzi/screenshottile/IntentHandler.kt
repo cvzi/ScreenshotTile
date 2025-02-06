@@ -5,13 +5,14 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
+import com.github.cvzi.screenshottile.utils.setUserLanguage
 
 /**
  * Handle broadcast intents from automation apps like Tasker or MacroDroid
  */
 class IntentHandler : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
-
+        context?.setUserLanguage()
         if (intent != null && context != null) {
             val secret = intent.getStringExtra("secret")
             val expected = App.getInstance().prefManager.broadcastSecret
@@ -35,7 +36,7 @@ class IntentHandler : BroadcastReceiver() {
 
             // Accept boolean and string value for extra "partial"
             val partial = intent.getBooleanExtra("partial", false) ||
-                    intent.getStringExtra("partial")?.equals("true", true) ?: false
+                    intent.getStringExtra("partial")?.equals("true", true) == true
 
             val noDisplayIntent = if (partial) {
                 NoDisplayActivity.newPartialIntent(context).apply {

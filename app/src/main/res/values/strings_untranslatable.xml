@@ -59,6 +59,7 @@
     <string name="pref_key_sound_notification_sink" translatable="false">sound_notification_sink</string>
     <string name="pref_key_sound_notification_tone" translatable="false">sound_notification_tone</string>
     <string name="pref_key_sound_notification_duration" translatable="false">sound_notification_duration</string>
+    <string name="pref_key_user_languages" translatable="false">user_languages</string>
 
     <string name="setting_file_format_value_default" translatable="false">png</string>
     <string-array name="setting_file_format_entries" translatable="false">
@@ -261,6 +262,7 @@
     <string name="pref_static_field_key_about_privacy" translatable="false">pref_static_field_key_about_privacy</string>
     <string name="pref_static_field_key_about_updates" translatable="false">pref_static_field_key_about_updates</string>
     <string name="pref_static_field_key_about_donate" translatable="false">pref_static_field_key_donate</string>
+    <string name="pref_static_field_key_about_change_language" translatable="false">pref_static_field_key_about_change_language</string>
     <string name="pref_static_field_link_about_app_1" translatable="false">https://github.com/ipcjs/ScreenshotTile</string>
     <string name="pref_static_field_link_about_app_3" translatable="false">https://github.com/cvzi/ScreenshotTile</string>
     <string name="pref_static_field_link_about_license_1" translatable="false">https://www.gnu.org/licenses/gpl-3.0</string>

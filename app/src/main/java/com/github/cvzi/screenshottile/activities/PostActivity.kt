@@ -18,17 +18,21 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_RENAME_INPUT
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
+import com.github.cvzi.screenshottile.databinding.ActivityHistoryBinding
 import com.github.cvzi.screenshottile.databinding.ActivityPostBinding
 import com.github.cvzi.screenshottile.utils.RecentFolder
 import com.github.cvzi.screenshottile.utils.RecentFoldersAdapter
 import com.github.cvzi.screenshottile.utils.SingleImage
 import com.github.cvzi.screenshottile.utils.SuggestionsAdapter
 import com.github.cvzi.screenshottile.utils.deleteImage
+import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.toastMessage
 
 
@@ -87,8 +91,8 @@ class PostActivity : GenericPostActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPostBinding.inflate(LayoutInflater.from(this))
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView<ActivityPostBinding>(this, R.layout.activity_post)
+        binding.setVariable(BR.strings, App.texts)
 
         intent?.run {
             val imagePath = getStringExtra(NOTIFICATION_ACTION_RENAME_INPUT)
@@ -169,7 +173,7 @@ class PostActivity : GenericPostActivity() {
                     )
                     // Show delete icon and close activity
                     binding.imageView.setImageResource(android.R.drawable.ic_menu_delete)
-                    binding.textViewFileName.setText(R.string.screenshot_deleted)
+                    binding.textViewFileName.text = getLocalizedString(R.string.screenshot_deleted)
                     binding.textViewFileSize.text = "0"
                     it.postDelayed({
                         finish()
@@ -203,7 +207,7 @@ class PostActivity : GenericPostActivity() {
         }
         startForPickFolder =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-                if (result.resultCode == Activity.RESULT_OK) {
+                if (result.resultCode == RESULT_OK) {
                     result.data?.let { intent ->
                         val uri = intent.data
                         val takeFlags: Int = intent.flags and

@@ -24,7 +24,7 @@ import com.github.cvzi.screenshottile.utils.screenshot
  * Changes by cuzi (cuzi@openmail.cc)
  */
 
-class SettingDialogActivity : AppCompatActivity() {
+class SettingDialogActivity : BaseAppCompatActivity() {
     companion object {
         private const val START_SERVICE =
             BuildConfig.APPLICATION_ID + "SettingDialogActivity.START_SERVICE"

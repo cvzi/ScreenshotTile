@@ -11,15 +11,19 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.HistoryActivity
 import com.github.cvzi.screenshottile.activities.PostActivity
+import com.github.cvzi.screenshottile.databinding.DialogCloseButtonBinding
+import com.github.cvzi.screenshottile.databinding.HistoryItemBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -174,9 +178,10 @@ class ScreenshotHistoryAdapter(
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.history_item, viewGroup, false)
-        return ViewHolder(view as ViewGroup, activity, onClick, activity.lifecycle)
+        val itemBinding = DataBindingUtil.inflate<HistoryItemBinding>(LayoutInflater.from(viewGroup.context), R.layout.history_item, viewGroup, false)
+        itemBinding .setVariable(BR.strings, App.texts)
+
+        return ViewHolder(itemBinding .root as ViewGroup, activity, onClick, activity.lifecycle)
     }
 
     // Replace the contents of a view (invoked by the layout manager)

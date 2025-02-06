@@ -3,6 +3,7 @@ package com.github.cvzi.screenshottile.utils
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.app.KeyguardManager
+import android.app.LocaleManager
 import android.app.PendingIntent
 import android.content.ContentValues
 import android.content.Context
@@ -18,6 +19,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
+import android.os.LocaleList
 import android.os.StatFs
 import android.provider.MediaStore.Images
 import android.service.quicksettings.TileService
@@ -31,6 +33,8 @@ import android.view.View
 import android.view.ViewManager
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.DialogFragment
 import com.burhanrashid52.photoediting.EditImageActivity
@@ -78,7 +82,7 @@ fun tryNativeScreenshot(): Boolean {
         return ScreenshotAccessibilityService.instance?.simulateScreenshotButton(
             autoHideButton = true,
             autoUnHideButton = true
-        ) ?: false
+        ) == true
     }
     return false
 }
@@ -342,10 +346,10 @@ fun createOutputStreamMediaStore(
         put(Images.ImageColumns.TITLE, fileTitle)
         put(Images.ImageColumns.DISPLAY_NAME, filename)
         put(
-            Images.ImageColumns.DESCRIPTION, context.getString(
+            Images.ImageColumns.DESCRIPTION, context.formatLocalizedString(
                 R.string.file_description,
                 SimpleDateFormat(
-                    context.getString(R.string.file_description_simple_date_format),
+                    context.getLocalizedString(R.string.file_description_simple_date_format),
                     Locale.getDefault()
                 ).format(Date())
             )
@@ -564,11 +568,11 @@ fun saveBitmapToFile(
                 addImageToGallery(
                     context,
                     result.imageFile.absolutePath,
-                    context.getString(R.string.file_title),
-                    context.getString(
+                    context.getLocalizedString(R.string.file_title),
+                    context.formatLocalizedString(
                         R.string.file_description,
                         SimpleDateFormat(
-                            context.getString(R.string.file_description_simple_date_format),
+                            context.getLocalizedString(R.string.file_description_simple_date_format),
                             Locale.getDefault()
                         ).format(
                             date
@@ -891,7 +895,7 @@ fun isNewAppInstallation(context: Context): Boolean {
     return try {
         return context.packageManager.getPackageInfo(context.packageName)?.run {
             firstInstallTime == lastUpdateTime
-        } ?: true
+        } != false
     } catch (e: PackageManager.NameNotFoundException) {
         Log.e(UTILSKT, "Package not found", e)
         true
@@ -988,7 +992,7 @@ fun Context?.toastMessage(text: String, toastType: ToastType, duration: Int = To
  * Show a string from a resource as a Toast message
  */
 fun Context?.toastMessage(resource: Int, toastType: ToastType, duration: Int = Toast.LENGTH_LONG) {
-    this?.toastMessage(getString(resource), toastType, duration)
+    this?.toastMessage(getLocalizedString(resource), toastType, duration)
 }
 
 /**
@@ -1228,3 +1232,28 @@ fun TileService.startActivityAndCollapseCustom(intent: Intent) {
  * Returns true if this set contains the specified CharsSequence as a String.
  */
 fun HashSet<String>.contains(seq: CharSequence): Boolean = this.contains(seq.toString())
+
+
+/**
+ * Set the user language for the app from the userLanguages list in the preferences or use the default android settings
+ */
+fun Context.setUserLanguage(force: Boolean = false) {
+    val userLanguages = App.getInstance().prefManager.userLanguages
+    if (userLanguages?.isNotBlank() == true) {
+        val localeArray = userLanguages.split(",").map { Locale.forLanguageTag(it) }.toTypedArray()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getSystemService(LocaleManager::class.java)?.applicationLocales =
+                LocaleList(*localeArray)
+        } else {
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.create(*localeArray))
+        }
+    } else if(force) {
+        // Use default android settings
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getSystemService(LocaleManager::class.java)?.applicationLocales =
+                LocaleList.getEmptyLocaleList()
+        } else {
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList())
+        }
+    }
+}

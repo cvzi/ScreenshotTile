@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentFactory
  * Changes by cuzi (cuzi@openmail.cc)
  */
 
-open class TransparentContainerActivity : FragmentActivity() {
+open class TransparentContainerActivity : BaseFragmentActivity() {
     companion object {
         const val EXTRA_FRAGMENT_NAME = "fragment_name"
         const val EXTRA_ARGS = "args"
