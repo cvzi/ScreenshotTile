@@ -41,7 +41,7 @@ To help translate this app, please visit [crowdin.com](https://crwd.in/screensho
 
 <a href="https://crwd.in/screenshottile?utm_source=badge&utm_medium=referral&utm_campaign=badge-add-on" rel="nofollow"><img style="width:140;height:40px" src="https://badges.crowdin.net/badge/dark/crowdin-on-light.png" srcset="https://badges.crowdin.net/badge/dark/crowdin-on-light.png 1x,https://badges.crowdin.net/badge/crowdin-on-light@2x.png 2x"  alt="Crowdin | Agile localization for tech companies" /></a>
 
-You may translate the resource files directly and open a pull request. The English source is in [/app/src/main/res/values/strings.xml](/app/src/main/res/values/strings.xml) and the translated files are stored in [/app/src/main/res/values-XX/strings.xml](/app/src/main/res/) (XX = language code)
+You may translate the resource files directly and open a pull request. The English source is in [/app/src/main/res/values-en/strings.xml](/app/src/main/res/values-en/strings.xml) and the translated files are stored in [/app/src/main/res/values-XX/strings.xml](/app/src/main/res/) (XX = language code)
 
 ## Contributors & libraries
 
