@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.12.0
+## 2.12.1
 *   Add in-app language selector
 
 ## 2.11.4
