@@ -23,6 +23,8 @@
     <string name="take_screenshot_5s_delayed">Capture d\'écran après 5s</string>
     <string name="toggle_floating_button">Activer/désactiver le bouton flottant</string>
     <string name="show_count_down">Afficher le décompte</string>
+    <string name="cancel_count_down">Tapez pour annuler le délai</string>
+    <string name="cancel_count_down_summary">Touchez l\'écran pour prendre immédiatement une capture d\'écran avant la fin du compte à rebours</string>
     <string name="use_native_screenshot">Utiliser la méthode de capture d\'écran native</string>
     <string name="use_native_screenshot_summary">Simuler un appui sur le bouton home + power</string>
     <string name="use_native_screenshot_unsupported">Requiert Android 9 Pie</string>
@@ -251,4 +253,17 @@
     <string name="setting_keep_screenshot_history">Garder l\'historique des captures d\'écran</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Enregistre les noms de fichiers des captures d\'écran dans une liste. Ceci est requis pour la fonction \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Éditeur de photo: Rotation des images en paysage</string>
+    <string name="setting_show_in_portrait_orientation">Afficher en orientation portrait</string>
+    <string name="setting_show_in_landscape_orientation">Afficher en orientation paysage</string>
+    <string name="setting_show_when_device_is_unlocked">Afficher lorsque l\'appareil est déverrouillé</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Afficher lorsque l\'appareil est verrouillé (sur l\'écran de verrouillage)</string>
+    <string name="setting_show_hide_in_specific_apps">Afficher/masquer dans des applications spécifiques</string>
+    <string name="setting_filtermode_blacklist">Liste noire</string>
+    <string name="setting_filtermode_whitelist">Liste Blanche</string>
+    <string name="setting_filtermode_select_apps">Sélectionner les applications</string>
+    <string name="setting_filtermode_search">Rechercher</string>
+    <string name="setting_filtermode_select_all">Sélectionner tout</string>
+    <string name="setting_filtermode_invert_selection">Inverser la sélection</string>
+    <string name="setting_show_floating_buttons_quick_settings">Affiche les boutons flottants lorsque les réglages rapides sont tirés vers le bas</string>
+    <string name="setting_quick_settings_warning">L\'une des tuiles de l\'application doit être ajoutée aux réglages rapides, sinon le bouton flottant ne peut pas être caché lorsque les réglages rapides sont tirés vers le bas</string>
 </resources>
