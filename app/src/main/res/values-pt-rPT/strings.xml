@@ -253,4 +253,17 @@
     <string name="setting_keep_screenshot_history">Manter histórico de capturas de ecrã</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Armazena os nomes dos ficheiros das capturas de ecrã numa lista. Isto é necessário para a funcionalidade \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Editor de fotos: rodar imagens na horizontal</string>
+    <string name="setting_show_in_portrait_orientation">Mostrar na orientação de retrato</string>
+    <string name="setting_show_in_landscape_orientation">Mostrar orientação de paisagem</string>
+    <string name="setting_show_when_device_is_unlocked">Mostrar quando o dispositivo é desbloqueado</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Mostrar quando o dispositivo estiver bloqueado (no ecrã de bloqueio)</string>
+    <string name="setting_show_hide_in_specific_apps">Mostrar/ocultar em aplicações específica</string>
+    <string name="setting_filtermode_blacklist">Lista negra</string>
+    <string name="setting_filtermode_whitelist">Lista branca</string>
+    <string name="setting_filtermode_select_apps">Selecionar aplicações</string>
+    <string name="setting_filtermode_search">Pesquisar</string>
+    <string name="setting_filtermode_select_all">Selecionar tudo</string>
+    <string name="setting_filtermode_invert_selection">Inverter seleção</string>
+    <string name="setting_show_floating_buttons_quick_settings">Mostrar botões flutuantes quando as configurações rápidas forem puxadas para baixo</string>
+    <string name="setting_quick_settings_warning">Um dos blocos da aplicação deve ser adicionado às configurações rápidas caso contrário, o botão flutuante não pode ser escondido quando as configurações rápidas são puxadas para baixo</string>
 </resources>
