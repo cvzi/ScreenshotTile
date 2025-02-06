@@ -11,7 +11,7 @@ Après l'installation vous devrez ajouter le bouton/tuile à vos paramètres rap
 ✓ Utiliser comme application d'assistance pour prendre une capture d'écran (appui long sur le bouton Accueil)
 ✓ Ne prenez en capture d'écran qu'une zone spécifique de l'écran (appuyez longuement sur la tuile)
 ✓ Retarder la prise d'une capture d'écran
-✓ Stocker dans n'importe quel dossier sur n'importe quel support, par exemple:  carte SD
+✓ Stocker dans n'importe quel dossier sur n'importe quel support, par exemple:  carte SD carte SD
 ✓ Enregistrer dans différents formats: png, jpg ou webp
 ✓ Prendre automatiquement des captures d'écran avec des applications comme Tasker ou MacroDroid
 ✓ Gratuit, libre, open-source, sans publicité
