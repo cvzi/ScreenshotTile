@@ -173,6 +173,7 @@
     <string name="toast_open_accessibility_settings">请在无障碍设置中激活 \"%1s\"</string>
     <string name="main_floating_button_title">浮动按钮</string>
     <string name="main_general_text">在您使用此应用前，您需要将图块/按钮添加到快速设置。如果您不知道怎么做，请看看[教程,.TutorialActivity].\n\n此应用支持两种不同的屏幕截图方式：</string>
+    <string name="main_general_button_request_add_tile">添加功能块</string>
     <string name="main_legacy_method_title">传统方式</string>
     <string name="main_legacy_method_text">传统的屏幕截图方式使用 Android 的屏幕录制功能。\n当您截取屏幕截图时不会播放声音。将显示静音通知以打开，分享或编辑屏幕截图。通知可在应用设置中禁用。\n在您截取屏幕截图前您需要将图块添加到快速设置，接受权限以录制屏幕并访问内部存储以保存图片。\n参见关于如何做的教程。\n\n在一些设备上此方式无法工作，特别是较新的 Android 版本 (9.0+) 它不稳定且可能在每次截图时请求权限。如果发生此情况您应使用下述原生方式。</string>
     <string name="main_native_method_title">原生方式</string>
