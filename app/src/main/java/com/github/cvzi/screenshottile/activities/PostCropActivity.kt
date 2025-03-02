@@ -18,6 +18,7 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
+import androidx.core.view.doOnNextLayout
 import com.burhanrashid52.photoediting.EditImageActivity.Companion.ACTION_NEXTGEN_EDIT
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
@@ -164,6 +165,11 @@ class PostCropActivity : GenericPostActivity() {
             // Center bitmap in view
             offsetLeft = (measuredWidth - bm.width) / 2f
             offsetTop = (measuredHeight - bm.height) / 2f
+
+            binding.globalScreenshotSelector.doOnNextLayout {
+                offsetLeft = (measuredWidth - bm.width) / 2f
+                offsetTop = (measuredHeight - bm.height) / 2f
+            }
 
             visibility = View.VISIBLE
             text = context.getLocalizedString(R.string.take_screenshot)
