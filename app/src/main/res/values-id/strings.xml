@@ -173,6 +173,7 @@
     <string name="toast_open_accessibility_settings">Harap aktifkan \"%1s\" di pengaturan aksesibilitas</string>
     <string name="main_floating_button_title">Tombol apung</string>
     <string name="main_general_text">Sebelum Anda dapat menggunakan aplikasi ini, Anda perlu menambahkan ubin/tombol ke pengaturan cepat. Jika Anda tidak tahu cara melakukannya, lihat [Tutorial,.TutorialActivity].\n\nAplikasi ini mendukung dua metode berbeda untuk mengambil tangkapan layar:</string>
+    <string name="main_general_button_request_add_tile">Tambahkan aksi</string>
     <string name="main_legacy_method_title">Metode Warisan</string>
     <string name="main_legacy_method_text">Metode lama untuk mengambil tangkapan layar menggunakan fitur perekaman layar Android.\nSaat Anda mengambil tangkapan layar, tidak ada suara yang diputar. Notifikasi senyap ditampilkan untuk membuka, membagikan, atau mengedit tangkapan layar. Notifikasi dapat dinonaktifkan di setelan aplikasi.\nSebelum mengambil tangkapan layar, Anda perlu menambahkan ubin ke setelan cepat, menerima izin untuk merekam layar, dan izin mengakses penyimpanan internal untuk menyimpan file gambar.\nLihat tutorial tentang cara melakukannya.\n\nPada beberapa ponsel, metode ini tidak berfungsi, terutama pada Android yang lebih baru (9.0+), metode ini tidak stabil dan mungkin meminta izin pada setiap tangkapan layar. Jika itu terjadi, Anda harus menggunakan metode asli di bawah ini.</string>
     <string name="main_native_method_title">Metode Asli</string>
