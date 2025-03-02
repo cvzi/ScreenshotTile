@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.12.2
+*   Fix image position on crop activity if "Save to gallery" is disabled [#606](https://github.com/cvzi/ScreenshotTile/issues/606)
+*   Show hint about "new window" permission in MIUI and HyperOS
+*   Do not ask so many things on first run
+
 ## 2.12.1
 *   Add in-app language selector
 
