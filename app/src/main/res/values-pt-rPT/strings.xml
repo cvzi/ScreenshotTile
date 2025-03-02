@@ -173,6 +173,7 @@
     <string name="toast_open_accessibility_settings">Ative \"%1s\" nas configurações de acessibilidade</string>
     <string name="main_floating_button_title">Botão flutuante</string>
     <string name="main_general_text">Antes de utilizar esta aplicação, tem de adicionar o botão às configurações rápidas. Se não souber como fazer isto, veja o [Tutorial,.TutorialActivity].\n\nEsta aplicação suporta dois métodos diferentes para fazer capturas de ecrã:</string>
+    <string name="main_general_button_request_add_tile">Adicionar bloco/botão</string>
     <string name="main_legacy_method_title">Método antigo</string>
     <string name="main_legacy_method_text">O método antigo para fazer capturas de ecrã usa recursos de gravação de ecrã do Android.\nQuando faz uma captura de ecrã, nenhum som é reproduzido. É mostrada uma notificação silenciosa para abrir, partilhar ou editar a captura de ecrã. As notificações podem ser desativadas nas configurações da aplicação.\nAntes de tirar uma captura de ecrã, tem de adicionar o botão nas configurações rápidas, aceitar a permissão para gravar o ecrã e a permissão para aceder ao armazenamento interno para guardar o ficheiro de imagem.\nVeja o tutorial sobre como fazer isto.\n\nEm alguns telemóveis, este método não funciona, especialmente em versões do Android mais recentes (9+) é instável e pode pedir permissão em cada captura de ecrã. Se isso acontecer, use o método nativo abaixo.</string>
     <string name="main_native_method_title">Método nativo</string>
