@@ -173,6 +173,7 @@
     <string name="toast_open_accessibility_settings">Please activate \"%1s\" in the accessibility settings</string>
     <string name="main_floating_button_title">Floating button</string>
     <string name="main_general_text">Before you can use this app, you need to add the tile/button to the quick settings. If you don\'t know how to do this, take a look at the [Tutorial,.TutorialActivity].\n\nThis app supports two different methods to take screenshots:</string>
+    <string name="main_general_button_request_add_tile">Add tile</string>
     <string name="main_legacy_method_title">Legacy Method</string>
     <string name="main_legacy_method_text">The legacy method to take screenshots uses the screen recording features of Android.\nWhen you take a screenshot, no sound is played. A silent notification is shown to open, share or edit the screenshot. The notification can be disabled in the app settings.\nBefore you can take a screenshot you need to add the tile to the quick settings, accept the permission to record the screen and the permission to access the internal storage to save the image file.\nSee the tutorial on how to do it.\n\nOn some phones this method does not work, especially on newer Androids (9.0+) it is unstable and it may ask for permission on every single screenshot. If that happens you should use the native method below.</string>
     <string name="main_native_method_title">Native Method</string>

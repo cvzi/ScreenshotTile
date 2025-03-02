@@ -17,7 +17,9 @@
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="50dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,6 +61,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="@{strings.more_setting}"
                                     android:textSize="11.7sp" />
+
                             </RelativeLayout>
 
 
@@ -70,6 +73,8 @@
                             android:layout_height="wrap_content"
                             tools:text="@string/main_general_text"
                             android:textAppearance="@android:style/TextAppearance.Material.Body2" />
+
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -101,6 +106,16 @@
                                 android:text="@{strings.main_legacy_method_title}"
                                 android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
+                            <Button
+                                android:id="@+id/buttonScreenshotTile1"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableRight="@drawable/layer_list_small_launcher"
+                                android:layout_marginStart="10dp"
+                                android:text="@{strings.main_general_button_request_add_tile}"
+                                android:textSize="13sp"
+                                tools:ignore="RtlHardcoded" />
 
                         </LinearLayout>
 
@@ -153,6 +168,17 @@
                                 android:singleLine="true"
                                 android:text="@{strings.main_native_method_title}"
                                 android:textAppearance="@android:style/TextAppearance.Material.Title" />
+
+                            <Button
+                                android:id="@+id/buttonScreenshotTile2"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableRight="@drawable/layer_list_small_launcher"
+                                android:layout_marginStart="10dp"
+                                android:text="@{strings.main_general_button_request_add_tile}"
+                                android:textSize="13sp"
+                                tools:ignore="RtlHardcoded" />
 
                         </LinearLayout>
 
@@ -211,7 +237,10 @@
                             android:layout_height="wrap_content"
                             android:text="@{strings.main_floating_button_text}"
                             android:textAppearance="@android:style/TextAppearance.Material.Body1" />
-
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
                         <Button
                             android:id="@+id/buttonFloatingButtonSettings"
                             style="@style/Widget.Material3.Button"
@@ -219,6 +248,19 @@
                             android:layout_height="wrap_content"
                             android:text="@{strings.floating_button_settings}"
                             android:textSize="13sp" />
+
+                        <Button
+                            android:id="@+id/buttonFloatingButtonTile"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.main_general_button_request_add_tile}"
+                            android:drawableRight="@drawable/layer_list_small_floating"
+                            android:layout_marginStart="10dp"
+                            tools:ignore="RtlHardcoded"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

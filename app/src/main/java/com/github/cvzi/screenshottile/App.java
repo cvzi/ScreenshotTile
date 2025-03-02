@@ -47,7 +47,10 @@ import java.util.HashMap;
 
 
 public class App extends Application {
+    public static final Texts texts = new Texts();
+    public static final HashMap<String, Resources> resources = new HashMap<>();
     private static final String TAG = "App.java";
+    public static long askedToAddTileTime = 0L;
     private static MediaProjectionManager mediaProjectionManager = null;
     private static App instance;
     private static Intent screenshotPermission = null;
@@ -59,8 +62,6 @@ public class App extends Application {
     private PrefManager prefManager;
     private Runnable screenshotRunnable;
     private WeakReference<Bitmap> lastScreenshot = null;
-    public static final Texts texts = new Texts();
-    public static final HashMap<String, Resources> resources = new HashMap<>();
 
     public App() {
         setInstance(this);

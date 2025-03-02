@@ -169,6 +169,7 @@ class Texts {
     val toast_open_accessibility_settings = R.string.toast_open_accessibility_settings
     val main_floating_button_title = R.string.main_floating_button_title
     val main_general_text = R.string.main_general_text
+    val main_general_button_request_add_tile = R.string.main_general_button_request_add_tile
     val main_legacy_method_title = R.string.main_legacy_method_title
     val main_legacy_method_text = R.string.main_legacy_method_text
     val main_native_method_title = R.string.main_native_method_title

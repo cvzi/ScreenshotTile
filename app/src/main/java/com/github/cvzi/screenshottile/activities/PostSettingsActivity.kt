@@ -6,26 +6,26 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
-import android.view.LayoutInflater
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.databinding.ActivityLanguageBinding
-import com.github.cvzi.screenshottile.databinding.ActivityPostCropBinding
+import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.databinding.ActivityPostSettingsBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
+import com.github.cvzi.screenshottile.utils.MiuiCheck
 import com.github.cvzi.screenshottile.utils.Sound
 import com.github.cvzi.screenshottile.utils.Sound.Companion.allAudioSinks
 import com.github.cvzi.screenshottile.utils.TonesRecyclerViewAdapter
 import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.nicePathFromUri
+import com.github.cvzi.screenshottile.utils.toastMessage
 import java.lang.Float.max
 
 
@@ -44,7 +44,10 @@ class PostSettingsActivity : BaseAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityPostSettingsBinding>(this, R.layout.activity_post_settings)
+        binding = DataBindingUtil.setContentView<ActivityPostSettingsBinding>(
+            this,
+            R.layout.activity_post_settings
+        )
         binding.setVariable(BR.strings, App.texts)
 
         binding.buttonResetValues.setOnClickListener {
@@ -123,6 +126,36 @@ class PostSettingsActivity : BaseAppCompatActivity() {
         // Preview play button
         binding.imageButtonPlay.setOnClickListener {
             Sound.playTone()
+        }
+
+
+        // Xiaomi MIUI / HyperOS check
+        if (MiuiCheck.isMiui()) {
+            // Show warning about MIUI background/foreground blocking
+            // "Open new windows while running in background"
+            binding.cardViewMIUIWarning.visibility = View.VISIBLE
+            binding.cardViewMIUIWarning.setOnClickListener {
+                // Open MIUI / HyperOS security center for this app
+                Intent("miui.intent.action.APP_PERM_EDITOR").apply {
+                    setClassName(
+                        "com.miui.securitycenter",
+                        "com.miui.permcenter.permissions.PermissionsEditorActivity"
+                    )
+                    putExtra("extra_pkgname", packageName)
+                    if (resolveActivity(packageManager) != null) {
+                        startActivity(this)
+                    } else {
+                        Log.e(TAG, "No Xiami MIUI securitycenter found")
+                        toastMessage(
+                            "Please open the app info screen manually and change the permission",
+                            ToastType.ACTIVITY
+                        )
+                    }
+                }
+
+            }
+        } else {
+            binding.cardViewMIUIWarning.visibility = View.INVISIBLE
         }
 
     }

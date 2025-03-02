@@ -3,6 +3,8 @@ package com.github.cvzi.screenshottile.activities
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.StatusBarManager
+import android.app.StatusBarManager.TILE_ADD_REQUEST_RESULT_TILE_ADDED
+import android.app.StatusBarManager.TILE_ADD_REQUEST_RESULT_TILE_ALREADY_ADDED
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -17,16 +19,15 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.util.Log
-
-import androidx.databinding.DataBindingUtil
-import com.github.cvzi.screenshottile.BR
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
@@ -42,7 +43,7 @@ import com.github.cvzi.screenshottile.utils.isNewAppInstallation
 import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
 import com.github.cvzi.screenshottile.utils.toastMessage
 import com.google.android.material.switchmaterial.SwitchMaterial
-
+import java.util.function.Consumer
 
 
 /**
@@ -199,7 +200,12 @@ class MainActivity : BaseAppCompatActivity() {
             ).map { Uri.encode(it.toString()) }.toTypedArray()
 
             @SuppressLint("StringFormatMatches")
-            val uri = Uri.parse(formatLocalizedString(R.string.pref_static_field_link_about_updates, *args))
+            val uri = Uri.parse(
+                formatLocalizedString(
+                    R.string.pref_static_field_link_about_updates,
+                    *args
+                )
+            )
             Intent(ACTION_VIEW, uri).apply {
                 if (resolveActivity(packageManager) != null) {
                     startActivity(this)
@@ -272,6 +278,31 @@ class MainActivity : BaseAppCompatActivity() {
                     ScreenshotAccessibilityService.instance!!.updateFloatingButton()
                 }
             }
+            binding.buttonFloatingButtonTile.setOnClickListener {
+                requestAddFloatingButtonTile { resultCode ->
+                    // Hide the button afterwards
+                    if (resultCode == TILE_ADD_REQUEST_RESULT_TILE_ALREADY_ADDED || resultCode == TILE_ADD_REQUEST_RESULT_TILE_ADDED) {
+                        binding.buttonFloatingButtonTile.visibility = View.GONE
+                    }
+                }
+            }
+            binding.buttonScreenshotTile1.setOnClickListener {
+                requestAddScreenshotTile { resultCode ->
+                    if (resultCode == TILE_ADD_REQUEST_RESULT_TILE_ALREADY_ADDED || resultCode == TILE_ADD_REQUEST_RESULT_TILE_ADDED) {
+                        binding.buttonScreenshotTile1.visibility = View.GONE
+                        binding.buttonScreenshotTile2.visibility = View.GONE
+                    }
+                }
+            }
+            binding.buttonScreenshotTile2.setOnClickListener {
+                requestAddScreenshotTile { resultCode ->
+                    if (resultCode == TILE_ADD_REQUEST_RESULT_TILE_ALREADY_ADDED || resultCode == TILE_ADD_REQUEST_RESULT_TILE_ADDED) {
+                        binding.buttonScreenshotTile1.visibility = View.GONE
+                        binding.buttonScreenshotTile2.visibility = View.GONE
+                    }
+                }
+            }
+
             if (ScreenshotAccessibilityService.instance != null && !App.getInstance().prefManager.floatingButton) {
                 // Service is running and floating button is disabled ->  scroll to floating button
                 binding.scrollView.postDelayed({
@@ -314,31 +345,51 @@ class MainActivity : BaseAppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun askToAddTiles() {
+        // Do not ask during instrument tests
+        if (BuildConfig.TESTING_MODE.value) {
+            return
+        }
+
+        requestAddScreenshotTile { resultCode ->
+            if (resultCode == TILE_ADD_REQUEST_RESULT_TILE_ALREADY_ADDED || resultCode == TILE_ADD_REQUEST_RESULT_TILE_ADDED) {
+                binding.buttonScreenshotTile1.visibility = View.GONE
+                binding.buttonScreenshotTile2.visibility = View.GONE
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun requestAddScreenshotTile(resultCallback: Consumer<Int> = Consumer { }) {
         if (BuildConfig.TESTING_MODE.value) {
             return
         }
         if (ScreenshotTileService.instance == null) {
+            App.askedToAddTileTime = System.currentTimeMillis()
             val statusBarManager = getSystemService(StatusBarManager::class.java)
-            // Firstly, ask for normal screenshot tile
             statusBarManager.requestAddTileService(
                 ComponentName(this, ScreenshotTileService::class.java),
                 getLocalizedString(R.string.tile_label),
                 Icon.createWithResource(this, R.drawable.ic_stat_name),
-                {
-                    it.run()
-                },
-                {
-                    // Secondly, ask for floating button tile
-                    if (FloatingTileService.instance == null) {
-                        statusBarManager.requestAddTileService(
-                            ComponentName(this, FloatingTileService::class.java),
-                            getLocalizedString(R.string.tile_floating),
-                            Icon.createWithResource(this, R.drawable.ic_tile_float),
-                            {},
-                            {})
-                    }
-                })
+                mainExecutor
+            ) { resultCode ->
+                App.askedToAddTileTime = System.currentTimeMillis()
+                mainExecutor.execute {
+                    resultCallback.accept(resultCode)
+                }
+            }
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun requestAddFloatingButtonTile(resultCallback: Consumer<Int> = Consumer { }) {
+        val statusBarManager = getSystemService(StatusBarManager::class.java)
+        statusBarManager.requestAddTileService(
+            ComponentName(this, FloatingTileService::class.java),
+            getLocalizedString(R.string.tile_floating),
+            Icon.createWithResource(this, R.drawable.ic_tile_float),
+            mainExecutor,
+            resultCallback
+        )
     }
 
     private fun toggleSwitchOnLabel(switchId: Int, labelId: Int) {
@@ -483,6 +534,22 @@ class MainActivity : BaseAppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             switchFloatingButton.isChecked =
                 ScreenshotAccessibilityService.instance != null && App.getInstance().prefManager.floatingButton
+
+            binding.buttonFloatingButtonTile.visibility =
+                if (FloatingTileService.instance != null) {
+                    View.GONE
+                } else {
+                    View.VISIBLE
+                }
+        }
+
+        if (ScreenshotTileService.instance != null) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }.let { vis ->
+            binding.buttonScreenshotTile1.visibility = vis
+            binding.buttonScreenshotTile2.visibility = vis
         }
 
         // Warn about bug in Android 10 and 11 https://github.com/cvzi/ScreenshotTile/issues/556

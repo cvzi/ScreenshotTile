@@ -78,12 +78,17 @@ class ScreenshotTileService : TileService(),
         super.onTileAdded()
         if (BuildConfig.DEBUG) Log.v(TAG, "onTileAdded()")
 
-        if (App.getInstance().prefManager.useNative) {
-            // Check if accessibility service is active on closing the panel
-            App.checkAccessibilityServiceOnCollapse(true)
-        } else {
-            // Ask for permission
-            App.acquireScreenshotPermission(this, this)
+        // Do not ask for the permission if the tile was added in the last minute
+        // Because this primarily happens on first app start
+
+        if (System.currentTimeMillis() - App.askedToAddTileTime > 60000) {
+            if (App.getInstance().prefManager.useNative) {
+                // Check if accessibility service is active on adding the tile
+                App.checkAccessibilityServiceOnCollapse(true)
+            } else {
+                // Ask for permission
+                App.acquireScreenshotPermission(this, this)
+            }
         }
 
         setState(Tile.STATE_INACTIVE)
