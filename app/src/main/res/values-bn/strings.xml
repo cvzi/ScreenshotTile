@@ -30,7 +30,7 @@
     <!-- About -->
     <string name="about_license_title">লাইসেন্স</string>
     <!-- First screen -->
-    <string name="main_assist_app_title">সহায়তা অ্যাপ</string>
+    <string name="main_general_button_request_add_tile">টাইল যোগ করুন</string>
     <!-- Post edit activity -->
     <!-- Photo Editor-->
     <!-- Advanced Settings -->

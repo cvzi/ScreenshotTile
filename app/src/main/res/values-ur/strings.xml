@@ -27,6 +27,7 @@
     <!-- About -->
     <string name="about_license_title">لائسنس</string>
     <!-- First screen -->
+    <string name="main_general_button_request_add_tile">ٹائل شامل کریں</string>
     <string name="main_assist_app_title">معاون ایپ</string>
     <!-- Post edit activity -->
     <!-- Photo Editor-->

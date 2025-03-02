@@ -157,6 +157,7 @@
     <string name="main_accessibility_settings">Indstillinger for tilgængelighed</string>
     <string name="main_floating_button_title">Flydende knap</string>
     <string name="main_general_text">Før du kan bruge denne app, skal du tilføje flise/knappen til de hurtige indstillinger. Hvis du ikke ved, hvordan man gør dette, tage et kig på [tutorial,.TutorialActivity].\n\nDenne app understøtter to forskellige metoder til at tage screenshots:</string>
+    <string name="main_general_button_request_add_tile">Tilføj handlingsfelt</string>
     <string name="main_legacy_method_title">Legacy Metode</string>
     <string name="main_legacy_method_text">Den gamle metode til at tage screenshots bruger skærmoptagelse funktioner i Android.\nNår du tager et skærmaftryk, afspilles ingen lyd. En tavs meddelelse vises for at åbne, dele eller redigere skærmaftrykket. Meddelelsen kan være deaktiveret i app-indstillingerne.\nFør du kan tage et skærmbillede, skal du tilføje flisen til de hurtige indstillinger, acceptere tilladelse til at optage skærmen og tilladelse til at få adgang til det interne lager for at gemme billedfilen.\nSe vejledningen om hvordan man gør det.\n\nPå nogle telefoner virker denne metode ikke, især ikke på nyere Androids (9. +) det er ustabilt, og det kan bede om tilladelse på hvert enkelt skærmbillede. Hvis det sker, skal du bruge den indfødte metode nedenfor.</string>
     <string name="main_native_method_title">Nativ Metode</string>

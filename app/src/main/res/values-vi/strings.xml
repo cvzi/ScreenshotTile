@@ -170,6 +170,7 @@
     <string name="toast_open_accessibility_settings">Vui lòng kích hoạt \"%1s\" trong cài đặt hỗ trợ tiếp cận</string>
     <string name="main_floating_button_title">Nút nổi</string>
     <string name="main_general_text">Trước khi bạn có thể sử dụng ứng dụng này, bạn cần phải thêm ô/nút vào cài đặt nhanh. Nếu bạn không biết cách làm việc đó, hãy xem [Hướng dẫn,.TutorialActivity].\n\nỨng dụng này hỗ trợ hai phương pháp chụp ảnh màn hình khác nhau:</string>
+    <string name="main_general_button_request_add_tile">Thêm ô</string>
     <string name="main_legacy_method_title">Phương pháp cũ</string>
     <string name="main_legacy_method_text">Phương pháp chụp ảnh màn hình cũ sử dụng tính năng quay màn hình của Android.\nKhi bạn chụp ảnh màn hình, không có tiếng động nào sẽ được phát ra. Một thông báo im lặng được hiện để mở, chia sẻ và chỉnh sửa ảnh chụp màn hình. Thông báo đó có thể được tắt trong cài đặt ứng dụng.\nTrước khi bạn chụp ảnh màn hình bạn cần thêm ô vào cài đặt nhanh, chấp nhận quyền ghi lại màn hình và quyền truy cập bộ nhớ trong để lưu tệp hình ảnh.\nHãy xem hướng dẫn để biết cách làm.\n\nTrên một số điện thoại phương pháp này không hoạt động, đặc biệt là trên các phiên bản Android mới hơn (9.0+) nó không ổn định và nó có thể sẽ hỏi xin quyền ở mọi ảnh chụp màn hình. Nếu điều đó xảy ra, bạn nên sử dụng phương pháp của hệ thống ở duới.</string>
     <string name="main_native_method_title">Phương pháp của hệ thống</string>

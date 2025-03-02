@@ -165,6 +165,7 @@
     <string name="main_accessibility_settings">Ustawienia ułatwień dostępu</string>
     <string name="main_floating_button_title">Pływający przycisk</string>
     <string name="main_general_text">Zanim zaczniesz używać tej aplikacji, musisz dodać kafelek/przycisk do szybkich ustawień. Jeśli nie wiesz jak to zrobić, zajrzyj do [Tutorial,.TutorialActivity].\n\nTa aplikacje obsługuje dwa różne sposoby wykonywania zrzutów ekranu:</string>
+    <string name="main_general_button_request_add_tile">Dodaj kafelek</string>
     <string name="main_legacy_method_title">Starsza metoda</string>
     <string name="main_legacy_method_text">Starsza metoda wykonywania zrzutów ekranu korzysta z funkcji nagrywania ekranu systemu Android.\nGdy wykonujesz zrzut ekranu, dźwięk nie jest odtwarzany. Ciche powiadomienie pokazuje opcję do otwarcia, udostępnienia lub edycji zrzutu ekranu. Powiadomienie można wyłączyć w ustawieniach aplikacji.\nZanim wykonasz zrzut ekranu, musisz dodać kafelek do szybkich ustawień, zaakceptować uprawnienie do nagrywania ekranu oraz do dostępu do pamięci wewnętrznej, aby zapisać plik obrazu.\nZobacz instrukcję, jak to zrobić.\n\nW niektórych telefonach ta metoda może nie działać, zwłaszcza z systemem nowszym niż Android 9, ta opcja jest niestabilna i może pytać o pozwolenie za każdym razem przy wykonywaniu zrzutu ekranu. Jeśli tak się stanie, powinieneś użyć metody natywnej, którą znajdziesz poniżej.</string>
     <string name="main_native_method_title">Metoda natywna</string>

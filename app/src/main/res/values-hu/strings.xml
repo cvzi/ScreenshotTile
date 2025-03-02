@@ -103,6 +103,7 @@
     <string name="main_accessibility_settings">Kisegítő lehetőségek beállításai</string>
     <string name="main_floating_button_title">Lebegő gomb</string>
     <string name="main_general_text">Az alkalmazás használata előtt hozzá kell adnia a gombot a gyorsbeállításokhoz. Ha nem tudja, hogyan kell ezt megtenni, nézze meg a [Bemutató,.TutorialActivity]. oldalt.\n\nEz az alkalmazás két különböző módszert támogat a képernyőképek készítéséhez:</string>
+    <string name="main_general_button_request_add_tile">Mozaik hozzáadása</string>
     <string name="main_legacy_method_title">Hagyományos módszer</string>
     <string name="main_legacy_method_text">A képernyőképek készítésének hagyományos módszere az Android képernyőrögzítési funkcióit használja\nKépernyőkép készítésekor nincs hangjelzés. Néma értesítés jelenik meg a képernyő megnyitásához, megosztásához vagy szerkesztéséhez. Az értesítést az alkalmazás beállításaiban lehet kikapcsolni.\nKépernyőkép készítése előtt hozzá kell adnia a kapcsolót a gyorsbeállításokhoz, el kell fogadnia a képernyő rögzítésének engedélyét és a belső tárhelyhez való hozzáférés engedélykérését a képfájl mentéséhez.\nLásd a bemutatót, hogyan kell csinálni.\n\nNéhány telefonon ez a módszer nem működik, különösen az újabb androidoknál (9.0+) instabilabb, és engedélyt kérhet minden egyes képernyőképhez. Ebben az esetben az alábbi natív módszert kell használnia.</string>
     <string name="main_native_method_title">Natív módszer</string>

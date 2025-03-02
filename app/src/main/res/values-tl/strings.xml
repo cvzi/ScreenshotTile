@@ -38,6 +38,7 @@
     <string name="about_license_title">Lisensyang</string>
     <string name="about_license_1">GNU GENERAL PUBLIC LICENSE Version 3\n(Ang Pangkaraniwang Lisensyang Publiko ng GNU Bersyon 3)</string>
     <!-- First screen -->
+    <string name="main_general_button_request_add_tile">Idagdag ang tile</string>
     <!-- Post edit activity -->
     <!-- Photo Editor-->
     <!-- Advanced Settings -->

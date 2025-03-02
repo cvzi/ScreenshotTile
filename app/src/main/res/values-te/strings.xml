@@ -27,6 +27,7 @@
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <!-- First screen -->
+    <string name="main_general_button_request_add_tile">టైల్‌ను జోడించండి</string>
     <string name="main_assist_app_title">సహాయక యాప్</string>
     <!-- Post edit activity -->
     <!-- Photo Editor-->

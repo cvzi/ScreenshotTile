@@ -160,6 +160,7 @@
     <string name="main_accessibility_settings">無障礙設定</string>
     <string name="main_floating_button_title">浮動按鈕</string>
     <string name="main_general_text">在您使用此應用前，您需要將圖塊/按鈕添加到快速設置。如果您不知道怎麼做，請看看[教程,.TutorialActivity].\n\n此應用支持兩種不同的螢幕截圖方式：</string>
+    <string name="main_general_button_request_add_tile">新增設定方塊</string>
     <string name="main_legacy_method_title">傳統方式</string>
     <string name="main_legacy_method_text">傳統的螢幕截圖方式使用 Android 的螢幕錄製功能。\n當您截取螢幕截圖時不會播放聲音。將顯示靜音通知以打開，分享或編輯螢幕截圖。通知可在應用設置中禁用。\n在您截取螢幕截圖前您需要將圖塊添加到快速設置，接受權限以錄製螢幕並訪問內部儲存以保存圖片。\n參見關於如何做的教程。\n\n在一些設備上此方式無法工作，特別是較新的 Android 版本 (9.0+) 它不穩定且可能在每次截圖時請求權限。如果發生此情況您應使用下述原生方式。</string>
     <string name="main_native_method_title">原生方式</string>

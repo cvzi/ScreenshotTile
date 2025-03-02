@@ -93,6 +93,7 @@
     <string name="main_accessibility_settings">ଅଭିଗମ୍ୟତା ସେଟିଂ</string>
     <string name="main_floating_button_title">ଭାସମାନ ବଟନ୍</string>
     <string name="main_general_text">ଆପଣ ଏହି ଆପ୍ ଵ୍ୟଵହାର କରିବା ଆଗରୁ, ଆପଣଙ୍କୁ ଦ୍ରୁତ ସେଟିଂରେ ଟାଇଲ୍/ବଟନ୍ ଯୋଡ଼ିବାକୁ ପଡ଼ିବ। ଯଦି ଆପଣ ଏହା କିପରି କରିବେ ତାହା ଜାଣି ନାହାନ୍ତି, ତେବେ [ଅନୁଶିକ୍ଷଣ,.TutorialActivity] ଉପରେ ଦୃଷ୍ଟି ପକାନ୍ତୁ।\n\nସ୍କ୍ରୀନ୍‌ସଟ୍ ନେବା ପାଇଁ ଏହି ଆପ୍ ଦୁଇଟି ଭିନ୍ନ ପଦ୍ଧତିକୁ ସମର୍ଥନ କରେ:</string>
+    <string name="main_general_button_request_add_tile">ଟାଇଲ୍ ଯୋଗ କରନ୍ତୁ</string>
     <string name="main_assist_app_title">ସହାୟକ ଆପ୍</string>
     <!-- Post edit activity -->
     <string name="post_button_save">ନାଁ ବଦଳାନ୍ତୁ</string>

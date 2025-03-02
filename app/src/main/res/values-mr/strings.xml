@@ -27,6 +27,7 @@
     <!-- About -->
     <string name="about_license_title">परवाना</string>
     <!-- First screen -->
+    <string name="main_general_button_request_add_tile">टाइल जोडा</string>
     <string name="main_assist_app_title">साहाय्य अ‍ॅप</string>
     <!-- Post edit activity -->
     <!-- Photo Editor-->

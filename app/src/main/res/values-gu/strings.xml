@@ -28,6 +28,7 @@
     <!-- About -->
     <string name="about_license_title">લાઇસન્સ</string>
     <!-- First screen -->
+    <string name="main_general_button_request_add_tile">ટાઇલ ઉમેરો</string>
     <string name="main_assist_app_title">સહાયક ઍપ</string>
     <!-- Post edit activity -->
     <!-- Photo Editor-->

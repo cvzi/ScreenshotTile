@@ -27,6 +27,7 @@
     <!-- About -->
     <string name="about_license_title">ಪರವಾನಗಿ</string>
     <!-- First screen -->
+    <string name="main_general_button_request_add_tile">ಟೈಲ್ ಅನ್ನು ಸೇರಿಸಿ</string>
     <string name="main_assist_app_title">ಸಹಾಯಕ ಆ್ಯಪ್</string>
     <!-- Post edit activity -->
     <!-- Photo Editor-->

@@ -153,6 +153,7 @@
     <string name="main_accessibility_settings">ユーザー補助の設定</string>
     <string name="main_floating_button_title">フローティングボタン</string>
     <string name="main_general_text">このアプリを使用する前に、クイック設定にタイル/ボタンを追加する必要があります。 方法がわからない場合は、\nをご覧ください [チュートリアル,.TutorialActivity]。\n\nこのアプリはスクリーンショットを撮るための2つの異なる方法をサポートしています:</string>
+    <string name="main_general_button_request_add_tile">タイルを追加</string>
     <string name="main_legacy_method_title">従来の方法</string>
     <string name="main_legacy_method_text">Androidの画面録画機能を使用する方法です。スクリーンショットの保存時に音は鳴りません。\n サイレント通知が表示され、保存した画像の表示、編集および共有ができます。設定からアプリ通知をオフにすることができます。\nスクリーンショットを保存する前に、本アプリのタイルをクイックメニューに追加し、画面の録画およびメディアストレージへのアクセスを許可する必要があります。\n詳しい設定方法についてはチュートリアルをご覧ください。\n\n一部の機種 (特にAndroid9.0以降の機種) では、スクリーンショットを保存するごとに毎回権限の許可の確認が行われるなどの不具合を起こし、正常に使用できないことがあります。その場合は、ネイティブメソッドをご利用ください。</string>
     <string name="main_native_method_title">ネイティブメソッド</string>

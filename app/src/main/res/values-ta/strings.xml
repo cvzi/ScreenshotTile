@@ -28,6 +28,7 @@
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <!-- About -->
     <!-- First screen -->
+    <string name="main_general_button_request_add_tile">கட்டத்தைச் சேர்</string>
     <string name="main_assist_app_title">அசிஸ்ட் ஆப்ஸ்</string>
     <!-- Post edit activity -->
     <!-- Photo Editor-->

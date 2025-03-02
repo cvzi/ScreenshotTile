@@ -153,6 +153,7 @@
     <string name="main_accessibility_settings">Nastavení přístupnosti</string>
     <string name="main_floating_button_title">Plovoucí tlačítko</string>
     <string name="main_general_text">Než budete moci použít tuto aplikaci, musíte přidat dlaždice/tlačítko do rychlého nastavení. Pokud nevíte, jak to udělat, podívejte se na [Návod,.TutorialActivity].\n\nTato aplikace podporuje dvě různé metody pořizování snímků obrazovky:</string>
+    <string name="main_general_button_request_add_tile">Přidat dlaždici</string>
     <string name="main_legacy_method_title">Starší metoda</string>
     <string name="main_legacy_method_text">Stará metoda pořizování snímků obrazovky používá funkce nahrávání systému Android.\nPři pořízení snímku obrazovky se nepřehrává žádný zvuk. Zobrazí se tiché oznámení, které bude otevřeno, sdílet nebo upravovat snímek obrazovky. Upozornění může být zakázáno v nastavení aplikace.\nNež provedete snímek obrazovky, musíte přidat dlaždici do rychlého nastavení, přijmout oprávnění k nahrávání obrazovky a oprávnění pro přístup k internímu úložišti pro uložení obrázku.\nPodívejte se na návod, jak to udělat.\n\nNa některých telefonech tato metoda nefunguje, zejména na novějších Androidech (9. +) je nestabilní a může požádat o povolení na každém snímku obrazovky. Pokud se tak stane, měli byste použít níže uvedenou nativní metodu.</string>
     <string name="main_native_method_title">Nativní metoda</string>

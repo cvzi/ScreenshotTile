@@ -45,6 +45,7 @@
     <!-- About -->
     <string name="about_license_title">लाइसेंस</string>
     <!-- First screen -->
+    <string name="main_general_button_request_add_tile">टाइल जोड़ें</string>
     <string name="main_assist_app_title">सहायक ऐप</string>
     <!-- Post edit activity -->
     <!-- Photo Editor-->

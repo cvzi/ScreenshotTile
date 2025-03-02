@@ -157,6 +157,7 @@
     <string name="main_accessibility_settings">Configurações de acessibilidade</string>
     <string name="main_floating_button_title">Botão flutuante</string>
     <string name="main_general_text">Antes de poder usar este App, você precisa adicionar o botão ao menu dos ajustes rápidos. Se você não souber como fazer isso, dê uma olhada no [Tutorial,.TutorialActivity].\n\nEste App suporta dois métodos diferentes para fazer as Capturas da tela:</string>
+    <string name="main_general_button_request_add_tile">Adicionar bloco/botão</string>
     <string name="main_legacy_method_title">Método Legado</string>
     <string name="main_legacy_method_text">O Método Legado de Capturas da tela usa a funcionalidade de gravação da tela do Android.\nQuando você faz uma Captura, nenhum som é reproduzido. Uma notificação silenciosa é mostrada para abrir, compartilhar ou editar a captura da tela. A notificação pode ser desativada em configurações do app.\nAntes de fazer uma Captura da tela, você precisa adicionar o botão ao menu de ajustes rápidos, conceder as permissões para poder fazer as Capturas e acessar o armazenamento interno a fim de salvar os arquivos de imagens.\nVeja o tutorial de como fazê-lo.\n\nEm alguns telefones este método não funciona, principalmente em versões do sistema mais novos que Android 9.0, o app fica menos estável e pode pedir permissão em cada intento de Captura da tela. Se isso acontecer, você deve usar o método Integrado abaixo.</string>
     <string name="main_native_method_title">Método Integrado</string>

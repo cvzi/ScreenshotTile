@@ -59,6 +59,7 @@
     <string name="about_advanced_settings_button">Дадатковыя налады</string>
     <!-- First screen -->
     <string name="main_floating_button_title">Плаваючая кнопка</string>
+    <string name="main_general_button_request_add_tile">Дадаць плітку</string>
     <!-- Photo Editor-->
     <string name="label_arrow">Стрэлка</string>
 </resources>

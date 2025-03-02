@@ -129,6 +129,7 @@
     <string name="tutorial_step16">צלם צילומי מסך עם הכפתור החדש</string>
     <string name="take_screenshot">קח תמונת מסך</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
+    <string name="googleplay_consent_line_6">נתונים לא נאספים ולא משותפים על ידי אפליקציה זו באמצעות יכולות הנגישות.</string>
     <string name="googleplay_consent_yes">אני מסכים</string>
     <string name="googleplay_consent_no">אני מסרב</string>
     <!-- About -->
@@ -139,6 +140,7 @@
     <!-- First screen -->
     <string name="main_accessibility_settings">הגדרות נגישות</string>
     <string name="main_floating_button_title">כפתור צף</string>
+    <string name="main_general_button_request_add_tile">הוספת אריח</string>
     <string name="main_assist_app_title">אפליקציית עזרה</string>
     <!-- Post edit activity -->
     <string name="post_button_save">שינוי שם</string>
