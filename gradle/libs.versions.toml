@@ -21,7 +21,7 @@ robolectric = "4.14.1"
 sdk-compile = "35"
 sdk-min = "24"
 sdk-target = "35"
-sonarqube = "6.0.1.5171"
+sonarqube = "6.1.0.5360"
 truth = "1.6.0"
 viewpager = "1.1.0"
 
