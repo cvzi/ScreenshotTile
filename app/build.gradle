@@ -19,6 +19,9 @@ android {
                 keyPassword 'password'
             }
         }
+        debug {
+            storeFile rootProject.file('app/debug.keystore')
+        }
     }
     defaultConfig {
         applicationId 'com.github.cvzi.screenshottile'
