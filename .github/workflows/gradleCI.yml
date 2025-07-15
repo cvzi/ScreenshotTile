@@ -1,6 +1,6 @@
 name: 🔨 Gradle Build
 
-on:  
+on:
   push:
     paths-ignore:
       - 'docs/**'
@@ -20,35 +20,105 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write
+      attestations: write
+      contents: write
+
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup JDK
+    - name: ⬇️ Checkout repository
+      uses: actions/checkout@v4
+
+    - name: ♨️ JDK
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
-        java-version: '17'
-    - name: Add exec permission
+        java-version: '21'
+        check-latest: true
+
+    - name: ❎ Add exec permission
       run: chmod +x gradlew
-    - name: Validate Gradle Wrapper
+
+    - name: 🕵️ Validate Gradle Wrapper
       uses: gradle/actions/wrapper-validation@v4
-    - name: 🔨 Build
-      run: ./gradlew build
-    - name: Upload .apk files
+
+    - name: 🔐 Decrypt keystore
+      run: |
+        echo "${{secrets.KEYSTORE}}" > github_release.jks.asc
+        gpg -d --passphrase "${{secrets.KEYSTORE_FILE_PASSWORD}}" --batch --output github_release.jks github_release.jks.asc
+
+    - name: 🎁 Build
+      run: |
+        ./gradlew build
+
+    - name: 🎁 Build release (common key)
+      run: |
+        ./gradlew assembleRelease \
+        --project-prop keyStore.release.storeFile=../github_release.jks \
+        --project-prop keyStore.release.storePassword=${{secrets.KEYSTORE_PASSWORD}} \
+        --project-prop keyStore.release.keyAlias=${{secrets.KEYSTORE_KEY_ALIAS_2}} \
+        --project-prop keyStore.release.keyPassword=${{secrets.KEYSTORE_KEY_PASSWORD_2}}
+
+    - name: 🔖 Rename apk file
+      run: |
+        mv app/build/outputs/apk/release/app-release.apk screenshottile_commit_${{ github.sha }}.apk
+
+    - name: 📜 Attest
+      uses: actions/attest-build-provenance@v2
+      with:
+        subject-path: 'screenshottile_commit_${{ github.sha }}.apk'
+
+    - name: 🤖 Upload apk
       uses: actions/upload-artifact@v4
       with:
-        name: apk-files
-        path: app/build/outputs/apk/**/*.apk
+        name: signed-apk
+        path: screenshottile_commit_${{ github.sha }}.apk
+
+    - name: 🎁 Build release (release key)
+      if: ${{ github.ref_type == 'tag' }}
+      run: |
+        ./gradlew assembleRelease \
+        --project-prop keyStore.release.storeFile=../github_release.jks \
+        --project-prop keyStore.release.storePassword=${{secrets.KEYSTORE_PASSWORD}} \
+        --project-prop keyStore.release.keyAlias=${{secrets.KEYSTORE_KEY_ALIAS}} \
+        --project-prop keyStore.release.keyPassword=${{secrets.KEYSTORE_KEY_PASSWORD}}
+
     - name: 💬 Upload Lint report
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: lint-results.html
         path: app/build/reports/lint-results*.html
-    - name: 💬 Upload tests report
-      if: always()
+
+    - name: 🏷️ Extract versionCode
+      if: ${{ github.ref_type == 'tag' }}
+      id: version
+      run: |
+        versionCode=$(grep -Po "versionCode\s+\K[0-9]+" app/build.gradle)
+        echo "versionCode: $versionCode"
+        echo "versionCode=$versionCode" >> $GITHUB_OUTPUT
+
+    - name: 🔖 Rename apk file
+      if: ${{ github.ref_type == 'tag' }}
+      run: |
+        mv app/build/outputs/apk/release/app-release.apk screenshottile_gh_${{ steps.version.outputs.versionCode }}.apk
+
+    - name: 📜 Attest
+      if: ${{ github.ref_type == 'tag' }}
+      uses: actions/attest-build-provenance@v2
+      with:
+        subject-path: 'screenshottile_gh_${{ steps.version.outputs.versionCode }}.apk'
+
+    - name: 🤖 Upload apk
+      if: ${{ github.ref_type == 'tag' }}
       uses: actions/upload-artifact@v4
       with:
-        name: reports-tests
-        path: app/build/reports/tests/
+        name: release-apk
+        path: screenshottile_gh_${{ steps.version.outputs.versionCode }}.apk
 
-
+    - name: 🎉 Publish Github release
+      if: false
+      uses: softprops/action-gh-release@v2
+      with:
+        files: screenshottile_gh_${{ steps.version.outputs.versionCode }}.apk
+        body_path: fastlane/metadata/android/en-US/changelogs/${{ steps.version.outputs.versionCode }}.txt
