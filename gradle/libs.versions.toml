@@ -22,7 +22,7 @@ sdk-compile = "36"
 sdk-min = "24"
 sdk-target = "36"
 sonarqube = "6.2.0.5505"
-truth = "1.6.0"
+truth = "1.7.0"
 viewpager = "1.1.0"
 
 [libraries]
