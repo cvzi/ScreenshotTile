@@ -15,7 +15,7 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     - name: Add exec permission
       run: chmod +x gradlew
     - name: Validate Gradle Wrapper
