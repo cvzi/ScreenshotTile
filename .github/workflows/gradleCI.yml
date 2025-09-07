@@ -64,7 +64,7 @@ jobs:
         mv app/build/outputs/apk/release/app-release.apk screenshottile_commit_${{ github.sha }}.apk
 
     - name: 📜 Attest
-      uses: actions/attest-build-provenance@v2
+      uses: actions/attest-build-provenance@v3
       with:
         subject-path: 'screenshottile_commit_${{ github.sha }}.apk'
 
@@ -105,7 +105,7 @@ jobs:
 
     - name: 📜 Attest
       if: ${{ github.ref_type == 'tag' }}
-      uses: actions/attest-build-provenance@v2
+      uses: actions/attest-build-provenance@v3
       with:
         subject-path: 'screenshottile_gh_${{ steps.version.outputs.versionCode }}.apk'
 
