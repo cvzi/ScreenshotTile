@@ -1,4 +1,4 @@
-name: 🔨 Gradle Build CI
+name: 🔨 Gradle Build
 
 on:
   push:
@@ -6,7 +6,14 @@ on:
       - 'docs/**'
       - 'fastlane/**'
       - '*.md'
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -25,8 +32,8 @@ jobs:
     - name: ♨️ JDK
       uses: actions/setup-java@v4
       with:
-        distribution: 'adopt'
-        java-version: '17'
+        distribution: 'temurin'
+        java-version: '21'
         check-latest: true
 
     - name: ❎ Add exec permission
@@ -102,8 +109,15 @@ jobs:
       with:
         subject-path: 'screenshottile_gh_${{ steps.version.outputs.versionCode }}.apk'
 
-    - name: 🎉 Publish Github release
+    - name: 🤖 Upload apk
       if: ${{ github.ref_type == 'tag' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: release-apk
+        path: screenshottile_gh_${{ steps.version.outputs.versionCode }}.apk
+
+    - name: 🎉 Publish Github release
+      if: false
       uses: softprops/action-gh-release@v2
       with:
         files: screenshottile_gh_${{ steps.version.outputs.versionCode }}.apk
