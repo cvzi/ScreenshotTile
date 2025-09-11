@@ -14,7 +14,7 @@ kotlin = "2.2.20"
 kotlinBom = "2.2.20"
 kotlinxCoroutinesAndroid = "1.10.2"
 lifecycleViewmodelKtx = "2.9.3"
-material = "1.12.0"
+material = "1.13.0"
 photoeditor = "3.0.2"
 preferenceKtx = "1.2.1"
 robolectric = "4.16"
@@ -24,6 +24,7 @@ sdk-target = "36"
 sonarqube = "6.3.1.5724"
 truth = "1.7.0"
 viewpager = "1.1.0"
+documentfile = "1.1.0"
 
 [libraries]
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
@@ -50,6 +51,7 @@ rules = { module = "androidx.test:rules", version.ref = "core" }
 runner = { module = "androidx.test:runner", version.ref = "runner" }
 truth = { module = "androidx.test.ext:truth", version.ref = "truth" }
 viewpager = { module = "androidx.viewpager:viewpager", version.ref = "viewpager" }
+documentfile = { group = "androidx.documentfile", name = "documentfile", version.ref = "documentfile" }
 
 
 [bundles]
