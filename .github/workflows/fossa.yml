@@ -19,7 +19,7 @@ jobs:
     - name: Add exec permission
       run: chmod +x gradlew
     - name: Validate Gradle Wrapper
-      uses: gradle/actions/wrapper-validation@v4
+      uses: gradle/actions/wrapper-validation@v5
     - name: Disable configuration cache
       run: echo -e "\norg.gradle.unsafe.configuration-cache=false\n" >> gradle.properties
     #- name: Generate dependencies report
