@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.12.3
+*   Dependencies updated
+
 ## 2.12.2
 *   Fix image position on crop activity if "Save to gallery" is disabled [#606](https://github.com/cvzi/ScreenshotTile/issues/606)
 *   Show hint about "new window" permission in MIUI and HyperOS
