@@ -1,30 +1,29 @@
 [versions]
-agp = "8.13.0"
+agp = "8.8.2"
 annotation = "1.9.1"
-appcompat = "1.7.1"
-bcutilJdk18on = "1.82"
+appcompat = "1.7.0"
+bcutilJdk18on = "1.80"
 cardview = "1.0.0"
 constraintlayout = "2.2.1"
-core = "1.7.0"
-runner = "1.7.0"
-espressoCore = "3.7.0"
-junit = "1.3.0"
+core = "1.6.1"
+runner = "1.6.2"
+espressoCore = "3.6.1"
+junit = "1.2.1"
 junitVersion = "4.13.2"
-kotlin = "2.2.20"
-kotlinBom = "2.2.20"
-kotlinxCoroutinesAndroid = "1.10.2"
-lifecycleViewmodelKtx = "2.9.4"
-material = "1.13.0"
+kotlin = "2.1.10"
+kotlinBom = "2.1.10"
+kotlinxCoroutinesAndroid = "1.10.1"
+lifecycleViewmodelKtx = "2.8.7"
+material = "1.12.0"
 photoeditor = "3.0.2"
 preferenceKtx = "1.2.1"
-robolectric = "4.16"
-sdk-compile = "36"
+robolectric = "4.14.1"
+sdk-compile = "35"
 sdk-min = "24"
-sdk-target = "36"
-sonarqube = "7.0.0.6105"
-truth = "1.7.0"
+sdk-target = "35"
+sonarqube = "6.0.1.5171"
+truth = "1.6.0"
 viewpager = "1.1.0"
-documentfile = "1.1.0"
 
 [libraries]
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
@@ -51,7 +50,6 @@ rules = { module = "androidx.test:rules", version.ref = "core" }
 runner = { module = "androidx.test:runner", version.ref = "runner" }
 truth = { module = "androidx.test.ext:truth", version.ref = "truth" }
 viewpager = { module = "androidx.viewpager:viewpager", version.ref = "viewpager" }
-documentfile = { group = "androidx.documentfile", name = "documentfile", version.ref = "documentfile" }
 
 
 [bundles]

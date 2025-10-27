@@ -7,36 +7,6 @@
     "target":
     {
       "namespace": "android_app",
-      "package_name": "com.github.cvzi.wallpaperexport",
-      "sha256_cert_fingerprints":
-      [
-        "33:4D:32:5A:41:E8:80:9D:D2:1A:E9:C5:40:2D:6D:63:7F:A9:4A:C5:61:A8:C9:69:02:19:4F:B3:37:EB:D8:D7"
-      ]
-    }
-  },
-  {
-    "relation":
-    [
-      "delegate_permission/common.handle_all_urls"
-    ],
-    "target":
-    {
-      "namespace": "android_app",
-      "package_name": "com.github.cvzi.darkmodewallpaper",
-      "sha256_cert_fingerprints":
-      [
-        "48:24:53:5C:BA:4E:FB:87:46:97:F8:88:04:23:89:78:06:D8:8D:1B:D4:C6:FD:2A:EF:BE:55:AB:55:01:56:7D"
-      ]
-    }
-  },
-  {
-    "relation":
-    [
-      "delegate_permission/common.handle_all_urls"
-    ],
-    "target":
-    {
-      "namespace": "android_app",
       "package_name": "com.github.cvzi.screenshottile",
       "sha256_cert_fingerprints":
       [

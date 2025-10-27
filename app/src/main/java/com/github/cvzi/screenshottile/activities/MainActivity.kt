@@ -16,6 +16,7 @@ import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.View
@@ -24,7 +25,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
@@ -96,9 +96,9 @@ class MainActivity : BaseAppCompatActivity() {
 
         val textDescTranslate = binding.textDescTranslate
         textDescTranslate.movementMethod = LinkMovementMethod()
-        textDescTranslate.text = HtmlCompat.fromHtml(
+        textDescTranslate.text = Html.fromHtml(
             getLocalizedString(R.string.translate_this_app_text),
-            HtmlCompat.FROM_HTML_MODE_LEGACY
+            Html.FROM_HTML_SEPARATOR_LINE_BREAK_DIV
         )
 
         val switchLegacy = binding.switchLegacy

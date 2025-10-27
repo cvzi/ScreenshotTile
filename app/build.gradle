@@ -19,9 +19,6 @@ android {
                 keyPassword 'password'
             }
         }
-        debug {
-            storeFile rootProject.file('app/debug.keystore')
-        }
     }
     defaultConfig {
         applicationId 'com.github.cvzi.screenshottile'
@@ -30,8 +27,8 @@ android {
         compileSdk libs.versions.sdk.compile.get().toInteger()
         targetSdk libs.versions.sdk.target.get().toInteger()
 
-        versionCode 130
-        versionName '2.12.3'
+        versionCode 129
+        versionName '2.12.2'
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         buildConfigField 'com.github.cvzi.screenshottile.MutableBoolean', 'TESTING_MODE', 'new com.github.cvzi.screenshottile.MutableBoolean(false)'
@@ -87,7 +84,6 @@ android {
 dependencies {
     implementation platform(libs.kotlin.bom)
     implementation libs.bundles.implementation.app
-    implementation libs.documentfile
     androidTestImplementation libs.bundles.android.test
     testImplementation libs.bundles.test
 }
