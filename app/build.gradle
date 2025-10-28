@@ -87,6 +87,7 @@ android {
 dependencies {
     implementation platform(libs.kotlin.bom)
     implementation libs.bundles.implementation.app
+    implementation libs.documentfile
     androidTestImplementation libs.bundles.android.test
     testImplementation libs.bundles.test
 }
