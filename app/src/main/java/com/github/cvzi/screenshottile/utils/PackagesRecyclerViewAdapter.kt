@@ -120,7 +120,7 @@ class PackagesRecyclerViewAdapter internal constructor(
                 try {
                     it.loadLabel(context.packageManager).toString()
                         .ifBlank { it.activityInfo.packageName }
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                     // no-op
                     it.activityInfo.packageName
                 }.apply {
@@ -204,7 +204,7 @@ class PackagesRecyclerViewAdapter internal constructor(
                                 packageName
                             }
                         }
-                    } catch (e: Exception) {
+                    } catch (_: Exception) {
                         // no-op
                     } finally {
                         cacheLabel[packageName] = label
@@ -226,7 +226,7 @@ class PackagesRecyclerViewAdapter internal constructor(
                                 binding.imageView.setImageDrawable(drawable)
                             }
                         }
-                    } catch (e: Exception) {
+                    } catch (_: Exception) {
                         // no-op
                     } finally {
                         cacheDrawable[packageName] = drawable
@@ -244,7 +244,7 @@ class PackagesRecyclerViewAdapter internal constructor(
         }
 
         override fun onClick(view: View) {
-            val position = adapterPosition
+            val position = absoluteAdapterPosition
             if (selectedPackages.contains(displayedPackages[position].activityInfo.packageName)) {
                 selectedPackages.remove(displayedPackages[position].activityInfo.packageName)
             } else {

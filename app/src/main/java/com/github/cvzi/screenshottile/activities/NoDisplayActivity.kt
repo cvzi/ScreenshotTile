@@ -1,6 +1,5 @@
 package com.github.cvzi.screenshottile.activities
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build

@@ -44,6 +44,7 @@ import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
 import com.github.cvzi.screenshottile.utils.toastMessage
 import com.google.android.material.switchmaterial.SwitchMaterial
 import java.util.function.Consumer
+import androidx.core.net.toUri
 
 
 /**
@@ -75,7 +76,7 @@ class MainActivity : BaseAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.setVariable(BR.strings, App.texts)
 
         if (!accessibilityConsent) {
@@ -194,18 +195,16 @@ class MainActivity : BaseAppCompatActivity() {
         binding.buttonUpdateCheck.setOnClickListener {
             val args = arrayOf(
                 packageName ?: "com.github.cvzi.screenshottile",
-                BuildConfig.VERSION_CODE,
+                BuildConfig.VERSION_CODE.toString(),
                 BuildConfig.VERSION_NAME,
                 BuildConfig.BUILD_TYPE
-            ).map { Uri.encode(it.toString()) }.toTypedArray()
+            ).map { Uri.encode(it) }.toTypedArray()
 
             @SuppressLint("StringFormatMatches")
-            val uri = Uri.parse(
-                formatLocalizedString(
-                    R.string.pref_static_field_link_about_updates,
-                    *args
-                )
-            )
+            val uri = formatLocalizedString(
+                R.string.pref_static_field_link_about_updates,
+                *args
+            ).toUri()
             Intent(ACTION_VIEW, uri).apply {
                 if (resolveActivity(packageManager) != null) {
                     startActivity(this)
@@ -454,7 +453,7 @@ class MainActivity : BaseAppCompatActivity() {
         builder.setView(imageView)
         builder.setNeutralButton(R.string.restricted_settings_open_settings) { _, _ ->
             val intent = Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-            intent.data = Uri.parse("package:$packageName")
+            intent.data = "package:$packageName".toUri()
             if (intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
             }

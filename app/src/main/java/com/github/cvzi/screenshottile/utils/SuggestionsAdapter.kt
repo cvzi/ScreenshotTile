@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.databinding.RecentFolderItemBinding
 import com.github.cvzi.screenshottile.databinding.SuggestionItemBinding
 
 typealias OnItemClickListener = (v: View, index: Int) -> Unit
@@ -44,27 +43,24 @@ class SuggestionsAdapter(private var data: ArrayList<FileNameSuggestion>) :
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView
-        val starButton: ImageButton
-        private val deleteButton: ImageButton
+        val textView: TextView = view.findViewById(R.id.textView)
+        val starButton: ImageButton = view.findViewById(R.id.imageButtonStar)
+        private val deleteButton: ImageButton = view.findViewById(R.id.imageButtonDelete)
 
         init {
-            textView = view.findViewById(R.id.textView)
-            starButton = view.findViewById(R.id.imageButtonStar)
-            deleteButton = view.findViewById(R.id.imageButtonDelete)
             textView.setOnClickListener {
-                if (adapterPosition == layoutPosition && adapterPosition != -1) {
-                    onTextClickListener?.invoke(it, adapterPosition)
+                if (absoluteAdapterPosition == layoutPosition && absoluteAdapterPosition != -1) {
+                    onTextClickListener?.invoke(it, absoluteAdapterPosition)
                 }
             }
             starButton.setOnClickListener {
-                if (adapterPosition == layoutPosition && adapterPosition != -1) {
-                    onStarClickListener?.invoke(it, adapterPosition)
+                if (absoluteAdapterPosition == layoutPosition && absoluteAdapterPosition != -1) {
+                    onStarClickListener?.invoke(it, absoluteAdapterPosition)
                 }
             }
             deleteButton.setOnClickListener {
-                if (adapterPosition == layoutPosition && adapterPosition != -1) {
-                    onDeleteClickListener?.invoke(it, adapterPosition)
+                if (absoluteAdapterPosition == layoutPosition && absoluteAdapterPosition != -1) {
+                    onDeleteClickListener?.invoke(it, absoluteAdapterPosition)
                 }
             }
         }

@@ -40,6 +40,8 @@ import com.github.cvzi.screenshottile.utils.ShutterCollection
 import com.github.cvzi.screenshottile.utils.fillTextHeight
 import com.github.cvzi.screenshottile.utils.parseColorString
 import com.google.android.material.switchmaterial.SwitchMaterial
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.graphics.createBitmap
 
 
 /**
@@ -158,7 +160,7 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
 
 
         binding.linearLayoutPreview.background =
-            BitmapDrawable(resources, checkeredBackground()).apply {
+            checkeredBackground().toDrawable(resources).apply {
                 setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT)
                 setTargetDensity(resources.displayMetrics.densityDpi * 2)
             }
@@ -435,7 +437,7 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
     private fun checkeredBackground(): Bitmap {
         val isNightMode =
             (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
-        return Bitmap.createBitmap(19, 19, Bitmap.Config.ARGB_8888).apply {
+        return createBitmap(19, 19).apply {
             Canvas(this).apply {
                 val dark = Paint().apply {
                     color = (if (isNightMode) 0xff000000 else 0xffCDCDCD).toInt()

@@ -3,7 +3,6 @@ package com.github.cvzi.screenshottile.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
@@ -85,7 +84,7 @@ class SettingsActivity : BaseAppCompatActivity() {
                     fragment.arguments = this
                 }
                 fragment as Fragment
-            } catch (e: Throwable) {
+            } catch (_: Throwable) {
                 null
             }
 

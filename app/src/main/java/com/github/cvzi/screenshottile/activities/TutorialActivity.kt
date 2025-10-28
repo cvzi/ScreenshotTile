@@ -9,10 +9,8 @@ import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.collection.LruCache
 import androidx.databinding.DataBindingUtil
@@ -22,7 +20,6 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.databinding.ActivityLanguageBinding
 import com.github.cvzi.screenshottile.databinding.ActivityTutorialBinding
 import com.github.cvzi.screenshottile.utils.getLocalizedString
 
@@ -93,7 +90,7 @@ class TutorialActivity : BaseAppCompatActivity() {
     private lateinit var binding: ActivityTutorialBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityTutorialBinding>(this, R.layout.activity_tutorial)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_tutorial)
         binding.setVariable(BR.strings, App.texts)
 
         val cacheSize = (Runtime.getRuntime().maxMemory() / 1024).toInt() / 4
@@ -169,7 +166,7 @@ class TutorialActivity : BaseAppCompatActivity() {
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             return ClickableImageView(this@TutorialActivity).apply {
-                setImageBitmap(bitmapCache.get(images[position]))
+                setImageBitmap(bitmapCache[images[position]])
                 (container as? ViewPager)?.addView(this, 0)
             }
         }
@@ -180,12 +177,12 @@ class TutorialActivity : BaseAppCompatActivity() {
     }
 
     private inner class BitmapCache(cacheSize: Int) : LruCache<Int, Bitmap>(cacheSize) {
-        override fun sizeOf(resId: Int, bitmap: Bitmap): Int {
-            return bitmap.byteCount / 1024
+        override fun sizeOf(key: Int, value: Bitmap): Int {
+            return value.byteCount / 1024
         }
 
-        override fun create(resId: Int): Bitmap? {
-            return BitmapFactory.decodeResource(resources, resId)
+        override fun create(key: Int): Bitmap? {
+            return BitmapFactory.decodeResource(resources, key)
         }
     }
 }

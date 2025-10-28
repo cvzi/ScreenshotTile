@@ -42,8 +42,8 @@ class TonesRecyclerViewAdapter internal constructor(
 
         override fun onClick(view: View) {
             val oldSelectedIndex = selectedIndex
-            selectedIndex = adapterPosition
-            clickListener(view, adapterPosition, toneNames[adapterPosition])
+            selectedIndex = absoluteAdapterPosition
+            clickListener(view, absoluteAdapterPosition, toneNames[absoluteAdapterPosition])
             notifyItemChanged(oldSelectedIndex)
             notifyItemChanged(selectedIndex)
         }

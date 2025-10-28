@@ -36,6 +36,7 @@ import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_STOP
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
+import androidx.core.net.toUri
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2019/08/23.
@@ -566,7 +567,7 @@ fun notificationSettingsIntent(packageName: String, channelId: String? = null): 
         else -> {
             Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                data = Uri.parse("package:$packageName")
+                data = "package:$packageName".toUri()
                 addCategory(Intent.CATEGORY_DEFAULT)
             }
         }

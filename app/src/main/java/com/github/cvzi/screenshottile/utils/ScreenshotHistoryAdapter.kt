@@ -22,7 +22,6 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.HistoryActivity
 import com.github.cvzi.screenshottile.activities.PostActivity
-import com.github.cvzi.screenshottile.databinding.DialogCloseButtonBinding
 import com.github.cvzi.screenshottile.databinding.HistoryItemBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

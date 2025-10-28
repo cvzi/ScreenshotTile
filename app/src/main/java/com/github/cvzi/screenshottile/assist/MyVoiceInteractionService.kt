@@ -8,6 +8,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.provider.Settings
 import android.service.voice.VoiceInteractionService
+import android.util.Log
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.MainActivity
@@ -69,6 +70,7 @@ class MyVoiceInteractionService : VoiceInteractionService() {
             }
         } catch (e: ActivityNotFoundException) {
             // This seems to happen after booting
+            Log.e("VoiceInterSrv","Failed to start activity from voice interaction service", e)
         }
 
         if (App.getInstance().prefManager.voiceInteractionAction != getString(R.string.setting_voice_interaction_action_value_native) &&
@@ -81,7 +83,7 @@ class MyVoiceInteractionService : VoiceInteractionService() {
             try {
                 App.requestStoragePermission(this, false)
             } catch (e: ActivityNotFoundException) {
-                // This seems to happen after booting
+                Log.e("VoiceInterSrv","Failed to start ask for permission from voice interaction service", e)
             }
         }
     }

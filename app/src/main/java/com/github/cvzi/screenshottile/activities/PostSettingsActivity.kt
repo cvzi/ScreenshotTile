@@ -44,7 +44,7 @@ class PostSettingsActivity : BaseAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityPostSettingsBinding>(
+        binding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_post_settings
         )

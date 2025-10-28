@@ -35,6 +35,8 @@ import java.util.Locale
 import kotlin.math.ceil
 import kotlin.math.max
 import kotlin.math.min
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.scale
 
 
 /**
@@ -54,7 +56,7 @@ fun imageToBitmap(image: Image, rect: Rect? = null): Bitmap {
         (image.planes[0].rowStride - image.planes[0].pixelStride * image.width) / image.planes[0].pixelStride
     val w = image.width + offset
     val h = image.height
-    val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+    val bitmap = createBitmap(w, h)
     bitmap.copyPixelsFromBuffer(image.planes[0].buffer)
     return if (rect != null && rect.left >= 0 && rect.top >= 0 && rect.width() > 0 && rect.height() > 0) {
         Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
@@ -71,7 +73,7 @@ fun imageJPEGToBitmap(image: Image, rect: Rect? = null): Bitmap {
     val w = image.width
     val h = image.height
 
-    val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+    val bitmap = createBitmap(w, h)
     image.planes[0].buffer.let {
         it.rewind()
         bitmap.copyPixelsFromBuffer(it)
@@ -99,7 +101,7 @@ fun resizeToNotificationIcon(bitmap: Bitmap, screenDensity: Int): Bitmap {
         max((bitmap.width * ratio).toInt(), TakeScreenshotActivity.NOTIFICATION_PREVIEW_MIN_SIZE)
     val newHeight =
         max((bitmap.height * ratio).toInt(), TakeScreenshotActivity.NOTIFICATION_PREVIEW_MIN_SIZE)
-    return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, false)
+    return bitmap.scale(newWidth, newHeight, false)
 }
 
 /**
@@ -203,7 +205,8 @@ fun deleteDocumentFile(context: Context, uri: Uri): Boolean {
         } catch (e: SecurityException) {
             Log.e(
                 UTILSIMAGEKT,
-                "SecurityException in deleteDocumentFile($context, $uri)"
+                "SecurityException in deleteDocumentFile($context, $uri)",
+                e
             )
             false
         }
@@ -218,9 +221,9 @@ fun deleteDocumentFile(context: Context, uri: Uri): Boolean {
 fun deleteContentResolver(context: Context, uri: Uri): Boolean {
     val deletedRows = try {
         context.contentResolver.delete(uri, null, null)
-    } catch (e: UnsupportedOperationException) {
+    } catch (_: UnsupportedOperationException) {
         0
-    } catch (e: SecurityException) {
+    } catch (_: SecurityException) {
         0
     }
     if (deletedRows == 0) {
@@ -769,7 +772,7 @@ fun realScreenSize(context: Context): Point {
  * Tint image (for debugging)
  */
 fun tintImage(bitmap: Bitmap, color: Long): Bitmap {
-    val newBitmap = Bitmap.createBitmap(bitmap.width, bitmap.height, Bitmap.Config.ARGB_8888)
+    val newBitmap = createBitmap(bitmap.width, bitmap.height)
     Canvas(newBitmap).drawBitmap(bitmap, 0f, 0f, Paint().apply {
         colorFilter = PorterDuffColorFilter(color.toInt(), PorterDuff.Mode.ADD)
     })
@@ -814,12 +817,7 @@ fun scaleBitmap(bm: Bitmap, maxWidth: Int, maxHeight: Int): Pair<Bitmap, Float> 
         scale = 1f
     }
     return Pair(
-        Bitmap.createScaledBitmap(
-            bm,
-            newWidth,
-            newHeight,
-            true
-        ), scale
+        bm.scale(newWidth, newHeight), scale
     )
 }
 

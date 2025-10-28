@@ -1,7 +1,6 @@
 package com.github.cvzi.screenshottile.activities
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +9,6 @@ import android.os.Bundle
 import android.provider.DocumentsContract
 import android.util.Log
 import android.util.Size
-import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
@@ -18,6 +16,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cvzi.screenshottile.App
@@ -25,7 +24,6 @@ import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_RENAME_INPUT
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
-import com.github.cvzi.screenshottile.databinding.ActivityHistoryBinding
 import com.github.cvzi.screenshottile.databinding.ActivityPostBinding
 import com.github.cvzi.screenshottile.utils.RecentFolder
 import com.github.cvzi.screenshottile.utils.RecentFoldersAdapter
@@ -91,7 +89,7 @@ class PostActivity : GenericPostActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityPostBinding>(this, R.layout.activity_post)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_post)
         binding.setVariable(BR.strings, App.texts)
 
         intent?.run {
@@ -102,29 +100,27 @@ class PostActivity : GenericPostActivity() {
             } else {
                 null
             }
-            val parentFolderUri = getStringExtra(PARENT_FOLDER_URI)?.let { Uri.parse(it) }
+            val parentFolderUri = getStringExtra(PARENT_FOLDER_URI)?.toUri()
             if (imagePath?.isNotBlank() == true) {
-                Uri.parse(imagePath)?.let { imageUri ->
-                    SingleImage(imageUri, parentFolderUri = parentFolderUri).apply {
-                        loadImageInThread(
-                            contentResolver,
-                            Size(200, 400),
-                            lastBitmap,
-                            { singleImageLoaded ->
-                                runOnUiThread {
-                                    singleImage = singleImageLoaded
-                                    showSingleImage(singleImageLoaded)
-                                }
-                            },
-                            { error ->
-                                runOnUiThread {
-                                    Log.e(TAG, "Failed to load image: $error")
-                                    binding.imageView.setImageResource(android.R.drawable.stat_notify_error)
-                                    binding.textViewFileName.text = "Failed to load image"
-                                    binding.textViewFileSize.text = ""
-                                }
-                            })
-                    }
+                SingleImage(imagePath.toUri(), parentFolderUri = parentFolderUri).apply {
+                    loadImageInThread(
+                        contentResolver,
+                        Size(200, 400),
+                        lastBitmap,
+                        { singleImageLoaded ->
+                            runOnUiThread {
+                                singleImage = singleImageLoaded
+                                showSingleImage(singleImageLoaded)
+                            }
+                        },
+                        { error ->
+                            runOnUiThread {
+                                Log.e(TAG, "Failed to load image: $error")
+                                binding.imageView.setImageResource(android.R.drawable.stat_notify_error)
+                                binding.textViewFileName.text = "Failed to load image"
+                                binding.textViewFileSize.text = ""
+                            }
+                        })
                 }
             }
 

@@ -2,7 +2,6 @@ package com.github.cvzi.screenshottile.activities
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -344,7 +343,7 @@ class TakeScreenshotActivity : BaseActivity(),
         screenSharing = true
         mediaProjection = try {
             App.createMediaProjection()
-        } catch (e: SecurityException) {
+        } catch (_: SecurityException) {
             Log.e(TAG, "prepareForScreenSharing(): SecurityException 1")
             null
         }
@@ -364,13 +363,13 @@ class TakeScreenshotActivity : BaseActivity(),
                 )
                 try {
                     App.acquireScreenshotPermission(this, this)
-                } catch (e: SecurityException) {
+                } catch (_: SecurityException) {
                     Log.e(TAG, "prepareForScreenSharing(): SecurityException 2")
                 }
             }
             mediaProjection = try {
                 App.createMediaProjection()
-            } catch (e: SecurityException) {
+            } catch (_: SecurityException) {
                 Log.e(TAG, "prepareForScreenSharing(): SecurityException 3")
                 Handler(Looper.getMainLooper()).postDelayed({
                     // Something went wrong, restart everything

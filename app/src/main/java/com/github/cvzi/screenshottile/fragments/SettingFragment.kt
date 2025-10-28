@@ -50,7 +50,6 @@ import com.github.cvzi.screenshottile.activities.LanguageActivity
 import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.activities.PostSettingsActivity
 import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
-import com.github.cvzi.screenshottile.databinding.DialogAskFilenameBinding
 import com.github.cvzi.screenshottile.databinding.DialogCloseButtonBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
@@ -64,6 +63,7 @@ import com.github.cvzi.screenshottile.utils.notificationSettingsIntent
 import com.github.cvzi.screenshottile.utils.safeDismiss
 import com.github.cvzi.screenshottile.utils.toastMessage
 import java.lang.ref.WeakReference
+import androidx.core.net.toUri
 
 
 /**
@@ -250,10 +250,10 @@ class SettingFragment : PreferenceFragmentCompat() {
             R.string.pref_static_field_link_about_updates,
             arrayOf(
                 context?.packageName ?: "com.github.cvzi.screenshottile",
-                BuildConfig.VERSION_CODE,
+                BuildConfig.VERSION_CODE.toString(),
                 BuildConfig.VERSION_NAME,
                 BuildConfig.BUILD_TYPE
-            ).map { Uri.encode(it.toString()) }.toTypedArray(),
+            ).map { Uri.encode(it) }.toTypedArray(),
         )
 
         makeNotificationSettingsLink()
@@ -313,13 +313,11 @@ class SettingFragment : PreferenceFragmentCompat() {
             val myPref = findPreference(getString(name)) as Preference?
             myPref?.isSelectable = true
             myPref?.onPreferenceClickListener = OnPreferenceClickListener {
-                val uri = Uri.parse(
-                    if (linkFormatArgs != null) {
-                        getString(link, *linkFormatArgs)
-                    } else {
-                        getString(link)
-                    }
-                )
+                val uri = if (linkFormatArgs != null) {
+                    getString(link, *linkFormatArgs)
+                } else {
+                    getString(link)
+                }.toUri()
                 Intent(ACTION_VIEW, uri).apply {
                     if (resolveActivity(myActivity.packageManager) != null) {
                         startActivity(this)
@@ -410,7 +408,7 @@ class SettingFragment : PreferenceFragmentCompat() {
                     addFlags(FLAG_GRANT_READ_URI_PERMISSION)
                     addFlags(FLAG_GRANT_WRITE_URI_PERMISSION)
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !currentDir.isNullOrEmpty()) {
-                        putExtra(DocumentsContract.EXTRA_INITIAL_URI, Uri.parse(currentDir))
+                        putExtra(DocumentsContract.EXTRA_INITIAL_URI, currentDir.toUri())
                     }
                     if (resolveActivity(myActivity.packageManager) != null) {
                         startForPickFolder.launch(createChooser(this, "Choose directory"))
@@ -709,6 +707,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         updateUseSystemDefaults(switchEvent)
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     private fun updateUseSystemDefaults(switchEvent: Boolean) {
         useSystemDefaultsPref?.apply {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R || !prefManager.useNative) {

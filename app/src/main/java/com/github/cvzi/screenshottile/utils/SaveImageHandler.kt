@@ -31,7 +31,7 @@ class SaveImageHandler(looper: Looper) :
         if (msg.what == THREAD_START) {
             try {
                 thread?.start()
-            } catch (e: IllegalStateException) {
+            } catch (_: IllegalStateException) {
                 // Thread may already be started
             }
         } else if (msg.what == THREAD_FINISHED) {

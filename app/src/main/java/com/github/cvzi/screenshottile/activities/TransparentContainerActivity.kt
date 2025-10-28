@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentFactory
 
 /**
@@ -49,7 +48,7 @@ open class TransparentContainerActivity : BaseFragmentActivity() {
                     fragment.arguments = this
                 }
                 fragment as Fragment
-            } catch (e: Throwable) {
+            } catch (_: Throwable) {
                 null
             }
 

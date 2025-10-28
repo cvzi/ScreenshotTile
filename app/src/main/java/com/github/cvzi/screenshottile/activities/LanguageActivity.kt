@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.animation.AlphaAnimation
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -41,7 +40,7 @@ class LanguageActivity : BaseAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView<ActivityLanguageBinding>(this, R.layout.activity_language)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_language)
         binding.setVariable(BR.strings, App.texts)
 
         Log.v(TAG, "Current languages: ${Resources.getSystem().configuration.locales}")
@@ -79,8 +78,8 @@ class LanguageActivity : BaseAppCompatActivity() {
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                val fromPosition = viewHolder.adapterPosition
-                val toPosition = target.adapterPosition
+                val fromPosition = viewHolder.absoluteAdapterPosition
+                val toPosition = target.absoluteAdapterPosition
                 selectedLanguages.add(toPosition, selectedLanguages.removeAt(fromPosition))
                 selectedLanguagesAdapter.notifyItemMoved(fromPosition, toPosition)
                 highlightApplyButton()
@@ -88,8 +87,8 @@ class LanguageActivity : BaseAppCompatActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                selectedLanguages.removeAt(viewHolder.adapterPosition)
-                selectedLanguagesAdapter.notifyItemRemoved(viewHolder.adapterPosition)
+                selectedLanguages.removeAt(viewHolder.absoluteAdapterPosition)
+                selectedLanguagesAdapter.notifyItemRemoved(viewHolder.absoluteAdapterPosition)
                 highlightApplyButton()
             }
         })
@@ -117,9 +116,7 @@ class LanguageActivity : BaseAppCompatActivity() {
         val userLanguages = App.getInstance().prefManager.userLanguages
         Log.v(TAG, "onResume: User languages: $userLanguages")
         if (userLanguages?.isNotBlank() == true) {
-            userLanguages.split(",")
-                .map { short -> allLanguages.find { it.short == short } }
-                .filterNotNull()
+            userLanguages.split(",").mapNotNull { short -> allLanguages.find { it.short == short } }
                 .forEach { language ->
                     if (!selectedLanguages.contains(language)) {
                         selectedLanguages.add(language)
@@ -189,7 +186,7 @@ class LanguageActivity : BaseAppCompatActivity() {
         Log.v(TAG, "Selected languages: ${selectedLanguagesAdapter.languages}")
         App.getInstance().prefManager.userLanguages =
             if (selectedLanguagesAdapter.languages.isNotEmpty()) {
-                selectedLanguagesAdapter.languages.map { it.short }.joinToString(",")
+                selectedLanguagesAdapter.languages.joinToString(",") { it.short }
             } else {
                 null
             }

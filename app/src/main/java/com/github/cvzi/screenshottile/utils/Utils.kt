@@ -50,6 +50,8 @@ import java.net.URLDecoder
 import java.util.*
 import kotlin.math.max
 import kotlin.random.Random
+import androidx.core.net.toUri
+import androidx.core.graphics.toColorInt
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.
@@ -318,7 +320,7 @@ fun createOutputStreamMediaStore(
 
     customDirectory?.let {
         // Use DocumentFile for custom directory
-        val customDirectoryUri = Uri.parse(it)
+        val customDirectoryUri = it.toUri()
         val docDir = DocumentFile.fromTreeUri(context, customDirectoryUri)
         if (docDir != null) {
             val createdFile = docDir.createFile(compressionOptions.mimeType, filename)
@@ -367,7 +369,7 @@ fun createOutputStreamMediaStore(
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             put(Images.ImageColumns.DATE_TAKEN, dateMilliseconds)
-            if (!relativePath.isNullOrBlank()) {
+            if (relativePath.isNotBlank()) {
                 put(Images.ImageColumns.RELATIVE_PATH, relativePath)
                 dummyPath = "$relativePath/$filename"
             }
@@ -396,7 +398,7 @@ fun createOutputStreamMediaStore(
             ?: return OutputStreamResult("Could not open output stream from MediaStore")
     }
     return OutputStreamResultSuccess(
-        outputStream ?: return OutputStreamResult("MediaStore output stream is null"),
+        outputStream,
         null,
         uri,
         contentValues,
@@ -813,7 +815,7 @@ fun nicePathFromUri(str: String?): String {
     if (str == null) {
         return "null"
     }
-    var path = URLDecoder.decode(str.toString(), "UTF-8")
+    var path = URLDecoder.decode(str, "UTF-8")
     path = path.split("/").last()
     if (path.startsWith("primary:")) {
         path = path.substring(8)
@@ -835,7 +837,7 @@ fun niceFullPathFromUri(str: String?): String {
     if (str == null) {
         return "null"
     }
-    var path = URLDecoder.decode(str.toString(), "UTF-8")
+    var path = URLDecoder.decode(str, "UTF-8")
     var parts = path.split("/").toMutableList()
 
     if (parts[3] == "tree") {
@@ -1152,7 +1154,7 @@ fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -
                 folder?.listFiles()?.map { file ->
                     val lastModified = try {
                         file.lastModified()
-                    } catch (e: Exception) {
+                    } catch (_: Exception) {
                         null
                     }
                     Pair(file, lastModified)
@@ -1184,10 +1186,10 @@ fun parseColorString(colorString: String?): Int? {
             }
         }
         try {
-            return Color.parseColor(colorString)
-        } catch (e: IllegalArgumentException) {
+            return colorString.toColorInt()
+        } catch (_: IllegalArgumentException) {
             try {
-                return Color.parseColor("#$colorString")
+                return "#$colorString".toColorInt()
             } catch (_: IllegalArgumentException) {
             }
         }
