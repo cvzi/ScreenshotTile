@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.12.5
+*   Ask for notification permission when disabling "use system defaults"
+
+## 2.12.4
+*   reverted to v2.12.2, 2.12.3 is broken
+
 ## 2.12.3
 *   Dependencies updated
 
