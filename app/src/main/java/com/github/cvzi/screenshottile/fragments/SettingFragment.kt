@@ -76,6 +76,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         private const val FLOATING_BUTTON_SHOW_CLOSE_DIALOG_SHOWN = "closeAlertDialogShown"
         private const val FLOATING_BUTTON_SHOW_CLOSE_DIALOG_VALUE = "closeAlertDialogValue"
         var instance: WeakReference<SettingFragment>? = null
+        private const val NOTIFICATIONS_REQUEST_CODE = 12348
     }
 
     init {
@@ -733,6 +734,22 @@ class SettingFragment : PreferenceFragmentCompat() {
                         ) {
                             askedForStoragePermission = true
                             App.requestStoragePermission(this, false)
+                        }
+                    }
+                }
+
+                if (switchEvent && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    activity?.run {
+                        // Check notification permission
+                        if (packageManager.checkPermission(
+                                Manifest.permission.POST_NOTIFICATIONS,
+                                packageName
+                            ) != PackageManager.PERMISSION_GRANTED
+                        ) {
+                            askedForStoragePermission = true
+                            val permissions = arrayOf(Manifest.permission.POST_NOTIFICATIONS)
+                            requestPermissions(permissions, NOTIFICATIONS_REQUEST_CODE)
+
                         }
                     }
                 }
