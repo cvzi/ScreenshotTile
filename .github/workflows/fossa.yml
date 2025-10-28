@@ -10,16 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Setup JDK
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         distribution: 'temurin'
         java-version: '17'
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     - name: Add exec permission
       run: chmod +x gradlew
     - name: Validate Gradle Wrapper
-      uses: gradle/actions/wrapper-validation@v4
+      uses: gradle/actions/wrapper-validation@v5
     - name: Disable configuration cache
       run: echo -e "\norg.gradle.unsafe.configuration-cache=false\n" >> gradle.properties
     #- name: Generate dependencies report
