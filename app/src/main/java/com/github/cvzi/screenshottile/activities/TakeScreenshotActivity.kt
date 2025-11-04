@@ -38,6 +38,7 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.SaveImageResult
 import com.github.cvzi.screenshottile.SaveImageResultSuccess
 import com.github.cvzi.screenshottile.ToastType
+import com.github.cvzi.screenshottile.functions.AppFunctionResultStore
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
 import com.github.cvzi.screenshottile.services.BasicForegroundService
@@ -494,6 +495,7 @@ class TakeScreenshotActivity : BaseActivity(),
         val result = saveImageResult as? SaveImageResultSuccess?
         when {
             result == null -> {
+                AppFunctionResultStore.setLastFailed("Failed to cast SaveImageResult")
                 screenShotFailedToast("Failed to cast SaveImageResult")
             }
 
@@ -504,6 +506,8 @@ class TakeScreenshotActivity : BaseActivity(),
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
+
+                AppFunctionResultStore.setLastReady(result.uri, result.bitmap.width, result.bitmap.height)
 
                 if ("showToast" in postScreenshotActions) {
                     toastMessage(
@@ -536,6 +540,8 @@ class TakeScreenshotActivity : BaseActivity(),
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
+                AppFunctionResultStore.setLastReady(uri, result.bitmap.width, result.bitmap.height)
+
                 if ("showToast" in postScreenshotActions) {
                     toastMessage(formatLocalizedString(R.string.screenshot_file_saved, path), ToastType.SUCCESS)
                 }
@@ -560,6 +566,7 @@ class TakeScreenshotActivity : BaseActivity(),
             }
 
             else -> {
+                AppFunctionResultStore.setLastFailed("Failed to cast SaveImageResult path/uri")
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")
             }
         }

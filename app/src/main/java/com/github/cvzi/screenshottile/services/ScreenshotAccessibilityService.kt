@@ -50,6 +50,7 @@ import com.github.cvzi.screenshottile.activities.SettingsActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
+import com.github.cvzi.screenshottile.functions.AppFunctionResultStore
 import com.github.cvzi.screenshottile.utils.ShutterCollection
 import com.github.cvzi.screenshottile.utils.compressionPreference
 import com.github.cvzi.screenshottile.utils.createNotification
@@ -801,6 +802,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         val result = saveImageResult as? SaveImageResultSuccess?
         when {
             result == null -> {
+                AppFunctionResultStore.setLastFailed("Failed to cast SaveImageResult path/uri")
                 screenShotFailedToast("Failed to cast SaveImageResult")
             }
 
@@ -811,6 +813,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
+
+                AppFunctionResultStore.setLastReady(result.uri, result.bitmap.width, result.bitmap.height)
+
 
                 if ("showToast" in postScreenshotActions) {
                     getWinContext().toastMessage(
@@ -844,6 +849,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
+                AppFunctionResultStore.setLastReady(uri, result.bitmap.width, result.bitmap.height)
+
                 if ("showToast" in postScreenshotActions) {
                     getWinContext().toastMessage(
                         formatLocalizedString(R.string.screenshot_file_saved, path),
@@ -871,6 +878,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }
 
             else -> {
+                AppFunctionResultStore.setLastFailed("Failed to cast SaveImageResult path/uri")
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")
             }
         }
