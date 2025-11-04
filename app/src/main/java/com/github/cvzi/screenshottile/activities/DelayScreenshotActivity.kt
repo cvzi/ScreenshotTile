@@ -4,14 +4,13 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import com.github.cvzi.screenshottile.App
-import com.github.cvzi.screenshottile.databinding.ActivityDelayBinding
-import com.github.cvzi.screenshottile.utils.screenshot
 import androidx.databinding.DataBindingUtil
+import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.databinding.ActivityDelayBinding
+import com.github.cvzi.screenshottile.utils.screenshot
 
 /**
  * Created by ipcjs on 2017/8/15.
@@ -28,6 +27,9 @@ class DelayScreenshotActivity : BaseActivity() {
         fun newIntent(ctx: Context, delay: Int): Intent {
             val intent = Intent(ctx, DelayScreenshotActivity::class.java)
             intent.putExtra(EXTRA_DELAY, delay)
+            if (ctx !is Activity) {
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
             return intent
         }
     }

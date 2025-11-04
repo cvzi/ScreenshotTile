@@ -4,6 +4,7 @@ plugins {
     alias libs.plugins.android.application
     alias libs.plugins.kotlin.android
     alias libs.plugins.kotlin.kapt
+    alias libs.plugins.devtools.ksp
 }
 
 android {
@@ -88,7 +89,19 @@ android {
     }
 }
 
+ksp {
+    arg "appfunctions:aggregateAppFunctions", "true"
+}
+
 dependencies {
+    implementation(libs.appfunctions) {
+        exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-guava"
+    }
+    implementation(libs.appfunctions.service) {
+        exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-guava"
+    }
+    ksp libs.appfunctions.compiler
+
     implementation platform(libs.kotlin.bom)
     implementation libs.bundles.implementation.app
     implementation libs.documentfile

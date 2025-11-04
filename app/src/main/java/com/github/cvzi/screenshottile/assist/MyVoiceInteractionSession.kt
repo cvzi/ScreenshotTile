@@ -26,6 +26,7 @@ import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.databinding.ImageCropBinding
+import com.github.cvzi.screenshottile.functions.AppFunctionResultStore
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.createNotification
@@ -275,6 +276,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
         val result = saveImageResult as? SaveImageResultSuccess?
         when {
             result == null -> {
+                AppFunctionResultStore.setLastFailed("Failed to cast SaveImageResult")
                 screenShotFailedToast("Failed to cast SaveImageResult")
             }
 
@@ -285,6 +287,8 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                 if (result.dummyPath.isNotEmpty()) {
                     dummyPath = result.dummyPath
                 }
+
+                AppFunctionResultStore.setLastReady(result.uri, result.bitmap.width, result.bitmap.height)
 
                 if ("showToast" in postScreenshotActions) {
                     context.toastMessage(
@@ -318,6 +322,8 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                 val uri = Uri.fromFile(result.file)
                 val path = result.file.absolutePath
 
+                AppFunctionResultStore.setLastReady(uri, result.bitmap.width, result.bitmap.height)
+
                 if ("showToast" in postScreenshotActions) {
                     context.toastMessage(
                         context.formatLocalizedString(R.string.screenshot_file_saved, path),
@@ -343,6 +349,7 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             }
 
             else -> {
+                AppFunctionResultStore.setLastFailed("Failed to cast SaveImageResult path/uri")
                 screenShotFailedToast("Failed to cast SaveImageResult path/uri")
             }
         }

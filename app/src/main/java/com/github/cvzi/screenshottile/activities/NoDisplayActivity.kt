@@ -1,5 +1,6 @@
 package com.github.cvzi.screenshottile.activities
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -183,6 +184,9 @@ class NoDisplayActivity : BaseActivity() {
             intent.putExtra(EXTRA_SCREENSHOT, screenshot)
             if (screenshot) {
                 intent.action = EXTRA_SCREENSHOT
+            }
+            if (context !is Activity) {
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
             return intent
         }

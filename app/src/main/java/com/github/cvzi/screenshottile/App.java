@@ -23,19 +23,30 @@ import android.os.StrictMode;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.PreferenceManager;
+import androidx.appfunctions.service.AppFunctionConfiguration;
 
 import com.github.cvzi.screenshottile.activities.AcquireScreenshotPermission;
 import com.github.cvzi.screenshottile.activities.DelayScreenshotActivity;
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity;
+import com.github.cvzi.screenshottile.functions.ScreenshotAppFunctions;
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener;
 import com.github.cvzi.screenshottile.services.BasicForegroundService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
 import com.github.cvzi.screenshottile.utils.PrefManager;
 import com.github.cvzi.screenshottile.utils.Texts;
+
+import kotlin.Unit;
+import kotlinx.coroutines.BuildersKt;
+import kotlinx.coroutines.CoroutineScope;
+import kotlinx.coroutines.CoroutineStart;
+import kotlinx.coroutines.Dispatchers;
+import kotlinx.coroutines.CoroutineScopeKt;
+import kotlinx.coroutines.Job;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -46,7 +57,7 @@ import java.util.HashMap;
  */
 
 
-public class App extends Application {
+public class App extends Application implements AppFunctionConfiguration.Provider {
     public static final Texts texts = new Texts();
     public static final HashMap<String, Resources> resources = new HashMap<>();
     private static final String TAG = "App.java";
@@ -62,6 +73,10 @@ public class App extends Application {
     private PrefManager prefManager;
     private Runnable screenshotRunnable;
     private WeakReference<Bitmap> lastScreenshot = null;
+    private final Job supervisorJob = kotlinx.coroutines.SupervisorKt.SupervisorJob(null);
+    private final CoroutineScope appScope =
+            CoroutineScopeKt.CoroutineScope(Dispatchers.getDefault().plus(supervisorJob));
+
 
     public App() {
         setInstance(this);
@@ -73,6 +88,10 @@ public class App extends Application {
 
     private static void setInstance(App app) {
         instance = app;
+    }
+
+    public CoroutineScope getAppScope() {
+        return appScope;
     }
 
     public static Intent getScreenshotPermission() {
@@ -308,6 +327,18 @@ public class App extends Application {
         cleanUpAppData(this);
     }
 
+    @NonNull
+    @Override
+    public AppFunctionConfiguration getAppFunctionConfiguration() {
+        Log.d(TAG, "Agent getAppFunctionConfiguration()");
+        return new AppFunctionConfiguration.Builder()
+                .addEnclosingClassFactory(
+                        ScreenshotAppFunctions.class,
+                        ScreenshotAppFunctions::new
+                )
+                .build();
+    }
+
     /**
      * Apply the current MODE_NIGHT_FOLLOW_SYSTEM mode from the preferences
      */
@@ -329,6 +360,21 @@ public class App extends Application {
 
     public PrefManager getPrefManager() {
         return prefManager;
+    }
+
+
+    /**
+     * Start screenshot from AppFunctions (async)
+     *
+     * @param ctx
+     */
+    public void launchScreenshotFromAppFunction(Context ctx) {
+        BuildersKt.launch(appScope, Dispatchers.getIO(), CoroutineStart.DEFAULT,
+                (scope, cont) -> {
+                    screenshot(ctx);
+                    return Unit.INSTANCE;
+                }
+        );
     }
 
     /**
