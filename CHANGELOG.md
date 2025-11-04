@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.13.0
+*   Add 'appfunctions' for Android 16 to enable assistant apps to initiate screenshots [#667](https://github.com/cvzi/ScreenshotTile/pull/667)
+
 ## 2.12.5
 *   Ask for notification permission when disabling "use system defaults"
 
