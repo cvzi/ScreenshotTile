@@ -12,6 +12,7 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.utils.Sound.Companion.defaultAudioSink
 import java.io.File
 import java.util.Date
+import androidx.core.content.edit
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -368,6 +369,18 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
             context.getString(R.string.pref_key_floating_action),
             value
         ).apply()
+
+    var floatingButtonTapType: Int
+        get() = pref.getInt(
+            context.getString(R.string.pref_key_floating_tap_type),
+            0
+        )
+        set(value) = pref.edit {
+            putInt(
+                context.getString(R.string.pref_key_floating_tap_type),
+                value
+            )
+        }
 
     var floatingButtonColorTint: String?
         get() = pref.getString(

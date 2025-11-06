@@ -79,6 +79,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         private const val TAG = "ScreenshotAccessService"
         private const val SETTINGS_BUTTON_TAG = "SettingsButton"
 
+        const val TAP_TYPE_SINGLE = 0
+        const val TAP_TYPE_DOUBLE = 1
+
         /**
          * Open accessibility settings from activity
          */
@@ -170,6 +173,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     private val packageFilterNameList: HashSet<String> = HashSet()
     private var lastPackageName: CharSequence = ""
     private var prefManager = App.getInstance().prefManager
+    private var lastClickTime = 0L
+    private val doubleClickThreshold = 300L // milliseconds
 
     override fun onServiceConnected() {
         instance = this
@@ -278,6 +283,54 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
     }
 
+    private fun onClickAction(root: ViewGroup) {
+        if (isDeviceLocked(this) && prefManager.preventIfLocked) {
+            toastDeviceIsLocked(this)
+            return
+        }
+
+        if (prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_partial)) {
+            App.getInstance().screenshotPartial(this)
+            return
+        }
+
+        val delayInSeconds = prefManager.floatingButtonDelay.toLong()
+        val delayInMilliSeconds = if (delayInSeconds > 0) {
+            1000L * delayInSeconds
+        } else {
+            5L
+        }
+        val buttonScreenshot = root.findViewById<ImageView>(R.id.buttonScreenshot)
+        var countDownTextView: TextView? = null
+        if (delayInMilliSeconds >= 1000L) {
+            countDownTextView = showCountDown(root, buttonScreenshot, delayInSeconds)
+            root.postDelayed({
+                root.visibility = View.GONE
+                root.invalidate()
+            }, delayInMilliSeconds - 20L)
+        } else {
+            root.visibility = View.GONE
+            root.invalidate()
+        }
+        root.postDelayed({
+            val legacyMethod =
+                prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_legacy)
+            if (legacyMethod) {
+                NoDisplayActivity.startNewTaskLegacyScreenshot(this)
+            } else {
+                simulateScreenshotButton(autoHideButton = false, autoUnHideButton = false)
+            }
+            if (prefManager.floatingButtonHideAfter) {
+                prefManager.floatingButton = false
+                hideFloatingButton()
+            } else if (!legacyMethod) {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    showTemporaryHiddenFloatingButton(root, countDownTextView, buttonScreenshot)
+                }, 1000L)
+            }
+        }, delayInMilliSeconds)
+    }
+
     private fun configureFloatingButton(root: ViewGroup, animate: Boolean = true) {
         screenOrientation = resources.configuration.orientation
 
@@ -328,50 +381,17 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         buttonClose?.alpha = alpha
 
         buttonScreenshot.setOnClickListener {
-            if (isDeviceLocked(this) && prefManager.preventIfLocked) {
-                toastDeviceIsLocked(this)
-                return@setOnClickListener
-            }
+            val currentTime = System.currentTimeMillis()
+            val timeDiff = currentTime - lastClickTime
+            lastClickTime = currentTime
 
-            if (prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_partial)) {
-                App.getInstance().screenshotPartial(this)
-                return@setOnClickListener
+            if (prefManager.floatingButtonTapType == TAP_TYPE_DOUBLE && timeDiff <= doubleClickThreshold) {
+                // Double click detected
+                onClickAction(root)
+            } else if (prefManager.floatingButtonTapType == TAP_TYPE_SINGLE){
+                // Single click action
+                onClickAction(root)
             }
-
-            val delayInSeconds = prefManager.floatingButtonDelay.toLong()
-            val delayInMilliSeconds = if (delayInSeconds > 0) {
-                1000L * delayInSeconds
-            } else {
-                5L
-            }
-            var countDownTextView: TextView? = null
-            if (delayInMilliSeconds >= 1000L) {
-                countDownTextView = showCountDown(root, buttonScreenshot, delayInSeconds)
-                root.postDelayed({
-                    root.visibility = View.GONE
-                    root.invalidate()
-                }, delayInMilliSeconds - 20L)
-            } else {
-                root.visibility = View.GONE
-                root.invalidate()
-            }
-            root.postDelayed({
-                val legacyMethod =
-                    prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_legacy)
-                if (legacyMethod) {
-                    NoDisplayActivity.startNewTaskLegacyScreenshot(this)
-                } else {
-                    simulateScreenshotButton(autoHideButton = false, autoUnHideButton = false)
-                }
-                if (prefManager.floatingButtonHideAfter) {
-                    prefManager.floatingButton = false
-                    hideFloatingButton()
-                } else if (!legacyMethod) {
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        showTemporaryHiddenFloatingButton(root, countDownTextView, buttonScreenshot)
-                    }, 1000L)
-                }
-            }, delayInMilliSeconds)
         }
 
         var dragDone = false

@@ -185,6 +185,7 @@
         <item>@string/partial_screenshot</item>
         <item>@string/main_legacy_method_title</item>
     </string-array>
+    <string name="pref_key_floating_tap_type" translatable="false">floating_tap_type</string>
 
     <string name="setting_voice_interaction_action_value_provided" translatable="false">provided</string>
     <string name="setting_voice_interaction_action_value_native" translatable="false">native</string>

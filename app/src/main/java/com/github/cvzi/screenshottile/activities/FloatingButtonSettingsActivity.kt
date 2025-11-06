@@ -9,12 +9,10 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Shader
-import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup.LayoutParams
 import android.widget.EditText
@@ -25,13 +23,11 @@ import android.widget.RadioGroup
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonFilterBinding
 import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonSettingsBinding
 import com.github.cvzi.screenshottile.services.FloatingTileService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
@@ -139,6 +135,17 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
                     }
                 }
             )
+        }
+
+        binding.radioGroupTapType.setOnCheckedChangeListener { _, checkedId ->
+            prefManager.floatingButtonTapType = when (checkedId) {
+                    R.id.radioButtonTapTypeDouble -> {
+                        ScreenshotAccessibilityService.TAP_TYPE_DOUBLE
+                    }
+                    else -> { // R.id.radioButtonTapTypeSingle
+                        ScreenshotAccessibilityService.TAP_TYPE_SINGLE
+                    }
+                }
         }
 
         binding.switchFloatingButtonHideAfter.setOnCheckedChangeListener { _, isChecked ->
@@ -303,6 +310,15 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
                 }
 
                 else -> R.id.radioButtonActionNative
+            }
+        ).isChecked = true
+
+        findViewById<RadioButton>(
+            when (prefManager.floatingButtonTapType) {
+                ScreenshotAccessibilityService.TAP_TYPE_DOUBLE -> {
+                    R.id.radioButtonTapTypeDouble
+                }
+                else -> R.id.radioButtonTapTypeSingle
             }
         ).isChecked = true
 

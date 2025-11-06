@@ -61,7 +61,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Transparent"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:targetApi="tiramisu">
+        tools:targetApi="baklava">
         <activity
             android:name="com.github.cvzi.screenshottile.activities.MainActivity"
             android:exported="true"
