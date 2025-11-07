@@ -260,6 +260,10 @@ class Texts {
     val setting_filtermode_invert_selection = R.string.setting_filtermode_invert_selection
     val setting_show_floating_buttons_quick_settings = R.string.setting_show_floating_buttons_quick_settings
     val setting_quick_settings_warning = R.string.setting_quick_settings_warning
+    val single_tap = R.string.single_tap
+    val double_tap = R.string.double_tap
+
+
 
     // Untranslatable strings
     val translate_this_app = R.string.translate_this_app

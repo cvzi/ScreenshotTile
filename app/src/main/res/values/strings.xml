@@ -269,6 +269,6 @@
     <string name="setting_filtermode_invert_selection">&#x200c;Invert selection</string>
     <string name="setting_show_floating_buttons_quick_settings">&#x200c;Show floating buttons when quick settings are pulled down</string>
     <string name="setting_quick_settings_warning">&#x200c;One of the tiles of the app must be added to the quick settings, otherwise the floating button cannot be hidden when the quick settings are pulled down</string>
-    <string name="single_tap">Single Tap</string>
-    <string name="double_tap">Double Tap</string>
+    <string name="single_tap">&#x200c;Single Tap</string>
+    <string name="double_tap">&#x200c;Double Tap</string>
 </resources>
