@@ -75,7 +75,6 @@ class TextEditorDialogFragment : DialogFragment() {
             view.findViewById(R.id.add_text_color_picker_recycler_view)
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         addTextColorPickerRecyclerView.layoutManager = layoutManager
-        addTextColorPickerRecyclerView.setHasFixedSize(true)
         val colorPickerAdapter = ColorPickerAdapter(activity)
 
         //This listener will change the text color when clicked on any color from picker
