@@ -280,7 +280,7 @@
     <!-- First screen -->
     <string name="translate_this_app" translatable="false">Help translate this app!</string>
     <string name="translate_this_app_text" translatable="false"><![CDATA[Do you who speak a different language than English and would you like to help translating?<br>
-Contribute on <a href="https://crwd.in/screenshottile">crwd.in/screenshottile</a> or <a href="mailto:cuzi-android@openmail.cc?subject=Translate%20ScreenshotTile%20app">write me an email</a>.
+Contribute on <a href="https://crowdin.com/project/screenshottile">https://crowdin.com/project/screenshottile</a> or <a href="mailto:cuzi-android@openmail.cc?subject=Translate%20ScreenshotTile%20app">write me an email</a>.
 <br>
 <br>
 &#127470;&#127475; provided by <a href="https://crowdin.com/profile/subhamjena">SubhamJena</a><br>
