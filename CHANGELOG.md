@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.15.0
+*   Option to always crop fixed margins in "Subsequent actions" [#653](https://github.com/cvzi/ScreenshotTile/pull/653)
+
 ## 2.14.0
 *   Option to use double tap for floating button [#628](https://github.com/cvzi/ScreenshotTile/pull/628)
 
