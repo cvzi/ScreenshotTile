@@ -60,6 +60,11 @@
     <string name="pref_key_sound_notification_tone" translatable="false">sound_notification_tone</string>
     <string name="pref_key_sound_notification_duration" translatable="false">sound_notification_duration</string>
     <string name="pref_key_user_languages" translatable="false">user_languages</string>
+    <string name="pref_key_auto_crop_enabled" translatable="false">auto_crop_enabled</string>
+    <string name="pref_key_auto_crop_left" translatable="false">auto_crop_left</string>
+    <string name="pref_key_auto_crop_top" translatable="false">auto_crop_top</string>
+    <string name="pref_key_auto_crop_right" translatable="false">auto_crop_right</string>
+    <string name="pref_key_auto_crop_bottom" translatable="false">auto_crop_bottom</string>
 
     <string name="setting_file_format_value_default" translatable="false">png</string>
     <string-array name="setting_file_format_entries" translatable="false">

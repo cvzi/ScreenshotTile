@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.cvzi.screenshottile.App
@@ -50,9 +51,11 @@ class PostSettingsActivity : BaseAppCompatActivity() {
         )
         binding.setVariable(BR.strings, App.texts)
 
+        val prefManager = App.getInstance().prefManager
+
         binding.buttonResetValues.setOnClickListener {
             binding.radioButtonEmpty.isChecked = true
-            App.getInstance().prefManager.postScreenshotActionsReset()
+            prefManager.postScreenshotActionsReset()
             loadSettings()
         }
 
@@ -62,6 +65,39 @@ class PostSettingsActivity : BaseAppCompatActivity() {
 
         binding.buttonHistory.setOnClickListener {
             startActivity(Intent(this, HistoryActivity::class.java))
+        }
+        binding.switchAutoCrop.
+            setOnCheckedChangeListener { _, isChecked ->
+                Log.v(TAG, "switchAutoCrop: $isChecked")
+                prefManager.autoCropEnabled = isChecked
+            }
+        binding.editAutoCropLeft.apply {
+            addTextChangedListener { editable ->
+                Log.v(TAG, "editAutoCropLeft: $editable")
+                prefManager.autoCropLeft = editable.toString().toIntOrNull() ?: 0
+                return@addTextChangedListener
+            }
+        }
+        binding.editAutoCropTop.apply {
+            addTextChangedListener { editable ->
+                Log.v(TAG, "editAutoCropTop: $editable")
+                prefManager.autoCropTop = editable.toString().toIntOrNull() ?: 0
+                return@addTextChangedListener
+            }
+        }
+        binding.editAutoCropRight.apply {
+            addTextChangedListener { editable ->
+                Log.v(TAG, "editAutoCropRight: $editable")
+                prefManager.autoCropRight = editable.toString().toIntOrNull() ?: 0
+                return@addTextChangedListener
+            }
+        }
+        binding.editAutoCropBottom.apply {
+            addTextChangedListener { editable ->
+                Log.v(TAG, "editAutoCropBottom: $editable")
+                prefManager.autoCropBottom = editable.toString().toIntOrNull() ?: 0
+                return@addTextChangedListener
+            }
         }
 
         // Create RecyclerView with all available tones
@@ -93,11 +129,11 @@ class PostSettingsActivity : BaseAppCompatActivity() {
                     position: Int,
                     id: Long
                 ) {
-                    App.getInstance().prefManager.soundNotificationSink = audioSinkKeys[position]
+                    prefManager.soundNotificationSink = audioSinkKeys[position]
                 }
 
                 override fun onNothingSelected(view: AdapterView<*>?) {
-                    App.getInstance().prefManager.soundNotificationSink = ""
+                    prefManager.soundNotificationSink = ""
                 }
 
             }
@@ -105,7 +141,7 @@ class PostSettingsActivity : BaseAppCompatActivity() {
 
         binding.sliderAudioDuration.addOnChangeListener { _, value, _ ->
             val ms = value.toInt()
-            App.getInstance().prefManager.soundNotificationDuration = ms
+            prefManager.soundNotificationDuration = ms
             @SuppressLint("SetTextI18n")
             binding.textViewAudioDuration.text = "${ms}ms"
         }
@@ -249,6 +285,13 @@ class PostSettingsActivity : BaseAppCompatActivity() {
             "openShare",
             "openShare" in postScreenshotActions
         )
+
+        binding.switchAutoCrop.isChecked = prefManager.autoCropEnabled
+
+        binding.editAutoCropLeft.setText(if (prefManager.autoCropLeft != 0) prefManager.autoCropLeft.toString() else "")
+        binding.editAutoCropTop.setText(if (prefManager.autoCropTop != 0) prefManager.autoCropTop.toString() else "")
+        binding.editAutoCropRight.setText(if (prefManager.autoCropRight != 0) prefManager.autoCropRight.toString() else "")
+        binding.editAutoCropBottom.setText(if (prefManager.autoCropBottom != 0) prefManager.autoCropBottom.toString() else "")
 
         binding.spinnerAudioSink.setSelection(audioSinkKeys.indexOf(App.getInstance().prefManager.soundNotificationSink))
         App.getInstance().prefManager.soundNotificationDuration.also { ms ->

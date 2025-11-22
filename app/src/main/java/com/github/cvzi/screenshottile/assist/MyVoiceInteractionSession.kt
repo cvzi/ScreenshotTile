@@ -145,6 +145,12 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             }
         } else {
             if (BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: storeBitmap(bitmap)")
+
+            if (cutOutRect == null && prefManager.autoCropEnabled) {
+                cutOutRect = Rect(prefManager.autoCropLeft, prefManager.autoCropTop , bitmap.width - prefManager.autoCropRight, bitmap.height - prefManager.autoCropBottom)
+                Log.d(TAG, "Set auto crop to $cutOutRect")
+            }
+
             storeBitmap(bitmap)
         }
     }

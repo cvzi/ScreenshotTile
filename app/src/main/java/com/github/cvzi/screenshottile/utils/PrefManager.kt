@@ -704,6 +704,55 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
                 POST_ACTIONS_DEFAULT
             ).apply()
 
+    var autoCropEnabled: Boolean
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_auto_crop_enabled),
+            false
+        )
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_auto_crop_enabled),
+            value
+        ).apply()
+
+    var autoCropLeft: Int
+        get() = pref.getString(
+            context.getString(R.string.pref_key_auto_crop_left),
+            "0"
+        )?.toIntOrNull() ?: 0
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_auto_crop_left),
+            value.toString()
+        ).apply()
+
+    var autoCropTop: Int
+        get() = pref.getString(
+            context.getString(R.string.pref_key_auto_crop_top),
+            "0"
+        )?.toIntOrNull() ?: 0
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_auto_crop_top),
+            value.toString()
+        ).apply()
+
+    var autoCropRight: Int
+        get() = pref.getString(
+            context.getString(R.string.pref_key_auto_crop_right),
+            "0"
+        )?.toIntOrNull() ?: 0
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_auto_crop_right),
+            value.toString()
+        ).apply()
+
+    var autoCropBottom: Int
+        get() = pref.getString(
+            context.getString(R.string.pref_key_auto_crop_bottom),
+            "0"
+        )?.toIntOrNull() ?: 0
+        set(value) = pref.edit().putString(
+            context.getString(R.string.pref_key_auto_crop_bottom),
+            value.toString()
+        ).apply()
 
     data class ScreenshotHistoryItem(val uri: Uri, val date: Date, val file: File?)
 

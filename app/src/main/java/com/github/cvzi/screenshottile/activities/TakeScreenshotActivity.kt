@@ -465,6 +465,12 @@ class TakeScreenshotActivity : BaseActivity(),
         val prefManager = App.getInstance().prefManager
         val fileNamePattern = prefManager.fileNamePattern
         val useAppData = "saveToStorage" !in prefManager.postScreenshotActions
+
+        if (cutOutRect == null && prefManager.autoCropEnabled) {
+            cutOutRect = Rect(prefManager.autoCropLeft, prefManager.autoCropTop , image.width - prefManager.autoCropRight, image.height - prefManager.autoCropBottom)
+            Log.d(TAG, "Set auto crop to $cutOutRect")
+        }
+
         SaveImageHandler(Looper.getMainLooper()).storeImage(
             applicationContext,
             image,

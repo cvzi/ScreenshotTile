@@ -12,6 +12,7 @@ import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.PixelFormat
 import android.graphics.Point
+import android.graphics.Rect
 import android.graphics.drawable.Animatable
 import android.hardware.display.DisplayManager
 import android.net.Uri
@@ -48,6 +49,7 @@ import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.SettingsActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
+import com.github.cvzi.screenshottile.assist.MyVoiceInteractionSession
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
 import com.github.cvzi.screenshottile.functions.AppFunctionResultStore
@@ -769,12 +771,22 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             fallbackToSimulateScreenshotButton()
                         }
                     } else {
+                        val cutOutRect: Rect? =
+                        if (prefManager.autoCropEnabled) {
+                            val rect = Rect(prefManager.autoCropLeft, prefManager.autoCropTop , bitmap.width - prefManager.autoCropRight, bitmap.height - prefManager.autoCropBottom)
+                            Log.d(TAG, "Set auto crop to $rect")
+                            rect
+                        } else {
+                            null
+                        }
+
+                        Log.d(TAG, "saveBitmapToFile() cutOutRect = $cutOutRect")
                         val saveImageResult = saveBitmapToFile(
                             this@ScreenshotAccessibilityService,
                             bitmap,
                             prefManager.fileNamePattern,
                             compressionPreference(applicationContext),
-                            null,
+                            cutOutRect,
                             useAppData = "saveToStorage" !in prefManager.postScreenshotActions,
                             directory = null
                         )

@@ -215,6 +215,93 @@
                                 android:text="@{strings.post_action_open_share}" />
 
                         </RadioGroup>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView style="@style/CardViewSecondary">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchAutoCrop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="@{strings.notification_crop_screenshot}" />
+                    </LinearLayout>
+
+
+                        <LinearLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal"
+                            android:padding="16dp">
+
+                            <!-- Top -->
+                            <EditText
+                                android:id="@+id/editAutoCropTop"
+                                android:layout_width="72dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:hint="Top px"
+                                android:gravity="center"
+                                android:inputType="number" />
+
+                            <!-- Middle row: left + right -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center">
+
+                                <!-- Left -->
+                                <EditText
+                                    android:id="@+id/editAutoCropLeft"
+                                    android:layout_width="72dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="24dp"
+                                    android:hint="Left px"
+                                    android:gravity="center"
+                                    android:inputType="number" />
+
+                                <!-- Right -->
+                                <EditText
+                                    android:id="@+id/editAutoCropRight"
+                                    android:layout_width="72dp"
+                                    android:layout_height="wrap_content"
+                                    android:hint="Right px"
+                                    android:gravity="center"
+                                    android:inputType="number" />
+                            </LinearLayout>
+
+                            <!-- Bottom -->
+                            <EditText
+                                android:id="@+id/editAutoCropBottom"
+                                android:layout_width="72dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:hint="Bottom"
+                                android:gravity="center"
+                                android:inputType="number" />
+
+                        </LinearLayout>
+
+
 
                     </LinearLayout>
 
@@ -226,7 +313,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:padding="10dp">
 
                         <Button
@@ -235,6 +322,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{strings.restore_default_values}"
+                            android:layout_marginEnd="4dp"
                             android:textSize="12sp" />
 
                         <Button
@@ -243,6 +331,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{strings.more_setting}"
+                            android:layout_marginEnd="4dp"
                             android:textSize="12sp" />
 
                         <Button
@@ -251,6 +340,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{strings.history_title}"
+                            android:layout_marginEnd="4dp"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
