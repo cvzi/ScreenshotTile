@@ -1,0 +1,36 @@
+<!-- res/layout/activity_agent.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+
+    <Button
+        android:id="@+id/btnRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Refresh functions"/>
+
+    <Button
+        android:id="@+id/btnGetCapture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get Capture Result"
+        android:enabled="false"/>
+
+    <ListView
+        android:id="@+id/listFunctions"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="8dp"/>
+
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textIsSelectable="true"
+        android:paddingTop="12dp"/>
+</LinearLayout>

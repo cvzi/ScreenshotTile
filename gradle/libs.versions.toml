@@ -3,6 +3,7 @@ agp = "8.13.1"
 annotation = "1.9.1"
 appcompat = "1.7.1"
 appfunctions = "1.0.0-alpha07"
+appsearch = "1.1.0"
 bcutilJdk18on = "1.82"
 cardview = "1.0.0"
 constraintlayout = "2.2.1"
@@ -34,6 +35,8 @@ appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat"
 appfunctions = { module = "androidx.appfunctions:appfunctions", version.ref = "appfunctions" }
 appfunctions-compiler = { module = "androidx.appfunctions:appfunctions-compiler", version.ref = "appfunctions" }
 appfunctions-service = { module = "androidx.appfunctions:appfunctions-service", version.ref = "appfunctions" }
+appsearch = { module = "androidx.appsearch:appsearch", version.ref = "appsearch" }
+appsearch-ktx = { module = "androidx.appsearch:appsearch-ktx", version.ref = "appsearch" }
 bcutil-jdk18on = { module = "org.bouncycastle:bcutil-jdk18on", version.ref = "bcutilJdk18on" }
 cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }

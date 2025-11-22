@@ -107,4 +107,8 @@ dependencies {
     implementation libs.documentfile
     androidTestImplementation libs.bundles.android.test
     testImplementation libs.bundles.test
+
+    // For appfunctions test activity
+    debugImplementation libs.appsearch
+    debugImplementation libs.appsearch.ktx
 }
