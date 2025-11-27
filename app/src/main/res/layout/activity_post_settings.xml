@@ -243,6 +243,15 @@
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:text="@{strings.notification_crop_screenshot}" />
+
+                        <TextView
+                            android:id="@+id/textViewAutoCropScreenSize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.5"
+                            android:text="Screen size:"
+                            tools:ignore="HardcodedText" />
+
                     </LinearLayout>
 
 

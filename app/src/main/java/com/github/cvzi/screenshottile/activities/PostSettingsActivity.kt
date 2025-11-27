@@ -26,6 +26,7 @@ import com.github.cvzi.screenshottile.utils.Sound.Companion.allAudioSinks
 import com.github.cvzi.screenshottile.utils.TonesRecyclerViewAdapter
 import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.nicePathFromUri
+import com.github.cvzi.screenshottile.utils.realScreenSize
 import com.github.cvzi.screenshottile.utils.toastMessage
 import java.lang.Float.max
 
@@ -99,6 +100,9 @@ class PostSettingsActivity : BaseAppCompatActivity() {
                 return@addTextChangedListener
             }
         }
+
+        val screenSize = realScreenSize(this)
+        binding.textViewAutoCropScreenSize.text = "Screen height:\t${screenSize.x}px\nScreen width:\t${screenSize.y}px"
 
         // Create RecyclerView with all available tones
         binding.toneRecyclerView.apply {
