@@ -102,7 +102,7 @@ class PostSettingsActivity : BaseAppCompatActivity() {
         }
 
         val screenSize = realScreenSize(this)
-        binding.textViewAutoCropScreenSize.text = "Screen height:\t${screenSize.x}px\nScreen width:\t${screenSize.y}px"
+        binding.textViewAutoCropScreenSize.text = "Screen height:\t${screenSize.y}px\nScreen width:\t${screenSize.x}px"
 
         // Create RecyclerView with all available tones
         binding.toneRecyclerView.apply {
