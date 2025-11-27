@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.15.1
+*   Bugfix: Warning about "Use system defaults" was not shown in "Subsequent actions" [#682](https://github.com/cvzi/ScreenshotTile/pull/682)
+
 ## 2.15.0
 *   Option to always crop fixed margins in "Subsequent actions" [#653](https://github.com/cvzi/ScreenshotTile/pull/653)
 
