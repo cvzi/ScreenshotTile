@@ -16,6 +16,8 @@
         android:layout_weight="1"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         tools:context=".activities.MainActivity">
 
         <ScrollView
@@ -210,7 +212,7 @@
                                 app:srcCompat="@drawable/ic_round_shutter_animate_shutter" />
 
                             <TextView
-                                android:id="@+id/imageViewCloseButton"
+                                android:id="@+id/textViewCloseButton"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center|center_vertical"

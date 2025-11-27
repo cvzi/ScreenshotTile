@@ -215,7 +215,7 @@ class PostSettingsActivity : BaseAppCompatActivity() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 binding.textDescGeneral.setTextColor(getColor(R.color.colorAccent))
                 getLocalizedString(R.string.use_native_screenshot_option_default)
-            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && prefManager.useSystemDefaults) {
                 binding.textDescGeneral.setTextColor(getColor(R.color.colorAccent))
                 binding.textDescGeneral.setOnClickListener {
                     disableUseSystemDefaults()

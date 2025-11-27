@@ -46,7 +46,8 @@ class HistoryActivity : BaseAppCompatActivity() {
         binding.switchKeepHistory.setOnCheckedChangeListener { v, isChecked ->
             val prefManager = App.getInstance().prefManager
             if (isChecked != prefManager.keepScreenshotHistory) {
-                v.setText(if (isChecked) R.string.notification_settings_on else R.string.notification_settings_off)
+                v.text =
+                    getLocalizedString(if (isChecked) R.string.notification_settings_on else R.string.notification_settings_off)
                 prefManager.keepScreenshotHistory = isChecked
                 if (!isChecked) {
                     clear()
@@ -95,6 +96,9 @@ class HistoryActivity : BaseAppCompatActivity() {
 
         binding.switchKeepHistory.isChecked =
             App.getInstance().prefManager.keepScreenshotHistory
+        binding.switchKeepHistory.text =
+            getLocalizedString(if (binding.switchKeepHistory.isChecked) R.string.notification_settings_on else R.string.notification_settings_off)
+
     }
 
     private fun loadImageList(): ArrayList<SingleImage> {

@@ -14,6 +14,8 @@
         android:layout_height="match_parent"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         tools:context=".activities.MainActivity">
 
         <ScrollView
@@ -39,7 +41,7 @@
                             android:id="@+id/textDescGeneral"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@{strings.setting_post_actions_description}"
+                            android:text=""
                             android:textAppearance="@android:style/TextAppearance.Material.Body2" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>

@@ -98,7 +98,7 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
         shutterCollection = ShutterCollection(this, R.array.shutters, R.array.shutter_names)
         switchFloatingButtonEnabled = binding.switchFloatingButtonEnabled
         imageViewFloatingButton = binding.imageViewFloatingButton
-        textViewCloseButton = binding.imageViewCloseButton
+        textViewCloseButton = binding.textViewCloseButton
         switchFloatingButtonColorTint = binding.switchFloatingButtonColorTint
         switchFloatingButtonAlpha = binding.switchFloatingButtonAlpha
         radioGroupAction = binding.radioGroupAction

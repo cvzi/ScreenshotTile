@@ -72,6 +72,13 @@ class SettingsActivity : BaseAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        window.decorView.setPadding(
+            window.decorView.paddingLeft,
+            (50 * resources.displayMetrics.density).toInt(),
+            window.decorView.paddingRight,
+            window.decorView.paddingBottom)
+
         val fragmentClass = intent.getStringExtra(EXTRA_FRAGMENT_NAME) ?: defaultFragment.name
         if (savedInstanceState == null) {
             val args = intent.getBundleExtra(EXTRA_ARGS)
