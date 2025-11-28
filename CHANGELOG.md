@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.15.2
+*   More warning texts about "Use system defaults" with "Subsequent actions"
+
 ## 2.15.1
 *   Bugfix: Warning about "Use system defaults" was not shown in "Subsequent actions" [#682](https://github.com/cvzi/ScreenshotTile/pull/682)
 
