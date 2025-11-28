@@ -43,6 +43,7 @@ class PostSettingsActivity : BaseAppCompatActivity() {
     private val audioSinkKeys = allAudioSinks.keys.toTypedArray()
     private lateinit var tonesRecyclerViewAdapter: TonesRecyclerViewAdapter
 
+    private val prefManager = App.getInstance().prefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,8 +52,6 @@ class PostSettingsActivity : BaseAppCompatActivity() {
             R.layout.activity_post_settings
         )
         binding.setVariable(BR.strings, App.texts)
-
-        val prefManager = App.getInstance().prefManager
 
         binding.buttonResetValues.setOnClickListener {
             binding.radioButtonEmpty.isChecked = true
@@ -67,11 +66,10 @@ class PostSettingsActivity : BaseAppCompatActivity() {
         binding.buttonHistory.setOnClickListener {
             startActivity(Intent(this, HistoryActivity::class.java))
         }
-        binding.switchAutoCrop.
-            setOnCheckedChangeListener { _, isChecked ->
-                Log.v(TAG, "switchAutoCrop: $isChecked")
-                prefManager.autoCropEnabled = isChecked
-            }
+        binding.switchAutoCrop.setOnCheckedChangeListener { _, isChecked ->
+            Log.v(TAG, "switchAutoCrop: $isChecked")
+            prefManager.autoCropEnabled = isChecked
+        }
         binding.editAutoCropLeft.apply {
             addTextChangedListener { editable ->
                 Log.v(TAG, "editAutoCropLeft: $editable")
@@ -102,7 +100,8 @@ class PostSettingsActivity : BaseAppCompatActivity() {
         }
 
         val screenSize = realScreenSize(this)
-        binding.textViewAutoCropScreenSize.text = "Screen height:\t${screenSize.y}px\nScreen width:\t${screenSize.x}px"
+        binding.textViewAutoCropScreenSize.text =
+            "Screen height:\t${screenSize.y}px\nScreen width:\t${screenSize.x}px"
 
         // Create RecyclerView with all available tones
         binding.toneRecyclerView.apply {
@@ -195,7 +194,7 @@ class PostSettingsActivity : BaseAppCompatActivity() {
 
             }
         } else {
-            binding.cardViewMIUIWarning.visibility = View.INVISIBLE
+            binding.cardViewMIUIWarning.visibility = View.GONE
         }
 
     }
@@ -207,27 +206,81 @@ class PostSettingsActivity : BaseAppCompatActivity() {
     }
 
     private fun disableUseSystemDefaults() {
-        App.getInstance().prefManager.useSystemDefaults = false
-        binding.textDescGeneral.setTextColor(getColor(R.color.colorPrimary))
-        binding.textDescGeneral.text = getLocalizedString(R.string.setting_post_actions_description)
+        prefManager.useSystemDefaults = false
+        loadSettings()
     }
 
+
+    private fun setFloatingButtonLegacy() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            // For Android 9 and 10, the floating button action needs to be set to 'legacy method', since useNative is only supported on Android 11+
+            prefManager.floatingButtonAction =
+                getString(R.string.setting_floating_action_value_legacy)
+            Log.v(TAG, "Set floating button action to legacy method")
+
+            if (prefManager.voiceInteractionAction == getString(R.string.setting_voice_interaction_action_value_native)) {
+                prefManager.voiceInteractionAction =
+                    getString(R.string.setting_voice_interaction_action_value_provided)
+            }
+
+        }
+        loadSettings()
+    }
+
+
     private fun loadSettings() {
-        val prefManager = App.getInstance().prefManager
+
+        val floatingButtonNativeMethodEnabled =
+            prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_screenshot)
+
+        Log.v(TAG, "floatingButtonNativeMethodEnabled: $floatingButtonNativeMethodEnabled")
 
         binding.textDescGeneral.text =
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
                 binding.textDescGeneral.setTextColor(getColor(R.color.colorAccent))
-                getLocalizedString(R.string.use_native_screenshot_option_default)
+                "${getLocalizedString(R.string.use_native_screenshot_option_default)}\n\nScreenshots from the quick settings tile will not work with '${
+                    getLocalizedString(
+                        R.string.setting_post_actions
+                    )
+                }'}'. Switch to 'Legacy Method' or use the floating button or assistant action."
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && prefManager.useSystemDefaults) {
                 binding.textDescGeneral.setTextColor(getColor(R.color.colorAccent))
                 binding.textDescGeneral.setOnClickListener {
                     disableUseSystemDefaults()
                 }
-                getLocalizedString(R.string.use_native_screenshot_option_android11)
+                "${getLocalizedString(R.string.use_native_screenshot_option_android11)}\n\nTap here to fix."
             } else {
                 getLocalizedString(R.string.setting_post_actions_description)
             }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+
+            if (floatingButtonNativeMethodEnabled) {
+                // For Android 9 and 10, the floating button action needs to be set to 'Legacy Method', since useNative is only supported on Android 11+
+                binding.textDescGeneral.setTextColor(getColor(R.color.colorAccent))
+                binding.textDescGeneral.text =
+                    "${binding.textDescGeneral.text}\n\nSet the floating button action to '${
+                        getLocalizedString(R.string.main_legacy_method_title)
+                    }' to make '${getLocalizedString(R.string.setting_post_actions)}' work from the floating button.\n\nTap here to fix."
+                binding.textDescGeneral.setOnClickListener {
+                    setFloatingButtonLegacy()
+                }
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.voiceInteractionAction == getString(
+                R.string.setting_voice_interaction_action_value_native
+            ) && Build.VERSION.SDK_INT < Build.VERSION_CODES.R
+        ) {
+            // For Android 9 and 10, the assist action shouldn't be set to "Native method"
+            binding.textDescGeneral.setTextColor(getColor(R.color.colorAccent))
+            binding.textDescGeneral.text =
+                "${binding.textDescGeneral.text}\n\nAssistant action needs to be set to '${
+                    getLocalizedString(R.string.setting_voice_interaction_action_value_legacy)
+                }' or '${getLocalizedString(R.string.setting_voice_interaction_action_value_provided)}'\n\nTap here to fix."
+            binding.textDescGeneral.setOnClickListener {
+                setFloatingButtonLegacy()
+            }
+        }
 
 
         binding.textViewSaveImageLocation.text =
@@ -297,8 +350,8 @@ class PostSettingsActivity : BaseAppCompatActivity() {
         binding.editAutoCropRight.setText(if (prefManager.autoCropRight != 0) prefManager.autoCropRight.toString() else "")
         binding.editAutoCropBottom.setText(if (prefManager.autoCropBottom != 0) prefManager.autoCropBottom.toString() else "")
 
-        binding.spinnerAudioSink.setSelection(audioSinkKeys.indexOf(App.getInstance().prefManager.soundNotificationSink))
-        App.getInstance().prefManager.soundNotificationDuration.also { ms ->
+        binding.spinnerAudioSink.setSelection(audioSinkKeys.indexOf(prefManager.soundNotificationSink))
+        prefManager.soundNotificationDuration.also { ms ->
             binding.sliderAudioDuration.value =
                 max(ms.toFloat(), binding.sliderAudioDuration.valueFrom)
             @SuppressLint("SetTextI18n")
@@ -321,10 +374,8 @@ class PostSettingsActivity : BaseAppCompatActivity() {
 
     private val onActionCheckedChange =
         CompoundButton.OnCheckedChangeListener { compoundButton, isChecked ->
-            val prefManager = App.getInstance().prefManager
-
             val actionKey = compoundButton.getTag(R.id.tag_action_key) as String
-            val postScreenshotActions = App.getInstance().prefManager.postScreenshotActions
+            val postScreenshotActions = prefManager.postScreenshotActions
             if (isChecked && actionKey !in postScreenshotActions) {
                 postScreenshotActions.add(actionKey)
             } else if (!isChecked && actionKey in postScreenshotActions) {
@@ -339,7 +390,7 @@ class PostSettingsActivity : BaseAppCompatActivity() {
         }
 
     private fun onToneClick(name: String) {
-        App.getInstance().prefManager.soundNotificationTone = "tone:$name"
+        prefManager.soundNotificationTone = "tone:$name"
         Sound.playTone()
     }
 }
