@@ -291,6 +291,13 @@
         app:icon="@android:drawable/ic_popup_sync" />
 
     <androidx.preference.Preference
+        android:key="@string/pref_static_field_key_about_backup"
+        android:persistent="false"
+        android:selectable="true"
+        android:title="Export/Import settings"
+        app:icon="@android:drawable/ic_menu_save" />
+
+    <androidx.preference.Preference
         android:key="@string/pref_static_field_key_about_donate"
         android:persistent="false"
         android:selectable="true"

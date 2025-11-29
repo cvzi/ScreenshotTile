@@ -269,6 +269,7 @@
     <string name="pref_static_field_key_about_open_source" translatable="false">pref_static_field_key_about_open_source</string>
     <string name="pref_static_field_key_about_privacy" translatable="false">pref_static_field_key_about_privacy</string>
     <string name="pref_static_field_key_about_updates" translatable="false">pref_static_field_key_about_updates</string>
+    <string name="pref_static_field_key_about_backup" translatable="false">pref_static_field_key_about_backup</string>
     <string name="pref_static_field_key_about_donate" translatable="false">pref_static_field_key_donate</string>
     <string name="pref_static_field_key_about_change_language" translatable="false">pref_static_field_key_about_change_language</string>
     <string name="pref_static_field_link_about_app_1" translatable="false">https://github.com/ipcjs/ScreenshotTile</string>

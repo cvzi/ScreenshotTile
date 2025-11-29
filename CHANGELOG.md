@@ -1,5 +1,8 @@
 # Changelog
 
+## (Unreleased)
+*   Backup and Restore settings function
+
 ## 2.15.2
 *   More warning texts about "Use system defaults" with "Subsequent actions"
 

@@ -320,6 +320,7 @@ public class App extends Application implements AppFunctionConfiguration.Provide
         }
 
         PreferenceManager.setDefaultValues(this, R.xml.pref, false);
+        PreferenceManager.setDefaultValues(this, R.xml.pref_advanced, true);
         prefManager = new PrefManager(this);
 
         applyDayNightMode();

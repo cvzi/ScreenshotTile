@@ -64,6 +64,7 @@ import com.github.cvzi.screenshottile.utils.safeDismiss
 import com.github.cvzi.screenshottile.utils.toastMessage
 import java.lang.ref.WeakReference
 import androidx.core.net.toUri
+import com.github.cvzi.screenshottile.activities.BackupPrefsActivity
 
 
 /**
@@ -263,6 +264,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         makeAccessibilitySettingsLink()
         makeStorageDirectoryLink()
         makeAdvancedSettingsLink()
+        makeBackupSettingsLink()
         makeChangeLanguageLink()
 
         if (savedInstanceState?.getBoolean(
@@ -432,6 +434,19 @@ class SettingFragment : PreferenceFragmentCompat() {
                     setReorderingAllowed(true)
                     addToBackStack(null)
                 }
+            }
+            true
+        }
+    }
+
+    private fun makeBackupSettingsLink() {
+        val myPref =
+            findPreference(getString(R.string.pref_static_field_key_about_backup)) as Preference?
+
+        myPref?.isSelectable = true
+        myPref?.onPreferenceClickListener = OnPreferenceClickListener {
+            activity?.let {
+                BackupPrefsActivity.start(it)
             }
             true
         }

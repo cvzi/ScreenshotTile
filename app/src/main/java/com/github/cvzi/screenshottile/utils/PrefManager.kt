@@ -19,7 +19,7 @@ import androidx.core.content.edit
  * Changes by cuzi (cuzi@openmail.cc)
  */
 
-class PrefManager(private val context: Context, private val pref: SharedPreferences) {
+class PrefManager(private val context: Context) {
     companion object {
         const val TAG = "PrefManager.kt"
         val POST_ACTIONS = arrayOf(
@@ -33,10 +33,7 @@ class PrefManager(private val context: Context, private val pref: SharedPreferen
         const val HISTORY_ITEM_DELIMITER = "~////~"
     }
 
-    constructor(context: Context) : this(
-        context,
-        PreferenceManager.getDefaultSharedPreferences(context)
-    )
+    private val pref = PreferenceManager.getDefaultSharedPreferences(context)
 
     private fun getBooleanRes(resId: Int, default: Boolean): Boolean {
         return try {

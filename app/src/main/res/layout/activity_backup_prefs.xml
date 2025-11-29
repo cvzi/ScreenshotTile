@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="strings"
+            type="com.github.cvzi.screenshottile.utils.Texts" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="50dp">
+
+        <LinearLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Backup and Restore settings"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="
+Android may automatically back up the app settings through the system backup service (for example Google Drive Backup).
+\n\n
+Use the manual Backup and Restore functions below if you want a guaranteed copy of your settings,
+especially before uninstalling the app or switching to a differently signed version
+(e.g. debug builds or GitHub release apks)." />
+
+            <Button
+                android:id="@+id/btnExportPrefs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Backup settings" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <Button
+                android:id="@+id/btnImportPrefs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Restore settings" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="62dp" />
+
+            <Button
+                android:id="@+id/btnResetPrefs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reset settings to defaults" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
