@@ -129,9 +129,9 @@ class PrefBackup {
         }
 
         fun resetToDefaults(context: Context) {
-            PreferenceManager.getDefaultSharedPreferences(context).edit { clear() };
-            PreferenceManager.setDefaultValues(context, R.xml.pref, true);
-            PreferenceManager.setDefaultValues(context, R.xml.pref_advanced, true);
+            PreferenceManager.getDefaultSharedPreferences(context).edit { clear() }
+            PreferenceManager.setDefaultValues(context, R.xml.pref, true)
+            PreferenceManager.setDefaultValues(context, R.xml.pref_advanced, true)
         }
 
     }
