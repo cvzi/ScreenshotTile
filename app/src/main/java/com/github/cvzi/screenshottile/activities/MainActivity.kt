@@ -20,6 +20,7 @@ import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -340,6 +341,11 @@ class MainActivity : BaseAppCompatActivity() {
         ) {
             askToAddTiles()
         }
+
+        // If Debug Mode
+        if (BuildConfig.DEBUG) {
+            debugMode()
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -583,6 +589,22 @@ class MainActivity : BaseAppCompatActivity() {
             text = makeActivityClickableFromText(str, this@MainActivity).builder
             movementMethod = LinkMovementMethod()
             highlightColor = Color.BLUE
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun debugMode() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BAKLAVA) {
+            val button = Button(this)
+            button.text = "Test App Functions"
+            button.setOnClickListener {
+                Intent(this, AppfunctionsTestActivity::class.java).apply {
+                    if(resolveActivity(packageManager) != null) {
+                        startActivity(this)
+                    }
+                }
+            }
+            binding.linearLayout.addView(button)
         }
     }
 
