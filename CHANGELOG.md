@@ -1,6 +1,6 @@
 # Changelog
 
-## (Unreleased)
+## 2.16.0
 *   Backup and Restore settings function
 
 ## 2.15.2

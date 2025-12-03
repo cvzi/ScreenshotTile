@@ -30,11 +30,11 @@ android {
         applicationId 'com.github.cvzi.screenshottile'
 
         minSdk libs.versions.sdk.min.get().toInteger()
-        compileSdk libs.versions.sdk.compile.get().toInteger()
+        compileSdk = libs.versions.sdk.compile.get().toInteger()
         targetSdk libs.versions.sdk.target.get().toInteger()
 
-        versionCode 137
-        versionName '2.15.2'
+        versionCode 138
+        versionName '2.16.0'
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         buildConfigField 'com.github.cvzi.screenshottile.MutableBoolean', 'TESTING_MODE', 'new com.github.cvzi.screenshottile.MutableBoolean(false)'

@@ -1,0 +1,9 @@
+v2.16.0
+* Backup settings to file
+v2.15.0
+* Option to always crop fixed margins in "Subsequent actions"
+v2.14.0
+* Option to use double tap for floating button
+v2.13.0
+* Add 'appfunctions' for Android 16 to enable assistant apps to initiate screenshots
+
