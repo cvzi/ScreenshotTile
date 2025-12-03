@@ -598,7 +598,8 @@ class MainActivity : BaseAppCompatActivity() {
             val button = Button(this)
             button.text = "Test App Functions"
             button.setOnClickListener {
-                Intent(this, AppfunctionsTestActivity::class.java).apply {
+                Intent().apply {
+                    setClassName(applicationContext, "com.github.cvzi.screenshottile.activities.AppfunctionsTestActivity")
                     if(resolveActivity(packageManager) != null) {
                         startActivity(this)
                     }
