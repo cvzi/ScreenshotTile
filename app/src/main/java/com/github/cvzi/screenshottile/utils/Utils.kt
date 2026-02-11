@@ -451,7 +451,41 @@ fun formatFileName(fileNamePattern: String, date: Date): String {
     while (fileName.contains("%random%")) {
         fileName = fileName.replaceFirst("%random%", UUID.randomUUID().toString())
     }
+    if (fileName.contains("%app%") || fileName.contains("%package%")) {
+        val service = ScreenshotAccessibilityService.instance
+        val packageName = service?.getForegroundPackageName() ?: ""
+        fileName = fileName.replace("%package%", sanitizeFilename(packageName))
+        if (fileName.contains("%app%")) {
+            val appLabel = if (packageName.isNotEmpty()) {
+                try {
+                    val context = App.getInstance()
+                    val appInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        context.packageManager.getApplicationInfo(
+                            packageName,
+                            PackageManager.ApplicationInfoFlags.of(0)
+                        )
+                    } else {
+                        @Suppress("DEPRECATION")
+                        context.packageManager.getApplicationInfo(packageName, 0)
+                    }
+                    context.packageManager.getApplicationLabel(appInfo).toString()
+                } catch (e: PackageManager.NameNotFoundException) {
+                    packageName
+                }
+            } else {
+                ""
+            }
+            fileName = fileName.replace("%app%", sanitizeFilename(appLabel))
+        }
+    }
     return fileName
+}
+
+/**
+ * Remove characters that are not allowed in filenames
+ */
+private fun sanitizeFilename(name: String): String {
+    return name.replace(Regex("[\\\\/:*?\"<>|]"), "_")
 }
 
 /**

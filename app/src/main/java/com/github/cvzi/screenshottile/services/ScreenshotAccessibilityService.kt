@@ -174,6 +174,12 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     private var packageFilterMode = PackageNameFilterMode.BLACKLIST
     private val packageFilterNameList: HashSet<String> = HashSet()
     private var lastPackageName: CharSequence = ""
+
+    /**
+     * Get the package name of the last foreground application
+     */
+    fun getForegroundPackageName(): String = lastPackageName.toString()
+
     private var prefManager = App.getInstance().prefManager
     private var lastClickTime = 0L
     private val doubleClickThreshold = 300L // milliseconds
@@ -1035,12 +1041,15 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
-        if (packageFilterEnabled &&
-            event.isFullScreen &&
+        if (event.isFullScreen &&
             event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED &&
             event.packageName != lastPackageName
         ) {
             lastPackageName = event.packageName
+
+            if (!packageFilterEnabled) {
+                return
+            }
 
             if (packageFilterTempForceShow) {
                 // Temporary show floating button despite filter until the next app change but at least 60s
