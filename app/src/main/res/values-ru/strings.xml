@@ -63,7 +63,6 @@
 %counter% - подсчет количества снимков экрана\n
 %random% - случайный UUID\n
 %randint% - случайное число\n
-%app% - название приложения на переднем плане\n
 %package% - имя пакета приложения на переднем плане]]></string>
     <string name="setting_tile_action">Действие плитки</string>
     <string name="setting_tile_long_press_action">Действие при длительном нажатии на плитку</string>
