@@ -539,13 +539,6 @@ private fun sanitizeFilename(name: String): String {
 }
 
 /**
- * Remove characters that are not allowed in filenames
- */
-private fun sanitizeFilename(name: String): String {
-    return name.replace(Regex("[\\\\/:*?\"<>|]"), "_")
-}
-
-/**
  * Cut cutOutRect from bitmap and return new bitmap,
  * return old bitmap if cutOutRect is null or malformed
  */
