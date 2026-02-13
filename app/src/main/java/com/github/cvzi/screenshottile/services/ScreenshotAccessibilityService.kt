@@ -1043,15 +1043,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
         if (event.isFullScreen &&
             event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED &&
-            event.packageName != lastPackageName &&
-            event.packageName != packageName
+            event.packageName != lastPackageName
         ) {
             if (event.packageName != packageName) {
                 lastPackageName = event.packageName
-            }
-
-            if (!packageFilterEnabled) {
-                return
             }
 
             if (!packageFilterEnabled) {
