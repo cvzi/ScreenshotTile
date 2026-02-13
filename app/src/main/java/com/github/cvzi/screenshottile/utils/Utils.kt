@@ -456,9 +456,6 @@ fun formatFileName(fileNamePattern: String, date: Date): String {
         val packageName = service?.getForegroundPackageName() ?: ""
         fileName = fileName.replace("%package%", sanitizeFilename(packageName))
         if (fileName.contains("%app%")) {
-            // Resolving a human-readable app label requires QUERY_ALL_PACKAGES permission.
-            // Without it, getApplicationInfo() throws NameNotFoundException for most packages
-            // due to Android 11+ package visibility restrictions, falling back to raw package name.
             val appLabel = if (packageName.isNotEmpty()) {
                 try {
                     val context = App.getInstance()

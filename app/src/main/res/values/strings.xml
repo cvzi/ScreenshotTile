@@ -63,6 +63,7 @@
 %counter% - counts the number of screenshots\n
 %random% - a random UUID\n
 %randint% - a random number\n
+%app% - name of the foreground app\n
 %package% - package name of the foreground app]]></string>
     <string name="setting_tile_action">&#x200c;Tile action</string>
     <string name="setting_tile_long_press_action">&#x200c;Tile long-press action</string>
