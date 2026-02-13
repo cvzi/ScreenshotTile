@@ -451,34 +451,91 @@ fun formatFileName(fileNamePattern: String, date: Date): String {
     while (fileName.contains("%random%")) {
         fileName = fileName.replaceFirst("%random%", UUID.randomUUID().toString())
     }
-    if (fileName.contains("%app%") || fileName.contains("%package%")) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && (fileName.contains("%app%") || fileName.contains("%package%"))) {
         val service = ScreenshotAccessibilityService.instance
         val packageName = service?.getForegroundPackageName() ?: ""
         fileName = fileName.replace("%package%", sanitizeFilename(packageName))
         if (fileName.contains("%app%")) {
-            val appLabel = if (packageName.isNotEmpty()) {
-                try {
-                    val context = App.getInstance()
-                    val appInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                        context.packageManager.getApplicationInfo(
-                            packageName,
-                            PackageManager.ApplicationInfoFlags.of(0)
-                        )
-                    } else {
-                        @Suppress("DEPRECATION")
-                        context.packageManager.getApplicationInfo(packageName, 0)
-                    }
-                    context.packageManager.getApplicationLabel(appInfo).toString()
-                } catch (e: PackageManager.NameNotFoundException) {
-                    packageName
-                }
-            } else {
-                ""
-            }
+            val appLabel = resolveAppLabel(packageName)
             fileName = fileName.replace("%app%", sanitizeFilename(appLabel))
         }
     }
     return fileName
+}
+
+private fun resolveAppLabel(packageName: String): String {
+    if (packageName.isBlank()) {
+        return ""
+    }
+
+    val context = App.getInstance()
+    val pm = context.packageManager
+
+    // Try launcher activity
+    try {
+        val launchIntent = pm.getLaunchIntentForPackage(packageName)
+        if (launchIntent != null) {
+            val resolveInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                pm.resolveActivity(
+                    launchIntent,
+                    PackageManager.ResolveInfoFlags.of(0)
+                )
+            } else {
+                @Suppress("DEPRECATION")
+                pm.resolveActivity(launchIntent, 0)
+            }
+
+            resolveInfo?.let {
+                val label = it.loadLabel(pm)?.toString()
+                if (!label.isNullOrBlank()) {
+                    return label
+                }
+            }
+        }
+    } catch (_: Exception) {
+        // no-op
+    }
+
+    // Try ApplicationInfo
+    try {
+        val appInfo = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            pm.getApplicationInfo(
+                packageName,
+                PackageManager.ApplicationInfoFlags.of(0)
+            )
+        } else {
+            @Suppress("DEPRECATION")
+            pm.getApplicationInfo(packageName, 0)
+        }
+
+        val label = pm.getApplicationLabel(appInfo)?.toString()
+        if (!label.isNullOrBlank()) {
+            return label
+        }
+    } catch (_: Exception) {
+        // no-op
+    }
+
+    // Fallback
+    return shortPackageName(packageName)
+}
+
+/**
+ * Get last part of package name
+ */
+private fun shortPackageName(pkg: String): String {
+    val parts = pkg.split('.')
+    return when {
+        parts.size >= 2 -> parts.takeLast(2).joinToString(".")
+        else -> pkg
+    }
+}
+
+/**
+ * Remove characters that are not allowed in filenames
+ */
+private fun sanitizeFilename(name: String): String {
+    return name.replace(Regex("[\\\\/:*?\"<>|]"), "_")
 }
 
 /**

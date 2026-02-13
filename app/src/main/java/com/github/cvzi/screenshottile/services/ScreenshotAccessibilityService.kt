@@ -1046,7 +1046,13 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             event.packageName != lastPackageName &&
             event.packageName != packageName
         ) {
-            lastPackageName = event.packageName
+            if (event.packageName != packageName) {
+                lastPackageName = event.packageName
+            }
+
+            if (!packageFilterEnabled) {
+                return
+            }
 
             if (!packageFilterEnabled) {
                 return
