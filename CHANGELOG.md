@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.17.0
+*   Add `%app%` and `%package%` filename placeholders [#703](https://github.com/cvzi/ScreenshotTile/pull/703)
+
 ## 2.16.0
 *   Backup and Restore settings function
 
