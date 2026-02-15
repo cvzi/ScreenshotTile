@@ -11,6 +11,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import android.content.pm.VersionedPackage
 import android.graphics.*
 import android.icu.text.SimpleDateFormat
@@ -486,8 +487,8 @@ private fun resolveAppLabel(packageName: String): String {
             }
 
             resolveInfo?.let {
-                val label = it.loadLabel(pm)?.toString()
-                if (!label.isNullOrBlank()) {
+                val label = it.loadLabel(pm).toString()
+                if (label.isNotBlank()) {
                     return label
                 }
             }
