@@ -49,7 +49,6 @@ import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.SettingsActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
-import com.github.cvzi.screenshottile.assist.MyVoiceInteractionSession
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
 import com.github.cvzi.screenshottile.functions.AppFunctionResultStore
@@ -396,7 +395,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             if (prefManager.floatingButtonTapType == TAP_TYPE_DOUBLE && timeDiff <= doubleClickThreshold) {
                 // Double click detected
                 onClickAction(root)
-            } else if (prefManager.floatingButtonTapType == TAP_TYPE_SINGLE){
+            } else if (prefManager.floatingButtonTapType == TAP_TYPE_SINGLE) {
                 // Single click action
                 onClickAction(root)
             }
@@ -778,13 +777,18 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                         }
                     } else {
                         val cutOutRect: Rect? =
-                        if (prefManager.autoCropEnabled) {
-                            val rect = Rect(prefManager.autoCropLeft, prefManager.autoCropTop , bitmap.width - prefManager.autoCropRight, bitmap.height - prefManager.autoCropBottom)
-                            Log.d(TAG, "Set auto crop to $rect")
-                            rect
-                        } else {
-                            null
-                        }
+                            if (prefManager.autoCropEnabled) {
+                                val rect = Rect(
+                                    prefManager.autoCropLeft,
+                                    prefManager.autoCropTop,
+                                    bitmap.width - prefManager.autoCropRight,
+                                    bitmap.height - prefManager.autoCropBottom
+                                )
+                                Log.d(TAG, "Set auto crop to $rect")
+                                rect
+                            } else {
+                                null
+                            }
 
                         Log.d(TAG, "saveBitmapToFile() cutOutRect = $cutOutRect")
                         val saveImageResult = saveBitmapToFile(
@@ -852,7 +856,11 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     dummyPath = result.dummyPath
                 }
 
-                AppFunctionResultStore.setLastReady(result.uri, result.bitmap.width, result.bitmap.height)
+                AppFunctionResultStore.setLastReady(
+                    result.uri,
+                    result.bitmap.width,
+                    result.bitmap.height
+                )
 
 
                 if ("showToast" in postScreenshotActions) {

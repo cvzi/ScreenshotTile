@@ -11,9 +11,11 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.content.pm.ResolveInfo
 import android.content.pm.VersionedPackage
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.Paint
+import android.graphics.Point
+import android.graphics.Rect
 import android.icu.text.SimpleDateFormat
 import android.media.Image
 import android.net.Uri
@@ -35,24 +37,44 @@ import android.view.ViewManager
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.graphics.toColorInt
+import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.DialogFragment
 import com.burhanrashid52.photoediting.EditImageActivity
-import com.github.cvzi.screenshottile.*
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BuildConfig
+import com.github.cvzi.screenshottile.ClickableStringResult
+import com.github.cvzi.screenshottile.CompressionOptions
+import com.github.cvzi.screenshottile.OutputStreamResult
+import com.github.cvzi.screenshottile.OutputStreamResultSuccess
+import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.SaveImageResult
+import com.github.cvzi.screenshottile.SaveImageResultSuccess
+import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.GenericPostActivity
 import com.github.cvzi.screenshottile.activities.PostActivity
 import com.github.cvzi.screenshottile.activities.PostCropActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
-import kotlinx.coroutines.*
-import java.io.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
 import java.net.URLDecoder
-import java.util.*
+import java.util.Date
+import java.util.Locale
+import java.util.UUID
 import kotlin.math.max
 import kotlin.random.Random
-import androidx.core.net.toUri
-import androidx.core.graphics.toColorInt
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.
@@ -445,14 +467,17 @@ fun formatFileName(fileNamePattern: String, date: Date): String {
     var fileName = fileNamePattern.replace("%timestamp%", timeStamp)
     fileName = fileName.replace("%counter%", counter.padStart(max(5, counter.length), '0'))
     while (fileName.contains("%randint%")) {
-        val randInt = Random.Default.nextInt(0, Int.MAX_VALUE).toString()
+        val randInt = Random.nextInt(0, Int.MAX_VALUE).toString()
             .padStart(Int.MAX_VALUE.toString().length, '0')
         fileName = fileName.replaceFirst("%randint%", randInt)
     }
     while (fileName.contains("%random%")) {
         fileName = fileName.replaceFirst("%random%", UUID.randomUUID().toString())
     }
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && (fileName.contains("%app%") || fileName.contains("%package%"))) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && (fileName.contains("%app%") || fileName.contains(
+            "%package%"
+        ))
+    ) {
         val service = ScreenshotAccessibilityService.instance
         val packageName = service?.getForegroundPackageName() ?: ""
         fileName = fileName.replace("%package%", sanitizeFilename(packageName))
@@ -1334,7 +1359,7 @@ fun Context.setUserLanguage(force: Boolean = false) {
         } else {
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.create(*localeArray))
         }
-    } else if(force) {
+    } else if (force) {
         // Use default android settings
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             getSystemService(LocaleManager::class.java)?.applicationLocales =
