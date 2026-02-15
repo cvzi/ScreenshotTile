@@ -62,7 +62,9 @@
     <string name="setting_file_name_placeholders" formatted="false">&#x200c;<![CDATA[%timestamp% - time as yyyy-MM-dd_HH-mm-ss\n
 %counter% - counts the number of screenshots\n
 %random% - a random UUID\n
-%randint% - a random number]]></string>
+%randint% - a random number\n
+%app% - name of the foreground app\n
+%package% - package name of the foreground app]]></string>
     <string name="setting_tile_action">&#x200c;Tile action</string>
     <string name="setting_tile_long_press_action">&#x200c;Tile long-press action</string>
     <string name="setting_floating_action">&#x200c;Floating button action</string>
