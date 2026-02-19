@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.17.1
+*   Bugfix: Navigation bar overlaps with photo editor on Android 16 [#713](https://github.com/cvzi/ScreenshotTile/issues/713)
+
 ## 2.17.0
 *   Add `%app%` and `%package%` filename placeholders [#703](https://github.com/cvzi/ScreenshotTile/pull/703)
 
