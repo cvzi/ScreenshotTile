@@ -311,4 +311,10 @@
         android:title=""
         app:iconSpaceReserved="false" />
 
+    <androidx.preference.Preference
+        android:persistent="false"
+        android:selectable="false"
+        android:summary=""
+        android:title=""
+        app:iconSpaceReserved="false" />
 </androidx.preference.PreferenceScreen>
