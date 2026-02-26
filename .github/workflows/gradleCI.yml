@@ -69,7 +69,7 @@ jobs:
         subject-path: 'screenshottile_commit_${{ github.sha }}.apk'
 
     - name: 🤖 Upload apk
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: signed-apk
         path: screenshottile_commit_${{ github.sha }}.apk
@@ -85,7 +85,7 @@ jobs:
 
     - name: 💬 Upload Lint report
       if: always()
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: lint-results.html
         path: app/build/reports/lint-results*.html
@@ -111,7 +111,7 @@ jobs:
 
     - name: 🤖 Upload apk
       if: ${{ github.ref_type == 'tag' }}
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: release-apk
         path: screenshottile_gh_${{ steps.version.outputs.versionCode }}.apk
