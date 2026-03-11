@@ -2,7 +2,7 @@
 agp = "9.0.1"
 annotation = "1.9.1"
 appcompat = "1.7.1"
-appfunctions = "1.0.0-alpha07"
+appfunctions = "1.0.0-alpha08"
 appsearch = "1.1.0"
 bcutilJdk18on = "1.83"
 cardview = "1.0.0"
