@@ -118,7 +118,7 @@ jobs:
 
     - name: 🎉 Publish Github release
       if: false
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
         files: screenshottile_gh_${{ steps.version.outputs.versionCode }}.apk
         body_path: fastlane/metadata/android/en-US/changelogs/${{ steps.version.outputs.versionCode }}.txt
