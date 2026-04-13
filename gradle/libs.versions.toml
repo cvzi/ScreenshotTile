@@ -1,6 +1,6 @@
 [versions]
 agp = "9.1.1"
-annotation = "1.9.1"
+annotation = "1.10.0"
 appcompat = "1.7.1"
 appfunctions = "1.0.0-alpha08"
 appsearch = "1.1.0"
