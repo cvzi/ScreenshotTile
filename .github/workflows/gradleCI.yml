@@ -40,7 +40,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: 🕵️ Validate Gradle Wrapper
-      uses: gradle/actions/wrapper-validation@v5
+      uses: gradle/actions/wrapper-validation@v6
 
     - name: 🔐 Decrypt keystore
       run: |
