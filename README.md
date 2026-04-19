@@ -9,7 +9,18 @@
 [![F-Droid build status](https://img.shields.io/endpoint?logo=textpattern&logoColor=blue&url=https%3A%2F%2Ff-droid-build.cuzi.workers.dev%2Fcom.github.cvzi.screenshottile)](https://monitor.f-droid.org/)
 [![🔨 Gradle Build](https://github.com/cvzi/ScreenshotTile/actions/workflows/gradleCI.yml/badge.svg)](https://github.com/cvzi/ScreenshotTile/actions/workflows/gradleCI.yml)
 
-[<img src="/docs/imgs/get-it-on-f-droid.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.github.cvzi.screenshottile/)            Consider [donating to F-Droid](https://f-droid.org/donate/)
+
+
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/com.github.cvzi.screenshottile/)
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+     alt="Get it on Google Play"
+     height="80">](https://play.google.com/store/apps/details?id=com.github.cvzi.screenshottile)
+
+Consider [donating to F-Droid](https://f-droid.org/donate/).
+
+$\textcolor{#D00000}{\textsf{F-Droid is under threat. Google is changing the way you install apps on your device:}}$  https://keepandroidopen.org/
 
 Screenshot Tile for Android 7.0+ without requiring root access
 
