@@ -252,6 +252,12 @@ class UnitTestClickableActivityLinkLocalized : UnitTestClickableActivityLink() {
     }
 
     @Test
+    @Config(qualifiers = "sr")
+    fun sr() {
+        makeClickableActivities_LocalizedString()
+    }
+
+    @Test
     @Config(qualifiers = "ta")
     fun ta() {
         makeClickableActivities_LocalizedString()

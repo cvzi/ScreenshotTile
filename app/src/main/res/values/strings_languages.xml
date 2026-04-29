@@ -1,53 +1,54 @@
 <resources>
-    <string name="language_name_en" translatable="false">English</string>
-    <string name="language_name_ar" translatable="false">العربية</string>
-    <string name="language_name_be" translatable="false">Беларуская</string>
-    <string name="language_name_bci" translatable="false">Baoulé (Wawle)</string>
-    <string name="language_name_bn" translatable="false">বাংলা</string>
-    <string name="language_name_cs" translatable="false">Čeština</string>
-    <string name="language_name_da" translatable="false">Dansk</string>
-    <string name="language_name_de" translatable="false">Deutsch</string>
-    <string name="language_name_el" translatable="false">Ελληνικά</string>
-    <string name="language_name_es" translatable="false">Español</string>
-    <string name="language_name_fa" translatable="false">فارسی</string>
-    <string name="language_name_fi" translatable="false">Suomi</string>
-    <string name="language_name_fr" translatable="false">Français</string>
-    <string name="language_name_gu" translatable="false">ગુજરાતી</string>
-    <string name="language_name_hi" translatable="false">हिन्दी</string>
-    <string name="language_name_hu" translatable="false">Magyar</string>
-    <string name="language_name_hy" translatable="false">Հայերեն</string>
-    <string name="language_name_id" translatable="false">Bahasa Indonesia</string>
-    <string name="language_name_in" translatable="false">Bahasa Indonesia</string>
-    <string name="language_name_it" translatable="false">Italiano</string>
-    <string name="language_name_iw" translatable="false">עברית</string>
-    <string name="language_name_he" translatable="false">עברית</string>
-    <string name="language_name_ja" translatable="false">日本語</string>
-    <string name="language_name_kn" translatable="false">ಕನ್ನಡ</string>
-    <string name="language_name_mr" translatable="false">मराठी</string>
-    <string name="language_name_ms" translatable="false">Bahasa Melayu</string>
-    <string name="language_name_nb" translatable="false">Norsk Bokmål</string>
-    <string name="language_name_nl" translatable="false">Nederlands</string>
-    <string name="language_name_no" translatable="false">Norsk</string>
-    <string name="language_name_or" translatable="false">ଓଡ଼ିଆ</string>
-    <string name="language_name_pa" translatable="false">ਪੰਜਾਬੀ</string>
-    <string name="language_name_pl" translatable="false">Polski</string>
-    <string name="language_name_pt_BR" translatable="false">Português (Brasil)</string>
-    <string name="language_name_pt_PT" translatable="false">Português (Portugal)</string>
-    <string name="language_name_ro" translatable="false">Română</string>
-    <string name="language_name_ru" translatable="false">Русский</string>
-    <string name="language_name_sv" translatable="false">Svenska</string>
-    <string name="language_name_ta" translatable="false">தமிழ்</string>
-    <string name="language_name_te" translatable="false">తెలుగు</string>
-    <string name="language_name_th" translatable="false">ไทย</string>
-    <string name="language_name_tl" translatable="false">Tagalog</string>
-    <string name="language_name_tr" translatable="false">Türkçe</string>
-    <string name="language_name_ug" translatable="false">ئۇيغۇرچە</string>
-    <string name="language_name_uk" translatable="false">Українська</string>
-    <string name="language_name_ur" translatable="false">اردو</string>
-    <string name="language_name_vi" translatable="false">Tiếng Việt</string>
-    <string name="language_name_zh_CN" translatable="false">中文（简体）</string>
-    <string name="language_name_zh_HK" translatable="false">中文（香港）</string>
-    <string name="language_name_zh_TW" translatable="false">中文（繁體）</string>
+    <string name="language_name_en" translatable="false">🏴󠁧󠁢󠁥󠁮󠁧󠁿 English</string>
+    <string name="language_name_ar" translatable="false">العربية 🇦🇪</string>
+    <string name="language_name_be" translatable="false">🇧🇾 Беларуская</string>
+    <string name="language_name_bci" translatable="false">🇨🇮 Baoulé (Wawle)</string>
+    <string name="language_name_bn" translatable="false">🇧🇩 বাংলা</string>
+    <string name="language_name_cs" translatable="false">🇨🇿 Čeština</string>
+    <string name="language_name_da" translatable="false">🇩🇰 Dansk</string>
+    <string name="language_name_de" translatable="false">🇩🇪 Deutsch</string>
+    <string name="language_name_el" translatable="false">🇬🇷 Ελληνικά</string>
+    <string name="language_name_es" translatable="false">🇪🇸 Español</string>
+    <string name="language_name_fa" translatable="false">فارسی 🇮🇷</string>
+    <string name="language_name_fi" translatable="false">🇫🇮 Suomi</string>
+    <string name="language_name_fr" translatable="false">🇫🇷 Français</string>
+    <string name="language_name_gu" translatable="false">🇮🇳 ગુજરાતી</string>
+    <string name="language_name_hi" translatable="false">🇮🇳 हिन्दी</string>
+    <string name="language_name_hu" translatable="false">🇭🇺 Magyar</string>
+    <string name="language_name_hy" translatable="false">🇦🇲 Հայերեն</string>
+    <string name="language_name_id" translatable="false">🇮🇩 Bahasa Indonesia</string>
+    <string name="language_name_in" translatable="false">🇮🇩 Bahasa Indonesia</string>
+    <string name="language_name_it" translatable="false">🇮🇹 Italiano</string>
+    <string name="language_name_iw" translatable="false">עברית 🇮🇱</string>
+    <string name="language_name_he" translatable="false">🇮🇱 עברית</string>
+    <string name="language_name_ja" translatable="false">🇯🇵 日本語</string>
+    <string name="language_name_kn" translatable="false">🇮🇳 ಕನ್ನಡ</string>
+    <string name="language_name_mr" translatable="false">🇮🇳 मराठी</string>
+    <string name="language_name_ms" translatable="false">🇲🇾 Bahasa Melayu</string>
+    <string name="language_name_nb" translatable="false">🇳🇴 Norsk Bokmål</string>
+    <string name="language_name_nl" translatable="false">🇳🇱 Nederlands</string>
+    <string name="language_name_no" translatable="false">🇳🇴 Norsk</string>
+    <string name="language_name_or" translatable="false">🇮🇳 ଓଡ଼ିଆ</string>
+    <string name="language_name_pa" translatable="false">🇮🇳 ਪੰਜਾਬੀ</string>
+    <string name="language_name_pl" translatable="false">🇵🇱 Polski</string>
+    <string name="language_name_pt_BR" translatable="false">🇧🇷 Português (Brasil)</string>
+    <string name="language_name_pt_PT" translatable="false">🇵🇹 Português (Portugal)</string>
+    <string name="language_name_ro" translatable="false">🇷🇴 Română</string>
+    <string name="language_name_ru" translatable="false">🇷🇺 Русский</string>
+    <string name="language_name_sv" translatable="false">🇸🇪 Svenska</string>
+    <string name="language_name_sr" translatable="false">🇸🇮 Srpski</string>
+    <string name="language_name_ta" translatable="false">🇮🇳 தமிழ்</string>
+    <string name="language_name_te" translatable="false">🇮🇳 తెలుగు</string>
+    <string name="language_name_th" translatable="false">🇹🇭 ไทย</string>
+    <string name="language_name_tl" translatable="false">🇵🇭 Tagalog</string>
+    <string name="language_name_tr" translatable="false">🇹🇷 Türkçe</string>
+    <string name="language_name_ug" translatable="false">ئۇيغۇرچە 🇨🇳</string>
+    <string name="language_name_uk" translatable="false">🇺🇦 اردوУкраїнська</string>
+    <string name="language_name_ur" translatable="false"> اردو 🇵🇰</string>
+    <string name="language_name_vi" translatable="false">🇻🇳 Tiếng Việt</string>
+    <string name="language_name_zh_CN" translatable="false">🇨🇳 中文（简体）</string>
+    <string name="language_name_zh_HK" translatable="false">🇭🇰 中文（香港）</string>
+    <string name="language_name_zh_TW" translatable="false">🇹🇼 中文（繁體）</string>
 
     <!-- Language translation progress -->
     <string name="language_progress_en" translatable="false">100%</string>
@@ -87,6 +88,7 @@
     <string name="language_progress_ro" translatable="false">96%</string>
     <string name="language_progress_ru" translatable="false">95%</string>
     <string name="language_progress_sv" translatable="false">96%</string>
+    <string name="language_progress_sr" translatable="false">95%</string>
     <string name="language_progress_ta" translatable="false">2%</string>
     <string name="language_progress_te" translatable="false">1%</string>
     <string name="language_progress_th" translatable="false">2%</string>

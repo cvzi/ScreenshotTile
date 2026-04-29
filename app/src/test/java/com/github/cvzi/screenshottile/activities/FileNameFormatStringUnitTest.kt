@@ -236,6 +236,12 @@ class UnitTestFileNameFormatStringLocalized : UnitTestFileNameFormatString() {
     }
 
     @Test
+    @Config(qualifiers = "sr")
+    fun sr() {
+        checkLocalizedString()
+    }
+
+    @Test
     @Config(qualifiers = "ta")
     fun ta() {
         checkLocalizedString()
