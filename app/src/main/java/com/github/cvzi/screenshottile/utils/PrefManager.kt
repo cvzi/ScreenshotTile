@@ -233,6 +233,16 @@ class PrefManager(private val context: Context) {
             value
         ).apply()
 
+    var floatingButtonShowSettingsAfterMove: Boolean
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_floating_button_show_settings_after_move),
+            true
+        )
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button_show_settings_after_move),
+            value
+        ).apply()
+
     var floatingButtonCloseEmoji: String
         get() = pref.getString(
             context.getString(R.string.pref_key_floating_button_close_emoji),

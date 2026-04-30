@@ -47,6 +47,7 @@
     <string name="setting_floating_button_hide_after_summary">&#x200c;Automatically remove the floating button after you took a screenshot</string>
     <string name="setting_floating_button_show_close">&#x200c;Show a [X]/close button next to floating button</string>
     <string name="setting_floating_button_show_close_summary">&#x200c;Lets you remove the floating button without opening the quick settings</string>
+    <string name="setting_floating_button_show_settings_after_move">&#x200c;Show settings button after moving the floating button</string>
     <string name="setting_floating_button_show_close_dialog_title">&#x200c;Close button emoji</string>
     <string name="setting_floating_button_show_close_dialog_description">&#x200c;Type a text or an emoji that will appear as the close button</string>
     <string name="setting_floating_button_shutter">&#x200c;Floating button theme</string>
