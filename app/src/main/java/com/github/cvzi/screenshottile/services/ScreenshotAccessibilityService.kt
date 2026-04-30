@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.res.Configuration
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.PixelFormat
 import android.graphics.Point
 import android.graphics.Rect
@@ -29,9 +30,12 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsets
 import android.view.WindowManager
 import android.view.WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
 import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityNodeInfo
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -39,12 +43,14 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.PackageNameFilterMode
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.SaveImageResult
 import com.github.cvzi.screenshottile.SaveImageResultSuccess
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.FloatingButtonSettingsActivity
+import com.github.cvzi.screenshottile.activities.LongScreenshotReviewActivity
 import com.github.cvzi.screenshottile.activities.MainActivity
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.SettingsActivity
@@ -53,7 +59,9 @@ import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
 import com.github.cvzi.screenshottile.functions.AppFunctionResultStore
 import com.github.cvzi.screenshottile.utils.ShutterCollection
+import com.github.cvzi.screenshottile.utils.areLongScreenshotFramesSimilar
 import com.github.cvzi.screenshottile.utils.compressionPreference
+import com.github.cvzi.screenshottile.utils.composeLongScreenshotFromFiles
 import com.github.cvzi.screenshottile.utils.createNotification
 import com.github.cvzi.screenshottile.utils.fillTextHeight
 import com.github.cvzi.screenshottile.utils.formatLocalizedString
@@ -61,12 +69,16 @@ import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.handlePostScreenshot
 import com.github.cvzi.screenshottile.utils.isDeviceLocked
 import com.github.cvzi.screenshottile.utils.parseColorString
+import com.github.cvzi.screenshottile.utils.navigationBarSize
 import com.github.cvzi.screenshottile.utils.safeRemoveView
+import com.github.cvzi.screenshottile.utils.saveLongScreenshotDebugArtifacts
+import com.github.cvzi.screenshottile.utils.saveLongScreenshotTempBitmap
 import com.github.cvzi.screenshottile.utils.saveBitmapToFile
 import com.github.cvzi.screenshottile.utils.setUserLanguage
 import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 import com.github.cvzi.screenshottile.utils.toastDeviceIsLocked
 import com.github.cvzi.screenshottile.utils.toastMessage
+import java.io.File
 
 
 /**
@@ -74,6 +86,21 @@ import com.github.cvzi.screenshottile.utils.toastMessage
  */
 @RequiresApi(Build.VERSION_CODES.P)
 class ScreenshotAccessibilityService : AccessibilityService() {
+    private enum class LongScreenshotMode {
+        AUTO,
+        MANUAL
+    }
+
+    private data class LongScreenshotSession(
+        var mode: LongScreenshotMode,
+        val sessionDir: File,
+        var targetBounds: Rect? = null,
+        var frameCount: Int = 0,
+        var waitingForCapture: Boolean = false,
+        var cancelled: Boolean = false,
+        val expectedCropTops: MutableList<Int?> = mutableListOf(0)
+    )
+
     companion object {
         var instance: ScreenshotAccessibilityService? = null
         var screenshotPermission: Intent? = null
@@ -179,9 +206,490 @@ class ScreenshotAccessibilityService : AccessibilityService() {
      */
     fun getForegroundPackageName(): String = lastPackageName.toString()
 
+    fun startLongScreenshotSession() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            getWinContext().toastMessage(R.string.long_screenshot_unsupported, ToastType.ERROR)
+            return
+        }
+        if (longScreenshotSession != null) {
+            updateLongScreenshotPanel(getLocalizedString(R.string.long_screenshot_status_manual), manualCaptureEnabled = true)
+            return
+        }
+
+        if (!floatingButtonShown) {
+            temporaryOverlayForLongScreenshot = true
+            showFloatingButton(animate = false)
+        }
+
+        val sessionDir = File(cacheDir, "long_screenshot_${System.currentTimeMillis()}")
+        val detectedBounds = detectScrollableBounds()
+        val mode = if (detectedBounds != null) LongScreenshotMode.AUTO else LongScreenshotMode.MANUAL
+        longScreenshotSession = LongScreenshotSession(
+            mode = mode,
+            sessionDir = sessionDir,
+            targetBounds = detectedBounds
+        )
+        updateLongScreenshotPanel(
+            if (mode == LongScreenshotMode.AUTO) {
+                getLocalizedString(R.string.long_screenshot_status_auto)
+            } else {
+                getLocalizedString(R.string.long_screenshot_status_manual)
+            },
+            manualCaptureEnabled = mode == LongScreenshotMode.MANUAL
+        )
+
+        if (mode == LongScreenshotMode.AUTO) {
+            captureLongScreenshotFrame(afterCapture = { session ->
+                if (!advanceLongScreenshot(session)) {
+                    switchLongScreenshotToManual(getLocalizedString(R.string.long_screenshot_status_retry_manual))
+                }
+            })
+        }
+    }
+
+    private fun detectScrollableBounds(): Rect? {
+        val node = findBestScrollableNode(rootInActiveWindow) ?: return null
+        return Rect().also {
+            node.getBoundsInScreen(it)
+            lastScrollableBounds = Rect(it)
+        }
+    }
+
+    private fun findBestScrollableNode(root: AccessibilityNodeInfo?): AccessibilityNodeInfo? {
+        root ?: return null
+        var bestNode: AccessibilityNodeInfo? = null
+        var bestArea = 0
+        fun walk(node: AccessibilityNodeInfo?) {
+            node ?: return
+            if (node.isScrollable && node.isVisibleToUser) {
+                val rect = Rect()
+                node.getBoundsInScreen(rect)
+                val area = rect.width() * rect.height()
+                if (area > bestArea) {
+                    bestArea = area
+                    bestNode = node
+                }
+            }
+            for (index in 0 until node.childCount) {
+                walk(node.getChild(index))
+            }
+        }
+        walk(root)
+        return bestNode
+    }
+
+    private fun updateLongScreenshotPanel(status: String, manualCaptureEnabled: Boolean) {
+        val localBinding = binding ?: return
+        val actionsEnabled = !longScreenshotFinishing
+        val captureEnabled = manualCaptureEnabled && actionsEnabled
+        localBinding.longScreenshotPanel.visibility = View.VISIBLE
+        localBinding.textLongScreenshotStatus.text = status
+        localBinding.textLongScreenshotCounter.text = formatLocalizedString(
+            R.string.long_screenshot_counter,
+            longScreenshotSession?.frameCount ?: 0
+        )
+        applyLongScreenshotButtonState(localBinding.buttonLongScreenshotCapture, captureEnabled)
+        applyLongScreenshotButtonState(localBinding.buttonLongScreenshotDone, actionsEnabled)
+        applyLongScreenshotButtonState(localBinding.buttonLongScreenshotCancel, actionsEnabled)
+        localBinding.buttonLongScreenshotCapture.visibility = View.VISIBLE
+        localBinding.buttonLongScreenshotDone.visibility = View.VISIBLE
+        localBinding.buttonLongScreenshotCancel.visibility = View.VISIBLE
+        localBinding.progressLongScreenshot.visibility = if (longScreenshotFinishing) View.VISIBLE else View.GONE
+        localBinding.buttonLongScreenshotCancel.setText(
+            if (longScreenshotCancelPending) R.string.long_screenshot_cancel_confirm
+            else R.string.long_screenshot_cancel
+        )
+        localBinding.rowFloatingButtons.alpha = if (longScreenshotSession != null) 0.6f else 1f
+    }
+
+    private fun applyLongScreenshotButtonState(button: Button, enabled: Boolean) {
+        button.isEnabled = enabled
+        button.alpha = if (enabled) 1f else 0.45f
+    }
+
+    private fun hideLongScreenshotPanel() {
+        longScreenshotHandler.removeCallbacks(resetLongScreenshotCancelRunnable)
+        longScreenshotCancelPending = false
+        longScreenshotFinishing = false
+        binding?.run {
+            longScreenshotPanel.visibility = View.GONE
+            rowFloatingButtons.alpha = 1f
+            applyLongScreenshotButtonState(buttonLongScreenshotCapture, true)
+            applyLongScreenshotButtonState(buttonLongScreenshotDone, true)
+            applyLongScreenshotButtonState(buttonLongScreenshotCancel, true)
+            buttonLongScreenshotCancel.setText(R.string.long_screenshot_cancel)
+            progressLongScreenshot.visibility = View.GONE
+        }
+    }
+
+    private fun switchLongScreenshotToManual(status: String) {
+        val session = longScreenshotSession ?: return
+        session.mode = LongScreenshotMode.MANUAL
+        session.waitingForCapture = false
+        resetLongScreenshotCancelConfirmation()
+        updateLongScreenshotPanel(status, manualCaptureEnabled = true)
+    }
+
+    private fun cancelLongScreenshotSession() {
+        longScreenshotHandler.removeCallbacksAndMessages(null)
+        longScreenshotCancelPending = false
+        longScreenshotFinishing = false
+        val session = longScreenshotSession
+        longScreenshotSession = null
+        hideLongScreenshotPanel()
+        session?.sessionDir?.let { dir ->
+            dir.listFiles()?.forEach { it.delete() }
+            dir.delete()
+        }
+        if (temporaryOverlayForLongScreenshot) {
+            temporaryOverlayForLongScreenshot = false
+            hideFloatingButton()
+        }
+    }
+
+    private fun finishLongScreenshotSession() {
+        val session = longScreenshotSession ?: return
+        if (longScreenshotFinishing) {
+            return
+        }
+        longScreenshotHandler.removeCallbacksAndMessages(null)
+        longScreenshotCancelPending = false
+
+        if (session.frameCount == 0) {
+            cancelLongScreenshotSession()
+            return
+        }
+
+        if (session.frameCount == 1) {
+
+            // TOOD save normal screenshot
+
+
+            cancelLongScreenshotSession()
+            return
+        }
+        longScreenshotFinishing = true
+        updateLongScreenshotPanel(getLocalizedString(R.string.long_screenshot_status_finishing), manualCaptureEnabled = false)
+        val frameFiles = com.github.cvzi.screenshottile.utils.loadLongScreenshotFrameFiles(session.sessionDir)
+        val repeatedBottomInsetPx = getRepeatedBottomInsetPx()
+        val frameSize = readLongScreenshotFrameSize(frameFiles.firstOrNull())
+        val contentBounds = normalizeLongScreenshotBoundsForCapturedFrames(session.targetBounds, frameSize)
+        val expectedCropTops = normalizeLongScreenshotExpectedCropTops(session.expectedCropTops, frameSize)
+        Thread {
+            val composed = composeLongScreenshotFromFiles(
+                frameFiles,
+                repeatedBottomInsetPx = repeatedBottomInsetPx,
+                contentBounds = contentBounds,
+                expectedCropTops = expectedCropTops
+            )
+            val debugFiles = if (BuildConfig.DEBUG) {
+                saveLongScreenshotDebugArtifacts(
+                    this,
+                    frameFiles,
+                    "long_screenshot_debug_${System.currentTimeMillis()}",
+                    composed,
+                    contentBounds,
+                    expectedCropTops
+                )
+            } else {
+                emptyList()
+            }
+            val saveImageResult = if (!composed.requiresReview) {
+                Handler(Looper.getMainLooper()).post {
+                    if (longScreenshotSession === session) {
+                        updateLongScreenshotPanel(
+                            getLocalizedString(R.string.long_screenshot_status_saving),
+                            manualCaptureEnabled = false
+                        )
+                    }
+                }
+                saveBitmapToFile(
+                    this,
+                    composed.bitmap,
+                    prefManager.fileNamePattern,
+                    compressionPreference(applicationContext),
+                    null,
+                    useAppData = "saveToStorage" !in prefManager.postScreenshotActions,
+                    directory = null
+                )
+            } else {
+                null
+            }
+            Handler(Looper.getMainLooper()).post {
+                if (debugFiles.isNotEmpty()) {
+                    Log.d(TAG, "Long screenshot debug artifacts saved: ${debugFiles.joinToString()}")
+                    getWinContext().toastMessage(
+                        "Long screenshot debug images saved in the normal Screenshots folder",
+                        ToastType.ACTIVITY,
+                        Toast.LENGTH_LONG
+                    )
+                }
+                longScreenshotSession = null
+                hideLongScreenshotPanel()
+                if (composed.requiresReview) {
+                    if (temporaryOverlayForLongScreenshot) {
+                        temporaryOverlayForLongScreenshot = false
+                        hideFloatingButton()
+                    }
+                    startActivity(
+                        LongScreenshotReviewActivity.newIntent(
+                            this,
+                            session.sessionDir,
+                            composed.cropTops,
+                            repeatedBottomInsetPx,
+                            contentBounds,
+                            expectedCropTops
+                        ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    )
+                } else {
+                    frameFiles.forEach { it.delete() }
+                    session.sessionDir.delete()
+                    onFileSaved(saveImageResult)
+                    if (temporaryOverlayForLongScreenshot) {
+                        temporaryOverlayForLongScreenshot = false
+                        hideFloatingButton()
+                    }
+                }
+            }
+        }.start()
+    }
+
+    private fun readLongScreenshotFrameSize(file: File?): Point? {
+        file ?: return null
+        val options = BitmapFactory.Options().apply {
+            inJustDecodeBounds = true
+        }
+        BitmapFactory.decodeFile(file.absolutePath, options)
+        if (options.outWidth <= 0 || options.outHeight <= 0) {
+            return null
+        }
+        return Point(options.outWidth, options.outHeight)
+    }
+
+    private fun normalizeLongScreenshotBoundsForCapturedFrames(bounds: Rect?, frameSize: Point?): Rect? {
+        bounds ?: return null
+        frameSize ?: return bounds
+        if (!prefManager.autoCropEnabled) {
+            return Rect(bounds)
+        }
+        val normalized = Rect(
+            bounds.left - prefManager.autoCropLeft,
+            bounds.top - prefManager.autoCropTop,
+            bounds.right - prefManager.autoCropLeft,
+            bounds.bottom - prefManager.autoCropTop
+        )
+        normalized.left = normalized.left.coerceIn(0, frameSize.x - 1)
+        normalized.top = normalized.top.coerceIn(0, frameSize.y - 1)
+        normalized.right = normalized.right.coerceIn(normalized.left + 1, frameSize.x)
+        normalized.bottom = normalized.bottom.coerceIn(normalized.top + 1, frameSize.y)
+        return normalized
+    }
+
+    private fun normalizeLongScreenshotExpectedCropTops(
+        expectedCropTops: List<Int?>,
+        frameSize: Point?
+    ): IntArray? {
+        if (expectedCropTops.isEmpty()) {
+            return null
+        }
+        val frameHeight = frameSize?.y
+        return expectedCropTops.map { expectedCropTop ->
+            var normalized = expectedCropTop ?: 0
+            if (prefManager.autoCropEnabled) {
+                normalized -= prefManager.autoCropTop
+            }
+            if (frameHeight != null) {
+                normalized = normalized.coerceIn(0, frameHeight - 1)
+            } else {
+                normalized = normalized.coerceAtLeast(0)
+            }
+            normalized
+        }.toIntArray()
+    }
+
+    private fun updateLongScreenshotCounter(frameCount: Int) {
+        binding?.textLongScreenshotCounter?.text = formatLocalizedString(
+            R.string.long_screenshot_counter,
+            frameCount
+        )
+    }
+
+    private fun requestLongScreenshotCancelConfirmation() {
+        longScreenshotCancelPending = true
+        binding?.buttonLongScreenshotCancel?.setText(R.string.long_screenshot_cancel_confirm)
+        longScreenshotHandler.removeCallbacks(resetLongScreenshotCancelRunnable)
+        longScreenshotHandler.postDelayed(resetLongScreenshotCancelRunnable, 2500L)
+    }
+
+    private fun resetLongScreenshotCancelConfirmation() {
+        longScreenshotHandler.removeCallbacks(resetLongScreenshotCancelRunnable)
+        longScreenshotCancelPending = false
+        binding?.buttonLongScreenshotCancel?.setText(R.string.long_screenshot_cancel)
+    }
+
+    private fun getRepeatedBottomInsetPx(): Int {
+        var inset = 0
+        val rootInsets = binding?.root?.rootWindowInsets
+        if (rootInsets != null) {
+            inset = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                val navigation = rootInsets.getInsetsIgnoringVisibility(WindowInsets.Type.navigationBars()).bottom
+                val systemGestures = rootInsets.getInsetsIgnoringVisibility(WindowInsets.Type.systemGestures()).bottom
+                val tappable = rootInsets.getInsetsIgnoringVisibility(WindowInsets.Type.tappableElement()).bottom
+                maxOf(navigation, systemGestures, tappable)
+            } else {
+                @Suppress("DEPRECATION")
+                maxOf(
+                    rootInsets.systemWindowInsetBottom,
+                    rootInsets.stableInsetBottom
+                )
+            }
+        }
+        if (inset <= 0) {
+            inset = navigationBarSize(getWinContext()).y
+        }
+        Log.d(TAG, "Long screenshot repeatedBottomInsetPx=$inset")
+        return inset.coerceAtLeast(0)
+    }
+
+    private fun captureLongScreenshotFrame(afterCapture: (LongScreenshotSession) -> Unit) {
+        val session = longScreenshotSession ?: return
+        if (session.waitingForCapture) {
+            return
+        }
+        resetLongScreenshotCancelConfirmation()
+        session.waitingForCapture = true
+        binding?.buttonLongScreenshotCapture?.let { applyLongScreenshotButtonState(it, false) }
+        binding?.root?.visibility = View.GONE
+        binding?.root?.invalidate()
+        longScreenshotHandler.postDelayed({
+            captureCurrentBitmap(
+                onSuccess = onSuccess@{ bitmap ->
+                    binding?.root?.visibility = View.VISIBLE
+                    saveLongScreenshotTempBitmap(session.sessionDir, session.frameCount, bitmap)
+                    if (session.frameCount > 0) {
+                        val previousBitmap = BitmapFactory.decodeFile(
+                            File(session.sessionDir, String.format("%03d.png", session.frameCount - 1)).absolutePath
+                        )
+                        if (previousBitmap != null && areLongScreenshotFramesSimilar(previousBitmap, bitmap, session.targetBounds)) {
+                            previousBitmap.recycle()
+                            switchLongScreenshotToManual(getLocalizedString(R.string.long_screenshot_status_retry_manual))
+                            session.waitingForCapture = false
+                            binding?.buttonLongScreenshotCapture?.let { applyLongScreenshotButtonState(it, true) }
+                            return@onSuccess
+                        }
+                        previousBitmap?.recycle()
+                    }
+                    session.frameCount += 1
+                    updateLongScreenshotCounter(session.frameCount)
+                    session.waitingForCapture = false
+                    binding?.buttonLongScreenshotCapture?.let { applyLongScreenshotButtonState(it, true) }
+                    afterCapture(session)
+                },
+                onFailure = {
+                    binding?.root?.visibility = View.VISIBLE
+                    session.waitingForCapture = false
+                    binding?.buttonLongScreenshotCapture?.let { applyLongScreenshotButtonState(it, true) }
+                    switchLongScreenshotToManual(getLocalizedString(R.string.long_screenshot_status_retry_manual))
+                }
+            )
+        }, 120L)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.R)
+    private fun captureCurrentBitmap(
+        onSuccess: (Bitmap) -> Unit,
+        onFailure: () -> Unit
+    ) {
+        super.takeScreenshot(
+            DEFAULT_DISPLAY,
+            { runnable -> Thread(runnable).start() },
+            object : TakeScreenshotCallback {
+                override fun onSuccess(screenshot: ScreenshotResult) {
+                    val bitmap = Bitmap.wrapHardwareBuffer(
+                        screenshot.hardwareBuffer,
+                        screenshot.colorSpace
+                    )?.copy(Bitmap.Config.ARGB_8888, false)
+                    screenshot.hardwareBuffer.close()
+                    if (bitmap == null) {
+                        Handler(Looper.getMainLooper()).post { onFailure() }
+                        return
+                    }
+                    val cropped = if (prefManager.autoCropEnabled) {
+                        val rect = Rect(
+                            prefManager.autoCropLeft,
+                            prefManager.autoCropTop,
+                            bitmap.width - prefManager.autoCropRight,
+                            bitmap.height - prefManager.autoCropBottom
+                        )
+                        Bitmap.createBitmap(bitmap, rect.left, rect.top, rect.width(), rect.height())
+                    } else {
+                        bitmap
+                    }
+                    Handler(Looper.getMainLooper()).post { onSuccess(cropped) }
+                }
+
+                override fun onFailure(errorCode: Int) {
+                    Log.e(TAG, "captureCurrentBitmap failed: $errorCode")
+                    Handler(Looper.getMainLooper()).post { onFailure() }
+                }
+            }
+        )
+    }
+
+    private fun advanceLongScreenshot(session: LongScreenshotSession): Boolean {
+        val node = findBestScrollableNode(rootInActiveWindow)
+        val bounds = Rect()
+        node?.getBoundsInScreen(bounds)
+        val scrolled = when {
+            node != null && node.performAction(AccessibilityNodeInfo.ACTION_SCROLL_FORWARD) -> true
+            bounds.height() > 0 -> dispatchScrollGesture(bounds)
+            else -> false
+        }
+        if (!scrolled) {
+            return false
+        }
+        session.targetBounds = if (bounds.height() > 0) Rect(bounds) else session.targetBounds
+        longScreenshotHandler.postDelayed({
+            captureLongScreenshotFrame(afterCapture = { updatedSession ->
+                if (!advanceLongScreenshot(updatedSession)) {
+                    switchLongScreenshotToManual(getLocalizedString(R.string.long_screenshot_status_retry_manual))
+                }
+            })
+        }, 900L)
+        return true
+    }
+
+    private fun dispatchScrollGesture(bounds: Rect): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            return false
+        }
+        val path = android.graphics.Path().apply {
+            val centerX = bounds.centerX().toFloat()
+            moveTo(centerX, (bounds.bottom - bounds.height() * 0.2f))
+            lineTo(centerX, (bounds.top + bounds.height() * 0.2f))
+        }
+        return dispatchGesture(
+            android.accessibilityservice.GestureDescription.Builder()
+                .addStroke(android.accessibilityservice.GestureDescription.StrokeDescription(path, 0, 350))
+                .build(),
+            null,
+            null
+        )
+    }
+
     private var prefManager = App.getInstance().prefManager
     private var lastClickTime = 0L
     private val doubleClickThreshold = 300L // milliseconds
+    private var longScreenshotSession: LongScreenshotSession? = null
+    private var lastScrollableBounds: Rect? = null
+    private val longScreenshotHandler = Handler(Looper.getMainLooper())
+    private var temporaryOverlayForLongScreenshot = false
+    private var longScreenshotCancelPending = false
+    private var longScreenshotFinishing = false
+    private val resetLongScreenshotCancelRunnable = Runnable {
+        longScreenshotCancelPending = false
+        binding?.buttonLongScreenshotCancel?.setText(R.string.long_screenshot_cancel)
+    }
 
     override fun onServiceConnected() {
         instance = this
@@ -301,6 +809,11 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             return
         }
 
+        if (prefManager.floatingButtonAction == getString(R.string.setting_floating_action_value_long)) {
+            startLongScreenshotSession()
+            return
+        }
+
         val delayInSeconds = prefManager.floatingButtonDelay.toLong()
         val delayInMilliSeconds = if (delayInSeconds > 0) {
             1000L * delayInSeconds
@@ -347,6 +860,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         addWindowViewAt(root, position.x, position.y)
 
         val buttonScreenshot = root.findViewById<ImageView>(R.id.buttonScreenshot)
+        val buttonLongCapture = root.findViewById<Button>(R.id.buttonLongScreenshotCapture)
+        val buttonLongDone = root.findViewById<Button>(R.id.buttonLongScreenshotDone)
+        val buttonLongCancel = root.findViewById<Button>(R.id.buttonLongScreenshotCancel)
         setShutterDrawable(this, buttonScreenshot, shutterCollection.current().normal)
         var buttonClose: TextView? = null
         val scale = prefManager.floatingButtonScale
@@ -400,6 +916,36 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 onClickAction(root)
             }
         }
+
+        buttonLongCapture.setOnClickListener {
+            if (longScreenshotFinishing) {
+                return@setOnClickListener
+            }
+            val session = longScreenshotSession ?: return@setOnClickListener
+            if (session.mode == LongScreenshotMode.MANUAL) {
+                updateLongScreenshotPanel(getLocalizedString(R.string.long_screenshot_status_manual), manualCaptureEnabled = false)
+                captureLongScreenshotFrame {
+                    updateLongScreenshotPanel(getLocalizedString(R.string.long_screenshot_status_manual), manualCaptureEnabled = true)
+                }
+            }
+        }
+        buttonLongDone.setOnClickListener {
+            if (longScreenshotFinishing) {
+                return@setOnClickListener
+            }
+            finishLongScreenshotSession()
+        }
+        buttonLongCancel.setOnClickListener {
+            if (longScreenshotFinishing) {
+                return@setOnClickListener
+            }
+            if (longScreenshotCancelPending) {
+                cancelLongScreenshotSession()
+            } else {
+                requestLongScreenshotCancelConfirmation()
+            }
+        }
+        updateLongScreenshotCounter(longScreenshotSession?.frameCount ?: 0)
 
         var dragDone = false
         buttonScreenshot.setOnDragListener { v, event ->
@@ -1033,6 +1579,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
 
     override fun onDestroy() {
+        cancelLongScreenshotSession()
         stopListeningForScreenLock()
         instance = null
         super.onDestroy()
@@ -1049,6 +1596,36 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
+        if (event.eventType == AccessibilityEvent.TYPE_VIEW_SCROLLED || event.eventType == AccessibilityEvent.TYPE_VIEW_FOCUSED) {
+            event.source?.takeIf { it.isScrollable }?.let { node ->
+                val rect = Rect()
+                node.getBoundsInScreen(rect)
+                lastScrollableBounds = rect
+                longScreenshotSession?.let { session ->
+                    session.targetBounds = Rect(rect)
+                    if (event.eventType == AccessibilityEvent.TYPE_VIEW_SCROLLED) {
+                        val deltaY = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                            event.scrollDeltaY
+                        } else {
+                            0
+                        }
+                        if (deltaY > 0) {
+                            val expectedCropTop = (
+                                rect.top + (rect.height() - deltaY)
+                                ).coerceIn(0, rect.bottom.coerceAtLeast(1) - 1)
+                            while (session.expectedCropTops.size <= session.frameCount) {
+                                session.expectedCropTops.add(null)
+                            }
+                            session.expectedCropTops[session.frameCount] = expectedCropTop
+                            Log.d(
+                                TAG,
+                                "Long screenshot expected crop for frame ${session.frameCount}: $expectedCropTop (deltaY=$deltaY)"
+                            )
+                        }
+                    }
+                }
+            }
+        }
         if (event.isFullScreen &&
             event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED &&
             event.packageName != lastPackageName
