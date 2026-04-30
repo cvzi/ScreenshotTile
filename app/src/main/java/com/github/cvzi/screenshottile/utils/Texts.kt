@@ -66,6 +66,8 @@ class Texts {
     val setting_tile_action = R.string.setting_tile_action
     val setting_tile_long_press_action = R.string.setting_tile_long_press_action
     val setting_floating_action = R.string.setting_floating_action
+    val setting_floating_action_gesture = R.string.setting_floating_action_gesture
+    val setting_floating_move_gesture = R.string.setting_floating_move_gesture
     val setting_voice_interaction_action = R.string.setting_voice_interaction_action
     val setting_dark_theme = R.string.setting_dark_theme
     val setting_dark_theme_system = R.string.setting_dark_theme_system
@@ -262,7 +264,8 @@ class Texts {
     val setting_quick_settings_warning = R.string.setting_quick_settings_warning
     val single_tap = R.string.single_tap
     val double_tap = R.string.double_tap
-
+    val long_press = R.string.long_press
+    val short_touch = R.string.short_touch
 
 
     // Untranslatable strings

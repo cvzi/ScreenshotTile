@@ -68,6 +68,8 @@
     <string name="setting_tile_action">&#x200c;Tile action</string>
     <string name="setting_tile_long_press_action">&#x200c;Tile long-press action</string>
     <string name="setting_floating_action">&#x200c;Floating button action</string>
+    <string name="setting_floating_action_gesture">&#x200c;Trigger floating button action with</string>
+    <string name="setting_floating_move_gesture">&#x200c;Move floating button with</string>
     <string name="setting_voice_interaction_action">&#x200c;Assistant action</string>
     <string name="setting_dark_theme">&#x200c;Dark theme</string>
     <string name="setting_dark_theme_system">&#x200c;System</string>
@@ -273,4 +275,6 @@
     <string name="setting_quick_settings_warning">&#x200c;One of the tiles of the app must be added to the quick settings, otherwise the floating button cannot be hidden when the quick settings are pulled down</string>
     <string name="single_tap">&#x200c;Single Tap</string>
     <string name="double_tap">&#x200c;Double Tap</string>
+    <string name="long_press">&#x200c;Long Press</string>
+    <string name="short_touch">&#x200c;Short Touch</string>
 </resources>

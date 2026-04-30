@@ -379,6 +379,18 @@ class PrefManager(private val context: Context) {
             )
         }
 
+    var floatingButtonMoveType: Int
+        get() = pref.getInt(
+            context.getString(R.string.pref_key_floating_move_type),
+            0
+        )
+        set(value) = pref.edit {
+            putInt(
+                context.getString(R.string.pref_key_floating_move_type),
+                value
+            )
+        }
+
     var floatingButtonColorTint: String?
         get() = pref.getString(
             context.getString(R.string.pref_key_floating_button_color_tint),

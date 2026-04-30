@@ -78,6 +78,7 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
     private lateinit var switchFloatingButtonColorTint: SwitchMaterial
     private lateinit var switchFloatingButtonAlpha: SwitchMaterial
     private lateinit var radioGroupAction: RadioGroup
+    private lateinit var radioGroupMoveType: RadioGroup
     private lateinit var radioGroupShutterTheme: RadioGroup
     private lateinit var switchFloatingButtonDelay: SwitchMaterial
     private lateinit var editTextFloatingButtonDelay: EditText
@@ -89,6 +90,7 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
     private lateinit var shutterCollection: ShutterCollection
 
     private lateinit var binding: ActivityFloatingButtonSettingsBinding
+    private var updatingGestureUi = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,6 +104,7 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
         switchFloatingButtonColorTint = binding.switchFloatingButtonColorTint
         switchFloatingButtonAlpha = binding.switchFloatingButtonAlpha
         radioGroupAction = binding.radioGroupAction
+        radioGroupMoveType = binding.radioGroupMoveType
         radioGroupShutterTheme = binding.radioGroupShutterTheme
         switchFloatingButtonDelay = binding.switchFloatingButtonDelay
         editTextFloatingButtonDelay = binding.editTextFloatingButtonDelay
@@ -138,14 +141,26 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
         }
 
         binding.radioGroupTapType.setOnCheckedChangeListener { _, checkedId ->
+            if (updatingGestureUi) {
+                return@setOnCheckedChangeListener
+            }
             prefManager.floatingButtonTapType = when (checkedId) {
-                    R.id.radioButtonTapTypeDouble -> {
-                        ScreenshotAccessibilityService.TAP_TYPE_DOUBLE
-                    }
-                    else -> { // R.id.radioButtonTapTypeSingle
-                        ScreenshotAccessibilityService.TAP_TYPE_SINGLE
-                    }
-                }
+                R.id.radioButtonTapTypeDouble -> ScreenshotAccessibilityService.TAP_TYPE_DOUBLE
+                R.id.radioButtonTapTypeLong -> ScreenshotAccessibilityService.TAP_TYPE_LONG
+                else -> ScreenshotAccessibilityService.TAP_TYPE_SINGLE
+            }
+            ensureGestureConfiguration(preferMoveGesture = false)
+        }
+
+        radioGroupMoveType.setOnCheckedChangeListener { _, checkedId ->
+            if (updatingGestureUi) {
+                return@setOnCheckedChangeListener
+            }
+            prefManager.floatingButtonMoveType = when (checkedId) {
+                R.id.radioButtonMoveTypeShort -> ScreenshotAccessibilityService.MOVE_TYPE_SHORT_TOUCH
+                else -> ScreenshotAccessibilityService.MOVE_TYPE_LONG_PRESS
+            }
+            ensureGestureConfiguration(preferMoveGesture = true)
         }
 
         binding.switchFloatingButtonHideAfter.setOnCheckedChangeListener { _, isChecked ->
@@ -318,7 +333,19 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
                 ScreenshotAccessibilityService.TAP_TYPE_DOUBLE -> {
                     R.id.radioButtonTapTypeDouble
                 }
+                ScreenshotAccessibilityService.TAP_TYPE_LONG -> {
+                    R.id.radioButtonTapTypeLong
+                }
                 else -> R.id.radioButtonTapTypeSingle
+            }
+        ).isChecked = true
+
+        findViewById<RadioButton>(
+            when (prefManager.floatingButtonMoveType) {
+                ScreenshotAccessibilityService.MOVE_TYPE_SHORT_TOUCH -> {
+                    R.id.radioButtonMoveTypeShort
+                }
+                else -> R.id.radioButtonMoveTypeLong
             }
         ).isChecked = true
 
@@ -379,6 +406,8 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
                 View.GONE
             }
 
+        ensureGestureConfiguration(preferMoveGesture = true)
+
         restoreSavedInstanceValues()
 
         Handler(Looper.getMainLooper()).postDelayed({
@@ -429,6 +458,37 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
         } else {
             textViewCloseButton.text = ""
         }
+    }
+
+    private fun ensureGestureConfiguration(preferMoveGesture: Boolean) {
+        if (prefManager.floatingButtonMoveType == ScreenshotAccessibilityService.MOVE_TYPE_LONG_PRESS &&
+            prefManager.floatingButtonTapType == ScreenshotAccessibilityService.TAP_TYPE_LONG
+        ) {
+            if (preferMoveGesture) {
+                prefManager.floatingButtonTapType = ScreenshotAccessibilityService.TAP_TYPE_SINGLE
+            } else {
+                prefManager.floatingButtonMoveType = ScreenshotAccessibilityService.MOVE_TYPE_SHORT_TOUCH
+            }
+        }
+        syncGestureRadioGroups()
+    }
+
+    private fun syncGestureRadioGroups() {
+        updatingGestureUi = true
+        findViewById<RadioButton>(
+            when (prefManager.floatingButtonTapType) {
+                ScreenshotAccessibilityService.TAP_TYPE_DOUBLE -> R.id.radioButtonTapTypeDouble
+                ScreenshotAccessibilityService.TAP_TYPE_LONG -> R.id.radioButtonTapTypeLong
+                else -> R.id.radioButtonTapTypeSingle
+            }
+        ).isChecked = true
+        findViewById<RadioButton>(
+            when (prefManager.floatingButtonMoveType) {
+                ScreenshotAccessibilityService.MOVE_TYPE_SHORT_TOUCH -> R.id.radioButtonMoveTypeShort
+                else -> R.id.radioButtonMoveTypeLong
+            }
+        ).isChecked = true
+        updatingGestureUi = false
     }
 
 
@@ -521,5 +581,4 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
     }
 
 }
-
 
