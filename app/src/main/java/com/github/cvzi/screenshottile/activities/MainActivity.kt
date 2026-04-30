@@ -46,6 +46,10 @@ import com.github.cvzi.screenshottile.utils.toastMessage
 import com.google.android.material.switchmaterial.SwitchMaterial
 import java.util.function.Consumer
 import androidx.core.net.toUri
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
+import kotlin.math.max
 
 
 /**
@@ -79,6 +83,8 @@ class MainActivity : BaseAppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.setVariable(BR.strings, App.texts)
+
+        binding.scrollView.minPaddingFromInsets()
 
         if (!accessibilityConsent) {
             accessibilityConsent = hasFdroid(this)

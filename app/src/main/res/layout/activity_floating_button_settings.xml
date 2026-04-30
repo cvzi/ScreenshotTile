@@ -13,11 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
         tools:context=".activities.MainActivity">
 
         <ScrollView

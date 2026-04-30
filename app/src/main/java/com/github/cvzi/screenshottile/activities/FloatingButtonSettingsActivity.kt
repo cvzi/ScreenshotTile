@@ -38,6 +38,7 @@ import com.github.cvzi.screenshottile.utils.parseColorString
 import com.google.android.material.switchmaterial.SwitchMaterial
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.createBitmap
+import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 
 
 /**
@@ -96,6 +97,8 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView<ActivityFloatingButtonSettingsBinding>(this, R.layout.activity_floating_button_settings)
         binding.setVariable(BR.strings, App.texts)
+
+        binding.scrollView.minPaddingFromInsets()
 
         shutterCollection = ShutterCollection(this, R.array.shutters, R.array.shutter_names)
         switchFloatingButtonEnabled = binding.switchFloatingButtonEnabled

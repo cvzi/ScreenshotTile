@@ -21,6 +21,7 @@ import com.github.cvzi.screenshottile.utils.SingleImage
 import com.github.cvzi.screenshottile.utils.cleanUpAppData
 import com.github.cvzi.screenshottile.utils.formatLocalizedString
 import com.github.cvzi.screenshottile.utils.getLocalizedString
+import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 import java.io.File
 import java.util.Date
 
@@ -38,6 +39,8 @@ class HistoryActivity : BaseAppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_history)
         binding.setVariable(BR.strings, App.texts)
+
+        binding.linearLayoutMain.minPaddingFromInsets()
 
         binding.buttonClear.setOnClickListener {
             clear()

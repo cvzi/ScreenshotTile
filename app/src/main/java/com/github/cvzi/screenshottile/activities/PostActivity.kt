@@ -31,6 +31,7 @@ import com.github.cvzi.screenshottile.utils.SingleImage
 import com.github.cvzi.screenshottile.utils.SuggestionsAdapter
 import com.github.cvzi.screenshottile.utils.deleteImage
 import com.github.cvzi.screenshottile.utils.getLocalizedString
+import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 import com.github.cvzi.screenshottile.utils.toastMessage
 
 
@@ -91,6 +92,8 @@ class PostActivity : GenericPostActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_post)
         binding.setVariable(BR.strings, App.texts)
+
+        binding.scrollView.minPaddingFromInsets()
 
         intent?.run {
             val imagePath = getStringExtra(NOTIFICATION_ACTION_RENAME_INPUT)
