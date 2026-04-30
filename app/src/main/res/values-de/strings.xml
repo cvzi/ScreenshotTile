@@ -47,6 +47,7 @@
     <string name="setting_floating_button_hide_after_summary">Nach einer Aufnahme wird der Auslöser automatisch deaktiviert</string>
     <string name="setting_floating_button_show_close">Zeige [x]/Schließen neben dem schwebenden Button</string>
     <string name="setting_floating_button_show_close_summary">Damit kannst du den schwebenden Auslöser deaktivieren ohne die Schnelleinstellungen zu öffnen</string>
+    <string name="setting_floating_button_show_settings_after_move">Einstellungsknopf nach Verschieben des schwebenden Buttons anzeigen</string>
     <string name="setting_floating_button_show_close_dialog_title">Emoji des \"Schließen\" Buttons</string>
     <string name="setting_floating_button_show_close_dialog_description">Gib einen Text oder einen Emoji ein, dieser wird als \"Schließen\" Button angezeigt</string>
     <string name="setting_floating_button_shutter">Look des schwebenden Auslösers</string>
@@ -62,10 +63,14 @@
     <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - Zeit als yyyy-MM-dd_HH-mm-ss\n
 %counter% - zählt die Anzahl der Screenshots\n
 %random% - eine zufällige UUID\n
-%randint% - eine zufällige Zahl]]></string>
+%randint% - eine zufällige Zahl\n
+%app% - Name der Vordergrund-App\n
+%package% - Paketname der Vordergrund-App\n]]></string>
     <string name="setting_tile_action">Kachelaktion</string>
     <string name="setting_tile_long_press_action">Kachelaktion bei langem Drücken</string>
     <string name="setting_floating_action">Aktion des schwebenden Screenshot Auslösers</string>
+    <string name="setting_floating_action_gesture">Schwebenden Button auslösen mit</string>
+    <string name="setting_floating_move_gesture">Schwebenden Button verschieben mit</string>
     <string name="setting_voice_interaction_action">Assistentaktion</string>
     <string name="setting_dark_theme">Dunkles Farbschema</string>
     <string name="setting_dark_theme_system">System</string>
@@ -267,4 +272,8 @@
     <string name="setting_filtermode_invert_selection">Auswahl umkehren</string>
     <string name="setting_show_floating_buttons_quick_settings">Zeige SchwebendenScreenshot Button, wenn Schnelleinstellungen heruntergezogen sind</string>
     <string name="setting_quick_settings_warning">Eine der Kacheln der App muss zu den Schnelleinstellungen hinzugefügt werden, andernfalls kann der schwebende Button nicht ausgeblendet werden, wenn die Schnelleinstellungen nach unten gezogen werden</string>
+    <string name="single_tap">Einfach-Tipp</string>
+    <string name="double_tap">Doppeltipp</string>
+    <string name="long_press">Langes Drücken</string>
+    <string name="short_touch">Kurzes Drücken</string>
 </resources>
