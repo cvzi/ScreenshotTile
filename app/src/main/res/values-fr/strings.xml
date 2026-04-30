@@ -47,6 +47,7 @@
     <string name="setting_floating_button_hide_after_summary">Retirer automatiquement le bouton flottant après avoir pris une capture d\'écran</string>
     <string name="setting_floating_button_show_close">Afficher un bouton [X]/ fermer à côté du bouton flottant</string>
     <string name="setting_floating_button_show_close_summary">Vous permet de supprimer le bouton flottant sans ouvrir les paramètres rapides</string>
+    <string name="setting_floating_button_show_settings_after_move">Afficher le bouton des paramètres après le déplacement du bouton flottant</string>
     <string name="setting_floating_button_show_close_dialog_title">Bouton Fermer en emoji</string>
     <string name="setting_floating_button_show_close_dialog_description">Tapez un texte ou un emoji qui apparaîtra en tant que bouton de fermeture</string>
     <string name="setting_floating_button_shutter">Thème du bouton flottant</string>
@@ -60,12 +61,16 @@
     <string name="setting_file_name_pattern">Nom du fichier</string>
     <string name="setting_file_name_placeholders_title">Utiliser les variables suivantes dans le nom du fichier</string>
     <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - temps noté yyyy-MM-dd_HH-mm-ss\n
-%counter% - compte le nombre de captures d\'écran\n
+%counter% - compte le nombre de captures d'écran\n
 %random% - un UUID aléatoire\n
-%randint% - un nombre aléatoire]]></string>
+%randint% - un nombre aléatoire\n
+%app% - nom de l'application en avant-plan\n
+%package% - nom du paquet de l'application en avant-plan]]></string>
     <string name="setting_tile_action">Action de la tuile/du bouton</string>
     <string name="setting_tile_long_press_action">Action appui long sur la tuile/il bouton</string>
     <string name="setting_floating_action">Action du bouton flottant</string>
+    <string name="setting_floating_action_gesture">Déclencher l\'action du bouton flottant avec</string>
+    <string name="setting_floating_move_gesture">Déplacer le bouton flottant avec</string>
     <string name="setting_voice_interaction_action">Action de l\'assistant</string>
     <string name="setting_dark_theme">Mode nuit</string>
     <string name="setting_dark_theme_system">Système</string>
@@ -267,4 +272,8 @@
     <string name="setting_filtermode_invert_selection">Inverser la sélection</string>
     <string name="setting_show_floating_buttons_quick_settings">Affiche les boutons flottants lorsque les réglages rapides sont tirés vers le bas</string>
     <string name="setting_quick_settings_warning">L\'une des tuiles de l\'application doit être ajoutée aux réglages rapides, sinon le bouton flottant ne peut pas être caché lorsque les réglages rapides sont tirés vers le bas</string>
+    <string name="single_tap">Appui simple</string>
+    <string name="double_tap">Appui double</string>
+    <string name="long_press">Appui prolongé</string>
+    <string name="short_touch">Appui court</string>
 </resources>
