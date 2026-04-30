@@ -5,6 +5,7 @@ import static com.github.cvzi.screenshottile.utils.UtilsKt.cleanUpAppData;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.isDeviceLocked;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.startActivityAndCollapseCustom;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.toastDeviceIsLocked;
+import static com.github.cvzi.screenshottile.utils.UtilsKt.toastMessage;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.tryNativeScreenshot;
 
 import android.annotation.SuppressLint;
@@ -22,6 +23,7 @@ import android.os.Looper;
 import android.os.StrictMode;
 import android.service.quicksettings.TileService;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -439,6 +441,20 @@ public class App extends Application implements AppFunctionConfiguration.Provide
         Intent intent = NoDisplayActivity.newPartialIntent(context);
         intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
         startActivityAndCollapseCompat(context, intent);
+    }
+
+    /**
+     * Start guided long screenshot mode through the accessibility service.
+     */
+    public void longScreenshot(Context context) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R
+                || ScreenshotAccessibilityService.Companion.getInstance() == null) {
+            if (context != null) {
+                toastMessage(context, R.string.long_screenshot_unsupported, ToastType.ACTIVITY, Toast.LENGTH_LONG);
+            }
+            return;
+        }
+        ScreenshotAccessibilityService.Companion.getInstance().startLongScreenshotSession();
     }
 
 

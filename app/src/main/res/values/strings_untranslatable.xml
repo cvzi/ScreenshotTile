@@ -140,6 +140,7 @@
 
     <string name="setting_tile_action_value_screenshot" translatable="false">screenshot</string>
     <string name="setting_tile_action_value_partial" translatable="false">partial</string>
+    <string name="setting_tile_action_value_long" translatable="false">long</string>
     <string name="setting_tile_action_value_options" translatable="false">options</string>
     <string name="setting_tile_action_value_toggle_floating_button" translatable="false">toggle_floating_button</string>
     <string name="setting_tile_action_value_delayed_1s_screenshot" translatable="false">delayed_1s_screenshot</string>
@@ -148,12 +149,14 @@
     <string-array name="setting_tile_action_values" translatable="false">
         <item>@string/setting_tile_action_value_screenshot</item>
         <item>@string/setting_tile_action_value_partial</item>
+        <item>@string/setting_tile_action_value_long</item>
         <item>@string/setting_tile_action_value_options</item>
     </string-array>
     <string name="pref_key_tile_action" translatable="false">tile_action</string>
     <string-array name="setting_tile_action_entries" translatable="false">
         <item>@string/take_screenshot</item>
         <item>@string/partial_screenshot</item>
+        <item>@string/long_screenshot</item>
         <item>@string/options_dialog</item>
     </string-array>
 
@@ -178,16 +181,19 @@
 
     <string name="setting_floating_action_value_screenshot" translatable="false">screenshot</string>
     <string name="setting_floating_action_value_partial" translatable="false">partial</string>
+    <string name="setting_floating_action_value_long" translatable="false">long</string>
     <string name="setting_floating_action_value_legacy" translatable="false">legacy</string>
     <string-array name="setting_floating_action_values" translatable="false">
         <item>@string/setting_floating_action_value_screenshot</item>
         <item>@string/setting_floating_action_value_partial</item>
+        <item>@string/setting_floating_action_value_long</item>
         <item>@string/setting_floating_action_value_legacy</item>
     </string-array>
     <string name="pref_key_floating_action" translatable="false">floating_action</string>
     <string-array name="setting_floating_action_entries" translatable="false">
         <item>@string/use_native_screenshot</item>
         <item>@string/partial_screenshot</item>
+        <item>@string/long_screenshot</item>
         <item>@string/main_legacy_method_title</item>
     </string-array>
     <string name="pref_key_floating_tap_type" translatable="false">floating_tap_type</string>

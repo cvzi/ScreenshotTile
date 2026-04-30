@@ -13,6 +13,7 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.SettingDialogActivity
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
 import com.github.cvzi.screenshottile.utils.foregroundNotification
@@ -41,6 +42,7 @@ class ScreenshotTileService : TileService(),
     }
 
     var takeScreenshotOnStopListening = false
+    private var takeLongScreenshotOnStopListening = false
 
     private fun setState(newState: Int) {
         try {
@@ -144,6 +146,11 @@ class ScreenshotTileService : TileService(),
             } else {
                 App.getInstance().takeScreenshotFromTileService(this)
             }
+        } else if (takeLongScreenshotOnStopListening) {
+            takeLongScreenshotOnStopListening = false
+            Handler(Looper.getMainLooper()).postDelayed({
+                App.getInstance().longScreenshot(this)
+            }, 300)
         } else {
             background()
         }
@@ -169,6 +176,14 @@ class ScreenshotTileService : TileService(),
 
             getString(R.string.setting_tile_action_value_partial) -> {
                 App.getInstance().screenshotPartial(this)
+            }
+
+            getString(R.string.setting_tile_action_value_long) -> {
+                takeLongScreenshotOnStopListening = true
+                val intent = NoDisplayActivity.newIntent(this, false).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                startActivityAndCollapseCustom(intent)
             }
 
             else -> {

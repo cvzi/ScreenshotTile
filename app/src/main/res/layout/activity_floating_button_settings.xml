@@ -83,6 +83,12 @@
                                 android:text="@{strings.partial_screenshot}" />
 
                             <RadioButton
+                                android:id="@+id/radioButtonActionLong"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/long_screenshot" />
+
+                            <RadioButton
                                 android:id="@+id/radioButtonActionLegacy"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

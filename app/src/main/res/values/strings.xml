@@ -12,6 +12,7 @@
     <string name="floating_button_settings">&#x200c;Floating button settings</string>
     <string name="left_screenshot_right_menu">&#x200c;Left: Screenshot, right: Settings</string>
     <string name="partial_screenshot">&#x200c;Select area</string>
+    <string name="long_screenshot">&#x200c;Long screenshot</string>
     <string name="options_dialog">&#x200c;Show options</string>
     <string name="file_format">&#x200c;File format</string>
     <string name="setting_delay_entry_default">&#x200c;Instant</string>
@@ -118,6 +119,26 @@
     <string name="notification_app_chooser_share">&#x200c;Share file with…</string>
     <string name="notification_app_chooser_edit">&#x200c;Edit file with…</string>
     <string name="screenshot_failed">&#x200c;Failed to take screenshot, please try again</string>
+    <string name="long_screenshot_unsupported">&#x200c;Long screenshots require Android 11 and the accessibility service</string>
+    <string name="long_screenshot_prepare">&#x200c;Preparing long screenshot…</string>
+    <string name="long_screenshot_capture_next">&#x200c;Capture</string>
+    <string name="long_screenshot_done">&#x200c;Done</string>
+    <string name="long_screenshot_cancel">&#x200c;Cancel</string>
+    <string name="long_screenshot_cancel_confirm">&#x200c;Really cancel?</string>
+    <string name="long_screenshot_status_auto">&#x200c;Capturing automatically…</string>
+    <string name="long_screenshot_status_manual">&#x200c;Scroll manually, then tap Capture</string>
+    <string name="long_screenshot_status_retry_manual">&#x200c;Automatic scrolling did not work. Scroll manually, then tap Capture</string>
+    <string name="long_screenshot_status_finishing">&#x200c;Stitching screenshots…</string>
+    <string name="long_screenshot_status_saving">&#x200c;Saving long screenshot…</string>
+    <string name="long_screenshot_status_review">&#x200c;Review seams before saving</string>
+    <string name="long_screenshot_counter">&#x200c;Captured: %1$d</string>
+    <string name="long_screenshot_review_title">&#x200c;Review long screenshot</string>
+    <string name="long_screenshot_review_description">&#x200c;Adjust where each following screenshot starts. Higher values cut more from the top of that frame.</string>
+    <string name="long_screenshot_review_save">&#x200c;Save long screenshot</string>
+    <string name="long_screenshot_review_discard">&#x200c;Discard</string>
+    <string name="long_screenshot_review_frame">&#x200c;Frame %1$d</string>
+    <string name="long_screenshot_review_crop">&#x200c;Crop top: %1$d px</string>
+    <string name="long_screenshot_not_enough_frames">&#x200c;Take at least two screenshots for a long screenshot</string>
     <!-- Shown when a screenshot file was successfully saved. For example "Screenshot saved /Pictures/Screenshot_01.jpg" -->
     <string name="screenshot_file_saved">&#x200c;Screenshot saved %1$s</string>
     <string name="notification_delete_screenshot">&#x200c;Delete</string>

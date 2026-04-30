@@ -126,6 +126,10 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
                         R.string.setting_floating_action_value_partial
                     }
 
+                    R.id.radioButtonActionLong -> {
+                        R.string.setting_floating_action_value_long
+                    }
+
                     R.id.radioButtonActionLegacy -> {
                         R.string.setting_floating_action_value_legacy
                     }
@@ -303,6 +307,10 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
             when (prefManager.floatingButtonAction) {
                 getString(R.string.setting_floating_action_value_partial) -> {
                     R.id.radioButtonActionPartial
+                }
+
+                getString(R.string.setting_floating_action_value_long) -> {
+                    R.id.radioButtonActionLong
                 }
 
                 getString(R.string.setting_floating_action_value_legacy) -> {
@@ -521,5 +529,4 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
     }
 
 }
-
 

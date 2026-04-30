@@ -167,6 +167,10 @@
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme" />
         <activity
+            android:name="com.github.cvzi.screenshottile.activities.LongScreenshotReviewActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name="com.github.cvzi.screenshottile.activities.HistoryActivity"
             android:exported="true"
             android:launchMode="singleTask"
