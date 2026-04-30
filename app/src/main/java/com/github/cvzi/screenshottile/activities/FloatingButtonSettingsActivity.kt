@@ -245,6 +245,10 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
             updateCloseButton()
             ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
+        binding.switchFloatingButtonShowSettingsAfterMove.setOnCheckedChangeListener { _, isChecked ->
+            prefManager.floatingButtonShowSettingsAfterMove = isChecked
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
+        }
 
         seekBarFloatingButtonScale.apply {
             max = 1000
@@ -372,6 +376,8 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
 
         binding.switchFloatingButtonShowClose.isChecked =
             prefManager.floatingButtonShowClose
+        binding.switchFloatingButtonShowSettingsAfterMove.isChecked =
+            prefManager.floatingButtonShowSettingsAfterMove
 
         radioGroupShutterTheme.removeAllViews()
         val selectedShutter = shutterCollection.current()
@@ -581,4 +587,3 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
     }
 
 }
-

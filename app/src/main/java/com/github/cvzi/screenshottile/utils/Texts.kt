@@ -49,6 +49,7 @@ class Texts {
     val setting_floating_button_hide_after = R.string.setting_floating_button_hide_after
     val setting_floating_button_hide_after_summary = R.string.setting_floating_button_hide_after_summary
     val setting_floating_button_show_close = R.string.setting_floating_button_show_close
+    val setting_floating_button_show_settings_after_move = R.string.setting_floating_button_show_settings_after_move
     val setting_floating_button_show_close_summary = R.string.setting_floating_button_show_close_summary
     val setting_floating_button_show_close_dialog_title = R.string.setting_floating_button_show_close_dialog_title
     val setting_floating_button_show_close_dialog_description = R.string.setting_floating_button_show_close_dialog_description

@@ -75,6 +75,7 @@ import kotlin.math.abs
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2019/12/26.
  */
+@SuppressLint("AccessibilityPolicy")
 @RequiresApi(Build.VERSION_CODES.P)
 class ScreenshotAccessibilityService : AccessibilityService() {
     companion object {
@@ -473,7 +474,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                         )
                         buttonScreenshot.alpha = prefManager.floatingButtonAlpha
                     }
-                    showSettingsButton(root, buttonScreenshot)
+                    if (prefManager.floatingButtonShowSettingsAfterMove) {
+                        showSettingsButton(root, buttonScreenshot)
+                    }
                     true
                 }
 
