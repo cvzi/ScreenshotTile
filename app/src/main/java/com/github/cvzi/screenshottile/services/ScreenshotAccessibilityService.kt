@@ -391,6 +391,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         buttonScreenshot.startDragAndDrop(null, View.DragShadowBuilder(root), null, 0)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun configureFloatingButton(root: ViewGroup, animate: Boolean = true) {
         screenOrientation = resources.configuration.orientation
 
@@ -439,6 +440,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         val alpha = prefManager.floatingButtonAlpha
         buttonScreenshot.alpha = alpha
         buttonClose?.alpha = alpha
+        buttonScreenshot.setOnClickListener {
+            onTapAction(root)
+        }
 
         var dragDone = false
         buttonScreenshot.setOnDragListener { v, event ->
@@ -496,7 +500,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             longPressRunnable = null
         }
 
-        buttonScreenshot.setOnTouchListener { _, event ->
+        buttonScreenshot.setOnTouchListener { v, event ->
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
                     downRawX = event.rawX
@@ -555,8 +559,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 MotionEvent.ACTION_UP -> {
                     clearLongPressRunnable()
                     if (!gestureHandled && !movedBeyondSlop) {
-                        buttonScreenshot.performClick()
-                        onTapAction(root)
+                        v.performClick()
                     }
                     gestureHandled = false
                     movedBeyondSlop = false
