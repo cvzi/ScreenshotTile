@@ -145,6 +145,10 @@
 
                         </LinearLayout>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.setting_floating_action_gesture}" />
 
                         <RadioGroup
                             android:id="@+id/radioGroupTapType"
@@ -155,13 +159,43 @@
                                 android:id="@+id/radioButtonTapTypeSingle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/single_tap" />
+                                android:text="@{strings.single_tap}" />
 
                             <RadioButton
                                 android:id="@+id/radioButtonTapTypeDouble"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/double_tap" />
+                                android:text="@{strings.double_tap}" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonTapTypeLong"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.long_press}" />
+
+                        </RadioGroup>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.setting_floating_move_gesture}" />
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupMoveType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonMoveTypeLong"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.long_press}" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonMoveTypeShort"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{strings.short_touch}" />
 
                         </RadioGroup>
 

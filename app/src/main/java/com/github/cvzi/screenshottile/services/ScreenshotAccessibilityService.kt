@@ -27,8 +27,10 @@ import android.view.Display.DEFAULT_DISPLAY
 import android.view.DragEvent
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewConfiguration
 import android.view.WindowManager
 import android.view.WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
 import android.view.accessibility.AccessibilityEvent
@@ -67,6 +69,7 @@ import com.github.cvzi.screenshottile.utils.setUserLanguage
 import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 import com.github.cvzi.screenshottile.utils.toastDeviceIsLocked
 import com.github.cvzi.screenshottile.utils.toastMessage
+import kotlin.math.abs
 
 
 /**
@@ -82,6 +85,10 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
         const val TAP_TYPE_SINGLE = 0
         const val TAP_TYPE_DOUBLE = 1
+        const val TAP_TYPE_LONG = 2
+
+        const val MOVE_TYPE_LONG_PRESS = 0
+        const val MOVE_TYPE_SHORT_TOUCH = 1
 
         /**
          * Open accessibility settings from activity
@@ -338,6 +345,51 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }, delayInMilliSeconds)
     }
 
+    private fun resolvedFloatingButtonMoveType(): Int =
+        when (prefManager.floatingButtonMoveType) {
+            MOVE_TYPE_SHORT_TOUCH -> MOVE_TYPE_SHORT_TOUCH
+            else -> MOVE_TYPE_LONG_PRESS
+        }
+
+    private fun resolvedFloatingButtonTapType(): Int {
+        val tapType = prefManager.floatingButtonTapType
+        return when {
+            tapType == TAP_TYPE_LONG && resolvedFloatingButtonMoveType() == MOVE_TYPE_LONG_PRESS -> {
+                TAP_TYPE_SINGLE
+            }
+
+            tapType == TAP_TYPE_DOUBLE || tapType == TAP_TYPE_LONG -> tapType
+            else -> TAP_TYPE_SINGLE
+        }
+    }
+
+    private fun onTapAction(root: ViewGroup) {
+        val currentTime = System.currentTimeMillis()
+        val timeDiff = currentTime - lastClickTime
+        lastClickTime = currentTime
+
+        when (resolvedFloatingButtonTapType()) {
+            TAP_TYPE_DOUBLE -> {
+                if (timeDiff <= doubleClickThreshold) {
+                    onClickAction(root)
+                }
+            }
+
+            TAP_TYPE_SINGLE -> onClickAction(root)
+        }
+    }
+
+    private fun startFloatingButtonDrag(
+        root: ViewGroup,
+        buttonScreenshot: ImageView,
+        shutterCollection: ShutterCollection
+    ) {
+        setShutterDrawable(this, buttonScreenshot, shutterCollection.current().move)
+        (buttonScreenshot.drawable as? Animatable)?.start()
+        buttonScreenshot.alpha = 1f
+        buttonScreenshot.startDragAndDrop(null, View.DragShadowBuilder(root), null, 0)
+    }
+
     private fun configureFloatingButton(root: ViewGroup, animate: Boolean = true) {
         screenOrientation = resources.configuration.orientation
 
@@ -387,20 +439,6 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         buttonScreenshot.alpha = alpha
         buttonClose?.alpha = alpha
 
-        buttonScreenshot.setOnClickListener {
-            val currentTime = System.currentTimeMillis()
-            val timeDiff = currentTime - lastClickTime
-            lastClickTime = currentTime
-
-            if (prefManager.floatingButtonTapType == TAP_TYPE_DOUBLE && timeDiff <= doubleClickThreshold) {
-                // Double click detected
-                onClickAction(root)
-            } else if (prefManager.floatingButtonTapType == TAP_TYPE_SINGLE) {
-                // Single click action
-                onClickAction(root)
-            }
-        }
-
         var dragDone = false
         buttonScreenshot.setOnDragListener { v, event ->
             when (event.action) {
@@ -443,12 +481,94 @@ class ScreenshotAccessibilityService : AccessibilityService() {
             }
         }
 
-        buttonScreenshot.setOnLongClickListener {
-            dragDone = false
-            setShutterDrawable(this, buttonScreenshot, shutterCollection.current().move)
-            (buttonScreenshot.drawable as Animatable).start()
-            buttonScreenshot.alpha = 1f
-            it.startDragAndDrop(null, View.DragShadowBuilder(root), null, 0)
+        val touchSlop = ViewConfiguration.get(this).scaledTouchSlop
+        var downRawX = 0f
+        var downRawY = 0f
+        var gestureHandled = false
+        var movedBeyondSlop = false
+        var longPressRunnable: Runnable? = null
+
+        fun clearLongPressRunnable() {
+            longPressRunnable?.let { buttonScreenshot.removeCallbacks(it) }
+            longPressRunnable = null
+        }
+
+        buttonScreenshot.setOnTouchListener { _, event ->
+            when (event.actionMasked) {
+                MotionEvent.ACTION_DOWN -> {
+                    downRawX = event.rawX
+                    downRawY = event.rawY
+                    gestureHandled = false
+                    movedBeyondSlop = false
+                    clearLongPressRunnable()
+
+                    val moveType = resolvedFloatingButtonMoveType()
+                    val tapType = resolvedFloatingButtonTapType()
+                    if (moveType == MOVE_TYPE_LONG_PRESS || tapType == TAP_TYPE_LONG) {
+                        longPressRunnable = Runnable {
+                            if (gestureHandled || movedBeyondSlop) {
+                                return@Runnable
+                            }
+                            if (moveType == MOVE_TYPE_LONG_PRESS) {
+                                dragDone = false
+                                gestureHandled = true
+                                startFloatingButtonDrag(
+                                    root,
+                                    buttonScreenshot,
+                                    shutterCollection
+                                )
+                            } else if (tapType == TAP_TYPE_LONG) {
+                                gestureHandled = true
+                                onClickAction(root)
+                            }
+                        }
+                        buttonScreenshot.postDelayed(
+                            longPressRunnable!!,
+                            ViewConfiguration.getLongPressTimeout().toLong()
+                        )
+                    }
+                    true
+                }
+
+                MotionEvent.ACTION_MOVE -> {
+                    val moved = abs(event.rawX - downRawX) > touchSlop ||
+                        abs(event.rawY - downRawY) > touchSlop
+                    if (moved) {
+                        movedBeyondSlop = true
+                        clearLongPressRunnable()
+                        if (!gestureHandled && resolvedFloatingButtonMoveType() == MOVE_TYPE_SHORT_TOUCH) {
+                            dragDone = false
+                            gestureHandled = true
+                            startFloatingButtonDrag(
+                                root,
+                                buttonScreenshot,
+                                shutterCollection
+                            )
+                        }
+                    }
+                    true
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    clearLongPressRunnable()
+                    if (!gestureHandled && !movedBeyondSlop) {
+                        buttonScreenshot.performClick()
+                        onTapAction(root)
+                    }
+                    gestureHandled = false
+                    movedBeyondSlop = false
+                    true
+                }
+
+                MotionEvent.ACTION_CANCEL -> {
+                    clearLongPressRunnable()
+                    gestureHandled = false
+                    movedBeyondSlop = false
+                    true
+                }
+
+                else -> false
+            }
         }
 
         if (animate) {
