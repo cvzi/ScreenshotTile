@@ -16,8 +16,7 @@
         android:orientation="vertical"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
+        android:id="@+id/linearLayoutMain"
         tools:context=".activities.MainActivity">
 
         <androidx.cardview.widget.CardView style="@style/CardViewPrimary">

@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.RadioButton
 import androidx.annotation.RequiresApi
@@ -21,6 +22,7 @@ import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonFilterBi
 import com.github.cvzi.screenshottile.databinding.ActivityMainBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.PackagesRecyclerViewAdapter
+import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 
 
 /**
@@ -63,6 +65,16 @@ class FloatingButtonFilterActivity : BaseAppCompatActivity() {
         binding = DataBindingUtil.setContentView<ActivityFloatingButtonFilterBinding>(this, R.layout.activity_floating_button_filter)
         binding.setVariable(BR.strings, App.texts)
 
+        binding.scrollView.minPaddingFromInsets()
+        binding.packagesRecyclerView.post {
+            val reductionPx = TypedValue.applyDimension( TypedValue.COMPLEX_UNIT_DIP,
+                18f,
+                resources.displayMetrics ).toInt()
+            val lp = binding.packagesRecyclerView.layoutParams
+            val barHeightPx = binding.linearLayoutSelectionBar.height
+            lp.height = binding.packagesRecyclerView.height - barHeightPx - reductionPx
+            binding.packagesRecyclerView.layoutParams = lp
+        }
 
         binding.buttonMoreSettings.setOnClickListener {
             SettingsActivity.start(this)

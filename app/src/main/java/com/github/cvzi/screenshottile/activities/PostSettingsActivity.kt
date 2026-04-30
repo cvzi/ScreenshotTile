@@ -25,6 +25,7 @@ import com.github.cvzi.screenshottile.utils.Sound
 import com.github.cvzi.screenshottile.utils.Sound.Companion.allAudioSinks
 import com.github.cvzi.screenshottile.utils.TonesRecyclerViewAdapter
 import com.github.cvzi.screenshottile.utils.getLocalizedString
+import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 import com.github.cvzi.screenshottile.utils.nicePathFromUri
 import com.github.cvzi.screenshottile.utils.realScreenSize
 import com.github.cvzi.screenshottile.utils.toastMessage
@@ -52,6 +53,7 @@ class PostSettingsActivity : BaseAppCompatActivity() {
             R.layout.activity_post_settings
         )
         binding.setVariable(BR.strings, App.texts)
+        binding.scrollView.minPaddingFromInsets()
 
         binding.buttonResetValues.setOnClickListener {
             binding.radioButtonEmpty.isChecked = true
