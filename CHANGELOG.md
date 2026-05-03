@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.18.0
+*   Option to use short press to move floating button [#680](https://github.com/cvzi/ScreenshotTile/issues/780)
+*   Option to use long press on floating button to take screenshot [#736](https://github.com/cvzi/ScreenshotTile/pull/736)
+*   Improve edge-to-edge of status bar and nav bar in activities, padding top/bottom [#726](https://github.com/cvzi/ScreenshotTile/issues/726) [#738](https://github.com/cvzi/ScreenshotTile/pull/738)
+*   Fix button sizes for longer labels on small resolutions [#725](https://github.com/cvzi/ScreenshotTile/issues/725) [#741](https://github.com/cvzi/ScreenshotTile/pull/741)
+
 ## 2.17.1
 *   Bugfix: Navigation bar overlaps with photo editor on Android 16 [#713](https://github.com/cvzi/ScreenshotTile/issues/713)
 
