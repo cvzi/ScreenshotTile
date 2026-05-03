@@ -25,7 +25,8 @@
             <Button
                 android:id="@+id/buttonApply"
                 style="@style/Widget.Material3.Button"
-                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:enabled="false"
@@ -35,7 +36,8 @@
             <Button
                 android:id="@+id/buttonReset"
                 style="@style/Widget.Material3.Button"
-                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:text="Reset"
@@ -44,7 +46,8 @@
             <Button
                 android:id="@+id/buttonMoreSettings"
                 style="@style/Widget.Material3.Button"
-                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{strings.more_setting}"
                 android:textSize="13sp" />

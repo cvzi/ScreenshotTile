@@ -245,16 +245,18 @@
                         <Button
                             android:id="@+id/buttonFloatingButtonSettings"
                             style="@style/Widget.Material3.Button"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@{strings.floating_button_settings}"
                             android:textSize="13sp" />
 
                         <Button
                             android:id="@+id/buttonFloatingButtonTile"
                             style="@style/Widget.Material3.Button"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@{strings.main_general_button_request_add_tile}"
                             android:drawableRight="@drawable/layer_list_small_floating"
                             android:layout_marginStart="10dp"

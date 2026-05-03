@@ -328,8 +328,9 @@
                         <Button
                             android:id="@+id/buttonResetValues"
                             style="@style/Widget.Material3.Button"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@{strings.restore_default_values}"
                             android:layout_marginEnd="4dp"
                             android:textSize="12sp" />
@@ -337,8 +338,9 @@
                         <Button
                             android:id="@+id/buttonSettings"
                             style="@style/Widget.Material3.Button"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@{strings.more_setting}"
                             android:layout_marginEnd="4dp"
                             android:textSize="12sp" />
@@ -346,8 +348,9 @@
                         <Button
                             android:id="@+id/buttonHistory"
                             style="@style/Widget.Material3.Button"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="@{strings.history_title}"
                             android:layout_marginEnd="4dp"
                             android:textSize="12sp" />
