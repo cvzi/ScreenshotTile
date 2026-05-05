@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.18.1
+*   Update Chinese translations
+*   Bugfix: language selector had no labels
+
 ## 2.18.0
 *   Option to use short press to move floating button [#680](https://github.com/cvzi/ScreenshotTile/issues/780)
 *   Option to use long press on floating button to take screenshot [#736](https://github.com/cvzi/ScreenshotTile/pull/736)
