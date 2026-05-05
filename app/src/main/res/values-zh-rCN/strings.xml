@@ -47,6 +47,7 @@
     <string name="setting_floating_button_hide_after_summary">在您截取屏幕截图后自动移除浮动按钮</string>
     <string name="setting_floating_button_show_close">在浮动按钮旁显示 [X]/关闭按钮</string>
     <string name="setting_floating_button_show_close_summary">使您可以不必打开快速设置即可移除浮动按钮</string>
+    <string name="setting_floating_button_show_settings_after_move">移动浮动按钮后显示设置按钮</string>
     <string name="setting_floating_button_show_close_dialog_title">关闭按钮表情符号</string>
     <string name="setting_floating_button_show_close_dialog_description">请输入作为关闭按钮的文本或表情符号</string>
     <string name="setting_floating_button_shutter">浮动按钮主题</string>
@@ -68,6 +69,8 @@
     <string name="setting_tile_action">磁贴操作</string>
     <string name="setting_tile_long_press_action">长按瓷贴操作</string>
     <string name="setting_floating_action">浮动按钮操作</string>
+    <string name="setting_floating_action_gesture">触发浮动按钮操作的手势</string>
+    <string name="setting_floating_move_gesture">移动浮动按钮的手势</string>
     <string name="setting_voice_interaction_action">助理操作</string>
     <string name="setting_dark_theme">深色主题</string>
     <string name="setting_dark_theme_system">跟随系统</string>
@@ -269,4 +272,8 @@
     <string name="setting_filtermode_invert_selection">反选</string>
     <string name="setting_show_floating_buttons_quick_settings">在快速设置下拉时显示浮动按钮</string>
     <string name="setting_quick_settings_warning">必须添加本应用的磁贴到快速设置，否则无法在快速设置被拉下时隐藏浮动按钮</string>
+    <string name="single_tap">轻点一次</string>
+    <string name="double_tap">轻点两次</string>
+    <string name="long_press">长按</string>
+    <string name="short_touch">短触</string>
 </resources>
