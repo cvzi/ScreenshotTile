@@ -369,9 +369,13 @@ class MainActivity : BaseAppCompatActivity() {
         }
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun requestAddScreenshotTile(resultCallback: Consumer<Int> = Consumer { }) {
         if (BuildConfig.TESTING_MODE.value) {
+            return
+        }
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             return
         }
         if (ScreenshotTileService.instance == null) {
@@ -391,8 +395,12 @@ class MainActivity : BaseAppCompatActivity() {
         }
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun requestAddFloatingButtonTile(resultCallback: Consumer<Int> = Consumer { }) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            return
+        }
         val statusBarManager = getSystemService(StatusBarManager::class.java)
         statusBarManager.requestAddTileService(
             ComponentName(this, FloatingTileService::class.java),
@@ -542,7 +550,11 @@ class MainActivity : BaseAppCompatActivity() {
 
         switchAssist.isChecked = MyVoiceInteractionService.instance != null
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            binding.buttonFloatingButtonTile.visibility = View.GONE
+            binding.buttonScreenshotTile1.visibility = View.GONE
+            binding.buttonScreenshotTile2.visibility = View.GONE
+        } else {
             switchFloatingButton.isChecked =
                 ScreenshotAccessibilityService.instance != null && App.getInstance().prefManager.floatingButton
 
@@ -552,16 +564,17 @@ class MainActivity : BaseAppCompatActivity() {
                 } else {
                     View.VISIBLE
                 }
+
+            if (ScreenshotTileService.instance != null) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }.let { vis ->
+                binding.buttonScreenshotTile1.visibility = vis
+                binding.buttonScreenshotTile2.visibility = vis
+            }
         }
 
-        if (ScreenshotTileService.instance != null) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }.let { vis ->
-            binding.buttonScreenshotTile1.visibility = vis
-            binding.buttonScreenshotTile2.visibility = vis
-        }
 
         // Warn about bug in Android 10 and 11 https://github.com/cvzi/ScreenshotTile/issues/556
         val showAssistHint =
