@@ -1,10 +1,10 @@
 package com.github.cvzi.screenshottile.utils
 
 import android.content.pm.PackageManager
+import android.icu.text.SimpleDateFormat
 import android.os.Build
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
-import android.icu.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.UUID

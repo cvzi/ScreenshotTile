@@ -12,7 +12,6 @@ import android.graphics.drawable.Icon
 import android.icu.util.Calendar
 import android.net.Uri
 import android.os.Build
-import android.provider.MediaStore
 import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat

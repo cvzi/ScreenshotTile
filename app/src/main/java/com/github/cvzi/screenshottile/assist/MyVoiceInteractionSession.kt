@@ -27,12 +27,12 @@ import com.github.cvzi.screenshottile.databinding.ImageCropBinding
 import com.github.cvzi.screenshottile.functions.AppFunctionResultStore
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
+import com.github.cvzi.screenshottile.utils.applyFullscreenScreenshotStyle
 import com.github.cvzi.screenshottile.utils.createNotification
 import com.github.cvzi.screenshottile.utils.formatLocalizedString
 import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.handlePostScreenshot
 import com.github.cvzi.screenshottile.utils.isDeviceLocked
-import com.github.cvzi.screenshottile.utils.applyFullscreenScreenshotStyle
 import com.github.cvzi.screenshottile.utils.tintImage
 import com.github.cvzi.screenshottile.utils.toastDeviceIsLocked
 import com.github.cvzi.screenshottile.utils.toastMessage
