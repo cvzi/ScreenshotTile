@@ -14,8 +14,10 @@ import androidx.lifecycle.lifecycleScope
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.databinding.ActivityBackupPrefsBinding
 import com.github.cvzi.screenshottile.utils.PrefBackup
+import com.github.cvzi.screenshottile.utils.toastMessage
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -44,14 +46,14 @@ class BackupPrefsActivity : AppCompatActivity() {
                         out.write(json.toByteArray(Charsets.UTF_8))
                         out.flush()
                     }
-                    Toast.makeText(
-                        this,
+                    toastMessage(
                         "Preferences exported\n${exportFilename ?: ""}",
+                        ToastType.SUCCESS,
                         Toast.LENGTH_SHORT
-                    ).show()
+                    )
                 } catch (e: Exception) {
                     Log.e(TAG, "Export failed", e)
-                    Toast.makeText(this, "Export failed: ${e.message}", Toast.LENGTH_LONG).show()
+                    toastMessage("Export failed: ${e.message}", ToastType.ERROR)
                 }
             }
         }
@@ -65,10 +67,10 @@ class BackupPrefsActivity : AppCompatActivity() {
                         input.bufferedReader().readText()
                     } ?: throw IllegalStateException("Empty file")
                     PrefBackup.importPrefsFromJson(this, json)
-                    Toast.makeText(this, "Preferences imported", Toast.LENGTH_SHORT).show()
+                    toastMessage("Preferences imported", ToastType.SUCCESS, Toast.LENGTH_SHORT)
                 } catch (e: Exception) {
                     Log.e(TAG, "Import failed", e)
-                    Toast.makeText(this, "Import failed: ${e.message}", Toast.LENGTH_LONG).show()
+                    toastMessage("Import failed: ${e.message}", ToastType.ERROR)
                 }
             }
         }
@@ -112,7 +114,7 @@ class BackupPrefsActivity : AppCompatActivity() {
 
     private fun resetPreferences() {
         PrefBackup.resetToDefaults(this)
-        Toast.makeText(this, "All settings reset to default", Toast.LENGTH_SHORT).show()
+        toastMessage("All settings reset to default", ToastType.SUCCESS, Toast.LENGTH_SHORT)
         // Restart
         MainActivity.startNewTask(this)
         finish()

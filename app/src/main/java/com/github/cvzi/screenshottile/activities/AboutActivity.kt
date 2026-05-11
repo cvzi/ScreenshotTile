@@ -2,7 +2,6 @@ package com.github.cvzi.screenshottile.activities
 
 import android.content.Context
 import android.content.Intent
-import android.content.Intent.ACTION_SENDTO
 import android.content.Intent.ACTION_VIEW
 import android.content.pm.PackageManager
 import android.content.pm.Signature
@@ -23,7 +22,10 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityAboutBinding
 import com.github.cvzi.screenshottile.utils.formatLocalizedString
 import com.github.cvzi.screenshottile.utils.getLocalizedString
+import com.github.cvzi.screenshottile.utils.getUpdateUrl
 import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
+import com.github.cvzi.screenshottile.utils.openEmail
+import com.github.cvzi.screenshottile.utils.openUri
 import java.security.MessageDigest
 
 /**
@@ -96,7 +98,7 @@ class AboutActivity : BaseAppCompatActivity() {
             openUri(getLocalizedString(R.string.pref_static_field_link_about_privacy))
         }
         binding.buttonUpdateCheck.setOnClickListener {
-            openUri(getUpdateUrl())
+            openUri(getUpdateUrl(this))
         }
         binding.buttonBackup.setOnClickListener {
             BackupPrefsActivity.start(this)
@@ -109,30 +111,6 @@ class AboutActivity : BaseAppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
-    }
-
-    private fun getUpdateUrl(): String = getString(
-        R.string.pref_static_field_link_about_updates,
-        Uri.encode(packageName),
-        BuildConfig.VERSION_CODE.toString(),
-        Uri.encode(BuildConfig.VERSION_NAME),
-        Uri.encode(BuildConfig.BUILD_TYPE)
-    )
-
-    private fun openUri(uriString: String) {
-        Intent(ACTION_VIEW, uriString.toUri()).apply {
-            if (resolveActivity(packageManager) != null) {
-                startActivity(this)
-            }
-        }
-    }
-
-    private fun openEmail(address: String, subject: String) {
-        Intent(ACTION_SENDTO, "mailto:$address?subject=${Uri.encode(subject)}".toUri()).apply {
-            if (resolveActivity(packageManager) != null) {
-                startActivity(this)
-            }
-        }
     }
 
     private fun getReleaseChannelUrl(releaseChannels: List<String>): String? {
