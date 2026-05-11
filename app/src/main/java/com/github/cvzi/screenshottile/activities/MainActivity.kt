@@ -40,11 +40,14 @@ import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.formatLocalizedString
 import com.github.cvzi.screenshottile.utils.getLocalizedString
+import com.github.cvzi.screenshottile.utils.getUpdateUrl
 import com.github.cvzi.screenshottile.utils.hasFdroid
 import com.github.cvzi.screenshottile.utils.isNewAppInstallation
 import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
 import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
+import com.github.cvzi.screenshottile.utils.openUri
 import com.github.cvzi.screenshottile.utils.toastMessage
+import com.github.cvzi.screenshottile.utils.toggleSwitchOnLabel
 import com.google.android.material.switchmaterial.SwitchMaterial
 import java.util.function.Consumer
 
@@ -116,10 +119,10 @@ class MainActivity : BaseAppCompatActivity() {
         val switchAssist = binding.switchAssist
         val switchFloatingButton = binding.switchFloatingButton
 
-        toggleSwitchOnLabel(R.id.switchLegacy, R.id.textTitleLegacy)
-        toggleSwitchOnLabel(R.id.switchNative, R.id.textTitleNative)
-        toggleSwitchOnLabel(R.id.switchAssist, R.id.textTitleAssist)
-        toggleSwitchOnLabel(R.id.switchFloatingButton, R.id.textTitleFloatingButton)
+        toggleSwitchOnLabel(binding.textTitleLegacy, binding.switchLegacy)
+        toggleSwitchOnLabel(binding.textTitleNative, binding.switchNative)
+        toggleSwitchOnLabel(binding.textTitleAssist, binding.switchAssist)
+        toggleSwitchOnLabel(binding.textTitleFloatingButton, binding.switchFloatingButton)
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
             binding.linearLayoutNative.let {
@@ -202,18 +205,7 @@ class MainActivity : BaseAppCompatActivity() {
         }
 
         binding.buttonUpdateCheck.setOnClickListener {
-            val uri = getString(
-                R.string.pref_static_field_link_about_updates,
-                Uri.encode(packageName ?: "com.github.cvzi.screenshottile"),
-                BuildConfig.VERSION_CODE.toString(),
-                Uri.encode(BuildConfig.VERSION_NAME),
-                Uri.encode(BuildConfig.BUILD_TYPE)
-            ).toUri()
-            Intent(ACTION_VIEW, uri).apply {
-                if (resolveActivity(packageManager) != null) {
-                    startActivity(this)
-                }
-            }
+            openUri(getUpdateUrl(this))
         }
         binding.buttonAboutApp.setOnClickListener {
             AboutActivity.start(this)
@@ -411,15 +403,6 @@ class MainActivity : BaseAppCompatActivity() {
             mainExecutor,
             resultCallback
         )
-    }
-
-    private fun toggleSwitchOnLabel(switchId: Int, labelId: Int) {
-        findViewById<View?>(labelId)?.let { label ->
-            label.isClickable = true
-            label.setOnClickListener {
-                findViewById<SwitchMaterial?>(switchId)?.toggle()
-            }
-        }
     }
 
     @RequiresApi(Build.VERSION_CODES.P)
