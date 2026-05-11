@@ -1,6 +1,5 @@
 package com.github.cvzi.screenshottile.activities
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_SENDTO
@@ -27,8 +26,14 @@ import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 import java.security.MessageDigest
 
+/**
+ * About activity showing app version, release channel, and links to source code, license, ...
+ */
 class AboutActivity : BaseAppCompatActivity() {
     companion object {
+        /**
+         * Start this activity from another activity
+         */
         fun start(ctx: Context) = ctx.startActivity(Intent(ctx, AboutActivity::class.java))
     }
 
@@ -106,16 +111,13 @@ class AboutActivity : BaseAppCompatActivity() {
         return true
     }
 
-    @SuppressLint("StringFormatMatches")
-    private fun getUpdateUrl(): String {
-        val args = arrayOf(
-            packageName,
-            BuildConfig.VERSION_CODE.toString(),
-            BuildConfig.VERSION_NAME,
-            BuildConfig.BUILD_TYPE
-        ).map { Uri.encode(it) }.toTypedArray()
-        return getString(R.string.pref_static_field_link_about_updates, *args)
-    }
+    private fun getUpdateUrl(): String = getString(
+        R.string.pref_static_field_link_about_updates,
+        Uri.encode(packageName),
+        BuildConfig.VERSION_CODE.toString(),
+        Uri.encode(BuildConfig.VERSION_NAME),
+        Uri.encode(BuildConfig.BUILD_TYPE)
+    )
 
     private fun openUri(uriString: String) {
         Intent(ACTION_VIEW, uriString.toUri()).apply {

@@ -70,6 +70,9 @@ class MainActivity : BaseAppCompatActivity() {
                 })
         }
 
+        /**
+         * Start this activity from another activity
+         */
         fun start(ctx: Context) = ctx.startActivity(Intent(ctx, MainActivity::class.java))
 
         var accessibilityConsent = false
@@ -202,17 +205,12 @@ class MainActivity : BaseAppCompatActivity() {
         }
 
         binding.buttonUpdateCheck.setOnClickListener {
-            val args = arrayOf(
-                packageName ?: "com.github.cvzi.screenshottile",
-                BuildConfig.VERSION_CODE.toString(),
-                BuildConfig.VERSION_NAME,
-                BuildConfig.BUILD_TYPE
-            ).map { Uri.encode(it) }.toTypedArray()
-
-            @SuppressLint("StringFormatMatches")
-            val uri = formatLocalizedString(
+            val uri = getString(
                 R.string.pref_static_field_link_about_updates,
-                *args
+                Uri.encode(packageName ?: "com.github.cvzi.screenshottile"),
+                BuildConfig.VERSION_CODE.toString(),
+                Uri.encode(BuildConfig.VERSION_NAME),
+                Uri.encode(BuildConfig.BUILD_TYPE)
             ).toUri()
             Intent(ACTION_VIEW, uri).apply {
                 if (resolveActivity(packageManager) != null) {
