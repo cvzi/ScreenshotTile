@@ -20,6 +20,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.Surface
 import android.view.WindowManager
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.scale
 import androidx.core.net.toFile
 import androidx.documentfile.provider.DocumentFile
 import com.github.cvzi.screenshottile.App
@@ -35,8 +37,6 @@ import java.util.Locale
 import kotlin.math.ceil
 import kotlin.math.max
 import kotlin.math.min
-import androidx.core.graphics.createBitmap
-import androidx.core.graphics.scale
 
 
 /**

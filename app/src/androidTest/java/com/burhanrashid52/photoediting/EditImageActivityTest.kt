@@ -235,7 +235,8 @@ class EditImageActivityTest {
 
         // Select the emoji (delay to give time for the RecyclerView to close)
         Thread.sleep(1000)
-        Espresso.onView(ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.frmBorder)).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.frmBorder))
+            .perform(ViewActions.click())
 
         // Capture the scale of the emoji
         var emojiFrameParentView =
@@ -244,7 +245,8 @@ class EditImageActivityTest {
         val emojiScaleYBeforePinching = emojiFrameParentView.scaleY
 
         // Scale the emoji up by pinching
-        Espresso.onView(ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.frmBorder)).perform(PinchTestHelper.pinchOut())
+        Espresso.onView(ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.frmBorder))
+            .perform(PinchTestHelper.pinchOut())
 
         // Check if the emoji scaled up after pinching.
         emojiFrameParentView =
@@ -253,7 +255,8 @@ class EditImageActivityTest {
         assertNotEquals(emojiScaleYBeforePinching, emojiFrameParentView.scaleY)
 
         // Remove the emoji from the screen.
-        Espresso.onView(ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.imgPhotoEditorClose)).perform(ViewActions.click())
+        Espresso.onView(ViewMatchers.withId(ja.burhanrashid52.photoeditor.R.id.imgPhotoEditorClose))
+            .perform(ViewActions.click())
 
         // Add a text to the image.
         Espresso.onView(ViewMatchers.withText(R.string.label_text)).perform(ViewActions.click())

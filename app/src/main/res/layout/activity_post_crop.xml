@@ -4,9 +4,9 @@
     android:id="@+id/layout_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/transparent"
     android:paddingTop="20dp"
-    android:paddingBottom="50dp"
-    android:background="@android:color/transparent">
+    android:paddingBottom="50dp">
 
     <com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
         android:id="@+id/global_screenshot_selector"

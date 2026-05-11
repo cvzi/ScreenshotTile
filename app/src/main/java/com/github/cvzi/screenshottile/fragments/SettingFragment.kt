@@ -448,7 +448,6 @@ class SettingFragment : PreferenceFragmentCompat() {
     }
 
 
-
     private fun updateNotificationSummary() {
         activity?.let { myActivity ->
             notificationPref?.apply {

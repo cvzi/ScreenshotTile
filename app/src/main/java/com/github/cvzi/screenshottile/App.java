@@ -26,8 +26,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.preference.PreferenceManager;
 import androidx.appfunctions.service.AppFunctionConfiguration;
+import androidx.preference.PreferenceManager;
 
 import com.github.cvzi.screenshottile.activities.AcquireScreenshotPermission;
 import com.github.cvzi.screenshottile.activities.DelayScreenshotActivity;
@@ -40,16 +40,16 @@ import com.github.cvzi.screenshottile.services.ScreenshotTileService;
 import com.github.cvzi.screenshottile.utils.PrefManager;
 import com.github.cvzi.screenshottile.utils.Texts;
 
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+
 import kotlin.Unit;
 import kotlinx.coroutines.BuildersKt;
 import kotlinx.coroutines.CoroutineScope;
+import kotlinx.coroutines.CoroutineScopeKt;
 import kotlinx.coroutines.CoroutineStart;
 import kotlinx.coroutines.Dispatchers;
-import kotlinx.coroutines.CoroutineScopeKt;
 import kotlinx.coroutines.Job;
-
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
 
 /**
  * Created by ipcjs on 2017/8/17.
@@ -70,12 +70,12 @@ public class App extends Application implements AppFunctionConfiguration.Provide
     private static MediaProjection mediaProjection = null;
     private static volatile boolean receiverRegistered = false;
     private final Handler handler = new Handler(Looper.getMainLooper());
-    private PrefManager prefManager;
-    private Runnable screenshotRunnable;
-    private WeakReference<Bitmap> lastScreenshot = null;
     private final Job supervisorJob = kotlinx.coroutines.SupervisorKt.SupervisorJob(null);
     private final CoroutineScope appScope =
             CoroutineScopeKt.CoroutineScope(Dispatchers.getDefault().plus(supervisorJob));
+    private PrefManager prefManager;
+    private Runnable screenshotRunnable;
+    private WeakReference<Bitmap> lastScreenshot = null;
 
 
     public App() {
@@ -88,10 +88,6 @@ public class App extends Application implements AppFunctionConfiguration.Provide
 
     private static void setInstance(App app) {
         instance = app;
-    }
-
-    public CoroutineScope getAppScope() {
-        return appScope;
     }
 
     public static Intent getScreenshotPermission() {
@@ -257,6 +253,10 @@ public class App extends Application implements AppFunctionConfiguration.Provide
 
     public static void checkAccessibilityServiceOnCollapse(boolean checkAccessibilityServiceOnCollapse) {
         App.checkAccessibilityServiceOnCollapse = checkAccessibilityServiceOnCollapse;
+    }
+
+    public CoroutineScope getAppScope() {
+        return appScope;
     }
 
     /**

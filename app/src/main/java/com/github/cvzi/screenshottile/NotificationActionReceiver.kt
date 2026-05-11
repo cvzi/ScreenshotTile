@@ -26,10 +26,10 @@ import com.github.cvzi.screenshottile.utils.editImageIntent
 import com.github.cvzi.screenshottile.utils.formatLocalizedString
 import com.github.cvzi.screenshottile.utils.hideNotification
 import com.github.cvzi.screenshottile.utils.renameImage
+import com.github.cvzi.screenshottile.utils.setUserLanguage
 import com.github.cvzi.screenshottile.utils.shareImageChooserIntent
 import com.github.cvzi.screenshottile.utils.shareImageIntent
 import com.github.cvzi.screenshottile.utils.toastMessage
-import com.github.cvzi.screenshottile.utils.setUserLanguage
 
 const val NOTIFICATION_PREFIX = "NOTIFICATION"
 const val NOTIFICATION_ACTION_SHARE = NOTIFICATION_PREFIX + "_ACTION_SHARE"
@@ -197,7 +197,12 @@ class NotificationActionReceiver : BroadcastReceiver() {
 
                     val repliedNotification = builder
                         .setSmallIcon(android.R.drawable.ic_menu_edit)
-                        .setContentText(context.formatLocalizedString(R.string.screenshot_renamed, newName))
+                        .setContentText(
+                            context.formatLocalizedString(
+                                R.string.screenshot_renamed,
+                                newName
+                            )
+                        )
                         .build()
                     (context.getSystemService(Context.NOTIFICATION_SERVICE) as? NotificationManager)?.apply {
                         notify(intent.getIntExtra(NOTIFICATION_ACTION_ID, 0), repliedNotification)

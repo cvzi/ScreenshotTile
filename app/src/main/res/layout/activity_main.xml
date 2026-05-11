@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="strings"
             type="com.github.cvzi.screenshottile.utils.Texts" />
@@ -72,8 +74,8 @@
                             android:id="@+id/textDescGeneral"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            tools:text="@string/main_general_text"
-                            android:textAppearance="@android:style/TextAppearance.Material.Body2" />
+                            android:textAppearance="@android:style/TextAppearance.Material.Body2"
+                            tools:text="@string/main_general_text" />
 
 
                     </LinearLayout>
@@ -112,8 +114,8 @@
                                 style="@style/Widget.Material3.Button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:drawableRight="@drawable/layer_list_small_launcher"
                                 android:layout_marginStart="10dp"
+                                android:drawableRight="@drawable/layer_list_small_launcher"
                                 android:text="@{strings.main_general_button_request_add_tile}"
                                 android:textSize="13sp"
                                 tools:ignore="RtlHardcoded" />
@@ -175,8 +177,8 @@
                                 style="@style/Widget.Material3.Button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:drawableRight="@drawable/layer_list_small_launcher"
                                 android:layout_marginStart="10dp"
+                                android:drawableRight="@drawable/layer_list_small_launcher"
                                 android:text="@{strings.main_general_button_request_add_tile}"
                                 android:textSize="13sp"
                                 tools:ignore="RtlHardcoded" />
@@ -187,8 +189,8 @@
                             android:id="@+id/textDescNative"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            tools:text="@string/main_native_method_text"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            tools:text="@string/main_native_method_text" />
 
                         <Button
                             android:id="@+id/buttonAccessibilitySettings"
@@ -238,32 +240,34 @@
                             android:layout_height="wrap_content"
                             android:text="@{strings.main_floating_button_text}"
                             android:textAppearance="@android:style/TextAppearance.Material.Body1" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <Button
-                            android:id="@+id/buttonFloatingButtonSettings"
-                            style="@style/Widget.Material3.Button"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@{strings.floating_button_settings}"
-                            android:textSize="13sp" />
 
-                        <Button
-                            android:id="@+id/buttonFloatingButtonTile"
-                            style="@style/Widget.Material3.Button"
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@{strings.main_general_button_request_add_tile}"
-                            android:drawableRight="@drawable/layer_list_small_floating"
-                            android:layout_marginStart="10dp"
-                            tools:ignore="RtlHardcoded"
-                            android:textSize="13sp" />
+                            android:orientation="horizontal">
 
-                    </LinearLayout>
+                            <Button
+                                android:id="@+id/buttonFloatingButtonSettings"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@{strings.floating_button_settings}"
+                                android:textSize="13sp" />
+
+                            <Button
+                                android:id="@+id/buttonFloatingButtonTile"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:drawableRight="@drawable/layer_list_small_floating"
+                                android:text="@{strings.main_general_button_request_add_tile}"
+                                android:textSize="13sp"
+                                tools:ignore="RtlHardcoded" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -434,8 +438,8 @@
                             android:id="@+id/textDescTranslate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            tools:text="@string/translate_this_app_text"
-                            android:textAppearance="@android:style/TextAppearance.Material.Body1" />
+                            android:textAppearance="@android:style/TextAppearance.Material.Body1"
+                            tools:text="@string/translate_this_app_text" />
 
                         <Button
                             android:id="@+id/buttonSettings2"

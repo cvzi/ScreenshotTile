@@ -57,8 +57,6 @@ fun Context.formatLocalizedString(@StringRes res: Int, vararg formatArgs: Any): 
 }
 
 
-
-
 fun getLocalizedResources(context: Context, desiredLocale: Locale): Resources {
     val tag = desiredLocale.toLanguageTag()
     val resources = App.resources.get(tag)

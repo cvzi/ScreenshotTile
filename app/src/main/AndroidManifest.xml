@@ -100,7 +100,7 @@
             android:exported="true"
             android:launchMode="singleTask"
             android:taskAffinity="${applicationId}.task"
-            android:theme="@style/AppTheme" >
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.NOTIFICATION_PREFERENCES" />
@@ -186,24 +186,21 @@
             android:launchMode="singleTask"
             android:parentActivityName="com.github.cvzi.screenshottile.activities.FloatingButtonSettingsActivity"
             android:taskAffinity="${applicationId}.task"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name="com.github.cvzi.screenshottile.activities.LanguageActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:parentActivityName="com.github.cvzi.screenshottile.activities.MainActivity"
             android:taskAffinity="${applicationId}.task"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name="com.github.cvzi.screenshottile.activities.BackupPrefsActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:parentActivityName="com.github.cvzi.screenshottile.activities.MainActivity"
             android:taskAffinity="${applicationId}.task"
-            android:theme="@style/AppTheme">
-        </activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name="com.github.cvzi.screenshottile.activities.AboutActivity"
             android:exported="true"
@@ -211,6 +208,7 @@
             android:parentActivityName="com.github.cvzi.screenshottile.activities.SettingsActivity"
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme" />
+
         <service
             android:name="com.github.cvzi.screenshottile.services.ScreenshotTileService"
             android:exported="true"

@@ -78,13 +78,19 @@ open class SimpleWidget : AppWidgetProvider() {
         when (this) {
             is SimpleWidgetScreenshot -> {
                 views.setOnClickPendingIntent(R.id.image, screenshotPendingIntent)
-                views.setContentDescription(R.id.image, context.getLocalizedString(R.string.take_screenshot))
+                views.setContentDescription(
+                    R.id.image,
+                    context.getLocalizedString(R.string.take_screenshot)
+                )
                 views.removeAllViews(R.id.linear)
             }
 
             is SimpleWidgetSettings -> {
                 views.setOnClickPendingIntent(R.id.image, settingsPendingIntent)
-                views.setContentDescription(R.id.image, context.getLocalizedString(R.string.open_settings))
+                views.setContentDescription(
+                    R.id.image,
+                    context.getLocalizedString(R.string.open_settings)
+                )
                 views.removeAllViews(R.id.linear)
             }
 

@@ -67,8 +67,13 @@ class SuggestionsAdapter(private var data: ArrayList<FileNameSuggestion>) :
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val itemBinding = DataBindingUtil.inflate<SuggestionItemBinding>(LayoutInflater.from(viewGroup.context), R.layout.suggestion_item, viewGroup, false)
-        itemBinding .setVariable(BR.strings, App.texts)
+        val itemBinding = DataBindingUtil.inflate<SuggestionItemBinding>(
+            LayoutInflater.from(viewGroup.context),
+            R.layout.suggestion_item,
+            viewGroup,
+            false
+        )
+        itemBinding.setVariable(BR.strings, App.texts)
         return ViewHolder(itemBinding.root)
 
     }

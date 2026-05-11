@@ -10,13 +10,13 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        tools:context=".activities.MainActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
         android:paddingStart="5dp"
-        android:paddingEnd="5dp">
+        android:paddingEnd="5dp"
+        tools:context=".activities.MainActivity">
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -35,10 +35,10 @@
                     android:layout_height="wrap_content">
 
                     <LinearLayout
-                        tools:ignore="UseCompoundDrawables"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        tools:ignore="UseCompoundDrawables">
 
                         <TextView
                             android:id="@+id/textViewFileName"
@@ -51,7 +51,6 @@
 
                         <ImageView
                             android:id="@+id/imageView"
-                            tools:ignore="HardcodedText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -61,7 +60,8 @@
                             android:maxHeight="200dp"
                             android:paddingHorizontal="1dp"
                             android:paddingVertical="2dp"
-                            android:src="@android:drawable/ic_popup_sync" />
+                            android:src="@android:drawable/ic_popup_sync"
+                            tools:ignore="HardcodedText" />
 
                         <TextView
                             android:id="@+id/textViewFileSize"

@@ -63,7 +63,8 @@ class DelayScreenshotActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView<ActivityDelayBinding>(this, R.layout.activity_delay)
+        binding =
+            DataBindingUtil.setContentView<ActivityDelayBinding>(this, R.layout.activity_delay)
         binding.setVariable(BR.strings, App.texts)
 
 

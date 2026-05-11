@@ -6,10 +6,8 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.TypedValue
-import android.view.LayoutInflater
 import android.widget.RadioButton
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
@@ -19,7 +17,6 @@ import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.PackageNameFilterMode
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonFilterBinding
-import com.github.cvzi.screenshottile.databinding.ActivityMainBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.PackagesRecyclerViewAdapter
 import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
@@ -62,14 +59,19 @@ class FloatingButtonFilterActivity : BaseAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView<ActivityFloatingButtonFilterBinding>(this, R.layout.activity_floating_button_filter)
+        binding = DataBindingUtil.setContentView<ActivityFloatingButtonFilterBinding>(
+            this,
+            R.layout.activity_floating_button_filter
+        )
         binding.setVariable(BR.strings, App.texts)
 
         binding.scrollView.minPaddingFromInsets()
         binding.packagesRecyclerView.post {
-            val reductionPx = TypedValue.applyDimension( TypedValue.COMPLEX_UNIT_DIP,
+            val reductionPx = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
                 18f,
-                resources.displayMetrics ).toInt()
+                resources.displayMetrics
+            ).toInt()
             val lp = binding.packagesRecyclerView.layoutParams
             val barHeightPx = binding.linearLayoutSelectionBar.height
             lp.height = binding.packagesRecyclerView.height - barHeightPx - reductionPx

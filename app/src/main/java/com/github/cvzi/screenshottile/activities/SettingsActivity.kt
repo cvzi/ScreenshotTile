@@ -77,7 +77,8 @@ class SettingsActivity : BaseAppCompatActivity() {
             window.decorView.paddingLeft,
             (50 * resources.displayMetrics.density).toInt(),
             window.decorView.paddingRight,
-            window.decorView.paddingBottom)
+            window.decorView.paddingBottom
+        )
 
         val fragmentClass = intent.getStringExtra(EXTRA_FRAGMENT_NAME) ?: defaultFragment.name
         if (savedInstanceState == null) {

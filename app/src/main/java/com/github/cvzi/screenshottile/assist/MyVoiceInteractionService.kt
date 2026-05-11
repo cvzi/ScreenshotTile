@@ -70,7 +70,7 @@ class MyVoiceInteractionService : VoiceInteractionService() {
             }
         } catch (e: ActivityNotFoundException) {
             // This seems to happen after booting
-            Log.e("VoiceInterSrv","Failed to start activity from voice interaction service", e)
+            Log.e("VoiceInterSrv", "Failed to start activity from voice interaction service", e)
         }
 
         if (App.getInstance().prefManager.voiceInteractionAction != getString(R.string.setting_voice_interaction_action_value_native) &&
@@ -83,7 +83,11 @@ class MyVoiceInteractionService : VoiceInteractionService() {
             try {
                 App.requestStoragePermission(this, false)
             } catch (e: ActivityNotFoundException) {
-                Log.e("VoiceInterSrv","Failed to start ask for permission from voice interaction service", e)
+                Log.e(
+                    "VoiceInterSrv",
+                    "Failed to start ask for permission from voice interaction service",
+                    e
+                )
             }
         }
     }

@@ -265,7 +265,8 @@ class PostCropActivity : GenericPostActivity() {
                     dummyPath = result.dummyPath
                 }
                 toastMessage(
-                    formatLocalizedString(R.string.screenshot_file_saved, dummyPath), ToastType.SUCCESS
+                    formatLocalizedString(R.string.screenshot_file_saved, dummyPath),
+                    ToastType.SUCCESS
                 )
 
                 createNotification(

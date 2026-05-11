@@ -224,41 +224,41 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/switchAutoCrop"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:text="@{strings.notification_crop_screenshot}" />
-
-                        <TextView
-                            android:id="@+id/textViewAutoCropScreenSize"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.5"
-                            android:text="Screen size:"
-                            tools:ignore="HardcodedText" />
-
-                    </LinearLayout>
-
 
                         <LinearLayout
-                            xmlns:android="http://schemas.android.com/apk/res/android"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchAutoCrop"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:text="@{strings.notification_crop_screenshot}" />
+
+                            <TextView
+                                android:id="@+id/textViewAutoCropScreenSize"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:text="Screen size:"
+                                tools:ignore="HardcodedText" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:gravity="center_horizontal"
+                            android:orientation="vertical"
                             android:padding="16dp">
 
                             <!-- Top -->
@@ -267,16 +267,16 @@
                                 android:layout_width="72dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
-                                android:hint="Top px"
                                 android:gravity="center"
+                                android:hint="Top px"
                                 android:inputType="number" />
 
                             <!-- Middle row: left + right -->
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:gravity="center">
+                                android:gravity="center"
+                                android:orientation="horizontal">
 
                                 <!-- Left -->
                                 <EditText
@@ -284,8 +284,8 @@
                                     android:layout_width="72dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginEnd="24dp"
-                                    android:hint="Left px"
                                     android:gravity="center"
+                                    android:hint="Left px"
                                     android:inputType="number" />
 
                                 <!-- Right -->
@@ -293,8 +293,8 @@
                                     android:id="@+id/editAutoCropRight"
                                     android:layout_width="72dp"
                                     android:layout_height="wrap_content"
-                                    android:hint="Right px"
                                     android:gravity="center"
+                                    android:hint="Right px"
                                     android:inputType="number" />
                             </LinearLayout>
 
@@ -304,12 +304,11 @@
                                 android:layout_width="72dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:hint="Bottom"
                                 android:gravity="center"
+                                android:hint="Bottom"
                                 android:inputType="number" />
 
                         </LinearLayout>
-
 
 
                     </LinearLayout>
@@ -330,9 +329,9 @@
                             style="@style/Widget.Material3.Button"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
                             android:layout_weight="1"
                             android:text="@{strings.restore_default_values}"
-                            android:layout_marginEnd="4dp"
                             android:textSize="12sp" />
 
                         <Button
@@ -340,9 +339,9 @@
                             style="@style/Widget.Material3.Button"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
                             android:layout_weight="1"
                             android:text="@{strings.more_setting}"
-                            android:layout_marginEnd="4dp"
                             android:textSize="12sp" />
 
                         <Button
@@ -350,9 +349,9 @@
                             style="@style/Widget.Material3.Button"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
                             android:layout_weight="1"
                             android:text="@{strings.history_title}"
-                            android:layout_marginEnd="4dp"
                             android:textSize="12sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
