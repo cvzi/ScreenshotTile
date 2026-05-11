@@ -15,6 +15,8 @@ import java.io.File
 /**
  * Find the cache directory with maximum free space
  */
+private const val TAG = "AppDataCleanup"
+
 @Suppress("unused")
 fun getCacheMaxFreeSpace(context: Context): File? {
     val cacheDirs = context.externalCacheDirs
@@ -40,7 +42,7 @@ fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -
     CoroutineScope(Job() + Dispatchers.IO).launch(Dispatchers.IO) {
         try {
             val keepMax = keepMaxFiles ?: App.getInstance().prefManager.keepAppDataMax
-            Log.d(UTILSKT, "cleanUpAppData[keepMaxFiles=$keepMaxFiles, keepMax=$keepMax]")
+            Log.d(TAG, "cleanUpAppData[keepMaxFiles=$keepMaxFiles, keepMax=$keepMax]")
             if (keepMax < 0) {
                 return@launch
             }
@@ -57,7 +59,7 @@ fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -
 
             if (fileList != null && fileList.size > keepMax) {
                 for (i in keepMax until fileList.size) {
-                    Log.d(UTILSKT, "cleanUpAppData() delete ${fileList[i].first}")
+                    Log.d(TAG, "cleanUpAppData() delete ${fileList[i].first}")
                     fileList[i].first.delete()
                 }
             }
@@ -67,7 +69,7 @@ fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -
                 }
             }
         } catch (e: Exception) {
-            Log.e(UTILSKT, "cleanUpAppData Error", e)
+            Log.e(TAG, "cleanUpAppData Error", e)
         }
     }
 }

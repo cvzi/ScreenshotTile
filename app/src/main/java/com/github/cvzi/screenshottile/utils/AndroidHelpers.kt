@@ -23,6 +23,8 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.ToastType
 
+private const val TAG = "AndroidHelpers"
+
 /**
  * Was the app updated or newly installed
  */
@@ -32,10 +34,10 @@ fun isNewAppInstallation(context: Context): Boolean {
             firstInstallTime == lastUpdateTime
         } != false
     } catch (e: PackageManager.NameNotFoundException) {
-        Log.e(UTILSKT, "Package not found", e)
+        Log.e(TAG, "Package not found", e)
         true
     } catch (e: java.lang.Exception) {
-        Log.e(UTILSKT, "Unexpected error in isNewAppInstallation()", e)
+        Log.e(TAG, "Unexpected error in isNewAppInstallation()", e)
         false
     }
 }
@@ -53,7 +55,7 @@ fun hasFdroid(context: Context): Boolean {
             packageManager.getPackageInfo(name)
             return true
         } catch (e: PackageManager.NameNotFoundException) {
-            Log.d(UTILSKT, e.toString())
+            Log.d(TAG, e.toString())
         }
     }
     return false
@@ -90,7 +92,7 @@ fun Context?.toastMessage(resource: Int, toastType: ToastType, duration: Int = T
  * Call dismiss() on a Dialog and catch the Exceptions that is thrown if the context
  * of the dialog was already destroyed or the fragment is in the background
  */
-fun DialogInterface.safeDismiss(tag: String = UTILSKT) {
+fun DialogInterface.safeDismiss(tag: String = TAG) {
     if (this is Dialog && !isShowing) {
         return
     }
@@ -106,7 +108,7 @@ fun DialogInterface.safeDismiss(tag: String = UTILSKT) {
 /**
  * Call dismiss() on a DialogFragment and catch the Exceptions
  */
-fun DialogFragment.safeDismiss(tag: String = UTILSKT) {
+fun DialogFragment.safeDismiss(tag: String = TAG) {
     if (dialog?.isShowing != true) {
         return
     }
@@ -122,7 +124,7 @@ fun DialogFragment.safeDismiss(tag: String = UTILSKT) {
 /**
  * Call removeView() and catch Exceptions
  */
-fun ViewManager.safeRemoveView(view: View, tag: String = UTILSKT) {
+fun ViewManager.safeRemoveView(view: View, tag: String = TAG) {
     try {
         this.removeView(view)
     } catch (e: Exception) {
