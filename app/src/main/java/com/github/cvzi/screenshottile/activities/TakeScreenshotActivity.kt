@@ -23,8 +23,6 @@ import android.util.Log
 import android.view.Surface
 import android.view.View
 import android.view.Window
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.Toast
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
@@ -45,6 +43,7 @@ import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
+import com.github.cvzi.screenshottile.utils.applyFullscreenScreenshotStyle
 import com.github.cvzi.screenshottile.utils.createNotification
 import com.github.cvzi.screenshottile.utils.formatLocalizedString
 import com.github.cvzi.screenshottile.utils.getLocalizedString
@@ -221,28 +220,7 @@ class TakeScreenshotActivity : BaseActivity(),
         // Load layout (must be done before the window* calls)
         setContentView(R.layout.partial_screenshot)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            @Suppress("DEPRECATION")
-            window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.statusBarColor = Color.TRANSPARENT
-            window.setDecorFitsSystemWindows(true)
-        } else {
-            @Suppress("DEPRECATION")
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            window.attributes.layoutInDisplayCutoutMode =
-                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
-        }
+        window.applyFullscreenScreenshotStyle()
 
         findViewById<ScreenshotSelectorView>(R.id.global_screenshot_selector).apply {
             screenshotSelectorView = this
