@@ -4,7 +4,8 @@ import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
+import com.github.cvzi.screenshottile.utils.ui.makeActivityClickableFromText
+
 import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
