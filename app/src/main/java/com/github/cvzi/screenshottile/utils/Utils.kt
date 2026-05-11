@@ -40,6 +40,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.graphics.toColorInt
 import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
+import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.DialogFragment
 import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
