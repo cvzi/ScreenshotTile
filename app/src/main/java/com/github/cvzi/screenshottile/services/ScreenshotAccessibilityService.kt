@@ -72,7 +72,6 @@ import com.github.cvzi.screenshottile.utils.toastMessage
 import kotlin.math.abs
 
 
-
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2019/12/26.
  */
@@ -92,7 +91,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         const val MOVE_TYPE_LONG_PRESS = 0
         const val MOVE_TYPE_SHORT_TOUCH = 1
 
-        private const val FAILED_TO_CAST_SAVE_IMAGE_RESULT = "Failed to cast SaveImageResult path/uri"
+        private const val FAILED_TO_CAST_SAVE_IMAGE_RESULT =
+            "Failed to cast SaveImageResult path/uri"
 
         /**
          * Open accessibility settings from activity

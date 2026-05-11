@@ -1,14 +1,13 @@
 package com.github.cvzi.screenshottile;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.github.cvzi.screenshottile.utils.UtilsKt.cleanUpAppData;
-import static com.github.cvzi.screenshottile.utils.UtilsKt.isDeviceLocked;
-import static com.github.cvzi.screenshottile.utils.UtilsKt.startActivityAndCollapseCustom;
-import static com.github.cvzi.screenshottile.utils.UtilsKt.toastDeviceIsLocked;
-import static com.github.cvzi.screenshottile.utils.UtilsKt.tryNativeScreenshot;
+import static com.github.cvzi.screenshottile.utils.AndroidHelpersKt.startActivityAndCollapseCustom;
+import static com.github.cvzi.screenshottile.utils.AppDataCleanupKt.cleanUpAppData;
+import static com.github.cvzi.screenshottile.utils.ScreenshotActionsKt.isDeviceLocked;
+import static com.github.cvzi.screenshottile.utils.ScreenshotActionsKt.toastDeviceIsLocked;
+import static com.github.cvzi.screenshottile.utils.ScreenshotActionsKt.tryNativeScreenshot;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;

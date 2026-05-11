@@ -23,7 +23,6 @@ import com.github.cvzi.screenshottile.OutputStreamResultSuccess
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.SaveImageResult
 import com.github.cvzi.screenshottile.SaveImageResultSuccess
-import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import java.io.ByteArrayOutputStream
 import java.io.File
