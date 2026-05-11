@@ -13,7 +13,6 @@ import android.content.pm.PackageManager
 import android.content.pm.PackageInfo
 import android.content.pm.VersionedPackage
 import android.graphics.Bitmap
-import android.graphics.Paint
 import android.graphics.Point
 import android.graphics.Rect
 import android.icu.text.SimpleDateFormat
@@ -26,18 +25,11 @@ import android.os.LocaleList
 import android.os.StatFs
 import android.provider.MediaStore.Images
 import android.service.quicksettings.TileService
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.Spanned
-import android.text.style.ClickableSpan
 import android.util.Log
-import android.util.TypedValue
 import android.view.View
 import android.view.ViewManager
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.graphics.toColorInt
 import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.documentfile.provider.DocumentFile
@@ -45,7 +37,6 @@ import androidx.fragment.app.DialogFragment
 import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
-import com.github.cvzi.screenshottile.ClickableStringResult
 import com.github.cvzi.screenshottile.CompressionOptions
 import com.github.cvzi.screenshottile.OutputStreamResult
 import com.github.cvzi.screenshottile.OutputStreamResultSuccess
@@ -783,28 +774,6 @@ fun getCacheMaxFreeSpace(context: Context): File? {
 }
 
 /**
- * Adjust font size to fill the available space of a text view
- */
-fun fillTextHeight(textView: TextView, maxHeight: Int, startSize: Float? = null) {
-    var currentTextSize: Float = startSize ?: textView.textSize
-    val text = textView.text.toString()
-    val bounds = Rect()
-    val paint = Paint().apply {
-        textView.typeface
-        textSize = currentTextSize
-        getTextBounds(text, 0, text.length, bounds)
-    }
-    while (bounds.height() > maxHeight) {
-        currentTextSize--
-        paint.run {
-            textSize = currentTextSize
-            getTextBounds(text, 0, text.length, bounds)
-        }
-    }
-    textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, currentTextSize)
-}
-
-/**
  * Was the app updated or newly installed
  */
 fun isNewAppInstallation(context: Context): Boolean {
@@ -819,49 +788,6 @@ fun isNewAppInstallation(context: Context): Boolean {
         Log.e(UTILSKT, "Unexpected error in isNewAppInstallation()", e)
         false
     }
-}
-
-
-/**
- * Make activity links clickable. Example: "This is a link [Tutorial,.TutorialActivity] to the tutorial"
- */
-fun makeActivityClickableFromText(text: String, context: Context): ClickableStringResult {
-    val builder = SpannableStringBuilder("")
-    val activities = ArrayList<String>()
-    for (content in text.split("]")) {
-        val startIndex = content.indexOf("[")
-        if (startIndex == -1) {
-            builder.append(content)
-            continue
-        }
-        val value = content.subSequence(startIndex, content.length).trim()
-        val labelEnd = value.indexOf(',')
-        val activityName = value.subSequence(labelEnd + 1, value.length).trim()
-        activities.add("com.github.cvzi.screenshottile.activities$activityName")
-        val label = value.subSequence(1, labelEnd).trim()
-        var newContent = content.subSequence(0, startIndex).toString()
-        newContent += label
-        val clickableSpan = object : ClickableSpan() {
-            override fun onClick(textView: View) {
-                val intent = Intent()
-                intent.setClassName(
-                    context,
-                    "com.github.cvzi.screenshottile.activities$activityName"
-                )
-                context.startActivity(intent)
-            }
-        }
-
-        val spannableString = SpannableString(newContent)
-        spannableString.setSpan(
-            clickableSpan,
-            startIndex,
-            startIndex + label.length,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-        builder.append(spannableString)
-    }
-    return ClickableStringResult(builder, activities)
 }
 
 /**
@@ -1089,27 +1015,6 @@ fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -
             Log.e(UTILSKT, "cleanUpAppData Error", e)
         }
     }
-}
-
-fun parseColorString(colorString: String?): Int? {
-    if (!colorString.isNullOrBlank() && colorString.trim().lowercase() != "null") {
-        if (colorString.startsWith("i")) {
-            try {
-                return colorString.substring(1).toInt()
-            } catch (_: NumberFormatException) {
-            }
-        }
-        try {
-            return colorString.toColorInt()
-        } catch (_: IllegalArgumentException) {
-            try {
-                return "#$colorString".toColorInt()
-            } catch (_: IllegalArgumentException) {
-            }
-        }
-        Log.e(UTILSKT, "Could not parse color '$colorString'")
-    }
-    return null
 }
 
 /**
