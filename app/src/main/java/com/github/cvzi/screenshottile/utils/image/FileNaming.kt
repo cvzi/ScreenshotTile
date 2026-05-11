@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.image
 
 import android.content.pm.PackageManager
 import android.icu.text.SimpleDateFormat

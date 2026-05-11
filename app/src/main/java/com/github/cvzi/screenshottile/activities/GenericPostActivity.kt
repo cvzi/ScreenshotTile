@@ -16,16 +16,16 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.PostActivity.Companion.newIntentSingleImage
-import com.github.cvzi.screenshottile.utils.FileNameSuggestion
-import com.github.cvzi.screenshottile.utils.SingleImageLoaded
-import com.github.cvzi.screenshottile.utils.SuggestionsAdapter
-import com.github.cvzi.screenshottile.utils.editImageChooserIntent
-import com.github.cvzi.screenshottile.utils.formatLocalizedString
-import com.github.cvzi.screenshottile.utils.moveImage
-import com.github.cvzi.screenshottile.utils.niceFullPathFromUri
-import com.github.cvzi.screenshottile.utils.renameImage
-import com.github.cvzi.screenshottile.utils.shareImageChooserIntent
+import com.github.cvzi.screenshottile.utils.adapters.FileNameSuggestion
+import com.github.cvzi.screenshottile.utils.adapters.SuggestionsAdapter
+import com.github.cvzi.screenshottile.utils.image.SingleImageLoaded
+import com.github.cvzi.screenshottile.utils.image.moveImage
+import com.github.cvzi.screenshottile.utils.image.niceFullPathFromUri
+import com.github.cvzi.screenshottile.utils.image.renameImage
+import com.github.cvzi.screenshottile.utils.notifications.editImageChooserIntent
+import com.github.cvzi.screenshottile.utils.notifications.shareImageChooserIntent
 import com.github.cvzi.screenshottile.utils.toastMessage
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
 import java.util.Locale
 
 

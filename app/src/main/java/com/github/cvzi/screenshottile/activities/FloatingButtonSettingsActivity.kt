@@ -34,10 +34,10 @@ import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonSettings
 import com.github.cvzi.screenshottile.services.FloatingTileService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
-import com.github.cvzi.screenshottile.utils.ShutterCollection
-import com.github.cvzi.screenshottile.utils.fillTextHeight
-import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
-import com.github.cvzi.screenshottile.utils.parseColorString
+import com.github.cvzi.screenshottile.utils.ui.ShutterCollection
+import com.github.cvzi.screenshottile.utils.ui.fillTextHeight
+import com.github.cvzi.screenshottile.utils.ui.minPaddingFromInsets
+import com.github.cvzi.screenshottile.utils.ui.parseColorString
 import com.google.android.material.switchmaterial.SwitchMaterial
 
 

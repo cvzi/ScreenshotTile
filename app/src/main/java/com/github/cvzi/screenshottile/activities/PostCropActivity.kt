@@ -25,17 +25,17 @@ import com.github.cvzi.screenshottile.SaveImageResult
 import com.github.cvzi.screenshottile.SaveImageResultSuccess
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.databinding.ActivityPostCropBinding
-import com.github.cvzi.screenshottile.utils.SaveImageHandler
-import com.github.cvzi.screenshottile.utils.SingleImage
-import com.github.cvzi.screenshottile.utils.SingleImageLoaded
-import com.github.cvzi.screenshottile.utils.applyFullscreenScreenshotStyle
-import com.github.cvzi.screenshottile.utils.createNotification
-import com.github.cvzi.screenshottile.utils.formatLocalizedString
-import com.github.cvzi.screenshottile.utils.getLocalizedString
-import com.github.cvzi.screenshottile.utils.scaleBitmap
-import com.github.cvzi.screenshottile.utils.scaleRect
-import com.github.cvzi.screenshottile.utils.tintImage
+import com.github.cvzi.screenshottile.utils.image.SaveImageHandler
+import com.github.cvzi.screenshottile.utils.image.SingleImage
+import com.github.cvzi.screenshottile.utils.image.SingleImageLoaded
+import com.github.cvzi.screenshottile.utils.image.scaleBitmap
+import com.github.cvzi.screenshottile.utils.image.scaleRect
+import com.github.cvzi.screenshottile.utils.image.tintImage
+import com.github.cvzi.screenshottile.utils.notifications.createNotification
 import com.github.cvzi.screenshottile.utils.toastMessage
+import com.github.cvzi.screenshottile.utils.ui.applyFullscreenScreenshotStyle
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 
 class PostCropActivity : GenericPostActivity() {
     companion object {

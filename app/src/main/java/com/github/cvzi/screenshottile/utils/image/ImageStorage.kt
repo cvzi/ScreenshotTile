@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.image
 
 import android.content.ContentValues
 import android.content.Context
@@ -24,6 +24,9 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.SaveImageResult
 import com.github.cvzi.screenshottile.SaveImageResultSuccess
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
+import com.github.cvzi.screenshottile.utils.settings.PrefManager
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException

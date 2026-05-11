@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.image
 
 import android.content.ContentUris
 import android.content.ContentValues
@@ -28,6 +28,8 @@ import com.github.cvzi.screenshottile.CompressionOptions
 import com.github.cvzi.screenshottile.OutputStreamResultSuccess
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 import java.io.File
 import java.io.InputStream
 import java.util.Date

@@ -13,9 +13,9 @@ import com.github.cvzi.screenshottile.CompressionOptions
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.cleanUpAppData
-import com.github.cvzi.screenshottile.utils.compressionPreference
-import com.github.cvzi.screenshottile.utils.formatLocalizedString
-import com.github.cvzi.screenshottile.utils.getLocalizedString
+import com.github.cvzi.screenshottile.utils.image.compressionPreference
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 import java.util.Locale
 
 

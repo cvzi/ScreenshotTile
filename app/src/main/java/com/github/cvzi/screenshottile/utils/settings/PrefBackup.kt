@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.settings
 
 import android.content.Context
 import android.os.Build

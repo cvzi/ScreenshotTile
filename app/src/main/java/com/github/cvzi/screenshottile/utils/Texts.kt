@@ -47,12 +47,17 @@ class Texts {
     val setting_floating_button_scale_summary = R.string.setting_floating_button_scale_summary
     val setting_floating_button_scale_current = R.string.setting_floating_button_scale_current
     val setting_floating_button_hide_after = R.string.setting_floating_button_hide_after
-    val setting_floating_button_hide_after_summary = R.string.setting_floating_button_hide_after_summary
+    val setting_floating_button_hide_after_summary =
+        R.string.setting_floating_button_hide_after_summary
     val setting_floating_button_show_close = R.string.setting_floating_button_show_close
-    val setting_floating_button_show_close_summary = R.string.setting_floating_button_show_close_summary
-    val setting_floating_button_show_settings_after_move = R.string.setting_floating_button_show_settings_after_move
-    val setting_floating_button_show_close_dialog_title = R.string.setting_floating_button_show_close_dialog_title
-    val setting_floating_button_show_close_dialog_description = R.string.setting_floating_button_show_close_dialog_description
+    val setting_floating_button_show_close_summary =
+        R.string.setting_floating_button_show_close_summary
+    val setting_floating_button_show_settings_after_move =
+        R.string.setting_floating_button_show_settings_after_move
+    val setting_floating_button_show_close_dialog_title =
+        R.string.setting_floating_button_show_close_dialog_title
+    val setting_floating_button_show_close_dialog_description =
+        R.string.setting_floating_button_show_close_dialog_description
     val setting_floating_button_shutter = R.string.setting_floating_button_shutter
     val setting_floating_button_shutter_square = R.string.setting_floating_button_shutter_square
     val setting_floating_button_shutter_round = R.string.setting_floating_button_shutter_round
@@ -115,7 +120,8 @@ class Texts {
     val notification_channel_description = R.string.notification_channel_description
     val notification_foreground_title = R.string.notification_foreground_title
     val notification_foreground_body = R.string.notification_foreground_body
-    val notification_foreground_channel_description = R.string.notification_foreground_channel_description
+    val notification_foreground_channel_description =
+        R.string.notification_foreground_channel_description
     val notification_app_chooser_share = R.string.notification_app_chooser_share
     val notification_app_chooser_edit = R.string.notification_app_chooser_edit
     val screenshot_failed = R.string.screenshot_failed
@@ -235,15 +241,18 @@ class Texts {
     val setting_select_area_shutter_delay = R.string.setting_select_area_shutter_delay
     val setting_select_area_shutter_delay_dialog = R.string.setting_select_area_shutter_delay_dialog
     val setting_original_after_permission_delay = R.string.setting_original_after_permission_delay
-    val setting_original_after_permission_delay_dialog = R.string.setting_original_after_permission_delay_dialog
+    val setting_original_after_permission_delay_dialog =
+        R.string.setting_original_after_permission_delay_dialog
     val setting_failed_virtual_display_delay = R.string.setting_failed_virtual_display_delay
-    val setting_failed_virtual_display_delay_dialog = R.string.setting_failed_virtual_display_delay_dialog
+    val setting_failed_virtual_display_delay_dialog =
+        R.string.setting_failed_virtual_display_delay_dialog
     val setting_floating_button_alpha = R.string.setting_floating_button_alpha
     val setting_floating_button_alpha_summary = R.string.setting_floating_button_alpha_summary
     val setting_floating_button_alpha_dialog = R.string.setting_floating_button_alpha_dialog
     val setting_floating_button_color = R.string.setting_floating_button_color
     val setting_delay_custom_summary = R.string.setting_delay_custom_summary
-    val setting_floating_button_delay_custom_summary = R.string.setting_floating_button_delay_custom_summary
+    val setting_floating_button_delay_custom_summary =
+        R.string.setting_floating_button_delay_custom_summary
     val setting_format_quality = R.string.setting_format_quality
     val setting_format_quality_dialog = R.string.setting_format_quality_dialog
     val setting_keep_app_data_max = R.string.setting_keep_app_data_max
@@ -254,7 +263,8 @@ class Texts {
     val setting_show_in_portrait_orientation = R.string.setting_show_in_portrait_orientation
     val setting_show_in_landscape_orientation = R.string.setting_show_in_landscape_orientation
     val setting_show_when_device_is_unlocked = R.string.setting_show_when_device_is_unlocked
-    val setting_show_when_device_is_locked_on_the_lock_screen = R.string.setting_show_when_device_is_locked_on_the_lock_screen
+    val setting_show_when_device_is_locked_on_the_lock_screen =
+        R.string.setting_show_when_device_is_locked_on_the_lock_screen
     val setting_show_hide_in_specific_apps = R.string.setting_show_hide_in_specific_apps
     val setting_filtermode_blacklist = R.string.setting_filtermode_blacklist
     val setting_filtermode_whitelist = R.string.setting_filtermode_whitelist
@@ -262,7 +272,8 @@ class Texts {
     val setting_filtermode_search = R.string.setting_filtermode_search
     val setting_filtermode_select_all = R.string.setting_filtermode_select_all
     val setting_filtermode_invert_selection = R.string.setting_filtermode_invert_selection
-    val setting_show_floating_buttons_quick_settings = R.string.setting_show_floating_buttons_quick_settings
+    val setting_show_floating_buttons_quick_settings =
+        R.string.setting_show_floating_buttons_quick_settings
     val setting_quick_settings_warning = R.string.setting_quick_settings_warning
     val single_tap = R.string.single_tap
     val double_tap = R.string.double_tap

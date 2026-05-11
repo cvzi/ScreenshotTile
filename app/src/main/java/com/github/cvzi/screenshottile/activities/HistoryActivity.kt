@@ -16,12 +16,14 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityHistoryBinding
-import com.github.cvzi.screenshottile.utils.ScreenshotHistoryAdapter
-import com.github.cvzi.screenshottile.utils.SingleImage
+import com.github.cvzi.screenshottile.utils.adapters.ScreenshotHistoryAdapter
+
 import com.github.cvzi.screenshottile.utils.cleanUpAppData
-import com.github.cvzi.screenshottile.utils.formatLocalizedString
-import com.github.cvzi.screenshottile.utils.getLocalizedString
-import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
+import com.github.cvzi.screenshottile.utils.image.SingleImage
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.minPaddingFromInsets
+
 import java.io.File
 import java.util.Date
 

@@ -25,14 +25,14 @@ import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_RENAME_INPUT
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.databinding.ActivityPostBinding
-import com.github.cvzi.screenshottile.utils.RecentFolder
-import com.github.cvzi.screenshottile.utils.RecentFoldersAdapter
-import com.github.cvzi.screenshottile.utils.SingleImage
-import com.github.cvzi.screenshottile.utils.SuggestionsAdapter
-import com.github.cvzi.screenshottile.utils.deleteImage
-import com.github.cvzi.screenshottile.utils.getLocalizedString
-import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
+import com.github.cvzi.screenshottile.utils.adapters.RecentFolder
+import com.github.cvzi.screenshottile.utils.adapters.RecentFoldersAdapter
+import com.github.cvzi.screenshottile.utils.adapters.SuggestionsAdapter
+import com.github.cvzi.screenshottile.utils.image.SingleImage
+import com.github.cvzi.screenshottile.utils.image.deleteImage
 import com.github.cvzi.screenshottile.utils.toastMessage
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.minPaddingFromInsets
 
 
 class PostActivity : GenericPostActivity() {

@@ -1,61 +1,72 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.adapters
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
+import androidx.documentfile.provider.DocumentFile
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
-import com.github.cvzi.screenshottile.databinding.SuggestionItemBinding
-
-typealias OnItemClickListener = (v: View, index: Int) -> Unit
+import com.github.cvzi.screenshottile.databinding.RecentFolderItemBinding
+import com.github.cvzi.screenshottile.utils.image.niceFullPathFromUri
 
 /**
- * A single file name suggestion
+ * A single recent folder item
  */
-class FileNameSuggestion(val value: String, val starred: Boolean, val dataIndex: Int) {
+class RecentFolder(private val value: String, val dataIndex: Int) {
+    val uri: Uri
+        get() = value.toUri()
+
     override fun toString(): String {
-        return "FileNameSuggestion('$value' ${if (starred) "starred" else "recent"}#$dataIndex)"
+        return "RecentFolder('$value' #$dataIndex)"
     }
 }
 
 
 /**
- * SuggestionsAdapter
+ * RecentFoldersAdapter
  */
-class SuggestionsAdapter(private var data: ArrayList<FileNameSuggestion>) :
-    RecyclerView.Adapter<SuggestionsAdapter.ViewHolder>() {
+class RecentFoldersAdapter(
+    private var context: Context,
+    private var data: ArrayList<RecentFolder>
+) :
+    RecyclerView.Adapter<RecentFoldersAdapter.ViewHolder>() {
 
     var onTextClickListener: OnItemClickListener? = null
     var onDeleteClickListener: OnItemClickListener? = null
-    var onStarClickListener: OnItemClickListener? = null
 
     @SuppressLint("NotifyDataSetChanged")
-    fun updateData(newData: Array<FileNameSuggestion>) {
+    fun updateData(newData: Array<RecentFolder>) {
         this.data.clear()
-        this.data.addAll(newData)
+        this.data.addAll(newData.filter {
+            val docDir = DocumentFile.fromTreeUri(context, it.uri)
+            docDir?.canWrite() == true
+        })
         notifyDataSetChanged()
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.textView)
-        val starButton: ImageButton = view.findViewById(R.id.imageButtonStar)
-        private val deleteButton: ImageButton = view.findViewById(R.id.imageButtonDelete)
 
         init {
+            val deleteButton: ImageButton = view.findViewById(R.id.imageButtonDelete)
+            val imageView: View = view.findViewById(R.id.imageView)
             textView.setOnClickListener {
                 if (absoluteAdapterPosition == layoutPosition && absoluteAdapterPosition != -1) {
                     onTextClickListener?.invoke(it, absoluteAdapterPosition)
                 }
             }
-            starButton.setOnClickListener {
+            imageView.setOnClickListener {
                 if (absoluteAdapterPosition == layoutPosition && absoluteAdapterPosition != -1) {
-                    onStarClickListener?.invoke(it, absoluteAdapterPosition)
+                    onTextClickListener?.invoke(it, absoluteAdapterPosition)
                 }
             }
             deleteButton.setOnClickListener {
@@ -67,24 +78,18 @@ class SuggestionsAdapter(private var data: ArrayList<FileNameSuggestion>) :
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val itemBinding = DataBindingUtil.inflate<SuggestionItemBinding>(
+        val itemBinding = DataBindingUtil.inflate<RecentFolderItemBinding>(
             LayoutInflater.from(viewGroup.context),
-            R.layout.suggestion_item,
+            R.layout.recent_folder_item,
             viewGroup,
             false
         )
         itemBinding.setVariable(BR.strings, App.texts)
         return ViewHolder(itemBinding.root)
-
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.textView.text = data[position].value
-        if (data[position].starred) {
-            viewHolder.starButton.setBackgroundResource(android.R.drawable.btn_star_big_on)
-        } else {
-            viewHolder.starButton.setBackgroundResource(android.R.drawable.btn_star_big_off)
-        }
+        viewHolder.textView.text = niceFullPathFromUri(data[position].uri)
     }
 
     override fun getItemCount() = data.size

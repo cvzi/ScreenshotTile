@@ -1,9 +1,9 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.ui
 
 import android.view.View
-import com.google.android.material.switchmaterial.SwitchMaterial
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlin.math.max
 
 fun toggleSwitchOnLabel(label: View, switch: SwitchMaterial) {

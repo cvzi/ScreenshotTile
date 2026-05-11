@@ -15,6 +15,9 @@ import com.github.cvzi.screenshottile.activities.PostActivity
 import com.github.cvzi.screenshottile.activities.PostCropActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
+import com.github.cvzi.screenshottile.utils.notifications.editImageChooserIntent
+import com.github.cvzi.screenshottile.utils.notifications.openImageIntent
+import com.github.cvzi.screenshottile.utils.notifications.shareImageChooserIntent
 
 private const val TAG = "ScreenshotActions"
 

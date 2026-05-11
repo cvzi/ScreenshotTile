@@ -8,9 +8,9 @@ import android.speech.SpeechRecognizer
 import android.util.Log
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
-import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.setUserLanguage
 import com.github.cvzi.screenshottile.utils.toastMessage
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 
 /**
  * On Android 11 and lower: when the default assistant app is set, the assistant app is also used

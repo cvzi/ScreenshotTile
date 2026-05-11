@@ -21,7 +21,7 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityTutorialBinding
-import com.github.cvzi.screenshottile.utils.getLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 
 
 /**

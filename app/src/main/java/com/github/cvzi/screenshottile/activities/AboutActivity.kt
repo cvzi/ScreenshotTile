@@ -2,10 +2,8 @@ package com.github.cvzi.screenshottile.activities
 
 import android.content.Context
 import android.content.Intent
-import android.content.Intent.ACTION_VIEW
 import android.content.pm.PackageManager
 import android.content.pm.Signature
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
@@ -13,19 +11,18 @@ import android.text.Spanned
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
-import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityAboutBinding
-import com.github.cvzi.screenshottile.utils.formatLocalizedString
-import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.getUpdateUrl
-import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 import com.github.cvzi.screenshottile.utils.openEmail
 import com.github.cvzi.screenshottile.utils.openUri
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.minPaddingFromInsets
 import java.security.MessageDigest
 
 /**

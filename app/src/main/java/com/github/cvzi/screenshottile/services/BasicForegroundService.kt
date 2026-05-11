@@ -10,7 +10,7 @@ import android.os.IBinder
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
-import com.github.cvzi.screenshottile.utils.foregroundNotification
+import com.github.cvzi.screenshottile.utils.notifications.foregroundNotification
 
 /**
  * Foreground service for MediaProjection

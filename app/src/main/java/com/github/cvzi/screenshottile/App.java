@@ -37,8 +37,8 @@ import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionLi
 import com.github.cvzi.screenshottile.services.BasicForegroundService;
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService;
 import com.github.cvzi.screenshottile.services.ScreenshotTileService;
-import com.github.cvzi.screenshottile.utils.PrefManager;
 import com.github.cvzi.screenshottile.utils.Texts;
+import com.github.cvzi.screenshottile.utils.settings.PrefManager;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;

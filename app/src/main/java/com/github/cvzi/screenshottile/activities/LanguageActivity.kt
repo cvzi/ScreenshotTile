@@ -15,8 +15,8 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityLanguageBinding
-import com.github.cvzi.screenshottile.utils.Language
-import com.github.cvzi.screenshottile.utils.LanguageAdapter
+import com.github.cvzi.screenshottile.utils.adapters.Language
+import com.github.cvzi.screenshottile.utils.adapters.LanguageAdapter
 import com.github.cvzi.screenshottile.utils.setUserLanguage
 import org.xmlpull.v1.XmlPullParser
 

@@ -41,14 +41,14 @@ import com.github.cvzi.screenshottile.partial.ScreenshotSelectorView
 import com.github.cvzi.screenshottile.services.BasicForegroundService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
-import com.github.cvzi.screenshottile.utils.SaveImageHandler
-import com.github.cvzi.screenshottile.utils.applyFullscreenScreenshotStyle
-import com.github.cvzi.screenshottile.utils.createNotification
-import com.github.cvzi.screenshottile.utils.formatLocalizedString
-import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.handlePostScreenshot
-import com.github.cvzi.screenshottile.utils.realScreenSize
+import com.github.cvzi.screenshottile.utils.image.SaveImageHandler
+import com.github.cvzi.screenshottile.utils.notifications.createNotification
 import com.github.cvzi.screenshottile.utils.toastMessage
+import com.github.cvzi.screenshottile.utils.ui.applyFullscreenScreenshotStyle
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.realScreenSize
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2018/12/29.
