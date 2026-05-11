@@ -7,8 +7,8 @@ import android.content.Context
 import android.widget.RemoteViews
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.SettingDialogActivity
-import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.setUserLanguage
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 
 /**
  * Widget with settings (right) and screenshot (left) button

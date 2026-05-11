@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.ui
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -13,6 +13,8 @@ import androidx.preference.ListPreference
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.utils.adapters.DrawableListPreferenceAdapter
+import com.github.cvzi.screenshottile.utils.safeDismiss
 import java.lang.ref.WeakReference
 
 /*

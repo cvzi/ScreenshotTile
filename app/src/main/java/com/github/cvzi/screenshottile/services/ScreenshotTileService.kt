@@ -15,8 +15,8 @@ import com.github.cvzi.screenshottile.BuildConfig.APPLICATION_ID
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.SettingDialogActivity
 import com.github.cvzi.screenshottile.interfaces.OnAcquireScreenshotPermissionListener
-import com.github.cvzi.screenshottile.utils.foregroundNotification
 import com.github.cvzi.screenshottile.utils.isDeviceLocked
+import com.github.cvzi.screenshottile.utils.notifications.foregroundNotification
 import com.github.cvzi.screenshottile.utils.setUserLanguage
 import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 

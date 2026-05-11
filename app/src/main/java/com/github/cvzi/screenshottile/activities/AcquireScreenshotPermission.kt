@@ -11,13 +11,12 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import com.github.cvzi.screenshottile.App
-
 import com.github.cvzi.screenshottile.App.setScreenshotPermission
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
-import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.toastMessage
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 
 
 /**

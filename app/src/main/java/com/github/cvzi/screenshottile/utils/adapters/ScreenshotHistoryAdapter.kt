@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.adapters
 
 import android.icu.text.DateFormat
 import android.util.Log
@@ -23,6 +23,10 @@ import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.activities.HistoryActivity
 import com.github.cvzi.screenshottile.activities.PostActivity
 import com.github.cvzi.screenshottile.databinding.HistoryItemBinding
+import com.github.cvzi.screenshottile.utils.image.SingleImage
+import com.github.cvzi.screenshottile.utils.image.deleteImage
+import com.github.cvzi.screenshottile.utils.image.moveImageToStorage
+import com.github.cvzi.screenshottile.utils.toastMessage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

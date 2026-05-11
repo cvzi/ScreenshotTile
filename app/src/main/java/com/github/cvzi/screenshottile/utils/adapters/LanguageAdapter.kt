@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

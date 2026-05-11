@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.ui
 
 /*
  * Created by cuzi (cuzi@openmail.cc) on 2020/12/13.

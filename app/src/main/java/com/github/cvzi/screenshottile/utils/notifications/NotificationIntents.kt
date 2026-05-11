@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.notifications
 
 import android.app.NotificationManager
 import android.content.Context
@@ -13,6 +13,7 @@ import androidx.core.net.toFile
 import androidx.core.net.toUri
 import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 
 /**
  * Intent to open share chooser.

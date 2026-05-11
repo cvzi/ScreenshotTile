@@ -54,21 +54,21 @@ import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.databinding.AccessibilityBarBinding
 import com.github.cvzi.screenshottile.fragments.SettingFragment
 import com.github.cvzi.screenshottile.functions.AppFunctionResultStore
-import com.github.cvzi.screenshottile.utils.ShutterCollection
-import com.github.cvzi.screenshottile.utils.compressionPreference
-import com.github.cvzi.screenshottile.utils.createNotification
-import com.github.cvzi.screenshottile.utils.fillTextHeight
-import com.github.cvzi.screenshottile.utils.formatLocalizedString
-import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.handlePostScreenshot
+import com.github.cvzi.screenshottile.utils.image.compressionPreference
+import com.github.cvzi.screenshottile.utils.image.saveBitmapToFile
 import com.github.cvzi.screenshottile.utils.isDeviceLocked
-import com.github.cvzi.screenshottile.utils.parseColorString
+import com.github.cvzi.screenshottile.utils.notifications.createNotification
 import com.github.cvzi.screenshottile.utils.safeRemoveView
-import com.github.cvzi.screenshottile.utils.saveBitmapToFile
 import com.github.cvzi.screenshottile.utils.setUserLanguage
 import com.github.cvzi.screenshottile.utils.startActivityAndCollapseCustom
 import com.github.cvzi.screenshottile.utils.toastDeviceIsLocked
 import com.github.cvzi.screenshottile.utils.toastMessage
+import com.github.cvzi.screenshottile.utils.ui.ShutterCollection
+import com.github.cvzi.screenshottile.utils.ui.fillTextHeight
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.parseColorString
 import kotlin.math.abs
 
 

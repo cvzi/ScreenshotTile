@@ -90,7 +90,7 @@
         android:title="@string/setting_floating_button_show_close"
         app:iconSpaceReserved="false" />
 
-    <com.github.cvzi.screenshottile.utils.DrawableListPreference
+    <com.github.cvzi.screenshottile.utils.ui.DrawableListPreference
         android:defaultValue="0"
         android:key="@string/pref_key_floating_button_shutter"
         android:summary=""

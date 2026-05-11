@@ -30,6 +30,7 @@ import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 
 private const val TAG = "AndroidHelpers"
 

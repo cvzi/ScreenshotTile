@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.notifications
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -31,6 +31,9 @@ import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_STOP
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
+import com.github.cvzi.screenshottile.utils.image.resizeToBigPicture
+import com.github.cvzi.screenshottile.utils.image.resizeToNotificationIcon
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2019/08/23.

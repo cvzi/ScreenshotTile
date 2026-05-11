@@ -54,15 +54,15 @@ import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
 import com.github.cvzi.screenshottile.databinding.DialogCloseButtonBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
-import com.github.cvzi.screenshottile.utils.ShutterCollection
-import com.github.cvzi.screenshottile.utils.createNotificationScreenshotTakenChannel
-import com.github.cvzi.screenshottile.utils.formatLocalizedString
-import com.github.cvzi.screenshottile.utils.getLocalizedString
-import com.github.cvzi.screenshottile.utils.nicePathFromUri
-import com.github.cvzi.screenshottile.utils.notificationScreenshotTakenChannelEnabled
-import com.github.cvzi.screenshottile.utils.notificationSettingsIntent
+import com.github.cvzi.screenshottile.utils.image.nicePathFromUri
+import com.github.cvzi.screenshottile.utils.notifications.createNotificationScreenshotTakenChannel
+import com.github.cvzi.screenshottile.utils.notifications.notificationScreenshotTakenChannelEnabled
+import com.github.cvzi.screenshottile.utils.notifications.notificationSettingsIntent
 import com.github.cvzi.screenshottile.utils.safeDismiss
 import com.github.cvzi.screenshottile.utils.toastMessage
+import com.github.cvzi.screenshottile.utils.ui.ShutterCollection
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 import java.lang.ref.WeakReference
 
 

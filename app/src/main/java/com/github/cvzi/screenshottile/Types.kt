@@ -5,7 +5,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.text.SpannableStringBuilder
-import com.github.cvzi.screenshottile.utils.mimeFromFileExtension
+import com.github.cvzi.screenshottile.utils.image.mimeFromFileExtension
 import java.io.File
 import java.io.OutputStream
 import java.io.Serializable

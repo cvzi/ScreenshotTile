@@ -16,7 +16,7 @@ import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
 import com.github.cvzi.screenshottile.databinding.ActivityBackupPrefsBinding
-import com.github.cvzi.screenshottile.utils.PrefBackup
+import com.github.cvzi.screenshottile.utils.settings.PrefBackup
 import com.github.cvzi.screenshottile.utils.toastMessage
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay

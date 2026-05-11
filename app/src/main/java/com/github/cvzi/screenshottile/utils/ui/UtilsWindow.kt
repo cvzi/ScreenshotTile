@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.ui
 
 import android.graphics.Color
 import android.os.Build

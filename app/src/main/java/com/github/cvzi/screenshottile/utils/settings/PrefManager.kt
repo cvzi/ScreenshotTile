@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.settings
 
 import android.content.Context
 import android.content.res.Resources
@@ -10,6 +10,8 @@ import androidx.preference.PreferenceManager
 import com.github.cvzi.screenshottile.PackageNameFilterMode
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.utils.Sound.Companion.defaultAudioSink
+import com.github.cvzi.screenshottile.utils.adapters.FileNameSuggestion
+import com.github.cvzi.screenshottile.utils.adapters.RecentFolder
 import java.io.File
 import java.util.Date
 

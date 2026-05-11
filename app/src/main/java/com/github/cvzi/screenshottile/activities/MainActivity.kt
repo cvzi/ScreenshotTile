@@ -8,12 +8,10 @@ import android.app.StatusBarManager.TILE_ADD_REQUEST_RESULT_TILE_ALREADY_ADDED
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.Intent.ACTION_VIEW
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.Icon
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
@@ -38,17 +36,16 @@ import com.github.cvzi.screenshottile.databinding.ActivityMainBinding
 import com.github.cvzi.screenshottile.services.FloatingTileService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
-import com.github.cvzi.screenshottile.utils.formatLocalizedString
-import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.getUpdateUrl
 import com.github.cvzi.screenshottile.utils.hasFdroid
 import com.github.cvzi.screenshottile.utils.isNewAppInstallation
-import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
-import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 import com.github.cvzi.screenshottile.utils.openUri
 import com.github.cvzi.screenshottile.utils.toastMessage
-import com.github.cvzi.screenshottile.utils.toggleSwitchOnLabel
-import com.google.android.material.switchmaterial.SwitchMaterial
+import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
+import com.github.cvzi.screenshottile.utils.ui.makeActivityClickableFromText
+import com.github.cvzi.screenshottile.utils.ui.minPaddingFromInsets
+import com.github.cvzi.screenshottile.utils.ui.toggleSwitchOnLabel
 import java.util.function.Consumer
 
 

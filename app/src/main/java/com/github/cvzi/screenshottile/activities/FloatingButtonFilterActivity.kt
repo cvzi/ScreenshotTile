@@ -18,8 +18,8 @@ import com.github.cvzi.screenshottile.PackageNameFilterMode
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityFloatingButtonFilterBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
-import com.github.cvzi.screenshottile.utils.PackagesRecyclerViewAdapter
-import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
+import com.github.cvzi.screenshottile.utils.adapters.PackagesRecyclerViewAdapter
+import com.github.cvzi.screenshottile.utils.ui.minPaddingFromInsets
 
 
 /**

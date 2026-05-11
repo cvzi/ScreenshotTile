@@ -1,4 +1,4 @@
-package com.github.cvzi.screenshottile.utils
+package com.github.cvzi.screenshottile.utils.image
 
 import android.content.ContentResolver
 import android.graphics.Bitmap
