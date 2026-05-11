@@ -147,7 +147,12 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
             if (BuildConfig.DEBUG) Log.v(TAG, "onHandleScreenshot: storeBitmap(bitmap)")
 
             if (cutOutRect == null && prefManager.autoCropEnabled) {
-                cutOutRect = Rect(prefManager.autoCropLeft, prefManager.autoCropTop , bitmap.width - prefManager.autoCropRight, bitmap.height - prefManager.autoCropBottom)
+                cutOutRect = Rect(
+                    prefManager.autoCropLeft,
+                    prefManager.autoCropTop,
+                    bitmap.width - prefManager.autoCropRight,
+                    bitmap.height - prefManager.autoCropBottom
+                )
                 Log.d(TAG, "Set auto crop to $cutOutRect")
             }
 
@@ -294,7 +299,11 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                     dummyPath = result.dummyPath
                 }
 
-                AppFunctionResultStore.setLastReady(result.uri, result.bitmap.width, result.bitmap.height)
+                AppFunctionResultStore.setLastReady(
+                    result.uri,
+                    result.bitmap.width,
+                    result.bitmap.height
+                )
 
                 if ("showToast" in postScreenshotActions) {
                     context.toastMessage(
@@ -370,11 +379,12 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
     }
 
     private fun screenShotFailedToast(errorMessage: String? = null) {
-        val message = context.getLocalizedString(R.string.screenshot_failed) + if (errorMessage != null) {
-            "\n$errorMessage"
-        } else {
-            ""
-        }
+        val message =
+            context.getLocalizedString(R.string.screenshot_failed) + if (errorMessage != null) {
+                "\n$errorMessage"
+            } else {
+                ""
+            }
         context.toastMessage(message, ToastType.ERROR)
     }
 

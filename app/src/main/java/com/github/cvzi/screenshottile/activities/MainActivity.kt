@@ -25,6 +25,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.core.net.toUri
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import com.github.cvzi.screenshottile.App
@@ -42,14 +43,10 @@ import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.hasFdroid
 import com.github.cvzi.screenshottile.utils.isNewAppInstallation
 import com.github.cvzi.screenshottile.utils.makeActivityClickableFromText
+import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 import com.github.cvzi.screenshottile.utils.toastMessage
 import com.google.android.material.switchmaterial.SwitchMaterial
 import java.util.function.Consumer
-import androidx.core.net.toUri
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
-import kotlin.math.max
 
 
 /**
@@ -623,8 +620,11 @@ class MainActivity : BaseAppCompatActivity() {
             button.text = "Test App Functions"
             button.setOnClickListener {
                 Intent().apply {
-                    setClassName(applicationContext, "com.github.cvzi.screenshottile.activities.AppfunctionsTestActivity")
-                    if(resolveActivity(packageManager) != null) {
+                    setClassName(
+                        applicationContext,
+                        "com.github.cvzi.screenshottile.activities.AppfunctionsTestActivity"
+                    )
+                    if (resolveActivity(packageManager) != null) {
                         startActivity(this)
                     }
                 }

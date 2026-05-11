@@ -19,6 +19,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.FileProvider
 import androidx.core.net.toFile
+import androidx.core.net.toUri
 import com.burhanrashid52.photoediting.EditImageActivity
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_CROP
@@ -36,7 +37,6 @@ import com.github.cvzi.screenshottile.NOTIFICATION_ACTION_STOP
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.activities.NoDisplayActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
-import androidx.core.net.toUri
 
 /**
  * Created by cuzi (cuzi@openmail.cc) on 2019/08/23.
@@ -82,7 +82,8 @@ fun createNotificationScreenshotTakenChannel(context: Context): String {
 fun createNotificationForegroundServiceChannel(context: Context): String {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
-        val channelName = context.getLocalizedString(R.string.notification_foreground_channel_description)
+        val channelName =
+            context.getLocalizedString(R.string.notification_foreground_channel_description)
         val notificationTitle = context.getLocalizedString(R.string.notification_foreground_title)
         val channelDescription =
             context.getLocalizedString(R.string.notification_foreground_channel_description) + "\n'$notificationTitle'"
@@ -500,7 +501,10 @@ fun editImageIntent(context: Context, path: Uri, mimeType: String?): Intent {
  */
 fun editImageChooserIntent(context: Context, path: Uri, mimeType: String?): Intent {
     editImageIntent(context, path, mimeType).apply {
-        return Intent.createChooser(this, context.getLocalizedString(R.string.notification_app_chooser_edit))
+        return Intent.createChooser(
+            this,
+            context.getLocalizedString(R.string.notification_app_chooser_edit)
+        )
     }
 }
 

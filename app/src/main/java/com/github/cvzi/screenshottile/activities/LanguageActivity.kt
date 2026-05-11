@@ -190,13 +190,13 @@ class LanguageActivity : BaseAppCompatActivity() {
             } else {
                 null
             }
-        setUserLanguage(force=true)
+        setUserLanguage(force = true)
         recreate()
     }
 
     private fun resetLanguages() {
         App.getInstance().prefManager.userLanguages = null
-        setUserLanguage(force=true)
+        setUserLanguage(force = true)
         recreate()
     }
 

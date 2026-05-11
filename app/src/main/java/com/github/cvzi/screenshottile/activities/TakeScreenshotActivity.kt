@@ -467,7 +467,12 @@ class TakeScreenshotActivity : BaseActivity(),
         val useAppData = "saveToStorage" !in prefManager.postScreenshotActions
 
         if (cutOutRect == null && prefManager.autoCropEnabled) {
-            cutOutRect = Rect(prefManager.autoCropLeft, prefManager.autoCropTop , image.width - prefManager.autoCropRight, image.height - prefManager.autoCropBottom)
+            cutOutRect = Rect(
+                prefManager.autoCropLeft,
+                prefManager.autoCropTop,
+                image.width - prefManager.autoCropRight,
+                image.height - prefManager.autoCropBottom
+            )
             Log.d(TAG, "Set auto crop to $cutOutRect")
         }
 
@@ -513,7 +518,11 @@ class TakeScreenshotActivity : BaseActivity(),
                     dummyPath = result.dummyPath
                 }
 
-                AppFunctionResultStore.setLastReady(result.uri, result.bitmap.width, result.bitmap.height)
+                AppFunctionResultStore.setLastReady(
+                    result.uri,
+                    result.bitmap.width,
+                    result.bitmap.height
+                )
 
                 if ("showToast" in postScreenshotActions) {
                     toastMessage(
@@ -549,7 +558,10 @@ class TakeScreenshotActivity : BaseActivity(),
                 AppFunctionResultStore.setLastReady(uri, result.bitmap.width, result.bitmap.height)
 
                 if ("showToast" in postScreenshotActions) {
-                    toastMessage(formatLocalizedString(R.string.screenshot_file_saved, path), ToastType.SUCCESS)
+                    toastMessage(
+                        formatLocalizedString(R.string.screenshot_file_saved, path),
+                        ToastType.SUCCESS
+                    )
                 }
 
                 if ("showNotification" in postScreenshotActions) {

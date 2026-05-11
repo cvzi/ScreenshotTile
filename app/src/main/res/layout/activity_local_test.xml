@@ -12,27 +12,27 @@
         android:id="@+id/btnRefresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Refresh functions"/>
+        android:text="Refresh functions" />
 
     <Button
         android:id="@+id/btnGetCapture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get Capture Result"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:text="Get Capture Result" />
 
     <ListView
         android:id="@+id/listFunctions"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:dividerHeight="8dp"/>
+        android:dividerHeight="8dp" />
 
 
     <TextView
         android:id="@+id/txtResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textIsSelectable="true"
-        android:paddingTop="12dp"/>
+        android:paddingTop="12dp"
+        android:textIsSelectable="true" />
 </LinearLayout>

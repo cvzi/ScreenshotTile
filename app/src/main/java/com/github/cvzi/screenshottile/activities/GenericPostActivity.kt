@@ -141,7 +141,10 @@ open class GenericPostActivity : BaseAppCompatActivity() {
         }
 
         if (result.first) {
-            toastMessage(formatLocalizedString(R.string.screenshot_renamed, newName), ToastType.ACTIVITY)
+            toastMessage(
+                formatLocalizedString(R.string.screenshot_renamed, newName),
+                ToastType.ACTIVITY
+            )
             finish()
             result.second?.let {
                 startActivity(

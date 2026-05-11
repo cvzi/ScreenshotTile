@@ -11,9 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="50dp"
+        android:orientation="vertical"
         android:padding="16dp">
 
         <LinearLayout
@@ -25,10 +25,10 @@
             <Button
                 android:id="@+id/buttonApply"
                 style="@style/Widget.Material3.Button"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
+                android:layout_weight="1"
                 android:enabled="false"
                 android:text="Apply"
                 android:textSize="13sp" />
@@ -36,19 +36,19 @@
             <Button
                 android:id="@+id/buttonReset"
                 style="@style/Widget.Material3.Button"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
+                android:layout_weight="1"
                 android:text="Reset"
                 android:textSize="13sp" />
 
             <Button
                 android:id="@+id/buttonMoreSettings"
                 style="@style/Widget.Material3.Button"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@{strings.more_setting}"
                 android:textSize="13sp" />
         </LinearLayout>

@@ -59,6 +59,7 @@ class PropertiesBSFragment : BottomSheetDialogFragment(), SeekBar.OnSeekBarChang
             R.id.sbOpacity -> if (mProperties != null) {
                 mProperties?.onOpacityChanged(i)
             }
+
             R.id.sbSize -> if (mProperties != null) {
                 mProperties?.onShapeSizeChanged(i)
             }

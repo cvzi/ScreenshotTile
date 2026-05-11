@@ -23,6 +23,8 @@ import android.widget.RadioGroup
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import com.github.cvzi.screenshottile.App
@@ -34,11 +36,9 @@ import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotTileService
 import com.github.cvzi.screenshottile.utils.ShutterCollection
 import com.github.cvzi.screenshottile.utils.fillTextHeight
+import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 import com.github.cvzi.screenshottile.utils.parseColorString
 import com.google.android.material.switchmaterial.SwitchMaterial
-import androidx.core.graphics.drawable.toDrawable
-import androidx.core.graphics.createBitmap
-import com.github.cvzi.screenshottile.utils.minPaddingFromInsets
 
 
 /**
@@ -95,7 +95,10 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<ActivityFloatingButtonSettingsBinding>(this, R.layout.activity_floating_button_settings)
+        binding = DataBindingUtil.setContentView<ActivityFloatingButtonSettingsBinding>(
+            this,
+            R.layout.activity_floating_button_settings
+        )
         binding.setVariable(BR.strings, App.texts)
 
         binding.scrollView.minPaddingFromInsets()
@@ -340,9 +343,11 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
                 ScreenshotAccessibilityService.TAP_TYPE_DOUBLE -> {
                     R.id.radioButtonTapTypeDouble
                 }
+
                 ScreenshotAccessibilityService.TAP_TYPE_LONG -> {
                     R.id.radioButtonTapTypeLong
                 }
+
                 else -> R.id.radioButtonTapTypeSingle
             }
         ).isChecked = true
@@ -352,6 +357,7 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
                 ScreenshotAccessibilityService.MOVE_TYPE_SHORT_TOUCH -> {
                     R.id.radioButtonMoveTypeShort
                 }
+
                 else -> R.id.radioButtonMoveTypeLong
             }
         ).isChecked = true
@@ -476,7 +482,8 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
             if (preferMoveGesture) {
                 prefManager.floatingButtonTapType = ScreenshotAccessibilityService.TAP_TYPE_SINGLE
             } else {
-                prefManager.floatingButtonMoveType = ScreenshotAccessibilityService.MOVE_TYPE_SHORT_TOUCH
+                prefManager.floatingButtonMoveType =
+                    ScreenshotAccessibilityService.MOVE_TYPE_SHORT_TOUCH
             }
         }
         syncGestureRadioGroups()

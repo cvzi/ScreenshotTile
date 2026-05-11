@@ -177,10 +177,15 @@ class ScreenshotHistoryAdapter(
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
-        val itemBinding = DataBindingUtil.inflate<HistoryItemBinding>(LayoutInflater.from(viewGroup.context), R.layout.history_item, viewGroup, false)
-        itemBinding .setVariable(BR.strings, App.texts)
+        val itemBinding = DataBindingUtil.inflate<HistoryItemBinding>(
+            LayoutInflater.from(viewGroup.context),
+            R.layout.history_item,
+            viewGroup,
+            false
+        )
+        itemBinding.setVariable(BR.strings, App.texts)
 
-        return ViewHolder(itemBinding .root as ViewGroup, activity, onClick, activity.lifecycle)
+        return ViewHolder(itemBinding.root as ViewGroup, activity, onClick, activity.lifecycle)
     }
 
     // Replace the contents of a view (invoked by the layout manager)

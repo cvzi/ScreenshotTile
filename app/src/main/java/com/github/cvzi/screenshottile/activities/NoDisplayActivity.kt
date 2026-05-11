@@ -118,7 +118,10 @@ class NoDisplayActivity : BaseActivity() {
             ) {
                 // no-op
             } else {
-                if (BuildConfig.DEBUG) Log.v(TAG, "onCreate() no valid action or EXTRA_* found: $action")
+                if (BuildConfig.DEBUG) Log.v(
+                    TAG,
+                    "onCreate() no valid action or EXTRA_* found: $action"
+                )
             }
         }
         finish()

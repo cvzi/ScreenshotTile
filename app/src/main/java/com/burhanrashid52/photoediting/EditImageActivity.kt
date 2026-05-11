@@ -2,7 +2,6 @@ package com.burhanrashid52.photoediting
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -17,7 +16,6 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AnticipateOvershootInterpolator
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.window.OnBackInvokedCallback
@@ -44,14 +42,15 @@ import com.burhanrashid52.photoediting.filters.FilterViewAdapter
 import com.burhanrashid52.photoediting.tools.EditingToolsAdapter
 import com.burhanrashid52.photoediting.tools.EditingToolsAdapter.OnItemSelected
 import com.burhanrashid52.photoediting.tools.ToolType
-import com.github.cvzi.screenshottile.*
+import com.github.cvzi.screenshottile.App
+import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
+import com.github.cvzi.screenshottile.SaveImageResult
+import com.github.cvzi.screenshottile.SaveImageResultSuccess
 import com.github.cvzi.screenshottile.activities.GenericPostActivity
 import com.github.cvzi.screenshottile.activities.GenericPostActivity.Companion.OPEN_IMAGE_FROM_URI
 import com.github.cvzi.screenshottile.databinding.ActivityEditImageBinding
-import com.github.cvzi.screenshottile.databinding.ActivityMainBinding
-import com.github.cvzi.screenshottile.databinding.AddTextDialogBinding
 import com.github.cvzi.screenshottile.databinding.DialogAskFilenameBinding
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.SingleImage.Companion.loadBitmapFromDisk
@@ -60,12 +59,19 @@ import com.github.cvzi.screenshottile.utils.getLocalizedString
 import com.github.cvzi.screenshottile.utils.realScreenSize
 import com.github.cvzi.screenshottile.utils.rotate
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import ja.burhanrashid52.photoeditor.*
+import ja.burhanrashid52.photoeditor.OnPhotoEditorListener
+import ja.burhanrashid52.photoeditor.OnSaveBitmap
+import ja.burhanrashid52.photoeditor.PhotoEditor
+import ja.burhanrashid52.photoeditor.PhotoEditorView
+import ja.burhanrashid52.photoeditor.PhotoFilter
+import ja.burhanrashid52.photoeditor.SaveSettings
+import ja.burhanrashid52.photoeditor.TextStyleBuilder
+import ja.burhanrashid52.photoeditor.ViewType
 import ja.burhanrashid52.photoeditor.shape.ShapeBuilder
 import ja.burhanrashid52.photoeditor.shape.ShapeType
 import java.io.File
 import java.io.IOException
-import java.util.*
+import java.util.Date
 
 
 class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickListener,
@@ -112,7 +118,10 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
         setContentView(R.layout.activity_edit_image)
 
 
-        val binding = DataBindingUtil.setContentView<ActivityEditImageBinding>(this, R.layout.activity_edit_image)
+        val binding = DataBindingUtil.setContentView<ActivityEditImageBinding>(
+            this,
+            R.layout.activity_edit_image
+        )
         binding.setVariable(BR.strings, App.texts)
 
 
@@ -198,9 +207,11 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                     e.printStackTrace()
                 }
             }
+
             ACTION_NO_IMAGE -> {
                 return true
             }
+
             else -> {
                 val uri = intent.data ?: intent.clipData?.getItemAt(0)?.uri ?: return false
                 val intentType = intent.type
@@ -295,6 +306,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 startActivityForResult(cameraIntent, CAMERA_REQUEST)
             }
+
             R.id.imgGallery -> {
                 val intent = Intent()
                 intent.type = "image/*"
@@ -342,7 +354,12 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
 
         AlertDialog.Builder(this).apply {
             @SuppressLint("InflateParams")
-            val dialogBinding = DataBindingUtil.inflate<DialogAskFilenameBinding>(layoutInflater, R.layout.dialog_ask_filename, null, false).apply {
+            val dialogBinding = DataBindingUtil.inflate<DialogAskFilenameBinding>(
+                layoutInflater,
+                R.layout.dialog_ask_filename,
+                null,
+                false
+            ).apply {
                 setVariable(BR.strings, App.texts)
                 editTextFileName.setText(filenameSuggestion)
                 textViewFolder.text = folder.path ?: folder.toString()
@@ -387,7 +404,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
             override fun onBitmapReady(saveBitmap: Bitmap) {
                 val bitmap = if (isRotated) {
                     saveBitmap.rotate(-90f)
-                } else  {
+                } else {
                     saveBitmap
                 }
 
@@ -458,7 +475,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 override fun onBitmapReady(saveBitmap: Bitmap) {
                     val bitmap = if (isRotated) {
                         saveBitmap.rotate(-90f)
-                    } else  {
+                    } else {
                         saveBitmap
                     }
 
@@ -519,6 +536,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                     val photo = data?.extras?.get("data") as Bitmap?
                     mPhotoEditorView.source.setImageBitmap(photo)
                 }
+
                 PICK_REQUEST -> try {
                     mPhotoEditor.clearAllViews()
                     val uri = data?.data
@@ -589,6 +607,7 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                 mTxtCurrentTool.setText(R.string.label_shape)
                 showBottomSheetDialogFragment(mShapeBSFragment)
             }
+
             ToolType.TEXT -> {
                 val textEditorDialogFragment = TextEditorDialogFragment.show(this)
                 textEditorDialogFragment.setOnTextEditorListener(object :
@@ -603,14 +622,17 @@ class EditImageActivity : BaseActivity(), OnPhotoEditorListener, View.OnClickLis
                     }
                 })
             }
+
             ToolType.ERASER -> {
                 mPhotoEditor.brushEraser()
                 mTxtCurrentTool.setText(R.string.label_eraser_mode)
             }
+
             ToolType.FILTER -> {
                 mTxtCurrentTool.setText(R.string.label_filter)
                 showFilter(true)
             }
+
             ToolType.EMOJI -> showBottomSheetDialogFragment(mEmojiBSFragment)
         }
     }

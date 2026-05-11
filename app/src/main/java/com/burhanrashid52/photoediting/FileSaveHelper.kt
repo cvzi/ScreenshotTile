@@ -8,7 +8,12 @@ import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.*
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.OnLifecycleEvent
 import java.io.IOException
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors

@@ -29,8 +29,8 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewConfiguration
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
 import android.view.accessibility.AccessibilityEvent
@@ -539,7 +539,7 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
                 MotionEvent.ACTION_MOVE -> {
                     val moved = abs(event.rawX - downRawX) > touchSlop ||
-                        abs(event.rawY - downRawY) > touchSlop
+                            abs(event.rawY - downRawY) > touchSlop
                     if (moved) {
                         movedBeyondSlop = true
                         clearLongPressRunnable()

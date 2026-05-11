@@ -1,18 +1,17 @@
 package com.github.cvzi.screenshottile.utils
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.Resources
 import android.graphics.Point
 import android.net.Uri
 import android.util.Log
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.github.cvzi.screenshottile.PackageNameFilterMode
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.utils.Sound.Companion.defaultAudioSink
 import java.io.File
 import java.util.Date
-import androidx.core.content.edit
 
 /**
  * Created by ipcjs on 2017/8/17.

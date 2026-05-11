@@ -121,7 +121,10 @@ class AcquireScreenshotPermission : BaseActivity() {
                     TAG,
                     "onActivityResult() No screen capture permission: resultCode==$resultCode"
                 )
-                toastMessage(getLocalizedString(R.string.permission_missing_screen_capture), ToastType.ERROR)
+                toastMessage(
+                    getLocalizedString(R.string.permission_missing_screen_capture),
+                    ToastType.ERROR
+                )
             }
         }
         finish()
