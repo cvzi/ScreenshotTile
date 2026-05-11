@@ -70,6 +70,8 @@ class MainActivity : BaseAppCompatActivity() {
                 })
         }
 
+        fun start(ctx: Context) = ctx.startActivity(Intent(ctx, MainActivity::class.java))
+
         var accessibilityConsent = false
     }
 
@@ -218,6 +220,11 @@ class MainActivity : BaseAppCompatActivity() {
                 }
             }
         }
+        binding.buttonAboutApp.setOnClickListener {
+            AboutActivity.start(this)
+        }
+
+
 
         switchLegacy.isChecked = !App.getInstance().prefManager.useNative
         switchNative.isChecked = App.getInstance().prefManager.useNative

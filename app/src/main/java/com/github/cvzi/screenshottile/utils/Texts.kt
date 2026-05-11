@@ -49,8 +49,8 @@ class Texts {
     val setting_floating_button_hide_after = R.string.setting_floating_button_hide_after
     val setting_floating_button_hide_after_summary = R.string.setting_floating_button_hide_after_summary
     val setting_floating_button_show_close = R.string.setting_floating_button_show_close
-    val setting_floating_button_show_settings_after_move = R.string.setting_floating_button_show_settings_after_move
     val setting_floating_button_show_close_summary = R.string.setting_floating_button_show_close_summary
+    val setting_floating_button_show_settings_after_move = R.string.setting_floating_button_show_settings_after_move
     val setting_floating_button_show_close_dialog_title = R.string.setting_floating_button_show_close_dialog_title
     val setting_floating_button_show_close_dialog_description = R.string.setting_floating_button_show_close_dialog_description
     val setting_floating_button_shutter = R.string.setting_floating_button_shutter
@@ -168,6 +168,7 @@ class Texts {
     val about_open_source_title = R.string.about_open_source_title
     val about_advanced_settings_button = R.string.about_advanced_settings_button
     val about_update_check_button = R.string.about_update_check_button
+    val about_backup_title = R.string.about_backup_title
     val main_accessibility_settings = R.string.main_accessibility_settings
     val toast_open_accessibility_settings = R.string.toast_open_accessibility_settings
     val main_floating_button_title = R.string.main_floating_button_title
@@ -267,7 +268,7 @@ class Texts {
     val double_tap = R.string.double_tap
     val long_press = R.string.long_press
     val short_touch = R.string.short_touch
-
+    val change_language = R.string.change_language
 
     // Untranslatable strings
     val translate_this_app = R.string.translate_this_app

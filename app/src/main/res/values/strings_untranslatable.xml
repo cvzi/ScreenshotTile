@@ -267,6 +267,7 @@
     <!-- About in settings -->
     <string name="pref_static_field_key_about_app_1" translatable="false">pref_static_field_key_about_app_1</string>
     <string name="pref_static_field_key_about_app_3" translatable="false">pref_static_field_key_about_app_3</string>
+    <string name="pref_static_field_key_about_activity" translatable="false">pref_static_field_key_about_activity</string>
     <string name="pref_static_field_key_about_license_1" translatable="false">pref_static_field_key_about_license_1</string>
     <string name="pref_static_field_key_about_open_source" translatable="false">pref_static_field_key_about_open_source</string>
     <string name="pref_static_field_key_about_privacy" translatable="false">pref_static_field_key_about_privacy</string>
@@ -317,5 +318,28 @@ Contribute on <a href="https://crowdin.com/project/screenshottile">https://crowd
 Material You design contributed by <a href="https://github.com/user0-07161/">user0</a><br>
 
 ]]></string>
+
+    <string name="about_donate_title" translatable="false">Donate &amp; support</string>
+    <string name="about_app_icon_description" translatable="false">App icon</string>
+
+    <string name="about_short_description" translatable="false">Customizable screenshot tool with quick settings and floating button</string>
+    <string name="about_source_code_title" translatable="false">Source code on GitHub</string>
+    <string name="about_license_button" translatable="false">View full license</string>
+    <string name="about_contact_email_title" translatable="false">Email</string>
+    <string name="about_contact_email_subject" translatable="false">Screenshot Tile app</string>
+    <string name="about_original_project_repo_name" translatable="false">ipcjs/ScreenshotTile</string>
+    <string name="about_fork_note" translatable="false">This app is a fork of %1$s.</string>
+    <string name="about_version_title" translatable="false">Version</string>
+    <string name="about_version_value" translatable="false">%1$s (%2$s)\nBuild type: %3$s\nPackage: %4$s</string>
+    <string name="about_release_channel_title" translatable="false">Release channel</string>
+    <string name="about_release_channel_unknown" translatable="false">Other / unknown</string>
+    <string name="about_release_channel_debug" translatable="false">Debug build</string>
+
+    <string name="cert_fdroid_sha256" translatable="false">c1fc886a9128999556b4ccc95b03058cee72dfa45f33d99443e5b481dde7880d</string>
+    <string name="cert_github_sha256" translatable="false">e470f31484efdd7c5767297170913c3ffd8d08708b733c1633dd6b7ef16d287d</string>
+    <string name="release_url_fdroid" translatable="false">https://f-droid.org/packages/com.github.cvzi.screenshottile/</string>
+    <string name="release_url_github" translatable="false">https://github.com/cvzi/ScreenshotTile/releases</string>
+    <string name="contact_email" translatable="false">cuzi-android@openmail.cc</string>
+    <string name="contact_email_subject" translatable="false">Screenshot Tile app</string>
 
 </resources>

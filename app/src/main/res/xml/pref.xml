@@ -230,44 +230,11 @@
         app:iconSpaceReserved="false" />
 
     <androidx.preference.Preference
-        android:key="@string/pref_static_field_key_about_app_1"
+        android:key="@string/pref_static_field_key_about_backup"
         android:persistent="false"
         android:selectable="true"
-        android:summary="@string/about_app_1"
-        android:title="@string/about_app_title"
-        app:icon="@android:drawable/ic_menu_info_details" />
-
-    <androidx.preference.Preference
-        android:key="@string/pref_static_field_key_about_app_3"
-        android:persistent="false"
-        android:selectable="true"
-        android:summary="@string/about_app_3"
-        android:title="@string/empty_string"
-        app:icon="@android:drawable/sym_action_email" />
-
-    <androidx.preference.Preference
-        android:key="@string/pref_static_field_key_about_license_1"
-        android:persistent="false"
-        android:selectable="true"
-        android:summary="@string/about_license_1"
-        android:title="@string/about_license_title"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.Preference
-        android:key="@string/pref_static_field_key_about_open_source"
-        android:persistent="false"
-        android:selectable="true"
-        android:summary="@string/about_open_source"
-        android:title="@string/about_open_source_title"
-        app:iconSpaceReserved="false" />
-
-    <androidx.preference.Preference
-        android:key="@string/pref_static_field_key_about_privacy"
-        android:persistent="false"
-        android:selectable="true"
-        android:summary="@string/about_privacy_summary"
-        android:title="@string/about_privacy_title"
-        app:iconSpaceReserved="false" />
+        android:title="@string/about_backup_title"
+        app:icon="@android:drawable/ic_menu_save" />
 
     <androidx.preference.Preference
         android:key="@string/pref_static_field_key_advanced_settings"
@@ -277,32 +244,11 @@
         app:icon="@android:drawable/ic_menu_manage" />
 
     <androidx.preference.Preference
-        android:key="@string/pref_static_field_key_about_change_language"
+        android:key="@string/pref_static_field_key_about_activity"
         android:persistent="false"
         android:selectable="true"
-        android:title="Change language"
-        app:icon="@drawable/ic_translate" />
-
-    <androidx.preference.Preference
-        android:key="@string/pref_static_field_key_about_updates"
-        android:persistent="false"
-        android:selectable="true"
-        android:title="@string/about_update_check_button"
-        app:icon="@android:drawable/ic_popup_sync" />
-
-    <androidx.preference.Preference
-        android:key="@string/pref_static_field_key_about_backup"
-        android:persistent="false"
-        android:selectable="true"
-        android:title="Export/Import settings"
-        app:icon="@android:drawable/ic_menu_save" />
-
-    <androidx.preference.Preference
-        android:key="@string/pref_static_field_key_about_donate"
-        android:persistent="false"
-        android:selectable="true"
-        android:title="&#x1f49c; &#xa0;&#xa0; Donate &amp; Support"
-        app:iconSpaceReserved="false" />
+        android:title="@string/about_app_title"
+        app:icon="@android:drawable/ic_menu_info_details" />
 
     <androidx.preference.Preference
         android:persistent="false"
