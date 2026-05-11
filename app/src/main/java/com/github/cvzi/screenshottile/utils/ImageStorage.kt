@@ -35,6 +35,8 @@ import java.util.Date
 import java.util.Locale
 import kotlin.math.max
 
+private const val TAG = "ImageStorage"
+
 /**
  * New image file in default "Picture" directory. (used only for Android P and lower)
  */
@@ -44,7 +46,7 @@ fun createImageFileInDefaultPictureFolder(context: Context, filename: String): F
     if (storageDir == null) {
         // Fallback to "private" data/Package.Name/... directory
         Log.e(
-            UTILSKT,
+            TAG,
             "createImageFile() Fallback to getExternalFilesDir(Environment.DIRECTORY_PICTURES)"
         )
         storageDir = context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
@@ -169,7 +171,7 @@ fun createOutputStreamLegacy(
         imageFile.createNewFile()
     } catch (e: Exception) {
         Log.e(
-            UTILSKT,
+            TAG,
             "createOutputStreamLegacy() Could not createNewFile() ${imageFile.absolutePath} $e"
         )
         val externalDirectory =
@@ -179,12 +181,12 @@ fun createOutputStreamLegacy(
             externalDirectory?.mkdirs()
             imageFile.createNewFile()
             if (BuildConfig.DEBUG) Log.v(
-                UTILSKT,
+                TAG,
                 "createOutputStreamLegacy() Fallback to getExternalFilesDir ${imageFile.absolutePath}"
             )
         } catch (e: Exception) {
             Log.e(
-                UTILSKT,
+                TAG,
                 "Could not createOutputStreamLegacy() for fallback file ${imageFile.absolutePath} $e"
             )
             return OutputStreamResult("Could not create new file")
@@ -193,7 +195,7 @@ fun createOutputStreamLegacy(
 
     if (!imageFile.exists() || !imageFile.canWrite()) {
         Log.e(
-            UTILSKT,
+            TAG,
             "createOutputStreamLegacy() File ${imageFile.absolutePath} does not exist or is not writable"
         )
         return OutputStreamResult("Cannot write to file")
@@ -204,25 +206,25 @@ fun createOutputStreamLegacy(
         outputStream = imageFile.outputStream()
     } catch (e: FileNotFoundException) {
         val error = e.toString()
-        Log.e(UTILSKT, "createOutputStreamLegacy() $error")
+        Log.e(TAG, "createOutputStreamLegacy() $error")
         return OutputStreamResult("Could not find output file")
     } catch (e: SecurityException) {
         val error = e.toString()
-        Log.e(UTILSKT, "createOutputStreamLegacy() $error")
+        Log.e(TAG, "createOutputStreamLegacy() $error")
         return OutputStreamResult("Could not open output file because of a security exception")
     } catch (e: IOException) {
         var error = e.toString()
-        Log.e(UTILSKT, "createOutputStreamLegacy() $error")
+        Log.e(TAG, "createOutputStreamLegacy() $error")
         return if (error.contains(ENOSPC, ignoreCase = true)) {
             error = context.getString(R.string.error_no_space)
-            Log.e(UTILSKT, "createOutputStreamLegacy() $error")
+            Log.e(TAG, "createOutputStreamLegacy() $error")
             OutputStreamResult("Could not open output file. $error")
         } else {
             OutputStreamResult("Could not open output file. IOException")
         }
     } catch (e: NullPointerException) {
         val error = e.toString()
-        Log.e(UTILSKT, "createOutputStreamLegacy() $error")
+        Log.e(TAG, "createOutputStreamLegacy() $error")
         return OutputStreamResult("Could not open output file. $error")
     }
     return OutputStreamResultSuccess(outputStream, imageFile)
@@ -315,13 +317,13 @@ fun createOutputStreamMediaStore(
         try {
             context.contentResolver.insert(storageUri, contentValues)
         } catch (e: UnsupportedOperationException) {
-            Log.e(UTILSKT, e.stackTraceToString())
+            Log.e(TAG, e.stackTraceToString())
             null
         } catch (e: IllegalStateException) {
-            Log.e(UTILSKT, e.stackTraceToString())
+            Log.e(TAG, e.stackTraceToString())
             null
         } catch (e: SecurityException) {
-            Log.e(UTILSKT, e.stackTraceToString())
+            Log.e(TAG, e.stackTraceToString())
             null
         } ?: return OutputStreamResult("MediaStore failed to provide a file")
     } else {
@@ -351,10 +353,10 @@ fun createOutputStreamForExistingUri(
     val outputStream = try {
         context.contentResolver.openOutputStream(uri)
     } catch (e: FileNotFoundException) {
-        Log.e(UTILSKT, "createOutputStreamForExistingUri(): ", e)
+        Log.e(TAG, "createOutputStreamForExistingUri(): ", e)
         null
     } catch (e: IOException) {
-        Log.e(UTILSKT, "createOutputStreamForExistingUri(): ", e)
+        Log.e(TAG, "createOutputStreamForExistingUri(): ", e)
         null
     }
         ?: return OutputStreamResult("Could not open output stream from MediaStore for uri: $uri")
@@ -427,7 +429,7 @@ fun saveBitmapToFile(
     )
 
     if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
-        Log.e(UTILSKT, "saveImageToFile() outputStreamResult.success is false")
+        Log.e(TAG, "saveImageToFile() outputStreamResult.success is false")
         return SaveImageResult(outputStreamResult.errorMessage)
     }
 
@@ -439,7 +441,7 @@ fun saveBitmapToFile(
 
     // Save image
     if (bitmap.width == 0 || bitmap.height == 0) {
-        Log.e(UTILSKT, "saveImageToFile() Bitmap width or height is 0")
+        Log.e(TAG, "saveImageToFile() Bitmap width or height is 0")
         return SaveImageResult("Bitmap is empty")
     }
 
@@ -454,19 +456,19 @@ fun saveBitmapToFile(
         success = true
     } catch (e: FileNotFoundException) {
         error = e.toString()
-        Log.e(UTILSKT, "saveImageToFile() $error")
+        Log.e(TAG, "saveImageToFile() $error")
     } catch (e: SecurityException) {
         error = e.toString()
-        Log.e(UTILSKT, "saveImageToFile() $error")
+        Log.e(TAG, "saveImageToFile() $error")
     } catch (e: IOException) {
         error = e.toString()
-        Log.e(UTILSKT, "saveImageToFile() $error")
+        Log.e(TAG, "saveImageToFile() $error")
         if (error.contains(ENOSPC, ignoreCase = true)) {
             error = context.getString(R.string.error_no_space)
         }
     } catch (e: NullPointerException) {
         error = e.toString()
-        Log.e(UTILSKT, "saveImageToFile() $error")
+        Log.e(TAG, "saveImageToFile() $error")
     } finally {
         outputStream.close()
     }
@@ -512,9 +514,9 @@ fun saveBitmapToFile(
                     try {
                         context.contentResolver.update(result.uri, this, null, null)
                     } catch (e: UnsupportedOperationException) {
-                        Log.e(UTILSKT, e.stackTraceToString())
+                        Log.e(TAG, e.stackTraceToString())
                     } catch (e: IllegalStateException) {
-                        Log.e(UTILSKT, e.stackTraceToString())
+                        Log.e(TAG, e.stackTraceToString())
                     }
                 }
             }
@@ -554,12 +556,12 @@ fun saveBitmapToFile(
     val outputStreamResult = try {
         createOutputStreamForExistingUri(context, uri)
     } catch (e: SecurityException) {
-        Log.e(UTILSKT, "Failed to create output stream for $uri", e)
+        Log.e(TAG, "Failed to create output stream for $uri", e)
         null
     } ?: return SaveImageResult("Could not overwrite file, permission denied.")
 
     if (!outputStreamResult.success && outputStreamResult !is OutputStreamResultSuccess) {
-        Log.e(UTILSKT, "saveImageToFile() outputStreamResult.success is false")
+        Log.e(TAG, "saveImageToFile() outputStreamResult.success is false")
         return SaveImageResult(outputStreamResult.errorMessage)
     }
 
@@ -570,7 +572,7 @@ fun saveBitmapToFile(
     val outputStream: OutputStream = result.fileOutputStream
 
     if (bitmap.width == 0 || bitmap.height == 0) {
-        Log.e(UTILSKT, "saveImageToFile() Bitmap width or height is 0")
+        Log.e(TAG, "saveImageToFile() Bitmap width or height is 0")
         return SaveImageResult("Bitmap is empty")
     }
 
@@ -585,19 +587,19 @@ fun saveBitmapToFile(
         success = true
     } catch (e: FileNotFoundException) {
         error = e.toString()
-        Log.e(UTILSKT, "saveImageToFile() $error")
+        Log.e(TAG, "saveImageToFile() $error")
     } catch (e: SecurityException) {
         error = e.toString()
-        Log.e(UTILSKT, "saveImageToFile() $error")
+        Log.e(TAG, "saveImageToFile() $error")
     } catch (e: IOException) {
         error = e.toString()
-        Log.e(UTILSKT, "saveImageToFile() $error")
+        Log.e(TAG, "saveImageToFile() $error")
         if (error.contains(ENOSPC, ignoreCase = true)) {
             error = context.getString(R.string.error_no_space)
         }
     } catch (e: NullPointerException) {
         error = e.toString()
-        Log.e(UTILSKT, "saveImageToFile() $error")
+        Log.e(TAG, "saveImageToFile() $error")
     } finally {
         outputStream.close()
     }
@@ -624,9 +626,9 @@ fun saveBitmapToFile(
                     context.contentResolver.update(result.uri, contentValues, null, null)
                     context.contentResolver.notifyChange(result.uri, null)
                 } catch (e: UnsupportedOperationException) {
-                    Log.e(UTILSKT, e.stackTraceToString())
+                    Log.e(TAG, e.stackTraceToString())
                 } catch (e: IllegalStateException) {
-                    Log.e(UTILSKT, e.stackTraceToString())
+                    Log.e(TAG, e.stackTraceToString())
                 }
             }
 

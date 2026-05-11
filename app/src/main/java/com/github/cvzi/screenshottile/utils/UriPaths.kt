@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.documentfile.provider.DocumentFile
 import java.net.URLDecoder
 
+private const val TAG = "UriPaths"
+
 /**
  * Try to generate a path that can be understood by humans
  */
@@ -71,7 +73,7 @@ fun niceFullPathFromUri(str: String?): String {
     if (removeUntil != -1) {
         parts = parts.slice(removeUntil + 1 until parts.size).toMutableList()
     }
-    Log.v(UTILSKT, "niceFullPathFromUri() parts: $parts")
+    Log.v(TAG, "niceFullPathFromUri() parts: $parts")
 
     path = parts.joinToString("/")
 

@@ -15,6 +15,8 @@ import android.widget.TextView
 import androidx.core.graphics.toColorInt
 import com.github.cvzi.screenshottile.ClickableStringResult
 
+private const val TAG = "UiHelpers"
+
 /**
  * Adjust font size to fill the available space of a text view
  */
@@ -95,7 +97,7 @@ fun parseColorString(colorString: String?): Int? {
             } catch (_: IllegalArgumentException) {
             }
         }
-        Log.e(UTILSKT, "Could not parse color '$colorString'")
+        Log.e(TAG, "Could not parse color '$colorString'")
     }
     return null
 }

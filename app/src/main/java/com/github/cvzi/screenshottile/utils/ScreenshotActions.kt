@@ -16,6 +16,8 @@ import com.github.cvzi.screenshottile.activities.PostCropActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 
+private const val TAG = "ScreenshotActions"
+
 /**
  * Start screenshot activity and take a screenshot
  */
@@ -97,7 +99,7 @@ fun handlePostScreenshot(
             if (editIntent.resolveActivity(context.packageManager) != null) {
                 App.getInstance().startActivityAndCollapseIfNotActivity(context, editIntent)
             } else {
-                Log.e(UTILSKT, "openInExternalEditor: resolveActivity(editIntent) returned null")
+                Log.e(TAG, "openInExternalEditor: resolveActivity(editIntent) returned null")
                 context.toastMessage("No suitable external photo editor found", ToastType.ERROR)
             }
         }
@@ -108,7 +110,7 @@ fun handlePostScreenshot(
                 App.getInstance().startActivityAndCollapseIfNotActivity(context, openImageIntent)
             } else {
                 Log.e(
-                    UTILSKT,
+                    TAG,
                     "openInExternalViewer: resolveActivity(openImageIntent) returned null"
                 )
                 context.toastMessage("No suitable external photo viewer found", ToastType.ERROR)
@@ -122,7 +124,7 @@ fun handlePostScreenshot(
             if (shareIntent.resolveActivity(context.packageManager) != null) {
                 App.getInstance().startActivityAndCollapseIfNotActivity(context, shareIntent)
             } else {
-                Log.e(UTILSKT, "openShare: resolveActivity(shareIntent) returned null")
+                Log.e(TAG, "openShare: resolveActivity(shareIntent) returned null")
                 context.toastMessage("No suitable app for sharing found", ToastType.ERROR)
             }
         }

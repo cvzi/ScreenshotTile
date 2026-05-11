@@ -40,7 +40,7 @@ import kotlin.math.min
  * Created by cuzi (cuzi@openmail.cc) on 2019/08/23.
  */
 
-const val UTILSIMAGEKT = "UtilsImage.kt"
+private const val TAG = "UtilsImage"
 
 /**
  * Copy rectangle of image content to new bitmap or complete image if rect is null.
@@ -146,7 +146,7 @@ fun addImageToGallery(
     return try {
         context.contentResolver?.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
     } catch (e: Exception) {
-        Log.e(UTILSIMAGEKT, "Failed to add image to gallery:", e)
+        Log.e(TAG, "Failed to add image to gallery:", e)
         null
     }
 }
@@ -159,7 +159,7 @@ fun addImageToGallery(
  */
 fun deleteImage(context: Context, uri: Uri?): Boolean {
     if (uri == null) {
-        Log.e(UTILSIMAGEKT, "Could not delete file: uri is null")
+        Log.e(TAG, "Could not delete file: uri is null")
         return false
     }
 
@@ -171,7 +171,7 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
         "file" -> { // until Android P
             val path = uri.path
             if (path == null) {
-                Log.e(UTILSIMAGEKT, "deleteImage() File path is null. uri=$uri")
+                Log.e(TAG, "deleteImage() File path is null. uri=$uri")
                 return false
             }
 
@@ -181,7 +181,7 @@ fun deleteImage(context: Context, uri: Uri?): Boolean {
         }
 
         else -> {
-            Log.e(UTILSIMAGEKT, "deleteImage() Could not delete file. Unknown error. uri=$uri")
+            Log.e(TAG, "deleteImage() Could not delete file. Unknown error. uri=$uri")
             return false
         }
 
@@ -201,7 +201,7 @@ fun deleteDocumentFile(context: Context, uri: Uri): Boolean {
             docDir.delete()
         } catch (e: SecurityException) {
             Log.e(
-                UTILSIMAGEKT,
+                TAG,
                 "SecurityException in deleteDocumentFile($context, $uri)",
                 e
             )
@@ -227,7 +227,7 @@ fun deleteContentResolver(context: Context, uri: Uri): Boolean {
         return deleteDocumentFile(context, uri)
     }
     if (BuildConfig.DEBUG) Log.v(
-        UTILSIMAGEKT,
+        TAG,
         "deleteImage() File deleted from MediaStore ($deletedRows rows deleted)"
     )
     return true
@@ -238,18 +238,18 @@ fun deleteContentResolver(context: Context, uri: Uri): Boolean {
  */
 fun deleteFileSystem(context: Context, file: File): Boolean {
     if (!file.exists()) {
-        Log.w(UTILSIMAGEKT, "deleteImage() File does not exist: ${file.absoluteFile}")
+        Log.w(TAG, "deleteImage() File does not exist: ${file.absoluteFile}")
         return false
     }
 
     if (!file.canWrite()) {
-        Log.w(UTILSIMAGEKT, "deleteImage() File is not writable: ${file.absoluteFile}")
+        Log.w(TAG, "deleteImage() File is not writable: ${file.absoluteFile}")
         return false
     }
 
     if (file.delete()) {
         if (BuildConfig.DEBUG) Log.v(
-            UTILSIMAGEKT,
+            TAG,
             "deleteImage() File deleted from storage: ${file.absoluteFile}"
         )
         val externalContentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -272,7 +272,7 @@ fun deleteFileSystem(context: Context, file: File): Boolean {
                 )
                 context.contentResolver.delete(contentUri, null, null)
                 if (BuildConfig.DEBUG) Log.v(
-                    UTILSIMAGEKT,
+                    TAG,
                     "deleteImage() File deleted from MediaStore: $contentUri"
                 )
             }
@@ -280,7 +280,7 @@ fun deleteFileSystem(context: Context, file: File): Boolean {
         }
         return true
     } else {
-        Log.w(UTILSIMAGEKT, "deleteImage() Could not delete file: ${file.absoluteFile}")
+        Log.w(TAG, "deleteImage() Could not delete file: ${file.absoluteFile}")
         return false
     }
 }
@@ -316,7 +316,7 @@ fun moveImageToStorage(context: Context, file: File, newName: String?): Pair<Boo
         }
         // Remove the old file
         if (!deleteImage(context, Uri.fromFile(file))) {
-            Log.e(UTILSIMAGEKT, "renameContentResolver() deleteImage failed")
+            Log.e(TAG, "renameContentResolver() deleteImage failed")
         }
         return result
 
@@ -344,7 +344,7 @@ fun moveImage(
         srcFileUri.normalizeScheme().scheme == "file" && destFolderUri.normalizeScheme().scheme == "file" && destFolderPath != null) { // until Android P
         val srcPath = srcFileUri.path
         if (srcPath == null) {
-            Log.e(UTILSIMAGEKT, "moveImage() File path is null. srcFileUri=$srcFileUri")
+            Log.e(TAG, "moveImage() File path is null. srcFileUri=$srcFileUri")
             return Pair(false, null)
         }
 
@@ -355,7 +355,7 @@ fun moveImage(
     } else if (srcFileUri.normalizeScheme().scheme == "content") { // Android Q+
         return moveContentResolver(context, srcFileUri, destFolderUri, newFileTitle)
     } else {
-        Log.e(UTILSIMAGEKT, "moveImage() Could not move file. Unknown error. uri=$srcFileUri")
+        Log.e(TAG, "moveImage() Could not move file. Unknown error. uri=$srcFileUri")
         return Pair(false, null)
     }
 }
@@ -368,7 +368,7 @@ fun moveImage(
  */
 fun renameImage(context: Context, uri: Uri?, newName: String): Pair<Boolean, Uri?> {
     if (uri == null) {
-        Log.e(UTILSIMAGEKT, "Could not move file: uri is null")
+        Log.e(TAG, "Could not move file: uri is null")
         return Pair(false, null)
     }
 
@@ -382,7 +382,7 @@ fun renameImage(context: Context, uri: Uri?, newName: String): Pair<Boolean, Uri
         "file" -> { // until Android P
             val path = uri.path
             if (path == null) {
-                Log.e(UTILSIMAGEKT, "renameImage() File path is null. uri=$uri")
+                Log.e(TAG, "renameImage() File path is null. uri=$uri")
                 return Pair(false, null)
             }
 
@@ -393,7 +393,7 @@ fun renameImage(context: Context, uri: Uri?, newName: String): Pair<Boolean, Uri
         }
 
         else -> {
-            Log.e(UTILSIMAGEKT, "renameImage() Could not move file. Unknown error. uri=$uri")
+            Log.e(TAG, "renameImage() Could not move file. Unknown error. uri=$uri")
             return Pair(false, null)
         }
 
@@ -422,7 +422,7 @@ fun moveContentResolver(
     }
     // Remove the old file
     if (!deleteImage(context, uri)) {
-        Log.e(UTILSIMAGEKT, "moveContentResolver() deleteImage failed")
+        Log.e(TAG, "moveContentResolver() deleteImage failed")
     }
     return result
 }
@@ -445,13 +445,13 @@ fun renameContentResolver(
         context.contentResolver.update(uri, contentValues, null, null)
     } catch (e: UnsupportedOperationException) {
         Log.w(
-            UTILSIMAGEKT,
+            TAG,
             "renameContentResolver() MediaStore move failed: $e\nTrying copy and delete"
         )
         0
     } catch (e: IllegalStateException) {
         Log.w(
-            UTILSIMAGEKT,
+            TAG,
             "renameContentResolver() MediaStore move failed: $e\nTrying copy and delete"
         )
         0
@@ -466,7 +466,7 @@ fun renameContentResolver(
     }
     // Remove the old file
     if (!deleteImage(context, uri)) {
-        Log.e(UTILSIMAGEKT, "renameContentResolver() deleteImage failed")
+        Log.e(TAG, "renameContentResolver() deleteImage failed")
     }
     return result
 }
@@ -486,11 +486,11 @@ fun copyImageContentResolver(
     try {
         inputStream = context.contentResolver.openInputStream(uri)
     } catch (e: Exception) {
-        Log.e(UTILSIMAGEKT, "copyImageContentResolver() Could not open input stream: $e")
+        Log.e(TAG, "copyImageContentResolver() Could not open input stream: $e")
         return Pair(false, null)
     }
     if (inputStream == null) {
-        Log.e(UTILSIMAGEKT, "copyImageContentResolver() input stream is null")
+        Log.e(TAG, "copyImageContentResolver() input stream is null")
         return Pair(false, null)
     }
 
@@ -519,7 +519,7 @@ fun copyImageContentResolver(
     )
     if (!outputStreamResult.success) {
         Log.e(
-            UTILSIMAGEKT,
+            TAG,
             "copyImageContentResolver() Could not open output stream: ${outputStreamResult.errorMessage}"
         )
         return Pair(false, null)
@@ -540,7 +540,7 @@ fun copyImageContentResolver(
         outputStream.close()
         true
     } catch (e: Exception) {
-        Log.e(UTILSIMAGEKT, "copyImageContentResolver() Error while copying: $e")
+        Log.e(TAG, "copyImageContentResolver() Error while copying: $e")
         false
     } finally {
         inputStream.close()
@@ -554,9 +554,9 @@ fun copyImageContentResolver(
                 try {
                     context.contentResolver.update(outputStreamResultSuccess.uri, this, null, null)
                 } catch (e: UnsupportedOperationException) {
-                    Log.e(UTILSKT, e.stackTraceToString())
+                    Log.e(TAG, e.stackTraceToString())
                 } catch (e: IllegalStateException) {
-                    Log.e(UTILSKT, e.stackTraceToString())
+                    Log.e(TAG, e.stackTraceToString())
                 }
             }
         }
@@ -577,17 +577,17 @@ fun renameFileSystem(
     dimensions: Point? = null
 ): Pair<Boolean, Uri?> {
     if (!file.exists()) {
-        Log.w(UTILSIMAGEKT, "renameFileSystem() File does not exist: ${file.absoluteFile}")
+        Log.w(TAG, "renameFileSystem() File does not exist: ${file.absoluteFile}")
         return Pair(false, null)
     }
 
     if (dest.exists()) {
-        Log.w(UTILSIMAGEKT, "renameFileSystem() File already exists: ${dest.absoluteFile}")
+        Log.w(TAG, "renameFileSystem() File already exists: ${dest.absoluteFile}")
         return Pair(false, null)
     }
 
     if (!file.canWrite()) {
-        Log.w(UTILSIMAGEKT, "renameFileSystem() File is not writable: ${file.absoluteFile}")
+        Log.w(TAG, "renameFileSystem() File is not writable: ${file.absoluteFile}")
         return Pair(false, null)
     }
 
@@ -599,14 +599,14 @@ fun renameFileSystem(
             file.delete()
             true
         } catch (e: Exception) {
-            Log.e(UTILSIMAGEKT, "renameFileSystem() copyTo failed:", e)
+            Log.e(TAG, "renameFileSystem() copyTo failed:", e)
             false
         }
     }
 
     if (result) {
         if (BuildConfig.DEBUG) Log.v(
-            UTILSIMAGEKT,
+            TAG,
             "renameFileSystem() File ${file.absoluteFile} moved to ${dest.absoluteFile}"
         )
         val externalContentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -629,7 +629,7 @@ fun renameFileSystem(
                 )
                 context.contentResolver.delete(contentUri, null, null)
                 if (BuildConfig.DEBUG) Log.v(
-                    UTILSIMAGEKT,
+                    TAG,
                     "deleteImage() File deleted from MediaStore: $contentUri"
                 )
             }
@@ -657,7 +657,7 @@ fun renameFileSystem(
 
         return Pair(true, Uri.fromFile(dest))
     } else {
-        Log.w(UTILSIMAGEKT, "deleteImage() Could not delete file: ${file.absoluteFile}")
+        Log.w(TAG, "deleteImage() Could not delete file: ${file.absoluteFile}")
         return Pair(false, null)
     }
 }
