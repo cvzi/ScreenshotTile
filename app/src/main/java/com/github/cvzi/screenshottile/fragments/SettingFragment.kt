@@ -8,14 +8,12 @@ import android.content.ComponentName
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Intent
 import android.content.Intent.ACTION_OPEN_DOCUMENT_TREE
-import android.content.Intent.ACTION_VIEW
 import android.content.Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION
 import android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION
 import android.content.Intent.FLAG_GRANT_WRITE_URI_PERMISSION
 import android.content.Intent.createChooser
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.DocumentsContract
@@ -29,6 +27,7 @@ import android.widget.AutoCompleteTextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.commit
@@ -45,6 +44,8 @@ import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.ToastType
+import com.github.cvzi.screenshottile.activities.AboutActivity
+import com.github.cvzi.screenshottile.activities.BackupPrefsActivity
 import com.github.cvzi.screenshottile.activities.FloatingButtonSettingsActivity
 import com.github.cvzi.screenshottile.activities.LanguageActivity
 import com.github.cvzi.screenshottile.activities.MainActivity
@@ -63,8 +64,6 @@ import com.github.cvzi.screenshottile.utils.notificationSettingsIntent
 import com.github.cvzi.screenshottile.utils.safeDismiss
 import com.github.cvzi.screenshottile.utils.toastMessage
 import java.lang.ref.WeakReference
-import androidx.core.net.toUri
-import com.github.cvzi.screenshottile.activities.BackupPrefsActivity
 
 
 /**
@@ -223,41 +222,6 @@ class SettingFragment : PreferenceFragmentCompat() {
 
         pref?.registerOnSharedPreferenceChangeListener(prefListener)
 
-        makeLink(
-            R.string.pref_static_field_key_about_app_1,
-            R.string.pref_static_field_link_about_app_1
-        )
-        makeLink(
-            R.string.pref_static_field_key_about_app_3,
-            R.string.pref_static_field_link_about_app_3
-        )
-        makeLink(
-            R.string.pref_static_field_key_about_license_1,
-            R.string.pref_static_field_link_about_license_1
-        )
-        makeLink(
-            R.string.pref_static_field_key_about_open_source,
-            R.string.pref_static_field_link_about_open_source
-        )
-        makeLink(
-            R.string.pref_static_field_key_about_privacy,
-            R.string.pref_static_field_link_about_privacy
-        )
-        makeLink(
-            R.string.pref_static_field_key_about_donate,
-            R.string.pref_static_field_link_about_donate
-        )
-        makeLink(
-            R.string.pref_static_field_key_about_updates,
-            R.string.pref_static_field_link_about_updates,
-            arrayOf(
-                context?.packageName ?: "com.github.cvzi.screenshottile",
-                BuildConfig.VERSION_CODE.toString(),
-                BuildConfig.VERSION_NAME,
-                BuildConfig.BUILD_TYPE
-            ).map { Uri.encode(it) }.toTypedArray(),
-        )
-
         makeNotificationSettingsLink()
         makePostActionsLink()
         makeFloatingButtonSettingsLink()
@@ -266,6 +230,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         makeAdvancedSettingsLink()
         makeBackupSettingsLink()
         makeChangeLanguageLink()
+        makeAboutActivityLink()
 
         if (savedInstanceState?.getBoolean(
                 FLOATING_BUTTON_SHOW_CLOSE_DIALOG_SHOWN,
@@ -310,6 +275,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
     }
 
+    /*
     private fun makeLink(name: Int, link: Int, linkFormatArgs: Array<Any>? = null) {
         val myActivity = activity
         myActivity?.let {
@@ -330,6 +296,7 @@ class SettingFragment : PreferenceFragmentCompat() {
             }
         }
     }
+    */
 
     private fun makeNotificationSettingsLink() {
         val myPref =
@@ -456,6 +423,7 @@ class SettingFragment : PreferenceFragmentCompat() {
         val myPref =
             findPreference(getString(R.string.pref_static_field_key_about_change_language)) as Preference?
 
+
         myPref?.isSelectable = true
         myPref?.onPreferenceClickListener = OnPreferenceClickListener {
             activity?.let {
@@ -465,18 +433,36 @@ class SettingFragment : PreferenceFragmentCompat() {
         }
     }
 
+
+    private fun makeAboutActivityLink() {
+        val myPref =
+            findPreference(getString(R.string.pref_static_field_key_about_activity)) as Preference?
+
+        myPref?.isSelectable = true
+        myPref?.onPreferenceClickListener = OnPreferenceClickListener {
+            activity?.let {
+                AboutActivity.start(it)
+            }
+            true
+        }
+    }
+
+
+
     private fun updateNotificationSummary() {
         activity?.let { myActivity ->
             notificationPref?.apply {
                 when {
                     Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R -> {
                         isEnabled = false
-                        summary = context.getLocalizedString(R.string.use_native_screenshot_option_default)
+                        summary =
+                            context.getLocalizedString(R.string.use_native_screenshot_option_default)
                     }
 
                     Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults -> {
                         isEnabled = false
-                        summary = context.getLocalizedString(R.string.use_native_screenshot_option_android11)
+                        summary =
+                            context.getLocalizedString(R.string.use_native_screenshot_option_android11)
                     }
 
                     notificationScreenshotTakenChannelEnabled(myActivity) -> {
@@ -498,12 +484,14 @@ class SettingFragment : PreferenceFragmentCompat() {
             when {
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.R -> {
                     isEnabled = false
-                    summary = context.getLocalizedString(R.string.use_native_screenshot_option_default)
+                    summary =
+                        context.getLocalizedString(R.string.use_native_screenshot_option_default)
                 }
 
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults -> {
                     isEnabled = false
-                    summary = context.getLocalizedString(R.string.use_native_screenshot_option_android11)
+                    summary =
+                        context.getLocalizedString(R.string.use_native_screenshot_option_android11)
                 }
 
                 else -> {
@@ -779,7 +767,8 @@ class SettingFragment : PreferenceFragmentCompat() {
                 Build.VERSION.SDK_INT < Build.VERSION_CODES.P -> {
                     isChecked = false
                     isEnabled = false
-                    val unsupported = context.getLocalizedString(R.string.setting_floating_button_unsupported)
+                    val unsupported =
+                        context.getLocalizedString(R.string.setting_floating_button_unsupported)
                     floatingButtonScalePref?.isVisible = false
                     floatingButtonHideAfterPref?.isVisible = false
                     floatingButtonHideShowClosePref?.isVisible = false
@@ -813,7 +802,8 @@ class SettingFragment : PreferenceFragmentCompat() {
                     context.formatLocalizedString(
                         R.string.setting_floating_button_scale_current,
                         prefManager.floatingButtonScale,
-                        context.getLocalizedString(R.string.setting_floating_button_scale_default).toInt()
+                        context.getLocalizedString(R.string.setting_floating_button_scale_default)
+                            .toInt()
                     )
                 }"
         }
@@ -832,7 +822,12 @@ class SettingFragment : PreferenceFragmentCompat() {
 
     private fun updateFloatingButtonClose(openWithValue: String? = null) {
         if ((floatingButtonHideShowClosePref?.isChecked == true && !floatingButtonHideShowClosePreventRecursion) || openWithValue != null) {
-            val dialogBinding = DataBindingUtil.inflate<DialogCloseButtonBinding>(LayoutInflater.from(context), R.layout.dialog_close_button, null, false)
+            val dialogBinding = DataBindingUtil.inflate<DialogCloseButtonBinding>(
+                LayoutInflater.from(context),
+                R.layout.dialog_close_button,
+                null,
+                false
+            )
             dialogBinding.setVariable(BR.strings, App.texts)
             val relativeLayout = dialogBinding.root as ViewGroup
 
@@ -909,7 +904,8 @@ class SettingFragment : PreferenceFragmentCompat() {
                 summary = context.getLocalizedString(R.string.use_native_screenshot_option_default)
                 isEnabled = false
             } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && prefManager.useNative && ScreenshotAccessibilityService.instance != null && prefManager.useSystemDefaults) {
-                summary = context.getLocalizedString(R.string.use_native_screenshot_option_android11)
+                summary =
+                    context.getLocalizedString(R.string.use_native_screenshot_option_android11)
                 isEnabled = false
             } else if (prefManager.screenshotDirectory != null) {
                 summary = nicePathFromUri(prefManager.screenshotDirectory)

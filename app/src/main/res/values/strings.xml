@@ -173,6 +173,8 @@
     <string name="about_open_source_title">&#x200c;Open source used</string>
     <string name="about_advanced_settings_button">&#x200c;Advanced settings</string>
     <string name="about_update_check_button">&#x200c;Update check</string>
+    <string name="about_backup_title">&#x200c;Export/import settings</string>
+
     <!-- First screen -->
     <string name="main_accessibility_settings">&#x200c;Accessibility settings</string>
     <string name="toast_open_accessibility_settings">&#x200c;Please activate \"%1s\" in the accessibility settings</string>
@@ -278,4 +280,5 @@
     <string name="double_tap">&#x200c;Double Tap</string>
     <string name="long_press">&#x200c;Long Press</string>
     <string name="short_touch">&#x200c;Short Touch</string>
+    <string name="change_language">&#x200c;Change language</string>
 </resources>

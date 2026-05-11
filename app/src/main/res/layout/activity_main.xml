@@ -418,7 +418,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/ic_translate"
-                            android:text="Change Language"
+                            android:text="@{strings.change_language}"
                             android:textSize="13sp"
                             tools:ignore="RtlHardcoded" />
 
@@ -452,6 +452,15 @@
                             android:layout_height="wrap_content"
                             android:text="@{strings.about_update_check_button}"
                             android:textSize="13sp" />
+
+                        <Button
+                            android:id="@+id/buttonAboutApp"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{strings.about_app_title}"
+                            android:textSize="13sp" />
+
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
