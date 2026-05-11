@@ -209,6 +209,8 @@ fun createOutputStream(
     }
 }
 
+private const val ENOSPC = "enospc"
+
 /**
  * Get output stream for an image file, until Android P
  */
@@ -300,10 +302,10 @@ fun createOutputStreamLegacy(
     } catch (e: IOException) {
         var error = e.toString()
         Log.e(UTILSKT, "createOutputStreamLegacy() $error")
-        return if (error.contains("enospc", ignoreCase = true)) {
-            error = "No space left on internal device storage"
+        return if (error.contains(ENOSPC, ignoreCase = true)) {
+            error = context.getString(R.string.error_no_space)
             Log.e(UTILSKT, "createOutputStreamLegacy() $error")
-            OutputStreamResult("Could not open output file. No space left on internal device storage")
+            OutputStreamResult("Could not open output file. $error")
         } else {
             OutputStreamResult("Could not open output file. IOException")
         }
@@ -533,11 +535,7 @@ private fun resolveAppLabel(packageName: String): String {
             @Suppress("DEPRECATION")
             pm.getApplicationInfo(packageName, 0)
         }
-
-        val label = pm.getApplicationLabel(appInfo)?.toString()
-        if (!label.isNullOrBlank()) {
-            return label
-        }
+        return pm.getApplicationLabel(appInfo).toString()
     } catch (_: Exception) {
         // no-op
     }
@@ -658,8 +656,8 @@ fun saveBitmapToFile(
     } catch (e: IOException) {
         error = e.toString()
         Log.e(UTILSKT, "saveImageToFile() $error")
-        if (error.contains("enospc", ignoreCase = true)) {
-            error = "No space left on internal device storage"
+        if (error.contains(ENOSPC, ignoreCase = true)) {
+            error = context.getString(R.string.error_no_space)
         }
 
     } catch (e: NullPointerException) {
@@ -795,8 +793,8 @@ fun saveBitmapToFile(
     } catch (e: IOException) {
         error = e.toString()
         Log.e(UTILSKT, "saveImageToFile() $error")
-        if (error.contains("enospc", ignoreCase = true)) {
-            error = "No space left on internal device storage"
+        if (error.contains(ENOSPC, ignoreCase = true)) {
+            error = context.getString(R.string.error_no_space)
         }
 
     } catch (e: NullPointerException) {
@@ -1352,12 +1350,11 @@ fun HashSet<String>.contains(seq: CharSequence): Boolean = this.contains(seq.toS
 fun Context.setUserLanguage(force: Boolean = false) {
     val userLanguages = App.getInstance().prefManager.userLanguages
     if (userLanguages?.isNotBlank() == true) {
-        val localeArray = userLanguages.split(",").map { Locale.forLanguageTag(it) }.toTypedArray()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             getSystemService(LocaleManager::class.java)?.applicationLocales =
-                LocaleList(*localeArray)
+                LocaleList.forLanguageTags(userLanguages)
         } else {
-            AppCompatDelegate.setApplicationLocales(LocaleListCompat.create(*localeArray))
+            AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(userLanguages))
         }
     } else if (force) {
         // Use default android settings
