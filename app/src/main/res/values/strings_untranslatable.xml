@@ -107,6 +107,8 @@
 
     <string name="miui_background_warning">Some of these settings require the permission to open new windows while running in the background.\n\nTap here to change the permission or look for it in the app info screen under \"Other permissions\" and \"Open new windows while running in background\"</string>
 
+    <string name="error_no_space" translatable="false">No space left on internal device storage</string>
+
     <string name="pref_static_field_key_post_actions" translatable="false">pref_static_field_key_post_actions</string>
 
     <!-- Shutters -->
