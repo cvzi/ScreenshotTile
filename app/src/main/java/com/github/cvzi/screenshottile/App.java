@@ -8,6 +8,7 @@ import static com.github.cvzi.screenshottile.utils.UtilsKt.toastDeviceIsLocked;
 import static com.github.cvzi.screenshottile.utils.UtilsKt.tryNativeScreenshot;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -571,23 +572,27 @@ public class App extends Application implements AppFunctionConfiguration.Provide
         } else {
             context.startActivity(intent);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-                // skipcq
-                context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+                closeSystemDialogsCompat(context);
             }
         }
     }
 
-    @SuppressLint({"DEPRECATION", "MissingPermission"})
     public void startActivityAndCollapseIfNotActivity(Context context, Intent intent) {
         if (context instanceof Activity) {
             context.startActivity(intent);
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) {
-                // skipcq
-                context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+                closeSystemDialogsCompat(context);
             }
         } else {
             startActivityAndCollapseCompat(context, intent);
         }
+    }
+
+    @SuppressWarnings("deprecation")
+    @SuppressLint("MissingPermission")
+    private void closeSystemDialogsCompat(Context context) {
+        // Only used on pre-Android 12
+        context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
     }
 
     private class CountDownRunnable implements Runnable {
