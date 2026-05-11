@@ -14,8 +14,6 @@ import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.core.view.doOnNextLayout
@@ -30,6 +28,7 @@ import com.github.cvzi.screenshottile.databinding.ActivityPostCropBinding
 import com.github.cvzi.screenshottile.utils.SaveImageHandler
 import com.github.cvzi.screenshottile.utils.SingleImage
 import com.github.cvzi.screenshottile.utils.SingleImageLoaded
+import com.github.cvzi.screenshottile.utils.applyFullscreenScreenshotStyle
 import com.github.cvzi.screenshottile.utils.createNotification
 import com.github.cvzi.screenshottile.utils.formatLocalizedString
 import com.github.cvzi.screenshottile.utils.getLocalizedString
@@ -311,26 +310,7 @@ class PostCropActivity : GenericPostActivity() {
 
 
     private fun goFullscreen() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.insetsController?.hide(WindowInsets.Type.statusBars())
-        } else {
-            @Suppress("DEPRECATION") window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            window.statusBarColor = Color.TRANSPARENT
-            window.setDecorFitsSystemWindows(true)
-        } else {
-            @Suppress("DEPRECATION") window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        }
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            window.attributes.layoutInDisplayCutoutMode =
-                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
-        }
+        window.applyFullscreenScreenshotStyle()
     }
 
     private fun addBackButtonHandler() {
