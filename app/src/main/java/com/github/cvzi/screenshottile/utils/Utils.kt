@@ -22,7 +22,6 @@ import android.os.Build
 import android.os.Environment
 import android.os.Environment.getExternalStoragePublicDirectory
 import android.os.LocaleList
-import android.os.StatFs
 import android.provider.MediaStore.Images
 import android.service.quicksettings.TileService
 import android.util.Log
@@ -49,11 +48,6 @@ import com.github.cvzi.screenshottile.activities.PostActivity
 import com.github.cvzi.screenshottile.activities.PostCropActivity
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileNotFoundException
@@ -751,29 +745,6 @@ fun saveImageToFile(
 
 
 /**
- * Find the cache directory with maximum free space
- */
-@Suppress("unused")
-fun getCacheMaxFreeSpace(context: Context): File? {
-    val cacheDirs = context.externalCacheDirs
-    if (cacheDirs.isNullOrEmpty()) {
-        return null
-    }
-    val maxIndex =
-        cacheDirs.indices.maxByOrNull { index ->
-            if (cacheDirs[index] == null) {
-                0
-            } else {
-                StatFs(cacheDirs[index].path).availableBytes
-            }
-        } ?: -1
-    if (maxIndex == -1) {
-        return null
-    }
-    return cacheDirs[maxIndex]
-}
-
-/**
  * Was the app updated or newly installed
  */
 fun isNewAppInstallation(context: Context): Boolean {
@@ -976,43 +947,6 @@ fun handlePostScreenshot(
                 Log.e(UTILSKT, "openShare: resolveActivity(shareIntent) returned null")
                 context.toastMessage("No suitable app for sharing found", ToastType.ERROR)
             }
-        }
-    }
-}
-
-fun cleanUpAppData(context: Context) = cleanUpAppData(context, null, null)
-fun cleanUpAppData(context: Context, keepMaxFiles: Int? = null, onDeleted: (() -> Unit)? = null) {
-    CoroutineScope(Job() + Dispatchers.IO).launch(Dispatchers.IO) {
-        try {
-            val keepMax = keepMaxFiles ?: App.getInstance().prefManager.keepAppDataMax
-            Log.d(UTILSKT, "cleanUpAppData[keepMaxFiles=$keepMaxFiles, keepMax=$keepMax]")
-            if (keepMax < 0) {
-                return@launch
-            }
-            val folder = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-            val fileList =
-                folder?.listFiles()?.map { file ->
-                    val lastModified = try {
-                        file.lastModified()
-                    } catch (_: Exception) {
-                        null
-                    }
-                    Pair(file, lastModified)
-                }?.sortedByDescending { it.second }
-
-            if (fileList != null && fileList.size > keepMax) {
-                for (i in keepMax until fileList.size) {
-                    Log.d(UTILSKT, "cleanUpAppData() delete ${fileList[i].first}")
-                    fileList[i].first.delete()
-                }
-            }
-            if (onDeleted != null) {
-                withContext(Dispatchers.Main) {
-                    onDeleted.invoke()
-                }
-            }
-        } catch (e: Exception) {
-            Log.e(UTILSKT, "cleanUpAppData Error", e)
         }
     }
 }
