@@ -15,12 +15,20 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityWebViewBinding
 import com.github.cvzi.screenshottile.utils.ui.minPaddingFromInsets
 
+/**
+ * Shows html files from assets in a WebView.
+ * External links are opened in the default browser to not
+ * require internet permission.
+ */
 class WebViewActivity : BaseAppCompatActivity() {
 
     companion object {
         private const val EXTRA_ASSET_PATH = "extra_asset_path"
         private const val EXTRA_TITLE = "extra_title"
 
+        /**
+         * Start this activity from another activity
+         */
         fun start(context: Context, assetPath: String, title: String) {
             val intent = Intent(context, WebViewActivity::class.java).apply {
                 putExtra(EXTRA_ASSET_PATH, assetPath)
