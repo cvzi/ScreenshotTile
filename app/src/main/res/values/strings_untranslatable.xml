@@ -37,6 +37,8 @@
     <string name="pref_key_floating_button_hide_after" translatable="false">floating_button_hide_after</string>
     <string name="pref_key_floating_button_show_close" translatable="false">floating_button_show_close</string>
     <string name="pref_key_floating_button_show_settings_after_move" translatable="false">floating_button_show_settings_after_move</string>
+    <string name="pref_key_floating_button_snap_to_notch" translatable="false">floating_button_snap_to_notch</string>
+    <string name="pref_key_floating_button_request_scale_to_notch" translatable="false">floating_button_request_scale_to_notch</string>
     <string name="pref_key_floating_button_close_emoji" translatable="false">floating_button_close_emoji</string>
     <string name="pref_key_floating_button_shutter" translatable="false">floating_button_shutter</string>
     <string name="pref_key_floating_button_delay" translatable="false">floating_button_delay</string>

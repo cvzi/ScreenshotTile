@@ -27,6 +27,7 @@ import androidx.core.graphics.createBitmap
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.R
@@ -39,6 +40,9 @@ import com.github.cvzi.screenshottile.utils.ui.fillTextHeight
 import com.github.cvzi.screenshottile.utils.ui.minPaddingFromInsets
 import com.github.cvzi.screenshottile.utils.ui.parseColorString
 import com.google.android.material.switchmaterial.SwitchMaterial
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 /**
@@ -87,8 +91,11 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
     private lateinit var seekBarFloatingButtonTintV: SeekBar
     private lateinit var seekBarFloatingButtonAlpha: SeekBar
     private lateinit var seekBarFloatingButtonScale: SeekBar
+    private lateinit var switchFloatingButtonSnapToNotch: SwitchMaterial
 
     private lateinit var shutterCollection: ShutterCollection
+
+    private var buttonRefreshJob: Job? = null
 
     private lateinit var binding: ActivityFloatingButtonSettingsBinding
     private var updatingGestureUi = false
@@ -118,6 +125,7 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
         seekBarFloatingButtonTintV = binding.seekBarFloatingButtonTintV
         seekBarFloatingButtonAlpha = binding.seekBarFloatingButtonAlpha
         seekBarFloatingButtonScale = binding.seekBarFloatingButtonScale
+        switchFloatingButtonSnapToNotch = binding.switchFloatingButtonSnapToNotch
 
         switchFloatingButtonEnabled.setOnCheckedChangeListener { _, isChecked ->
             prefManager.floatingButton = isChecked
@@ -256,12 +264,30 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
             ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
 
+        switchFloatingButtonSnapToNotch.setOnCheckedChangeListener { _, isChecked ->
+            val oldValue = prefManager.floatingButtonSnapToNotch
+            prefManager.floatingButtonSnapToNotch = isChecked
+            if (isChecked && !oldValue) {
+                // Resize the floating button to the notch size when the switch is enabled
+                prefManager.floatingButtonRequestScaleToNotch = true
+                Handler(Looper.getMainLooper()).postDelayed({
+                    // Get the resulting scale of the resized floating button and set the slider
+                    seekBarFloatingButtonScale.progress = prefManager.floatingButtonScale
+                }, 1000)
+            }
+            if (!isChecked) {
+                prefManager.resetFloatingButtonPosition(resources.configuration.orientation)
+            }
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(forceRedraw = true)
+        }
+
         seekBarFloatingButtonScale.apply {
             max = 1000
             min = 1
             setOnSeekBarChangeListener(OnSeekBarProgress { progress ->
                 prefManager.floatingButtonScale = progress
                 updatePreviewButton()
+                debounceButtonRefresh(1000)
             })
         }
 
@@ -387,6 +413,8 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
             prefManager.floatingButtonShowClose
         binding.switchFloatingButtonShowSettingsAfterMove.isChecked =
             prefManager.floatingButtonShowSettingsAfterMove
+        switchFloatingButtonSnapToNotch.isChecked =
+            prefManager.floatingButtonSnapToNotch
 
         radioGroupShutterTheme.removeAllViews()
         val selectedShutter = shutterCollection.current()
@@ -434,6 +462,7 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
         super.onPause()
         ScreenshotAccessibilityService.instance?.updateFloatingButton(forceRedraw = true)
         Handler(Looper.getMainLooper()).removeCallbacksAndMessages(null)
+        buttonRefreshJob?.cancel()
     }
 
     private fun updatePreviewButton() {
@@ -505,6 +534,14 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
             }
         ).isChecked = true
         updatingGestureUi = false
+    }
+
+    fun debounceButtonRefresh(delay: Long) {
+        buttonRefreshJob?.cancel()
+        buttonRefreshJob = lifecycleScope.launch {
+            delay(delay)
+            ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
+        }
     }
 
 

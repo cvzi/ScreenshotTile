@@ -70,6 +70,7 @@ import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
 import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 import com.github.cvzi.screenshottile.utils.ui.parseColorString
 import kotlin.math.abs
+import kotlin.math.max
 
 
 /**
@@ -241,13 +242,12 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
     private fun getWinContext(): Context {
-        var windowContext: Context = this
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && !useThis) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !useThis) {
             val dm: DisplayManager = getSystemService(DISPLAY_SERVICE) as DisplayManager
-            val defaultDisplay = dm.getDisplay(DEFAULT_DISPLAY)
-            windowContext = createDisplayContext(defaultDisplay)
+            val defaultDisplay = dm.getDisplay(DEFAULT_DISPLAY) ?: dm.getDisplay(0)
+            return createWindowContext(defaultDisplay, TYPE_ACCESSIBILITY_OVERLAY, null)
         }
-        return windowContext
+        return this
     }
 
     private fun getWinManager(): WindowManager {
@@ -398,6 +398,22 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     private fun configureFloatingButton(root: ViewGroup, animate: Boolean = true) {
         screenOrientation = resources.configuration.orientation
 
+        var notchSize = -1
+        var notchCenter = Point(-1, -1)
+        if (prefManager.floatingButtonSnapToNotch) {
+            binding?.root?.let { root ->
+                val centerAndSize = getCameraNotch(root)
+                if (centerAndSize != null) {
+                    notchCenter = centerAndSize.first
+                    notchSize = centerAndSize.second
+
+                    val winX = notchCenter.x - notchSize / 2
+                    val winY = notchCenter.y - notchSize / 2
+                    prefManager.setFloatingButtonPosition(Point(winX, winY), screenOrientation)
+                }
+            }
+        }
+
         val position = prefManager.getFloatingButtonPosition(screenOrientation)
         val shutterCollection = ShutterCollection(this, R.array.shutters, R.array.shutter_names)
 
@@ -406,8 +422,35 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         val buttonScreenshot = root.findViewById<ImageView>(R.id.buttonScreenshot)
         setShutterDrawable(this, buttonScreenshot, shutterCollection.current().normal)
         var buttonClose: TextView? = null
+
         val scale = prefManager.floatingButtonScale
-        if (scale != 100) {
+
+        if (notchSize > 0 && prefManager.floatingButtonRequestScaleToNotch) {
+            // Scale the button to fit the notch
+            buttonScreenshot.post {
+                val defaultSize = buttonScreenshot.measuredHeight
+
+                buttonScreenshot.layoutParams = buttonScreenshot.layoutParams.apply {
+                    width = notchSize
+                    height = notchSize
+                }
+                buttonScreenshot.post {
+                    buttonClose?.run {
+                        fillTextHeight(
+                            this,
+                            buttonScreenshot.measuredHeight * 3 / 4,
+                            buttonScreenshot.measuredHeight * 0.8f
+                        )
+                    }
+
+                    // Calculate a scale scalar from defaultSize and store it in preferences
+                    // so the user can change the scale manually later
+                    val calculatedScale = notchSize * 100 / defaultSize
+                    prefManager.floatingButtonScale = calculatedScale
+                    prefManager.floatingButtonRequestScaleToNotch = false
+                }
+            }
+        } else if (scale != 100) {
             // Scale button
             buttonScreenshot.post {
                 buttonScreenshot.layoutParams = buttonScreenshot.layoutParams.apply {
@@ -422,6 +465,20 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                             buttonScreenshot.measuredHeight * 0.8f
                         )
                     }
+
+                    // update position to keep the button centered in the notch after resizing
+                    if (notchCenter.x > -1 && notchCenter.y > -1) {
+                        buttonScreenshot.post {
+                            val winX = notchCenter.x - buttonScreenshot.measuredWidth / 2
+                            val winY = notchCenter.y - buttonScreenshot.measuredHeight / 2
+                            prefManager.setFloatingButtonPosition(
+                                Point(winX, winY),
+                                screenOrientation
+                            )
+                            updateWindowViewPosition(root, winX, winY)
+                        }
+                    }
+
                 }
             }
         }
@@ -468,6 +525,9 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                                 y = (event.y - parent.measuredHeight / 2).toInt()
                             }
                             dragDone = true
+                            if (prefManager.floatingButtonSnapToNotch) {
+                                prefManager.floatingButtonSnapToNotch = false
+                            }
                             updateWindowViewPosition(it, x, y)
                             prefManager.setFloatingButtonPosition(
                                 Point(x, y),
@@ -596,6 +656,69 @@ class ScreenshotAccessibilityService : AccessibilityService() {
 
     private val checkPositionRunnable = Runnable {
         checkAndCorrectPosition()
+    }
+
+    private fun getCameraNotch(root: View): Pair<Point, Int>? {
+        var cutout = root.rootWindowInsets?.displayCutout
+
+        if (cutout == null) {
+            // Try to get cutout from display directly
+            val display = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                try {
+                    root.display
+                        ?: (getSystemService(DISPLAY_SERVICE) as DisplayManager).getDisplay(
+                            DEFAULT_DISPLAY
+                        )
+                } catch (e: Exception) {
+                    (getSystemService(DISPLAY_SERVICE) as DisplayManager).getDisplay(DEFAULT_DISPLAY)
+                }
+            } else {
+                @Suppress("DEPRECATION")
+                getWinManager().defaultDisplay
+            }
+            cutout = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                display?.cutout
+            } else {
+                null
+            }
+        }
+
+        if (cutout == null) {
+            Log.w(TAG, "Camera notch: No display cutout found in insets or display.")
+            return null
+        }
+
+        val rects = cutout.boundingRects
+        if (rects.isEmpty()) {
+            Log.w(TAG, "Camera notch: Cutout bounding rects are empty")
+            return null
+        }
+
+        // Find a suitable notch
+        val notch = rects.maxByOrNull { it.width() * it.height() } ?: return null
+
+        // Guess an appropriate size for the button based on the notch shape
+        // Use square sizes even though notches are often circular, this way
+        // the button is still slightly visible. The user can later resize it.
+        val notchWidth = notch.width()
+        val notchHeight = notch.height()
+
+        val targetSize: Int = if (notchWidth > notchHeight * 2) {
+            // Wide notch at top/bottom
+            notchHeight
+        } else if (notchHeight > notchWidth * 2) {
+            // Tall notch at left/right
+            notchWidth
+        } else {
+            // Hole punch?
+            max(notchWidth, notchHeight)
+        }
+
+        if (targetSize <= 0) return null
+
+        val pos = Point(notch.centerX(), notch.centerY())
+
+        return Pair(pos, targetSize)
     }
 
     private fun checkAndCorrectPosition() {
@@ -811,10 +934,15 @@ class ScreenshotAccessibilityService : AccessibilityService() {
     }
 
     private fun updateWindowViewPosition(view: View, x: Int, y: Int) {
-        getWinManager().updateViewLayout(
-            view,
-            windowViewAbsoluteLayoutParams(x, y)
-        )
+        if (!view.isAttachedToWindow) return
+        try {
+            getWinManager().updateViewLayout(
+                view,
+                windowViewAbsoluteLayoutParams(x, y)
+            )
+        } catch (e: Exception) {
+            Log.e(TAG, "updateWindowViewPosition failed:", e)
+        }
     }
 
     private fun windowViewAbsoluteLayoutParams(x: Int, y: Int): WindowManager.LayoutParams {

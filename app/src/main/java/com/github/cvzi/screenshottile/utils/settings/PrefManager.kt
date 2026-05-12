@@ -244,6 +244,26 @@ class PrefManager(private val context: Context) {
             value
         ).apply()
 
+    var floatingButtonSnapToNotch: Boolean
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_floating_button_snap_to_notch),
+            false
+        )
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button_snap_to_notch),
+            value
+        ).apply()
+
+    var floatingButtonRequestScaleToNotch: Boolean
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_floating_button_request_scale_to_notch),
+            false
+        )
+        set(value) = pref.edit().putBoolean(
+            context.getString(R.string.pref_key_floating_button_request_scale_to_notch),
+            value
+        ).apply()
+
     var floatingButtonCloseEmoji: String
         get() = pref.getString(
             context.getString(R.string.pref_key_floating_button_close_emoji),
@@ -993,4 +1013,13 @@ class PrefManager(private val context: Context) {
             value
         ).apply()
 
+    fun resetFloatingButtonPosition(orientation: Int) {
+        val map = getFloatingButtonPositions()
+        map.remove(orientation)
+        val dataStr = map.map { "${it.value.x},${it.value.y},${it.key}" }.joinToString(";")
+        pref.edit().putString(
+            context.getString(R.string.pref_key_floating_button_position),
+            dataStr
+        ).apply()
+    }
 }

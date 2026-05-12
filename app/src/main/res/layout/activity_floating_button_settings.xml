@@ -360,6 +360,36 @@
                                     android:text="@{strings.setting_floating_button_show_settings_after_move}" />
                             </TableRow>
 
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/switchFloatingButtonSnapToNotch"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_weight="1"
+                                        android:text="@{strings.setting_floating_button_snap_to_notch}" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@{strings.setting_floating_button_snap_to_notch_summary}"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+                            </TableRow>
+
                         </TableLayout>
 
                         <TextView
