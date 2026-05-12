@@ -208,6 +208,11 @@
             android:parentActivityName="com.github.cvzi.screenshottile.activities.SettingsActivity"
             android:taskAffinity="${applicationId}.task"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.github.cvzi.screenshottile.activities.WebViewActivity"
+            android:exported="false"
+            android:parentActivityName="com.github.cvzi.screenshottile.activities.AboutActivity"
+            android:theme="@style/AppTheme" />
 
         <service
             android:name="com.github.cvzi.screenshottile.services.ScreenshotTileService"
