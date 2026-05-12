@@ -54,6 +54,10 @@ class Texts {
         R.string.setting_floating_button_show_close_summary
     val setting_floating_button_show_settings_after_move =
         R.string.setting_floating_button_show_settings_after_move
+    val setting_floating_button_snap_to_notch =
+        R.string.setting_floating_button_snap_to_notch
+    val setting_floating_button_snap_to_notch_summary =
+        R.string.setting_floating_button_snap_to_notch_summary
     val setting_floating_button_show_close_dialog_title =
         R.string.setting_floating_button_show_close_dialog_title
     val setting_floating_button_show_close_dialog_description =
