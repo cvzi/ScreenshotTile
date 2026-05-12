@@ -1,3 +1,5 @@
+@file:Suppress("PropertyName")
+
 package com.github.cvzi.screenshottile.utils
 
 import com.github.cvzi.screenshottile.R

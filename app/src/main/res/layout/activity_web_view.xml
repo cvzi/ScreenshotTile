@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="strings"
+            type="com.github.cvzi.screenshottile.utils.Texts" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/primaryLightColor"
+        tools:context=".activities.WebViewActivity">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/linearLayoutHeader"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageAppIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="@string/about_app_icon_description"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:paddingStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{strings.app_name_long}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="@string/app_name_long" />
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="WebViewLayout" />
+
+    </LinearLayout>
+</layout>

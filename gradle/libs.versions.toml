@@ -15,6 +15,7 @@ junitVersion = "4.13.2"
 kotlin = "2.3.21"
 kotlinBom = "2.3.21"
 kotlinxCoroutinesAndroid = "1.11.0"
+licensereport = "0.9.8"
 lifecycleViewmodelKtx = "2.10.0"
 material = "1.13.0"
 photoeditor = "3.1.0"
@@ -103,3 +104,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
 devtools-ksp = { id= "com.google.devtools.ksp", version.ref = "devtoolsksp"}
+license-report = { id = "com.jaredsburrows.license", version.ref = "licensereport" }

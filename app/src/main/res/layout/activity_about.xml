@@ -47,6 +47,13 @@
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
+            <Button
+                android:id="@+id/buttonFeatures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/about_features_button" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +93,7 @@
                 android:id="@+id/buttonSourceCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/about_source_code_title" />
 
             <Button

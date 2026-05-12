@@ -60,6 +60,8 @@ You may translate the resource files directly and open a pull request. The Engli
 
 The internal image editor and image library used is [github.com/burhanrashid52/PhotoEditor](https://github.com/burhanrashid52/PhotoEditor) (MIT license) by [Burhanuddin Rashid](https://github.com/burhanrashid52).
 
+The open source libraries and their licenses are show-cased in-app in the app's about section with the [gradle-license-plugin](https://github.com/jaredsburrows/gradle-license-plugin) by [Jared Burrows](https://github.com/jaredsburrows/).
+
 ## Technical details
 
 This app supports three different methods to take screenshots
@@ -164,7 +166,7 @@ Since Android 13/Tiramisu this permission can be used to request the ability to 
 
 # <a name="automatic">Automatic screenshots with Broadcast intents</a>
 
-You can automate taking screenshots with apps like [MacroDroid](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid) or [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm).
+You can automate taking screenshots with apps like [MacroDroid](https://play.google.com/store/apps/details?id=com.arlosoft.macrodroid), [Automate](https://llamalab.com/automate/) or [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm).
 This works via [Broadcast intents](https://developer.android.com/guide/components/broadcasts).
 
 Tutorial video on youtube: [https://youtu.be/q5hQF1nzOzk](https://www.youtube.com/watch?v=q5hQF1nzOzk)
@@ -186,8 +188,6 @@ Now you can **add a macro** to MacroDroid:
     *   (Optional: Extra 2 parameter `partial`, value `true` to open the area selector for a partial screenshot instead of taking a screenshot)
 
 ![Macro intent screenshot](/docs/imgs/MacroDroid_SendIntent.png)
-
-For [Automate](https://llamalab.com/automate/) by LlamaLab there is a flow available: https://llamalab.com/automate/community/flows/42819
 
 ## <a name="terminal">Automatic screenshots from terminal</a>
 

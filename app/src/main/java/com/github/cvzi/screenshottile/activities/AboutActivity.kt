@@ -86,16 +86,35 @@ class AboutActivity : BaseAppCompatActivity() {
             openEmail(getString(R.string.contact_email), getString(R.string.contact_email_subject))
         }
         binding.buttonLicense.setOnClickListener {
-            openUri(getLocalizedString(R.string.pref_static_field_link_about_license_1))
+            WebViewActivity.start(
+                this,
+                "license.html",
+                getLocalizedString(R.string.about_license_title)
+            )
         }
         binding.buttonOpenSource.setOnClickListener {
-            openUri(getLocalizedString(R.string.pref_static_field_link_about_open_source))
+            WebViewActivity.start(
+                this,
+                "open_source_licenses.html",
+                getLocalizedString(R.string.about_open_source_title)
+            )
         }
         binding.buttonPrivacy.setOnClickListener {
-            openUri(getLocalizedString(R.string.pref_static_field_link_about_privacy))
+            WebViewActivity.start(
+                this,
+                "privacy.html",
+                getLocalizedString(R.string.about_privacy_title)
+            )
         }
         binding.buttonUpdateCheck.setOnClickListener {
             openUri(getUpdateUrl(this))
+        }
+        binding.buttonFeatures.setOnClickListener {
+            WebViewActivity.start(
+                this,
+                "features.html",
+                getLocalizedString(R.string.about_features_button)
+            )
         }
         binding.buttonBackup.setOnClickListener {
             BackupPrefsActivity.start(this)

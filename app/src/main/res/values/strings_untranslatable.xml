@@ -345,5 +345,5 @@ Material You design contributed by <a href="https://github.com/user0-07161/">use
     <string name="release_url_github" translatable="false">https://github.com/cvzi/ScreenshotTile/releases</string>
     <string name="contact_email" translatable="false">cuzi-android@openmail.cc</string>
     <string name="contact_email_subject" translatable="false">Screenshot Tile app</string>
-
+    <string name="about_features_button" translatable="false">App Features</string>
 </resources>

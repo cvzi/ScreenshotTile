@@ -1,0 +1,114 @@
+<html><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body {
+    font-family: sans-serif;
+    padding:0 0.4em 2em 0.4em;
+}
+ul {
+  padding-left: 0.9em;
+  list-style: "🔹";
+}
+ul ul {
+  list-style: "🔸";
+}
+
+@media (prefers-color-scheme:dark){
+    body{background-color:#6c326a;color:#eee}
+}
+@media (prefers-color-scheme:light){
+    body{background-color:#fff1ff;color:#000}
+}
+</style>
+    <title>Features List</title>
+</head><body>
+<h1>Features List</h1>
+<p>Note: Some of these features depend on a minimum or maximum Android version.</p>
+<h2>Screenshot Capture Methods</h2>
+<ul>
+<li><strong>Legacy Method (Android 7.0+):</strong> Uses screen recording capabilities (<code>MediaProjection</code>) to capture a single frame.</li>
+<li><strong>Native Method - System Defaults (Android 9.0+):</strong> Triggers the system's default screenshot mechanism (identical to physical button shortcuts) from an <code>AccessibilityService</code>.</li>
+<li><strong>Native Method - Custom (Android 11.0+):</strong> Uses <code>AccessibilityService#takeScreenshot</code> for full control over the capture and saving process without relying on system defaults.</li>
+</ul>
+<h2>Triggers &amp; Interfaces</h2>
+<ul>
+<li><strong>Quick Settings Tile:</strong> The primary interface for quickly capturing screenshots from the notification shade.</li>
+<li><strong>Floating Button:</strong><ul>
+<li><strong>Customizable:</strong> Adjustable size, transparency (alpha), and color.</li>
+<li><strong>Positioning:</strong> Draggable anywhere on the screen; remembers different positions for portrait and landscape orientations.</li>
+<li><strong>Camera notch:</strong> Tap camera to take screenshot. Option to hide the floating button behind the camera notch.</li>
+<li><strong>Multi-Action Support:</strong> Configurable actions for single tap, double tap, and long press (e.g., Take Screenshot, Partial Screenshot, Open Settings).</li>
+<li><strong>App Filtering:</strong> Can be set to auto-hide or auto-show only in specific applications (Whitelist/Blacklist).</li>
+<li><strong>Auto-Hide:</strong> Automatically hides during the screenshot process or after a screenshot is taken.</li>
+<li><strong>Visibility Controls:</strong> Options to show/hide on the lockscreen or when Quick Settings are open.</li>
+</ul>
+</li>
+<li><strong>Home Screen Widgets:</strong> Provides widgets for Screenshot capture, Settings access, and Floating Button toggle.</li>
+<li><strong>Digital Assistant:</strong> Can be set as the device's default Digital Assistant app, allowing screenshots to be triggered via assistant shortcuts (e.g., long-pressing the home button).</li>
+<li><strong>Broadcast Intents (Automation):</strong> Integration with apps like Tasker or MacroDroid using a password-protected broadcast action (<code>com.github.cvzi.screenshottile.SCREENSHOT</code>). <a href="https://www.youtube.com/watch?v=q5hQF1nzOzk">Tutorial Video</a>.</li>
+<li><strong>App Functions (Android 15+):</strong> Integration with system-level shortcuts and AI assistants like Gemini for voice-triggered capture.</li>
+<li><strong>Terminal / ADB:</strong> Ability to trigger (remote) captures via command line with broadcast actions.</li>
+</ul>
+<h2>Capture Options</h2>
+<ul>
+<li><strong>Partial Screenshot:</strong> Interactive area selector to crop and capture only a specific part of the screen.</li>
+<li><strong>Auto-Crop:</strong> Pre-configure fixed margins (Top, Bottom, Left, Right) to automatically crop every screenshot.</li>
+<li><strong>Delay Timer:</strong> Configurable delay before capture<ul>
+<li><strong>Countdown Display:</strong> Optional visual on-screen countdown timer.</li>
+<li><strong>Tap to Cancel:</strong> Quickly cancel a pending screenshot during the countdown.</li>
+</ul>
+</li>
+<li><strong>Shutter Sound:</strong> Play a tone upon successful capture.</li>
+</ul>
+<h2>Saving &amp; Storage</h2>
+<ul>
+<li><strong>Custom Formats:</strong> Support for PNG, JPEG and WEBP.</li>
+<li><strong>Image Quality:</strong> Adjustable compression levels for JPEG and WEBP formats.</li>
+<li><strong>Custom Naming Patterns:</strong> Use placeholders to automate file naming:<ul>
+<li><code>%timestamp%</code>: Current date and time.</li>
+<li><code>%counter%</code>: Sequential number.</li>
+<li><code>%randint%</code> / <code>%random%</code>: Random numbers or UUIDs.</li>
+<li><code>%app%</code> / <code>%package%</code>: Name or package ID of the foreground app.</li>
+</ul>
+</li>
+<li><strong>Custom Storage Location:</strong> Save screenshots to any folder, SD card or cloud storage.</li>
+<li><strong>Private App Storage:</strong> Option to save screenshots only within the app's private data folder to keep them out of the public gallery.</li>
+<li><strong>History Management:</strong><ul>
+<li>Internal gallery/history of recent screenshots.</li>
+<li>Automatic cleanup of old files.</li>
+</ul>
+</li>
+</ul>
+<h2>Post-Capture Actions</h2>
+<ul>
+<li><strong>Notifications:</strong> Configurable notification buttons for immediate actions: Share, Edit, Rename, Crop, Delete, Details, and Photo Editor.</li>
+<li><strong>Built-in Image Editor:</strong><ul>
+<li><strong>Drawing:</strong> Freehand drawing with custom colors and brush sizes.</li>
+<li><strong>Text:</strong> Add text overlays with various colors.</li>
+<li><strong>Emojis:</strong> Insert emojis directly onto the screenshot.</li>
+<li><strong>Filters:</strong> Apply image filters like Grayscale, Sepia, Blur, etc.</li>
+<li><strong>Eraser:</strong> Tool to remove edits.</li>
+<li><strong>Undo/Redo:</strong> Full history of edits.</li>
+<li><strong>Auto-Rotate:</strong> Automatically rotates landscape screenshots for easier editing.</li>
+<li><strong>Overwrite Option:</strong> Choose to overwrite the original screenshot or save the edited version as a new file.</li>
+</ul>
+</li>
+<li><strong>Quick Rename:</strong> Dedicated activity to rename screenshots with:<ul>
+<li>Suggestions for ISO and Local date formats.</li>
+<li>List of recently used names.</li>
+<li>"Starred" names for frequent use.</li>
+<li>Move the file to recently used directories.</li>
+</ul>
+</li>
+</ul>
+<h2>App Settings &amp; Maintenance</h2>
+<ul>
+<li><strong>Backup &amp; Restore:</strong> Full export and import of all application settings to a file.</li>
+<li><strong>Theming:</strong> Support for Light and Dark theme.</li>
+<li><strong>Localization:</strong> Languages not natively supported by Android system can be activated in the in-app language switcher. Help with translations is welcome: <a href="https://crowdin.com/project/screenshottile">crowdin.com</a></li>
+<li><strong>Hide Launcher Icon:</strong> Option to hide the app icon from the app drawer.</li>
+<li><strong>Permission Guide:</strong> Integrated status checks, notifications for lost permissions and shortcuts to system permissions.</li>
+<li><strong>Restricted Settings Bypass:</strong> In-app instructions for enabling Accessibility services on Android 13+ devices where they might be restricted.</li>
+</ul>
+
+</body></html>

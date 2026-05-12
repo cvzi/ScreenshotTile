@@ -5,6 +5,7 @@ plugins {
     alias libs.plugins.kotlin.android
     alias libs.plugins.kotlin.kapt
     alias libs.plugins.devtools.ksp
+    alias libs.plugins.license.report
 }
 
 android {
@@ -91,6 +92,15 @@ android {
 
 ksp {
     arg "appfunctions:aggregateAppFunctions", "true"
+}
+
+licenseReport {
+    // Run via `gradlew --no-configuration-cache licenseReleaseReport`
+    generateCsvReport = false
+    generateHtmlReport = true
+    generateJsonReport = false
+    copyHtmlReportToAssets = true
+    showVersions = true
 }
 
 dependencies {
