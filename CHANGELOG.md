@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.19.0
+*   Option to hide floating button behind camera notch
+*   Fix a crash when calling requestAddTileService pre-Tiramisu
+*   Move information about app from settings to dedicated About activity
+*   Refactor util functions
+
 ## 2.18.1
 *   Update Chinese translations
 *   Bugfix: language selector had no labels
