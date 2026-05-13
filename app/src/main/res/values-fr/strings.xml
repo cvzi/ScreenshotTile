@@ -48,6 +48,8 @@
     <string name="setting_floating_button_show_close">Afficher un bouton [X]/ fermer à côté du bouton flottant</string>
     <string name="setting_floating_button_show_close_summary">Vous permet de supprimer le bouton flottant sans ouvrir les paramètres rapides</string>
     <string name="setting_floating_button_show_settings_after_move">Afficher le bouton des paramètres après le déplacement du bouton flottant</string>
+    <string name="setting_floating_button_snap_to_notch">Bouton dans la découpe</string>
+    <string name="setting_floating_button_snap_to_notch_summary">Déplace le bouton flottant derrière la découpe de la caméra avant</string>
     <string name="setting_floating_button_show_close_dialog_title">Bouton Fermer en emoji</string>
     <string name="setting_floating_button_show_close_dialog_description">Tapez un texte ou un emoji qui apparaîtra en tant que bouton de fermeture</string>
     <string name="setting_floating_button_shutter">Thème du bouton flottant</string>
@@ -173,6 +175,7 @@
     <string name="about_open_source_title">Open source utilisé</string>
     <string name="about_advanced_settings_button">Paramètres avancés</string>
     <string name="about_update_check_button">Vérification des mises à jour</string>
+    <string name="about_backup_title">Sauvegarder &amp; Restaurer</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Paramètres d\'accessibilité</string>
     <string name="toast_open_accessibility_settings">Activez \"%1s\" dans les paramètres d\'accessibilité</string>
