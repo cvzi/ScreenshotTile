@@ -422,7 +422,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:drawableLeft="@drawable/ic_translate"
-                            android:text="@{strings.change_language}"
+                            android:text="@string/change_language"
                             android:textSize="13sp"
                             tools:ignore="RtlHardcoded" />
 

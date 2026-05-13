@@ -1,1 +1,1 @@
-Quickly take screenshots from the quick settings panel
+Customizable screenshot tool with quick settings shortcut and floating button

@@ -346,4 +346,5 @@ Material You design contributed by <a href="https://github.com/user0-07161/">use
     <string name="contact_email" translatable="false">cuzi-android@openmail.cc</string>
     <string name="contact_email_subject" translatable="false">Screenshot Tile app</string>
     <string name="about_features_button" translatable="false">App Features</string>
+    <string name="change_language">Change language</string>
 </resources>

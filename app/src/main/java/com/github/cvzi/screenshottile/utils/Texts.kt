@@ -285,7 +285,6 @@ class Texts {
     val double_tap = R.string.double_tap
     val long_press = R.string.long_press
     val short_touch = R.string.short_touch
-    val change_language = R.string.change_language
 
     // Untranslatable strings
     val translate_this_app = R.string.translate_this_app
