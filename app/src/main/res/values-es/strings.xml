@@ -48,6 +48,8 @@
     <string name="setting_floating_button_show_close">Mostrar un botón [X]/\"cerrar\" junto al botón flotante</string>
     <string name="setting_floating_button_show_close_summary">Permite quitar el botón flotante sin abrir la configuraciónes rápidas</string>
     <string name="setting_floating_button_show_settings_after_move">Mostrar botón de configuración después de mover el botón flotante</string>
+    <string name="setting_floating_button_snap_to_notch">Ocultar en la muesca de la cámara</string>
+    <string name="setting_floating_button_snap_to_notch_summary">Mueve el botón flotante detrás de la cámara frontal</string>
     <string name="setting_floating_button_show_close_dialog_title">Emoji del botón cerrar</string>
     <string name="setting_floating_button_show_close_dialog_description">Escribe un texto o un emoji que aparecerá como el botón cerrar</string>
     <string name="setting_floating_button_shutter">Apariencia del botón flotante</string>
@@ -173,6 +175,7 @@
     <string name="about_open_source_title">Código abierto usado</string>
     <string name="about_advanced_settings_button">Configuración avanzada</string>
     <string name="about_update_check_button">Comprobación de actualización</string>
+    <string name="about_backup_title">Respaldar &amp; Restaurar</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Configuración de accesibilidad</string>
     <string name="toast_open_accessibility_settings">Por favor, activa \"%1s\" en la configuración de accesibilidad</string>
