@@ -122,6 +122,31 @@
 
                         </LinearLayout>
 
+                        <LinearLayout
+                            android:id="@+id/legacyScopeLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_weight="1"
+                                android:text="@{strings.legacy_request_scope}"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+                            <Spinner
+                                android:id="@+id/spinnerLegacyRequest"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="start"
+                                android:layout_weight="4"
+                                android:spinnerMode="dropdown"
+                                android:textAlignment="viewStart"
+                                tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+                        </LinearLayout>
+
                         <TextView
                             android:id="@+id/textDescLegacy"
                             android:layout_width="match_parent"

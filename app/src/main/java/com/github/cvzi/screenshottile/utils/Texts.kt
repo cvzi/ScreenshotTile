@@ -231,6 +231,9 @@ class Texts {
     val label_close = R.string.label_close
     val label_save = R.string.label_save
     val label_discard = R.string.label_discard
+    val legacy_request_scope = R.string.legacy_request_scope
+    val current_screen = R.string.current_screen
+    val choose_an_app = R.string.choose_an_app
     val msg_save_image = R.string.msg_save_image
     val msg_save_image_to_share = R.string.msg_save_image_to_share
     val msg_share_image = R.string.msg_share_image

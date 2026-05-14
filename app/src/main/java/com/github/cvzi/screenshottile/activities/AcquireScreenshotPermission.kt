@@ -6,6 +6,7 @@ import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.projection.MediaProjectionConfig
 import android.media.projection.MediaProjectionManager
 import android.os.Build
 import android.os.Bundle
@@ -81,7 +82,19 @@ class AcquireScreenshotPermission : BaseActivity() {
             (getSystemService(MEDIA_PROJECTION_SERVICE) as? MediaProjectionManager)?.apply {
                 App.setMediaProjectionManager(this)
                 try {
-                    startActivityForResult(createScreenCaptureIntent(), SCREENSHOT_REQUEST_CODE)
+                    val captureIntent =
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                            if (App.getInstance().prefManager.legacyRequestFullScreen) {
+                                // Request permission for full screen capture
+                                createScreenCaptureIntent(MediaProjectionConfig.createConfigForDefaultDisplay())
+                            } else {
+                                // Let the user decide to capture the full screen or a specific app
+                                createScreenCaptureIntent(MediaProjectionConfig.createConfigForUserChoice())
+                            }
+                        } else {
+                            createScreenCaptureIntent()
+                        }
+                    startActivityForResult(captureIntent, SCREENSHOT_REQUEST_CODE)
                 } catch (e: ActivityNotFoundException) {
                     Log.e(
                         TAG,

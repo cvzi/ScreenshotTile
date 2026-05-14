@@ -267,6 +267,7 @@
     <string name="pref_key_package_name_filter_list" translatable="false">package_name_filter_list</string>
     <string name="pref_key_package_name_filter_enabled" translatable="false">pref_key_package_name_filter_enabled</string>
     <string name="pref_key_package_name_filter_mode" translatable="false">pref_key_package_name_filter_mode</string>
+    <string name="pref_key_legacy_request_full_screen" translatable="false">legacy_request_full_screen</string>
 
     <!-- About in settings -->
     <string name="pref_static_field_key_about_app_1" translatable="false">pref_static_field_key_about_app_1</string>

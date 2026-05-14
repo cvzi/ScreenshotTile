@@ -99,6 +99,7 @@ class TakeScreenshotActivity : BaseActivity(),
 
     private var askedForPermission = false
 
+    @SuppressLint("ObsoleteSdkInt")
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private val onBackInvokedCallback: OnBackInvokedCallback? =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -116,6 +117,7 @@ class TakeScreenshotActivity : BaseActivity(),
         super.onNewIntent(intent)
     }
 
+    @SuppressLint("GestureBackNavigation")
     @Deprecated("Deprecated in Java")
     @Suppress("DEPRECATION")
     override fun onBackPressed() {
