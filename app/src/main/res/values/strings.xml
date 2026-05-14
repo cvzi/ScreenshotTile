@@ -98,6 +98,7 @@
     <string name="post_action_show_toast">&#x200c;Show a \"Toast\" notification. A small popup that disappears after 2 seconds</string>
     <string name="post_action_show_notification">&#x200c;Show a regular notification. You can change the buttons (Edit,Share,…) below the notification under \"More Settings\"</string>
     <string name="post_action_play_tone">&#x200c;Play a sound</string>
+    <string name="post_action_copy_clipboard">&#x200c;Copy to clipboard</string>
     <string name="post_action_empty">&#x200c;Don\'t open the screenshot</string>
     <string name="post_action_open_in_post">&#x200c;Open in \"Details\" view</string>
     <string name="post_action_open_in_post_crop">&#x200c;Crop the image</string>

@@ -1,6 +1,8 @@
 package com.github.cvzi.screenshottile.utils
 
 import android.app.KeyguardManager
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -18,6 +20,14 @@ import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.utils.notifications.editImageChooserIntent
 import com.github.cvzi.screenshottile.utils.notifications.openImageIntent
 import com.github.cvzi.screenshottile.utils.notifications.shareImageChooserIntent
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_COPY_TO_CLIPBOARD
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_IN_EXTERNAL_EDITOR
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_IN_EXTERNAL_VIEWER
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_IN_PHOTO_EDITOR
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_IN_POST
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_IN_POST_CROP
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_SHARE
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_PLAY_TONE
 
 private const val TAG = "ScreenshotActions"
 
@@ -52,23 +62,36 @@ fun tryNativeScreenshot(): Boolean {
 
 /**
  * Handle the following post screenshot actions:
- * "openInPost", "openInPostCrop", "openInPhotoEditor", "openInExternalEditor", "openInExternalViewer", "openShare"
+ * "copyClipboard", "playTone",
+ *
+ * "openInPost", "openInPostCrop", "openInPhotoEditor", "openInExternalEditor",
+ * "openInExternalViewer", "openShare"
  */
 fun handlePostScreenshot(
     context: Context,
     postScreenshotActions: ArrayList<String>,
     uri: Uri,
     mimeType: String? = null,
-    fullBitmap: Bitmap? = null
+    fullBitmap: Bitmap? = null,
+    fileTitle: String? = null
 ) {
     val app = App.getInstance()
     app.lastScreenshot = null
     val mimeTypeNullSafe = mimeType ?: "image/*"
-    if ("playTone" in postScreenshotActions) {
+
+    if (POST_ACTION_PLAY_TONE in postScreenshotActions) {
         Sound.playTone()
     }
+
+    if (POST_ACTION_COPY_TO_CLIPBOARD in postScreenshotActions) {
+        val clipboardManager =
+            context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clipData = ClipData.newUri(context.contentResolver, fileTitle ?: "Screenshot", uri)
+        clipboardManager.setPrimaryClip(clipData)
+    }
+
     when {
-        "openInPost" in postScreenshotActions -> {
+        POST_ACTION_OPEN_IN_POST in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
             App.getInstance().startActivityAndCollapseIfNotActivity(
                 context,
@@ -76,7 +99,7 @@ fun handlePostScreenshot(
             )
         }
 
-        "openInPostCrop" in postScreenshotActions -> {
+        POST_ACTION_OPEN_IN_POST_CROP in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
             App.getInstance().startActivityAndCollapseIfNotActivity(
                 context,
@@ -84,7 +107,7 @@ fun handlePostScreenshot(
             )
         }
 
-        "openInPhotoEditor" in postScreenshotActions -> {
+        POST_ACTION_OPEN_IN_PHOTO_EDITOR in postScreenshotActions -> {
             app.lastScreenshot = fullBitmap
             App.getInstance().startActivityAndCollapseIfNotActivity(
                 context,
@@ -95,39 +118,42 @@ fun handlePostScreenshot(
                 })
         }
 
-        "openInExternalEditor" in postScreenshotActions -> {
+        POST_ACTION_OPEN_IN_EXTERNAL_EDITOR in postScreenshotActions -> {
             val editIntent = editImageChooserIntent(context, uri, mimeTypeNullSafe)
             editIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             if (editIntent.resolveActivity(context.packageManager) != null) {
                 App.getInstance().startActivityAndCollapseIfNotActivity(context, editIntent)
             } else {
-                Log.e(TAG, "openInExternalEditor: resolveActivity(editIntent) returned null")
+                Log.e(
+                    TAG,
+                    "$POST_ACTION_OPEN_IN_EXTERNAL_EDITOR: resolveActivity(editIntent) returned null"
+                )
                 context.toastMessage("No suitable external photo editor found", ToastType.ERROR)
             }
         }
 
-        "openInExternalViewer" in postScreenshotActions -> {
+        POST_ACTION_OPEN_IN_EXTERNAL_VIEWER in postScreenshotActions -> {
             val openImageIntent = openImageIntent(context, uri, mimeTypeNullSafe)
             if (openImageIntent.resolveActivity(context.packageManager) != null) {
                 App.getInstance().startActivityAndCollapseIfNotActivity(context, openImageIntent)
             } else {
                 Log.e(
                     TAG,
-                    "openInExternalViewer: resolveActivity(openImageIntent) returned null"
+                    "$POST_ACTION_OPEN_IN_EXTERNAL_VIEWER: resolveActivity(openImageIntent) returned null"
                 )
                 context.toastMessage("No suitable external photo viewer found", ToastType.ERROR)
             }
         }
 
-        "openShare" in postScreenshotActions -> {
+        POST_ACTION_OPEN_SHARE in postScreenshotActions -> {
             val shareIntent = shareImageChooserIntent(context, uri, mimeTypeNullSafe)
             shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
             if (shareIntent.resolveActivity(context.packageManager) != null) {
                 App.getInstance().startActivityAndCollapseIfNotActivity(context, shareIntent)
             } else {
-                Log.e(TAG, "openShare: resolveActivity(shareIntent) returned null")
+                Log.e(TAG, "$POST_ACTION_OPEN_SHARE: resolveActivity(shareIntent) returned null")
                 context.toastMessage("No suitable app for sharing found", ToastType.ERROR)
             }
         }

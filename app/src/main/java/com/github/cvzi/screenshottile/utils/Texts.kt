@@ -105,6 +105,7 @@ class Texts {
     val post_action_show_toast = R.string.post_action_show_toast
     val post_action_show_notification = R.string.post_action_show_notification
     val post_action_play_tone = R.string.post_action_play_tone
+    val post_action_copy_clipboard = R.string.post_action_copy_clipboard
     val post_action_empty = R.string.post_action_empty
     val post_action_open_in_post = R.string.post_action_open_in_post
     val post_action_open_in_post_crop = R.string.post_action_open_in_post_crop

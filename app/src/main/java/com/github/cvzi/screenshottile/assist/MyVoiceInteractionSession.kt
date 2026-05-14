@@ -306,7 +306,8 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                     postScreenshotActions,
                     result.uri,
                     result.mimeType,
-                    result.bitmap
+                    result.bitmap,
+                    result.fileTitle
                 )
             }
 
@@ -337,7 +338,8 @@ class MyVoiceInteractionSession(context: Context) : VoiceInteractionSession(cont
                     postScreenshotActions,
                     uri,
                     result.mimeType,
-                    result.bitmap
+                    result.bitmap,
+                    result.fileTitle
                 )
             }
 
