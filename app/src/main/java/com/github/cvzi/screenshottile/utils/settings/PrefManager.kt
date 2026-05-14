@@ -1168,4 +1168,16 @@ class PrefManager(private val context: Context) {
             )
         }
     }
+
+    var legacyRequestFullScreen: Boolean
+        get() = pref.getBoolean(
+            context.getString(R.string.pref_key_legacy_request_full_screen),
+            false
+        )
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_legacy_request_full_screen),
+                value
+            )
+        }
 }

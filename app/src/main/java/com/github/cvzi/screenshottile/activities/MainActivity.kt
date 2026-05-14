@@ -18,6 +18,8 @@ import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -232,6 +234,12 @@ class MainActivity : BaseAppCompatActivity() {
                     App.requestStoragePermission(this, false)
                 }
             }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && switchLegacy.isChecked) {
+                binding.legacyScopeLayout.visibility = View.VISIBLE
+                binding.spinnerLegacyRequest.setSelection(if (App.getInstance().prefManager.legacyRequestFullScreen) 0 else 1)
+            } else {
+                binding.legacyScopeLayout.visibility = View.GONE
+            }
         }
         switchNative.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked && !accessibilityConsent && Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
@@ -309,6 +317,36 @@ class MainActivity : BaseAppCompatActivity() {
                     )
                 }, 1000)
             }
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            ArrayAdapter(
+                this, android.R.layout.simple_spinner_item, listOf(
+                    getLocalizedString(R.string.current_screen),
+                    getLocalizedString(R.string.choose_an_app)
+                )
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                binding.spinnerLegacyRequest.adapter = adapter
+            }
+
+            binding.spinnerLegacyRequest.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View,
+                    position: Int,
+                    id: Long
+                ) {
+                    App.getInstance().prefManager.legacyRequestFullScreen = (position == 0)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // no-op
+                }
+            }
+        } else {
+            binding.legacyScopeLayout.visibility = View.GONE
         }
 
         // Show warning if app is installed on external storage
@@ -582,6 +620,13 @@ class MainActivity : BaseAppCompatActivity() {
                 (it.parent as? ViewGroup)?.removeView(it)
             }
             hintAssistBugAndroid1011 = null
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE && switchLegacy.isChecked) {
+            binding.legacyScopeLayout.visibility = View.VISIBLE
+            binding.spinnerLegacyRequest.setSelection(if (App.getInstance().prefManager.legacyRequestFullScreen) 0 else 1)
+        } else {
+            binding.legacyScopeLayout.visibility = View.GONE
         }
     }
 
