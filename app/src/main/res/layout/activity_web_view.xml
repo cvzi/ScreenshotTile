@@ -13,15 +13,15 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@color/primaryLightColor"
+        android:orientation="vertical"
         tools:context=".activities.WebViewActivity">
 
         <LinearLayout
+            android:id="@+id/linearLayoutHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/linearLayoutHeader"
             android:orientation="horizontal">
 
             <ImageView
@@ -32,9 +32,9 @@
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
-                android:paddingStart="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="5dp"
                 android:text="@{strings.app_name_long}"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -43,9 +43,9 @@
 
         <WebView
             android:id="@+id/webView"
-            android:layout_marginTop="3dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
             tools:ignore="WebViewLayout" />
 
     </LinearLayout>

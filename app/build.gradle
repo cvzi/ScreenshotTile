@@ -22,10 +22,9 @@ android {
                 keyAlias 'key0'
                 keyPassword 'password'
             }
-            v1SigningEnabled false
-            v2SigningEnabled true
+            enableV1Signing false
+            enableV2Signing true
             enableV3Signing true
-            enableV4Signing true
         }
         debug {
             storeFile rootProject.file('app/debug.keystore')
