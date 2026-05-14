@@ -6,6 +6,7 @@ import android.graphics.Point
 import android.net.Uri
 import android.util.Log
 import androidx.core.content.edit
+import androidx.core.net.toUri
 import androidx.preference.PreferenceManager
 import com.github.cvzi.screenshottile.PackageNameFilterMode
 import com.github.cvzi.screenshottile.R
@@ -71,24 +72,30 @@ class PrefManager(private val context: Context) {
         )?.filter {
             it.isDigit()
         }?.toIntOrNull() ?: 0
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_delay),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_delay),
+                value.toString()
+            )
+        }
 
     var showCountDown: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_show_count_down), true)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_show_count_down),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_show_count_down),
+                value
+            )
+        }
 
     var tapToCancelCountDown: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_cancel_count_down), true)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_cancel_count_down),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_cancel_count_down),
+                value
+            )
+        }
 
 
     var tileLongPressAction: String
@@ -96,70 +103,86 @@ class PrefManager(private val context: Context) {
             context.getString(R.string.pref_key_tile_long_press_action),
             context.getString(R.string.setting_tile_action_value_screenshot)
         ) ?: context.getString(R.string.setting_tile_action_value_options)
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_tile_long_press_action),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_tile_long_press_action),
+                value
+            )
+        }
 
     var useNative: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_use_native), false)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_use_native),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_use_native),
+                value
+            )
+        }
 
     var useSystemDefaults: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_use_system_defaults), true)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_use_system_defaults),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_use_system_defaults),
+                value
+            )
+        }
 
     var floatingButton: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_floating_button), false)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button),
+                value
+            )
+        }
 
     var hideApp: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_hide_app), false)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_hide_app),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_hide_app),
+                value
+            )
+        }
 
     var fileFormat: String
         get() = pref.getString(
             context.getString(R.string.pref_key_file_format),
             context.getString(R.string.setting_file_format_value_default)
         ) ?: context.getString(R.string.setting_file_format_value_default)
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_file_format),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_file_format),
+                value
+            )
+        }
 
     var formatQuality: Int
         get() = (pref.getString(context.getString(R.string.pref_key_format_quality), "-1")
             ?.toIntOrNull() ?: -1).coerceIn(-1, 100)
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_format_quality),
-            value.coerceIn(-1, 100).toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_format_quality),
+                value.coerceIn(-1, 100).toString()
+            )
+        }
 
     var broadcastSecret: String
         get() = pref.getString(
             context.getString(R.string.pref_key_broadcast_secret),
             context.getString(R.string.setting_broadcast_secret_value_default)
         ) ?: context.getString(R.string.setting_broadcast_secret_value_default)
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_broadcast_secret),
-            if (value.trim().isEmpty()) {
-                context.getString(R.string.setting_broadcast_secret_value_default)
-            } else {
-                value
-            }
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_broadcast_secret),
+                if (value.trim().isEmpty()) {
+                    context.getString(R.string.setting_broadcast_secret_value_default)
+                } else {
+                    value
+                }
+            )
+        }
 
     var screenshotDirectory: String?
         get() {
@@ -174,14 +197,16 @@ class PrefManager(private val context: Context) {
                 null
             }
         }
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_storage_directory),
-            if (value.isNullOrBlank()) {
-                context.getString(R.string.setting_storage_directory_value_default)
-            } else {
-                value
-            }
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_storage_directory),
+                if (value.isNullOrBlank()) {
+                    context.getString(R.string.setting_storage_directory_value_default)
+                } else {
+                    value
+                }
+            )
+        }
 
     var fileNamePattern: String
         get() {
@@ -197,102 +222,122 @@ class PrefManager(private val context: Context) {
                 value
             }
         }
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_file_name_pattern),
-            value.ifBlank {
-                context.getString(R.string.setting_file_name_pattern_value_default)
-            }
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_file_name_pattern),
+                value.ifBlank {
+                    context.getString(R.string.setting_file_name_pattern_value_default)
+                }
+            )
+        }
 
     var screenshotCount: Int
         get() = pref.getString(
             context.getString(R.string.pref_key_screenshot_count),
             "0"
         )?.toIntOrNull() ?: 0
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_screenshot_count),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_screenshot_count),
+                value.toString()
+            )
+        }
 
     var returnIfAccessibilityServiceEnabled: String?
         get() = pref.getString(
             context.getString(R.string.pref_key_return_if_accessibility),
             null
         )
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_return_if_accessibility),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_return_if_accessibility),
+                value
+            )
+        }
 
     var returnIfVoiceInteractionServiceEnabled: String?
         get() = pref.getString(
             context.getString(R.string.pref_key_return_if_voice_interaction),
             null
         )
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_return_if_voice_interaction),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_return_if_voice_interaction),
+                value
+            )
+        }
 
     var floatingButtonHideAfter: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_floating_button_hide_after),
             false
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button_hide_after),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button_hide_after),
+                value
+            )
+        }
 
     var floatingButtonShowClose: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_floating_button_show_close),
             false
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button_show_close),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button_show_close),
+                value
+            )
+        }
 
     var floatingButtonShowSettingsAfterMove: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_floating_button_show_settings_after_move),
             true
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button_show_settings_after_move),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button_show_settings_after_move),
+                value
+            )
+        }
 
     var floatingButtonSnapToNotch: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_floating_button_snap_to_notch),
             false
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button_snap_to_notch),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button_snap_to_notch),
+                value
+            )
+        }
 
     var floatingButtonRequestScaleToNotch: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_floating_button_request_scale_to_notch),
             false
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button_request_scale_to_notch),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button_request_scale_to_notch),
+                value
+            )
+        }
 
     var floatingButtonCloseEmoji: String
         get() = pref.getString(
             context.getString(R.string.pref_key_floating_button_close_emoji),
             context.getString(R.string.close_buttons_default)
         ) ?: context.getString(R.string.close_buttons_default)
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_floating_button_close_emoji),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_floating_button_close_emoji),
+                value
+            )
+        }
 
     var floatingButtonScale: Int
         get() {
@@ -304,10 +349,12 @@ class PrefManager(private val context: Context) {
             }?.toIntOrNull() ?: 200
             return if (d > 0) d else 200
         }
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_floating_button_scale),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_floating_button_scale),
+                value.toString()
+            )
+        }
 
     var floatingButtonAlpha: Float
         get() {
@@ -320,10 +367,12 @@ class PrefManager(private val context: Context) {
             val f = s?.toFloatOrNull() ?: 1f
             return f.coerceIn(0f, 1f)
         }
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_floating_button_alpha),
-            value.coerceIn(0f, 1f).toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_floating_button_alpha),
+                value.coerceIn(0f, 1f).toString()
+            )
+        }
 
     /**
      * Default to 50,150,1 to avoid having the floating button
@@ -378,10 +427,12 @@ class PrefManager(private val context: Context) {
         val map = getFloatingButtonPositions()
         map[orientation] = point
         val dataStr = map.map { "${it.value.x},${it.value.y},${it.key}" }.joinToString(";")
-        pref.edit().putString(
-            context.getString(R.string.pref_key_floating_button_position),
-            dataStr
-        ).apply()
+        pref.edit {
+            putString(
+                context.getString(R.string.pref_key_floating_button_position),
+                dataStr
+            )
+        }
     }
 
     var floatingButtonShutter: Int
@@ -391,10 +442,12 @@ class PrefManager(private val context: Context) {
         )?.filter {
             it.isDigit()
         }?.toIntOrNull() ?: 0
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_floating_button_shutter),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_floating_button_shutter),
+                value.toString()
+            )
+        }
 
     var floatingButtonDelay: Int
         get() = pref.getString(
@@ -403,20 +456,24 @@ class PrefManager(private val context: Context) {
         )?.filter {
             it.isDigit()
         }?.toIntOrNull() ?: 0
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_floating_button_delay),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_floating_button_delay),
+                value.toString()
+            )
+        }
 
     var floatingButtonAction: String
         get() = pref.getString(
             context.getString(R.string.pref_key_floating_action),
             context.getString(R.string.setting_floating_action_value_screenshot)
         ) ?: context.getString(R.string.setting_floating_action_value_screenshot)
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_floating_action),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_floating_action),
+                value
+            )
+        }
 
     var floatingButtonTapType: Int
         get() = pref.getInt(
@@ -447,58 +504,70 @@ class PrefManager(private val context: Context) {
             context.getString(R.string.pref_key_floating_button_color_tint),
             null
         )
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_floating_button_color_tint),
-            value ?: ""
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_floating_button_color_tint),
+                value ?: ""
+            )
+        }
 
     var floatingButtonWhenUnLocked: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_floating_button_when_unlocked),
             true
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button_when_unlocked),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button_when_unlocked),
+                value
+            )
+        }
 
     var floatingButtonWhenLocked: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_floating_button_when_locked),
             true
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button_when_locked),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button_when_locked),
+                value
+            )
+        }
 
     var floatingButtonWhenPortrait: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_floating_button_when_portrait),
             true
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button_when_portrait),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button_when_portrait),
+                value
+            )
+        }
     var floatingButtonWhenLandscape: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_floating_button_when_landscape),
             true
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button_when_landscape),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button_when_landscape),
+                value
+            )
+        }
     var floatingButtonWhenQuickSettings: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_floating_button_when_quick_settings),
             false
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_floating_button_when_quick_settings),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_floating_button_when_quick_settings),
+                value
+            )
+        }
 
 
     var voiceInteractionAction: String
@@ -506,58 +575,72 @@ class PrefManager(private val context: Context) {
             context.getString(R.string.pref_key_voice_interaction_action),
             context.getString(R.string.setting_voice_interaction_action_value_provided)
         ) ?: context.getString(R.string.setting_voice_interaction_action_value_provided)
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_voice_interaction_action),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_voice_interaction_action),
+                value
+            )
+        }
 
     var tileAction: String
         get() = pref.getString(
             context.getString(R.string.pref_key_tile_action),
             context.getString(R.string.setting_tile_action_value_screenshot)
         ) ?: context.getString(R.string.setting_tile_action_value_screenshot)
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_tile_action),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_tile_action),
+                value
+            )
+        }
 
     var darkTheme: String
         get() = pref.getString(
             context.getString(R.string.pref_key_dark_theme),
             context.getString(R.string.setting_dark_theme_value_default)
         ) ?: context.getString(R.string.setting_dark_theme_value_default)
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_dark_theme),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_dark_theme),
+                value
+            )
+        }
 
     var toasts: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_toasts), true)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_toasts),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_toasts),
+                value
+            )
+        }
 
     var naggingToasts: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_nagging_toasts), true)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_nagging_toasts),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_nagging_toasts),
+                value
+            )
+        }
 
     var successToasts: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_success_toasts), true)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_success_toasts),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_success_toasts),
+                value
+            )
+        }
 
     var errorToasts: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_error_toasts), true)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_error_toasts),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_error_toasts),
+                value
+            )
+        }
 
     var selectAreaShutterDelay: Long
         get() {
@@ -567,10 +650,12 @@ class PrefManager(private val context: Context) {
             )?.toLongOrNull() ?: 0
             return if (d >= 0) d else 0
         }
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_select_area_shutter_delay),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_select_area_shutter_delay),
+                value.toString()
+            )
+        }
 
     var originalAfterPermissionDelay: Long
         get() {
@@ -580,10 +665,12 @@ class PrefManager(private val context: Context) {
             )?.toLongOrNull() ?: 300
             return if (d >= 0) d else 0
         }
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_original_after_permission_delay),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_original_after_permission_delay),
+                value.toString()
+            )
+        }
 
     var failedVirtualDisplayDelay: Long
         get() {
@@ -593,10 +680,12 @@ class PrefManager(private val context: Context) {
             )?.toLongOrNull() ?: 0
             return if (d >= 0) d else 0
         }
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_failed_virtual_display_delay),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_failed_virtual_display_delay),
+                value.toString()
+            )
+        }
 
 
     private var fileNamesRecent: Array<String>
@@ -606,10 +695,12 @@ class PrefManager(private val context: Context) {
                 ""
             )?.split("\n")?.filter { it.isNotBlank() }?.toTypedArray() ?: arrayOf()
         }
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_file_names_recent),
-            value.joinToString("\n")
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_file_names_recent),
+                value.joinToString("\n")
+            )
+        }
 
     private fun cleanFileName(name: String): String {
         return name.removeSuffix(".png")
@@ -645,10 +736,12 @@ class PrefManager(private val context: Context) {
                 ""
             )?.split("\n")?.filter { it.isNotBlank() }?.toTypedArray() ?: arrayOf()
         }
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_file_names_starred),
-            value.joinToString("\n")
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_file_names_starred),
+                value.joinToString("\n")
+            )
+        }
 
     fun addStarredFileName(name: String) {
         val cleanName = cleanFileName(name)
@@ -689,10 +782,12 @@ class PrefManager(private val context: Context) {
                 ""
             )?.split("\n\n")?.filter { it.isNotBlank() }?.toTypedArray() ?: arrayOf()
         }
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_recent_folders),
-            value.joinToString("\n\n")
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_recent_folders),
+                value.joinToString("\n\n")
+            )
+        }
 
 
     private fun addRecentFolder(uriStr: String) {
@@ -734,8 +829,9 @@ class PrefManager(private val context: Context) {
             context.getString(R.string.setting_notification_action_edit),
             context.getString(R.string.setting_notification_action_delete)
         ).toMutableSet()
-        set(value) = pref.edit()
-            .putStringSet(context.getString(R.string.pref_key_notification_actions), value).apply()
+        set(value) = pref.edit {
+            putStringSet(context.getString(R.string.pref_key_notification_actions), value)
+        }
 
     var postScreenshotActions: ArrayList<String>
         get() {
@@ -751,68 +847,80 @@ class PrefManager(private val context: Context) {
             }
             return result
         }
-        set(values) = pref.edit()
-            .putString(
+        set(values) = pref.edit {
+            putString(
                 context.getString(R.string.pref_key_post_screenshot_actions),
                 LinkedHashSet(values).joinToString(",")
-            ).apply()
+            )
+        }
 
     fun postScreenshotActionsReset() =
-        pref.edit()
-            .putString(
+        pref.edit {
+            putString(
                 context.getString(R.string.pref_key_post_screenshot_actions),
                 POST_ACTIONS_DEFAULT
-            ).apply()
+            )
+        }
 
     var autoCropEnabled: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_auto_crop_enabled),
             false
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_auto_crop_enabled),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_auto_crop_enabled),
+                value
+            )
+        }
 
     var autoCropLeft: Int
         get() = pref.getString(
             context.getString(R.string.pref_key_auto_crop_left),
             "0"
         )?.toIntOrNull() ?: 0
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_auto_crop_left),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_auto_crop_left),
+                value.toString()
+            )
+        }
 
     var autoCropTop: Int
         get() = pref.getString(
             context.getString(R.string.pref_key_auto_crop_top),
             "0"
         )?.toIntOrNull() ?: 0
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_auto_crop_top),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_auto_crop_top),
+                value.toString()
+            )
+        }
 
     var autoCropRight: Int
         get() = pref.getString(
             context.getString(R.string.pref_key_auto_crop_right),
             "0"
         )?.toIntOrNull() ?: 0
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_auto_crop_right),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_auto_crop_right),
+                value.toString()
+            )
+        }
 
     var autoCropBottom: Int
         get() = pref.getString(
             context.getString(R.string.pref_key_auto_crop_bottom),
             "0"
         )?.toIntOrNull() ?: 0
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_auto_crop_bottom),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_auto_crop_bottom),
+                value.toString()
+            )
+        }
 
     data class ScreenshotHistoryItem(val uri: Uri, val date: Date, val file: File?)
 
@@ -827,7 +935,7 @@ class PrefManager(private val context: Context) {
                     if (it.isNotBlank()) {
                         val parts = it.split(HISTORY_ITEM_DELIMITER)
                         if (parts.size > 1) {
-                            val uri = Uri.parse(parts[0])
+                            val uri = parts[0].toUri()
                             val date = Date(parts[1].toLong())
                             val file: File? = if (parts.size > 2) {
                                 File(parts[2])
@@ -846,8 +954,8 @@ class PrefManager(private val context: Context) {
         set(values) {
             try {
                 val size = values.size
-                pref.edit()
-                    .putString(
+                pref.edit {
+                    putString(
                         context.getString(R.string.pref_key_screenshot_history),
                         values.filterIndexed { index, _ ->
                             // if more than 100 items, delete first 30 items
@@ -869,7 +977,8 @@ class PrefManager(private val context: Context) {
                                 }"
                             }
                         }
-                    ).apply()
+                    )
+                }
             } catch (e: Exception) {
                 Log.e(TAG, e.stackTraceToString())
             }
@@ -899,50 +1008,62 @@ class PrefManager(private val context: Context) {
             context.getString(R.string.pref_key_keep_app_data_max),
             context.getString(R.string.pref_keep_app_data_max_default)
         )?.toIntOrNull() ?: 30
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_keep_app_data_max),
-            value.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_keep_app_data_max),
+                value.toString()
+            )
+        }
 
     var keepScreenshotHistory: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_keep_screenshot_history), true)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_keep_screenshot_history),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_keep_screenshot_history),
+                value
+            )
+        }
 
     var preventIfLocked: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_prevent_if_locked), false)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_prevent_if_locked),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_prevent_if_locked),
+                value
+            )
+        }
 
     var photoEditorOverwriteFile: Boolean
         get() = pref.getBoolean(context.getString(R.string.pref_key_pe_overwrite_file), false)
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_pe_overwrite_file),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_pe_overwrite_file),
+                value
+            )
+        }
 
     var photoEditorAutoRotateLandscape: Boolean
         get() = pref.getBoolean(
             context.getString(R.string.pref_key_pe_auto_rotate_landscape),
             getBooleanRes(R.bool.pref_pe_auto_rotate_landscape_default, true)
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_pe_auto_rotate_landscape),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_pe_auto_rotate_landscape),
+                value
+            )
+        }
     var soundNotificationSink: String
         get() = pref.getString(
             context.getString(R.string.pref_key_sound_notification_sink),
             defaultAudioSink
         ) ?: defaultAudioSink
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_sound_notification_sink),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_sound_notification_sink),
+                value
+            )
+        }
 
     /**
      * The tones from Sound.allTones are stored with prefix "tone:" e.g. "tone:CDMA_ABBR_ALERT"
@@ -952,28 +1073,24 @@ class PrefManager(private val context: Context) {
             context.getString(R.string.pref_key_sound_notification_tone),
             ""
         ) ?: ""
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_sound_notification_tone),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_sound_notification_tone),
+                value
+            )
+        }
 
     var soundNotificationDuration: Int
         get() = pref.getString(
             context.getString(R.string.pref_key_sound_notification_duration),
             "200"
         )?.toIntOrNull() ?: 200
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_sound_notification_duration),
-            value.toString()
-        ).apply()
-
-    var showDonationLinks12600: Boolean
-        get() = pref.getBoolean("show_donation_links_12600", true)
-        set(value) = pref.edit().putBoolean(
-            "show_donation_links_12600",
-            value
-        ).apply()
-
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_sound_notification_duration),
+                value.toString()
+            )
+        }
 
     var packageNameFilterList: ArrayList<String>
         get() {
@@ -989,11 +1106,12 @@ class PrefManager(private val context: Context) {
             }
             return result
         }
-        set(values) = pref.edit()
-            .putString(
+        set(values) = pref.edit {
+            putString(
                 context.getString(R.string.pref_key_package_name_filter_list),
                 LinkedHashSet(values).filter { !it.contains("////") }.joinToString("////")
-            ).apply()
+            )
+        }
 
     fun addPackageNameToFilterList(packageName: String) {
         val t = packageNameFilterList
@@ -1006,10 +1124,12 @@ class PrefManager(private val context: Context) {
             context.getString(R.string.pref_key_package_name_filter_enabled),
             false
         )
-        set(value) = pref.edit().putBoolean(
-            context.getString(R.string.pref_key_package_name_filter_enabled),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putBoolean(
+                context.getString(R.string.pref_key_package_name_filter_enabled),
+                value
+            )
+        }
 
     var packageNameFilterMode: PackageNameFilterMode
         get() = PackageNameFilterMode.fromInt(
@@ -1018,28 +1138,34 @@ class PrefManager(private val context: Context) {
                 "0"
             )?.toIntOrNull() ?: 0
         )
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_package_name_filter_mode),
-            value.ordinal.toString()
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_package_name_filter_mode),
+                value.ordinal.toString()
+            )
+        }
 
     var userLanguages: String?
         get() = pref.getString(
             context.getString(R.string.pref_key_user_languages),
             null
         )
-        set(value) = pref.edit().putString(
-            context.getString(R.string.pref_key_user_languages),
-            value
-        ).apply()
+        set(value) = pref.edit {
+            putString(
+                context.getString(R.string.pref_key_user_languages),
+                value
+            )
+        }
 
     fun resetFloatingButtonPosition(orientation: Int) {
         val map = getFloatingButtonPositions()
         map.remove(orientation)
         val dataStr = map.map { "${it.value.x},${it.value.y},${it.key}" }.joinToString(";")
-        pref.edit().putString(
-            context.getString(R.string.pref_key_floating_button_position),
-            dataStr
-        ).apply()
+        pref.edit {
+            putString(
+                context.getString(R.string.pref_key_floating_button_position),
+                dataStr
+            )
+        }
     }
 }
