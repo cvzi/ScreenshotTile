@@ -1143,7 +1143,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     postScreenshotActions,
                     result.uri,
                     result.mimeType,
-                    result.bitmap
+                    result.bitmap,
+                    result.fileTitle
                 )
             }
 
@@ -1176,7 +1177,8 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                     postScreenshotActions,
                     uri,
                     result.mimeType,
-                    result.bitmap
+                    result.bitmap,
+                    result.fileTitle
                 )
             }
 

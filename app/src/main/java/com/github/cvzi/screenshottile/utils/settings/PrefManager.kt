@@ -23,12 +23,32 @@ import java.util.Date
 class PrefManager(private val context: Context) {
     companion object {
         const val TAG = "PrefManager.kt"
+        const val POST_ACTION_SAVE_TO_STORAGE = "saveToStorage"
+        const val POST_ACTION_SHOW_TOAST = "showToast"
+        const val POST_ACTION_SHOW_NOTIFICATION = "showNotification"
+        const val POST_ACTION_PLAY_TONE = "playTone"
+        const val POST_ACTION_OPEN_IN_POST = "openInPost"
+        const val POST_ACTION_OPEN_IN_POST_CROP = "openInPostCrop"
+        const val POST_ACTION_OPEN_IN_PHOTO_EDITOR = "openInPhotoEditor"
+        const val POST_ACTION_OPEN_IN_EXTERNAL_EDITOR = "openInExternalEditor"
+        const val POST_ACTION_OPEN_IN_EXTERNAL_VIEWER = "openInExternalViewer"
+        const val POST_ACTION_OPEN_SHARE = "openShare"
+        const val POST_ACTION_COPY_TO_CLIPBOARD = "copyToClipboard"
         val POST_ACTIONS = arrayOf(
-            "saveToStorage", "showToast", "showNotification", "playTone",
+            POST_ACTION_SAVE_TO_STORAGE,
+            POST_ACTION_SHOW_TOAST,
+            POST_ACTION_SHOW_NOTIFICATION,
+            POST_ACTION_PLAY_TONE,
+            POST_ACTION_COPY_TO_CLIPBOARD,
             // The following are exclusive in the sense that only the first selected will be run
-            "openInPost", "openInPostCrop", "openInPhotoEditor",
-            "openInExternalEditor", "openInExternalViewer", "openShare"
+            POST_ACTION_OPEN_IN_POST,
+            POST_ACTION_OPEN_IN_POST_CROP,
+            POST_ACTION_OPEN_IN_PHOTO_EDITOR,
+            POST_ACTION_OPEN_IN_EXTERNAL_EDITOR,
+            POST_ACTION_OPEN_IN_EXTERNAL_VIEWER,
+            POST_ACTION_OPEN_SHARE
         )
+
         const val POST_ACTIONS_DEFAULT = "saveToStorage,showToast,showNotification"
         const val HISTORY_DELIMITER = "~///////~"
         const val HISTORY_ITEM_DELIMITER = "~////~"

@@ -25,6 +25,17 @@ import com.github.cvzi.screenshottile.utils.Sound
 import com.github.cvzi.screenshottile.utils.Sound.Companion.allAudioSinks
 import com.github.cvzi.screenshottile.utils.adapters.TonesRecyclerViewAdapter
 import com.github.cvzi.screenshottile.utils.image.nicePathFromUri
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_COPY_TO_CLIPBOARD
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_IN_EXTERNAL_EDITOR
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_IN_EXTERNAL_VIEWER
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_IN_PHOTO_EDITOR
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_IN_POST
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_IN_POST_CROP
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_OPEN_SHARE
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_PLAY_TONE
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_SAVE_TO_STORAGE
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_SHOW_NOTIFICATION
+import com.github.cvzi.screenshottile.utils.settings.PrefManager.Companion.POST_ACTION_SHOW_TOAST
 import com.github.cvzi.screenshottile.utils.toastMessage
 import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
 import com.github.cvzi.screenshottile.utils.ui.minPaddingFromInsets
@@ -296,53 +307,58 @@ class PostSettingsActivity : BaseAppCompatActivity() {
 
         initSimpleActionSwitch(
             binding.switchSaveToStorage,
-            "saveToStorage",
-            "saveToStorage" in postScreenshotActions
+            POST_ACTION_SAVE_TO_STORAGE,
+            POST_ACTION_SAVE_TO_STORAGE in postScreenshotActions
         )
         initSimpleActionSwitch(
             binding.switchShowToast,
-            "showToast",
-            "showToast" in postScreenshotActions
+            POST_ACTION_SHOW_TOAST,
+            POST_ACTION_SHOW_TOAST in postScreenshotActions
         )
         initSimpleActionSwitch(
             binding.switchPlayTone,
-            "playTone",
-            "playTone" in postScreenshotActions
+            POST_ACTION_PLAY_TONE,
+            POST_ACTION_PLAY_TONE in postScreenshotActions
+        )
+        initSimpleActionSwitch(
+            binding.switchCopyClipboard,
+            POST_ACTION_COPY_TO_CLIPBOARD,
+            POST_ACTION_COPY_TO_CLIPBOARD in postScreenshotActions
         )
         initSimpleActionSwitch(
             binding.switchShowNotification,
-            "showNotification",
-            "showNotification" in postScreenshotActions
+            POST_ACTION_SHOW_NOTIFICATION,
+            POST_ACTION_SHOW_NOTIFICATION in postScreenshotActions
         )
         initSimpleActionSwitch(
             binding.radioButtonOpenInPost,
-            "openInPost",
-            "openInPost" in postScreenshotActions
+            POST_ACTION_OPEN_IN_POST,
+            POST_ACTION_OPEN_IN_POST in postScreenshotActions
         )
         initSimpleActionSwitch(
             binding.radioButtonOpenInPostCrop,
-            "openInPostCrop",
-            "openInPostCrop" in postScreenshotActions
+            POST_ACTION_OPEN_IN_POST_CROP,
+            POST_ACTION_OPEN_IN_POST_CROP in postScreenshotActions
         )
         initSimpleActionSwitch(
             binding.radioButtonOpenInPhotoEditor,
-            "openInPhotoEditor",
-            "openInPhotoEditor" in postScreenshotActions
+            POST_ACTION_OPEN_IN_PHOTO_EDITOR,
+            POST_ACTION_OPEN_IN_PHOTO_EDITOR in postScreenshotActions
         )
         initSimpleActionSwitch(
             binding.radioButtonOpenInExternalEditor,
-            "openInExternalEditor",
-            "openInExternalEditor" in postScreenshotActions
+            POST_ACTION_OPEN_IN_EXTERNAL_EDITOR,
+            POST_ACTION_OPEN_IN_EXTERNAL_EDITOR in postScreenshotActions
         )
         initSimpleActionSwitch(
             binding.radioButtonOpenInExternalViewer,
-            "openInExternalViewer",
-            "openInExternalViewer" in postScreenshotActions
+            POST_ACTION_OPEN_IN_EXTERNAL_VIEWER,
+            POST_ACTION_OPEN_IN_EXTERNAL_VIEWER in postScreenshotActions
         )
         initSimpleActionSwitch(
             binding.radioButtonOpenShare,
-            "openShare",
-            "openShare" in postScreenshotActions
+            POST_ACTION_OPEN_SHARE,
+            POST_ACTION_OPEN_SHARE in postScreenshotActions
         )
 
         binding.switchAutoCrop.isChecked = prefManager.autoCropEnabled

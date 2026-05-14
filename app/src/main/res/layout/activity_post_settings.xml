@@ -164,6 +164,24 @@
                                     android:layout_weight="1"
                                     android:text="@{strings.post_action_play_tone}" />
                             </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <com.google.android.material.switchmaterial.SwitchMaterial
+                                    android:id="@+id/switchCopyClipboard"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_weight="1"
+                                    android:text="@{strings.post_action_copy_clipboard}" />
+                            </TableRow>
                         </TableLayout>
 
                         <RadioGroup

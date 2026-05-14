@@ -523,7 +523,8 @@ class TakeScreenshotActivity : BaseActivity(),
                     postScreenshotActions,
                     result.uri,
                     result.mimeType,
-                    result.bitmap
+                    result.bitmap,
+                    result.fileTitle
                 )
             }
 
@@ -556,7 +557,8 @@ class TakeScreenshotActivity : BaseActivity(),
                     postScreenshotActions,
                     uri,
                     result.mimeType,
-                    result.bitmap
+                    result.bitmap,
+                    result.fileTitle
                 )
             }
 
