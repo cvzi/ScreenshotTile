@@ -47,6 +47,7 @@ Note: Some of these features depend on a minimum or maximum Android version.
 
 ## Post-Capture Actions
 *   **Notifications:** Configurable notification buttons for immediate actions: Share, Edit, Rename, Crop, Delete, Details, and Photo Editor.
+*   **Clipboard:** Copy the captured screenshot directly to the clipboard for easy pasting into other apps.
 *   **Built-in Image Editor:**
     *   **Drawing:** Freehand drawing with custom colors and brush sizes.
     *   **Text:** Add text overlays with various colors.

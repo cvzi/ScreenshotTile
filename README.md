@@ -109,7 +109,7 @@ Properties:
 *   Custom format
 *   Custom notification
 
-### Restricted Settings
+### Restricted Settings (only Native method)
 
 On Android 13 and above, device manufacturers may restrict the settings that can be enabled for an app. In such cases, the option to enable the app in the accessibility settings will appear grayed out. This means that both the "floating button" and the "native method" cannot be enabled. Notably, this is the case on Pixel phones running Android 14:
 
@@ -127,6 +127,12 @@ With "restricted settings" allowed, you can reopen the app and enable either the
 
 Read more about this: https://support.google.com/android/answer/12623953#allowrestrictedsettings
 
+### Permission Scope (only Legacy method)
+
+From Android 14 onwards, the permission dialog for the screen recording let's you choose between recording the current screen or choosing an app to capture:
+<img src="/docs/imgs/LegacyScope.png" alt="Scope of screen recording permission" height="600"/>
+If you select "Choose an app" in the app settings, you can choose in the permission dialog to record an app or select "Entire screen" to capture the current screen.
+If you select "Current screen" in the app settings, the permission dialog is pre-selected to "Share entire screen" and you only have to press "Share screen". In this case, you can not change the selection to "Share one app".
 
 ### <a name="icon">Cast icon:</a> ![cast icon](/docs/imgs/casticon.png) (only Legacy method)
 
