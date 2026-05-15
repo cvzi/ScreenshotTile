@@ -48,6 +48,8 @@
     <string name="setting_floating_button_show_close">在浮动按钮旁显示 [X]/关闭按钮</string>
     <string name="setting_floating_button_show_close_summary">使您可以不必打开快速设置即可移除浮动按钮</string>
     <string name="setting_floating_button_show_settings_after_move">移动浮动按钮后显示设置按钮</string>
+    <string name="setting_floating_button_snap_to_notch">将按钮隐藏在相机圆孔中</string>
+    <string name="setting_floating_button_snap_to_notch_summary">将浮动按钮移动到前置摄像头圆孔后</string>
     <string name="setting_floating_button_show_close_dialog_title">关闭按钮表情符号</string>
     <string name="setting_floating_button_show_close_dialog_description">请输入作为关闭按钮的文本或表情符号</string>
     <string name="setting_floating_button_shutter">浮动按钮主题</string>
@@ -96,6 +98,7 @@
     <string name="post_action_show_toast">显示“Toast”通知。小弹窗会在 2 秒后消失</string>
     <string name="post_action_show_notification">显示常规通知。你可以在“更多设置”中更改通知下方的按钮 (编辑、分享…)</string>
     <string name="post_action_play_tone">播放声音</string>
+    <string name="post_action_copy_clipboard">复制到剪贴板</string>
     <string name="post_action_empty">不要打开截图</string>
     <string name="post_action_open_in_post">在“详情”视图中打开</string>
     <string name="post_action_open_in_post_crop">裁剪图像</string>
@@ -151,6 +154,26 @@
     <string name="tutorial_step11">接受权限</string>
     <string name="tutorial_step16">使用新按钮截取屏幕截图</string>
     <string name="take_screenshot">截取屏幕截图</string>
+    <string name="setting_show_in_portrait_orientation">竖屏状态下显示</string>
+    <string name="setting_show_in_landscape_orientation">横屏状态下显示</string>
+    <string name="setting_show_when_device_is_unlocked">设备已解锁后显示</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">设备未解锁（锁屏）时显示</string>
+    <string name="setting_show_hide_in_specific_apps">在特定应用中显示</string>
+    <string name="setting_filtermode_blacklist">黑名单</string>
+    <string name="setting_filtermode_whitelist">白名单</string>
+    <string name="setting_filtermode_select_apps">选择应用</string>
+    <string name="setting_filtermode_search">搜索</string>
+    <string name="setting_filtermode_select_all">全选</string>
+    <string name="setting_filtermode_invert_selection">反选</string>
+    <string name="setting_show_floating_buttons_quick_settings">在快速设置下拉时显示浮动按钮</string>
+    <string name="setting_quick_settings_warning">必须添加本应用的磁贴到快速设置，否则无法在快速设置被拉下时隐藏浮动按钮</string>
+    <string name="single_tap">轻点一次</string>
+    <string name="double_tap">轻点两次</string>
+    <string name="long_press">长按</string>
+    <string name="short_touch">短触</string>
+    <string name="legacy_request_scope">权限范围：</string>
+    <string name="current_screen">当前屏幕</string>
+    <string name="choose_an_app">选择应用</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_title">Google Play 关于醒目披露声明与征求用户同意的要求</string>
     <string name="googleplay_consent_line_0">对于不是无障碍工具的应用，Google Play 要求醒目披露无障碍服务 API 的用途。</string>
@@ -173,6 +196,7 @@
     <string name="about_open_source_title">所用的开源项目</string>
     <string name="about_advanced_settings_button">高级设置</string>
     <string name="about_update_check_button">检查更新</string>
+    <string name="about_backup_title">备份与恢复</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">无障碍设置</string>
     <string name="toast_open_accessibility_settings">请在无障碍设置中激活 \"%1s\"</string>
@@ -259,21 +283,4 @@
     <string name="setting_keep_screenshot_history">保留截图历史</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">将屏幕截图的文件名存储在列表中，这是功能\"%1$s\" 所必需的。</string>
     <string name="setting_pe_auto_rotate_landscape">照片编辑器：旋转横向图像</string>
-    <string name="setting_show_in_portrait_orientation">竖屏状态下显示</string>
-    <string name="setting_show_in_landscape_orientation">横屏状态下显示</string>
-    <string name="setting_show_when_device_is_unlocked">设备已解锁后显示</string>
-    <string name="setting_show_when_device_is_locked_on_the_lock_screen">设备未解锁（锁屏）时显示</string>
-    <string name="setting_show_hide_in_specific_apps">在特定应用中显示</string>
-    <string name="setting_filtermode_blacklist">黑名单</string>
-    <string name="setting_filtermode_whitelist">白名单</string>
-    <string name="setting_filtermode_select_apps">选择应用</string>
-    <string name="setting_filtermode_search">搜索</string>
-    <string name="setting_filtermode_select_all">全选</string>
-    <string name="setting_filtermode_invert_selection">反选</string>
-    <string name="setting_show_floating_buttons_quick_settings">在快速设置下拉时显示浮动按钮</string>
-    <string name="setting_quick_settings_warning">必须添加本应用的磁贴到快速设置，否则无法在快速设置被拉下时隐藏浮动按钮</string>
-    <string name="single_tap">轻点一次</string>
-    <string name="double_tap">轻点两次</string>
-    <string name="long_press">长按</string>
-    <string name="short_touch">短触</string>
 </resources>
