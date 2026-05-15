@@ -39,7 +39,7 @@ Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTil
    - [Native method with custom settings](#native-method-with-custom-settings--)
    - [Restricted Settings](#restricted-settings-only-native-method)
    - [Cast icon](#cast-icon--only-legacy-method)
-   - [Permission Scope](##permission-scope-only-legacy-method)
+   - [Permission Scope](#permission-scope-only-legacy-method)
    - [Permissions](#permissions)
 - [Automatic screenshots](#automatic-screenshots-with-broadcast-intents)
 - [Miscellaneous data](#miscellaneous-data)
