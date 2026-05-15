@@ -98,6 +98,7 @@
     <string name="post_action_show_toast">Mostrar una notificación de \"Toast\". Un pequeño popup que desaparece después de 2 segundos</string>
     <string name="post_action_show_notification">Mostrar una notificación regular. Puede cambiar los botones (Editar, Compartir, …) debajo de la notificación en \"Más ajustes\"</string>
     <string name="post_action_play_tone">Reproducir un sonido</string>
+    <string name="post_action_copy_clipboard">Copiar al portapapeles</string>
     <string name="post_action_empty">No abrir la captura de pantalla</string>
     <string name="post_action_open_in_post">Abrir en la vista \"Detalles\"</string>
     <string name="post_action_open_in_post_crop">Recortar imagen</string>
@@ -153,6 +154,26 @@
     <string name="tutorial_step11">Acepta los permisos</string>
     <string name="tutorial_step16">Ahora puedes tomar capturas de pantalla con el botón nuevo</string>
     <string name="take_screenshot">Captura de pantalla</string>
+    <string name="setting_show_in_portrait_orientation">Mostrar en orientación vertical</string>
+    <string name="setting_show_in_landscape_orientation">Mostrar en orientación vertical</string>
+    <string name="setting_show_when_device_is_unlocked">Mostrar cuando el dispositivo está desbloqueado</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Mostrar cuando el dispositivo está bloqueado (en la pantalla de bloqueo)</string>
+    <string name="setting_show_hide_in_specific_apps">Mostrar/Ocultar en aplicaciones específicas</string>
+    <string name="setting_filtermode_blacklist">Blacklist</string>
+    <string name="setting_filtermode_whitelist">Whitelist</string>
+    <string name="setting_filtermode_select_apps">Seleccionar aplicaciones</string>
+    <string name="setting_filtermode_search">Buscar</string>
+    <string name="setting_filtermode_select_all">Seleccionar todas</string>
+    <string name="setting_filtermode_invert_selection">Invertir selección</string>
+    <string name="setting_show_floating_buttons_quick_settings">Mostrar botones flotantes cuando los ajustes rápidos son desplegados hacia abajo</string>
+    <string name="setting_quick_settings_warning">Uno de los mosaicos de la aplicación debe ser añadido a los ajustes rápidos, de lo contrario el botón flotante no puede ocultarse cuando los ajustes rápidos son pulsados abajo</string>
+    <string name="single_tap">Una Pulsación</string>
+    <string name="double_tap">Doble pulsación</string>
+    <string name="long_press">Pulsación larga</string>
+    <string name="short_touch">Pulsación corta</string>
+    <string name="legacy_request_scope">Área de permiso:</string>
+    <string name="current_screen">Pantalla actual</string>
+    <string name="choose_an_app">Elige una aplicación</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_title">Aviso &amp; solicitud de consentimiento destacado de Google Play</string>
     <string name="googleplay_consent_line_0">Google Play requiere una aviso prominente del uso de la API de Servicios de Accesibilidad para una aplicación que no es una herramienta de accesibilidad.</string>
@@ -262,21 +283,4 @@
     <string name="setting_keep_screenshot_history">Mantener historial de capturas de pantalla</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Guarda los nombres de los archivos de las capturas de pantalla en una lista. Esto es necesario para la función \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Editor de fotos: Rotar imágenes horizontales</string>
-    <string name="setting_show_in_portrait_orientation">Mostrar en orientación vertical</string>
-    <string name="setting_show_in_landscape_orientation">Mostrar en orientación vertical</string>
-    <string name="setting_show_when_device_is_unlocked">Mostrar cuando el dispositivo está desbloqueado</string>
-    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Mostrar cuando el dispositivo está bloqueado (en la pantalla de bloqueo)</string>
-    <string name="setting_show_hide_in_specific_apps">Mostrar/Ocultar en aplicaciones específicas</string>
-    <string name="setting_filtermode_blacklist">Blacklist</string>
-    <string name="setting_filtermode_whitelist">Whitelist</string>
-    <string name="setting_filtermode_select_apps">Seleccionar aplicaciones</string>
-    <string name="setting_filtermode_search">Buscar</string>
-    <string name="setting_filtermode_select_all">Seleccionar todas</string>
-    <string name="setting_filtermode_invert_selection">Invertir selección</string>
-    <string name="setting_show_floating_buttons_quick_settings">Mostrar botones flotantes cuando los ajustes rápidos son desplegados hacia abajo</string>
-    <string name="setting_quick_settings_warning">Uno de los mosaicos de la aplicación debe ser añadido a los ajustes rápidos, de lo contrario el botón flotante no puede ocultarse cuando los ajustes rápidos son pulsados abajo</string>
-    <string name="single_tap">Una Pulsación</string>
-    <string name="double_tap">Doble pulsación</string>
-    <string name="long_press">Pulsación larga</string>
-    <string name="short_touch">Pulsación corta</string>
 </resources>
