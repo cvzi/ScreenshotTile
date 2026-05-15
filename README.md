@@ -37,8 +37,9 @@ Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTil
    - [Legacy/Original method](#legacyoriginal-method-)
    - [Native method](#native-method-with-system-defaults-enabled-)
    - [Native method with custom settings](#native-method-with-custom-settings--)
-   - [Restricted Settings](#restricted-settings)
+   - [Restricted Settings](#restricted-settings-only-native-method)
    - [Cast icon](#cast-icon--only-legacy-method)
+   - [Permission Scope](##permission-scope-only-legacy-method)
    - [Permissions](#permissions)
 - [Automatic screenshots](#automatic-screenshots-with-broadcast-intents)
 - [Miscellaneous data](#miscellaneous-data)
@@ -127,13 +128,6 @@ With "restricted settings" allowed, you can reopen the app and enable either the
 
 Read more about this: https://support.google.com/android/answer/12623953#allowrestrictedsettings
 
-### Permission Scope (only Legacy method)
-
-From Android 14 onwards, the permission dialog for the screen recording let's you choose between recording the current screen or choosing an app to capture:
-<img src="/docs/imgs/LegacyScope.png" alt="Scope of screen recording permission" height="600"/>
-If you select "Choose an app" in the app settings, you can choose in the permission dialog to record an app or select "Entire screen" to capture the current screen.
-If you select "Current screen" in the app settings, the permission dialog is pre-selected to "Share entire screen" and you only have to press "Share screen". In this case, you can not change the selection to "Share one app".
-
 ### <a name="icon">Cast icon:</a> ![cast icon](/docs/imgs/casticon.png) (only Legacy method)
 
 If you don't want to see the cast icon in the status bar on every screenshot, you can turn
@@ -142,6 +136,12 @@ a good idea to know when an app is recording the screen.
 Here's an explanation on how to turn it off:
 [PCTattletale.com - How to turn off Android's Pesky Chromecast Icon](https://www.pctattletale.com/blog/3050/how-to-turn-off-androids-pesky-chromecast-icon/)
 
+### Permission Scope (only Legacy method)
+
+From Android 14 onwards, the permission dialog for the screen recording let's you choose between recording the current screen or choosing an app to capture:
+<img src="/docs/imgs/LegacyScope.png" alt="Scope of screen recording permission" height="600"/>
+If you select "Choose an app" in the app settings, you can choose in the permission dialog to record an app or select "Entire screen" to capture the current screen.
+If you select "Current screen" in the app settings, the permission dialog is pre-selected to "Share entire screen" and you only have to press "Share screen". In this case, you can not change the selection to "Share one app".
 
 ### Permissions
 
