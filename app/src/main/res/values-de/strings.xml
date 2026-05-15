@@ -98,6 +98,7 @@
     <string name="post_action_show_toast">Zeige eine \"Toast\"-Benachrichtigung. Ein kleines Popup, das nach 2 Sekunden verschwindet</string>
     <string name="post_action_show_notification">Zeige eine normale Benachrichtigung. Die Schaltflächen (Bearbeiten, Teilen) unter der Benachrichtigung können unter \"Mehr Einstellungen\" ändern</string>
     <string name="post_action_play_tone">Einen Ton abspielen</string>
+    <string name="post_action_copy_clipboard">In Zwischenablage kopieren</string>
     <string name="post_action_empty">Screenshot nicht öffnen</string>
     <string name="post_action_open_in_post">In \"Details\" öffnen</string>
     <string name="post_action_open_in_post_crop">Bild zuschneiden</string>
@@ -153,6 +154,26 @@
     <string name="tutorial_step11">Akzeptiere die Berechtigungen</string>
     <string name="tutorial_step16">Jetzt kannst du Screenshots aufnehmen</string>
     <string name="take_screenshot">Screenshot aufnehmen</string>
+    <string name="setting_show_in_portrait_orientation">Im Hochformat anzeigen</string>
+    <string name="setting_show_in_landscape_orientation">Im Querformat anzeigen</string>
+    <string name="setting_show_when_device_is_unlocked">Anzeigen, wenn Gerät entsperrt ist</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Anzeigen, wenn Gerät gesperrt ist (auf dem Sperrbildschirm)</string>
+    <string name="setting_show_hide_in_specific_apps">In bestimmten Apps anzeigen/verstecken</string>
+    <string name="setting_filtermode_blacklist">Blacklist</string>
+    <string name="setting_filtermode_whitelist">Whitelist</string>
+    <string name="setting_filtermode_select_apps">Apps auswählen</string>
+    <string name="setting_filtermode_search">Suche</string>
+    <string name="setting_filtermode_select_all">Alle auswählen</string>
+    <string name="setting_filtermode_invert_selection">Auswahl umkehren</string>
+    <string name="setting_show_floating_buttons_quick_settings">Zeige SchwebendenScreenshot Button, wenn Schnelleinstellungen heruntergezogen sind</string>
+    <string name="setting_quick_settings_warning">Eine der Kacheln der App muss zu den Schnelleinstellungen hinzugefügt werden, andernfalls kann der schwebende Button nicht ausgeblendet werden, wenn die Schnelleinstellungen nach unten gezogen werden</string>
+    <string name="single_tap">Einfach-Tipp</string>
+    <string name="double_tap">Doppeltipp</string>
+    <string name="long_press">Langes Drücken</string>
+    <string name="short_touch">Kurzes Drücken</string>
+    <string name="legacy_request_scope">Berechtigungsbereich:</string>
+    <string name="current_screen">Aktueller Bildschirm</string>
+    <string name="choose_an_app">App auswählen</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_title">Deutliche Offenlegung &amp; Zustimmung für Google Play</string>
     <string name="googleplay_consent_line_0">Google Play erfordert eine prominente Offenlegung der Nutzung der Accessibility Services API für eine App, deren Hauptfunktionen nicht Menschen mit Behinderung direkt unterstützen sollen.</string>
@@ -262,21 +283,4 @@
     <string name="setting_keep_screenshot_history">Verlauf der Screenshots behalten</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Speichert die Dateinamen von Screenshots in einer Liste. Dies ist erforderlich für die Funktion \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Foto-Editor: Querformat drehen</string>
-    <string name="setting_show_in_portrait_orientation">Im Hochformat anzeigen</string>
-    <string name="setting_show_in_landscape_orientation">Im Querformat anzeigen</string>
-    <string name="setting_show_when_device_is_unlocked">Anzeigen, wenn Gerät entsperrt ist</string>
-    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Anzeigen, wenn Gerät gesperrt ist (auf dem Sperrbildschirm)</string>
-    <string name="setting_show_hide_in_specific_apps">In bestimmten Apps anzeigen/verstecken</string>
-    <string name="setting_filtermode_blacklist">Blacklist</string>
-    <string name="setting_filtermode_whitelist">Whitelist</string>
-    <string name="setting_filtermode_select_apps">Apps auswählen</string>
-    <string name="setting_filtermode_search">Suche</string>
-    <string name="setting_filtermode_select_all">Alle auswählen</string>
-    <string name="setting_filtermode_invert_selection">Auswahl umkehren</string>
-    <string name="setting_show_floating_buttons_quick_settings">Zeige SchwebendenScreenshot Button, wenn Schnelleinstellungen heruntergezogen sind</string>
-    <string name="setting_quick_settings_warning">Eine der Kacheln der App muss zu den Schnelleinstellungen hinzugefügt werden, andernfalls kann der schwebende Button nicht ausgeblendet werden, wenn die Schnelleinstellungen nach unten gezogen werden</string>
-    <string name="single_tap">Einfach-Tipp</string>
-    <string name="double_tap">Doppeltipp</string>
-    <string name="long_press">Langes Drücken</string>
-    <string name="short_touch">Kurzes Drücken</string>
 </resources>
