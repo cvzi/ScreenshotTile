@@ -1,1 +1,1 @@
-Schnelleinstellungskachel für Screenshots
+Screenshot Werkzeug mit Schnelleinstellungen und schwebender Taste
