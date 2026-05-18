@@ -1,0 +1,7 @@
+v2.20.0
+* Option to copy screenshot to clipboard
+* Option to auto-select "Entire screen" in legacy method permission (Android 14+)
+v2.19.0
+* Option to hide floating button behind front camera notch
+v2.18.1
+* Option to drag floating button with short press instead of long press

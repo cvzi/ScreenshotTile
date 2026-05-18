@@ -1,10 +1,14 @@
 # Changelog
 
+## 2.20.0
+*   Copy screenshot to clipboard [#756](https://github.com/cvzi/ScreenshotTile/pull/756)
+*   Option to pre-select "Entire screen" in legacy method on Android 14+ [#757](https://github.com/cvzi/ScreenshotTile/pull/757)
+
 ## 2.19.0
-*   Option to hide floating button behind camera notch
-*   Fix a crash when calling requestAddTileService pre-Tiramisu
-*   Move information about app from settings to dedicated About activity
-*   Refactor util functions
+*   Option to hide floating button behind camera notch [#749](https://github.com/cvzi/ScreenshotTile/pull/749)
+*   Fix a crash when calling requestAddTileService pre-Tiramisu [5db7d37](https://github.com/cvzi/ScreenshotTile/commit/5db7d3759cf2867f7d90e3687699979a21ffea05)
+*   Move information about app from settings to dedicated About activity [#746](https://github.com/cvzi/ScreenshotTile/pull/746) [#751](https://github.com/cvzi/ScreenshotTile/pull/751)
+*   Refactor util functions [#748](https://github.com/cvzi/ScreenshotTile/pull/748)
 
 ## 2.18.1
 *   Update Chinese translations
