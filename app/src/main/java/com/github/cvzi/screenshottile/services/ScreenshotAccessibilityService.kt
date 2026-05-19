@@ -1307,13 +1307,15 @@ class ScreenshotAccessibilityService : AccessibilityService() {
         }
     }
 
-    override fun onAccessibilityEvent(event: AccessibilityEvent) {
+    override fun onAccessibilityEvent(event: AccessibilityEvent?) {
+        val eventPackageName = event?.packageName ?: return
+
         if (event.isFullScreen &&
             event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED &&
-            event.packageName != lastPackageName
+            eventPackageName != lastPackageName
         ) {
-            if (event.packageName != packageName) {
-                lastPackageName = event.packageName
+            if (eventPackageName != packageName) {
+                lastPackageName = eventPackageName
             }
 
             if (!packageFilterEnabled) {
@@ -1336,13 +1338,13 @@ class ScreenshotAccessibilityService : AccessibilityService() {
                 }
             }
             if (packageFilterMode == PackageNameFilterMode.BLACKLIST) {
-                if (floatingButtonShown && packageFilterNameList.contains(event.packageName)) {
+                if (floatingButtonShown && packageFilterNameList.contains(eventPackageName.toString())) {
                     hideFloatingButton()
                 } else if (!floatingButtonShown) {
                     updateFloatingButton(animate = false)
                 }
             } else {
-                if (!floatingButtonShown && packageFilterNameList.contains(event.packageName)) {
+                if (!floatingButtonShown && packageFilterNameList.contains(eventPackageName.toString())) {
                     updateFloatingButton(animate = false)
                 } else if (floatingButtonShown) {
                     hideFloatingButton()
