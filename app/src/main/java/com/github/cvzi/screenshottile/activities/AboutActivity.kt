@@ -131,8 +131,9 @@ class AboutActivity : BaseAppCompatActivity() {
 
     private fun getReleaseChannelUrl(releaseChannels: List<String>): String? {
         return when {
-            "GitHub" in releaseChannels -> getString(R.string.release_url_github)
-            "F-Droid" in releaseChannels -> getString(R.string.release_url_fdroid)
+            getString(R.string.build_label_github) in releaseChannels -> getString(R.string.release_url_github)
+            getString(R.string.build_label_fdroid) in releaseChannels -> getString(R.string.release_url_fdroid)
+            getString(R.string.build_label_commit) in releaseChannels -> getString(R.string.release_url_commit)
             else -> null
         }
     }
@@ -184,8 +185,9 @@ class AboutActivity : BaseAppCompatActivity() {
             val digest = MessageDigest.getInstance("SHA-256").digest(signature.toByteArray())
             val hexString = digest.joinToString("") { "%02x".format(it) }
             when (hexString) {
-                getString(R.string.cert_github_sha256) -> "GitHub"
-                getString(R.string.cert_fdroid_sha256) -> "F-Droid"
+                getString(R.string.cert_github_sha256) -> getString(R.string.build_label_github)
+                getString(R.string.cert_commit_sha256) -> getString(R.string.build_label_commit)
+                getString(R.string.cert_fdroid_sha256) -> getString(R.string.build_label_fdroid)
                 else -> null
             }
         }.distinct()
