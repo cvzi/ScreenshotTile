@@ -333,8 +333,8 @@ class MainActivity : BaseAppCompatActivity() {
             binding.spinnerLegacyRequest.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View,
+                    parent: AdapterView<*>?,
+                    view: View?,
                     position: Int,
                     id: Long
                 ) {
@@ -345,6 +345,7 @@ class MainActivity : BaseAppCompatActivity() {
                     // no-op
                 }
             }
+
         } else {
             binding.legacyScopeLayout.visibility = View.GONE
         }
