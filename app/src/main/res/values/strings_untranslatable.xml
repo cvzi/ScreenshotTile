@@ -340,10 +340,16 @@ Material You design contributed by <a href="https://github.com/user0-07161/">use
     <string name="about_release_channel_unknown" translatable="false">Other / unknown</string>
     <string name="about_release_channel_debug" translatable="false">Debug build</string>
 
+
+    <string name="build_label_fdroid" translatable="false">F-Droid</string>
+    <string name="build_label_github" translatable="false">GitHub</string>
+    <string name="build_label_commit" translatable="false">GitHub CI commit build</string>
     <string name="cert_fdroid_sha256" translatable="false">c1fc886a9128999556b4ccc95b03058cee72dfa45f33d99443e5b481dde7880d</string>
     <string name="cert_github_sha256" translatable="false">e470f31484efdd7c5767297170913c3ffd8d08708b733c1633dd6b7ef16d287d</string>
+    <string name="cert_commit_sha256" translatable="false">cef39f23d5b4a4eee8b2a311be4ae832b958218c9d21cd1913e36d08d53ad7c8</string>
     <string name="release_url_fdroid" translatable="false">https://f-droid.org/packages/com.github.cvzi.screenshottile/</string>
     <string name="release_url_github" translatable="false">https://github.com/cvzi/ScreenshotTile/releases</string>
+    <string name="release_url_commit" translatable="false">https://github.com/cvzi/ScreenshotTile/actions/workflows/gradleCI.yml</string>
     <string name="contact_email" translatable="false">cuzi-android@openmail.cc</string>
     <string name="contact_email_subject" translatable="false">Screenshot Tile app</string>
     <string name="about_features_button" translatable="false">App Features</string>
