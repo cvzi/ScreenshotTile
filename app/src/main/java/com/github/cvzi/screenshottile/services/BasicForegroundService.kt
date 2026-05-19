@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.os.Build
 import android.os.IBinder
+import android.util.Log
 import com.github.cvzi.screenshottile.App
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.activities.TakeScreenshotActivity
@@ -17,6 +18,7 @@ import com.github.cvzi.screenshottile.utils.notifications.foregroundNotification
  */
 class BasicForegroundService : Service() {
     companion object {
+        private const val TAG = "BasicForegroundSvc"
         private const val FOREGROUND_SERVICE_ID = 7594
         const val FOREGROUND_NOTIFICATION_ID = 8140
         private const val FOREGROUND_ON_START =
@@ -78,11 +80,17 @@ class BasicForegroundService : Service() {
             return
         }
 
-        startForeground(
-            FOREGROUND_SERVICE_ID,
-            foregroundNotification(this, FOREGROUND_NOTIFICATION_ID).build(),
-            ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
-        )
+        try {
+            startForeground(
+                FOREGROUND_SERVICE_ID,
+                foregroundNotification(this, FOREGROUND_NOTIFICATION_ID).build(),
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
+            )
+        } catch(e: SecurityException) {
+            Log.e(TAG, "Missing required permission to start foreground service", e)
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to start foreground service", e)
+        }
     }
 
     /**

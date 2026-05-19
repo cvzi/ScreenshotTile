@@ -85,8 +85,9 @@ class ScreenshotTileService : TileService(),
             if (App.getInstance().prefManager.useNative) {
                 // Check if accessibility service is active on adding the tile
                 App.checkAccessibilityServiceOnCollapse(true)
-            } else {
-                // Ask for permission
+            } else if(Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                // Ask for permission on Android 13 and below
+                // For Android 14+ we need user interaction to request the permission
                 App.acquireScreenshotPermission(this, this)
             }
         }
@@ -185,11 +186,17 @@ class ScreenshotTileService : TileService(),
             return
         }
 
-        startForeground(
-            FOREGROUND_SERVICE_ID,
-            foregroundNotification(this, FOREGROUND_NOTIFICATION_ID).build(),
-            ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
-        )
+        try {
+            startForeground(
+                FOREGROUND_SERVICE_ID,
+                foregroundNotification(this, FOREGROUND_NOTIFICATION_ID).build(),
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION
+            )
+        } catch(e: SecurityException) {
+            Log.e(TAG, "Missing required permission to start foreground service", e)
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to start foreground service", e)
+        }
     }
 
     /**
