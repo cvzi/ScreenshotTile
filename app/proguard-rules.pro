@@ -15,7 +15,10 @@
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
 -keepattributes SourceFile,LineNumberTable
--keep class ** { *; }
+
+-keep class com.github.cvzi.screenshottile.** { *; }
+-keep class com.burhanrashid52.photoeditor.** { *; }
+
 -dontobfuscate
 
 # If you keep the line number information, uncomment this to
