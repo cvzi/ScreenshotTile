@@ -37,8 +37,8 @@ android {
         compileSdk = libs.versions.sdk.compile.get().toInteger()
         targetSdk libs.versions.sdk.target.get().toInteger()
 
-        versionCode 144
-        versionName '2.20.0'
+        versionCode 145
+        versionName '2.20.1'
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         buildConfigField 'com.github.cvzi.screenshottile.MutableBoolean', 'TESTING_MODE', 'new com.github.cvzi.screenshottile.MutableBoolean(false)'

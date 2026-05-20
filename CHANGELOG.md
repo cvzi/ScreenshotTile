@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.20.1
+*   Fix some crashes with foreground service lacking permission and nullables
+*   Proguard: Don't obfuscate code to get better stack traces for crashes
+
 ## 2.20.0
 *   Copy screenshot to clipboard [#756](https://github.com/cvzi/ScreenshotTile/pull/756)
 *   Option to pre-select "Entire screen" in legacy method on Android 14+ [#757](https://github.com/cvzi/ScreenshotTile/pull/757)
