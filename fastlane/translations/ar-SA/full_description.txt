@@ -14,9 +14,9 @@
 ✓ تخزين في أي مجلد على أي وحدة تخزين مثل. بطاقة الذاكرة
 ✓ تخزين في صيغ ملفات مختلفة: png, jpg أو webp
 ✓ أخذ لقطات تلقائية للشاشة مع تطبيقات مثل Tasker أو MacroDroid
-✓ مجاني، مفتوح المصدر، بدون إعلانات
+✓ مجاني، مفتوح المصدر، خال من إعلانات
 
-هذا التطبيق هو تفرع من "مربع لقطة الشاشة [Root]" لكنه لا يحتاج صلاحية الجذر.
+هذا التطبيق هو تفرع من "مربع لقطة الشاشة [Root]" لكنه لا يحتاج إلى صلاحيات الجذر.
 
 الكود المصدر: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 التطبيق الأصلي: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
