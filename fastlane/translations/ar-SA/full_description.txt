@@ -20,7 +20,7 @@
 
 الكود المصدر: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 التطبيق الأصلي: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
-الترخيص مفتوح المصدر هو GPLv3
+هو ترخيص مفتوح المصدر GNU GPLv3
 
 <u>ملاحظة</u>
 🎦 عندما تلتقط لقطة شاشة، رمز <b>" ايقونة جوجل كاست"</b> سوف تظهر في شريط الحالة وسوف تكون مرئية في صورة لقطة الشاشة.
