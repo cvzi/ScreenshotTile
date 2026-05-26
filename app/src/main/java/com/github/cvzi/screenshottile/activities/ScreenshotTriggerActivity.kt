@@ -8,30 +8,8 @@ import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.utils.setUserLanguage
 
 /**
- * Exported trampoline that lets callers which can only invoke [android.content.Context.startActivity]
- * (e.g. hardware-key dispatchers like Motorola MyKey, button-mapper apps, custom launchers)
- * trigger a screenshot.
- *
- * Mirrors:
- *  - the security model of [com.github.cvzi.screenshottile.IntentHandler] — gated by the
- *    user-configured broadcast secret stored in [com.github.cvzi.screenshottile.utils.PrefManager.broadcastSecret].
- *  - the screenshot code path of
- *    [com.github.cvzi.screenshottile.services.ScreenshotTileService.onClick] — directly calls
- *    [App.screenshot] / [App.screenshotPartial] without launching an inner activity, so the
- *    task stack of the originating foreground app is not disturbed.
- *
- * Intent action: `com.github.cvzi.screenshottile.TAKE_SCREENSHOT`
- *
- * Required string extra: `"secret"` — must match the secret configured in the app settings.
- * Optional extra:        `"partial"` (boolean or string `"true"`) — opens the area selector
- *                        instead of taking a full-screen screenshot.
- *
- * Example (from adb / a launcher / a hardware-key dispatcher):
- * ```
- * adb shell am start \
- *   -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT \
- *   --es secret yourPasswordFromAppSettings
- * ```
+ * Take a screenshot from apps that can only start an activity, like the Motorola AI Key.
+ * Uses the same secret and partial extras as [com.github.cvzi.screenshottile.IntentHandler].
  */
 class ScreenshotTriggerActivity : Activity() {
     /** Intent action and extra keys accepted by [ScreenshotTriggerActivity]. */

@@ -215,28 +215,30 @@ adb shell am broadcast -a com.github.cvzi.screenshottile.SCREENSHOT -e secret MY
 
 # <a name="activity">Automatic screenshots with Activity intents</a>
 
-Some callers can only fire `startActivity` and cannot send a broadcast — for example hardware-key dispatchers like the Motorola AI Key / Red Key (`com.motorola.mykey`), button-mapper apps, or custom launchers. For these, `ScreenshotTriggerActivity` accepts the same secret-gated request as the broadcast above, via an activity intent.
+Some apps can only start an activity and cannot send a broadcast, for example the Motorola AI Key / Red Key (`com.motorola.mykey`), button remapper apps or custom launchers. For those you can use `ScreenshotTriggerActivity`, which takes the same `secret` and `partial` extras as the broadcast intent above.
 
-It uses the same screenshot path as the Quick Settings tile (no extra activity is launched and the foreground app's task is not disturbed), so the captured screenshot is of the app you were looking at.
+First you have to activate this feature by setting a password in the app settings (the same password as for the broadcast intent).
 
-First activate the feature by setting a password in the app settings (same password used for the broadcast intent).
-
-From a terminal / adb:
+You can take screenshots from the terminal:
 
 ```bash
 # Take a screenshot
-adb shell am start -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT --es secret MY_PASSWORD
+am start -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT -e secret MY_PASSWORD
 # Open the area selector for a partial screenshot
-adb shell am start -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT --es secret MY_PASSWORD --ez partial true
+am start -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT -e secret MY_PASSWORD --ez partial true
 ```
 
-As an intent URI (e.g. for an app that stores a launchable intent in a setting):
+Or via adb from a computer:
+
+```bash
+adb shell am start -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT -e secret MY_PASSWORD
+```
+
+Apps that store a launchable intent (like the Motorola AI Key settings) can use an intent URI:
 
 ```
 intent:#Intent;action=com.github.cvzi.screenshottile.TAKE_SCREENSHOT;launchFlags=0x10000000;S.secret=MY_PASSWORD;end
 ```
-
-The accepted extras match the broadcast intent: `secret` (required) and `partial` (optional, `true` to open the area selector).
 
 ## Miscellaneous data
 Some miscellaneous files (mostly images) that don't need to be in the main repository of ScreenshotTile were moved to a separate repository: https://github.com/cvzi/ScreenshotTile_miscellaneous
