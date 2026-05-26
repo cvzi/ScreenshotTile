@@ -42,6 +42,7 @@ Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTil
    - [Permission Scope](#permission-scope-only-legacy-method)
    - [Permissions](#permissions)
 - [Automatic screenshots](#automatic-screenshots-with-broadcast-intents)
+- [Screenshots via activity intent](#automatic-screenshots-with-activity-intents)
 - [Miscellaneous data](#miscellaneous-data)
 
 [Changelog](CHANGELOG.md) • [View older releases](https://gitlab.com/cvzi/binaries/-/tree/main/ScreenshotTile) • [Google store](https://play.google.com/store/apps/details?id=com.github.cvzi.screenshottile)
@@ -211,6 +212,31 @@ Or via [adb](https://developer.android.com/tools/adb) from a computer:
 ```bash
 adb shell am broadcast -a com.github.cvzi.screenshottile.SCREENSHOT -e secret MY_PASSWORD com.github.cvzi.screenshottile
 ```
+
+# <a name="activity">Automatic screenshots with Activity intents</a>
+
+Some callers can only fire `startActivity` and cannot send a broadcast — for example hardware-key dispatchers like the Motorola AI Key / Red Key (`com.motorola.mykey`), button-mapper apps, or custom launchers. For these, `ScreenshotTriggerActivity` accepts the same secret-gated request as the broadcast above, via an activity intent.
+
+It uses the same screenshot path as the Quick Settings tile (no extra activity is launched and the foreground app's task is not disturbed), so the captured screenshot is of the app you were looking at.
+
+First activate the feature by setting a password in the app settings (same password used for the broadcast intent).
+
+From a terminal / adb:
+
+```bash
+# Take a screenshot
+adb shell am start -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT --es secret MY_PASSWORD
+# Open the area selector for a partial screenshot
+adb shell am start -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT --es secret MY_PASSWORD --ez partial true
+```
+
+As an intent URI (e.g. for an app that stores a launchable intent in a setting):
+
+```
+intent:#Intent;action=com.github.cvzi.screenshottile.TAKE_SCREENSHOT;launchFlags=0x10000000;S.secret=MY_PASSWORD;end
+```
+
+The accepted extras match the broadcast intent: `secret` (required) and `partial` (optional, `true` to open the area selector).
 
 ## Miscellaneous data
 Some miscellaneous files (mostly images) that don't need to be in the main repository of ScreenshotTile were moved to a separate repository: https://github.com/cvzi/ScreenshotTile_miscellaneous

@@ -34,6 +34,7 @@ import com.github.cvzi.screenshottile.utils.setUserLanguage
  * ```
  */
 class ScreenshotTriggerActivity : Activity() {
+    /** Intent action and extra keys accepted by [ScreenshotTriggerActivity]. */
     companion object {
         private const val TAG = "ScreenshotTriggerAct"
         const val EXTRA_SECRET = "secret"
