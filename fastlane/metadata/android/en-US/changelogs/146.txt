@@ -1,0 +1,7 @@
+v2.21.0
+* Automate taking a screenshot by starting an activity (added by @kunalagra)
+v2.20.1
+* Option to copy screenshot to clipboard
+* Option to auto-select "Entire screen" in legacy method permission (Android 14+)
+v2.19.0
+* Option to hide floating button behind front camera notch

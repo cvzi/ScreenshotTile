@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.21.0
+*   Dedicated activity for automatic screenshots for apps that don't support broadcast intents [#763](https://github.com/cvzi/ScreenshotTile/pull/763) by [@kunalagra](https://github.com/kunalagra)
+
 ## 2.20.1
 *   Fix some crashes with foreground service lacking permission and nullables
 *   Proguard: Don't obfuscate code to get better stack traces for crashes

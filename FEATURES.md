@@ -21,7 +21,7 @@ Note: Some of these features depend on a minimum or maximum Android version.
 *   **Digital Assistant:** Can be set as the device's default Digital Assistant app, allowing screenshots to be triggered via assistant shortcuts (e.g., long-pressing the home button).
 *   **Broadcast Intents (Automation):** Integration with apps like Tasker or MacroDroid using a password-protected broadcast action (`com.github.cvzi.screenshottile.SCREENSHOT`). [Tutorial Video](https://www.youtube.com/watch?v=q5hQF1nzOzk).
 *   **App Functions (Android 15+):** Integration with system-level shortcuts and AI assistants like Gemini for voice-triggered capture.
-*   **Terminal / ADB:** Ability to trigger (remote) captures via command line with broadcast actions.
+*   **Terminal / ADB:** Ability to trigger (remote) captures via command line with broadcast actions or by starting a trigger-activity (`com.github.cvzi.screenshottile.TAKE_SCREENSHOT`).
 
 ## Capture Options
 *   **Partial Screenshot:** Interactive area selector to crop and capture only a specific part of the screen.
