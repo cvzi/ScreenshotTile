@@ -88,6 +88,19 @@
             android:exported="false"
             android:theme="@android:style/Theme.NoDisplay" />
         <activity
+            android:name="com.github.cvzi.screenshottile.activities.ScreenshotTriggerActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:launchMode="standard"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="com.github.cvzi.screenshottile.TAKE_SCREENSHOT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.github.cvzi.screenshottile.activities.DelayScreenshotActivity"
             android:excludeFromRecents="true"
             android:exported="false" />

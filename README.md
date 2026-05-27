@@ -42,6 +42,7 @@ Fork of [github.com/ipcjs/ScreenshotTile](https://github.com/ipcjs/ScreenshotTil
    - [Permission Scope](#permission-scope-only-legacy-method)
    - [Permissions](#permissions)
 - [Automatic screenshots](#automatic-screenshots-with-broadcast-intents)
+- [Screenshots via activity intent](#automatic-screenshots-with-activity-intents)
 - [Miscellaneous data](#miscellaneous-data)
 
 [Changelog](CHANGELOG.md) • [View older releases](https://gitlab.com/cvzi/binaries/-/tree/main/ScreenshotTile) • [Google store](https://play.google.com/store/apps/details?id=com.github.cvzi.screenshottile)
@@ -210,6 +211,33 @@ Or via [adb](https://developer.android.com/tools/adb) from a computer:
 
 ```bash
 adb shell am broadcast -a com.github.cvzi.screenshottile.SCREENSHOT -e secret MY_PASSWORD com.github.cvzi.screenshottile
+```
+
+# <a name="activity">Automatic screenshots with Activity intents</a>
+
+Some apps can only start an activity and cannot send a broadcast, for example the Motorola AI Key / Red Key (`com.motorola.mykey`), button remapper apps or custom launchers. For those you can use `ScreenshotTriggerActivity`, which takes the same `secret` and `partial` extras as the broadcast intent above.
+
+First you have to activate this feature by setting a password in the app settings (the same password as for the broadcast intent).
+
+You can take screenshots from the terminal:
+
+```bash
+# Take a screenshot
+am start -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT -e secret MY_PASSWORD
+# Open the area selector for a partial screenshot
+am start -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT -e secret MY_PASSWORD --ez partial true
+```
+
+Or via adb from a computer:
+
+```bash
+adb shell am start -a com.github.cvzi.screenshottile.TAKE_SCREENSHOT -e secret MY_PASSWORD
+```
+
+Apps that store a launchable intent (like the Motorola AI Key settings) can use an intent URI:
+
+```
+intent:#Intent;action=com.github.cvzi.screenshottile.TAKE_SCREENSHOT;launchFlags=0x10000000;S.secret=MY_PASSWORD;end
 ```
 
 ## Miscellaneous data
