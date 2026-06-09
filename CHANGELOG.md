@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.21.1
+*   Dialog for email button
+
 ## 2.21.0
 *   Dedicated activity for automatic screenshots for apps that don't support broadcast intents [#763](https://github.com/cvzi/ScreenshotTile/pull/763) by [@kunalagra](https://github.com/kunalagra)
 
