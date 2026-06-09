@@ -17,8 +17,8 @@ import com.github.cvzi.screenshottile.BR
 import com.github.cvzi.screenshottile.BuildConfig
 import com.github.cvzi.screenshottile.R
 import com.github.cvzi.screenshottile.databinding.ActivityAboutBinding
+import com.github.cvzi.screenshottile.utils.emailDialog
 import com.github.cvzi.screenshottile.utils.getUpdateUrl
-import com.github.cvzi.screenshottile.utils.openEmail
 import com.github.cvzi.screenshottile.utils.openUri
 import com.github.cvzi.screenshottile.utils.ui.formatLocalizedString
 import com.github.cvzi.screenshottile.utils.ui.getLocalizedString
@@ -83,7 +83,7 @@ class AboutActivity : BaseAppCompatActivity() {
             openUri(getLocalizedString(R.string.pref_static_field_link_about_app_3))
         }
         binding.buttonContactEmail.setOnClickListener {
-            openEmail(getString(R.string.contact_email), getString(R.string.contact_email_subject))
+            emailDialog()
         }
         binding.buttonLicense.setOnClickListener {
             WebViewActivity.start(

@@ -71,8 +71,13 @@ fun Context.openUri(uriString: String) {
 /**
  * Open an email intent
  */
-fun Context.openEmail(address: String, subject: String) {
-    Intent(ACTION_SENDTO, "mailto:$address?subject=${Uri.encode(subject)}".toUri()).apply {
+fun Context.openEmail(address: String, subject: String, body: String? = null) {
+    val uriString = if (body.isNullOrEmpty()) {
+        "mailto:$address?subject=${Uri.encode(subject)}"
+    } else {
+        "mailto:$address?subject=${Uri.encode(subject)}&body=${Uri.encode(body)}"
+    }
+    Intent(ACTION_SENDTO, uriString.toUri()).apply {
         if (resolveActivity(packageManager) != null) {
             startActivity(this)
         }
