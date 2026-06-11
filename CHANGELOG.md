@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.21.2
+*   Better fallback values if translations are missing and user selected multiple languages
+
 ## 2.21.1
 *   Dialog for email button
 
