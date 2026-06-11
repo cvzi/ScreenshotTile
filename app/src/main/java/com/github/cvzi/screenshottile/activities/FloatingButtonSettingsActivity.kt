@@ -43,6 +43,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 
 /**
@@ -536,10 +537,10 @@ class FloatingButtonSettingsActivity : BaseAppCompatActivity() {
         updatingGestureUi = false
     }
 
-    fun debounceButtonRefresh(delay: Long) {
+    fun debounceButtonRefresh(delayDuration: Long) {
         buttonRefreshJob?.cancel()
         buttonRefreshJob = lifecycleScope.launch {
-            delay(delay)
+            delay(delayDuration.milliseconds)
             ScreenshotAccessibilityService.instance?.updateFloatingButton(true)
         }
     }
