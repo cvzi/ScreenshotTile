@@ -47,6 +47,9 @@
     <string name="setting_floating_button_hide_after_summary">Після зняття знімку екрана автоматично ховати рухому кнопку</string>
     <string name="setting_floating_button_show_close">Показувати кнопку [X]/закриття поруч з рухомою кнопкою</string>
     <string name="setting_floating_button_show_close_summary">Дає змогу прибрати рухому кнопку, не відкриваючи швидкі налаштування</string>
+    <string name="setting_floating_button_show_settings_after_move">Показати кнопку налаштувань після переміщення плаваючої кнопки</string>
+    <string name="setting_floating_button_snap_to_notch">Приховати кнопку у вирізі для камери</string>
+    <string name="setting_floating_button_snap_to_notch_summary">Переміщує плаваючу кнопку за виріз для фронтальної камери</string>
     <string name="setting_floating_button_show_close_dialog_title">Оберіть іконку кнопки закриття</string>
     <string name="setting_floating_button_show_close_dialog_description">Введіть текст або емоджі, які будуть відображатися в якості кнопки закриття</string>
     <string name="setting_floating_button_shutter">Зовнішній вигляд рухомої кнопки</string>
@@ -59,13 +62,17 @@
     <string name="setting_storage_directory_description">Тека для збереження знімків екрана</string>
     <string name="setting_file_name_pattern">Назва файлу</string>
     <string name="setting_file_name_placeholders_title">У назві файлу доступні такі заповнювачі</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% — час як yyyy-MM-dd_H-mm-ss\n
-%counter% — рахує кількість знімків екрана\n
-%random% — випадковий UUID\n
-%randint% — випадкове число]]></string>
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - час у форматі рррр-ММ-дд_ГГ-хх-сс\n
+%counter% - кількість знімків екрана\n
+%random% - випадковий UUID\n
+%randint% - випадкове число\n
+%app% — назва програми, що працює у фоновому режимі\n
+%package% — назва пакета програми, що працює у фоновому режимі]]></string>
     <string name="setting_tile_action">Дія плитки</string>
     <string name="setting_tile_long_press_action">Дія затискання плитки</string>
     <string name="setting_floating_action">Дія для рухомої кнопки</string>
+    <string name="setting_floating_action_gesture">Запустити дію плаваючої кнопки з</string>
+    <string name="setting_floating_move_gesture">Перемістити плаваючу кнопку з</string>
     <string name="setting_voice_interaction_action">Дія помічника</string>
     <string name="setting_dark_theme">Нічний режим</string>
     <string name="setting_dark_theme_system">Система</string>
@@ -91,6 +98,7 @@
     <string name="post_action_show_toast">Показувати сповіщення «Тост». Коротке спливне вікно, що зникає за 2 секунди</string>
     <string name="post_action_show_notification">Показувати звичайне сповіщення. Ви можете змінити кнопки (Редагувати, Поділитися,…) під сповіщенням у розділі «Налаштування»</string>
     <string name="post_action_play_tone">Відтворювати звук</string>
+    <string name="post_action_copy_clipboard">Скопіювати в буфер обміну</string>
     <string name="post_action_empty">Не відкривати знімок екрана</string>
     <string name="post_action_open_in_post">Відкрити в режимі «Подробиці»</string>
     <string name="post_action_open_in_post_crop">Обрізати зображення</string>
@@ -146,6 +154,26 @@
     <string name="tutorial_step11">Надайте дозволи</string>
     <string name="tutorial_step16">Зробіть знімки екрану за допомогою нової кнопки</string>
     <string name="take_screenshot">Зробити знімок екрана</string>
+    <string name="setting_show_in_portrait_orientation">Показувати у книжковій орієнтації</string>
+    <string name="setting_show_in_landscape_orientation">Показувати в альбомній орієнтації</string>
+    <string name="setting_show_when_device_is_unlocked">Показувати, коли пристрій розблоковано</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Показувати, коли пристрій заблоковано (на екрані блокування)</string>
+    <string name="setting_show_hide_in_specific_apps">Показати/Сховати в певних застосунках</string>
+    <string name="setting_filtermode_blacklist">Чорний список</string>
+    <string name="setting_filtermode_whitelist">Білий список</string>
+    <string name="setting_filtermode_select_apps">Вибрати застосунки</string>
+    <string name="setting_filtermode_search">Пошук</string>
+    <string name="setting_filtermode_select_all">Вибрати все</string>
+    <string name="setting_filtermode_invert_selection">Скасувати вибір</string>
+    <string name="setting_show_floating_buttons_quick_settings">Показувати рухомі кнопки коли відкрито швидкі налаштування</string>
+    <string name="setting_quick_settings_warning">Одна з плиток застосунку повинна бути додана до швидких налаштувань інакше плавуча кнопка не може бути схована, коли відкрито швидкі налаштування</string>
+    <string name="single_tap">Одинарний дотик</string>
+    <string name="double_tap">Подвійний дотик</string>
+    <string name="long_press">Тривале натискання</string>
+    <string name="short_touch">Короткий дотик</string>
+    <string name="legacy_request_scope">Визначення дозволу:</string>
+    <string name="current_screen">Поточний екран</string>
+    <string name="choose_an_app">Вибрати додаток</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_title">Вимоги щодо чіткого повідомлення про використання персональних даних і отримання згоди</string>
     <string name="googleplay_consent_line_0">Google Play вимагає чіткого повідомлення використання API служб спеціальних можливостей для застосунку, який не є інструментом доступності.</string>
@@ -168,6 +196,7 @@
     <string name="about_open_source_title">Використано відкритий код</string>
     <string name="about_advanced_settings_button">Додаткові налаштування</string>
     <string name="about_update_check_button">Перевірка наявності оновлень</string>
+    <string name="about_backup_title">Резервне копіювання та відновлення</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Налаштування спеціальних можливостей</string>
     <string name="toast_open_accessibility_settings">Активуйте \"%1s\" в налаштуваннях доступності</string>
@@ -254,17 +283,4 @@
     <string name="setting_keep_screenshot_history">Зберігати історію знімків екрану</string>
     <string name="setting_keep_screenshot_history_summary" comment="Placeholder is replaced with the translation of `Recent screenshots`">Зберігає імена файлів скріншотів в списку. Для функції \"%1$s\"</string>
     <string name="setting_pe_auto_rotate_landscape">Редактор світлин: Обертати горизонтальні зображення</string>
-    <string name="setting_show_in_portrait_orientation">Показувати у книжковій орієнтації</string>
-    <string name="setting_show_in_landscape_orientation">Показувати в альбомній орієнтації</string>
-    <string name="setting_show_when_device_is_unlocked">Показувати, коли пристрій розблоковано</string>
-    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Показувати, коли пристрій заблоковано (на екрані блокування)</string>
-    <string name="setting_show_hide_in_specific_apps">Показати/Сховати в певних застосунках</string>
-    <string name="setting_filtermode_blacklist">Чорний список</string>
-    <string name="setting_filtermode_whitelist">Білий список</string>
-    <string name="setting_filtermode_select_apps">Вибрати застосунки</string>
-    <string name="setting_filtermode_search">Пошук</string>
-    <string name="setting_filtermode_select_all">Вибрати все</string>
-    <string name="setting_filtermode_invert_selection">Скасувати вибір</string>
-    <string name="setting_show_floating_buttons_quick_settings">Показувати рухомі кнопки коли відкрито швидкі налаштування</string>
-    <string name="setting_quick_settings_warning">Одна з плиток застосунку повинна бути додана до швидких налаштувань інакше плавуча кнопка не може бути схована, коли відкрито швидкі налаштування</string>
 </resources>
