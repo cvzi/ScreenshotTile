@@ -25,6 +25,6 @@ jobs:
     #- name: Generate dependencies report
     #  run: ./gradlew :app:dependencies > dependencies.txt
     - name: FOSSA Action
-      uses: fossas/fossa-action@v1
+      uses: fossas/fossa-action@v2
       with:
         api-key: ${{ secrets.FOSSA_API_KEY }}
