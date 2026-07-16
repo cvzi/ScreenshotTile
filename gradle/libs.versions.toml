@@ -1,5 +1,5 @@
 [versions]
-agp = "9.2.1"
+agp = "9.3.0"
 annotation = "1.10.0"
 appcompat = "1.7.1"
 appfunctions = "1.0.0-alpha08"
