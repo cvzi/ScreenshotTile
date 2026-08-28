@@ -19,14 +19,14 @@
     <string name="setting_delay_entry_2s">2 s</string>
     <string name="setting_delay_entry_5s">5 s</string>
     <string name="take_screenshot_1s_delayed">Ta skärmdump efter 1 s</string>
-    <string name="take_screenshot_2s_delayed">Ta skärmdump efter 2s</string>
+    <string name="take_screenshot_2s_delayed">Ta skärmdump efter 2 s</string>
     <string name="take_screenshot_5s_delayed">Ta skärmdump efter 5 s</string>
     <string name="toggle_floating_button">Växla flytande knapp</string>
     <string name="show_count_down">Visa nedräkning</string>
     <string name="cancel_count_down">Tryck för att avbryta fördröjning</string>
-    <string name="cancel_count_down_summary">Tryck på skärmen för att genast ta en skärmdump innan nedräkningen avslutas</string>
+    <string name="cancel_count_down_summary">Tryck på skärmen för att genast ta en skärmdump innan nedräkningen är slut</string>
     <string name="use_native_screenshot">Använd inbyggd skärmdumpsmetod</string>
-    <string name="use_native_screenshot_summary">Simulera hem + strömknappstryck</string>
+    <string name="use_native_screenshot_summary">Simulera hem- plus strömknappstryck</string>
     <string name="use_native_screenshot_unsupported">Kräver Android 9 Pie</string>
     <string name="use_native_screenshot_unavailable">Tillgänglighetstjänst är inaktiverad</string>
     <string name="use_native_screenshot_option_default">Inbyggd metod använder systemets standard</string>
@@ -47,6 +47,9 @@
     <string name="setting_floating_button_hide_after_summary">Ta automatiskt bort den flytande knappen efter att du tagit en skärmdump</string>
     <string name="setting_floating_button_show_close">Visa en [X]/stängknapp bredvid flytande knapp</string>
     <string name="setting_floating_button_show_close_summary">Låter dig ta bort den flytande knappen utan att öppna snabbinställningar</string>
+    <string name="setting_floating_button_show_settings_after_move">Visa inställningsknapp efter att den flytande knappen flyttats</string>
+    <string name="setting_floating_button_snap_to_notch">Dölj knappen i kameraflärpen</string>
+    <string name="setting_floating_button_snap_to_notch_summary">Flyttar den flytande knappen bakom frontkamerans flärp</string>
     <string name="setting_floating_button_show_close_dialog_title">Emoji för stängknapp</string>
     <string name="setting_floating_button_show_close_dialog_description">Skriv en text eller en emoji som visas som stängknapp</string>
     <string name="setting_floating_button_shutter">Tema för flytande knapp</string>
@@ -59,13 +62,17 @@
     <string name="setting_storage_directory_description">Mapp att spara skärmdumpar i</string>
     <string name="setting_file_name_pattern">Filnamn</string>
     <string name="setting_file_name_placeholders_title">Använd dessa platshållare i filnamnet</string>
-    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tid som yyyy-MM-dd_HH-mm-ss\n
+    <string name="setting_file_name_placeholders" formatted="false"><![CDATA[%timestamp% - tid som åååå-MM-dd_HH-mm-ss\n
 %counter% - räknar antalet skärmdumpar\n
 %random% - ett slumpmässigt UUID\n
-%randint% - ett slumpmässigt tal]]></string>
-    <string name="setting_tile_action">Funktion för knapp i snabbpanel</string>
-    <string name="setting_tile_long_press_action">Åtgärd vid långtryck</string>
+%randint% - ett slumptal\n
+%app% - förgrundsappens namn\n
+%package% - förgrundsappens paketnamn]]></string>
+    <string name="setting_tile_action">Åtgärd för panelknapp</string>
+    <string name="setting_tile_long_press_action">Åtgärd vid långtryck på panelknapp</string>
     <string name="setting_floating_action">Funktion för flytande knapp</string>
+    <string name="setting_floating_action_gesture">Aktivera åtgärd för flytande knapp med</string>
+    <string name="setting_floating_move_gesture">Flytta flytande knapp med</string>
     <string name="setting_voice_interaction_action">Funktion för assistent</string>
     <string name="setting_dark_theme">Mörkt tema</string>
     <string name="setting_dark_theme_system">System</string>
@@ -91,6 +98,7 @@
     <string name="post_action_show_toast">Visa ett \"toast-meddelande\". En liten popup som försvinner efter 2 sekunder</string>
     <string name="post_action_show_notification">Visa en vanlig avisering. Du kan ändra knapparna (Redigera, Dela,…) under aviseringen under \"Fler inställningar\"</string>
     <string name="post_action_play_tone">Spela upp ett ljud</string>
+    <string name="post_action_copy_clipboard">Kopiera till urklipp</string>
     <string name="post_action_empty">Öppna inte skärmdumpen</string>
     <string name="post_action_open_in_post">Öppna i \"Detaljer\"-vy</string>
     <string name="post_action_open_in_post_crop">Beskär bild</string>
@@ -146,6 +154,26 @@
     <string name="tutorial_step11">Godkänn behörigheterna</string>
     <string name="tutorial_step16">Ta skärmdumpar med den nya knappen</string>
     <string name="take_screenshot">Ta en skärmdump</string>
+    <string name="setting_show_in_portrait_orientation">Visa i stående format</string>
+    <string name="setting_show_in_landscape_orientation">Visa i liggande format</string>
+    <string name="setting_show_when_device_is_unlocked">Visa när enheten är upplåst</string>
+    <string name="setting_show_when_device_is_locked_on_the_lock_screen">Visa när enheten är låst (på låsskärmen)</string>
+    <string name="setting_show_hide_in_specific_apps">Visa/dölj i specifika appar</string>
+    <string name="setting_filtermode_blacklist">Svartlista</string>
+    <string name="setting_filtermode_whitelist">Vitlista</string>
+    <string name="setting_filtermode_select_apps">Välj appar</string>
+    <string name="setting_filtermode_search">Sök</string>
+    <string name="setting_filtermode_select_all">Markera alla</string>
+    <string name="setting_filtermode_invert_selection">Invertera markering</string>
+    <string name="setting_show_floating_buttons_quick_settings">Visa flytande knappar när snabbinställningarna dras ner</string>
+    <string name="setting_quick_settings_warning">En av appens panelknappar måste läggas till i snabbinställningarna, annars kan inte den flytande knappen döljas när snabbinställningarna dras ner</string>
+    <string name="single_tap">Enkeltryck</string>
+    <string name="double_tap">Dubbeltryck</string>
+    <string name="long_press">Långt tryck</string>
+    <string name="short_touch">Kort tryck</string>
+    <string name="legacy_request_scope">Omfattning för behörighet:</string>
+    <string name="current_screen">Nuvarande skärm</string>
+    <string name="choose_an_app">Välj en app</string>
     <!-- Google Play Prominent Disclosure & Consent Requirement Dialog -->
     <string name="googleplay_consent_title">Google Play Överhängande Utlämnande &amp; Samtycke Krav</string>
     <string name="googleplay_consent_line_0">Google Play kräver ett tydligt avslöjande av tillgänglighetstjänster API: s användning för en app som inte är ett verktyg för tillgänglighet.</string>
@@ -168,12 +196,13 @@
     <string name="about_open_source_title">Användning av öppen källkod</string>
     <string name="about_advanced_settings_button">Avancerade inställningar</string>
     <string name="about_update_check_button">Uppdateringskontroll</string>
+    <string name="about_backup_title">Säkerhetskopiering &amp; återställning</string>
     <!-- First screen -->
     <string name="main_accessibility_settings">Tillgänglighetsinställningar</string>
     <string name="toast_open_accessibility_settings">Vänligen aktivera \"%1s\" i tillgänglighetsinställningarna</string>
     <string name="main_floating_button_title">Flytande knapp</string>
     <string name="main_general_text">Innan du kan använda den här appen måste du lägga till panelknappen i snabbinställningarna. Om du inte vet hur man gör detta, ta en titt på [Handledningen,.TutorialActivity].\n\nDenna app stöder två olika metoder för att ta skärmdumpar:</string>
-    <string name="main_general_button_request_add_tile">Lägg till ruta</string>
+    <string name="main_general_button_request_add_tile">Lägg till panelknapp</string>
     <string name="main_legacy_method_title">Äldre metod</string>
     <string name="main_legacy_method_text">Den äldre metoden för att ta skärmdumpar använder skärminspelningsfunktioner i Android.\nNär du tar en skärmbild spelas inget ljud. En tyst avisering visas för att öppna, dela eller redigera skärmbilden. Meddelandet kan inaktiveras i appinställningarna.\nInnan du kan ta en skärmdump måste du lägga till panelen till snabbinställningarna, acceptera behörighet att spela in skärmen och behörighet att komma åt den interna lagringsenheten för att spara bildfilen.\nSe handledningen om hur man gör det.\n\nPå vissa telefoner fungerar denna metod inte, särskilt på nyare Androids (9.0+) är det instabilt och det kan be om tillstånd på varje enskild skärmdump. Om det händer bör du använda den nativa metoden nedan.</string>
     <string name="main_native_method_title">Inbyggd metod</string>
@@ -182,7 +211,7 @@
     <string name="main_native_method_text_android_since_11">Du kan ändra i appinställningarna (under \"Använd systemstandard\") om du vill ha telefonens standardbeteende (aviseringar, skärmdumpsredigerare, standardmapp för bilder) eller om du vill använda appens inställningar (en anpassad lagringsmapp och aviseringar från den här appen).</string>
     <string name="main_floating_button_text">Om du har aktiverat den nativa metoden, kan du också använda en flytande knapp (liknande en chattbubbla) för att ta skärmdumpar.\nDu kan aktivera den med en separat panelknapp i snabbinställningarna och sedan flytta den runt på skärmen.</string>
     <string name="main_long_press_title">Långt tryck</string>
-    <string name="main_long_press_text">Långtryck på kakel/knappen öppnar en meny. Du kan ange en fördröjning för skärmdumpen eller klippa ut en rektangel från skärmen.</string>
+    <string name="main_long_press_text">Långtryck på knappen öppnar en meny. Du kan ange en fördröjning för skärmdumpen eller klippa ut en rektangel av skärmen.</string>
     <string name="main_assist_app_title">Assistentapp</string>
     <string name="main_assist_app_text">Om du ställer in denna app som din assistentapp kan du trycka länge på hemknappen för att ta en skärmdump. Aktivering av denna app som din assistentapp kommer att inaktivera andra assistenter. Du kan ändra åtgärden för långt tryck på hemknappen i appinställningarna.</string>
     <string name="restricted_settings_open_settings">Tillåt blockerade inställningar</string>
