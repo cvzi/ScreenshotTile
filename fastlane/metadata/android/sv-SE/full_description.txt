@@ -1,6 +1,6 @@
 Lägger till en knapp/bricka i snabbinställningspanelen för att ta skärmdumpar.
 
-Efter installationen måste du lägga till knappen/brickan i dina snabbinställningar, och sedan ge behörighet att spela in skärmen och spara bilder till det interna lagringsutrymmet.
+Efter installationen måste du lägga till panelknappen i dina snabbinställningar, och sedan ge behörighet att spela in skärmen och spara bilder till det interna lagringsutrymmet.
 
 <h2>Funktioner:</h2>✓ Ta skärmdumpar från snabbinställningarna
 ✓ Ingen rot krävs
@@ -16,27 +16,27 @@ Efter installationen måste du lägga till knappen/brickan i dina snabbinställn
 ✓ Ta automatiska skärmdumpar med appar som Tasker eller MacroDroid
 ✓ Gratis, öppen källkod, ingen reklam
 
-Detta är en förgrening av "Screenshot Tile [Root]" men kräver inte rot.
+Detta är en förgrenad vidareutveckling av "Screenshot Tile [Root]" men kräver inte rootning.
 
 Källkod: <a href="https://github.com/cvzi/ScreenshotTile">github.com/cvzi/ScreenshotTile</a>
 Ursprunglig app: <a href="https://github.com/ipcjs/ScreenshotTile">github.com/ipcjs/ScreenshotTile</a>
 Licensen för öppen källkod är GNU GPLv3
 
 <u>Obs:</u>
-🎦 När du tar en skärmdump kommer ikonen för <b>"Google Cast"</b> att visas i statusfältet och synas i skärmdumpen.
+🎦 När du tar en skärmdump kommer <b>ikonen för "Google Cast"</b> att visas i statusfältet och synas i skärmdumpen.
 Om du vill dölja ikonen, finns det en förklaring här: <a href="https://github.com/cvzi/ScreenshotTile#icon">github.com/cvzi/ScreenshotTile#icon</a>
 
-<h2>Behörigheter:</h2><unk> <i>android.permission.WRITE_EXTERNAL_STORAGE "Foton/media/filer och lagring"</i>
-Detta krävs för att spara skärmdumparna på din enhets interna lagring.
+<h2>Behörigheter:</h2>❏ <i>android.permission.WRITE_EXTERNAL_STORAGE "Foton/media/filer och lagring"</i>
+Detta krävs för att spara skärmdumparna i din enhets interna lagring.
 
 <unk> <i>android.permission.FOREGROUND_SERVICE</i>
 Sedan Android 9/Pie krävs denna behörighet för att ta skärmdumpar. Det innebär i princip att denna app kan köras utan att visa sig själv. Appen kommer dock alltid att visa en avisering när den körs.
 
-<h2>Automatiska skärmdumpar:</h2>Om du vill automatisera skärmdumpar från en annan app, t.ex. MacroDroid eller Tasker, hittar du en steg-för-steg-instruktion här:
+<h2>Automatiska skärmdumpar:</h2>Om du vill automatisera skärmdumpar från en annan app, t.ex. MacroDroid eller Tasker, finns en steg-för-steg-instruktion här:
 <a href="https://github.com/cvzi/ScreenshotTile#automatic-screenshots-with-broadcast-intents">github.com/cvzi/ScreenshotTile#automatisk-screenshots-with-broadcast-intents</a>
 
 <h2>Dölj appikonen:</h2>I appinställningarna kan du dölja appikonen från ditt startprogram. Du kan fortfarande komma åt appen genom att långtrycka på knappen i dina snabbinställningar. Tyvärr tillåter Android 10 inte att dölja en app längre.
 
-<h2>🌎 Support och översättningar</h2>Om det finns problem eller om du vill hjälpa till att översätta appen till ditt språk; kontakta mig gärna på <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> eller bidra med en översättning på <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
+<h2>🌎 Support och översättningar</h2>Om du stöter på problem eller om du vill hjälpa till att översätta appen till ditt språk; kontakta mig gärna på <a href="https://github.com/cvzi/ScreenshotTile/issues">github. om/cvzi/ScreenshotTile/issues</a>, <a href="mailto:cuzi-android@openmail.cc">cuzi-android@openmail.cc</a> eller bidra med en översättning på <a href="https://crowdin.com/project/screenshottile/">https://crowdin.com/project/screenshottile/</a>
 
 Appen har åtkomst till <a href="https://support.google.com/googleplay/android-developer/answer/10964491">Accessibility Services API</a> som gör att appen kan spela in skärmen. Data varken samlas in eller delas av denna app med hjälp av tillgänglighetsfunktionerna.
