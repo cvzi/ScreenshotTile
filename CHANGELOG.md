@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.21.4
+*   Update Swedish translation
+
 ## 2.21.3
 *   Update Ukrainian translation
 
