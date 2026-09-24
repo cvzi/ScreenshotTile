@@ -109,17 +109,6 @@
                                 android:text="@{strings.main_legacy_method_title}"
                                 android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
-                            <Button
-                                android:id="@+id/buttonScreenshotTile1"
-                                style="@style/Widget.Material3.Button"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:drawableRight="@drawable/layer_list_small_launcher"
-                                android:text="@{strings.main_general_button_request_add_tile}"
-                                android:textSize="13sp"
-                                tools:ignore="RtlHardcoded" />
-
                         </LinearLayout>
 
                         <LinearLayout
@@ -162,6 +151,17 @@
                             android:text="@{strings.tutorial}"
                             android:textSize="13sp" />
 
+                        <Button
+                            android:id="@+id/buttonScreenshotTile1"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:drawableRight="@drawable/layer_list_small_launcher"
+                            android:text="@{strings.main_general_button_request_add_tile}"
+                            android:textSize="13sp"
+                            tools:ignore="RtlHardcoded" />
+
                     </LinearLayout>
 
 
@@ -197,17 +197,6 @@
                                 android:text="@{strings.main_native_method_title}"
                                 android:textAppearance="@android:style/TextAppearance.Material.Title" />
 
-                            <Button
-                                android:id="@+id/buttonScreenshotTile2"
-                                style="@style/Widget.Material3.Button"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:drawableRight="@drawable/layer_list_small_launcher"
-                                android:text="@{strings.main_general_button_request_add_tile}"
-                                android:textSize="13sp"
-                                tools:ignore="RtlHardcoded" />
-
                         </LinearLayout>
 
                         <TextView
@@ -224,6 +213,16 @@
                             android:layout_height="wrap_content"
                             android:text="@{strings.main_accessibility_settings}"
                             android:textSize="13sp" />
+
+                        <Button
+                            android:id="@+id/buttonScreenshotTile2"
+                            style="@style/Widget.Material3.Button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/layer_list_small_launcher"
+                            android:text="@{strings.main_general_button_request_add_tile}"
+                            android:textSize="13sp"
+                            tools:ignore="RtlHardcoded" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
