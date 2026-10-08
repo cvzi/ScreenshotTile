@@ -29,6 +29,7 @@ devtoolsksp = "2.3.12"
 truth = "1.7.0"
 viewpager = "1.1.0"
 documentfile = "1.1.0"
+heifwriter = "1.1.0"
 
 [libraries]
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
@@ -61,6 +62,7 @@ runner = { module = "androidx.test:runner", version.ref = "runner" }
 truth = { module = "androidx.test.ext:truth", version.ref = "truth" }
 viewpager = { module = "androidx.viewpager:viewpager", version.ref = "viewpager" }
 documentfile = { group = "androidx.documentfile", name = "documentfile", version.ref = "documentfile" }
+heifwriter = { group = "androidx.heifwriter", name = "heifwriter", version.ref = "heifwriter" }
 
 [bundles]
 implementation-app = [

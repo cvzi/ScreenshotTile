@@ -78,6 +78,10 @@
         <item>@string/setting_file_format_entry_jpg_100</item>
         <item>@string/setting_file_format_entry_jpg_90</item>
         <item>@string/setting_file_format_entry_jpg_70</item>
+        <item>@string/setting_file_format_entry_avif_100</item>
+        <item>@string/setting_file_format_entry_avif_95</item>
+        <item>@string/setting_file_format_entry_heic_100</item>
+        <item>@string/setting_file_format_entry_heic_95</item>
     </string-array>
     <string-array name="setting_file_format_values" translatable="false">
         <item>@string/setting_file_format_value_default</item>
@@ -87,6 +91,10 @@
         <item>jpg_100</item>
         <item>jpg_90</item>
         <item>jpg_70</item>
+        <item>avif_100</item>
+        <item>avif_95</item>
+        <item>heic_100</item>
+        <item>heic_95</item>
     </string-array>
     <string name="setting_file_format_entry_default" translatable="false">PNG</string>
     <string name="setting_file_format_entry_webp" translatable="false">WebP (100％ lossy)</string>
@@ -95,6 +103,10 @@
     <string name="setting_file_format_entry_jpg_100" translatable="false">JPG (100％)</string>
     <string name="setting_file_format_entry_jpg_90" translatable="false">JPG (90％)</string>
     <string name="setting_file_format_entry_jpg_70" translatable="false">JPG (70％)</string>
+    <string name="setting_file_format_entry_avif_100" translatable="false">AVIF (100％)</string>
+    <string name="setting_file_format_entry_avif_95" translatable="false">AVIF (95％)</string>
+    <string name="setting_file_format_entry_heic_100" translatable="false">HEIC (100％)</string>
+    <string name="setting_file_format_entry_heic_95" translatable="false">HEIC (95％)</string>
 
     <string name="setting_floating_button_scale_default" translatable="false">200</string>
 

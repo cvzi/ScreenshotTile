@@ -180,26 +180,30 @@ class SettingAdvancedFragment : PreferenceFragmentCompat() {
         @Suppress("DEPRECATION", "CascadeIf")
         // Do not use when, it is exhaustive and enumerates fields that are not available on
         // all Android version, it will crashes with `No static field WEBP_LOSSY` on old Android
-        return if (compressionOptions.format == Bitmap.CompressFormat.JPEG) {
+        return if (compressionOptions.format == "JPEG") {
             "JPEG ${compressionOptions.quality}%"
-        } else if (compressionOptions.format == Bitmap.CompressFormat.PNG) {
+        } else if (compressionOptions.format == "PNG") {
             "PNG (quality parameter has no effect)"
-        } else if (compressionOptions.format == Bitmap.CompressFormat.WEBP) {
+        } else if (compressionOptions.format == "AVIF") {
+            "AVIF ${compressionOptions.quality}%"
+        } else if (compressionOptions.format == "HEIC") {
+            "HEIC ${compressionOptions.quality}%"
+        } else if (compressionOptions.format == "WEBP") {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && compressionOptions.quality == 100) {
                 "WebP (Lossless 100%)"
             } else {
                 "WebP (Lossy ${compressionOptions.quality}%)"
             }
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (compressionOptions.format == Bitmap.CompressFormat.WEBP_LOSSY) {
+            if (compressionOptions.format == "WEBP_LOSSY") {
                 "WebP (Lossy ${compressionOptions.quality}%)"
-            } else if (compressionOptions.format == Bitmap.CompressFormat.WEBP_LOSSLESS) {
+            } else if (compressionOptions.format == "WEBP_LOSSLESS") {
                 "WebP (Lossless ${compressionOptions.quality}%)"
             } else {
-                "${compressionOptions.format.name} ${compressionOptions.quality}%"
+                "${compressionOptions.fileExtension} ${compressionOptions.quality}%"
             }
         } else {
-            "${compressionOptions.format.name} ${compressionOptions.quality}%"
+            "${compressionOptions.fileExtension} ${compressionOptions.quality}%"
         }
     }
 
