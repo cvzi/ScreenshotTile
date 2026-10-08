@@ -43,6 +43,26 @@ enum class PackageNameFilterMode {
  */
 class CompressionOptions(var fileExtension: String = "png", val quality: Int = 100) {
     val format = when (fileExtension) {
+        "jpg" -> "JPEG"
+        "jpeg" -> "JPEG"
+        "webp" -> {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (quality == 100) {
+                    "WEBP_LOSSLESS"
+                } else {
+                    "WEBP_LOSSY"
+                }
+            } else {
+                "WEBP"
+            }
+        }
+        "heic" -> "HEIC"
+        "heif" -> "HEIC"
+        "heics" -> "HEIC"
+        "avif" -> "AVIF"
+        else -> "PNG"
+    }
+    val bitmapFormat = when (fileExtension) {
         "jpg" -> Bitmap.CompressFormat.JPEG
         "webp" -> {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -56,12 +76,11 @@ class CompressionOptions(var fileExtension: String = "png", val quality: Int = 1
                 Bitmap.CompressFormat.WEBP
             }
         }
-
         else -> {
-            fileExtension = "png"
             Bitmap.CompressFormat.PNG
         }
     }
+
     val mimeType = mimeFromFileExtension(fileExtension)
 }
 

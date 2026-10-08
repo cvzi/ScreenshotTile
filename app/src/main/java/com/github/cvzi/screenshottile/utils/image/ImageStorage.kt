@@ -449,7 +449,7 @@ fun saveBitmapToFile(
 
     val bytes = ByteArrayOutputStream()
 
-    bitmap.compress(compressionOptions.format, compressionOptions.quality, bytes)
+    imageCompress(compressionOptions, bitmap, bytes)
 
     var success = false
     var error = ""
@@ -580,7 +580,7 @@ fun saveBitmapToFile(
 
     val bytes = ByteArrayOutputStream()
 
-    bitmap.compress(compressionOptions.format, compressionOptions.quality, bytes)
+    imageCompress(compressionOptions, bitmap, bytes)
 
     var success = false
     var error = ""

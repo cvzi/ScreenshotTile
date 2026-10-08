@@ -54,6 +54,7 @@ import com.github.cvzi.screenshottile.assist.MyVoiceInteractionService
 import com.github.cvzi.screenshottile.databinding.DialogCloseButtonBinding
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService
 import com.github.cvzi.screenshottile.services.ScreenshotAccessibilityService.Companion.openAccessibilitySettings
+import com.github.cvzi.screenshottile.utils.image.getMediaCodecCapabilities
 import com.github.cvzi.screenshottile.utils.image.nicePathFromUri
 import com.github.cvzi.screenshottile.utils.notifications.createNotificationScreenshotTakenChannel
 import com.github.cvzi.screenshottile.utils.notifications.notificationScreenshotTakenChannelEnabled
@@ -595,6 +596,19 @@ class SettingFragment : PreferenceFragmentCompat() {
             } else {
                 isEnabled = true
                 summary = entries[findIndexOfValue(value)]
+
+                if (entries[findIndexOfValue(value)].contains("", ignoreCase = true) && Build.VERSION.SDK_INT < Build.VERSION_CODES.P)  {
+                    summary = "HEIC requires Android 9+"
+                }
+                else if (entries[findIndexOfValue(value)].contains("avif", ignoreCase = true)) {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                        summary = "AVIF requires Android 10+"
+                    } else {
+                        if (getMediaCodecCapabilities("image/avif") == null) {
+                            summary = "Device does not support AVIF"
+                        }
+                    }
+                }
             }
         }
     }
